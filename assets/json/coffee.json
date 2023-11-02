@@ -1,0 +1,74 @@
+[
+    {
+        "id": 1,
+        "name": "Americano w/ Creme",
+        "description": "Espresso shots topped with hot water create a light layer of cream culminating in this wonderfully rich cup with depth and nuance",
+        "rating": "3.0",
+        "totalRatings": "17",
+        "image": "Americano w Creme",
+        "price":"3.5",
+        "offerPrice": "3.2",
+        "veg":"veg",
+        "category": "Coffee"
+    },
+    {
+        "id": 2,
+        "name": "Hot Chocolate",
+        "description": "Rich and full of flavor, our hot chocolate combines dark chocolate and steamed milk for a warm, sweet treat",
+        "rating": "4.0",
+        "totalRatings": "45",
+        "image": "hot_choc",
+        "price": "4",
+        "offerPrice": "2.0",
+        "veg":"veg",
+        "category": "Coffee"
+    },
+    {
+        "id": 3,
+        "name": "Cappuccino",
+        "description": "Dark, rich espresso lies in wait under a smoothed and stretched layer of thick milk foam. An alchemy of barista artistry and craft",
+        "rating": "3.5",
+        "totalRatings": "34",
+        "image": "cap_coffee",
+        "price": "5.3",
+        "offerPrice": "4.12",
+        "veg":"veg",
+        "category": "Coffee"
+    },
+    {
+        "id": 4,
+        "name": "Caffe macchiato",
+        "description": "The macchiato is an espresso coffee drink, topped with a small amount of foamed or steamed milk to allow the taste of the espresso to still shine through.",
+        "rating": "4.0",
+        "totalRatings": "24",
+        "image": "es_coffee",
+        "price": "6",
+        "offerPrice": "2.0",
+        "veg":"veg",
+        "category": "Coffee"
+    },
+    {
+        "id": 5,
+        "name": "Latte",
+        "description": "Rich, full-bodied espresso in steamed milk, lightly topped with foam",
+        "rating": "4.5",
+        "totalRatings": "38",
+        "image": "Latte",
+        "price": "7.4",
+        "offerPrice": "4.2",
+        "veg":"veg",
+        "category": "Coffee"           
+    },
+    {
+        "id": 6,
+        "name": "Filter Coffee",
+        "description": "Hot water through ground coffee beans and a filter to separate the coffee grounds from the liquid",
+        "rating": "4.8",
+        "totalRatings": "48",
+        "image": "filter_coffee",
+        "price": "3.4",
+        "offerPrice": "2.8",
+        "veg":"veg",
+        "category": "Coffee"  
+    }
+]

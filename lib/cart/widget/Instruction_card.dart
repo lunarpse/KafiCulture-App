@@ -1,0 +1,98 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
+import 'package:flutter/material.dart';
+
+class InstructionCard extends StatelessWidget {
+  const InstructionCard({super.key, this.instruction});
+
+  final instruction;
+
+  @override
+  Widget build(BuildContext context) {
+    // return Container(
+    //   width: 100,
+    //   // height: 200,
+    //   decoration: BoxDecoration(
+    //       // color: Colors.red,
+    //       borderRadius: BorderRadius.all(Radius.elliptical(30, 30))),
+    //   margin: EdgeInsets.all(5),
+    //   child: Column(
+    //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    //     children: [Icon(Icons.delivery_dining), Text(instruction, maxLines: 2)],
+    //   ),
+    // );
+
+    return Container(
+      width: 100,
+      height: 110,
+      margin: EdgeInsets.all(5),
+      padding: EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        // color: Colors.green,
+        borderRadius: BorderRadius.circular(15),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.7),
+            offset: Offset(0, 2),
+            blurRadius: 2,
+            spreadRadius: 2,
+          ),
+        ],
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            "Delievery Instructions",
+            style: TextStyle(
+              fontSize: 17,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(
+            height: 3,
+          ),
+          SizedBox(
+              // color: Colors.red,
+              height: 65,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.sanitizer_outlined,
+                        size: 35,
+                      ),
+                      Text("Proper sanitization"),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.door_back_door_outlined,
+                        size: 35,
+                      ),
+                      Text("Leave At Door"),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.doorbell_outlined,
+                        size: 35,
+                      ),
+                      Text("Avoid ringing bell"),
+                    ],
+                  ),
+                ],
+              ))
+        ],
+      ),
+    );
+  }
+}
