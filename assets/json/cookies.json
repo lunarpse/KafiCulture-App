@@ -1,0 +1,75 @@
+[
+    {
+        "id": 1,
+        "name": "Choco Chip Cookies",
+        "description": " Grilled bread rubbed with garlic and topped with olive oil and salt",
+        "rating": "4.0",
+        "totalRatings": "45",
+        "image": "choco chip_cookies",
+        "price": "4",
+        "offerPrice": "2.8",
+        "veg":"veg",
+        "category": "Cookies"
+    },
+    {
+        "id": 2,
+        "name": "Oatmeal Cookies",
+        "description": "A melange of spices, chutney, crunchy vada, yoghurt and freshly chopped coriander",
+        "rating": "4.5",
+        "totalRatings": "38",
+        "image": "oatmeal_cookies",
+        "price": "7.4",
+        "offerPrice": "2.8",
+        "veg":"veg",
+        "category": "Cookies"           
+    },
+    {
+        "id": 3,
+        "name": "Oreo Cookies",
+        "description": "A traditional Chinese savory snack where a pastry sheet is filled with vegetables, rolled & fried",
+        "rating": "4.8",
+        "totalRatings": "48",
+        "image": "oreo_cookies",
+        "price": "3.4",
+        "offerPrice": "2.8",
+        "veg":"veg",
+        "category": "Cookies"  
+    },
+    {
+        "id": 4,
+        "name": "Rum Ball Cookies",
+        "description": "A scone is a traditional British baked good, popular in the United Kingdom and Ireland.",
+        "rating": "3.5",
+        "totalRatings": "34",
+        "image": "rum ball_cookies",
+        "price": "5.3",
+        "offerPrice": "2.8",
+        "veg":"veg",
+        "category": "Cookies"
+    },
+    {
+        "id": 5,
+        "name": "Wallnut Cookies",
+        "description": "Espresso shots topped with hot water create a light layer of cream culminating in this wonderfully rich cup with depth and nuance",
+        "rating": "3.0",
+        "totalRatings": "17",
+        "image": "wallnut_cookies",
+        "price":"3.5",
+        "offerPrice": "2.8",
+        "veg":"veg",
+        "category": "Cookies"
+    },
+    {
+        "id": 6,
+        "name": "Snow Ball Cookies",
+        "description": "A golden fried-potato patty that is often stuffed with peas or dal and served with a variety of spicy chutneys and sometimes chickpeas",
+        "rating": "4.0",
+        "totalRatings": "24",
+        "image": "snow ball_cookies",
+        "price": "6",
+        "offerPrice": "2.8",
+        "veg":"veg",
+        "category": "Cookies"
+    }
+    
+]

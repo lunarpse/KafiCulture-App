@@ -1,0 +1,75 @@
+[
+    {
+        "id": 1,
+        "name": "Hot Chocolate",
+        "description": "Rich and full of flavor, our hot chocolate combines dark chocolate and steamed milk for a warm, sweet treat",
+        "rating": "4",
+        "totalRatings": "45",
+        "image": "hot_choc",
+        "price": "4",
+        "offerPrice": "2.0",
+        "veg":"veg",
+        "category": "Coffee"
+    },
+    {
+        "id": 2,
+        "name": "Dahi Vada",
+        "description": "A melange of spices, chutney, crunchy vada, yoghurt and freshly chopped coriander",
+        "rating": "4.5",
+        "totalRatings": "38",
+        "image": "Dahi_Vada",
+        "price": "7.4",
+        "offerPrice": "2.0",
+        "veg":"veg",
+        "category": "Snacks"           
+    },
+    {
+        "id": 3,
+        "name": "Choco Chip Cookies",
+        "description": "A melange of spices, chutney, crunchy vada, yoghurt and freshly chopped coriander",
+        "rating": "4.5",
+        "totalRatings": "38",
+        "image": "choco chip_cookies",
+        "price": "7.4",
+        "offerPrice": "2.0",
+        "veg":"veg",
+        "category": "Cookies"           
+    },
+    {
+        "id": 4,
+        "name": "Caffe macchiato",
+        "description": "The macchiato is an espresso coffee drink, topped with a small amount of foamed or steamed milk to allow the taste of the espresso to still shine through.",
+        "rating": "4",
+        "totalRatings": "24",
+        "image": "es_coffee",
+        "price": "6",
+        "offerPrice": "2.0",
+        "veg":"veg",
+        "category": "Coffee"
+    },
+    {
+        "id": 5,
+        "name": "Veg Spring Rolls",
+        "description": "A traditional Chinese savory snack where a pastry sheet is filled with vegetables, rolled & fried",
+        "rating": "4.8",
+        "totalRatings": "48",
+        "image": "vegspring_snacks",
+        "price": "3.4",
+        "offerPrice": "2.0",
+        "veg":"veg",
+        "category": "Snacks"           
+    },
+    {
+        "id": 6,
+        "name": "Rum Ball Cookies",
+        "description": "A traditional Chinese savory snack where a pastry sheet is filled with vegetables, rolled & fried",
+        "rating": "4.8",
+        "totalRatings": "48",
+        "image": "rum ball_cookies",
+        "price": "3.4",
+        "offerPrice": "2.0",
+        "veg":"veg",
+        "category": "Cookies"           
+    }
+
+]
