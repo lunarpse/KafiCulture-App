@@ -24,18 +24,18 @@ class InstructionCard extends StatelessWidget {
 
     return Container(
       width: 100,
-      height: 110,
-      margin: EdgeInsets.all(5),
+      height:120,
+      margin: EdgeInsets.fromLTRB(7, 10, 7,7),
       padding: EdgeInsets.all(8),
       decoration: BoxDecoration(
-        // color: Colors.green,
+        color: Color.fromARGB(255, 224, 220, 218),
         borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.7),
-            offset: Offset(0, 2),
+            color: Colors.grey.withOpacity(1),
+            offset: Offset(0, 3),
             blurRadius: 2,
-            spreadRadius: 2,
+            spreadRadius: 3,
           ),
         ],
       ),
@@ -46,16 +46,16 @@ class InstructionCard extends StatelessWidget {
           Text(
             "Delievery Instructions",
             style: TextStyle(
-              fontSize: 17,
+              fontSize: 25,
               fontWeight: FontWeight.bold,
             ),
           ),
           SizedBox(
-            height: 3,
+            height: 1,
           ),
           SizedBox(
               // color: Colors.red,
-              height: 65,
+              height: 85,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -64,7 +64,7 @@ class InstructionCard extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.sanitizer_outlined,
-                        size: 35,
+                        size: 50,
                       ),
                       Text("Proper sanitization"),
                     ],
@@ -74,7 +74,7 @@ class InstructionCard extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.door_back_door_outlined,
-                        size: 35,
+                        size: 50,
                       ),
                       Text("Leave At Door"),
                     ],
@@ -84,7 +84,7 @@ class InstructionCard extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.doorbell_outlined,
-                        size: 35,
+                        size: 50,
                       ),
                       Text("Avoid ringing bell"),
                     ],

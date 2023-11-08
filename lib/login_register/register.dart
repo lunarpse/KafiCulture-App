@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:project_2/login_register/demoLogin.dart';
+import 'package:pinput/pinput.dart';
+
+import 'package:project_2/payments/payment_app.dart';
 
 import 'loginBtns.dart';
 import 'loginText.dart';
-import 'text_field.dart';
 
 class Register extends StatefulWidget {
   Register({super.key});
@@ -28,10 +29,6 @@ class _RegisterState extends State<Register> {
     super.dispose();
   }
 
-  // void _submitForm() {
-  //   if (_globalKey.currentState!.validate()) {}
-  // }
-
   String? _validateEmail(_email) {
     if (_email!.isEmpty) {
       return "please enter email id";
@@ -53,117 +50,87 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-
     return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 50,
-              ),
-
-              Container(
-                child: Image.asset("assets/images/logo1.png"),
-                height: 163,
-                width: 163,
-              ),
-              SizedBox(height: 70),
-
-              //...........................................Welcome back
-              const Text(
-                "We are happy to have you here",
-                style: TextStyle(fontSize: 20),
-              ),
-              const SizedBox(height: 20),
-              //-----------------------------------------userName textfield
-              LoginTextField(
-                  size: 20,
-                  borderRadius: 13,
-                  borderColor: Colors.grey.shade400,
-                  fillColor: Colors.grey.shade200,
-                  padding: 20,
-                  labelText: userName,
-                  controller: userNameController,
-                  hideText: false,
-                  onSaved: (value) {
-                    _email = value!;
-                  },
-                  validator: (_email) {
-                    if (_email!.isEmpty) {
-                      return "please enter email id";
-                    } else {
-                      return "hi";
-                    }
-                  }),
-
-              //----------------------------------------userPassword textfield
-              LoginTextField(
-                  size: 20,
-                  borderRadius: 13,
-                  borderColor: Colors.grey.shade400,
-                  fillColor: Colors.grey.shade200,
-                  padding: 20,
-                  labelText: userPassword,
-                  controller: passwordController,
-                  hideText: true,
-                  onSaved: (value) {
-                    _password = value!;
-                  },
-                  validator: _validatePassword),
-
-              LoginTextField(
-                  size: 20,
-                  borderRadius: 13,
-                  borderColor: Colors.grey.shade400,
-                  fillColor: Colors.grey.shade200,
-                  padding: 20,
-                  labelText: confirmPassword,
-                  controller: passwordController,
-                  hideText: true,
-                  onSaved: (value) {
-                    _password = value!;
-                  },
-                  validator: _validatePassword),
-              //----------------------------------------forgetPassword button
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 31,
+      child:
+          // backgroundColor: Color.fromRGBO(66, 24, 6, 1),
+          Scaffold(
+        body: Container(
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(
+                    "assets/images/appbarbg.jpg",
+                  ),
+                  fit: BoxFit.cover)),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      loginTitle,
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                    LoginTextButton(
+                        text: skipButtonText,
+                        size: 25,
+                        color: Colors.white,
+                        onTab: () {
+                          Navigator.pushNamed(context, '/payment');
+                        })
+                  ],
                 ),
-                child:
-                    //----------------------------------------SignIn button
-                    LoginBtn(
-                  gradientColor1: Colors.black,
-                  gradientColor2: Colors.black,
-                  gradientColor3: Colors.black,
-                  borderRadius: 33,
-                  btnHeight: 55,
-                  btnWidth: width * 0.68,
-                  color: Colors.black,
-                  fontSize: 20,
-                  text: registerBtn,
-                  textColor: Colors.white,
-                  onTab: () {},
+                SizedBox(
+                  height: 46,
                 ),
-              ),
-
-              //----------------------------------------Not a member SignUp
-              const SizedBox(
-                height: 20,
-              ),
-              LoginTextButton(
-                text: alreadyaMember,
-                size: 20,
-                color: Color.fromARGB(255, 2, 7, 147),
-                onTab: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Demo(),
-                      ));
-                },
-              )
-            ],
+                const Pinput(
+                  length: 6,
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 31,
+                  ),
+                  child: LoginBtn(
+                    borderRadius: 33,
+                    btnHeight: 55,
+                    btnWidth: width * 0.58,
+                    color: Colors.black,
+                    fontSize: 20,
+                    text: verifyotp,
+                    textColor: Colors.white,
+                    onTab: () {},
+                    gradientColor1: Color.fromARGB(255, 111, 78, 55),
+                    gradientColor2: Color.fromARGB(255, 111, 78, 55),
+                    gradientColor3: Color.fromARGB(255, 111, 78, 55),
+                    boxShadow1: const BoxShadow(
+                        color: Color.fromARGB(255, 0, 0, 0),
+                        offset: Offset(4.0, 4.0),
+                        blurRadius: 15,
+                        spreadRadius: 1.0),
+                    boxShadow2: const BoxShadow(
+                        color: Colors.black,
+                        offset: Offset(4.0, 4.0),
+                        blurRadius: 15,
+                        spreadRadius: 1.0),
+                    boxShadow3: const BoxShadow(
+                        color: Colors.black,
+                        offset: Offset(4.0, 4.0),
+                        blurRadius: 15,
+                        spreadRadius: 1.0),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:project_2/login_register/register.dart';
 
+// ignore: must_be_immutable
 class LoginBtn extends StatelessWidget {
   LoginBtn(
       {super.key,
@@ -15,7 +15,10 @@ class LoginBtn extends StatelessWidget {
       this.boxdecoration,
       required this.gradientColor1,
       required this.gradientColor2,
-      required this.gradientColor3});
+      required this.gradientColor3,
+      required this.boxShadow1,
+      required this.boxShadow2,
+      required this.boxShadow3});
 
   final double btnHeight;
   final double btnWidth;
@@ -30,6 +33,9 @@ class LoginBtn extends StatelessWidget {
   final double borderRadius;
   final Function() onTab;
   BoxDecoration? boxdecoration;
+  final BoxShadow boxShadow1;
+  final BoxShadow boxShadow2;
+  final BoxShadow boxShadow3;
 
   @override
   Widget build(context) {
@@ -39,6 +45,11 @@ class LoginBtn extends StatelessWidget {
         height: btnHeight,
         width: btnWidth,
         decoration: BoxDecoration(
+            boxShadow: [
+              boxShadow1,
+              boxShadow2,
+              boxShadow3,
+            ],
             borderRadius: BorderRadius.circular(borderRadius),
             gradient: LinearGradient(
                 colors: [gradientColor1, gradientColor2, gradientColor3])),
@@ -54,7 +65,7 @@ class LoginBtn extends StatelessWidget {
 }
 
 class LoginTextButton extends StatelessWidget {
-  LoginTextButton(
+  const LoginTextButton(
       {super.key,
       required this.text,
       required this.size,

@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:project_2/cart/button/button.dart';
 import 'package:project_2/cart/riverpod/state_provider.dart';
+// import 'package:project_2/hjc/cart_riverpod/state_provider.dart';
 
 class ExtraItems extends ConsumerWidget {
   const ExtraItems(
@@ -26,11 +26,11 @@ class ExtraItems extends ConsumerWidget {
           width: 280,
           margin: EdgeInsets.symmetric(horizontal: 2),
           decoration: BoxDecoration(
-              color: Colors.white,
+              color: Color.fromARGB(255, 240, 208, 208),
               borderRadius: BorderRadius.circular(15),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey,
+                  color: const Color.fromARGB(255, 97, 82, 82),
                   spreadRadius: 3,
                   blurRadius: 3,
                   offset: Offset(0, 3),
@@ -74,22 +74,26 @@ class ExtraItems extends ConsumerWidget {
                           "\$ 34",
                           style: TextStyle(
                             fontSize: 17,
-                            color: Colors.green,
+                            color: Color.fromARGB(255, 95, 63, 17),
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        IconButton(
-                          onPressed: () {
-                            ref.watch(CartProvider.notifier).additem({
-                              "name": name,
-                              "image": image,
-                              "price": price.toString()
-                            });
-                          },
-                          icon: Icon(
-                            Icons.shopping_cart_outlined,
-                            color: Colors.green,
-                            size: 25,
+                        MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          child: IconButton(
+                            mouseCursor: SystemMouseCursors.grab,
+                            onPressed: () {
+                              ref.watch(CartProvider.notifier).additem({
+                                "name": name,
+                                "image": image,
+                                "price": price.toString()
+                              });
+                            },
+                            icon: Icon(
+                              Icons.shopping_cart_outlined,
+                              color: const Color.fromARGB(255, 25, 29, 25),
+                              size: 25,
+                            ),
                           ),
                         )
                       ],

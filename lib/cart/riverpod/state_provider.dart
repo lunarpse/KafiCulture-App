@@ -16,11 +16,11 @@ class CartItems extends StateNotifier<List> {
       }
     }
     if(present!=null){
-      incquant(present["id"]);
+      increase_quantity(present["name"]);
     }else{
       state=[...state,
       {
-        "id":state.length+1,
+        
         "name":data["name"],
         "icon":data["image"],
         "price":double.parse(double.parse(data["price"]).toStringAsFixed(2)),
@@ -29,11 +29,11 @@ class CartItems extends StateNotifier<List> {
       }];
     }
   }
-  void incquant(int id) {
+  void increase_quantity(String name) {
     print("in state");
 
     final nl = state.map((e) {
-      if (e["id"] == id) {
+      if (e["name"] == name) {
         return {
           ...e,
           "cost": e["price"] * (e["quantity"] + 1),
@@ -47,9 +47,11 @@ class CartItems extends StateNotifier<List> {
     print(state);
   }
 
-  void removeitem(int id) {
+  void remove_item(String name) {
+    var count=1;
     final nl = state.map((e){
-      if(e["id"]!=id){
+      if(e["name"]!=name){
+       
         return e;
       }
     }).toList();
@@ -72,9 +74,9 @@ class CartItems extends StateNotifier<List> {
     // state=nl;
   }
 
-  void decquant(int id) {
+  void decrease_quantity(String name) {
     final nl = state.map((e) {
-      if (e["id"] == id) {
+      if (e["name"] == name) {
         return {
           ...e,
           "cost": e["price"] * (e["quantity"] - 1 < 0 ? 0 : e["quantity"] - 1),

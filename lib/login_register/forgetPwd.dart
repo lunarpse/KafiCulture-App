@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:project_2/login/constants.dart';
-
-import 'demoLogin.dart';
+import 'package:project_2/login_register/login.dart';
 import 'loginBtns.dart';
 import 'loginText.dart';
-import 'register.dart';
+
 import 'text_field.dart';
 
 class ForgetPassword extends StatefulWidget {
@@ -120,6 +118,21 @@ class _ForgetPasswordState extends State<ForgetPassword> {
 
                     //----------------------------------------SignIn button
                     LoginBtn(
+                  boxShadow1: const BoxShadow(
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      offset: Offset(4.0, 4.0),
+                      blurRadius: 5,
+                      spreadRadius: 1.0),
+                  boxShadow2: const BoxShadow(
+                      color: Colors.black,
+                      offset: Offset(4.0, 4.0),
+                      blurRadius: 5,
+                      spreadRadius: 1.0),
+                  boxShadow3: const BoxShadow(
+                      color: Colors.black,
+                      offset: Offset(4.0, 4.0),
+                      blurRadius: 5,
+                      spreadRadius: 1.0),
                   gradientColor1: Colors.black,
                   gradientColor2: Colors.black,
                   gradientColor3: Colors.black,
@@ -131,11 +144,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                   text: submit,
                   textColor: Colors.white,
                   onTab: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Demo(),
-                        ));
+                    Navigator.pushNamed(context, '/login');
                   },
                 ),
               ),
@@ -149,11 +158,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                 size: 20,
                 color: Color.fromARGB(255, 2, 7, 147),
                 onTab: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Demo(),
-                      ));
+                  Navigator.pushNamed(context, "/login");
                 },
               )
             ],

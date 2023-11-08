@@ -2,20 +2,23 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:project_2/cart/riverpod/tipstate_provider.dart';
+import 'package:project_2/cart/widget/Tipbutton.dart';
 
-class Tip extends StatelessWidget {
-  const Tip({super.key, required this.addtip});
-
-  final Function addtip;
+class Tip extends ConsumerWidget {
+  const Tip({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final tip = ref.watch(TipProvider)["tip"].toInt();
+
     return Container(
       width: double.infinity,
-      height: 60,
+      height: 87,
       margin: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 238, 225, 224),
+        color: Color.fromARGB(255, 247, 238, 238),
         borderRadius: BorderRadius.circular(29),
         boxShadow: [
           BoxShadow(
@@ -26,58 +29,59 @@ class Tip extends StatelessWidget {
           ),
         ],
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Column(
         children: [
           Container(
-            margin: EdgeInsets.only(left: 15),
+            margin: EdgeInsets.only(top: 2, bottom: 5),
             child: Text(
-              "Tip :",
-              style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+              "Tip Your Delievery Partner",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
-          TextButton(
-              style: ButtonStyle(),
-              onPressed: () {
-                addtip(0.00);
-              },
-              child: Text(
-                "0",
-                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-              )),
-          TextButton(
-              style: ButtonStyle(),
-              onPressed: () {
-                addtip(5.toDouble());
-              },
-              child: Text(
-                "5",
-                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-              )),
-          TextButton(
-              onPressed: () {
-                addtip(10.toDouble());
-              },
-              child: Text(
-                "10",
-                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-              )),
-          TextButton(
-              onPressed: () {
-                addtip(15.toDouble());
-              },
-              child: Text(
-                "15",
-                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-              )),
-          TextButton(
-              onPressed: () {
-                addtip(20.toDouble());
-              },
-              child: Text(
-                "20",
-                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-              ))
+          Container(
+            height: 60,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // Container(
+                //   margin: EdgeInsets.only(left: 15),
+                //   child: Text(
+
+                //     "Tip :",
+                //     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                //   ),
+                // ),
+                SizedBox(
+                  width: 10,
+                ),
+                Tipbutton(
+                  amount: 0,
+                  selected: tip == 0,
+                  addtip: tip,
+                ),
+                Tipbutton(
+                  amount: 5,
+                  selected: tip == 5,
+                  addtip: tip,
+                ),
+                Tipbutton(
+                  amount: 10,
+                  selected: tip == 10,
+                  addtip: tip,
+                ),
+                Tipbutton(
+                  amount: 15,
+                  selected: tip == 15,
+                  addtip: tip,
+                ),
+                Tipbutton(
+                  amount: 20,
+                  selected: tip == 20,
+                  addtip: tip,
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

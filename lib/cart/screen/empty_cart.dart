@@ -14,13 +14,13 @@ class EmptyCart extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.shopping_cart),
+              Icon(Icons.shopping_cart_checkout_outlined,size: 45,),
               SizedBox(
                 width: 10,
               ),
               Text(
-                "Cart is Empty",
-                style: TextStyle(fontWeight: FontWeight.w200, fontSize: 20),
+                "Cart Is Empty",
+                style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20),
               )
             ],
           ),
@@ -29,8 +29,9 @@ class EmptyCart extends StatelessWidget {
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
+              
               padding: EdgeInsets.symmetric(
-                horizontal: 32,
+                horizontal: 39,
                 vertical: 16.0,
               ),
               primary: Colors.black,
