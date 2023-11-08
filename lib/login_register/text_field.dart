@@ -28,20 +28,22 @@ class LoginTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(padding),
-      child: TextFormField(
-        controller: controller,
-        obscureText: hideText,
-        onSaved: onSaved,
-        validator: validator,
-        style: TextStyle(fontSize: size),
-        decoration: InputDecoration(
-          labelText: labelText,
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: borderColor),
-            borderRadius: BorderRadius.circular(borderRadius),
+      child: Container(
+        child: TextFormField(
+          controller: controller,
+          obscureText: hideText,
+          onSaved: onSaved,
+          validator: validator,
+          style: TextStyle(fontSize: size),
+          decoration: InputDecoration(
+            labelText: labelText,
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: borderColor),
+              borderRadius: BorderRadius.circular(borderRadius),
+            ),
+            fillColor: fillColor,
+            filled: true,
           ),
-          fillColor: fillColor,
-          filled: true,
         ),
       ),
     );

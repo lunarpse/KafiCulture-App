@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:project_2/cart/widget/Remove_or_Cancel.dart';
+// import 'package:project_2/cart/cart/widget/Remove_or_Cancel.dart';
 
 import '../riverpod/state_provider.dart';
 
@@ -14,172 +16,165 @@ class CartItem extends ConsumerStatefulWidget {
 }
 
 class _MyWidgetState extends ConsumerState<CartItem> {
-  var showremove = false;
-  @override
-  void dispose() {
-    super.dispose();
-  }
+  var _showremove = false;
 
   @override
   Widget build(BuildContext context) {
     double amount = widget.data["price"] * widget.data["quantity"];
     final amount2 = double.parse(amount.toStringAsFixed(2));
 
-    Widget remove = Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Container(
-          color: Colors.grey[200],
-          child: TextButton(
-              onPressed: () {
-                ref.read(CartProvider.notifier).decquant(widget.data["id"]);
-              },
-              child: Text("Remove")),
-        ),
-        SizedBox(
-          width: 10,
-        ),
-        Container(
-          color: Colors.grey[200],
-          child: TextButton(
-              onPressed: () {
-                setState(() {
-                  showremove = false;
-                });
-              },
-              child: Text("Cancel")),
-        ),
-      ],
-    );
-
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 8),
-      child: Container(
-        padding: EdgeInsets.all(8),
-        width: 100,
-        height: 130,
-        decoration:
-            BoxDecoration(borderRadius: BorderRadius.circular(10), boxShadow: [
-          BoxShadow(
-            color: Colors.grey,
-            spreadRadius: 3,
-            blurRadius: 3,
-            offset: Offset(0, 3),
-          )
-        ]),
-        child: Row(
-          children: [
-            Container(
-              width: 115,
+      child: _showremove == true
+          ? Remove_or_Cancel(
+              image: widget.data["icon"],
+              name: widget.data["name"],
+              setremove: () {
+                setState(() {
+                  _showremove = false;
+                });
+              })
+          : Container(
+              padding: EdgeInsets.all(8),
+              width: 100,
+              height: 120,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(60),
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage(widget.data["icon"]),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey,
-                    offset: Offset(0, 2),
-                    blurRadius: 4,
-                    spreadRadius: 2,
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              width: 8,
-            ),
-            SizedBox(
-              // color: Colors.green,
-              width: 97,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                  borderRadius: BorderRadius.circular(20),
+                  color: Color.fromARGB(255, 247, 235, 231),
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color.fromARGB(255, 87, 76, 76),
+                      spreadRadius: 3,
+                      blurRadius: 3,
+                      offset: Offset(0, 3),
+                    )
+                  ]),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    widget.data["name"],
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
+                  Container(
+                    width: 105,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(60),
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage(widget.data["icon"]),
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey,
+                          offset: Offset(0, 2),
+                          blurRadius: 4,
+                          spreadRadius: 2,
+                        ),
+                      ],
                     ),
                   ),
-                  Text(
-                    "\$ $amount2",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
+                  SizedBox(
+                    width: 8,
+                  ),
+                  SizedBox(
+                    // color: Colors.green,
+                    width: 97,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.data["name"],
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+                        Text(
+                          "\$ $amount2",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              ),
-            ),
-            //         showremove
-            // //             ? remove
-            SizedBox(
-              width: 10,
-            ),
-            Row(
-              children: [
-                Container(
-                  height: 30,
-                  width: 30,
-                  color: Colors.grey[300],
-                  child: IconButton(
-                      onPressed: () {
-                        if (widget.data["quantity"] == 1) {
-                          setState(() {
-                            showremove = true;
-                          });
-                        } else {
-                          ref
-                              .read(CartProvider.notifier)
-                              .decquant(widget.data["id"]);
-                        }
-                      },
-                      icon: Icon(
-                        Icons.remove,
-                        size: 15,
-                      )),
-                ),
-                Container(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(widget.data["quantity"].toString()),
-                ),
-                Container(
-                  height: 30,
-                  width: 30,
-                  color: Colors.grey[300],
-                  child: IconButton(
+                  //         showremove
+                  // //             ? remove
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        height: 30,
+                        width: 30,
+                        decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 110, 47, 24),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(50))),
+                        child: IconButton(
+                            mouseCursor: SystemMouseCursors.click,
+                            color: Colors.white,
+                            onPressed: () {
+                              if (widget.data["quantity"] == 1) {
+                                setState(() {
+                                  _showremove = true;
+                                });
+                              } else {
+                                ref
+                                    .read(CartProvider.notifier)
+                                    .decrease_quantity(widget.data["name"]);
+                              }
+                            },
+                            icon: Icon(
+                              Icons.remove,
+                              size: 15,
+                            )),
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text(
+                          widget.data["quantity"].toString(),
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Container(
+                        height: 30,
+                        width: 30,
+                        decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 110, 47, 24),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(50))),
+                        child: IconButton(
+                            color: Colors.white,
+                            onPressed: () {
+                              ref
+                                  .read(CartProvider.notifier)
+                                  .increase_quantity(widget.data["name"]);
+                            },
+                            icon: Icon(
+                              Icons.add,
+                              size: 15,
+                            )),
+                      ),
+                    ],
+                  ),
+                  IconButton(
                       onPressed: () {
                         ref
-                            .read(CartProvider.notifier)
-                            .incquant(widget.data["id"]);
+                            .watch(CartProvider.notifier)
+                            .remove_item(widget.data["name"]);
                       },
                       icon: Icon(
-                        Icons.add,
-                        size: 15,
-                      )),
-                ),
-              ],
+                        Icons.delete,
+                        size: 28,
+                      ))
+                  // showremove
+                  //     ? remove
+                ],
+              ),
             ),
-            IconButton(
-                onPressed: () {
-                  ref
-                      .watch(CartProvider.notifier)
-                      .removeitem(widget.data["id"]);
-                },
-                icon: Icon(
-                  Icons.delete,
-                  size: 28,
-                ))
-            // showremove
-            //     ? remove
-          ],
-        ),
-      ),
     );
     // return Card(
     //   // elevation: 0,

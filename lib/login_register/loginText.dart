@@ -14,6 +14,8 @@ const String submit = "Submit";
 
 const String registerBtn = "Register";
 
-const String signInBtn = "SignIn";
+const String sendotp = "Send OTP";
+const String verifyotp = "Verify OTP";
+
 const String registerNow = "Not an user? Register";
 const String alreadyaMember = "Already a member? SignIn";
