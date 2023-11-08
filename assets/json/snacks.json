@@ -2,7 +2,7 @@
     {
         "id": 1,
         "name": "Bruschetta",
-        "description": " Grilled bread rubbed with garlic and topped with olive oil and salt",
+        "description": "Grilled bread rubbed with garlic and topped with olive oil and salt. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection.",
         "rating": "4.0",
         "totalRatings": "45",
         "image": "Bruschetta_snacks",
@@ -14,7 +14,7 @@
     {
         "id": 2,
         "name": "Dahi Vada",
-        "description": "A melange of spices, chutney, crunchy vada, yoghurt and freshly chopped coriander",
+        "description": "A melange of spices, chutney, crunchy vada, yoghurt and freshly chopped coriander. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection.",
         "rating": "4.5",
         "totalRatings": "38",
         "image": "Dahi_Vada",
@@ -26,7 +26,7 @@
     {
         "id": 3,
         "name": "Veg Spring Rolls",
-        "description": "A traditional Chinese savory snack where a pastry sheet is filled with vegetables, rolled & fried",
+        "description": "A traditional Chinese savory snack where a pastry sheet is filled with vegetables, rolled & fried. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection.",
         "rating": "4.8",
         "totalRatings": "48",
         "image": "vegspring_snacks",
@@ -38,7 +38,7 @@
     {
         "id": 4,
         "name": "Scone",
-        "description": "A scone is a traditional British baked good, popular in the United Kingdom and Ireland.",
+        "description": "A scone is a traditional British baked good, popular in the United Kingdom and Ireland. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection.",
         "rating": "3.5",
         "totalRatings": "34",
         "image": "Scone_snacks",
@@ -74,7 +74,7 @@
     {
         "id": 7,
         "name": "Pav Bhaji",
-        "description": "A vegetable curry (bhaji) cooked in tomato gravy and served with a soft bread roll (pav)",
+        "description": "A vegetable curry (bhaji) cooked in tomato gravy and served with a soft bread roll (pav). Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection.",
         "rating": "4.5",
         "totalRatings": "38",
         "image": "pav_snacks",
@@ -86,7 +86,7 @@
     {
         "id": 8,
         "name": "Crispy Corn",
-        "description": "Crispy corn is popular in restaurant menu, deep-fried crunchy sweet corn kernels are tossed in spices and sauces",
+        "description": "Crispy corn is popular in restaurant menu, deep-fried crunchy sweet corn kernels are tossed in spices and sauces. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection.",
         "rating": "4.8",
         "totalRatings": "48",
         "image": "crispy-corn",

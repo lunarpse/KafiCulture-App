@@ -14,7 +14,7 @@
     {
         "id": 2,
         "name": "Dahi Vada",
-        "description": "A melange of spices, chutney, crunchy vada, yoghurt and freshly chopped coriander",
+        "description": "A melange of spices, chutney, crunchy vada, yoghurt and freshly chopped coriander. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection.",
         "rating": "4.5",
         "totalRatings": "38",
         "image": "Dahi_Vada",
@@ -26,7 +26,7 @@
     {
         "id": 3,
         "name": "Choco Chip Cookies",
-        "description": "A melange of spices, chutney, crunchy vada, yoghurt and freshly chopped coriander",
+        "description": "A melange of spices, chutney, crunchy vada, yoghurt and freshly chopped coriander. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection",
         "rating": "4.5",
         "totalRatings": "38",
         "image": "choco chip_cookies",
@@ -50,7 +50,7 @@
     {
         "id": 5,
         "name": "Veg Spring Rolls",
-        "description": "A traditional Chinese savory snack where a pastry sheet is filled with vegetables, rolled & fried",
+        "description": "A traditional Chinese savory snack where a pastry sheet is filled with vegetables, rolled & fried. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection.",
         "rating": "4.8",
         "totalRatings": "48",
         "image": "vegspring_snacks",
@@ -62,7 +62,7 @@
     {
         "id": 6,
         "name": "Rum Ball Cookies",
-        "description": "A traditional Chinese savory snack where a pastry sheet is filled with vegetables, rolled & fried",
+        "description": "A traditional Chinese savory snack where a pastry sheet is filled with vegetables, rolled & fried. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection.",
         "rating": "4.8",
         "totalRatings": "48",
         "image": "rum ball_cookies",

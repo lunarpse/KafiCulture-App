@@ -92,7 +92,7 @@ class _CartState extends ConsumerState<Cart> {
                                           child: Text(
                                             "Populars",
                                             style: TextStyle(
-                                                fontSize: 25,
+                                                fontSize: 20,
                                                 fontWeight: FontWeight.bold),
                                           ),
                                         ),

@@ -81,39 +81,71 @@ class DetailsPageWidget extends ConsumerWidget {
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: Colors.red,
+                        color: Color.fromARGB(250, 255, 191, 0),
                       ),
                     ),
                   ),
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      func.additem({
-                        "name": name,
-                        "image": "assets/images/$image.jpg",
-                        "price": price
-                      });
-                      Navigator.pushNamed(context, '/cart');
-                    },
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(
-                          const Color.fromARGB(255, 111, 78, 55)),
-                      padding: MaterialStateProperty.all(
-                          EdgeInsets.symmetric(vertical: 20, horizontal: 30)),
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      )),
-                    ),
-                    icon: Icon(
-                      Icons.shopping_cart_outlined,
-                      color: Colors.white,
-                    ),
-                    label: Text(
-                      "Order Now",
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ElevatedButton.icon(
+                        onPressed: () {
+                          func.additem({
+                            "name": name,
+                            "image": "assets/images/$image.jpg",
+                            "price": price
+                          });
+                          Navigator.pushNamed(context, '/cart');
+                        },
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                              const Color.fromARGB(255, 111, 78, 55)),
+                          padding: MaterialStateProperty.all(
+                              EdgeInsets.symmetric(
+                                  vertical: 20, horizontal: 25)),
+                          shape:
+                              MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          )),
+                        ),
+                        icon: Icon(
+                          Icons.shopping_bag_outlined,
+                          color: Colors.amber,
+                        ),
+                        label: Text(
+                          "Order Now",
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
+                      ),
+                      OutlinedButton.icon(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.shopping_cart,
+                          color: Colors.amber,
+                        ),
+                        label: Text(
+                          "Add To Cart",
+                          style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w900,
+                              color: Color.fromARGB(255, 111, 78, 55)),
+                        ),
+                        style: ButtonStyle(
+                            padding: MaterialStateProperty.all(
+                                EdgeInsets.symmetric(
+                                    vertical: 20, horizontal: 15)),
+                            shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            )),
+                            side: MaterialStatePropertyAll(BorderSide(
+                                color: Color.fromARGB(255, 111, 78, 55),
+                                width: 3))),
+                      ),
+                    ],
                   )
                 ],
               ),

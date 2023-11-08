@@ -14,7 +14,7 @@
     {
         "id": 2,
         "name": "Bruschetta",
-        "description": " Grilled bread rubbed with garlic and topped with olive oil and salt",
+        "description": " Grilled bread rubbed with garlic and topped with olive oil and salt. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection.",
         "rating": "4",
         "totalRatings": "45",
         "image": "Bruschetta_snacks",
@@ -26,7 +26,7 @@
     {
         "id": 3,
         "name": "Wallnut Cookie",
-        "description": " Grilled bread rubbed with garlic and topped with olive oil and salt",
+        "description": " Grilled bread rubbed with garlic and topped with olive oil and salt. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection.",
         "rating": "4",
         "totalRatings": "45",
         "image": "wallnut_cookies",
@@ -50,7 +50,7 @@
     {
         "id": 5,
         "name": "Scone",
-        "description": "A scone is a traditional British baked good, popular in the United Kingdom and Ireland.",
+        "description": "A scone is a traditional British baked good, popular in the United Kingdom and Ireland. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection.",
         "rating": "3.5",
         "totalRatings": "34",
         "image": "Scone_snacks",
@@ -62,7 +62,7 @@
     {
         "id": 6,
         "name": "Oatmeal Cookie",
-        "description": "A scone is a traditional British baked good, popular in the United Kingdom and Ireland.",
+        "description": "A scone is a traditional British baked good, popular in the United Kingdom and Ireland. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection.",
         "rating": "3.5",
         "totalRatings": "34",
         "image": "oatmeal_cookies",
