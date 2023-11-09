@@ -6,6 +6,7 @@ import 'package:project_2/myhomepage/constant_homepage/constant_categories.dart'
 import 'package:project_2/myhomepage/constant_homepage/constant_offers.dart';
 import 'package:project_2/myhomepage/constant_homepage/constant_populars.dart';
 import '../../../appbar/appbar_widget.dart';
+import '../../reusable_widgets/background_container_widget.dart';
 import '../../widgets/offerings_widget.dart';
 import '../../widgets/popular_widget.dart';
 import '../handcraft/handcraft_widget.dart';
@@ -17,11 +18,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppbarWidget(),
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/images/11.jpeg'), fit: BoxFit.fill),
-        ),
+      body: BackgroundContainerWidget(
         child: ListView(
           padding: EdgeInsets.only(left: 5, right: 5, bottom: 10),
           children: [

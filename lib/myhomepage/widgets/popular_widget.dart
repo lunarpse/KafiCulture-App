@@ -85,24 +85,6 @@ class _PopularState extends State<PopularWidget> {
                       ),
                     ),
                   )),
-                  // Expanded(
-                  //   child: ClipRRect(
-                  //     borderRadius: BorderRadius.vertical(
-                  //       top: Radius.circular(10),
-                  //     ),
-                  //     child: Material(
-                  //       child: Hero(
-                  //         tag: popular,
-                  //         child: Ink.image(
-                  //           image: AssetImage(
-                  //             'assets/images/$image.jpg',
-                  //           ),
-                  //           fit: BoxFit.cover,
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
                   Padding(
                     padding:
                         const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
