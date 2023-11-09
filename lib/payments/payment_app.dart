@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:project_2/cart/riverpod/state_provider.dart';
+import 'package:project_2/cart/riverpod/tipstate_provider.dart';
 import 'package:project_2/cart/widget/cart_item.dart';
 import 'package:project_2/login_register/loginBtns.dart';
 import 'package:project_2/login_register/loginText.dart';
@@ -39,24 +40,43 @@ class _PaymentAppState extends ConsumerState {
     double mediaWidth = MediaQuery.of(context).size.width;
 
     final data = ref.watch(CartProvider);
+    double gst=ref.watch(TipProvider)["gst"];
 
     final tc =
-        data.isNotEmpty ? data.map((e) => e["cost"] * e["quantity"]) : [];
+        data.isNotEmpty ? data.map((e) => e["price"] * e["quantity"]) : [];
 
     final double subt = tc.length != 0
-        ? tc.reduce((value, element) => value + element) + 14
+        ? tc.reduce((value, element) => value + element) +gst
         : 0;
+    
     final amount = double.parse(subt.toStringAsFixed(2));
     return Scaffold(
       appBar: AppbarWidget(),
       body: Container(
+        
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               //Order list need to be added
-
-              const Padding(
+              Container(color: const Color.fromARGB(255, 240, 232, 232),
+               width: double.infinity,
+              margin: EdgeInsets.only(top: 8,bottom: 15),
+              child: Column(
+                
+                children: 
+                 data.map((data1){
+                  return CartItem(data: data1,atpayment: true,);
+                 }).toList()
+                ,
+              )
+              ),
+              // for(dynamic dt in data) CartItem(data: dt,atpayment: true,),
+               
+                  
+              Container(
+                
                 padding: EdgeInsets.all(8.0),
                 child: Text(
                   'Amount:',
@@ -76,12 +96,12 @@ class _PaymentAppState extends ConsumerState {
                 ),
               ),
 
-              const Divider(
+               Divider(
                 height: 20,
                 color: Colors.black,
               ),
-              const SizedBox(height: 8),
-              const Padding(
+              SizedBox(height: 8),
+               Padding(
                 padding: EdgeInsets.only(
                   left: 8,
                 ),
@@ -90,7 +110,7 @@ class _PaymentAppState extends ConsumerState {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                 ),
               ),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.only(
                   left: 8,
                 ),
@@ -103,7 +123,7 @@ class _PaymentAppState extends ConsumerState {
                 ),
               ),
 
-              const SizedBox(
+              SizedBox(
                 height: 10,
               ),
               Center(

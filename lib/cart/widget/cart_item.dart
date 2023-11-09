@@ -9,7 +9,8 @@ import '../riverpod/state_provider.dart';
 
 class CartItem extends ConsumerStatefulWidget {
   final data;
-  const CartItem({super.key, required this.data});
+  final atpayment;
+  const CartItem({super.key, required this.data,this.atpayment=false});
 
   @override
   ConsumerState createState() => _MyWidgetState();
@@ -36,7 +37,7 @@ class _MyWidgetState extends ConsumerState<CartItem> {
               })
           : Container(
               padding: EdgeInsets.all(8),
-              width: 100,
+              width: double.infinity,
               height: 120,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
@@ -73,30 +74,32 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                   SizedBox(
                     width: 8,
                   ),
-                  SizedBox(
-                    // color: Colors.green,
-                    width: 97,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          widget.data["name"],
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
+                  Expanded(
+                    child: SizedBox(
+                      // color: Colors.green,
+                      width: 97,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            widget.data["name"],
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
                           ),
-                        ),
-                        Text(
-                          "\$ $amount2",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
+                          Text(
+                           widget.atpayment? widget.data["price"].toString() :"\$ $amount2",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                   //         showremove
@@ -104,62 +107,78 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                   SizedBox(
                     width: 10,
                   ),
-                  Row(
+               widget.atpayment?  Expanded(
+                 child: Container(
+                  
+                 
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 110, 47, 24),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(50))),
-                        child: IconButton(
-                            mouseCursor: SystemMouseCursors.click,
-                            color: Colors.white,
-                            onPressed: () {
-                              if (widget.data["quantity"] == 1) {
-                                setState(() {
-                                  _showremove = true;
-                                });
-                              } else {
-                                ref
-                                    .read(CartProvider.notifier)
-                                    .decrease_quantity(widget.data["name"]);
-                              }
-                            },
-                            icon: Icon(
-                              Icons.remove,
-                              size: 15,
-                            )),
-                      ),
-                      Container(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          widget.data["quantity"].toString(),
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      Container(
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 110, 47, 24),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(50))),
-                        child: IconButton(
-                            color: Colors.white,
-                            onPressed: () {
-                              ref
-                                  .read(CartProvider.notifier)
-                                  .increase_quantity(widget.data["name"]);
-                            },
-                            icon: Icon(
-                              Icons.add,
-                              size: 15,
-                            )),
-                      ),
+                      Text("Quantity",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
+                      SizedBox(height: 10,),
+                      Text("${widget.data["quantity"]}",style: TextStyle(fontSize: 15),)
                     ],
                   ),
+                 ),
+               )  :Container(
+                child:    Row(
+                  children:[ Row(
+                      children: [
+                        Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 110, 47, 24),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(50))),
+                          child: IconButton(
+                              mouseCursor: SystemMouseCursors.click,
+                              color: Colors.white,
+                              onPressed: () {
+                                if (widget.data["quantity"] == 1) {
+                                  setState(() {
+                                    _showremove = true;
+                                  });
+                                } else {
+                                  ref
+                                      .read(CartProvider.notifier)
+                                      .decrease_quantity(widget.data["name"]);
+                                }
+                              },
+                              icon: Icon(
+                                Icons.remove,
+                                size: 15,
+                              )),
+                        ),
+                        Container(
+                          padding: EdgeInsets.all(8.0),
+                          child: Text(
+                            widget.data["quantity"].toString(),
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 110, 47, 24),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(50))),
+                          child: IconButton(
+                              color: Colors.white,
+                              onPressed: () {
+                                ref
+                                    .read(CartProvider.notifier)
+                                    .increase_quantity(widget.data["name"]);
+                              },
+                              icon: Icon(
+                                Icons.add,
+                                size: 15,
+                              )),
+                        ),
+                      ],
+                    ),
+                
                   IconButton(
                       onPressed: () {
                         ref
@@ -173,9 +192,9 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                   // showremove
                   //     ? remove
                 ],
-              ),
-            ),
-    );
+              )
+               )]
+              )));
     // return Card(
     //   // elevation: 0,
     //   child: Container(

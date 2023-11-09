@@ -10,7 +10,6 @@ import 'package:project_2/myhomepage/pages/handcraft/cookies/cookies_page_detail
 import 'package:project_2/myhomepage/pages/handcraft/drinks/drinks_page.dart';
 import 'package:project_2/myhomepage/pages/handcraft/snacks/snacks_page.dart';
 import 'package:project_2/myhomepage/pages/home_page/home_page.dart';
-
 import 'package:project_2/payments/payment_app.dart';
 import 'package:project_2/router/genie_router.dart';
 import 'package:project_2/router/routing.dart';

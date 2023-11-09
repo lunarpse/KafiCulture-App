@@ -22,7 +22,7 @@ class _PaymentsState extends ConsumerState<Payments> {
     final data = ref.watch(CartProvider);
 
     final tc = data.length != 0
-        ? data.map((e) => e["cost"] * e["quantity"]).toList()
+        ? data.map((e) => e["price"] * e["quantity"]).toList()
         : [];
 
     final subt =
