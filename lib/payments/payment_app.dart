@@ -2,11 +2,16 @@ import "package:flutter/material.dart";
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:project_2/cart/riverpod/state_provider.dart';
+import 'package:project_2/cart/widget/cart_item.dart';
+import 'package:project_2/login_register/loginBtns.dart';
+import 'package:project_2/login_register/loginText.dart';
 // import 'package:project_2/cart/cart_riverpod/state_provider.dart';
 // import 'package:project_2/hjc/cart_riverpod/state_provider.dart';
 
 import 'package:project_2/myhomepage/pages/home_page/home_page.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
+import 'package:project_2/newfeature/card_payment.dart';
+import 'package:project_2/newfeature/upi_payment.dart';
 
 import 'card_list.dart';
 import 'netbanking_list.dart';
@@ -49,6 +54,8 @@ class _PaymentAppState extends ConsumerState {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              //Order list need to be added
+
               const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Text(
@@ -68,52 +75,102 @@ class _PaymentAppState extends ConsumerState {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                 ),
               ),
+
               const Divider(
                 height: 20,
                 color: Colors.black,
               ),
               const SizedBox(height: 8),
               const Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: EdgeInsets.only(
+                  left: 8,
+                ),
                 child: Text(
-                  'Payment Methods',
+                  'Payment Methods ',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                 ),
               ),
+              const Padding(
+                padding: EdgeInsets.only(
+                  left: 8,
+                ),
+                child: Text(
+                  '(Recommended)',
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.red),
+                ),
+              ),
+
               const SizedBox(
                 height: 10,
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Center(
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => HomePage(),
-                          ));
-                    },
-                    child: Container(
-                      height: 45,
-                      width: mediaWidth * 0.7,
-                      decoration: BoxDecoration(
-                          gradient: const LinearGradient(colors: [
-                            Color.fromARGB(255, 179, 88, 48),
-                            Color.fromARGB(255, 183, 98, 70),
-                            Color.fromARGB(255, 185, 132, 88)
-                          ]),
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Center(
-                        child: Text(
-                          "SWAP",
-                          style: TextStyle(color: Colors.white, fontSize: 25),
-                        ),
-                      ),
-                    ),
-                  ),
+              Center(
+                child: LoginBtn(
+                  borderRadius: 33,
+                  btnHeight: 55,
+                  btnWidth: 300,
+                  color: Colors.black,
+                  fontSize: 20,
+                  text: "SWAP",
+                  textColor: Colors.white,
+                  onTab: () {
+                    Navigator.pushNamed(context, '/swap');
+                  },
+                  gradientColor1: Color.fromARGB(255, 111, 78, 55),
+                  gradientColor2: Color.fromARGB(255, 111, 78, 55),
+                  gradientColor3: Color.fromARGB(255, 111, 78, 55),
+                  boxShadow1: const BoxShadow(
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      offset: Offset(4.0, 4.0),
+                      blurRadius: 15,
+                      spreadRadius: 1.0),
+                  boxShadow2: const BoxShadow(
+                      color: Colors.black,
+                      offset: Offset(4.0, 4.0),
+                      blurRadius: 15,
+                      spreadRadius: 1.0),
+                  boxShadow3: const BoxShadow(
+                      color: Colors.black,
+                      offset: Offset(4.0, 4.0),
+                      blurRadius: 15,
+                      spreadRadius: 1.0),
                 ),
               ),
+
+              // Padding(
+              //   padding: const EdgeInsets.all(8.0),
+              //   child: Center(
+              //     child: GestureDetector(
+              //       onTap: () {
+              //         Navigator.push(
+              //             context,
+              //             MaterialPageRoute(
+              //               builder: (context) => HomePage(),
+              //             ));
+              //       },
+              //       child: Container(
+              //         height: 45,
+              //         width: mediaWidth * 0.7,
+              //         decoration: BoxDecoration(
+              //             gradient: const LinearGradient(colors: [
+              //               Color.fromARGB(255, 179, 88, 48),
+              //               Color.fromARGB(255, 183, 98, 70),
+              //               Color.fromARGB(255, 185, 132, 88)
+              //             ]),
+              //             borderRadius: BorderRadius.circular(10)),
+              //         child: Center(
+              //           child: Text(
+              //             "SWAP",
+              //             style: TextStyle(color: Colors.white, fontSize: 25),
+              //           ),
+              //         ),
+              //       ),
+              //     ),
+              //   ),
+              // ),
+
               // Padding(
               //   padding: const EdgeInsets.all(8.0),
               //   child: ElevatedButton.icon(
@@ -144,7 +201,10 @@ class _PaymentAppState extends ConsumerState {
                 ),
               ),
               const SizedBox(height: 10),
-              const UpiList(),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: UPIPayment(),
+              ),
               const SizedBox(height: 15),
               const Padding(
                 padding: EdgeInsets.all(8.0),
@@ -154,7 +214,10 @@ class _PaymentAppState extends ConsumerState {
                 ),
               ),
               const SizedBox(height: 10),
-              const CardList(),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: CardPayment(),
+              ),
               const SizedBox(height: 15),
               const Padding(
                 padding: EdgeInsets.all(8.0),

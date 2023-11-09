@@ -1,9 +1,6 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 // import 'package:project_2/cart/cart_screen/cart.dart';
 import 'package:project_2/cart/screen/cart.dart';
-import 'package:project_2/feedBack/FeedBack_page.dart';
 import 'package:project_2/login_register/login.dart';
 import 'package:project_2/myhomepage/pages/handcraft/cookies/cookies_page.dart';
 import 'package:project_2/myhomepage/pages/handcraft/cookies/cookies_page_details.dart';
@@ -16,6 +13,7 @@ import 'package:project_2/myhomepage/pages/home_page/latest_offerings/offerings_
 import 'package:project_2/myhomepage/pages/home_page/populars/popular_details_page.dart';
 import 'package:project_2/newfeature/payments.dart';
 import 'package:project_2/payments/payment_app.dart';
+
 import 'package:project_2/splashscreen/splash_screen.dart';
 import 'package:project_2/splashscreen/starting_screen.dart';
 
@@ -31,12 +29,14 @@ class RouteGenerator {
 
       case '/startscreen':
         return MaterialPageRoute(builder: (_) => StartingScreen());
+      case '/swap':
+        return MaterialPageRoute(builder: (_) => Payments());
       case '/home':
         return MaterialPageRoute(builder: (_) => HomePage());
       case '/login':
         return MaterialPageRoute(builder: (_) => Login());
       case '/payment':
-        return MaterialPageRoute(builder: (_) => Payments());
+        return MaterialPageRoute(builder: (_) => PaymentApp());
       case '/snacks':
         return MaterialPageRoute(builder: (_) => SnacksPage());
       case '/drinks':
@@ -68,8 +68,6 @@ class RouteGenerator {
             builder: (_) => PopularDetailsPage(
                   popular: args,
                 ));
-      case '/feedback':
-        return MaterialPageRoute(builder: (_) => FeedBackPage());
     }
     throw AboutListTile();
   }
