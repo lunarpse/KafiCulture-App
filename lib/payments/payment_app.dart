@@ -34,49 +34,50 @@ class PaymentApp extends ConsumerStatefulWidget {
 class _PaymentAppState extends ConsumerState {
   // ignore: unused_field, prefer_final_fields
   SingingCharacter? _character = SingingCharacter.Paytm;
-
+  int itcvalue = 100;
+  int handm_value = 100;
+  int airvalue = 100;
   @override
   Widget build(BuildContext context) {
     double mediaWidth = MediaQuery.of(context).size.width;
 
     final data = ref.watch(CartProvider);
-    double gst=ref.watch(TipProvider)["gst"];
+    double gst = ref.watch(TipProvider)["gst"];
 
     final tc =
         data.isNotEmpty ? data.map((e) => e["price"] * e["quantity"]) : [];
 
     final double subt = tc.length != 0
-        ? tc.reduce((value, element) => value + element) +gst
+        ? tc.reduce((value, element) => value + element) + gst
         : 0;
-    
+
     final amount = double.parse(subt.toStringAsFixed(2));
+    double final_price =
+        amount - itcvalue * 0.01 - handm_value * 0.01 - airvalue * 0.01;
     return Scaffold(
       appBar: AppbarWidget(),
       body: Container(
-        
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               //Order list need to be added
-              Container(color: const Color.fromARGB(255, 240, 232, 232),
-               width: double.infinity,
-              margin: EdgeInsets.only(top: 8,bottom: 15),
-              child: Column(
-                
-                children: 
-                 data.map((data1){
-                  return CartItem(data: data1,atpayment: true,);
-                 }).toList()
-                ,
-              )
-              ),
-              // for(dynamic dt in data) CartItem(data: dt,atpayment: true,),
-               
-                  
               Container(
-                
+                  color: const Color.fromARGB(255, 240, 232, 232),
+                  width: double.infinity,
+                  margin: EdgeInsets.only(top: 8, bottom: 15),
+                  child: Column(
+                    children: data.map((data1) {
+                      return CartItem(
+                        data: data1,
+                        atpayment: true,
+                      );
+                    }).toList(),
+                  )),
+              // for(dynamic dt in data) CartItem(data: dt,atpayment: true,),
+
+              Container(
                 padding: EdgeInsets.all(8.0),
                 child: Text(
                   'Amount:',
@@ -91,17 +92,17 @@ class _PaymentAppState extends ConsumerState {
               Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Text(
-                  "\$ $amount ",
+                  "\$ $final_price ",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                 ),
               ),
 
-               Divider(
+              Divider(
                 height: 20,
                 color: Colors.black,
               ),
               SizedBox(height: 8),
-               Padding(
+              Padding(
                 padding: EdgeInsets.only(
                   left: 8,
                 ),
@@ -152,11 +153,26 @@ class _PaymentAppState extends ConsumerState {
                               height: 43,
                               child: Image.asset("assets/images/itc.png"),
                             ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                itcvalue.toString(),
+                                style: const TextStyle(
+                                  fontSize: 22.0,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
                             Container(
-                              width: 300,
+                              width: 250,
                               child: Slider(
-                                value: 100,
-                                onChanged: (value) {},
+                                value: itcvalue.toDouble(),
+                                onChanged: (double newValue) {
+                                  setState(() {
+                                    itcvalue = newValue.round();
+                                  });
+                                },
+                                min: 0,
                                 max: 100,
                               ),
                             )
@@ -174,11 +190,26 @@ class _PaymentAppState extends ConsumerState {
                               height: 43,
                               child: Image.asset("assets/images/h&m.png"),
                             ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                handm_value.toString(),
+                                style: const TextStyle(
+                                  fontSize: 22.0,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
                             Container(
-                              width: 300,
+                              width: 250,
                               child: Slider(
-                                value: 100,
-                                onChanged: (value) {},
+                                value: handm_value.toDouble(),
+                                onChanged: (double newValue) {
+                                  setState(() {
+                                    handm_value = newValue.round();
+                                  });
+                                },
+                                min: 0,
                                 max: 100,
                               ),
                             )
@@ -196,11 +227,26 @@ class _PaymentAppState extends ConsumerState {
                               height: 43,
                               child: Image.asset("assets/images/airline.webp"),
                             ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                airvalue.toString(),
+                                style: const TextStyle(
+                                  fontSize: 22.0,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
                             Container(
-                              width: 300,
+                              width: 250,
                               child: Slider(
-                                value: 100,
-                                onChanged: (value) {},
+                                value: airvalue.toDouble(),
+                                onChanged: (double newValue) {
+                                  setState(() {
+                                    airvalue = newValue.round();
+                                  });
+                                },
+                                min: 0,
                                 max: 100,
                               ),
                             )

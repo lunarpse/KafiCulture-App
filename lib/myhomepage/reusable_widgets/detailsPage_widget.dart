@@ -121,7 +121,13 @@ class DetailsPageWidget extends ConsumerWidget {
                         ),
                       ),
                       OutlinedButton.icon(
-                        onPressed: () {},
+                        onPressed: () {
+                          func.additem({
+                            "name": name,
+                            "image": "assets/images/$image.jpg",
+                            "price": price
+                          });
+                        },
                         icon: Icon(
                           Icons.shopping_cart,
                           color: Colors.amber,
