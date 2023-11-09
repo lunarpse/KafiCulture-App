@@ -90,54 +90,140 @@ class _PaymentAppState extends ConsumerState {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(
-                  left: 8,
-                ),
-                child: Text(
-                  '(Recommended)',
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.red),
-                ),
-              ),
 
               const SizedBox(
                 height: 10,
               ),
-              Center(
-                child: LoginBtn(
-                  borderRadius: 33,
-                  btnHeight: 55,
-                  btnWidth: 300,
-                  color: Colors.black,
-                  fontSize: 20,
-                  text: "SWAP",
-                  textColor: Colors.white,
-                  onTab: () {
-                    Navigator.pushNamed(context, '/swap');
-                  },
-                  gradientColor1: Color.fromARGB(255, 111, 78, 55),
-                  gradientColor2: Color.fromARGB(255, 111, 78, 55),
-                  gradientColor3: Color.fromARGB(255, 111, 78, 55),
-                  boxShadow1: const BoxShadow(
-                      color: Color.fromARGB(255, 0, 0, 0),
-                      offset: Offset(4.0, 4.0),
-                      blurRadius: 15,
-                      spreadRadius: 1.0),
-                  boxShadow2: const BoxShadow(
-                      color: Colors.black,
-                      offset: Offset(4.0, 4.0),
-                      blurRadius: 15,
-                      spreadRadius: 1.0),
-                  boxShadow3: const BoxShadow(
-                      color: Colors.black,
-                      offset: Offset(4.0, 4.0),
-                      blurRadius: 15,
-                      spreadRadius: 1.0),
+
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  color: Color.fromARGB(255, 111, 78, 55),
+                  child: ExpansionTile(
+                    title: Container(
+                        child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "SWAP",
+                          style: TextStyle(
+                              fontSize: 33,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
+                        Text(
+                          "Recommended",
+                          style: TextStyle(
+                            color: const Color.fromARGB(255, 154, 143, 142),
+                            fontWeight: FontWeight.w500,
+                          ),
+                        )
+                      ],
+                    )),
+                    children: [
+                      Container(
+                        child: Row(
+                          children: [
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            Container(
+                              width: 43,
+                              height: 43,
+                              child: Image.asset("assets/images/itc.png"),
+                            ),
+                            Container(
+                              width: 300,
+                              child: Slider(
+                                value: 100,
+                                onChanged: (value) {},
+                                max: 100,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      Container(
+                        child: Row(
+                          children: [
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            Container(
+                              width: 43,
+                              height: 43,
+                              child: Image.asset("assets/images/h&m.png"),
+                            ),
+                            Container(
+                              width: 300,
+                              child: Slider(
+                                value: 100,
+                                onChanged: (value) {},
+                                max: 100,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      Container(
+                        child: Row(
+                          children: [
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            Container(
+                              width: 43,
+                              height: 43,
+                              child: Image.asset("assets/images/airline.webp"),
+                            ),
+                            Container(
+                              width: 300,
+                              child: Slider(
+                                value: 100,
+                                onChanged: (value) {},
+                                max: 100,
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
+
+              // Center(
+              //   child: LoginBtn(
+              //     borderRadius: 33,
+              //     btnHeight: 55,
+              //     btnWidth: 300,
+              //     color: Colors.black,
+              //     fontSize: 20,
+              //     text: "SWAP",
+              //     textColor: Colors.white,
+              //     onTab: () {
+              //       Navigator.pushNamed(context, '/swap');
+              //     },
+              //     gradientColor1: Color.fromARGB(255, 111, 78, 55),
+              //     gradientColor2: Color.fromARGB(255, 111, 78, 55),
+              //     gradientColor3: Color.fromARGB(255, 111, 78, 55),
+              //     boxShadow1: const BoxShadow(
+              //         color: Color.fromARGB(255, 0, 0, 0),
+              //         offset: Offset(4.0, 4.0),
+              //         blurRadius: 15,
+              //         spreadRadius: 1.0),
+              //     boxShadow2: const BoxShadow(
+              //         color: Colors.black,
+              //         offset: Offset(4.0, 4.0),
+              //         blurRadius: 15,
+              //         spreadRadius: 1.0),
+              //     boxShadow3: const BoxShadow(
+              //         color: Colors.black,
+              //         offset: Offset(4.0, 4.0),
+              //         blurRadius: 15,
+              //         spreadRadius: 1.0),
+              //   ),
+              // ),
 
               // Padding(
               //   padding: const EdgeInsets.all(8.0),
@@ -193,32 +279,28 @@ class _PaymentAppState extends ConsumerState {
                 height: 25,
                 color: Colors.black,
               ),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  'UPI',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-                ),
-              ),
+
+              //---------------------------------------------UPI
+
               const SizedBox(height: 10),
               const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: UPIPayment(),
               ),
               const SizedBox(height: 15),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  'Cards',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-                ),
-              ),
+
               const SizedBox(height: 10),
+
+              //------------------------------------------------CardPayment
+
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: CardPayment(),
               ),
               const SizedBox(height: 15),
+
+              //---------------------------------------------------wallets
+
               const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Text(
