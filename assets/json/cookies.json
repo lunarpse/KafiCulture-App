@@ -2,7 +2,7 @@
     {
         "id": 1,
         "name": "Choco Chip Cookies",
-        "description": " Grilled bread rubbed with garlic and topped with olive oil and salt",
+        "description": " Grilled bread rubbed with garlic and topped with olive oil and salt. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection.",
         "rating": "4.0",
         "totalRatings": "45",
         "image": "choco chip_cookies",
@@ -14,7 +14,7 @@
     {
         "id": 2,
         "name": "Oatmeal Cookies",
-        "description": "A melange of spices, chutney, crunchy vada, yoghurt and freshly chopped coriander",
+        "description": "A melange of spices, chutney, crunchy vada, yoghurt and freshly chopped coriander. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection.",
         "rating": "4.5",
         "totalRatings": "38",
         "image": "oatmeal_cookies",
@@ -26,7 +26,7 @@
     {
         "id": 3,
         "name": "Oreo Cookies",
-        "description": "A traditional Chinese savory snack where a pastry sheet is filled with vegetables, rolled & fried",
+        "description": "A traditional Chinese savory snack where a pastry sheet is filled with vegetables, rolled & fried. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection.",
         "rating": "4.8",
         "totalRatings": "48",
         "image": "oreo_cookies",

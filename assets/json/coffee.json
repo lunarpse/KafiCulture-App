@@ -50,7 +50,7 @@
     {
         "id": 5,
         "name": "Latte",
-        "description": "Rich, full-bodied espresso in steamed milk, lightly topped with foam",
+        "description": "Rich, full-bodied espresso in steamed milk, lightly topped with foam. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection.",
         "rating": "4.5",
         "totalRatings": "38",
         "image": "Latte",
@@ -62,7 +62,7 @@
     {
         "id": 6,
         "name": "Filter Coffee",
-        "description": "Hot water through ground coffee beans and a filter to separate the coffee grounds from the liquid",
+        "description": "Hot water through ground coffee beans and a filter to separate the coffee grounds from the liquid. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection",
         "rating": "4.8",
         "totalRatings": "48",
         "image": "filter_coffee",

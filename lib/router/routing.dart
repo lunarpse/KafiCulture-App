@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 // import 'package:project_2/cart/cart_screen/cart.dart';
 import 'package:project_2/cart/screen/cart.dart';

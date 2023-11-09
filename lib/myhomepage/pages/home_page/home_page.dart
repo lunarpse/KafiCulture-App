@@ -6,9 +6,9 @@ import 'package:project_2/myhomepage/constant_homepage/constant_categories.dart'
 import 'package:project_2/myhomepage/constant_homepage/constant_offers.dart';
 import 'package:project_2/myhomepage/constant_homepage/constant_populars.dart';
 import '../../../appbar/appbar_widget.dart';
+import '../../widgets/offerings_widget.dart';
+import '../../widgets/popular_widget.dart';
 import '../handcraft/handcraft_widget.dart';
-import '../../reusable_widgets/offerings_widget.dart';
-import '../../reusable_widgets/popular_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
