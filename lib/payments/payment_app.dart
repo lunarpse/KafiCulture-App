@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import "package:flutter/material.dart";
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -40,43 +42,40 @@ class _PaymentAppState extends ConsumerState {
     double mediaWidth = MediaQuery.of(context).size.width;
 
     final data = ref.watch(CartProvider);
-    double gst=ref.watch(TipProvider)["gst"];
+    double gst = ref.watch(TipProvider)["gst"];
 
     final tc =
         data.isNotEmpty ? data.map((e) => e["price"] * e["quantity"]) : [];
 
     final double subt = tc.length != 0
-        ? tc.reduce((value, element) => value + element) +gst
+        ? tc.reduce((value, element) => value + element) + gst
         : 0;
-    
+
     final amount = double.parse(subt.toStringAsFixed(2));
     return Scaffold(
       appBar: AppbarWidget(),
       body: Container(
-        
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               //Order list need to be added
-              Container(color: const Color.fromARGB(255, 240, 232, 232),
-               width: double.infinity,
-              margin: EdgeInsets.only(top: 8,bottom: 15),
-              child: Column(
-                
-                children: 
-                 data.map((data1){
-                  return CartItem(data: data1,atpayment: true,);
-                 }).toList()
-                ,
-              )
-              ),
-              // for(dynamic dt in data) CartItem(data: dt,atpayment: true,),
-               
-                  
               Container(
-                
+                  color: const Color.fromARGB(255, 240, 232, 232),
+                  width: double.infinity,
+                  margin: EdgeInsets.only(top: 8, bottom: 15),
+                  child: Column(
+                    children: data.map((data1) {
+                      return CartItem(
+                        data: data1,
+                        atpayment: true,
+                      );
+                    }).toList(),
+                  )),
+              // for(dynamic dt in data) CartItem(data: dt,atpayment: true,),
+
+              Container(
                 padding: EdgeInsets.all(8.0),
                 child: Text(
                   'Amount:',
@@ -96,12 +95,12 @@ class _PaymentAppState extends ConsumerState {
                 ),
               ),
 
-               Divider(
+              Divider(
                 height: 20,
                 color: Colors.black,
               ),
               SizedBox(height: 8),
-               Padding(
+              Padding(
                 padding: EdgeInsets.only(
                   left: 8,
                 ),

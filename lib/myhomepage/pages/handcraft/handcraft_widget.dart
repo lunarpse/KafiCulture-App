@@ -93,7 +93,7 @@ class HandCraftedWidget extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              Navigator.pushNamed(context, 'cookies');
+              Navigator.pushNamed(context, '/cookies');
             },
             child: Column(
               children: [

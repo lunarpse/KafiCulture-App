@@ -12,7 +12,7 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       flexibleSpace: Image.asset(
-        "assets/images/appbarbg.jpg",
+        "assets/images/appbarbg2.jpg",
         fit: BoxFit.cover,
       ),
       title: Row(
