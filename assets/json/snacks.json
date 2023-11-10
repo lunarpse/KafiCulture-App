@@ -7,6 +7,7 @@
         "totalRatings": "45",
         "image": "Bruschetta_snacks",
         "price": "4",
+        "discount":"35",
         "offerPrice": "2.8",
         "veg":"veg",
         "category": "Snacks"
@@ -14,11 +15,12 @@
     {
         "id": 2,
         "name": "Dahi Vada",
-        "description": "A melange of spices, chutney, crunchy vada, yoghurt and freshly chopped coriander. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection.",
+        "description": "A melange of spices, chutney, crunchy vada, yoghurt and freshly chopped coriander. Discover the artistry of flavors, where every bite is a gastronomic perfection.",
         "rating": "4.5",
         "totalRatings": "38",
         "image": "Dahi_Vada",
         "price": "7.4",
+        "discount":"80",
         "offerPrice": "2.8",
         "veg":"veg",
         "category": "Snacks"           
@@ -26,11 +28,12 @@
     {
         "id": 3,
         "name": "Veg Spring Rolls",
-        "description": "A traditional Chinese savory snack where a pastry sheet is filled with vegetables, rolled & fried. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection.",
+        "description": "A traditional Chinese savory snack where a pastry sheet is filled with vegetables, rolled & fried. Discover the flavors, where every bite is a gastronomic perfection.",
         "rating": "4.8",
         "totalRatings": "48",
         "image": "vegspring_snacks",
         "price": "3.4",
+        "discount":"28",
         "offerPrice": "2.8",
         "veg":"veg",
         "category": "Snacks"  
@@ -38,11 +41,12 @@
     {
         "id": 4,
         "name": "Scone",
-        "description": "A scone is a traditional British baked good, popular in the United Kingdom and Ireland. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection.",
+        "description": "A scone is a traditional British baked good, popular in the United Kingdom and Ireland. Discover the artistry of flavors, where every bite is a gastronomic perfection.",
         "rating": "3.5",
         "totalRatings": "34",
         "image": "Scone_snacks",
         "price": "5.3",
+        "discount":"50",
         "offerPrice": "2.8",
         "veg":"veg",
         "category": "Snacks"
@@ -55,6 +59,7 @@
         "totalRatings": "17",
         "image": "Croissants_snacks",
         "price":"3.5",
+        "discount":"38",
         "offerPrice": "2.8",
         "veg":"veg",
         "category": "Snacks"
@@ -67,6 +72,7 @@
         "totalRatings": "24",
         "image": "Aloo_snacks",
         "price": "6",
+        "discount":"69",
         "offerPrice": "2.8",
         "veg":"veg",
         "category": "Snacks"
@@ -74,11 +80,12 @@
     {
         "id": 7,
         "name": "Pav Bhaji",
-        "description": "A vegetable curry (bhaji) cooked in tomato gravy and served with a soft bread roll (pav). Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection.",
+        "description": "A vegetable curry (bhaji) cooked in tomato gravy and served with a soft bread roll (pav). Discover the artistry of flavors, where every bite is a gastronomic perfection.",
         "rating": "4.5",
         "totalRatings": "38",
         "image": "pav_snacks",
         "price": "7.4",
+        "discount":"85",
         "offerPrice": "2.8",
         "veg":"veg",
         "category": "Snacks"            
@@ -86,11 +93,12 @@
     {
         "id": 8,
         "name": "Crispy Corn",
-        "description": "Crispy corn is popular in restaurant menu, deep-fried crunchy sweet corn kernels are tossed in spices and sauces. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection.",
+        "description": "Crispy corn is popular in restaurant menu, deep-fried crunchy sweet corn kernels are tossed in spices and sauces. Discover the artistry of flavors.",
         "rating": "4.8",
         "totalRatings": "48",
         "image": "crispy-corn",
         "price": "3.4",
+        "discount":"28",
         "offerPrice": "2.8",
         "veg":"veg",
         "category": "Snacks"           

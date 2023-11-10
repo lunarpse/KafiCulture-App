@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import "package:flutter/material.dart";
 import 'package:flutter/services.dart';
@@ -36,9 +36,9 @@ class PaymentApp extends ConsumerStatefulWidget {
 class _PaymentAppState extends ConsumerState {
   // ignore: unused_field, prefer_final_fields
   SingingCharacter? _character = SingingCharacter.Paytm;
-  int itcvalue = 100;
-  int handm_value = 100;
-  int airvalue = 100;
+  int itcvalue = 0;
+  int handm_value = 0;
+  int airvalue = 0;
   @override
   Widget build(BuildContext context) {
     double mediaWidth = MediaQuery.of(context).size.width;

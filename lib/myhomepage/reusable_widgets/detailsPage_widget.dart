@@ -24,6 +24,8 @@ class DetailsPageWidget extends ConsumerWidget {
     final name = details.name;
     final description = details.description;
     final price = details.price;
+    final offerPrice = details.offerPrice;
+    final discount = details.discount;
     return BackgroundContainerWidget(
       child: Padding(
         padding: EdgeInsets.all(10),
@@ -64,32 +66,78 @@ class DetailsPageWidget extends ConsumerWidget {
                 padding: const EdgeInsets.all(20),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(name,
-                        style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                            shadows: [
-                              Shadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  blurRadius: 20,
-                                  offset: Offset(10, 10))
-                            ])),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Text(name,
+                          style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                              shadows: [
+                                Shadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    blurRadius: 20,
+                                    offset: Offset(10, 10))
+                              ])),
+                    ),
                     Text(description,
                         style: TextStyle(
                           fontSize: 18,
                           // fontWeight: FontWeight.bold,
                         )),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        "Price: \$ $price",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(250, 255, 191, 0),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              "Price: ",
+                              style: TextStyle(
+                                fontSize: 21,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            Text(
+                              "\$ $offerPrice  ",
+                              style: TextStyle(
+                                fontSize: 21,
+                                fontWeight: FontWeight.bold,
+                                // color: Color.fromARGB(250, 255, 191, 0),
+                                color: Colors.orange.shade800,
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              "\$ $price",
+                              style: TextStyle(
+                                fontSize: 19,
+                                fontWeight: FontWeight.bold,
+                                decoration: TextDecoration.lineThrough,
+                                color: Colors.grey.shade700,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              "($discount% off)",
+                              style: TextStyle(
+                                fontSize: 19,
+                                fontWeight: FontWeight.bold,
+                                // color: Color.fromARGB(250, 255, 191, 0),
+                                color: Colors.red,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -143,7 +191,14 @@ class DetailsPageWidget extends ConsumerWidget {
                                     fontWeight: FontWeight.bold),
                               ),
                               duration: Duration(seconds: 2),
-                              backgroundColor: Colors.amber,
+                              backgroundColor:
+                                  Colors.amber.shade400.withOpacity(0.9),
+                              dismissDirection: DismissDirection.up,
+                              margin: EdgeInsets.only(
+                                  bottom:
+                                      MediaQuery.of(context).size.height - 175,
+                                  left: 40,
+                                  right: 10),
                               padding: EdgeInsets.all(20),
                               behavior: SnackBarBehavior.floating,
                               shape: RoundedRectangleBorder(

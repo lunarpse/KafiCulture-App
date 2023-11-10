@@ -7,6 +7,7 @@
         "totalRatings": "17",
         "image": "Americano w Creme",
         "price":"3.5",
+        "discount":"5",
         "offerPrice": "3.2",
         "veg":"veg",
         "category": "Coffee"
@@ -18,7 +19,8 @@
         "rating": "4.0",
         "totalRatings": "45",
         "image": "hot_choc",
-        "price": "4",
+        "price": "4.0",
+        "discount":"7",
         "offerPrice": "2.0",
         "veg":"veg",
         "category": "Coffee"
@@ -31,6 +33,7 @@
         "totalRatings": "34",
         "image": "cap_coffee",
         "price": "5.3",
+        "discount":"6",
         "offerPrice": "4.12",
         "veg":"veg",
         "category": "Coffee"
@@ -42,7 +45,8 @@
         "rating": "4.0",
         "totalRatings": "24",
         "image": "es_coffee",
-        "price": "6",
+        "price": "6.0",
+        "discount":"12",
         "offerPrice": "2.0",
         "veg":"veg",
         "category": "Coffee"
@@ -55,18 +59,20 @@
         "totalRatings": "38",
         "image": "Latte",
         "price": "7.4",
+        "discount":"25",
         "offerPrice": "4.2",
         "veg":"veg",
-        "category": "Coffee"           
+        "category": "Coffee"          
     },
     {
         "id": 6,
         "name": "Filter Coffee",
-        "description": "Hot water through ground coffee beans and a filter to separate the coffee grounds from the liquid. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection",
+        "description": "Hot water through ground coffee beans and a filter to separate the coffee grounds from the liquid. Discover the flavors, where every bite is a gastronomic perfection",
         "rating": "4.8",
         "totalRatings": "48",
         "image": "filter_coffee",
         "price": "3.4",
+        "discount":"18",
         "offerPrice": "2.8",
         "veg":"veg",
         "category": "Coffee"  

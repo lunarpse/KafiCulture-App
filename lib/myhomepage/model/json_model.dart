@@ -6,6 +6,7 @@ class JsonModel {
   final String totalRatings;
   final String image;
   final String price;
+  final String discount;
   final String offerPrice;
   final String veg;
   final String category;
@@ -18,6 +19,7 @@ class JsonModel {
     required this.totalRatings,
     required this.image,
     required this.price,
+    required this.discount,
     required this.offerPrice,
     required this.veg,
     required this.category,
@@ -33,6 +35,7 @@ class JsonModel {
       totalRatings: json['totalRatings'],
       image: json['image'],
       price: json['price'],
+      discount: json['discount'],
       offerPrice: json['offerPrice'],
       veg: json['veg'],
       category: json['category'],
