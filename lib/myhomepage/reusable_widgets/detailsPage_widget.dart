@@ -133,6 +133,25 @@ class DetailsPageWidget extends ConsumerWidget {
                               "image": "assets/images/$image.jpg",
                               "price": price
                             });
+
+                            var snackbar = SnackBar(
+                              content: Text(
+                                "$name added to Cart",
+                                style: TextStyle(
+                                    color: Color.fromARGB(255, 111, 78, 55),
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              duration: Duration(seconds: 2),
+                              backgroundColor: Colors.amber,
+                              padding: EdgeInsets.all(20),
+                              behavior: SnackBarBehavior.floating,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                            );
+
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackbar);
                           },
                           icon: Icon(
                             Icons.shopping_cart,
