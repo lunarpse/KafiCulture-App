@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:project_2/login_register/forgetPwd.dart';
-import 'package:project_2/payments/payment_app.dart';
 
 import 'loginBtns.dart';
 import 'loginText.dart';
-import 'register.dart';
+
 import 'text_field.dart';
 
 class Login extends StatefulWidget {

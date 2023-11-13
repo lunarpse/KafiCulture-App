@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_2/login_register/login.dart';
+
 import 'loginBtns.dart';
 import 'loginText.dart';
 

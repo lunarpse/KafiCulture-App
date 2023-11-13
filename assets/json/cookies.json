@@ -7,6 +7,7 @@
         "totalRatings": "45",
         "image": "choco chip_cookies",
         "price": "4",
+        "discount":"5",
         "offerPrice": "2.8",
         "veg":"veg",
         "category": "Cookies"
@@ -14,11 +15,12 @@
     {
         "id": 2,
         "name": "Oatmeal Cookies",
-        "description": "A melange of spices, chutney, crunchy vada, yoghurt and freshly chopped coriander. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection.",
+        "description": "A melange of spices, chutney, crunchy vada, yoghurt and freshly chopped coriander. Discover the artistry of flavors, where every bite is a gastronomic perfection.",
         "rating": "4.5",
         "totalRatings": "38",
         "image": "oatmeal_cookies",
         "price": "7.4",
+        "discount":"15",
         "offerPrice": "2.8",
         "veg":"veg",
         "category": "Cookies"           
@@ -26,11 +28,12 @@
     {
         "id": 3,
         "name": "Oreo Cookies",
-        "description": "A traditional Chinese savory snack where a pastry sheet is filled with vegetables, rolled & fried. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection.",
+        "description": "A traditional Chinese savory snack where a pastry sheet is filled with vegetables, rolled & fried. Discover the flavors, where every bite is a gastronomic perfection.",
         "rating": "4.8",
         "totalRatings": "48",
         "image": "oreo_cookies",
         "price": "3.4",
+        "discount":"20",
         "offerPrice": "2.8",
         "veg":"veg",
         "category": "Cookies"  
@@ -38,11 +41,12 @@
     {
         "id": 4,
         "name": "Rum Ball Cookies",
-        "description": "A scone is a traditional British baked good, popular in the United Kingdom and Ireland.",
+        "description": "A scone is a traditional British baked good, popular in the United Kingdom and Ireland. Discover the artistry of flavors.",
         "rating": "3.5",
         "totalRatings": "34",
         "image": "rum ball_cookies",
         "price": "5.3",
+        "discount":"25",
         "offerPrice": "2.8",
         "veg":"veg",
         "category": "Cookies"
@@ -55,6 +59,7 @@
         "totalRatings": "17",
         "image": "wallnut_cookies",
         "price":"3.5",
+        "discount":"18",
         "offerPrice": "2.8",
         "veg":"veg",
         "category": "Cookies"
@@ -67,6 +72,7 @@
         "totalRatings": "24",
         "image": "snow ball_cookies",
         "price": "6",
+        "discount":"60",
         "offerPrice": "2.8",
         "veg":"veg",
         "category": "Cookies"

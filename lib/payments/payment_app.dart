@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import "package:flutter/material.dart";
 import 'package:flutter/services.dart';
@@ -39,7 +39,6 @@ class _PaymentAppState extends ConsumerState {
   int itcvalue = 0;
   int handm_value = 0;
   int airvalue = 0;
-
   @override
   Widget build(BuildContext context) {
     double mediaWidth = MediaQuery.of(context).size.width;
@@ -119,6 +118,8 @@ class _PaymentAppState extends ConsumerState {
               SizedBox(
                 height: 10,
               ),
+
+              //-----------------------------------------------SWAP
 
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -257,12 +258,20 @@ class _PaymentAppState extends ConsumerState {
                               content: Text(
                                 "Thanks for choosing SWAP please pay rest \$$strPrice pay via UPI or card",
                                 style: TextStyle(
-                                    color: Color.fromARGB(255, 111, 78, 55),
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
+                                  color: Color.fromARGB(255, 15, 58, 23),
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                               duration: Duration(seconds: 2),
-                              backgroundColor: Colors.amber,
+                              backgroundColor:
+                                  Color.fromARGB(255, 243, 243, 242),
+                              dismissDirection: DismissDirection.up,
+                              margin: EdgeInsets.only(
+                                  bottom:
+                                      MediaQuery.of(context).size.height - 175,
+                                  left: 40,
+                                  right: 10),
                               padding: EdgeInsets.all(20),
                               behavior: SnackBarBehavior.floating,
                               shape: RoundedRectangleBorder(
@@ -281,89 +290,6 @@ class _PaymentAppState extends ConsumerState {
                 ),
               ),
 
-              // Center(
-              //   child: LoginBtn(
-              //     borderRadius: 33,
-              //     btnHeight: 55,
-              //     btnWidth: 300,
-              //     color: Colors.black,
-              //     fontSize: 20,
-              //     text: "SWAP",
-              //     textColor: Colors.white,
-              //     onTab: () {
-              //       Navigator.pushNamed(context, '/swap');
-              //     },
-              //     gradientColor1: Color.fromARGB(255, 111, 78, 55),
-              //     gradientColor2: Color.fromARGB(255, 111, 78, 55),
-              //     gradientColor3: Color.fromARGB(255, 111, 78, 55),
-              //     boxShadow1: const BoxShadow(
-              //         color: Color.fromARGB(255, 0, 0, 0),
-              //         offset: Offset(4.0, 4.0),
-              //         blurRadius: 15,
-              //         spreadRadius: 1.0),
-              //     boxShadow2: const BoxShadow(
-              //         color: Colors.black,
-              //         offset: Offset(4.0, 4.0),
-              //         blurRadius: 15,
-              //         spreadRadius: 1.0),
-              //     boxShadow3: const BoxShadow(
-              //         color: Colors.black,
-              //         offset: Offset(4.0, 4.0),
-              //         blurRadius: 15,
-              //         spreadRadius: 1.0),
-              //   ),
-              // ),
-
-              // Padding(
-              //   padding: const EdgeInsets.all(8.0),
-              //   child: Center(
-              //     child: GestureDetector(
-              //       onTap: () {
-              //         Navigator.push(
-              //             context,
-              //             MaterialPageRoute(
-              //               builder: (context) => HomePage(),
-              //             ));
-              //       },
-              //       child: Container(
-              //         height: 45,
-              //         width: mediaWidth * 0.7,
-              //         decoration: BoxDecoration(
-              //             gradient: const LinearGradient(colors: [
-              //               Color.fromARGB(255, 179, 88, 48),
-              //               Color.fromARGB(255, 183, 98, 70),
-              //               Color.fromARGB(255, 185, 132, 88)
-              //             ]),
-              //             borderRadius: BorderRadius.circular(10)),
-              //         child: Center(
-              //           child: Text(
-              //             "SWAP",
-              //             style: TextStyle(color: Colors.white, fontSize: 25),
-              //           ),
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // ),
-
-              // Padding(
-              //   padding: const EdgeInsets.all(8.0),
-              //   child: ElevatedButton.icon(
-              //     onPressed: () {
-              //       Navigator.push(
-              //           context,
-              //           MaterialPageRoute(
-              //             builder: (context) => Done(),
-              //           ));
-              //     },
-              //     label: const Text(
-              //       "SWAP",
-              //       style: TextStyle(fontSize: 15),
-              //     ),
-              //     icon: const Icon(Icons.swap_horiz_rounded),
-              //     style: const ButtonStyle(alignment: Alignment.centerLeft),
-              //   ),
-              // ),
               const Divider(
                 height: 25,
                 color: Colors.black,
@@ -372,7 +298,7 @@ class _PaymentAppState extends ConsumerState {
               //---------------------------------------------UPI
 
               const SizedBox(height: 10),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.all(8.0),
                 child: UPIPayment(),
               ),
