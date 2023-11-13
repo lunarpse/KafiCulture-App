@@ -26,7 +26,8 @@ class UPIPayment extends StatelessWidget {
               margin: const EdgeInsets.only(bottom: 15),
               child: Column(
                 children: [
-                  TextField(
+                  TextFormField(
+                    validator: (value) {},
                     maxLength: 20,
                     keyboardType: TextInputType.emailAddress,
                     textAlign: TextAlign.start,
@@ -50,7 +51,7 @@ class UPIPayment extends StatelessWidget {
                         )),
                   ),
                   OutlinedButton(
-                      onPressed: () {}, child: const Text("Verify UPI"))
+                      onPressed: () {}, child: const Text("Submit UPI"))
                 ],
               ),
             ),

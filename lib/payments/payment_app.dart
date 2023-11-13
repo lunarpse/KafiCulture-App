@@ -36,9 +36,10 @@ class PaymentApp extends ConsumerStatefulWidget {
 class _PaymentAppState extends ConsumerState {
   // ignore: unused_field, prefer_final_fields
   SingingCharacter? _character = SingingCharacter.Paytm;
-  int itcvalue = 100;
-  int handm_value = 100;
-  int airvalue = 100;
+  int itcvalue = 0;
+  int handm_value = 0;
+  int airvalue = 0;
+
   @override
   Widget build(BuildContext context) {
     double mediaWidth = MediaQuery.of(context).size.width;
@@ -56,6 +57,7 @@ class _PaymentAppState extends ConsumerState {
     final amount = double.parse(subt.toStringAsFixed(2));
     double final_price =
         amount - itcvalue * 0.01 - handm_value * 0.01 - airvalue * 0.01;
+    String strPrice = final_price.toStringAsFixed(2);
     return Scaffold(
       appBar: AppbarWidget(),
       body: Container(
@@ -94,7 +96,7 @@ class _PaymentAppState extends ConsumerState {
               Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Text(
-                  "\$ $final_price ",
+                  "\$ $strPrice ",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                 ),
               ),
@@ -126,7 +128,7 @@ class _PaymentAppState extends ConsumerState {
                     title: Container(
                         child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
+                      children: const [
                         Text(
                           "SWAP",
                           style: TextStyle(
@@ -137,124 +139,143 @@ class _PaymentAppState extends ConsumerState {
                         Text(
                           "Recommended",
                           style: TextStyle(
-                            color: const Color.fromARGB(255, 154, 143, 142),
+                            color: Color.fromARGB(255, 154, 143, 142),
                             fontWeight: FontWeight.w500,
                           ),
                         )
                       ],
                     )),
                     children: [
-                      Container(
-                        child: Row(
-                          children: [
-                            const SizedBox(
-                              width: 15,
-                            ),
-                            Container(
-                              width: 43,
-                              height: 43,
-                              child: Image.asset("assets/images/itc.png"),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                itcvalue.toString(),
-                                style: const TextStyle(
-                                  fontSize: 22.0,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                      Row(
+                        children: [
+                          const SizedBox(
+                            width: 15,
+                          ),
+                          SizedBox(
+                            width: 43,
+                            height: 43,
+                            child: Image.asset("assets/images/itc.png"),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              itcvalue.toString(),
+                              style: const TextStyle(
+                                fontSize: 22.0,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
-                            Container(
-                              width: 250,
-                              child: Slider(
-                                value: itcvalue.toDouble(),
-                                onChanged: (double newValue) {
-                                  setState(() {
-                                    itcvalue = newValue.round();
-                                  });
-                                },
-                                min: 0,
-                                max: 100,
-                              ),
-                            )
-                          ],
-                        ),
+                          ),
+                          SizedBox(
+                            width: 250,
+                            child: Slider(
+                              value: itcvalue.toDouble(),
+                              onChanged: (double newValue) {
+                                setState(() {
+                                  itcvalue = newValue.round();
+                                });
+                              },
+                              min: 0,
+                              max: 100,
+                            ),
+                          )
+                        ],
                       ),
-                      Container(
-                        child: Row(
-                          children: [
-                            const SizedBox(
-                              width: 15,
-                            ),
-                            Container(
-                              width: 43,
-                              height: 43,
-                              child: Image.asset("assets/images/h&m.png"),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                handm_value.toString(),
-                                style: const TextStyle(
-                                  fontSize: 22.0,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                      Row(
+                        children: [
+                          const SizedBox(
+                            width: 15,
+                          ),
+                          SizedBox(
+                            width: 43,
+                            height: 43,
+                            child: Image.asset("assets/images/h&m.png"),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              handm_value.toString(),
+                              style: const TextStyle(
+                                fontSize: 22.0,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
-                            Container(
-                              width: 250,
-                              child: Slider(
-                                value: handm_value.toDouble(),
-                                onChanged: (double newValue) {
-                                  setState(() {
-                                    handm_value = newValue.round();
-                                  });
-                                },
-                                min: 0,
-                                max: 100,
-                              ),
-                            )
-                          ],
-                        ),
+                          ),
+                          SizedBox(
+                            width: 250,
+                            child: Slider(
+                              value: handm_value.toDouble(),
+                              onChanged: (double newValue) {
+                                setState(() {
+                                  handm_value = newValue.round();
+                                });
+                              },
+                              min: 0,
+                              max: 100,
+                            ),
+                          )
+                        ],
                       ),
-                      Container(
-                        child: Row(
-                          children: [
-                            const SizedBox(
-                              width: 15,
-                            ),
-                            Container(
-                              width: 43,
-                              height: 43,
-                              child: Image.asset("assets/images/airline.webp"),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                airvalue.toString(),
-                                style: const TextStyle(
-                                  fontSize: 22.0,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                      Row(
+                        children: [
+                          const SizedBox(
+                            width: 15,
+                          ),
+                          Container(
+                            width: 43,
+                            height: 43,
+                            child: Image.asset("assets/images/airline.webp"),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              airvalue.toString(),
+                              style: const TextStyle(
+                                fontSize: 22.0,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
-                            Container(
-                              width: 250,
-                              child: Slider(
-                                value: airvalue.toDouble(),
-                                onChanged: (double newValue) {
-                                  setState(() {
-                                    airvalue = newValue.round();
-                                  });
-                                },
-                                min: 0,
-                                max: 100,
+                          ),
+                          Container(
+                            width: 250,
+                            child: Slider(
+                              value: airvalue.toDouble(),
+                              onChanged: (double newValue) {
+                                setState(() {
+                                  airvalue = newValue.round();
+                                });
+                              },
+                              min: 0,
+                              max: 100,
+                            ),
+                          )
+                        ],
+                      ),
+                      OutlinedButton(
+                          onPressed: () {
+                            var snackbar = SnackBar(
+                              content: Text(
+                                "Thanks for choosing SWAP please pay rest \$$strPrice pay via UPI or card",
+                                style: TextStyle(
+                                    color: Color.fromARGB(255, 111, 78, 55),
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
                               ),
-                            )
-                          ],
-                        ),
-                      )
+                              duration: Duration(seconds: 2),
+                              backgroundColor: Colors.amber,
+                              padding: EdgeInsets.all(20),
+                              behavior: SnackBarBehavior.floating,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                            );
+
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackbar);
+                          },
+                          child: Text(
+                            "Confirm",
+                            style: TextStyle(fontSize: 23),
+                          ))
                     ],
                   ),
                 ),

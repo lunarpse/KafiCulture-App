@@ -4,17 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:project_2/genieTheme/genie_theme.dart';
-import 'package:project_2/login_register/login.dart';
-import 'package:project_2/myhomepage/pages/handcraft/cookies/cookies_page.dart';
-import 'package:project_2/myhomepage/pages/handcraft/cookies/cookies_page_details.dart';
-import 'package:project_2/myhomepage/pages/handcraft/drinks/drinks_page.dart';
-import 'package:project_2/myhomepage/pages/handcraft/snacks/snacks_page.dart';
-import 'package:project_2/myhomepage/pages/home_page/home_page.dart';
-import 'package:project_2/payments/payment_app.dart';
-import 'package:project_2/router/genie_router.dart';
 import 'package:project_2/router/routing.dart';
-import 'package:project_2/splashscreen/splash_screen.dart';
-import 'package:project_2/splashscreen/starting_screen.dart';
 
 void main() {
   runApp(
