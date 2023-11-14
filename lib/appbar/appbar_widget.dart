@@ -15,32 +15,44 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
         "assets/images/appbarbg2.jpg",
         fit: BoxFit.cover,
       ),
-      title: Row(
-        children: [
-          CircleAvatar(
-            backgroundColor: Colors.white,
-            backgroundImage: AssetImage("assets/images/logo1.png"),
-            radius: 18,
-          ),
-          SizedBox(width: 8),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "KAFICULTURE",
-                style: TextStyle(fontSize: 20),
-              ),
-              SizedBox(
-                height: 3,
-              ),
-              Text(
-                "Where every cup tells a story",
-                style: TextStyle(fontSize: 12),
-              )
-            ],
-          )
-        ],
+      title: GestureDetector(
+        onTap: () {},
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CircleAvatar(
+              backgroundColor: Colors.white,
+              backgroundImage: AssetImage("assets/images/logo1.png"),
+              radius: 18,
+            ),
+            SizedBox(width: 8),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "KAFICULTURE",
+                  style: TextStyle(fontSize: 20),
+                ),
+                SizedBox(
+                  height: 3,
+                ),
+                Text(
+                  "Where every cup tells a story",
+                  style: TextStyle(fontSize: 13),
+                )
+              ],
+            )
+          ],
+        ),
       ),
+      actions: [
+        IconButton(
+          onPressed: () {},
+          icon: Icon(Icons.shopping_cart),
+          color: Colors.brown.shade800,
+          iconSize: 25,
+        )
+      ],
     );
   }
 }

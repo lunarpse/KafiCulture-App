@@ -259,7 +259,7 @@ class _PaymentAppState extends ConsumerState {
                                 "Thanks for choosing SWAP please pay rest \$$strPrice pay via UPI or card",
                                 style: TextStyle(
                                   color: Color.fromARGB(255, 15, 58, 23),
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -269,13 +269,16 @@ class _PaymentAppState extends ConsumerState {
                               dismissDirection: DismissDirection.up,
                               margin: EdgeInsets.only(
                                   bottom:
-                                      MediaQuery.of(context).size.height - 175,
+                                      MediaQuery.of(context).size.height - 185,
                                   left: 40,
-                                  right: 10),
-                              padding: EdgeInsets.all(20),
+                                  right: 8),
+                              padding: EdgeInsets.all(15),
                               behavior: SnackBarBehavior.floating,
                               shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
+                                  borderRadius: BorderRadius.circular(10),
+                                  side: BorderSide(
+                                      color: Color.fromARGB(255, 111, 78, 55),
+                                      width: 1.5)),
                             );
 
                             ScaffoldMessenger.of(context)
