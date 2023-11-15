@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:project_2/myhomepage/pages/home_page/home_page.dart';
 
 import 'package:project_2/splashscreen/starting_screen.dart';
 
@@ -17,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(Duration(seconds: 4), () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => StartingScreen()));
+          context, MaterialPageRoute(builder: (context) => HomePage()));
     });
   }
 

@@ -11,12 +11,15 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false,
       flexibleSpace: Image.asset(
         "assets/images/appbarbg2.jpg",
         fit: BoxFit.cover,
       ),
       title: GestureDetector(
-        onTap: () {},
+        onTap: () {
+          Navigator.pushReplacementNamed(context, "/home");
+        },
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -47,9 +50,11 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, "/cart");
+          },
           icon: Icon(Icons.shopping_cart),
-          color: Colors.brown.shade800,
+          color: Color.fromARGB(255, 201, 87, 62),
           iconSize: 25,
         )
       ],

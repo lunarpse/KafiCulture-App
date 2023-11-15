@@ -162,14 +162,15 @@ class _PaymentAppState extends ConsumerState {
                             child: Text(
                               itcvalue.toString(),
                               style: const TextStyle(
-                                fontSize: 22.0,
-                                fontWeight: FontWeight.w600,
-                              ),
+                                  fontSize: 22.0,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white),
                             ),
                           ),
                           SizedBox(
                             width: 250,
                             child: Slider(
+                              activeColor: Colors.white,
                               value: itcvalue.toDouble(),
                               onChanged: (double newValue) {
                                 setState(() {
@@ -199,12 +200,14 @@ class _PaymentAppState extends ConsumerState {
                               style: const TextStyle(
                                 fontSize: 22.0,
                                 fontWeight: FontWeight.w600,
+                                color: Colors.white,
                               ),
                             ),
                           ),
                           SizedBox(
                             width: 250,
                             child: Slider(
+                              activeColor: Colors.white,
                               value: handm_value.toDouble(),
                               onChanged: (double newValue) {
                                 setState(() {
@@ -232,14 +235,15 @@ class _PaymentAppState extends ConsumerState {
                             child: Text(
                               airvalue.toString(),
                               style: const TextStyle(
-                                fontSize: 22.0,
-                                fontWeight: FontWeight.w600,
-                              ),
+                                  fontSize: 22.0,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white),
                             ),
                           ),
                           Container(
                             width: 250,
                             child: Slider(
+                              activeColor: Colors.white,
                               value: airvalue.toDouble(),
                               onChanged: (double newValue) {
                                 setState(() {
@@ -286,7 +290,7 @@ class _PaymentAppState extends ConsumerState {
                           },
                           child: Text(
                             "Confirm",
-                            style: TextStyle(fontSize: 23),
+                            style: TextStyle(fontSize: 23, color: Colors.white),
                           ))
                     ],
                   ),

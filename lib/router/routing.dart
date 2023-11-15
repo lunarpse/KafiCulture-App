@@ -30,8 +30,8 @@ class RouteGenerator {
       case '/cart':
         return MaterialPageRoute(builder: (_) => Cart());
 
-      case '/startscreen':
-        return MaterialPageRoute(builder: (_) => StartingScreen());
+      // case '/startscreen':
+      //   return MaterialPageRoute(builder: (_) => StartingScreen());
       case '/feedback':
         return MaterialPageRoute(builder: (_) => FeedBackPage());
       case '/home':
