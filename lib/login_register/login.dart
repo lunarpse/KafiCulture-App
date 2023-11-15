@@ -13,7 +13,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  final GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _globalKey1 = GlobalKey<FormState>();
 
   final userNameController = TextEditingController();
 
@@ -29,7 +29,7 @@ class _LoginState extends State<Login> {
   }
 
   // void _submitForm() {
-  //   if (_globalKey.currentState!.validate()) {}
+  //   if (_globalKey1.currentState!.validate()) {}
   // }
 
   String? _validateEmail(_email) {

@@ -112,7 +112,7 @@ class _UPIPaymentState extends State<UPIPayment> {
                       onPressed: () {
                         if (btnColor == Colors.greenAccent &&
                             btnText == "Pay Now") {
-                          Navigator.pushNamed(context, "/feedback");
+                          Navigator.pushReplacementNamed(context, "/loading");
                         }
                         if (UPIPayment.upiFormKey.currentState!.validate()) {
                           // var snackbar = SnackBar(

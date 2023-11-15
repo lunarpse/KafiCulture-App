@@ -14,7 +14,7 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-  final GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _globalKey2 = GlobalKey<FormState>();
 
   final userNameController = TextEditingController();
 

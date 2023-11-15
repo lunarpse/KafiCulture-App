@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 // import 'package:project_2/cart/cart_screen/cart.dart';
 import 'package:project_2/cart/screen/cart.dart';
 import 'package:project_2/feedBack/FeedBack_page.dart';
+import 'package:project_2/loading/loadingScreen.dart';
 import 'package:project_2/login_register/login.dart';
 import 'package:project_2/myhomepage/pages/handcraft/cookies/cookies_page.dart';
 import 'package:project_2/myhomepage/pages/handcraft/cookies/cookies_page_details.dart';
@@ -30,8 +31,8 @@ class RouteGenerator {
       case '/cart':
         return MaterialPageRoute(builder: (_) => Cart());
 
-      // case '/startscreen':
-      //   return MaterialPageRoute(builder: (_) => StartingScreen());
+      case '/loading':
+        return MaterialPageRoute(builder: (_) => LoadingPayment());
       case '/feedback':
         return MaterialPageRoute(builder: (_) => FeedBackPage());
       case '/home':
