@@ -15,11 +15,10 @@ import 'package:project_2/myhomepage/pages/handcraft/snacks/snacks_page_details.
 import 'package:project_2/myhomepage/pages/home_page/home_page.dart';
 import 'package:project_2/myhomepage/pages/home_page/latest_offerings/offerings_details_page.dart';
 import 'package:project_2/myhomepage/pages/home_page/populars/popular_details_page.dart';
-import 'package:project_2/newfeature/payments.dart';
+
 import 'package:project_2/payments/payment_app.dart';
 
 import 'package:project_2/splashscreen/splash_screen.dart';
-import 'package:project_2/splashscreen/starting_screen.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
