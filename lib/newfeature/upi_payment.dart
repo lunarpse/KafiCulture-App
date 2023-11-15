@@ -47,6 +47,8 @@ class _UPIPaymentState extends State<UPIPayment> {
                       // controller: upiController,
                       validator: (value) {
                         if (value!.isEmpty) {
+                          return "Enter UPI";
+                        } else if ((!RegExp(r'\S+@\S').hasMatch(value))) {
                           return "Enter valid UPI";
                         } else {
                           var snackbar = SnackBar(

@@ -15,7 +15,7 @@ class UpiIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, "/feedback");
+        Navigator.pushReplacementNamed(context, "/loading");
       },
       child: Container(
         height: height,
