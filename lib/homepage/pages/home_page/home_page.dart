@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:project_2/myhomepage/pages/home_page/home_headings.dart';
-import 'package:project_2/myhomepage/constant_homepage/constant_categories.dart';
-import 'package:project_2/myhomepage/constant_homepage/constant_offers.dart';
-import 'package:project_2/myhomepage/constant_homepage/constant_populars.dart';
+import 'package:project_2/homepage/pages/home_page/home_headings.dart';
+import 'package:project_2/homepage/constant_homepage/constant_categories.dart';
+import 'package:project_2/homepage/constant_homepage/constant_offers.dart';
+import 'package:project_2/homepage/constant_homepage/constant_populars.dart';
 import '../../../appbar/appbar_widget.dart';
 import '../../reusable_widgets/background_container_widget.dart';
 import '../../widgets/offerings_widget.dart';

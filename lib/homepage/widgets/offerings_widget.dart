@@ -1,10 +1,8 @@
 // ignore_for_file: prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:project_2/myhomepage/model/json_model.dart';
-import 'package:project_2/myhomepage/constant_homepage/constant_offers.dart';
-
-import '../pages/home_page/latest_offerings/offerings_details_page.dart';
+import 'package:project_2/homepage/model/json_model.dart';
+import 'package:project_2/homepage/constant_homepage/constant_offers.dart';
 import '../data_fetching/api_service.dart';
 
 class OfferingsWidget extends StatefulWidget {
@@ -83,62 +81,59 @@ class _OfferingsState extends State<OfferingsWidget> {
                     arguments: offer),
               ),
               Padding(
-                padding: const EdgeInsets.all(column_padding_edge),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
+                padding: const EdgeInsets.fromLTRB(20, 180, 0, 10),
+                child: Container(
+                  color: Color.fromARGB(255, 245, 236, 236),
+                  width: 220,
+                  height: 60,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(name,
                             style: TextStyle(
                                 color: name_color,
                                 fontSize: name_fontSize,
                                 fontWeight: FontWeight.bold)),
-                        // Text(
-                        //   "",
-                        //   style: TextStyle(
-                        //       fontSize: 16,
-                        //       fontWeight: FontWeight.bold,
-                        //       color: Colors.blueGrey.shade800),
-                        // ),
-                      ],
-                    ),
-                    Row(
-                      children: [
                         Row(
-                          children: List.generate(5, (index) {
-                            return Icon(
-                              index < foodRating.toInt()
-                                  ? Icons.star
-                                  : Icons.star_border,
-                              color: Colors.amber,
-                              size: 17,
-                            );
-                          }),
+                          children: [
+                            Row(
+                              children: List.generate(5, (index) {
+                                return Icon(
+                                  index < foodRating.toInt()
+                                      ? Icons.star
+                                      : Icons.star_border,
+                                  color: Colors.amber,
+                                  size: 17,
+                                );
+                              }),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: totalRating_padding_horizondal),
+                              child: Text(
+                                "($totalRating Ratings)",
+                                style: TextStyle(
+                                    fontSize: totalRating_fontSize,
+                                    fontWeight: FontWeight.bold,
+                                    color: totalRating_Color),
+                              ),
+                            )
+                          ],
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: totalRating_padding_horizondal),
-                          child: Text(
-                            "($totalRating Ratings)",
-                            style: TextStyle(
-                                fontSize: totalRating_fontSize,
-                                fontWeight: FontWeight.bold,
-                                color: totalRating_Color),
+                        Text(
+                          rating,
+                          style: TextStyle(
+                            fontSize: rating_fontSize,
+                            fontWeight: FontWeight.bold,
+                            color: rating_color,
                           ),
-                        )
+                        ),
                       ],
                     ),
-                    Text(
-                      rating,
-                      style: TextStyle(
-                        fontSize: rating_fontSize,
-                        fontWeight: FontWeight.bold,
-                        color: rating_color,
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               )
             ],

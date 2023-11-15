@@ -8,9 +8,9 @@ import 'package:project_2/cart/screen/Extras.dart';
 import 'package:project_2/cart/widget/Bottom.dart';
 import 'package:project_2/cart/widget/Cooking_Instructions.dart';
 
-import '../../myhomepage/reusable_widgets/background_container_widget.dart';
+import '../../homepage/reusable_widgets/background_container_widget.dart';
 import '../riverpod/state_provider.dart';
-import '../widget/Instruction_card.dart';
+
 import '../widget/cart_item.dart';
 import 'empty_cart.dart';
 

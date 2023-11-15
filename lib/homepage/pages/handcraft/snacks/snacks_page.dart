@@ -1,34 +1,33 @@
 // ignore_for_file: prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:project_2/homepage/model/json_model.dart';
 
-import '../../../model/json_model.dart';
 import '../../../data_fetching/api_service.dart';
 import '../../../../appbar/appbar_widget.dart';
-import 'cookies_page_details.dart';
 
-class CookiesPage extends StatefulWidget {
-  const CookiesPage({super.key});
+class SnacksPage extends StatefulWidget {
+  const SnacksPage({super.key});
 
   @override
-  State<CookiesPage> createState() => _CookiesPageState();
+  State<SnacksPage> createState() => _SnacksPageState();
 }
 
-class _CookiesPageState extends State<CookiesPage> {
-  List<JsonModel> cookies = [];
+class _SnacksPageState extends State<SnacksPage> {
+  List<JsonModel> snacks = [];
 
   @override
   void initState() {
     super.initState();
 
-    fetchCookies();
+    fetchSnacks();
   }
 
-  Future<void> fetchCookies() async {
-    print("fetchCookies Called");
-    cookies = await ApiService.fetchCookiesData();
+  Future<void> fetchSnacks() async {
+    print("fetchSnacks Called");
+    snacks = await ApiService.fetchSnacksData();
     setState(() {});
-    print("fetchCookies Completed");
+    print("fetchSnacks Completed");
   }
 
   @override
@@ -41,17 +40,17 @@ class _CookiesPageState extends State<CookiesPage> {
               image: AssetImage('assets/images/11.jpeg'), fit: BoxFit.fill),
         ),
         child: ListView.builder(
-          shrinkWrap: true,
+          // shrinkWrap: true,
           physics: BouncingScrollPhysics(),
-          itemCount: cookies.length,
+          itemCount: snacks.length,
           itemBuilder: (context, index) {
-            var cookie = cookies[index];
-            final name = cookie.name;
-            final image = cookie.image;
-            // final description = cookie.description;
-            final totalRating = cookie.totalRatings;
-            final rating = cookie.rating;
-            // final price = cookie.price;
+            var snack = snacks[index];
+            final name = snack.name;
+            final image = snack.image;
+            // final description = snack.description;
+            final totalRating = snack.totalRatings;
+            final rating = snack.rating;
+            // final price = snack.price;
             double foodRating = double.parse(totalRating);
             return Padding(
               padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
@@ -75,9 +74,10 @@ class _CookiesPageState extends State<CookiesPage> {
                           ]),
                       child: InkWell(
                         onTap: () => Navigator.pushNamed(
-                            context, '/cookiesdetails',
-                            arguments: cookie),
+                            context, '/snacksdetails',
+                            arguments: snack),
                         child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
                               height: 170,
@@ -86,7 +86,7 @@ class _CookiesPageState extends State<CookiesPage> {
                                 borderRadius: BorderRadius.horizontal(
                                     left: Radius.circular(10)),
                                 child: Hero(
-                                  tag: cookie,
+                                  tag: snack,
                                   child: Image.asset(
                                     "assets/images/$image.jpg",
                                     fit: BoxFit.cover,

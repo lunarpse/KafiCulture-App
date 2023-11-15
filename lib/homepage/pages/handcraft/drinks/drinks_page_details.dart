@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
-import 'package:project_2/myhomepage/reusable_widgets/detailsPage_widget.dart';
+import 'package:project_2/homepage/reusable_widgets/detailsPage_widget.dart';
 
 class DrinksPageDetails extends StatelessWidget {
   const DrinksPageDetails({super.key, required this.detail});

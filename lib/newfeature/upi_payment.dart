@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project_2/newfeature/upi_icon.dart';
 
 class UPIPayment extends StatefulWidget {
-  UPIPayment({super.key});
+  const UPIPayment({super.key});
 
   static final upiFormKey = GlobalKey<FormState>();
 
@@ -60,7 +60,7 @@ class _UPIPaymentState extends State<UPIPayment> {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            duration: Duration(seconds: 2),
+                            duration: const Duration(seconds: 2),
                             backgroundColor: Colors.greenAccent,
                             dismissDirection: DismissDirection.up,
                             margin: EdgeInsets.only(
@@ -68,7 +68,7 @@ class _UPIPaymentState extends State<UPIPayment> {
                                     MediaQuery.of(context).size.height - 175,
                                 left: 40,
                                 right: 10),
-                            padding: EdgeInsets.all(20),
+                            padding: const EdgeInsets.all(20),
                             behavior: SnackBarBehavior.floating,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10)),
@@ -109,7 +109,8 @@ class _UPIPaymentState extends State<UPIPayment> {
                   ),
                   OutlinedButton(
                       style: ButtonStyle(
-                          minimumSize: MaterialStatePropertyAll(Size(100, 43)),
+                          minimumSize:
+                              const MaterialStatePropertyAll(Size(100, 43)),
                           backgroundColor: MaterialStatePropertyAll(btnColor)),
                       onPressed: () {
                         if (btnColor == Colors.greenAccent &&

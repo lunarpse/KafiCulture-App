@@ -1,11 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:project_2/myhomepage/pages/handcraft/cookies/cookies_page.dart';
-import 'package:project_2/myhomepage/constant_homepage/constant_categories.dart';
-
-import 'drinks/drinks_page.dart';
-import 'snacks/snacks_page.dart';
+import 'package:project_2/homepage/constant_homepage/constant_categories.dart';
 
 class HandCraftedWidget extends StatelessWidget {
   const HandCraftedWidget({super.key});

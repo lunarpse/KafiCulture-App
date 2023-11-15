@@ -1,23 +1,19 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
-// import 'package:project_2/cart/cart_screen/cart.dart';
 import 'package:project_2/cart/screen/cart.dart';
 import 'package:project_2/feedBack/FeedBack_page.dart';
 import 'package:project_2/loading/loadingScreen.dart';
 import 'package:project_2/login_register/login.dart';
-import 'package:project_2/myhomepage/pages/handcraft/cookies/cookies_page.dart';
-import 'package:project_2/myhomepage/pages/handcraft/cookies/cookies_page_details.dart';
-import 'package:project_2/myhomepage/pages/handcraft/drinks/drinks_page.dart';
-import 'package:project_2/myhomepage/pages/handcraft/drinks/drinks_page_details.dart';
-import 'package:project_2/myhomepage/pages/handcraft/snacks/snacks_page.dart';
-import 'package:project_2/myhomepage/pages/handcraft/snacks/snacks_page_details.dart';
-import 'package:project_2/myhomepage/pages/home_page/home_page.dart';
-import 'package:project_2/myhomepage/pages/home_page/latest_offerings/offerings_details_page.dart';
-import 'package:project_2/myhomepage/pages/home_page/populars/popular_details_page.dart';
-
+import 'package:project_2/homepage/pages/handcraft/cookies/cookies_page.dart';
+import 'package:project_2/homepage/pages/handcraft/cookies/cookies_page_details.dart';
+import 'package:project_2/homepage/pages/handcraft/drinks/drinks_page.dart';
+import 'package:project_2/homepage/pages/handcraft/drinks/drinks_page_details.dart';
+import 'package:project_2/homepage/pages/handcraft/snacks/snacks_page.dart';
+import 'package:project_2/homepage/pages/handcraft/snacks/snacks_page_details.dart';
+import 'package:project_2/homepage/pages/home_page/home_page.dart';
+import 'package:project_2/homepage/pages/home_page/latest_offerings/offerings_details_page.dart';
+import 'package:project_2/homepage/pages/home_page/populars/popular_details_page.dart';
 import 'package:project_2/payments/payment_app.dart';
-
 import 'package:project_2/splashscreen/splash_screen.dart';
 
 class RouteGenerator {

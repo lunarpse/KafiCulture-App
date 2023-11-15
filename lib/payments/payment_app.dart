@@ -11,7 +11,7 @@ import 'package:project_2/login_register/loginText.dart';
 // import 'package:project_2/cart/cart_riverpod/state_provider.dart';
 // import 'package:project_2/hjc/cart_riverpod/state_provider.dart';
 
-import 'package:project_2/myhomepage/pages/home_page/home_page.dart';
+import 'package:project_2/homepage/pages/home_page/home_page.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/newfeature/card_payment.dart';
 import 'package:project_2/newfeature/upi_payment.dart';

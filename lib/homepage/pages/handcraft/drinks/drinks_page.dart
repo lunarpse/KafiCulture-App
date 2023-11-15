@@ -1,13 +1,8 @@
 // ignore_for_file: prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
-import 'package:project_2/myhomepage/model/json_model.dart';
+import 'package:project_2/homepage/model/json_model.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
-// import 'package:project_2/myhomepage/widgets/categories_page_widget.dart';
-// import 'package:project_2/myhomepage/widgets/categories_widget.dart';
-
 import '../../../data_fetching/api_service.dart';
-import 'drinks_page_details.dart';
 
 class DrinksPage extends StatefulWidget {
   const DrinksPage({super.key});
@@ -81,7 +76,7 @@ class _DrinksPageState extends State<DrinksPage> {
                             arguments: drink),
                         child: Row(
                           children: [
-                            Container(
+                            SizedBox(
                               height: 170,
                               width: 180,
                               child: ClipRRect(
@@ -99,7 +94,7 @@ class _DrinksPageState extends State<DrinksPage> {
                             SizedBox(
                               width: 12,
                             ),
-                            Container(
+                            SizedBox(
                               width: 175,
                               child: Column(
                                 mainAxisAlignment:
