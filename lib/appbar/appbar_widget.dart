@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:project_2/homepage/reusable_widgets/drawer.dart';
 
 class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
   const AppbarWidget({super.key});
@@ -42,12 +43,19 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
                 Text(
                   "Where every cup tells a story",
                   style: TextStyle(fontSize: 13),
-                )
+                ),
               ],
             )
           ],
         ),
       ),
+      leading: Builder(builder: (BuildContext context) {
+        return IconButton(
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+            icon: Icon(Icons.menu));
+      }),
       actions: [
         IconButton(
           onPressed: () {
@@ -56,7 +64,7 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
           icon: Icon(Icons.shopping_cart),
           color: Color.fromARGB(255, 201, 87, 62),
           iconSize: 25,
-        )
+        ),
       ],
     );
   }
