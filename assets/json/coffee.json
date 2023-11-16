@@ -10,7 +10,10 @@
         "discount":"50",
         "offerPrice": "10.0",
         "veg":"veg",
-        "category": "Coffee"
+        "category": "Coffee",
+        "size": "Tall",
+        "Non dairy alternative/milk":"Almond milk"
+        
     },
     {
         "id": 2,
@@ -23,7 +26,10 @@
         "discount":"25",
         "offerPrice": "7.50",
         "veg":"veg",
-        "category": "Coffee"
+        "category": "Coffee",
+        "size": "venti",
+        "Non dairy alternative/milk":"Soy milk"
+        
     },
     {
         "id": 3,
@@ -36,7 +42,10 @@
         "discount":"60",
         "offerPrice": "4.8",
         "veg":"veg",
-        "category": "Coffee"
+        "category": "Coffee",
+        "size": "Grande",
+        "Non dairy alternative/milk":"Soy milk"
+    
     },
     {
         "id": 4,
@@ -49,7 +58,10 @@
         "discount":"20",
         "offerPrice": "12.0",
         "veg":"veg",
-        "category": "Coffee"
+        "category": "Coffee",
+        "size": "venti",
+        "Non dairy alternative/milk":"Almond milk"
+        
     },
     {
         "id": 5,
@@ -62,7 +74,9 @@
         "discount":"25",
         "offerPrice": "7.5",
         "veg":"veg",
-        "category": "Coffee"          
+        "category": "Coffee",
+        "size": "venti",
+        "Non dairy alternative/milk":"Oat milk"        
     },
     {
         "id": 6,
@@ -75,6 +89,9 @@
         "discount":"10",
         "offerPrice": "4.5",
         "veg":"veg",
-        "category": "Coffee"  
+        "category": "Coffee",
+        "size": "Grande",
+        "Non dairy alternative/milk":"Soy milk"
+        
     }
 ]
