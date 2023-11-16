@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/feedBack/ratingStar.dart';
 import 'package:project_2/feedBack/thankYou.dart';
+import 'package:project_2/customdrawer/drawerScreen.dart';
 
 class FeedBackPage extends StatefulWidget {
-  FeedBackPage({super.key});
+  const FeedBackPage({super.key});
 
   @override
   State<FeedBackPage> createState() => _FeedBackPageState();
@@ -52,6 +53,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppbarWidget(),
+      drawer: DrawerScreen(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(8.0),

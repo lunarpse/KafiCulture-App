@@ -5,7 +5,7 @@ import 'package:project_2/homepage/pages/home_page/home_headings.dart';
 import 'package:project_2/homepage/constant_homepage/constant_categories.dart';
 import 'package:project_2/homepage/constant_homepage/constant_offers.dart';
 import 'package:project_2/homepage/constant_homepage/constant_populars.dart';
-import 'package:project_2/homepage/reusable_widgets/drawer.dart';
+import 'package:project_2/customdrawer/drawerScreen.dart';
 import '../../../appbar/appbar_widget.dart';
 import '../../reusable_widgets/background_container_widget.dart';
 import '../../widgets/offerings_widget.dart';
@@ -55,7 +55,7 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      drawer: drawerScreen(),
+      drawer: DrawerScreen(),
     );
   }
 }
