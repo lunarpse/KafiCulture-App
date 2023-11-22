@@ -4,8 +4,6 @@ import 'package:project_2/newfeature/upi_icon.dart';
 class UPIPayment extends StatefulWidget {
   const UPIPayment({super.key});
 
-  static final upiFormKey = GlobalKey<FormState>();
-
   @override
   State<UPIPayment> createState() => _UPIPaymentState();
 }
@@ -19,11 +17,19 @@ class _UPIPaymentState extends State<UPIPayment> {
   Color btnColor = Colors.white;
   Color btnTextColor = Colors.blueAccent;
 
+  static final upiFormKey = GlobalKey();
+
+  @override
+  void dispose() {
+    upiFormKey.currentState?.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: ExpansionTile(
-        title: const Text("UPI"),
+      child: Column(
+        // title: const Text("UPI"),
         children: [
           const Row(
             children: [
@@ -42,7 +48,7 @@ class _UPIPaymentState extends State<UPIPayment> {
               child: Column(
                 children: [
                   Form(
-                    key: UPIPayment.upiFormKey,
+                    key: upiFormKey,
                     child: TextFormField(
                       // controller: upiController,
                       validator: (value) {
@@ -116,32 +122,6 @@ class _UPIPaymentState extends State<UPIPayment> {
                         if (btnColor == Colors.greenAccent &&
                             btnText == "Pay Now") {
                           Navigator.pushReplacementNamed(context, "/loading");
-                        }
-                        if (UPIPayment.upiFormKey.currentState!.validate()) {
-                          // var snackbar = SnackBar(
-                          //   content: const Text(
-                          //     "Verified ✔",
-                          //     style: TextStyle(
-                          //       color: Colors.white,
-                          //       fontSize: 18,
-                          //       fontWeight: FontWeight.bold,
-                          //     ),
-                          //   ),
-                          //   duration: Duration(seconds: 2),
-                          //   backgroundColor: Colors.greenAccent,
-                          //   dismissDirection: DismissDirection.up,
-                          //   margin: EdgeInsets.only(
-                          //       bottom:
-                          //           MediaQuery.of(context).size.height - 175,
-                          //       left: 40,
-                          //       right: 10),
-                          //   padding: EdgeInsets.all(20),
-                          //   behavior: SnackBarBehavior.floating,
-                          //   shape: RoundedRectangleBorder(
-                          //       borderRadius: BorderRadius.circular(10)),
-                          // );
-
-                          // ScaffoldMessenger.of(context).showSnackBar(snackbar);
                         }
                       },
                       child: Text(
