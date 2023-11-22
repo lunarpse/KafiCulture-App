@@ -240,8 +240,8 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                               // height: 43,
                               width: bodyWidth - 30,
                               child: ReadMoreText(
-                                // description,
-                                selectedIndex.toString(),
+                                description,
+                                // selectedIndex.toString(),
                                 style: TextStyle(
                                     color: Colors.black, fontSize: 17),
                                 trimLines: 2,
