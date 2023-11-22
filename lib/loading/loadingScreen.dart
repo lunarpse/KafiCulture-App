@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:project_2/feedBack/FeedBack_page.dart';
+import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 
 class LoadingPayment extends StatefulWidget {
   const LoadingPayment({super.key});
@@ -26,37 +27,29 @@ class _LoadingPaymentState extends State<LoadingPayment> {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-        body: Center(
-      child: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/paybg.jpg'),
-            fit: BoxFit.fill,
-            colorFilter: ColorFilter.mode(Colors.white, BlendMode.softLight),
+      body: Center(
+        child: BackgroundContainerWidget(
+          child: Column(
+            // crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                "Processing",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 28,
+                    fontWeight: FontWeight.w400),
+              ),
+              SizedBox(height: 40),
+              //it provide loading animation
+              SpinKitFadingCircle(
+                color: Colors.black,
+                size: 50.0,
+              )
+            ],
           ),
         ),
-        width: screenWidth,
-        height: screenHeight,
-        child: const Column(
-          // crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              "Processing",
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 28,
-                  fontWeight: FontWeight.w400),
-            ),
-            SizedBox(height: 40),
-            //it provide loading animation
-            SpinKitFadingCircle(
-              color: Colors.black,
-              size: 50.0,
-            )
-          ],
-        ),
       ),
-    ));
+    );
   }
 }

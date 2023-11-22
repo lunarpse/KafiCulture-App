@@ -12,6 +12,7 @@ import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 
 import 'package:project_2/newfeature/card_payment.dart';
+import 'package:project_2/newfeature/upi_payment.dart';
 
 // ignore: constant_identifier_names
 enum SingingCharacter { Paytm, Amazonpay }
@@ -502,8 +503,8 @@ class _PaymentAppState extends ConsumerState {
                                                 onPressed: () =>
                                                     Navigator.pushNamed(
                                                         context, "/payment"),
-                                                child:
-                                                    Text("Continue with Card"))
+                                                child: Text(
+                                                    "Continue with UPI/Card"))
                                           ],
                                         ),
                                       ),
@@ -557,14 +558,14 @@ class _PaymentAppState extends ConsumerState {
 
               //---------------------------------------------UPI
 
-              // const SizedBox(height: 10),
-              // Padding(
-              //   padding: EdgeInsets.all(8.0),
-              //   child: UPIPayment(),
-              // ),
-              // const SizedBox(height: 15),
+              const SizedBox(height: 10),
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: UPIPayment(),
+              ),
+              const SizedBox(height: 15),
 
-              // const SizedBox(height: 10),
+              const SizedBox(height: 10),
 
               //------------------------------------------------CardPayment
 
