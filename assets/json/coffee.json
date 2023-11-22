@@ -10,7 +10,8 @@
         "discount":"50",
         "offerPrice": "10.0",
         "veg":"veg",
-        "category": "Coffee"
+        "category": "Coffee",
+        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
     },
     {
         "id": 2,
@@ -23,7 +24,8 @@
         "discount":"25",
         "offerPrice": "7.50",
         "veg":"veg",
-        "category": "Coffee"
+        "category": "Coffee",
+        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
     },
     {
         "id": 3,
@@ -36,7 +38,8 @@
         "discount":"60",
         "offerPrice": "4.8",
         "veg":"veg",
-        "category": "Coffee"
+        "category": "Coffee",
+        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
     },
     {
         "id": 4,
@@ -49,7 +52,8 @@
         "discount":"20",
         "offerPrice": "12.0",
         "veg":"veg",
-        "category": "Coffee"
+        "category": "Coffee",
+        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
     },
     {
         "id": 5,
@@ -62,7 +66,8 @@
         "discount":"25",
         "offerPrice": "7.5",
         "veg":"veg",
-        "category": "Coffee"          
+        "category": "Coffee",
+        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]        
     },
     {
         "id": 6,
@@ -75,6 +80,7 @@
         "discount":"10",
         "offerPrice": "4.5",
         "veg":"veg",
-        "category": "Coffee"  
+        "category": "Coffee",
+        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
     }
 ]

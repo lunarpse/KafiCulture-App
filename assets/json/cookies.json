@@ -10,7 +10,8 @@
         "discount":"20",
         "offerPrice": "8.0",
         "veg":"veg",
-        "category": "Cookies"
+        "category": "Cookies",
+        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
     },
     {
         "id": 2,
@@ -23,7 +24,8 @@
         "discount":"15",
         "offerPrice": "6.29",
         "veg":"veg",
-        "category": "Cookies"           
+        "category": "Cookies",
+        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]           
     },
     {
         "id": 3,
@@ -36,7 +38,8 @@
         "discount":"20",
         "offerPrice": "20.0",
         "veg":"veg",
-        "category": "Cookies"  
+        "category": "Cookies",
+        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
     },
     {
         "id": 4,
@@ -49,7 +52,8 @@
         "discount":"25",
         "offerPrice": "26.25",
         "veg":"veg",
-        "category": "Cookies"
+        "category": "Cookies",
+        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
     },
     {
         "id": 5,
@@ -62,7 +66,8 @@
         "discount":"18",
         "offerPrice": "36.0",
         "veg":"veg",
-        "category": "Cookies"
+        "category": "Cookies",
+        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
     },
     {
         "id": 6,
@@ -75,7 +80,8 @@
         "discount":"60",
         "offerPrice": "7.2",
         "veg":"veg",
-        "category": "Cookies"
+        "category": "Cookies",
+        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
     }
     
 ]

@@ -47,6 +47,7 @@ class _DrinksPageState extends State<DrinksPage> {
             var drink = drinks[index];
             final name = drink.name;
             final image = drink.image;
+            // final addons = drink.addons[1].addons1;
             // final description = drink.description;
             final totalRating = drink.totalRatings;
             final rating = drink.rating;
@@ -112,6 +113,7 @@ class _DrinksPageState extends State<DrinksPage> {
                                   ),
                                   Text(
                                     "Discover the artistry of flavors, where every sip is a celebration of perfection.",
+                                    // addons,
                                     style: TextStyle(
                                       fontSize: 14,
                                       // fontWeight: FontWeight.bold,

@@ -51,92 +51,79 @@ class _PopularState extends State<PopularWidget> {
         final rating = popular.rating;
         double foodRating = double.parse(totalRating);
         return Card(
+          elevation: 20,
+          shadowColor: Colors.grey,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           child: InkWell(
             onTap: () => Navigator.pushNamed(context, '/popularspage',
                 arguments: popular),
-            child: Container(
-              decoration: BoxDecoration(
-                color: card_container_boxDecoration_color,
-                boxShadow: const [
-                  BoxShadow(
-                    color: card_container_boxShadow_color,
-                    offset: Offset(card_container_boxShadow_offSet_startPoint,
-                        card_container_boxShadow_offSet_endPoint),
-                    blurRadius: card_container_boxShadow_blurRadius,
-                    spreadRadius: card_container_boxShadow_spreadRadius,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                    child: ClipRRect(
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+                  child: Hero(
+                    tag: popular,
+                    child: Image.asset(
+                      'assets/images/$image.jpg',
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                ],
-                borderRadius: BorderRadius.circular(
-                    card_container_boxShadow_borderRadius),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                      child: ClipRRect(
-                    borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(10)),
-                    child: Hero(
-                      tag: popular,
-                      child: Image.asset(
-                        'assets/images/$image.jpg',
-                        fit: BoxFit.cover,
+                )),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            name,
+                            style: TextStyle(
+                              fontSize: name_fontSize,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          // Text("(${coffee.category})"),
+                        ],
                       ),
-                    ),
-                  )),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              name,
-                              style: TextStyle(
-                                fontSize: name_fontSize,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            // Text("(${coffee.category})"),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: List.generate(5, (index) {
-                                return Icon(
-                                  index < foodRating.toInt()
-                                      ? Icons.star
-                                      : Icons.star_border,
-                                  color: Colors.amber,
-                                  size: 17,
-                                );
-                              }),
-                            ),
-                            Text(
-                              "($totalRating Ratings)",
-                              style: TextStyle(
-                                  fontSize: totalRating_fontSize,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ],
-                        ),
-                        Text(
-                          rating,
-                          style: TextStyle(
-                              fontSize: rating_fontSize,
-                              fontWeight: FontWeight.w500),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: List.generate(5, (index) {
+                              return Icon(
+                                index < foodRating.toInt()
+                                    ? Icons.star
+                                    : Icons.star_border,
+                                color: Colors.amber,
+                                size: 17,
+                              );
+                            }),
+                          ),
+                          Text(
+                            "($totalRating Ratings)",
+                            style: TextStyle(
+                                fontSize: totalRating_fontSize,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ],
+                      ),
+                      Text(
+                        rating,
+                        style: TextStyle(
+                            fontSize: rating_fontSize,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ],
+                  ),
+                )
+              ],
             ),
           ),
         );
@@ -144,3 +131,20 @@ class _PopularState extends State<PopularWidget> {
     );
   }
 }
+
+
+//use this inside container------------>
+// decoration: BoxDecoration(
+//                 color: card_container_boxDecoration_color,
+//                 boxShadow: const [
+//                   BoxShadow(
+//                     color: card_container_boxShadow_color,
+//                     offset: Offset(card_container_boxShadow_offSet_startPoint,
+//                         card_container_boxShadow_offSet_endPoint),
+//                     blurRadius: card_container_boxShadow_blurRadius,
+//                     spreadRadius: card_container_boxShadow_spreadRadius,
+//                   ),
+//                 ],
+//                 borderRadius: BorderRadius.circular(
+//                     card_container_boxShadow_borderRadius),
+//               ),
