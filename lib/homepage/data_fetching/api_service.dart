@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_print
 import 'dart:convert';
 import 'package:flutter/services.dart';
-
 import '../model/json_model.dart';
 
 class ApiService {

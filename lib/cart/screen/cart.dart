@@ -7,6 +7,7 @@ import 'package:project_2/cart/riverpod/tipstate_provider.dart';
 import 'package:project_2/cart/screen/Extras.dart';
 import 'package:project_2/cart/widget/Bottom.dart';
 import 'package:project_2/cart/widget/Cooking_Instructions.dart';
+import 'package:project_2/customdrawer/drawerScreen.dart';
 
 import '../../homepage/reusable_widgets/background_container_widget.dart';
 import '../riverpod/state_provider.dart';
@@ -43,6 +44,7 @@ class _CartState extends ConsumerState<Cart> {
       child: Scaffold(
           // backgroundColor: Colors.grey[100],
           appBar: AppbarWidget(),
+          drawer: DrawerScreen(),
           resizeToAvoidBottomInset: false,
           body: (subt == 0 || data.length == 0)
               //empty cart page
@@ -71,11 +73,6 @@ class _CartState extends ConsumerState<Cart> {
                                       return Container(
                                         height: 0,
                                       );
-                                      // } else if (index == data.length +1) {
-                                      //   return Tip();
-                                      // // } else if (index == data.length) {
-                                      // //   // return Delievery_Instruction();
-                                      // //   return InstructionCard();
                                     } else if (index == data.length) {
                                       return Cooking_Instructions();
                                     } else if (index == data.length + 1) {

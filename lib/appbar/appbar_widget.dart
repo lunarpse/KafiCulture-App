@@ -42,12 +42,19 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
                 Text(
                   "Where every cup tells a story",
                   style: TextStyle(fontSize: 13),
-                )
+                ),
               ],
             )
           ],
         ),
       ),
+      leading: Builder(builder: (BuildContext context) {
+        return IconButton(
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+            icon: Icon(Icons.menu));
+      }),
       actions: [
         IconButton(
           onPressed: () {
@@ -56,7 +63,7 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
           icon: Icon(Icons.shopping_cart),
           color: Color.fromARGB(255, 201, 87, 62),
           iconSize: 25,
-        )
+        ),
       ],
     );
   }

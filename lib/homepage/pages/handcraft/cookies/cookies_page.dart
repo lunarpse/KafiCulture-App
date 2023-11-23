@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:project_2/customdrawer/drawerScreen.dart';
 
 import '../../../model/json_model.dart';
 import '../../../data_fetching/api_service.dart';
@@ -34,6 +35,7 @@ class _CookiesPageState extends State<CookiesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppbarWidget(),
+      drawer: DrawerScreen(),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(

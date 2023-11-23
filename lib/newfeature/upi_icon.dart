@@ -20,7 +20,9 @@ class UpiIcon extends StatelessWidget {
       child: Container(
         height: height,
         width: width,
-        decoration: BoxDecoration(shape: BoxShape.circle),
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+        ),
         child: Image.asset(assets),
       ),
     );

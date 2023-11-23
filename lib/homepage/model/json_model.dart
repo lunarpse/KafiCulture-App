@@ -1,3 +1,14 @@
+class AddonModel {
+  final String addonsName;
+  final String price;
+
+  AddonModel({required this.addonsName, required this.price});
+
+  factory AddonModel.fromJson(Map<String, dynamic> json) {
+    return AddonModel(addonsName: json['addonsName'], price: json['price']);
+  }
+}
+
 class JsonModel {
   final int id;
   final String name;
@@ -10,6 +21,7 @@ class JsonModel {
   final String offerPrice;
   final String veg;
   final String category;
+  final List<AddonModel> addons;
 
   JsonModel({
     required this.id,
@@ -23,10 +35,17 @@ class JsonModel {
     required this.offerPrice,
     required this.veg,
     required this.category,
+    required this.addons,
   });
 
   //deserialization
   factory JsonModel.fromJson(Map<String, dynamic> json) {
+    List<AddonModel> parseAddons = [];
+    if (json['addons'] != null) {
+      for (var addon in json["addons"]) {
+        parseAddons.add(AddonModel.fromJson(addon));
+      }
+    }
     return JsonModel(
       id: json['id'],
       name: json['name'],
@@ -39,6 +58,7 @@ class JsonModel {
       offerPrice: json['offerPrice'],
       veg: json['veg'],
       category: json['category'],
+      addons: parseAddons,
     );
   }
 }

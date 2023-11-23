@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:project_2/homepage/model/json_model.dart';
+import 'package:project_2/customdrawer/drawerScreen.dart';
 
 import '../../../data_fetching/api_service.dart';
 import '../../../../appbar/appbar_widget.dart';
@@ -34,6 +35,7 @@ class _SnacksPageState extends State<SnacksPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppbarWidget(),
+      drawer: DrawerScreen(),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
