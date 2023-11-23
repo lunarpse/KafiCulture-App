@@ -23,6 +23,7 @@ class DetailsPageWidget extends ConsumerStatefulWidget {
 
 class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
   int selectedIndex = 0;
+  int quantity = 1;
 
   List<AddonModel> addons = [];
 
@@ -38,10 +39,16 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
     final name = widget.details.name;
     final description = widget.details.description;
     final price = widget.details.price;
-    final offerPrice = widget.details.offerPrice;
+    final offerPrice1 = selectedIndex == 0
+        ? double.parse(widget.details.offerPrice)
+        : selectedIndex == 1
+            ? double.parse(widget.details.offerPrice) * 2
+            : double.parse(widget.details.offerPrice) * 3;
+    final offerPrice = quantity * offerPrice1;
     final discount = widget.details.discount;
     final rating = widget.details.rating;
     final totalRatings = widget.details.totalRatings;
+
     addons = widget.details.addons;
     return BackgroundContainerWidget(
       child: Padding(
@@ -184,13 +191,22 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
                                         color: Colors.black.withOpacity(0.8)),
-                                    child: Icon(
-                                      Icons.remove,
+                                    child: IconButton(
                                       color: Colors.white,
-                                      size: 17,
+                                      onPressed: () {
+                                        setState(() {
+                                          quantity = quantity - 1 == 0
+                                              ? 1
+                                              : quantity - 1;
+                                        });
+                                      },
+                                      icon: Icon(
+                                        Icons.remove,
+                                        size: 17,
+                                      ),
                                     ),
                                   ),
-                                  Text("2",
+                                  Text(quantity.toString(),
                                       style: TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold)),
@@ -200,10 +216,17 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
                                         color: Colors.black.withOpacity(0.8)),
-                                    child: Icon(
-                                      Icons.add,
+                                    child: IconButton(
                                       color: Colors.white,
-                                      size: 17,
+                                      onPressed: () {
+                                        setState(() {
+                                          quantity = quantity + 1;
+                                        });
+                                      },
+                                      icon: Icon(
+                                        Icons.add,
+                                        size: 17,
+                                      ),
                                     ),
                                   )
                                 ],
