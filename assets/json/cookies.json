@@ -6,46 +6,54 @@
         "rating": "4.0",
         "totalRatings": "45",
         "image": "choco chip_cookies",
-        "price": "4",
-        "offerPrice": "2.8",
+        "price": "10.0",
+        "discount":"20",
+        "offerPrice": "8.0",
         "veg":"veg",
-        "category": "Cookies"
+        "category": "Cookies",
+        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
     },
     {
         "id": 2,
         "name": "Oatmeal Cookies",
-        "description": "A melange of spices, chutney, crunchy vada, yoghurt and freshly chopped coriander. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection.",
+        "description": "A melange of spices, chutney, crunchy vada, yoghurt and freshly chopped coriander. Discover the artistry of flavors, where every bite is a gastronomic perfection.",
         "rating": "4.5",
         "totalRatings": "38",
         "image": "oatmeal_cookies",
         "price": "7.4",
-        "offerPrice": "2.8",
+        "discount":"15",
+        "offerPrice": "6.29",
         "veg":"veg",
-        "category": "Cookies"           
+        "category": "Cookies",
+        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]           
     },
     {
         "id": 3,
         "name": "Oreo Cookies",
-        "description": "A traditional Chinese savory snack where a pastry sheet is filled with vegetables, rolled & fried. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection.",
+        "description": "A traditional Chinese savory snack where a pastry sheet is filled with vegetables, rolled & fried. Discover the flavors, where every bite is a gastronomic perfection.",
         "rating": "4.8",
         "totalRatings": "48",
         "image": "oreo_cookies",
-        "price": "3.4",
-        "offerPrice": "2.8",
+        "price": "25.0",
+        "discount":"20",
+        "offerPrice": "20.0",
         "veg":"veg",
-        "category": "Cookies"  
+        "category": "Cookies",
+        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
     },
     {
         "id": 4,
         "name": "Rum Ball Cookies",
-        "description": "A scone is a traditional British baked good, popular in the United Kingdom and Ireland.",
+        "description": "A scone is a traditional British baked good, popular in the United Kingdom and Ireland. Discover the artistry of flavors.",
         "rating": "3.5",
         "totalRatings": "34",
         "image": "rum ball_cookies",
-        "price": "5.3",
-        "offerPrice": "2.8",
+        "price": "35.0",
+        "discount":"25",
+        "offerPrice": "26.25",
         "veg":"veg",
-        "category": "Cookies"
+        "category": "Cookies",
+        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
     },
     {
         "id": 5,
@@ -54,10 +62,12 @@
         "rating": "3.0",
         "totalRatings": "17",
         "image": "wallnut_cookies",
-        "price":"3.5",
-        "offerPrice": "2.8",
+        "price":"50.0",
+        "discount":"18",
+        "offerPrice": "36.0",
         "veg":"veg",
-        "category": "Cookies"
+        "category": "Cookies",
+        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
     },
     {
         "id": 6,
@@ -66,10 +76,12 @@
         "rating": "4.0",
         "totalRatings": "24",
         "image": "snow ball_cookies",
-        "price": "6",
-        "offerPrice": "2.8",
+        "price": "18.0",
+        "discount":"60",
+        "offerPrice": "7.2",
         "veg":"veg",
-        "category": "Cookies"
+        "category": "Cookies",
+        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
     }
     
 ]

@@ -2,8 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:project_2/cart/riverpod/state_provider.dart';
-// import 'package:project_2/hjc/cart_riverpod/state_provider.dart';
+
 
 class ExtraItems extends ConsumerWidget {
   const ExtraItems(
@@ -18,6 +19,7 @@ class ExtraItems extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Card(
       // elevation: 0,
+      color: Color.fromARGB(255, 236, 219, 219),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 5),
         child: Container(
@@ -26,7 +28,7 @@ class ExtraItems extends ConsumerWidget {
           width: 280,
           margin: EdgeInsets.symmetric(horizontal: 2),
           decoration: BoxDecoration(
-              color: Color.fromARGB(255, 240, 208, 208),
+              color: Color.fromARGB(255, 236, 219, 219),
               borderRadius: BorderRadius.circular(15),
               boxShadow: [
                 BoxShadow(
@@ -70,18 +72,20 @@ class ExtraItems extends ConsumerWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+                      
+
                         Text(
                           "\$ 34",
                           style: TextStyle(
                             fontSize: 17,
-                            color: Color.fromARGB(255, 95, 63, 17),
+                            color: Color.fromARGB(255, 15, 15, 14),
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         MouseRegion(
-                          cursor: SystemMouseCursors.click,
+                          cursor:SystemMouseCursors.click,
                           child: IconButton(
-                            mouseCursor: SystemMouseCursors.grab,
+                            mouseCursor:SystemMouseCursors.grab,
                             onPressed: () {
                               ref.watch(CartProvider.notifier).additem({
                                 "name": name,

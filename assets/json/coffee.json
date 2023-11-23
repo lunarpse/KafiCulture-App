@@ -6,10 +6,12 @@
         "rating": "3.0",
         "totalRatings": "17",
         "image": "Americano w Creme",
-        "price":"3.5",
-        "offerPrice": "3.2",
+        "price":"20.0",
+        "discount":"50",
+        "offerPrice": "10.0",
         "veg":"veg",
-        "category": "Coffee"
+        "category": "Coffee",
+        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
     },
     {
         "id": 2,
@@ -18,10 +20,12 @@
         "rating": "4.0",
         "totalRatings": "45",
         "image": "hot_choc",
-        "price": "4",
-        "offerPrice": "2.0",
+        "price": "10.0",
+        "discount":"25",
+        "offerPrice": "7.50",
         "veg":"veg",
-        "category": "Coffee"
+        "category": "Coffee",
+        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
     },
     {
         "id": 3,
@@ -30,10 +34,12 @@
         "rating": "3.5",
         "totalRatings": "34",
         "image": "cap_coffee",
-        "price": "5.3",
-        "offerPrice": "4.12",
+        "price": "12",
+        "discount":"60",
+        "offerPrice": "4.8",
         "veg":"veg",
-        "category": "Coffee"
+        "category": "Coffee",
+        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
     },
     {
         "id": 4,
@@ -42,10 +48,12 @@
         "rating": "4.0",
         "totalRatings": "24",
         "image": "es_coffee",
-        "price": "6",
-        "offerPrice": "2.0",
+        "price": "15.0",
+        "discount":"20",
+        "offerPrice": "12.0",
         "veg":"veg",
-        "category": "Coffee"
+        "category": "Coffee",
+        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
     },
     {
         "id": 5,
@@ -54,21 +62,25 @@
         "rating": "4.5",
         "totalRatings": "38",
         "image": "Latte",
-        "price": "7.4",
-        "offerPrice": "4.2",
+        "price": "10",
+        "discount":"25",
+        "offerPrice": "7.5",
         "veg":"veg",
-        "category": "Coffee"           
+        "category": "Coffee",
+        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]        
     },
     {
         "id": 6,
         "name": "Filter Coffee",
-        "description": "Hot water through ground coffee beans and a filter to separate the coffee grounds from the liquid. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection",
+        "description": "Hot water through ground coffee beans and a filter to separate the coffee grounds from the liquid. Discover the flavors, where every bite is a gastronomic perfection",
         "rating": "4.8",
         "totalRatings": "48",
         "image": "filter_coffee",
-        "price": "3.4",
-        "offerPrice": "2.8",
+        "price": "5.0",
+        "discount":"10",
+        "offerPrice": "4.5",
         "veg":"veg",
-        "category": "Coffee"  
+        "category": "Coffee",
+        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
     }
 ]

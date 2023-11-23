@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:project_2/cart/riverpod/tipstate_provider.dart';
-import 'package:project_2/login_register/login.dart';
 
 import 'charges.dart';
 
@@ -20,10 +20,8 @@ class Bottom extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // print("hhh $gst    $tip  ${double.parse(subtotal.toStringAsFixed(2))}");
-    double total = tip +
-        double.parse(gst.toStringAsFixed(2)) +
+    double total = double.parse(gst.toStringAsFixed(2)) +
         double.parse(subtotal.toStringAsFixed(2));
-    print("rr $tip");
 
     return Container(
       padding: const EdgeInsets.only(
@@ -47,7 +45,7 @@ class Bottom extends ConsumerWidget {
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+            children: const [
               Icon(Icons.receipt),
               SizedBox(
                 width: 10,
@@ -63,7 +61,7 @@ class Bottom extends ConsumerWidget {
               cost: double.parse(subtotal.toStringAsFixed(2))),
           //Charges(name: "Shipping Cost", cost: 10),
           Charges(name: "GST", cost: double.parse(gst.toStringAsFixed(2))),
-          Charges(name: "Tip", cost: tip),
+
           Container(
             margin: EdgeInsets.only(top: 10, bottom: 10),
             child: Row(
@@ -102,16 +100,13 @@ class Bottom extends ConsumerWidget {
                   ref
                       .watch(TipProvider.notifier)
                       .setgst(double.parse(gst.toStringAsFixed(2)));
-                  showModalBottomSheet(
-                    context: context,
-                    builder: (context) {
-                      return Login();
-                    },
-                  );
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) => const Option()));
+                  // showModalBottomSheet(
+                  //   context: context,
+                  //   builder: (context) {
+                  //     return Login();
+                  //   },
+                  // );
+                  Navigator.pushNamed(context, "/payment");
                 },
                 child: Text(
                   "Check out",

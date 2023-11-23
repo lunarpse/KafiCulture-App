@@ -14,11 +14,15 @@ class UpiIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.pushReplacementNamed(context, "/loading");
+      },
       child: Container(
         height: height,
         width: width,
-        decoration: BoxDecoration(shape: BoxShape.circle),
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+        ),
         child: Image.asset(assets),
       ),
     );
