@@ -115,7 +115,7 @@ class DialogBox extends StatelessWidget {
                                     fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                "$finalPrice",
+                                "\$ $finalPrice",
                                 style: TextStyle(
                                     fontSize: 16, color: Colors.white),
                               )
