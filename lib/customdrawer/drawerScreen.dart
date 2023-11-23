@@ -13,8 +13,8 @@ class DrawerScreen extends StatelessWidget {
         decoration: const BoxDecoration(
             gradient: LinearGradient(colors: [
           Color.fromARGB(117, 199, 159, 80),
-          Color.fromARGB(117, 148, 121, 69),
-          Color.fromARGB(117, 121, 105, 74),
+          Color.fromARGB(117, 170, 163, 151),
+          Color.fromARGB(117, 220, 182, 104),
         ])),
         child: ListView(
           children: [
@@ -26,10 +26,16 @@ class DrawerScreen extends StatelessWidget {
                 height: 150,
               ),
             ),
+            Divider(
+              color: Colors.black12,
+              thickness: 5,
+            ),
             ListTile(
               title: const Text(
                 'Home',
-                style: TextStyle(fontSize: 18),
+                style: TextStyle(
+                  fontSize: 18,
+                ),
               ),
               textColor: Colors.black87,
               trailing: const Icon(Icons.home),
