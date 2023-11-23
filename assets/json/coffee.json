@@ -11,7 +11,8 @@
         "offerPrice": "10.0",
         "veg":"veg",
         "category": "Coffee",
-        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
+        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}],
+        "size":{"sizeName1":"1","sizeName2":"2","sizeName3":"3"}
     },
     {
         "id": 2,
@@ -25,7 +26,8 @@
         "offerPrice": "7.50",
         "veg":"veg",
         "category": "Coffee",
-        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
+        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}],
+        "size":{"sizeName1":"1","sizeName2":"2","sizeName3":"3"}
     },
     {
         "id": 3,

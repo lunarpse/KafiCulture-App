@@ -38,13 +38,23 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
     final image = widget.details.image;
     final name = widget.details.name;
     final description = widget.details.description;
-    final price = widget.details.price;
+
+    // final price = widget.details.price;
+
+    final price1 = selectedIndex == 0
+        ? double.parse(widget.details.price)
+        : selectedIndex == 1
+            ? double.parse(widget.details.price) * 2
+            : double.parse(widget.details.price) * 3;
+    final price = quantity * price1;
+
     final offerPrice1 = selectedIndex == 0
         ? double.parse(widget.details.offerPrice)
         : selectedIndex == 1
             ? double.parse(widget.details.offerPrice) * 2
             : double.parse(widget.details.offerPrice) * 3;
     final offerPrice = quantity * offerPrice1;
+
     final discount = widget.details.discount;
     final rating = widget.details.rating;
     final totalRatings = widget.details.totalRatings;
@@ -445,18 +455,20 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                           showDialog(
                               context: context,
                               builder: (context) => DialogBox(
-                                  productName: widget.details.name,
-                                  buttonName: "Pay Now",
-                                  voidCallback: () {
-                                    func.additem({
-                                      "name": name,
-                                      "image": "assets/images/$image.jpg",
-                                      "price": offerPrice
-                                    });
-                                    Navigator.of(context).pop();
-                                    Navigator.pushNamed(context, '/payment');
-                                  },
-                                  addons: addons));
+                                    productName: widget.details.name,
+                                    buttonName: "Pay Now",
+                                    voidCallback: () {
+                                      func.additem({
+                                        "name": name,
+                                        "image": "assets/images/$image.jpg",
+                                        "price": offerPrice
+                                      });
+                                      Navigator.of(context).pop();
+                                      Navigator.pushNamed(context, '/payment');
+                                    },
+                                    addons: addons,
+                                    finalPrice: offerPrice,
+                                  ));
                         },
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(
@@ -498,6 +510,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                   Navigator.of(context).pop();
                                   bottomSheet();
                                 },
+                                finalPrice: offerPrice,
                               );
                             },
                           );
@@ -640,8 +653,8 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                 children: [
                   OutlinedButton.icon(
                     onPressed: () {
+                      Navigator.of(context).pop();
                       Navigator.pushNamed(context, '/cart');
-                      // Navigator.of(context).pop();
                     },
                     icon: Icon(
                       Icons.shopping_cart,

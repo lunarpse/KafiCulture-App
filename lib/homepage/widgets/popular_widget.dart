@@ -49,6 +49,9 @@ class _PopularState extends State<PopularWidget> {
         final name = popular.name;
         final totalRating = popular.totalRatings;
         final rating = popular.rating;
+        // final size = popular.size["sizeName1"];
+        // final size = popular.size["sizeName2"];
+        // final size = popular.size["sizeName3"];
         double foodRating = double.parse(totalRating);
         return Card(
           elevation: 20,

@@ -21,12 +21,12 @@ class BackgroundContainerWidget extends StatelessWidget {
           image: AssetImage('assets/images/bg3.jpg'),
           fit: BoxFit.fill,
           colorFilter: ColorFilter.mode(
-              const Color.fromARGB(255, 248, 205, 189).withOpacity(0.2),
+              const Color.fromARGB(255, 248, 205, 189).withOpacity(0.4),
               BlendMode.dstATop),
         ),
       ),
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 8.0, sigmaY: 8),
+        filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
         child: child,
       ),
     );

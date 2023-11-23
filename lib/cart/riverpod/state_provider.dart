@@ -1,34 +1,33 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CartItems extends StateNotifier<List> {
-  CartItems()
-      : super([]);
+  CartItems() : super([]);
 
-  
-
-
-
-  void additem(Map data){
+  void additem(Map data) {
     var present;
-    for(int i=0;i<state.length;i++){
-      if(state[i]["name"]==data["name"]){
-        present=state[i];
+    for (int i = 0; i < state.length; i++) {
+      if (state[i]["name"] == data["name"]) {
+        present = state[i];
       }
     }
-    if(present!=null){
+    if (present != null) {
       increase_quantity(present["name"]);
-    }else{
-      state=[...state,
-      {
-        
-        "name":data["name"],
-        "icon":data["image"],
-        "price":double.parse(double.parse(data["price"]).toStringAsFixed(2)),
-        "cost":double.parse(double.parse(data["price"]).toStringAsFixed(2)),
-        "quantity":1
-      }];
+    } else {
+      state = [
+        ...state,
+        {
+          "name": data["name"],
+          "icon": data["image"],
+          "price": double.parse(data["price"].toStringAsFixed(2)),
+          // "price":double.parse(double.parse(data["price"]).toStringAsFixed(2)),
+          // "cost":double.parse(double.parse(data["price"]).toStringAsFixed(2)),
+          "cost": double.parse(data["price"].toStringAsFixed(2)),
+          "quantity": 1
+        }
+      ];
     }
   }
+
   void increase_quantity(String name) {
     print("in state");
 
@@ -48,23 +47,21 @@ class CartItems extends StateNotifier<List> {
   }
 
   void remove_item(String name) {
-    var count=1;
-    final nl = state.map((e){
-      if(e["name"]!=name){
-       
+    var count = 1;
+    final nl = state.map((e) {
+      if (e["name"] != name) {
         return e;
       }
     }).toList();
-    nl.removeWhere((element) => element==null);
-    state=nl;
+    nl.removeWhere((element) => element == null);
+    state = nl;
     // for(int i=0;i<nl.length;i++){
     //   if(nl[i]!=null){
     //     newl.add(nl[i]);
     //   }
     // }
     // state=newl;
-    
-    
+
     // var nl=[];
     // for(int i=0;i<state.length;i++){
     //   if(state[i]["id"]!=id){

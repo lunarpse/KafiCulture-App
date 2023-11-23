@@ -11,9 +11,10 @@ class DialogBox extends StatelessWidget {
     required this.buttonName,
     required this.voidCallback,
     required this.addons,
+    required this.finalPrice,
   });
 
-  final productName, buttonName;
+  final productName, buttonName, finalPrice;
   final VoidCallback voidCallback;
   final List<AddonModel> addons;
 
@@ -114,7 +115,7 @@ class DialogBox extends StatelessWidget {
                                     fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                "price",
+                                "$finalPrice",
                                 style: TextStyle(
                                     fontSize: 16, color: Colors.white),
                               )
