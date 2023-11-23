@@ -10,6 +10,10 @@
         "discount":"50",
         "offerPrice": "10.0",
         "veg":"veg",
+        
+        "size": "Tall",
+        "Non dairy alternative/milk":"Almond milk",
+        
         "category": "Coffee",
         "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}],
         "size":{"sizeName1":"1","sizeName2":"2","sizeName3":"3"}
@@ -25,6 +29,10 @@
         "discount":"25",
         "offerPrice": "7.50",
         "veg":"veg",
+        
+        "size": "venti",
+        "Non dairy alternative/milk":"Soy milk",
+        
         "category": "Coffee",
         "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}],
         "size":{"sizeName1":"1","sizeName2":"2","sizeName3":"3"}
@@ -40,6 +48,10 @@
         "discount":"60",
         "offerPrice": "4.8",
         "veg":"veg",
+        
+        "size": "Grande",
+        "Non dairy alternative/milk":"Soy milk",
+    
         "category": "Coffee",
         "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
     },
@@ -54,6 +66,10 @@
         "discount":"20",
         "offerPrice": "12.0",
         "veg":"veg",
+      
+        "size": "venti",
+        "Non dairy alternative/milk":"Almond milk",
+        
         "category": "Coffee",
         "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
     },
@@ -68,6 +84,9 @@
         "discount":"25",
         "offerPrice": "7.5",
         "veg":"veg",
+        
+        "size": "venti",
+        "Non dairy alternative/milk":"Oat milk",        
         "category": "Coffee",
         "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]        
     },
@@ -82,6 +101,10 @@
         "discount":"10",
         "offerPrice": "4.5",
         "veg":"veg",
+        
+        "size": "Grande",
+        "Non dairy alternative/milk":"Soy milk",
+        
         "category": "Coffee",
         "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
     }
