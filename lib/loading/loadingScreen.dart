@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -29,6 +31,9 @@ class _LoadingPaymentState extends State<LoadingPayment> {
     return Scaffold(
       body: Center(
         child: BackgroundContainerWidget(
+          opacity: 0.6,
+          x: 5.0,
+          y: 5.0,
           child: Column(
             // crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,

@@ -5,9 +5,16 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class BackgroundContainerWidget extends StatelessWidget {
-  const BackgroundContainerWidget({super.key, this.child});
+  const BackgroundContainerWidget(
+      {super.key,
+      this.child,
+      required this.opacity,
+      required this.x,
+      required this.y});
 
   final child;
+  final double opacity;
+  final double x, y;
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +28,14 @@ class BackgroundContainerWidget extends StatelessWidget {
           image: AssetImage('assets/images/bg3.jpg'),
           fit: BoxFit.fill,
           colorFilter: ColorFilter.mode(
-              const Color.fromARGB(255, 248, 205, 189).withOpacity(0.4),
+              // const Color.fromARGB(255, 248, 205, 189).withOpacity(0.4),
+              const Color.fromARGB(255, 248, 205, 189).withOpacity(opacity),
               BlendMode.dstATop),
         ),
       ),
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+        // filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+        filter: ImageFilter.blur(sigmaX: x, sigmaY: y),
         child: child,
       ),
     );

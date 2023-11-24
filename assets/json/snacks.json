@@ -6,13 +6,13 @@
         "rating": "4.0",
         "totalRatings": "45",
         "image": "Bruschetta_snacks",
-        "price": "15.0",
+        "price": 15.0,
         "discount":"35",
-        "offerPrice": "9.75",
+        "offerPrice": 9.75,
         "veg":"veg",
         "category": "Snacks",
-        "addons":[{"addonsName":" Extra Cheese","price":"2"},{"addonsName":"Paneer Toppings","price":"4"}],
-        "Addons": "Non Veg Toppings"
+        "addons":[{"addonsName":" Extra Cheese","price":2.0},{"addonsName":"Paneer Toppings","price":4.0}],
+        "size":{"sizeName1":"Mini","sizeName2":"Regular","sizeName3":"Jumbo"}
     },
     {
         "id": 2,
@@ -26,7 +26,8 @@
         "offerPrice": 25.50,
         "veg":"veg",
         "category": "Snacks",
-        "addons":[{"addonsName":"Mint sauce","price":"0.2"},{"addonsName":"Sev","price":"0.4"}]           
+        "addons":[{"addonsName":"Mint sauce","price":0.2},{"addonsName":"Sev","price":0.4}],
+        "size":{"sizeName1":"Mini","sizeName2":"Regular","sizeName3":"Jumbo"}         
     },
     {
         "id": 3,
@@ -40,7 +41,8 @@
         "offerPrice": 8.64,
         "veg":"veg",
         "category": "Snacks",
-        "addons":[{"addonsName":"Schezwan sauce","price":"0.2"},{"addonsName":"Cheese stuffing","price":"4"}]  
+        "addons":[{"addonsName":"Schezwan sauce","price":0.2},{"addonsName":"Cheese stuffing","price":4.0}],
+        "size":{"sizeName1":"Mini","sizeName2":"Regular","sizeName3":"Jumbo"}
     },
     {
         "id": 4,
@@ -54,7 +56,8 @@
         "offerPrice": 4.9,
         "veg":"veg",
         "category": "Snacks",
-        "addons":[{"addonsName":"clotted cream","price":"1.8"},{"addonsName":"Strawberry jam","price":"1.5"}]
+        "addons":[{"addonsName":"clotted cream","price":1.8},{"addonsName":"Strawberry jam","price":1.5}],
+        "size":{"sizeName1":"Mini","sizeName2":"Regular","sizeName3":"Jumbo"}
     },
     {
         "id": 5,
@@ -68,7 +71,8 @@
         "offerPrice": 13.02,
         "veg":"veg",
         "category": "Snacks",
-        "addons":[{"addonsName":"Maple Syrup","price":"1.5"},{"addonsName":"Nutella","price":"0.4"}]
+        "addons":[{"addonsName":"Maple Syrup","price":1.5},{"addonsName":"Nutella","price":0.4}],
+        "size":{"sizeName1":"Mini","sizeName2":"Regular","sizeName3":"Jumbo"}
     },
     {
         "id": 6,
@@ -82,7 +86,8 @@
         "offerPrice": 13.26,
         "veg":"veg",
         "category": "Snacks",
-        "addons":[{"addonsName":"Mint sauce","price":"0.2"},{"addonsName":"Sev","price":"0.4"}] 
+        "addons":[{"addonsName":"Mint sauce","price":0.2},{"addonsName":"Sev","price":0.4}],
+        "size":{"sizeName1":"Mini","sizeName2":"Regular","sizeName3":"Jumbo"}
     },
     {
         "id": 7,
@@ -96,7 +101,8 @@
         "offerPrice": 14.45,
         "veg":"veg",
         "category": "Snacks",
-        "addons":[{"addonsName":"Extra Butter","price":"0.5"},{"addonsName":"Paneer","price":"1.2"}]            
+        "addons":[{"addonsName":"Extra Butter","price":0.5},{"addonsName":"Paneer","price":1.2}],
+        "size":{"sizeName1":"Mini","sizeName2":"Regular","sizeName3":"Jumbo"}         
     },
     {
         "id": 8,
@@ -110,6 +116,7 @@
         "offerPrice": 5.76,
         "veg":"veg",
         "category": "Snacks",
-        "addons":[{"addonsName":"Schezwan sauce","price":"1.2"},{"addonsName":"Spring Onions","price":"0.4"}]           
+        "addons":[{"addonsName":"Schezwan sauce","price":1.2},{"addonsName":"Spring Onions","price":0.4}],
+        "size":{"sizeName1":"Mini","sizeName2":"Regular","sizeName3":"Jumbo"}         
     }  
 ]

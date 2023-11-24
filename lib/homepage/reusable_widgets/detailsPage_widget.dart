@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 import 'package:project_2/homepage/model/json_model.dart';
@@ -38,29 +39,38 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
     final image = widget.details.image;
     final name = widget.details.name;
     final description = widget.details.description;
-
-    // final price = widget.details.price;
+    final category = widget.details.category;
 
     final price1 = selectedIndex == 0
-        ? double.parse(widget.details.price)
+        ? widget.details.price
         : selectedIndex == 1
-            ? double.parse(widget.details.price) * 2
-            : double.parse(widget.details.price) * 3;
-    final price = quantity * price1;
+            ? double.parse((widget.details.price * 2).toStringAsFixed(2))
+            : double.parse((widget.details.price * 3).toStringAsFixed(2));
+
+    final price = double.parse((quantity * price1).toStringAsFixed(2));
 
     final offerPrice1 = selectedIndex == 0
-        ? double.parse(widget.details.offerPrice)
+        ? widget.details.offerPrice
         : selectedIndex == 1
-            ? double.parse(widget.details.offerPrice) * 2
-            : double.parse(widget.details.offerPrice) * 3;
-    final offerPrice = quantity * offerPrice1;
+            ? double.parse((widget.details.offerPrice * 2).toStringAsFixed(2))
+            : double.parse((widget.details.offerPrice * 3).toStringAsFixed(2));
+
+    final offerPrice =
+        double.parse((quantity * offerPrice1).toStringAsFixed(2));
 
     final discount = widget.details.discount;
     final rating = widget.details.rating;
     final totalRatings = widget.details.totalRatings;
+    final sizeName1 = widget.details.size.sizeName1;
+    final sizeName2 = widget.details.size.sizeName2;
+    final sizeName3 = widget.details.size.sizeName3;
 
     addons = widget.details.addons;
+
     return BackgroundContainerWidget(
+      opacity: 0.6,
+      x: 8.0,
+      y: 8.0,
       child: Padding(
         padding: EdgeInsets.only(left: 10, top: 10, right: 10),
         child: Container(
@@ -304,9 +314,9 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  _buildSizeButton('S', 0),
-                                  _buildSizeButton('M', 1),
-                                  _buildSizeButton('L', 2)
+                                  _buildSizeButton(sizeName1, 0, "(354 ML)"),
+                                  _buildSizeButton(sizeName2, 1, "(473 ML)"),
+                                  _buildSizeButton(sizeName3, 2, "(591 ML)")
                                 ],
                               ),
                             ),
@@ -340,86 +350,91 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                   final offerPrice = fetchProduct.offerPrice;
                                   final discount = fetchProduct.discount;
 
-                                  return Card(
-                                    elevation: 10,
-                                    shadowColor: Colors.grey,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          height: 115,
-                                          child: ClipRRect(
-                                            borderRadius: BorderRadius.vertical(
-                                                top: Radius.circular(10)),
-                                            child: Image.asset(
-                                              'assets/images/$image.jpg',
-                                              fit: BoxFit.cover,
+                                  return InkWell(
+                                    // onTap: () => ,
+                                    child: Card(
+                                      elevation: 10,
+                                      shadowColor: Colors.grey,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            height: 115,
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.vertical(
+                                                      top: Radius.circular(10)),
+                                              child: Image.asset(
+                                                'assets/images/$image.jpg',
+                                                fit: BoxFit.cover,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        Container(
-                                          height: 67,
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 8, vertical: 4),
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                name,
-                                                style: TextStyle(
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    fontSize: 17,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                              Row(
-                                                children: [
-                                                  Icon(
-                                                    Icons.star,
-                                                    size: 17,
-                                                    color: Colors.orange,
-                                                  ),
-                                                  SizedBox(width: 3),
-                                                  Text(
-                                                    "$rating ($totalRating)",
-                                                    style: TextStyle(
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                ],
-                                              ),
-                                              Row(
-                                                children: [
-                                                  Text(
-                                                    "\$ $offerPrice ",
-                                                    style: TextStyle(
-                                                        fontSize: 15,
-                                                        fontWeight:
-                                                            FontWeight.w500),
-                                                  ),
-                                                  Text(
-                                                    "($discount% Off)",
-                                                    style: TextStyle(
-                                                        fontSize: 13.5,
-                                                        color: Colors.orange,
-                                                        fontWeight:
-                                                            FontWeight.w900),
-                                                  ),
-                                                ],
-                                              )
-                                            ],
-                                          ),
-                                        )
-                                      ],
+                                          Container(
+                                            height: 67,
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 8, vertical: 4),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  name,
+                                                  style: TextStyle(
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      fontSize: 17,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Icon(
+                                                      Icons.star,
+                                                      size: 17,
+                                                      color: Colors.orange,
+                                                    ),
+                                                    SizedBox(width: 3),
+                                                    Text(
+                                                      "$rating ($totalRating)",
+                                                      style: TextStyle(
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Text(
+                                                      "\$ $offerPrice ",
+                                                      style: TextStyle(
+                                                          fontSize: 15,
+                                                          fontWeight:
+                                                              FontWeight.w500),
+                                                    ),
+                                                    Text(
+                                                      "($discount% Off)",
+                                                      style: TextStyle(
+                                                          fontSize: 13.5,
+                                                          color: Colors.orange,
+                                                          fontWeight:
+                                                              FontWeight.w900),
+                                                    ),
+                                                  ],
+                                                )
+                                              ],
+                                            ),
+                                          )
+                                        ],
+                                      ),
                                     ),
                                   );
                                 },
@@ -549,7 +564,11 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
     );
   }
 
-  Widget _buildSizeButton(String title, int index) {
+  Widget _buildSizeButton(
+    String title,
+    int index,
+    String sizename,
+  ) {
     return GestureDetector(
       onTap: () {
         setState(() {
@@ -557,8 +576,18 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
         });
       },
       child: Container(
-        height: 40,
-        width: 100,
+        height: widget.details.category == "Snacks"
+            ? 40
+            : widget.details.category == "Cookies"
+                ? 40
+                : 48,
+        width: widget.details.category == "Snacks"
+            ? 105
+            : widget.details.category == "Cookies"
+                ? 105
+                : 110,
+        // height: 40,
+        // width: 105,
         decoration: BoxDecoration(
             color: index == selectedIndex
                 ? Color.fromRGBO(143, 93, 58, 1)
@@ -567,18 +596,33 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
             border: index == selectedIndex
                 ? Border.all(color: Colors.brown.shade900, width: 2)
                 : Border.all(color: Color.fromRGBO(143, 93, 58, 1), width: 2)),
-        child: Center(
-          child: Text(
-            title,
-            style: TextStyle(
-                color: index == selectedIndex
-                    ? Colors.white
-                    : Color.fromRGBO(143, 93, 58, 1),
-                fontSize: 16,
-                fontWeight: index == selectedIndex
-                    ? FontWeight.normal
-                    : FontWeight.bold),
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              title,
+              style: TextStyle(
+                  color: index == selectedIndex
+                      ? Colors.white
+                      : Color.fromRGBO(143, 93, 58, 1),
+                  fontSize: 17,
+                  fontWeight: index == selectedIndex
+                      ? FontWeight.normal
+                      : FontWeight.bold),
+            ),
+            if (widget.details.category == "Coffee")
+              Text(
+                sizename,
+                style: TextStyle(
+                    color: index == selectedIndex
+                        ? Colors.white
+                        : Color.fromRGBO(143, 93, 58, 1),
+                    fontSize: 12,
+                    fontWeight: index == selectedIndex
+                        ? FontWeight.normal
+                        : FontWeight.bold),
+              ),
+          ],
         ),
       ),
     );
