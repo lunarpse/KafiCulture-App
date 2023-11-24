@@ -23,6 +23,7 @@ class DetailsPageWidget extends ConsumerStatefulWidget {
 
 class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
   int selectedIndex = 0;
+  int quantity = 1;
 
   List<AddonModel> addons = [];
 
@@ -37,12 +38,31 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
     final image = widget.details.image;
     final name = widget.details.name;
     final description = widget.details.description;
-    final price = widget.details.price;
-    final offerPrice = widget.details.offerPrice;
+
+    // final price = widget.details.price;
+
+    final price1 = selectedIndex == 0
+        ? double.parse(widget.details.price)
+        : selectedIndex == 1
+            ? double.parse(widget.details.price) * 2
+            : double.parse(widget.details.price) * 3;
+    final price2 = quantity * price1;
+    final price = double.parse(price2.toStringAsFixed(2));
+
+    final offerPrice1 = selectedIndex == 0
+        ? double.parse(widget.details.offerPrice)
+        : selectedIndex == 1
+            ? double.parse(widget.details.offerPrice) * 2
+            : double.parse(widget.details.offerPrice) * 3;
+    final offerPrice2 = quantity * offerPrice1;
+    final offerPrice = double.parse(offerPrice2.toStringAsFixed(2));
+
     final discount = widget.details.discount;
     final rating = widget.details.rating;
     final totalRatings = widget.details.totalRatings;
+
     addons = widget.details.addons;
+    var initialname = addons[0].addonsName;
     return BackgroundContainerWidget(
       child: Padding(
         padding: EdgeInsets.only(left: 10, top: 10, right: 10),
@@ -184,13 +204,22 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
                                         color: Colors.black.withOpacity(0.8)),
-                                    child: Icon(
-                                      Icons.remove,
+                                    child: IconButton(
                                       color: Colors.white,
-                                      size: 17,
+                                      onPressed: () {
+                                        setState(() {
+                                          quantity = quantity - 1 == 0
+                                              ? 1
+                                              : quantity - 1;
+                                        });
+                                      },
+                                      icon: Icon(
+                                        Icons.remove,
+                                        size: 17,
+                                      ),
                                     ),
                                   ),
-                                  Text("2",
+                                  Text(quantity.toString(),
                                       style: TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold)),
@@ -200,10 +229,17 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
                                         color: Colors.black.withOpacity(0.8)),
-                                    child: Icon(
-                                      Icons.add,
+                                    child: IconButton(
                                       color: Colors.white,
-                                      size: 17,
+                                      onPressed: () {
+                                        setState(() {
+                                          quantity = quantity + 1;
+                                        });
+                                      },
+                                      icon: Icon(
+                                        Icons.add,
+                                        size: 17,
+                                      ),
                                     ),
                                   )
                                 ],
@@ -422,18 +458,26 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                           showDialog(
                               context: context,
                               builder: (context) => DialogBox(
-                                  productName: widget.details.name,
-                                  buttonName: "Pay Now",
-                                  voidCallback: () {
-                                    func.additem({
-                                      "name": name,
-                                      "image": "assets/images/$image.jpg",
-                                      "price": offerPrice
-                                    });
-                                    Navigator.of(context).pop();
-                                    Navigator.pushNamed(context, '/payment');
-                                  },
-                                  addons: addons));
+                                    productName: widget.details.name,
+                                    addons: addons,
+                                    initialname: initialname,
+                                    setname: (value) {
+                                      setState(() {
+                                        initialname = value;
+                                      });
+                                    },
+                                    buttonName: "Pay Now",
+                                    call: (pricee) {
+                                      func.additem({
+                                        "name": name,
+                                        "image": "assets/images/$image.jpg",
+                                        "price": pricee
+                                      });
+                                      Navigator.of(context).pop();
+                                      Navigator.pushNamed(context, '/payment');
+                                    },
+                                    finalPrice: offerPrice,
+                                  ));
                         },
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(
@@ -461,22 +505,27 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                         onPressed: () {
                           showDialog(
                             context: context,
-                            builder: (context) {
-                              return DialogBox(
-                                addons: addons,
-                                productName: widget.details.name,
-                                buttonName: "Add To Cart",
-                                voidCallback: () {
-                                  func.additem({
-                                    "name": name,
-                                    "image": "assets/images/$image.jpg",
-                                    "price": price
-                                  });
-                                  Navigator.of(context).pop();
-                                  bottomSheet();
-                                },
-                              );
-                            },
+                            builder: (context) => DialogBox(
+                              addons: addons,
+                              initialname: initialname,
+                              setname: (value) {
+                                setState(() {
+                                  initialname = value;
+                                });
+                              },
+                              productName: widget.details.name,
+                              buttonName: "Proceed",
+                              call: (value) {
+                                func.additem({
+                                  "name": name,
+                                  "image": "assets/images/$image.jpg",
+                                  "price": value
+                                });
+                                Navigator.of(context).pop();
+                                bottomSheet();
+                              },
+                              finalPrice: offerPrice,
+                            ),
                           );
                         },
                         icon: Icon(
@@ -617,8 +666,8 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                 children: [
                   OutlinedButton.icon(
                     onPressed: () {
+                      Navigator.of(context).pop();
                       Navigator.pushNamed(context, '/cart');
-                      // Navigator.of(context).pop();
                     },
                     icon: Icon(
                       Icons.shopping_cart,

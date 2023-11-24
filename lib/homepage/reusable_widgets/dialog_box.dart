@@ -4,22 +4,43 @@ import 'package:flutter/material.dart';
 
 import '../model/json_model.dart';
 
-class DialogBox extends StatelessWidget {
-  const DialogBox({
-    super.key,
-    required this.productName,
-    required this.buttonName,
-    required this.voidCallback,
-    required this.addons,
-  });
+class DialogBox extends StatefulWidget {
+  final initialname;
 
-  final productName, buttonName;
-  final VoidCallback voidCallback;
+  const DialogBox(
+      {super.key,
+      required this.productName,
+      required this.buttonName,
+      required this.call,
+      required this.addons,
+      required this.finalPrice,
+      required this.initialname,
+      required this.setname});
+  final Function setname;
+  final productName, buttonName, finalPrice;
+  final Function call;
   final List<AddonModel> addons;
 
   @override
+  State<DialogBox> createState() => _DialogBoxState();
+}
+
+class _DialogBoxState extends State<DialogBox> {
+  // var name;
+  // var newprice;
+  // @override
+  // void initState() {
+  //   name = widget.initialname;
+  //   newprice = widget.addons[0].price;
+  // }
+
+  @override
   Widget build(BuildContext context) {
-    bool? isChecked = false;
+    var name = widget.initialname;
+
+    var newprice = double.parse(widget.addons[0].price);
+    // double finalprice1 = widget.finalPrice + double.parse(newprice);
+    // final finalprice = finalprice1.toStringAsFixed(2);
     return AlertDialog(
         insetPadding: EdgeInsets.all(20),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -39,9 +60,9 @@ class DialogBox extends StatelessWidget {
                 ),
                 ListView.builder(
                   shrinkWrap: true,
-                  itemCount: addons.length,
+                  itemCount: widget.addons.length,
                   itemBuilder: (context, index) {
-                    var addon = addons[index];
+                    var addon = widget.addons[index];
                     var addonsName = addon.addonsName;
                     var price = addon.price;
                     return Padding(
@@ -54,10 +75,13 @@ class DialogBox extends StatelessWidget {
                             borderRadius: BorderRadius.circular(4)),
                         side: BorderSide(
                             color: Color.fromRGBO(168, 93, 38, 1), width: 2),
-                        value: isChecked,
+                        value: name == addonsName ? true : false,
                         onChanged: (bool? newValue) {
+                          widget.setname(addonsName);
                           setState(() {
-                            isChecked = newValue;
+                            name = addonsName;
+
+                            newprice = double.parse(price);
                           });
                         },
                         title: Text(
@@ -107,14 +131,14 @@ class DialogBox extends StatelessWidget {
                               ),
                               SizedBox(height: 5),
                               Text(
-                                productName,
+                                widget.productName,
                                 style: TextStyle(
                                     fontSize: 18,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                "price",
+                                "${double.parse((widget.finalPrice + newprice).toString()).toStringAsFixed(2)}",
                                 style: TextStyle(
                                     fontSize: 16, color: Colors.white),
                               )
@@ -136,9 +160,11 @@ class DialogBox extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(10),
                                     )),
                                   ),
-                                  onPressed: voidCallback,
+                                  onPressed: () {
+                                    widget.call(widget.finalPrice + newprice);
+                                  },
                                   child: Text(
-                                    buttonName,
+                                    widget.buttonName,
                                     style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold),

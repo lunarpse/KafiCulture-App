@@ -29,9 +29,11 @@ class _CartState extends ConsumerState<Cart> {
     final tc = data.length != 0
         ? data.map((e) => e["price"] * e["quantity"]).toList()
         : [];
-
-    final subt =
-        tc.length != 0 ? tc.reduce((value, element) => value + element) : 0;
+    print(tc);
+    final subt = tc.length != 0
+        ? tc.reduce(
+            (value, element) => value + double.parse(element.toString()))
+        : 0;
     final gst = subt * 0.05;
 
     return GestureDetector(

@@ -21,7 +21,8 @@ class _MyWidgetState extends ConsumerState<CartItem> {
 
   @override
   Widget build(BuildContext context) {
-    double amount = widget.data["price"] * widget.data["quantity"];
+    double amount =
+        double.parse(widget.data["price"].toString()) * widget.data["quantity"];
     final amount2 = double.parse(amount.toStringAsFixed(2));
 
     return Padding(
