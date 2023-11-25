@@ -42,6 +42,7 @@ class _SnacksDetailsPageState extends State<SnacksDetailsPage> {
       body: DetailsPageWidget(
         details: widget.detail,
         fetchProducts: drinks,
+        nextPage: '/drinksdetails',
       ),
     );
   }

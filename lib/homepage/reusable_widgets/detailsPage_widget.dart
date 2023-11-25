@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 import 'package:project_2/homepage/model/json_model.dart';
@@ -8,15 +7,18 @@ import 'package:readmore/readmore.dart';
 import 'background_container_widget.dart';
 import 'package:project_2/cart/riverpod/state_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'dialog_box.dart';
 
 class DetailsPageWidget extends ConsumerStatefulWidget {
   const DetailsPageWidget(
-      {super.key, required this.details, required this.fetchProducts});
+      {super.key,
+      required this.details,
+      required this.fetchProducts,
+      required this.nextPage});
 
   final details;
   final fetchProducts;
+  final nextPage;
 
   @override
   ConsumerState<DetailsPageWidget> createState() => _DetailsPageState();
@@ -39,7 +41,6 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
     final image = widget.details.image;
     final name = widget.details.name;
     final description = widget.details.description;
-    final category = widget.details.category;
 
     final price1 = selectedIndex == 0
         ? widget.details.price
@@ -334,12 +335,12 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                               child: GridView.builder(
                                 scrollDirection: Axis.horizontal,
                                 physics: BouncingScrollPhysics(),
-                                itemCount: widget.fetchProducts.length,
                                 gridDelegate:
                                     SliverGridDelegateWithFixedCrossAxisCount(
                                         crossAxisCount: 1,
                                         mainAxisSpacing: 5,
                                         mainAxisExtent: 160),
+                                itemCount: widget.fetchProducts.length,
                                 itemBuilder: (context, index) {
                                   var fetchProduct =
                                       widget.fetchProducts[index];
@@ -351,7 +352,9 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                   final discount = fetchProduct.discount;
 
                                   return InkWell(
-                                    // onTap: () => ,
+                                    onTap: () => Navigator.pushNamed(
+                                        context, widget.nextPage,
+                                        arguments: fetchProduct),
                                     child: Card(
                                       elevation: 10,
                                       shadowColor: Colors.grey,
@@ -515,7 +518,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                               return DialogBox(
                                 addons: addons,
                                 productName: widget.details.name,
-                                buttonName: "Add To Cart",
+                                buttonName: "Proceed",
                                 voidCallback: () {
                                   func.additem({
                                     "name": name,
@@ -630,7 +633,6 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
 
   Future bottomSheet() {
     return showModalBottomSheet(
-      // backgroundColor: Colors.red,
       elevation: 20,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
@@ -646,13 +648,6 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
               decoration: BoxDecoration(
                 color: Color.fromRGBO(143, 93, 58, 0.8),
                 borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-                // boxShadow: [
-                //   BoxShadow(
-                //       color: Color.fromRGBO(143, 93, 58, 1),
-                //       offset: Offset(0, 5),
-                //       blurRadius: 5,
-                //       spreadRadius: 3)
-                // ],
               ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 150),
@@ -722,8 +717,8 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                   ),
                   ElevatedButton.icon(
                     onPressed: () {
+                      Navigator.of(context).pop();
                       Navigator.pushNamed(context, '/home');
-                      // Navigator.of(context).pop();
                     },
                     style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
@@ -753,143 +748,4 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
       },
     );
   }
-
-  //------------------------>(ALERT DIALOG)
-
-  // Widget dialog(String buttonName, VoidCallback voidCallback) {
-  //   bool? isChecked = false;
-  //   return AlertDialog(
-  //     insetPadding: EdgeInsets.all(20),
-  //     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-  //     content: StatefulBuilder(builder: (context, setState) {
-  //       return Container(
-  //         width: double.maxFinite,
-  //         child: Column(
-  //           mainAxisSize: MainAxisSize.min,
-  //           crossAxisAlignment: CrossAxisAlignment.start,
-  //           children: [
-  //             Text(
-  //               "Addons",
-  //               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-  //             ),
-  //             SizedBox(
-  //               height: 10,
-  //             ),
-  //             ListView.builder(
-  //               shrinkWrap: true,
-  //               itemCount: addons.length,
-  //               itemBuilder: (context, index) {
-  //                 var addon = addons[index];
-  //                 var addonsName = addon.addonsName;
-  //                 var price = addon.price;
-  //                 return Padding(
-  //                   padding: const EdgeInsets.all(3),
-  //                   child: CheckboxListTile(
-  //                     shape: RoundedRectangleBorder(
-  //                         borderRadius: BorderRadius.circular(10)),
-  //                     tileColor: Colors.grey.withOpacity(0.4),
-  //                     checkboxShape: RoundedRectangleBorder(
-  //                         borderRadius: BorderRadius.circular(4)),
-  //                     side: BorderSide(
-  //                         color: Color.fromRGBO(168, 93, 38, 1), width: 2),
-  //                     value: isChecked,
-  //                     onChanged: (bool? newValue) {
-  //                       setState(() {
-  //                         isChecked = newValue;
-  //                       });
-  //                     },
-  //                     title: Text(
-  //                       addonsName,
-  //                       style: TextStyle(
-  //                           fontSize: 18,
-  //                           fontWeight: FontWeight.bold,
-  //                           color: Color.fromRGBO(168, 93, 38, 1)),
-  //                     ),
-  //                     subtitle: Text(
-  //                       "\$ $price",
-  //                       style: TextStyle(
-  //                           fontSize: 17, fontWeight: FontWeight.bold),
-  //                     ),
-  //                     activeColor: Color.fromRGBO(168, 93, 38, 1),
-  //                     checkColor: Colors.white,
-  //                   ),
-  //                 );
-  //               },
-  //             ),
-  //             Divider(
-  //               color: Colors.black,
-  //               thickness: 3,
-  //             ),
-  //             Container(
-  //               // height: 82,
-  //               width: double.maxFinite,
-  //               decoration: BoxDecoration(
-  //                   color: Colors.black.withOpacity(0.7),
-  //                   borderRadius: BorderRadius.circular(10)),
-  //               child: Padding(
-  //                 padding: const EdgeInsets.all(12),
-  //                 child: Row(
-  //                   children: [
-  //                     Container(
-  //                       width: 170,
-  //                       child: Column(
-  //                         crossAxisAlignment: CrossAxisAlignment.start,
-  //                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-  //                         children: [
-  //                           Text(
-  //                             "CURRENT ITEM",
-  //                             style: TextStyle(
-  //                                 fontSize: 11,
-  //                                 color: Colors.white60,
-  //                                 letterSpacing: 0.8),
-  //                           ),
-  //                           SizedBox(height: 5),
-  //                           Text(
-  //                             widget.details.name,
-  //                             style: TextStyle(
-  //                                 fontSize: 18,
-  //                                 color: Colors.white,
-  //                                 fontWeight: FontWeight.bold),
-  //                           ),
-  //                           Text(
-  //                             "price",
-  //                             style:
-  //                                 TextStyle(fontSize: 16, color: Colors.white),
-  //                           )
-  //                         ],
-  //                       ),
-  //                     ),
-  //                     Container(
-  //                         width: 129,
-  //                         child: Center(
-  //                           child: ElevatedButton(
-  //                               style: ButtonStyle(
-  //                                 fixedSize:
-  //                                     MaterialStateProperty.all(Size(130, 50)),
-  //                                 elevation: MaterialStatePropertyAll(6),
-  //                                 backgroundColor: MaterialStateProperty.all(
-  //                                     Color.fromRGBO(168, 93, 38, 1)),
-  //                                 shape: MaterialStateProperty.all(
-  //                                     RoundedRectangleBorder(
-  //                                   borderRadius: BorderRadius.circular(10),
-  //                                 )),
-  //                               ),
-  //                               onPressed: voidCallback,
-  //                               child: Text(
-  //                                 buttonName,
-  //                                 style: TextStyle(
-  //                                     fontSize: 16,
-  //                                     fontWeight: FontWeight.bold),
-  //                               )),
-  //                         ))
-  //                   ],
-  //                 ),
-  //               ),
-  //             )
-  //           ],
-  //         ),
-  //       );
-  //     }),
-  //   );
-  // }
 }

@@ -42,6 +42,7 @@ class _PopularDetailsPageState extends State<PopularDetailsPage> {
       body: DetailsPageWidget(
         details: widget.popular,
         fetchProducts: offers,
+        nextPage: '/offerspage',
       ),
     );
   }
