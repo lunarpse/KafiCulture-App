@@ -6,13 +6,13 @@
         "rating": "3.0",
         "totalRatings": "17",
         "image": "Americano w Creme",
-        "price":"20.0",
+        "price":20.0,
         "discount":"50",
-        "offerPrice": "10.0",
+        "offerPrice": 10.0,
         "veg":"veg",
         "category": "Coffee",
-        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}],
-        "size":{"sizeName1":"1","sizeName2":"2","sizeName3":"3"}
+        "addons":[{"addonsName":"Oat Milk","price":1.58},{"addonsName":"Soy Milk","price":2.23},{"addonsName":"Almond milk","price":3.54}],
+        "size":{"sizeName1":"Tall","sizeName2":"Grande","sizeName3":"Venti"}
     },
     {
         "id": 2,
@@ -21,13 +21,13 @@
         "rating": "4.0",
         "totalRatings": "45",
         "image": "hot_choc",
-        "price": "10.0",
+        "price": 10.0,
         "discount":"25",
-        "offerPrice": "7.50",
+        "offerPrice": 7.50,
         "veg":"veg",
         "category": "Coffee",
-        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}],
-        "size":{"sizeName1":"1","sizeName2":"2","sizeName3":"3"}
+        "addons":[{"addonsName":"Oat Milk","price":1.58},{"addonsName":"Soy Milk","price":2.23},{"addonsName":"Almond milk","price":3.54}],
+        "size":{"sizeName1":"Tall","sizeName2":"Grande","sizeName3":"Venti"}
     },
     {
         "id": 3,
@@ -36,12 +36,13 @@
         "rating": "3.5",
         "totalRatings": "34",
         "image": "cap_coffee",
-        "price": "12",
+        "price": 12.0,
         "discount":"60",
-        "offerPrice": "4.8",
+        "offerPrice": 4.8,
         "veg":"veg",
         "category": "Coffee",
-        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
+        "addons":[{"addonsName":"Oat Milk","price":1.58},{"addonsName":"Soy Milk","price":2.23},{"addonsName":"Almond milk","price":3.54}],
+        "size":{"sizeName1":"Tall","sizeName2":"Grande","sizeName3":"Venti"}
     },
     {
         "id": 4,
@@ -50,12 +51,13 @@
         "rating": "4.0",
         "totalRatings": "24",
         "image": "es_coffee",
-        "price": "15.0",
+        "price": 15.0,
         "discount":"20",
-        "offerPrice": "12.0",
+        "offerPrice": 12.0,
         "veg":"veg",
         "category": "Coffee",
-        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
+        "addons":[{"addonsName":"Oat Milk","price":1.58},{"addonsName":"Soy Milk","price":2.23},{"addonsName":"Almond milk","price":3.54}],
+        "size":{"sizeName1":"Tall","sizeName2":"Grande","sizeName3":"Venti"}
     },
     {
         "id": 5,
@@ -64,12 +66,13 @@
         "rating": "4.5",
         "totalRatings": "38",
         "image": "Latte",
-        "price": "10",
+        "price": 10.0,
         "discount":"25",
-        "offerPrice": "7.5",
+        "offerPrice": 7.5,
         "veg":"veg",
         "category": "Coffee",
-        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]        
+        "addons":[{"addonsName":"Oat Milk","price":1.58},{"addonsName":"Soy Milk","price":2.23},{"addonsName":"Almond milk","price":3.54}],
+        "size":{"sizeName1":"Tall","sizeName2":"Grande","sizeName3":"Venti"}       
     },
     {
         "id": 6,
@@ -78,11 +81,12 @@
         "rating": "4.8",
         "totalRatings": "48",
         "image": "filter_coffee",
-        "price": "5.0",
+        "price": 5.0,
         "discount":"10",
-        "offerPrice": "4.5",
+        "offerPrice": 4.5,
         "veg":"veg",
         "category": "Coffee",
-        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
+        "addons":[{"addonsName":"Oat Milk","price":1.58},{"addonsName":"Soy Milk","price":2.23},{"addonsName":"Almond milk","price":3.54}],
+        "size":{"sizeName1":"Tall","sizeName2":"Grande","sizeName3":"Venti"}
     }
 ]

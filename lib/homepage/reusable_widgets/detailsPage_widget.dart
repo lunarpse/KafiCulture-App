@@ -7,15 +7,18 @@ import 'package:readmore/readmore.dart';
 import 'background_container_widget.dart';
 import 'package:project_2/cart/riverpod/state_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'dialog_box.dart';
 
 class DetailsPageWidget extends ConsumerStatefulWidget {
   const DetailsPageWidget(
-      {super.key, required this.details, required this.fetchProducts});
+      {super.key,
+      required this.details,
+      required this.fetchProducts,
+      required this.nextPage});
 
   final details;
   final fetchProducts;
+  final nextPage;
 
   @override
   ConsumerState<DetailsPageWidget> createState() => _DetailsPageState();
@@ -39,28 +42,36 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
     final name = widget.details.name;
     final description = widget.details.description;
 
-    // final price = widget.details.price;
-
     final price1 = selectedIndex == 0
-        ? double.parse(widget.details.price)
+        ? widget.details.price
         : selectedIndex == 1
-            ? double.parse(widget.details.price) * 2
-            : double.parse(widget.details.price) * 3;
-    final price = quantity * price1;
+            ? double.parse((widget.details.price * 2).toStringAsFixed(2))
+            : double.parse((widget.details.price * 3).toStringAsFixed(2));
+
+    final price = double.parse((quantity * price1).toStringAsFixed(2));
 
     final offerPrice1 = selectedIndex == 0
-        ? double.parse(widget.details.offerPrice)
+        ? widget.details.offerPrice
         : selectedIndex == 1
-            ? double.parse(widget.details.offerPrice) * 2
-            : double.parse(widget.details.offerPrice) * 3;
-    final offerPrice = quantity * offerPrice1;
+            ? double.parse((widget.details.offerPrice * 2).toStringAsFixed(2))
+            : double.parse((widget.details.offerPrice * 3).toStringAsFixed(2));
+
+    final offerPrice =
+        double.parse((quantity * offerPrice1).toStringAsFixed(2));
 
     final discount = widget.details.discount;
     final rating = widget.details.rating;
     final totalRatings = widget.details.totalRatings;
+    final sizeName1 = widget.details.size.sizeName1;
+    final sizeName2 = widget.details.size.sizeName2;
+    final sizeName3 = widget.details.size.sizeName3;
 
     addons = widget.details.addons;
+
     return BackgroundContainerWidget(
+      opacity: 0.6,
+      x: 8.0,
+      y: 8.0,
       child: Padding(
         padding: EdgeInsets.only(left: 10, top: 10, right: 10),
         child: Container(
@@ -304,9 +315,9 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  _buildSizeButton('S', 0),
-                                  _buildSizeButton('M', 1),
-                                  _buildSizeButton('L', 2)
+                                  _buildSizeButton(sizeName1, 0, "(354 ML)"),
+                                  _buildSizeButton(sizeName2, 1, "(473 ML)"),
+                                  _buildSizeButton(sizeName3, 2, "(591 ML)")
                                 ],
                               ),
                             ),
@@ -324,12 +335,12 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                               child: GridView.builder(
                                 scrollDirection: Axis.horizontal,
                                 physics: BouncingScrollPhysics(),
-                                itemCount: widget.fetchProducts.length,
                                 gridDelegate:
                                     SliverGridDelegateWithFixedCrossAxisCount(
                                         crossAxisCount: 1,
                                         mainAxisSpacing: 5,
                                         mainAxisExtent: 160),
+                                itemCount: widget.fetchProducts.length,
                                 itemBuilder: (context, index) {
                                   var fetchProduct =
                                       widget.fetchProducts[index];
@@ -340,86 +351,93 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                   final offerPrice = fetchProduct.offerPrice;
                                   final discount = fetchProduct.discount;
 
-                                  return Card(
-                                    elevation: 10,
-                                    shadowColor: Colors.grey,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          height: 115,
-                                          child: ClipRRect(
-                                            borderRadius: BorderRadius.vertical(
-                                                top: Radius.circular(10)),
-                                            child: Image.asset(
-                                              'assets/images/$image.jpg',
-                                              fit: BoxFit.cover,
+                                  return InkWell(
+                                    onTap: () => Navigator.pushNamed(
+                                        context, widget.nextPage,
+                                        arguments: fetchProduct),
+                                    child: Card(
+                                      elevation: 10,
+                                      shadowColor: Colors.grey,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            height: 115,
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.vertical(
+                                                      top: Radius.circular(10)),
+                                              child: Image.asset(
+                                                'assets/images/$image.jpg',
+                                                fit: BoxFit.cover,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        Container(
-                                          height: 67,
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 8, vertical: 4),
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                name,
-                                                style: TextStyle(
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    fontSize: 17,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                              Row(
-                                                children: [
-                                                  Icon(
-                                                    Icons.star,
-                                                    size: 17,
-                                                    color: Colors.orange,
-                                                  ),
-                                                  SizedBox(width: 3),
-                                                  Text(
-                                                    "$rating ($totalRating)",
-                                                    style: TextStyle(
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                ],
-                                              ),
-                                              Row(
-                                                children: [
-                                                  Text(
-                                                    "\$ $offerPrice ",
-                                                    style: TextStyle(
-                                                        fontSize: 15,
-                                                        fontWeight:
-                                                            FontWeight.w500),
-                                                  ),
-                                                  Text(
-                                                    "($discount% Off)",
-                                                    style: TextStyle(
-                                                        fontSize: 13.5,
-                                                        color: Colors.orange,
-                                                        fontWeight:
-                                                            FontWeight.w900),
-                                                  ),
-                                                ],
-                                              )
-                                            ],
-                                          ),
-                                        )
-                                      ],
+                                          Container(
+                                            height: 67,
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 8, vertical: 4),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  name,
+                                                  style: TextStyle(
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      fontSize: 17,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Icon(
+                                                      Icons.star,
+                                                      size: 17,
+                                                      color: Colors.orange,
+                                                    ),
+                                                    SizedBox(width: 3),
+                                                    Text(
+                                                      "$rating ($totalRating)",
+                                                      style: TextStyle(
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Text(
+                                                      "\$ $offerPrice ",
+                                                      style: TextStyle(
+                                                          fontSize: 15,
+                                                          fontWeight:
+                                                              FontWeight.w500),
+                                                    ),
+                                                    Text(
+                                                      "($discount% Off)",
+                                                      style: TextStyle(
+                                                          fontSize: 13.5,
+                                                          color: Colors.orange,
+                                                          fontWeight:
+                                                              FontWeight.w900),
+                                                    ),
+                                                  ],
+                                                )
+                                              ],
+                                            ),
+                                          )
+                                        ],
+                                      ),
                                     ),
                                   );
                                 },
@@ -500,7 +518,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                               return DialogBox(
                                 addons: addons,
                                 productName: widget.details.name,
-                                buttonName: "Add To Cart",
+                                buttonName: "Proceed",
                                 voidCallback: () {
                                   func.additem({
                                     "name": name,
@@ -549,7 +567,11 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
     );
   }
 
-  Widget _buildSizeButton(String title, int index) {
+  Widget _buildSizeButton(
+    String title,
+    int index,
+    String sizename,
+  ) {
     return GestureDetector(
       onTap: () {
         setState(() {
@@ -557,8 +579,18 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
         });
       },
       child: Container(
-        height: 40,
-        width: 100,
+        height: widget.details.category == "Snacks"
+            ? 40
+            : widget.details.category == "Cookies"
+                ? 40
+                : 48,
+        width: widget.details.category == "Snacks"
+            ? 105
+            : widget.details.category == "Cookies"
+                ? 105
+                : 110,
+        // height: 40,
+        // width: 105,
         decoration: BoxDecoration(
             color: index == selectedIndex
                 ? Color.fromRGBO(143, 93, 58, 1)
@@ -567,18 +599,33 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
             border: index == selectedIndex
                 ? Border.all(color: Colors.brown.shade900, width: 2)
                 : Border.all(color: Color.fromRGBO(143, 93, 58, 1), width: 2)),
-        child: Center(
-          child: Text(
-            title,
-            style: TextStyle(
-                color: index == selectedIndex
-                    ? Colors.white
-                    : Color.fromRGBO(143, 93, 58, 1),
-                fontSize: 16,
-                fontWeight: index == selectedIndex
-                    ? FontWeight.normal
-                    : FontWeight.bold),
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              title,
+              style: TextStyle(
+                  color: index == selectedIndex
+                      ? Colors.white
+                      : Color.fromRGBO(143, 93, 58, 1),
+                  fontSize: 17,
+                  fontWeight: index == selectedIndex
+                      ? FontWeight.normal
+                      : FontWeight.bold),
+            ),
+            if (widget.details.category == "Coffee")
+              Text(
+                sizename,
+                style: TextStyle(
+                    color: index == selectedIndex
+                        ? Colors.white
+                        : Color.fromRGBO(143, 93, 58, 1),
+                    fontSize: 12,
+                    fontWeight: index == selectedIndex
+                        ? FontWeight.normal
+                        : FontWeight.bold),
+              ),
+          ],
         ),
       ),
     );
@@ -586,7 +633,6 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
 
   Future bottomSheet() {
     return showModalBottomSheet(
-      // backgroundColor: Colors.red,
       elevation: 20,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
@@ -602,13 +648,6 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
               decoration: BoxDecoration(
                 color: Color.fromRGBO(143, 93, 58, 0.8),
                 borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-                // boxShadow: [
-                //   BoxShadow(
-                //       color: Color.fromRGBO(143, 93, 58, 1),
-                //       offset: Offset(0, 5),
-                //       blurRadius: 5,
-                //       spreadRadius: 3)
-                // ],
               ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 150),
@@ -678,8 +717,8 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                   ),
                   ElevatedButton.icon(
                     onPressed: () {
+                      Navigator.of(context).pop();
                       Navigator.pushNamed(context, '/home');
-                      // Navigator.of(context).pop();
                     },
                     style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
@@ -709,143 +748,4 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
       },
     );
   }
-
-  //------------------------>(ALERT DIALOG)
-
-  // Widget dialog(String buttonName, VoidCallback voidCallback) {
-  //   bool? isChecked = false;
-  //   return AlertDialog(
-  //     insetPadding: EdgeInsets.all(20),
-  //     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-  //     content: StatefulBuilder(builder: (context, setState) {
-  //       return Container(
-  //         width: double.maxFinite,
-  //         child: Column(
-  //           mainAxisSize: MainAxisSize.min,
-  //           crossAxisAlignment: CrossAxisAlignment.start,
-  //           children: [
-  //             Text(
-  //               "Addons",
-  //               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-  //             ),
-  //             SizedBox(
-  //               height: 10,
-  //             ),
-  //             ListView.builder(
-  //               shrinkWrap: true,
-  //               itemCount: addons.length,
-  //               itemBuilder: (context, index) {
-  //                 var addon = addons[index];
-  //                 var addonsName = addon.addonsName;
-  //                 var price = addon.price;
-  //                 return Padding(
-  //                   padding: const EdgeInsets.all(3),
-  //                   child: CheckboxListTile(
-  //                     shape: RoundedRectangleBorder(
-  //                         borderRadius: BorderRadius.circular(10)),
-  //                     tileColor: Colors.grey.withOpacity(0.4),
-  //                     checkboxShape: RoundedRectangleBorder(
-  //                         borderRadius: BorderRadius.circular(4)),
-  //                     side: BorderSide(
-  //                         color: Color.fromRGBO(168, 93, 38, 1), width: 2),
-  //                     value: isChecked,
-  //                     onChanged: (bool? newValue) {
-  //                       setState(() {
-  //                         isChecked = newValue;
-  //                       });
-  //                     },
-  //                     title: Text(
-  //                       addonsName,
-  //                       style: TextStyle(
-  //                           fontSize: 18,
-  //                           fontWeight: FontWeight.bold,
-  //                           color: Color.fromRGBO(168, 93, 38, 1)),
-  //                     ),
-  //                     subtitle: Text(
-  //                       "\$ $price",
-  //                       style: TextStyle(
-  //                           fontSize: 17, fontWeight: FontWeight.bold),
-  //                     ),
-  //                     activeColor: Color.fromRGBO(168, 93, 38, 1),
-  //                     checkColor: Colors.white,
-  //                   ),
-  //                 );
-  //               },
-  //             ),
-  //             Divider(
-  //               color: Colors.black,
-  //               thickness: 3,
-  //             ),
-  //             Container(
-  //               // height: 82,
-  //               width: double.maxFinite,
-  //               decoration: BoxDecoration(
-  //                   color: Colors.black.withOpacity(0.7),
-  //                   borderRadius: BorderRadius.circular(10)),
-  //               child: Padding(
-  //                 padding: const EdgeInsets.all(12),
-  //                 child: Row(
-  //                   children: [
-  //                     Container(
-  //                       width: 170,
-  //                       child: Column(
-  //                         crossAxisAlignment: CrossAxisAlignment.start,
-  //                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-  //                         children: [
-  //                           Text(
-  //                             "CURRENT ITEM",
-  //                             style: TextStyle(
-  //                                 fontSize: 11,
-  //                                 color: Colors.white60,
-  //                                 letterSpacing: 0.8),
-  //                           ),
-  //                           SizedBox(height: 5),
-  //                           Text(
-  //                             widget.details.name,
-  //                             style: TextStyle(
-  //                                 fontSize: 18,
-  //                                 color: Colors.white,
-  //                                 fontWeight: FontWeight.bold),
-  //                           ),
-  //                           Text(
-  //                             "price",
-  //                             style:
-  //                                 TextStyle(fontSize: 16, color: Colors.white),
-  //                           )
-  //                         ],
-  //                       ),
-  //                     ),
-  //                     Container(
-  //                         width: 129,
-  //                         child: Center(
-  //                           child: ElevatedButton(
-  //                               style: ButtonStyle(
-  //                                 fixedSize:
-  //                                     MaterialStateProperty.all(Size(130, 50)),
-  //                                 elevation: MaterialStatePropertyAll(6),
-  //                                 backgroundColor: MaterialStateProperty.all(
-  //                                     Color.fromRGBO(168, 93, 38, 1)),
-  //                                 shape: MaterialStateProperty.all(
-  //                                     RoundedRectangleBorder(
-  //                                   borderRadius: BorderRadius.circular(10),
-  //                                 )),
-  //                               ),
-  //                               onPressed: voidCallback,
-  //                               child: Text(
-  //                                 buttonName,
-  //                                 style: TextStyle(
-  //                                     fontSize: 16,
-  //                                     fontWeight: FontWeight.bold),
-  //                               )),
-  //                         ))
-  //                   ],
-  //                 ),
-  //               ),
-  //             )
-  //           ],
-  //         ),
-  //       );
-  //     }),
-  //   );
-  // }
 }

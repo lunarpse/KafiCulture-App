@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-
 import '../model/json_model.dart';
 
 class DialogBox extends StatelessWidget {
@@ -20,7 +19,8 @@ class DialogBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool? isChecked = false;
+    int? checkedIndex;
+    double totalPrice = finalPrice;
     return AlertDialog(
         insetPadding: EdgeInsets.all(20),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -55,10 +55,17 @@ class DialogBox extends StatelessWidget {
                             borderRadius: BorderRadius.circular(4)),
                         side: BorderSide(
                             color: Color.fromRGBO(168, 93, 38, 1), width: 2),
-                        value: isChecked,
+                        value: checkedIndex == index,
                         onChanged: (bool? newValue) {
                           setState(() {
-                            isChecked = newValue;
+                            if (newValue!) {
+                              checkedIndex = index;
+                              totalPrice = double.parse(
+                                  (finalPrice + price).toStringAsFixed(2));
+                            } else {
+                              checkedIndex = null;
+                              totalPrice = finalPrice;
+                            }
                           });
                         },
                         title: Text(
@@ -115,7 +122,7 @@ class DialogBox extends StatelessWidget {
                                     fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                "$finalPrice",
+                                totalPrice.toString(),
                                 style: TextStyle(
                                     fontSize: 16, color: Colors.white),
                               )

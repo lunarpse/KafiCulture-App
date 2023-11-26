@@ -6,40 +6,43 @@
         "rating": "3.5",
         "totalRatings": "34",
         "image": "cap_coffee",
-        "price": "12.0",
+        "price": 12.0,
         "discount":"60",
-        "offerPrice": "4.8",
+        "offerPrice": 4.8,
         "veg":"veg",
         "category": "Coffee",
-        "addons":[{"addonsName":"Oat Milk","price":"1.58"},{"addonsName":"Soy Milk","price":"2.23"}]
+        "addons":[{"addonsName":"Oat Milk","price":1.58},{"addonsName":"Soy Milk","price":2.23},{"addonsName":"Almond milk","price":3.54}],
+        "size":{"sizeName1":"Tall","sizeName2":"Grande","sizeName3":"Venti"}
     },
     {
         "id": 2,
         "name": "Bruschetta",
-        "description": " Grilled bread rubbed with garlic and topped with olive oil and salt. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection.",
+        "description": "Grilled bread rubbed with garlic and topped with olive oil and salt. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection.",
         "rating": "4.0",
         "totalRatings": "45",
         "image": "Bruschetta_snacks",
-        "price": "15.0",
+        "price": 15.0,
         "discount":"35",
-        "offerPrice": "9.75",
+        "offerPrice": 9.75,
         "veg":"veg",
         "category": "Snacks",
-        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
+        "addons":[{"addonsName":" Extra Cheese","price":2.0},{"addonsName":"Paneer Toppings","price":4.0}],
+        "size":{"sizeName1":"Mini","sizeName2":"Regular","sizeName3":"Jumbo"}
     },
     {
         "id": 3,
-        "name": "Wallnut Cookie",
-        "description": " Grilled bread rubbed with garlic and topped with olive oil and salt. Discover the artistry of flavors, where every bite is a celebration of gastronomic perfection.",
-        "rating": "4.0",
-        "totalRatings": "45",
+        "name": "Wallnut Cookies",
+        "description": "Espresso shots topped with hot water create a light layer of cream culminating in this wonderfully rich cup with depth and nuance",
+        "rating": "3.0",
+        "totalRatings": "17",
         "image": "wallnut_cookies",
-        "price":"50.0",
+        "price":50.0,
         "discount":"18",
-        "offerPrice": "36.0",
+        "offerPrice": 36.0,
         "veg":"veg",
         "category": "Cookies",
-        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
+        "addons":[{"addonsName":"1","price":2.0},{"addonsName":"2","price":4.0}],
+        "size":{"sizeName1":"Bite Size","sizeName2":"Standard","sizeName3":"Giant"}  
     },
     {
         "id": 4,
@@ -48,12 +51,13 @@
         "rating": "3.0",
         "totalRatings": "17",
         "image": "Americano w Creme",
-        "price":"20.0",
+        "price":20.0,
         "discount":"50",
-        "offerPrice": "10.0",
+        "offerPrice": 10.0,
         "veg":"veg",
         "category": "Coffee",
-        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
+        "addons":[{"addonsName":"Oat Milk","price":1.58},{"addonsName":"Soy Milk","price":2.23},{"addonsName":"Almond milk","price":3.54}],
+        "size":{"sizeName1":"Tall","sizeName2":"Grande","sizeName3":"Venti"}
     },
     {
         "id": 5,
@@ -62,26 +66,28 @@
         "rating": "3.5",
         "totalRatings": "34",
         "image": "Scone_snacks",
-        "price": "7.0",
+        "price": 7.0,
         "discount":"30",
-        "offerPrice": "4.9",
+        "offerPrice": 4.9,
         "veg":"veg",
         "category": "Snacks",
-        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
+        "addons":[{"addonsName":"clotted cream","price":1.8},{"addonsName":"Strawberry jam","price":1.5}],
+        "size":{"sizeName1":"Mini","sizeName2":"Regular","sizeName3":"Jumbo"}
     },
     {
         "id": 6,
-        "name": "Oatmeal Cookie",
-        "description": "A scone is a traditional British baked good, popular in the United Kingdom and Ireland. Discover the artistry of flavors, where every bite is a gastronomic perfection.",
-        "rating": "3.5",
-        "totalRatings": "34",
+        "name": "Oatmeal Cookies",
+        "description": "A melange of spices, chutney, crunchy vada, yoghurt and freshly chopped coriander. Discover the artistry of flavors, where every bite is a gastronomic perfection.",
+        "rating": "4.5",
+        "totalRatings": "38",
         "image": "oatmeal_cookies",
-        "price": "7.4",
+        "price": 7.4,
         "discount":"15",
-        "offerPrice": "6.29",
+        "offerPrice": 6.29,
         "veg":"veg",
         "category": "Cookies",
-        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
+        "addons":[{"addonsName":"1","price":2.0},{"addonsName":"2","price":4.0}],
+        "size":{"sizeName1":"Bite Size","sizeName2":"Standard","sizeName3":"Giant"}           
     }
     
 ]

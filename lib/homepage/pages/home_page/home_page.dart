@@ -20,6 +20,9 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppbarWidget(),
       body: BackgroundContainerWidget(
+        opacity: 0.7,
+        x: 2.0,
+        y: 2.0,
         child: ListView(
           padding: EdgeInsets.only(left: 5, right: 5, bottom: 10),
           children: [
