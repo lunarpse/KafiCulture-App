@@ -22,7 +22,7 @@ class CartItems extends StateNotifier<List> {
           // "price":double.parse(double.parse(data["price"]).toStringAsFixed(2)),
           // "cost":double.parse(double.parse(data["price"]).toStringAsFixed(2)),
           "cost": double.parse(data["price"].toStringAsFixed(2)),
-          "quantity": 1
+          "quantity": data["quantity"]
         }
       ];
     }

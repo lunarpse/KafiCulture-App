@@ -8,13 +8,13 @@ class DialogBox extends StatelessWidget {
     super.key,
     required this.productName,
     required this.buttonName,
-    required this.voidCallback,
+    required this.call,
     required this.addons,
     required this.finalPrice,
   });
 
   final productName, buttonName, finalPrice;
-  final VoidCallback voidCallback;
+  final Function call;
   final List<AddonModel> addons;
 
   @override
@@ -144,7 +144,10 @@ class DialogBox extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(10),
                                     )),
                                   ),
-                                  onPressed: voidCallback,
+                                  onPressed: () {
+                                    print("dialog $totalPrice");
+                                    call(totalPrice);
+                                  },
                                   child: Text(
                                     buttonName,
                                     style: TextStyle(

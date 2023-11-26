@@ -475,11 +475,12 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                               builder: (context) => DialogBox(
                                     productName: widget.details.name,
                                     buttonName: "Pay Now",
-                                    voidCallback: () {
+                                    call: (value) {
                                       func.additem({
                                         "name": name,
                                         "image": "assets/images/$image.jpg",
-                                        "price": offerPrice
+                                        "price": value,
+                                        "quantity": quantity
                                       });
                                       Navigator.of(context).pop();
                                       Navigator.pushNamed(context, '/payment');
@@ -519,11 +520,12 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                 addons: addons,
                                 productName: widget.details.name,
                                 buttonName: "Proceed",
-                                voidCallback: () {
+                                call: (value) {
                                   func.additem({
                                     "name": name,
                                     "image": "assets/images/$image.jpg",
-                                    "price": price
+                                    "price": value,
+                                    "quantity": quantity
                                   });
                                   Navigator.of(context).pop();
                                   bottomSheet();
