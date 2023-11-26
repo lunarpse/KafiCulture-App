@@ -549,13 +549,17 @@ class _PaymentAppState extends ConsumerState {
 
               //--------------------------------------------------newSwap
 
-              //-----------------------------------------------SWAP
-
               const Divider(
                 height: 25,
                 color: Colors.black,
               ),
-
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Other Payment Method ',
+                  style: TextStyle(fontSize: 23, fontWeight: FontWeight.w500),
+                ),
+              ),
               //---------------------------------------------UPI
 
               const SizedBox(height: 10),
