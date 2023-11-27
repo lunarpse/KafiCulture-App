@@ -11,7 +11,7 @@
         "offerPrice": 8.0,
         "veg":"veg",
         "category": "Cookies",
-        "addons":[{"addonsName":"1","price":2.0},{"addonsName":"2","price":4.0}],
+        "addons":[{"addonsName":"Hazelnut Twist","price":1.0},{"addonsName":"Caramel Swirl","price":1.64}],
         "size":{"sizeName1":"Bite Size","sizeName2":"Standard","sizeName3":"Giant"}  
     },
     {
@@ -26,7 +26,7 @@
         "offerPrice": 6.29,
         "veg":"veg",
         "category": "Cookies",
-        "addons":[{"addonsName":"1","price":2.0},{"addonsName":"2","price":4.0}],
+        "addons":[{"addonsName":"Raisin Craze","price":1.23},{"addonsName":"Apple Cinnamon","price":2.0}],
         "size":{"sizeName1":"Bite Size","sizeName2":"Standard","sizeName3":"Giant"}           
     },
     {
@@ -41,7 +41,7 @@
         "offerPrice": 20.0,
         "veg":"veg",
         "category": "Cookies",
-        "addons":[{"addonsName":"1","price":2.0},{"addonsName":"2","price":4.0}],
+        "addons":[{"addonsName":"Mint Swirl","price":1.32},{"addonsName":"Cookies & Cream","price":2.1}],
         "size":{"sizeName1":"Bite Size","sizeName2":"Standard","sizeName3":"Giant"}  
     },
     {
@@ -56,7 +56,7 @@
         "offerPrice": 26.25,
         "veg":"veg",
         "category": "Cookies",
-        "addons":[{"addonsName":"1","price":2.0},{"addonsName":"2","price":4.0}],
+        "addons":[{"addonsName":"Coconut Bliss","price":2.3},{"addonsName":"Coffee Infusion","price":1.8}],
         "size":{"sizeName1":"Bite Size","sizeName2":"Standard","sizeName3":"Giant"}  
     },
     {
@@ -71,7 +71,7 @@
         "offerPrice": 36.0,
         "veg":"veg",
         "category": "Cookies",
-        "addons":[{"addonsName":"1","price":2.0},{"addonsName":"2","price":4.0}],
+        "addons":[{"addonsName":"Maple Crunch","price":1.6},{"addonsName":"Cinnamon Spice","price":2.4}],
         "size":{"sizeName1":"Bite Size","sizeName2":"Standard","sizeName3":"Giant"}  
     },
     {
@@ -86,7 +86,7 @@
         "offerPrice": 7.2,
         "veg":"veg",
         "category": "Cookies",
-        "addons":[{"addonsName":"1","price":2.0},{"addonsName":"2","price":4.0}],
+        "addons":[{"addonsName":"Almond Joy","price":2.8},{"addonsName":"Cranberry Burst","price":2.5}],
         "size":{"sizeName1":"Bite Size","sizeName2":"Standard","sizeName3":"Giant"}  
     }
     

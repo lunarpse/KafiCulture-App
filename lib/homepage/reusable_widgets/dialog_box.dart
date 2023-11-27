@@ -11,9 +11,10 @@ class DialogBox extends StatelessWidget {
     required this.call,
     required this.addons,
     required this.finalPrice,
+    required this.qty,
   });
 
-  final productName, buttonName, finalPrice;
+  final productName, buttonName, finalPrice, qty;
   final Function call;
   final List<AddonModel> addons;
 
@@ -21,6 +22,7 @@ class DialogBox extends StatelessWidget {
   Widget build(BuildContext context) {
     int? checkedIndex;
     double totalPrice = finalPrice;
+    var singlePrice = finalPrice / qty;
     return AlertDialog(
         insetPadding: EdgeInsets.all(20),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -146,7 +148,7 @@ class DialogBox extends StatelessWidget {
                                   ),
                                   onPressed: () {
                                     print("dialog $totalPrice");
-                                    call(totalPrice);
+                                    call(singlePrice);
                                   },
                                   child: Text(
                                     buttonName,

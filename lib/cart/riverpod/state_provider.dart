@@ -13,15 +13,14 @@ class CartItems extends StateNotifier<List> {
     if (present != null) {
       increase_quantity(present["name"]);
     } else {
+      final nc = data['price'] * data['quantity'];
       state = [
         ...state,
         {
           "name": data["name"],
           "icon": data["image"],
           "price": double.parse(data["price"].toStringAsFixed(2)),
-          // "price":double.parse(double.parse(data["price"]).toStringAsFixed(2)),
-          // "cost":double.parse(double.parse(data["price"]).toStringAsFixed(2)),
-          "cost": double.parse(data["price"].toStringAsFixed(2)),
+          "cost": double.parse(nc.toStringAsFixed(2)),
           "quantity": data["quantity"]
         }
       ];
