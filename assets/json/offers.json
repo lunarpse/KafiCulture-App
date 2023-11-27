@@ -41,7 +41,7 @@
         "offerPrice": 36.0,
         "veg":"veg",
         "category": "Cookies",
-        "addons":[{"addonsName":"Maple Crunch","price":2.0},{"addonsName":"Cinnamon Spice","price":4.0}],
+        "addons":[{"addonsName":"Maple Crunch","price":1.6},{"addonsName":"Cinnamon Spice","price":2.4}],
         "size":{"sizeName1":"Bite Size","sizeName2":"Standard","sizeName3":"Giant"}  
     },
     {
@@ -86,7 +86,7 @@
         "offerPrice": 6.29,
         "veg":"veg",
         "category": "Cookies",
-        "addons":[{"addonsName":"RaIsin Craze","price":2.0},{"addonsName":"Apple Cinnamon","price":4.0}],
+        "addons":[{"addonsName":"Raisin Craze","price":1.23},{"addonsName":"Apple Cinnamon","price":2.0}],
         "size":{"sizeName1":"Bite Size","sizeName2":"Standard","sizeName3":"Giant"}           
     }
     

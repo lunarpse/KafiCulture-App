@@ -473,6 +473,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                           showDialog(
                               context: context,
                               builder: (context) => DialogBox(
+                                    qty: quantity,
                                     productName: widget.details.name,
                                     buttonName: "Pay Now",
                                     call: (value) {
@@ -531,6 +532,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                   bottomSheet();
                                 },
                                 finalPrice: offerPrice,
+                                qty: quantity,
                               );
                             },
                           );

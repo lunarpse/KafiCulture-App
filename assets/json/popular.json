@@ -86,7 +86,7 @@
         "offerPrice": 26.25,
         "veg":"veg",
         "category": "Cookies",
-        "addons":[{"addonsName":"Coconut Bliss","price":2.0},{"addonsName":"Coffee Infusion","price":4.0}],
+        "addons":[{"addonsName":"Coconut Bliss","price":2.3},{"addonsName":"Coffee Infusion","price":1.8}],
         "size":{"sizeName1":"Bite Size","sizeName2":"Standard","sizeName3":"Giant"}  
     }
 ]
