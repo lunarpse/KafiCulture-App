@@ -8,7 +8,6 @@ class CardPayment extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ExpansionTile(
-        initiallyExpanded: true,
         title: Text("Debit/Credit card"),
         children: [
           CreditCardWidget(

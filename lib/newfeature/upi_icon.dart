@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:project_2/loading/loadingScreen.dart';
+import 'package:project_2/loading/loadingScreen.dart';
 
 class UpiIcon extends StatelessWidget {
   const UpiIcon(
@@ -15,7 +17,14 @@ class UpiIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushReplacementNamed(context, "/loading");
+        showDialog(
+          context: context,
+          builder: (context) {
+            return const LoadingScreen();
+          },
+        );
+
+        // Navigator.pushReplacementNamed(context, "/loading");
       },
       child: Container(
         height: height,
