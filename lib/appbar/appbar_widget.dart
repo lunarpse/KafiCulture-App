@@ -13,7 +13,7 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       automaticallyImplyLeading: false,
       flexibleSpace: Image.asset(
-        "assets/images/appbarbg2.jpg",
+        "assets/images/appbarbg4.jpg",
         fit: BoxFit.cover,
       ),
       title: GestureDetector(
