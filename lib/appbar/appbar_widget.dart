@@ -41,7 +41,10 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
                 ),
                 Text(
                   "Where every cup tells a story",
-                  style: TextStyle(fontSize: 13),
+                  style: TextStyle(
+                    fontFamily: 'Ephesis',
+                    fontSize: 20,
+                  ),
                 ),
               ],
             )
