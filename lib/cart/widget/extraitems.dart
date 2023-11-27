@@ -5,7 +5,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:project_2/cart/riverpod/state_provider.dart';
 
-
 class ExtraItems extends ConsumerWidget {
   const ExtraItems(
       {required this.price,
@@ -72,10 +71,8 @@ class ExtraItems extends ConsumerWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                      
-
                         Text(
-                          "\$ 34",
+                          "\$ $price",
                           style: TextStyle(
                             fontSize: 17,
                             color: Color.fromARGB(255, 15, 15, 14),
@@ -83,14 +80,15 @@ class ExtraItems extends ConsumerWidget {
                           ),
                         ),
                         MouseRegion(
-                          cursor:SystemMouseCursors.click,
+                          cursor: SystemMouseCursors.click,
                           child: IconButton(
-                            mouseCursor:SystemMouseCursors.grab,
+                            mouseCursor: SystemMouseCursors.grab,
                             onPressed: () {
                               ref.watch(CartProvider.notifier).additem({
                                 "name": name,
                                 "image": image,
-                                "price": price.toString()
+                                "price": price,
+                                "quantity": 1
                               });
                             },
                             icon: Icon(
