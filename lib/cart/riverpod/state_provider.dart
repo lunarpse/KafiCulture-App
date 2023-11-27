@@ -21,7 +21,8 @@ class CartItems extends StateNotifier<List> {
           "icon": data["image"],
           "price": double.parse(data["price"].toStringAsFixed(2)),
           "cost": double.parse(nc.toStringAsFixed(2)),
-          "quantity": data["quantity"]
+          "quantity": data["quantity"],
+          "addons": data['addon'] == null ? null : data['addon']
         }
       ];
     }

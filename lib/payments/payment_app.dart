@@ -44,13 +44,18 @@ class _PaymentAppState extends ConsumerState {
     double mediaWidth = MediaQuery.of(context).size.width;
 
     final data = ref.watch(CartProvider);
+    double addonprice = 0;
+    for (int i = 0; i < data.length; i++) {
+      addonprice +=
+          data[i]["addons"] == null ? 0 : data[i]["addons"]["addonprice"];
+    }
     double gst = ref.watch(TipProvider)["gst"];
 
     final tc =
         data.isNotEmpty ? data.map((e) => e["price"] * e["quantity"]) : [];
 
     final double subt = tc.length != 0
-        ? tc.reduce((value, element) => value + element) + gst
+        ? tc.reduce((value, element) => value + element) + gst + addonprice
         : 0;
 
     final amount = double.parse(subt.toStringAsFixed(2));

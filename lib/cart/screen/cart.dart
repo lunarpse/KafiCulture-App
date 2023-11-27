@@ -32,6 +32,12 @@ class _CartState extends ConsumerState<Cart> {
         ? data.map((e) => e["price"] * e["quantity"]).toList()
         : [];
 
+    double addonprice = 0;
+    for (int i = 0; i < data.length; i++) {
+      addonprice +=
+          data[i]["addons"] == null ? 0 : data[i]["addons"]["addonprice"];
+    }
+
     final subt =
         tc.length != 0 ? tc.reduce((value, element) => value + element) : 0;
     final gst = subt * 0.05;
@@ -109,7 +115,7 @@ class _CartState extends ConsumerState<Cart> {
                       //total cost review widget
                       Bottom(
                         gst: gst,
-                        subtotal: subt,
+                        subtotal: addonprice + subt,
                         tip: tipfee,
                       )
                     ],
