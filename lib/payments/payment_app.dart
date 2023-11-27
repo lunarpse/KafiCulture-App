@@ -13,6 +13,7 @@ import 'package:project_2/homepage/reusable_widgets/background_container_widget.
 
 import 'package:project_2/newfeature/card_payment.dart';
 import 'package:project_2/newfeature/company_name.dart';
+import 'package:project_2/newfeature/mypopUp.dart';
 import 'package:project_2/newfeature/payment_cart.dart';
 import 'package:project_2/newfeature/upi_payment.dart';
 
@@ -119,11 +120,12 @@ class _PaymentAppState extends ConsumerState {
                 title: Container(
                   alignment: Alignment.centerLeft,
                   decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(7)),
                       gradient: LinearGradient(colors: [
-                    Color.fromRGBO(255, 136, 102, 0.67),
-                    Color.fromRGBO(255, 221, 136, 0.28),
-                  ])),
-                  height: 50,
+                        Color.fromRGBO(255, 136, 102, 0.67),
+                        Color.fromRGBO(255, 221, 136, 0.28),
+                      ])),
+                  height: 60,
                   width: MediaQuery.of(context).size.width,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 0.0),
@@ -132,7 +134,7 @@ class _PaymentAppState extends ConsumerState {
                         children: [
                           Image.asset(
                             "assets/images/swap.png",
-                            height: 40,
+                            height: 50,
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
@@ -236,139 +238,26 @@ class _PaymentAppState extends ConsumerState {
                               showDialog(
                                 context: context,
                                 builder: (context) {
-                                  return Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(17)),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                          height: 200,
-                                          width: mediaWidth * 0.7,
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.only(
-                                                topLeft: Radius.circular(17),
-                                                topRight: Radius.circular(17)),
-                                            color:
-                                                Color.fromARGB(255, 130, 5, 5),
-                                          ),
-                                          child: Image.asset(
-                                              "assets/images/mistake.png"),
-                                        ),
-                                        Container(
-                                          height: 150,
-                                          width: mediaWidth * 0.7,
-                                          decoration: BoxDecoration(
-                                              color: Colors.white),
-                                          child: Scaffold(
-                                            body: Container(
-                                              decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.only(
-                                                    bottomLeft:
-                                                        Radius.circular(17),
-                                                    bottomRight:
-                                                        Radius.circular(17)),
-                                                // boxShadow: List.filled(
-                                                //     6,
-                                                //     BoxShadow(
-                                                //         color: Colors.black12)),
-                                              ),
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            8.0),
-                                                    child: Center(
-                                                      child: Text(
-                                                          "Warning : You used access Loyalty points then required",
-                                                          style: TextStyle(
-                                                              fontSize: 22,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold)),
-                                                    ),
-                                                  ),
-                                                  ElevatedButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              context),
-                                                      child: Text("Go Back"))
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  );
+                                  return MyPopUp(
+                                      bgcolor: Colors.red,
+                                      textMsg:
+                                          "Warning : You used access Loyalty points then required",
+                                      logo: "assets/images/mistake.png",
+                                      bottomHeight: 100);
                                 },
                               );
                             } else if (final_price == 0) {
+                              Navigator.pushNamed(context, "/loading");
                             } else {
                               showDialog(
                                 context: context,
                                 builder: (context) {
-                                  return Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(17)),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                          height: 200,
-                                          width: mediaWidth * 0.7,
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.only(
-                                                topLeft: Radius.circular(17),
-                                                topRight: Radius.circular(17)),
-                                            color: Colors.green,
-                                          ),
-                                          child: Image.asset(
-                                              "assets/images/smile.png"),
-                                        ),
-                                        Container(
-                                          height: 100,
-                                          width: mediaWidth * 0.7,
-                                          decoration: BoxDecoration(
-                                              color: Colors.white),
-                                          child: Scaffold(
-                                            body: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Center(
-                                                    child: Text(
-                                                        "Thanks for Using SWAP",
-                                                        style: TextStyle(
-                                                            fontSize: 22,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold)),
-                                                  ),
-                                                ),
-                                                ElevatedButton(
-                                                    onPressed: () {
-                                                      Navigator.pop(context);
-                                                    },
-                                                    child: Text(
-                                                        "Continue with UPI/Card"))
-                                              ],
-                                            ),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  );
+                                  return MyPopUp(
+                                      bgcolor: Colors.greenAccent,
+                                      textMsg:
+                                          "Thank you for using SWAP \n Continue with UPI/Card",
+                                      logo: "assets/images/smile.png",
+                                      bottomHeight: 100);
                                 },
                               );
 

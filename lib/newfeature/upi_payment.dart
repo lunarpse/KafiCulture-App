@@ -31,6 +31,7 @@ class _UPIPaymentState extends State<UPIPayment> {
       title: Container(
         alignment: Alignment.centerLeft,
         decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(7)),
           gradient: LinearGradient(
             colors: [
               Color.fromRGBO(255, 136, 102, 0.67),
@@ -38,22 +39,22 @@ class _UPIPaymentState extends State<UPIPayment> {
             ],
           ),
         ),
-        height: 50,
+        height: 60,
         width: MediaQuery.of(context).size.width,
         child: Image.asset(
-          "assets/images/swap.png",
+          "assets/images/upi.png",
           height: 40,
         ),
       ),
-      children: [
+      children: const [
         Padding(
-          padding: const EdgeInsets.only(left: 16, right: 16),
+          padding: EdgeInsets.only(left: 16, right: 16),
           child: Card(
             // color: const Color.fromARGB(255, 232, 78, 78),
             child: Column(
               // title: const Text("UPI"),
               children: [
-                const Row(
+                Row(
                   children: [
                     UpiIcon(
                         height: 85,

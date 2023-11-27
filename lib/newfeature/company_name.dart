@@ -105,7 +105,10 @@ class CompanyName extends StatelessWidget {
                     ],
                   ),
                 ),
-                child: Text("1USD=$points ITC Points"),
+                child: Text(
+                  "1USD=$points $companyName Points",
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                ),
               )
             ],
           ),
