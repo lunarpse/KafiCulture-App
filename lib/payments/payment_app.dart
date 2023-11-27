@@ -119,11 +119,10 @@ class _PaymentAppState extends ConsumerState {
                 title: Container(
                   alignment: Alignment.centerLeft,
                   decoration: BoxDecoration(
-                      color: Colors.amber,
                       gradient: LinearGradient(colors: [
-                        Color.fromRGBO(255, 136, 102, 0.67),
-                        Color.fromRGBO(255, 221, 136, 0.28),
-                      ])),
+                    Color.fromRGBO(255, 136, 102, 0.67),
+                    Color.fromRGBO(255, 221, 136, 0.28),
+                  ])),
                   height: 50,
                   width: MediaQuery.of(context).size.width,
                   child: Padding(
@@ -156,6 +155,8 @@ class _PaymentAppState extends ConsumerState {
                         companyName: "ITC International",
                         companyLogo: "assets/images/itc.png",
                         value: itcvalue,
+                        points: 5,
+                        factor: 0.2,
                         child: Slider(
                           divisions: 100,
                           label: " ${itcvalue.toString()}/100",
@@ -171,103 +172,13 @@ class _PaymentAppState extends ConsumerState {
                         ),
                       ),
 
-                      // Column(
-                      //   children: [
-                      //     Padding(
-                      //       padding: const EdgeInsets.only(
-                      //           top: 8.0, bottom: 8, right: 16, left: 16),
-                      //       child: Row(
-                      //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //         children: [
-                      //           Row(
-                      //             children: [
-                      //               Container(
-                      //                 height: 50,
-                      //                 width: 50,
-                      //                 decoration: BoxDecoration(
-                      //                     image: DecorationImage(
-                      //                         image: AssetImage(
-                      //                             "assets/images/itc.png"))),
-                      //               ),
-                      //               Text(
-                      //                 "ITC International",
-                      //                 style: TextStyle(
-                      //                     fontSize: 20,
-                      //                     fontWeight: FontWeight.bold),
-                      //               ),
-                      //             ],
-                      //           ),
-                      //           Container(
-                      //             width: 70,
-                      //             height: 30,
-                      //             decoration: BoxDecoration(
-                      //               gradient: LinearGradient(
-                      //                   colors: [Colors.white, Colors.white70]),
-                      //               border: Border.all(),
-                      //               boxShadow: [
-                      //                 BoxShadow(
-                      //                   color: Colors.grey,
-                      //                   blurRadius: 3.0, // soften the shadow
-                      //                   spreadRadius: 2.0, //extend the shadow
-                      //                 ),
-                      //               ],
-                      //             ),
-                      //             // color: Colors.white,
-                      //             child: Center(
-                      //               child: Text(
-                      //                 "\$ ${(itcvalue * 0.2).toStringAsFixed(2)}",
-                      //                 style: TextStyle(
-                      //                     fontSize: 18,
-                      //                     fontWeight: FontWeight.w600,
-                      //                     color: Colors.brown),
-                      //               ),
-                      //             ),
-                      //           ),
-                      //         ],
-                      //       ),
-                      //     ),
-                      //     SizedBox(
-                      //       // width: 250,
-                      //       child: Slider(
-                      //         divisions: 100,
-                      //         label: " ${itcvalue.toString()}/100",
-                      //         activeColor: Colors.black54,
-                      //         value: itcvalue.toDouble(),
-                      //         onChanged: (double newValue) {
-                      //           setState(() {
-                      //             itcvalue = newValue.round();
-                      //           });
-                      //         },
-                      //         min: 0,
-                      //         max: 100,
-                      //       ),
-                      //     ),
-                      //     Padding(
-                      //       padding: const EdgeInsets.only(left: 16),
-                      //       child: Row(
-                      //         children: [
-                      //           Container(
-                      //             decoration: BoxDecoration(
-                      //               gradient: LinearGradient(
-                      //                 colors: [
-                      //                   Colors.white,
-                      //                   Color.fromARGB(255, 229, 193, 159),
-                      //                 ],
-                      //               ),
-                      //             ),
-                      //             child: Text("1USD=5 ITC Points"),
-                      //           )
-                      //         ],
-                      //       ),
-                      //     )
-                      //   ],
-                      // ),
-
                       //                                                        H&M
                       CompanyName(
                         companyName: "H&M",
                         companyLogo: "assets/images/h&m.png",
                         value: handm_value,
+                        points: 100,
+                        factor: 0.01,
                         child: Slider(
                           divisions: 100,
                           label: " ${handm_value.toString()}/100",
@@ -289,6 +200,8 @@ class _PaymentAppState extends ConsumerState {
                         companyName: "Emirates",
                         companyLogo: "assets/images/air.png",
                         value: airvalue,
+                        points: 2,
+                        factor: 0.5,
                         child: Slider(
                           divisions: 100,
                           label: " ${airvalue.toString()}/100",

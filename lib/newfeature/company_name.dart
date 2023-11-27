@@ -6,11 +6,15 @@ class CompanyName extends StatelessWidget {
       required this.companyName,
       required this.companyLogo,
       required this.value,
-      required this.child});
+      required this.child,
+      required this.points,
+      required this.factor});
 
   final String companyName;
   final String companyLogo;
   final int value;
+  final int points;
+  final double factor;
 
   final Widget child;
 
@@ -60,7 +64,7 @@ class CompanyName extends StatelessWidget {
                 // color: Colors.white,
                 child: Center(
                   child: Text(
-                    "\$ ${(value * 0.2).toStringAsFixed(2)}",
+                    "\$ ${(value * factor).toStringAsFixed(2)}",
                     style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
@@ -101,7 +105,7 @@ class CompanyName extends StatelessWidget {
                     ],
                   ),
                 ),
-                child: Text("1USD=5 ITC Points"),
+                child: Text("1USD=$points ITC Points"),
               )
             ],
           ),
