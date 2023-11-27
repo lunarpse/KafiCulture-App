@@ -473,15 +473,20 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                           showDialog(
                               context: context,
                               builder: (context) => DialogBox(
-                                    qty: quantity,
                                     productName: widget.details.name,
                                     buttonName: "Pay Now",
-                                    call: (value) {
+                                    call: (aname, aprice) {
                                       func.additem({
                                         "name": name,
                                         "image": "assets/images/$image.jpg",
-                                        "price": value,
-                                        "quantity": quantity
+                                        "price": offerPrice / quantity,
+                                        "quantity": quantity,
+                                        "addon": aname == ""
+                                            ? null
+                                            : {
+                                                "addonname": aname,
+                                                "addonprice": aprice
+                                              }
                                       });
                                       Navigator.of(context).pop();
                                       Navigator.pushNamed(context, '/payment');
@@ -521,18 +526,24 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                 addons: addons,
                                 productName: widget.details.name,
                                 buttonName: "Proceed",
-                                call: (value) {
+                                call: (aname, aprice) {
                                   func.additem({
                                     "name": name,
                                     "image": "assets/images/$image.jpg",
-                                    "price": value,
-                                    "quantity": quantity
+                                    "price": offerPrice / quantity,
+                                    "quantity": quantity,
+                                    "addon": aname == ""
+                                        ? null
+                                        : {
+                                            "addonname": aname,
+                                            "addonprice": aprice
+                                          }
                                   });
                                   Navigator.of(context).pop();
                                   bottomSheet();
                                 },
                                 finalPrice: offerPrice,
-                                qty: quantity,
+                                // qty: quantity,
                               );
                             },
                           );
