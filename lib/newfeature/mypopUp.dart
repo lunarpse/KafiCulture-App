@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
@@ -21,6 +23,7 @@ class MyPopUp extends StatefulWidget {
 }
 
 class _MyPopUpState extends State<MyPopUp> {
+  @override
   void initState() {
     super.initState();
     Timer(Duration(seconds: 2), () {
