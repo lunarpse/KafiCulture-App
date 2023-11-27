@@ -41,7 +41,7 @@
         "offerPrice": 8.0,
         "veg":"veg",
         "category": "Cookies",
-        "addons":[{"addonsName":"1","price":2.0},{"addonsName":"2","price":4.0}],
+        "addons":[{"addonsName":"Hazelnut Twist","price":1.0},{"addonsName":"Caramel Swirl","price":1.64}],
         "size":{"sizeName1":"Bite Size","sizeName2":"Standard","sizeName3":"Giant"}  
     },
     {
@@ -86,7 +86,7 @@
         "offerPrice": 26.25,
         "veg":"veg",
         "category": "Cookies",
-        "addons":[{"addonsName":"1","price":2.0},{"addonsName":"2","price":4.0}],
+        "addons":[{"addonsName":"Coconut Bliss","price":2.0},{"addonsName":"Coffee Infusion","price":4.0}],
         "size":{"sizeName1":"Bite Size","sizeName2":"Standard","sizeName3":"Giant"}  
     }
 ]
