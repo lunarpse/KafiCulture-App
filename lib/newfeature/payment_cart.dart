@@ -20,7 +20,9 @@ class _MyWidgetState extends ConsumerState<PaymentCart> {
 
   @override
   Widget build(BuildContext context) {
-    double amount = widget.data["price"] * widget.data["quantity"];
+    final addonprice =
+        widget.data['addons'] == null ? 0 : widget.data['addons']['addonprice'];
+    double amount = widget.data["cost"] + addonprice;
     final amount2 = double.parse(amount.toStringAsFixed(2));
 
     return Padding(
@@ -92,9 +94,7 @@ class _MyWidgetState extends ConsumerState<PaymentCart> {
                                 ),
                               ),
                               Text(
-                                widget.atpayment
-                                    ? widget.data["price"].toString()
-                                    : "\$ $amount2",
+                                "\$ $amount2",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 16,
