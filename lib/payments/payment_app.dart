@@ -93,7 +93,7 @@ class _PaymentAppState extends ConsumerState {
 
               SizedBox(height: 8),
               Padding(
-                padding: EdgeInsets.only(left: 8, right: 8),
+                padding: EdgeInsets.only(left: 12, right: 8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -307,10 +307,13 @@ class _PaymentAppState extends ConsumerState {
                 color: Colors.black,
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.only(left: 12.0),
                 child: Text(
                   'Other Payment Method ',
-                  style: TextStyle(fontSize: 23, fontWeight: FontWeight.w500),
+                  style: TextStyle(
+                    fontSize: 23,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
               //---------------------------------------------UPI
