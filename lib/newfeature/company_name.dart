@@ -8,11 +8,13 @@ class CompanyName extends StatelessWidget {
       required this.value,
       required this.child,
       required this.points,
-      required this.factor});
+      required this.factor,
+      required this.equivalentValue});
 
   final String companyName;
   final String companyLogo;
-  final int value;
+  final double value;
+  final double equivalentValue;
   final int points;
   final double factor;
 
@@ -46,32 +48,36 @@ class CompanyName extends StatelessWidget {
                   ),
                 ],
               ),
-              Container(
-                width: 70,
-                height: 30,
-                decoration: BoxDecoration(
-                  gradient:
-                      LinearGradient(colors: [Colors.white, Colors.white70]),
-                  border: Border.all(),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey,
-                      blurRadius: 3.0, // soften the shadow
-                      spreadRadius: 2.0, //extend the shadow
-                    ),
-                  ],
-                ),
-                // color: Colors.white,
-                child: Center(
-                  child: Text(
-                    "\$ ${(value * factor).toStringAsFixed(2)}",
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.brown),
-                  ),
-                ),
+              Text(
+                "${equivalentValue.toStringAsFixed(2)} pts.",
+                style: TextStyle(fontSize: 18),
               ),
+              // Container(
+              //   width: 70,
+              //   height: 30,
+              //   decoration: BoxDecoration(
+              //     gradient:
+              //         LinearGradient(colors: [Colors.white, Colors.white70]),
+              //     border: Border.all(),
+              //     boxShadow: [
+              //       BoxShadow(
+              //         color: Colors.grey,
+              //         blurRadius: 3.0, // soften the shadow
+              //         spreadRadius: 2.0, //extend the shadow
+              //       ),
+              //     ],
+              //   ),
+              //   // color: Colors.white,
+              //   child: Center(
+              //     child: Text(
+              //       "\$ ${(value * factor).toStringAsFixed(2)}",
+              //       style: TextStyle(
+              //           fontSize: 18,
+              //           fontWeight: FontWeight.w600,
+              //           color: Colors.brown),
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),
