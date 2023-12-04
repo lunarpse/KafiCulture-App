@@ -34,11 +34,13 @@ class _PaymentAppState extends ConsumerState {
   SingingCharacter? _character = SingingCharacter.Paytm;
 
   final ExpansionTileController controller = ExpansionTileController();
-
+  final ExpansionTileController upiExpansionController =
+      ExpansionTileController();
   int itcvalue = 0;
   int handm_value = 0;
   int airvalue = 0;
   bool initiallyExpanded = true;
+
   @override
   Widget build(BuildContext context) {
     double mediaWidth = MediaQuery.of(context).size.width;
@@ -170,9 +172,13 @@ class _PaymentAppState extends ConsumerState {
                           activeColor: Colors.black54,
                           value: itcvalue.toDouble(),
                           onChanged: (double newValue) {
-                            setState(() {
-                              itcvalue = newValue.round();
-                            });
+                            if (final_price >= 0) {
+                              setState(() {
+                                itcvalue = newValue.round();
+                              });
+                            } else {
+                              return null;
+                            }
                           },
                           min: 0,
                           max: 100,
@@ -192,9 +198,13 @@ class _PaymentAppState extends ConsumerState {
                           activeColor: Colors.black54,
                           value: handm_value.toDouble(),
                           onChanged: (double newValue) {
-                            setState(() {
-                              handm_value = newValue.round();
-                            });
+                            if (final_price >= 0) {
+                              setState(() {
+                                handm_value = newValue.round();
+                              });
+                            } else {
+                              return null;
+                            }
                           },
                           min: 0,
                           max: 100,
@@ -215,9 +225,13 @@ class _PaymentAppState extends ConsumerState {
                           activeColor: Colors.black54,
                           value: airvalue.toDouble(),
                           onChanged: (double newValue) {
-                            setState(() {
-                              airvalue = newValue.round();
-                            });
+                            if (final_price >= 0) {
+                              setState(() {
+                                airvalue = newValue.round();
+                              });
+                            } else {
+                              return null;
+                            }
                           },
                           min: 0,
                           max: 100,
@@ -234,8 +248,11 @@ class _PaymentAppState extends ConsumerState {
                         child: InkWell(
                           onTap: () {
                             setState(() {
-                              if (controller.isExpanded) {
+                              if (controller.isExpanded && final_price > 0) {
                                 controller.collapse();
+                                upiExpansionController.expand();
+                              } else {
+                                upiExpansionController.collapse();
                               }
                             });
 
@@ -321,7 +338,9 @@ class _PaymentAppState extends ConsumerState {
               const SizedBox(height: 10),
               Padding(
                 padding: EdgeInsets.all(8.0),
-                child: UPIPayment(),
+                child: UPIPayment(
+                  upiExpansionController: upiExpansionController,
+                ),
               ),
               const SizedBox(height: 15),
 

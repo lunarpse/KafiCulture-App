@@ -86,7 +86,7 @@ class _MyWidgetState extends ConsumerState<PaymentCart> {
                             children: [
                               Text(
                                 widget.data["name"],
-                                maxLines: 2,
+                                // maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
