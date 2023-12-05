@@ -41,6 +41,7 @@ class _CookiesPageDetailsState extends State<CookiesPageDetails> {
       body: DetailsPageWidget(
         details: widget.detail,
         fetchProducts: drinks,
+        nextPage: '/drinksdetails',
       ),
     );
   }

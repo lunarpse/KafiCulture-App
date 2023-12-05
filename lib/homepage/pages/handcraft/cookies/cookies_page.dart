@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:project_2/customdrawer/drawerScreen.dart';
+import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 
 import '../../../model/json_model.dart';
 import '../../../data_fetching/api_service.dart';
@@ -36,11 +37,10 @@ class _CookiesPageState extends State<CookiesPage> {
     return Scaffold(
       appBar: AppbarWidget(),
       drawer: DrawerScreen(),
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/images/11.jpeg'), fit: BoxFit.fill),
-        ),
+      body: BackgroundContainerWidget(
+        opacity: 1.0,
+        x: 3.0,
+        y: 3.0,
         child: ListView.builder(
           shrinkWrap: true,
           physics: BouncingScrollPhysics(),

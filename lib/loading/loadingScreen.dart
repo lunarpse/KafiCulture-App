@@ -1,55 +1,88 @@
 import 'dart:async';
-
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:project_2/feedBack/FeedBack_page.dart';
-import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 
-class LoadingPayment extends StatefulWidget {
-  const LoadingPayment({super.key});
+class LoadingScreen extends StatefulWidget {
+  const LoadingScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
-  State<LoadingPayment> createState() => _LoadingPaymentState();
+  State<LoadingScreen> createState() => _LoadingScreenState();
 }
 
-class _LoadingPaymentState extends State<LoadingPayment> {
+class _LoadingScreenState extends State<LoadingScreen> {
   void initState() {
     super.initState();
     Timer(Duration(seconds: 4), () {
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => FeedBackPage()));
+      Navigator.pushReplacementNamed(context, "/feedback");
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
-
-    return Scaffold(
-      body: Center(
-        child: BackgroundContainerWidget(
-          child: Column(
-            // crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                "Processing",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 28,
-                    fontWeight: FontWeight.w400),
+    return AlertDialog(
+      actions: [
+        BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.white.withOpacity(0.1),
+                  Colors.white.withOpacity(0.5),
+                ],
+                begin: AlignmentDirectional.topStart,
+                end: AlignmentDirectional.bottomEnd,
               ),
-              SizedBox(height: 40),
-              //it provide loading animation
-              SpinKitFadingCircle(
-                color: Colors.black,
-                size: 50.0,
-              )
-            ],
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
+              border: Border.all(
+                width: 1.5,
+                color: Colors.white.withOpacity(0.2),
+              ),
+            ),
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.white.withOpacity(0.1),
+                    Colors.white.withOpacity(0.5),
+                  ],
+                  begin: AlignmentDirectional.topStart,
+                  end: AlignmentDirectional.bottomEnd,
+                ),
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                border: Border.all(
+                  width: 1.5,
+                  color: Colors.white.withOpacity(0.2),
+                ),
+              ),
+              child: const Center(
+                child: Column(
+                  // crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      "Processing",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 28,
+                          fontWeight: FontWeight.w400),
+                    ),
+                    SizedBox(height: 40),
+                    //it provide loading animation
+                    SpinKitFadingCircle(
+                      color: Colors.black,
+                      size: 50.0,
+                    )
+                  ],
+                ),
+              ),
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 }

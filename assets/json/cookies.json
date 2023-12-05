@@ -6,12 +6,13 @@
         "rating": "4.0",
         "totalRatings": "45",
         "image": "choco chip_cookies",
-        "price": "10.0",
+        "price": 10.0,
         "discount":"20",
-        "offerPrice": "8.0",
+        "offerPrice": 8.0,
         "veg":"veg",
         "category": "Cookies",
-        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
+        "addons":[{"addonsName":"Hazelnut Twist","price":1.0},{"addonsName":"Caramel Swirl","price":1.64}],
+        "size":{"sizeName1":"Bite Size","sizeName2":"Standard","sizeName3":"Giant"}  
     },
     {
         "id": 2,
@@ -20,12 +21,13 @@
         "rating": "4.5",
         "totalRatings": "38",
         "image": "oatmeal_cookies",
-        "price": "7.4",
+        "price": 7.4,
         "discount":"15",
-        "offerPrice": "6.29",
+        "offerPrice": 6.29,
         "veg":"veg",
         "category": "Cookies",
-        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]           
+        "addons":[{"addonsName":"Raisin Craze","price":1.23},{"addonsName":"Apple Cinnamon","price":2.0}],
+        "size":{"sizeName1":"Bite Size","sizeName2":"Standard","sizeName3":"Giant"}           
     },
     {
         "id": 3,
@@ -34,12 +36,13 @@
         "rating": "4.8",
         "totalRatings": "48",
         "image": "oreo_cookies",
-        "price": "25.0",
+        "price": 25.0,
         "discount":"20",
-        "offerPrice": "20.0",
+        "offerPrice": 20.0,
         "veg":"veg",
         "category": "Cookies",
-        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
+        "addons":[{"addonsName":"Mint Swirl","price":1.32},{"addonsName":"Cookies & Cream","price":2.1}],
+        "size":{"sizeName1":"Bite Size","sizeName2":"Standard","sizeName3":"Giant"}  
     },
     {
         "id": 4,
@@ -48,12 +51,13 @@
         "rating": "3.5",
         "totalRatings": "34",
         "image": "rum ball_cookies",
-        "price": "35.0",
+        "price": 35.0,
         "discount":"25",
-        "offerPrice": "26.25",
+        "offerPrice": 26.25,
         "veg":"veg",
         "category": "Cookies",
-        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
+        "addons":[{"addonsName":"Coconut Bliss","price":2.3},{"addonsName":"Coffee Infusion","price":1.8}],
+        "size":{"sizeName1":"Bite Size","sizeName2":"Standard","sizeName3":"Giant"}  
     },
     {
         "id": 5,
@@ -62,12 +66,13 @@
         "rating": "3.0",
         "totalRatings": "17",
         "image": "wallnut_cookies",
-        "price":"50.0",
+        "price":50.0,
         "discount":"18",
-        "offerPrice": "36.0",
+        "offerPrice": 36.0,
         "veg":"veg",
         "category": "Cookies",
-        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
+        "addons":[{"addonsName":"Maple Crunch","price":1.6},{"addonsName":"Cinnamon Spice","price":2.4}],
+        "size":{"sizeName1":"Bite Size","sizeName2":"Standard","sizeName3":"Giant"}  
     },
     {
         "id": 6,
@@ -76,12 +81,13 @@
         "rating": "4.0",
         "totalRatings": "24",
         "image": "snow ball_cookies",
-        "price": "18.0",
+        "price": 18.0,
         "discount":"60",
-        "offerPrice": "7.2",
+        "offerPrice": 7.2,
         "veg":"veg",
         "category": "Cookies",
-        "addons":[{"addonsName":"1","price":"2"},{"addonsName":"2","price":"4"}]
+        "addons":[{"addonsName":"Almond Joy","price":2.8},{"addonsName":"Cranberry Burst","price":2.5}],
+        "size":{"sizeName1":"Bite Size","sizeName2":"Standard","sizeName3":"Giant"}  
     }
     
 ]

@@ -13,7 +13,7 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       automaticallyImplyLeading: false,
       flexibleSpace: Image.asset(
-        "assets/images/appbarbg2.jpg",
+        "assets/images/appbarbg4.jpg",
         fit: BoxFit.cover,
       ),
       title: GestureDetector(
@@ -41,7 +41,8 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
                 ),
                 Text(
                   "Where every cup tells a story",
-                  style: TextStyle(fontSize: 13),
+                  style: TextStyle(
+                      fontFamily: 'Ephesis', fontSize: 18, letterSpacing: 1),
                 ),
               ],
             )
@@ -61,7 +62,7 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
             Navigator.pushNamed(context, "/cart");
           },
           icon: Icon(Icons.shopping_cart),
-          color: Color.fromARGB(255, 201, 87, 62),
+          color: Color.fromRGBO(78, 43, 18, 0.9),
           iconSize: 25,
         ),
       ],

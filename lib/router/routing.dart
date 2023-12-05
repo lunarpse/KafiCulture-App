@@ -27,7 +27,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => Cart());
 
       case '/loading':
-        return MaterialPageRoute(builder: (_) => LoadingPayment());
+        return MaterialPageRoute(builder: (_) => LoadingScreen());
       case '/feedback':
         return MaterialPageRoute(builder: (_) => FeedBackPage());
       case '/home':

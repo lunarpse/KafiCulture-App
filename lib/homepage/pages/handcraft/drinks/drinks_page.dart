@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:project_2/homepage/model/json_model.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/customdrawer/drawerScreen.dart';
+import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 import '../../../data_fetching/api_service.dart';
 
 class DrinksPage extends StatefulWidget {
@@ -34,11 +35,10 @@ class _DrinksPageState extends State<DrinksPage> {
     return Scaffold(
       appBar: AppbarWidget(),
       drawer: DrawerScreen(),
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/images/11.jpeg'), fit: BoxFit.fill),
-        ),
+      body: BackgroundContainerWidget(
+        opacity: 1.0,
+        x: 3.0,
+        y: 3.0,
         child: ListView.builder(
           shrinkWrap: true,
           physics: BouncingScrollPhysics(),

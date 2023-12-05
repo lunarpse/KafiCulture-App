@@ -16,6 +16,8 @@ import '../widget/cart_item.dart';
 import 'empty_cart.dart';
 
 class Cart extends ConsumerStatefulWidget {
+  const Cart({super.key});
+
   @override
   ConsumerState<Cart> createState() => _CartState();
 }
@@ -29,11 +31,9 @@ class _CartState extends ConsumerState<Cart> {
     final tc = data.length != 0
         ? data.map((e) => e["price"] * e["quantity"]).toList()
         : [];
-    print(tc);
-    final subt = tc.length != 0
-        ? tc.reduce(
-            (value, element) => value + double.parse(element.toString()))
-        : 0;
+
+    final subt =
+        tc.length != 0 ? tc.reduce((value, element) => value + element) : 0;
     final gst = subt * 0.05;
 
     return GestureDetector(
@@ -50,9 +50,13 @@ class _CartState extends ConsumerState<Cart> {
           resizeToAvoidBottomInset: false,
           body: (subt == 0 || data.length == 0)
               //empty cart page
-              ? BackgroundContainerWidget(child: EmptyCart())
+              ? BackgroundContainerWidget(
+                  opacity: 0.6, x: 8.0, y: 8.0, child: EmptyCart())
               //cart page
               : BackgroundContainerWidget(
+                  opacity: 0.5,
+                  x: 7.0,
+                  y: 7.0,
                   child: Column(
                     children: [
                       Expanded(

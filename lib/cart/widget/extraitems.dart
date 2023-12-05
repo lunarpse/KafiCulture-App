@@ -72,7 +72,7 @@ class ExtraItems extends ConsumerWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "\$ 34",
+                          "\$ $price",
                           style: TextStyle(
                             fontSize: 17,
                             color: Color.fromARGB(255, 15, 15, 14),
@@ -87,7 +87,8 @@ class ExtraItems extends ConsumerWidget {
                               ref.watch(CartProvider.notifier).additem({
                                 "name": name,
                                 "image": image,
-                                "price": price
+                                "price": price,
+                                "quantity": 1
                               });
                             },
                             icon: Icon(

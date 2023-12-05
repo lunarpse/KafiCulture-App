@@ -2,26 +2,27 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:project_2/cart/riverpod/state_provider.dart';
 import 'package:project_2/cart/widget/Remove_or_Cancel.dart';
 // import 'package:project_2/cart/cart/widget/Remove_or_Cancel.dart';
 
-import '../riverpod/state_provider.dart';
-
-class CartItem extends ConsumerStatefulWidget {
+class PaymentCart extends ConsumerStatefulWidget {
   final data;
   final atpayment;
-  const CartItem({super.key, required this.data, this.atpayment = false});
+  const PaymentCart({super.key, required this.data, this.atpayment = false});
 
   @override
   ConsumerState createState() => _MyWidgetState();
 }
 
-class _MyWidgetState extends ConsumerState<CartItem> {
+class _MyWidgetState extends ConsumerState<PaymentCart> {
   var _showremove = false;
 
   @override
   Widget build(BuildContext context) {
-    double amount = widget.data["price"] * widget.data["quantity"];
+    final addonprice =
+        widget.data['addons'] == null ? 0 : widget.data['addons']['addonprice'];
+    double amount = widget.data["cost"] + addonprice;
     final amount2 = double.parse(amount.toStringAsFixed(2));
 
     return Padding(
@@ -38,7 +39,7 @@ class _MyWidgetState extends ConsumerState<CartItem> {
             : Container(
                 padding: EdgeInsets.all(8),
                 width: double.infinity,
-                height: 120,
+                height: 80,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Color.fromARGB(255, 247, 235, 231),
@@ -71,6 +72,7 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                           ],
                         ),
                       ),
+
                       SizedBox(
                         width: 8,
                       ),
@@ -84,7 +86,7 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                             children: [
                               Text(
                                 widget.data["name"],
-                                maxLines: 2,
+                                // maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
@@ -92,9 +94,7 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                                 ),
                               ),
                               Text(
-                                widget.atpayment
-                                    ? widget.data["price"].toString()
-                                    : "\$ $amount2",
+                                "\$ $amount2",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 16,
