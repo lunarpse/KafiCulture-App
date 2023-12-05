@@ -28,10 +28,11 @@ class HomePage extends StatelessWidget {
           children: [
             //---------------->Latest Offerings
             Padding(
-                padding: EdgeInsets.only(top: 10, left: 5),
-                child: HomeHeading(
-                    headingText: heading1,
-                    headingText_fontSize: heading1_fontSize)),
+              padding: EdgeInsets.only(top: 10, left: 5),
+              child: HomeHeading(
+                  headingText: heading1,
+                  headingText_fontSize: heading1_fontSize),
+            ),
 
             //---------------->Latest Offerings widget
             OfferingsWidget(),
