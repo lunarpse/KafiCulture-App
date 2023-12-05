@@ -21,9 +21,7 @@ class _MyWidgetState extends ConsumerState<CartItem> {
 
   @override
   Widget build(BuildContext context) {
-    final addonprice =
-        widget.data['addons'] == null ? 0 : widget.data['addons']['addonprice'];
-    double amount = widget.data["cost"] + addonprice;
+    double amount = widget.data["price"] * widget.data["quantity"];
     final amount2 = double.parse(amount.toStringAsFixed(2));
 
     return Padding(
@@ -84,40 +82,14 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    widget.data["name"],
-                                    // maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 2,
-                                  ),
-                                  Text(
-                                    "With",
-                                    // maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                  Text(
-                                    widget.data["addons"]["addonname"],
-                                    // maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15,
-                                    ),
-                                  ),
-                                ],
+                              Text(
+                                widget.data["name"],
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
                               ),
                               Text(
                                 widget.atpayment

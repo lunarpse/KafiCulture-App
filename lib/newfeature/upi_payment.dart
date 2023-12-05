@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:project_2/newfeature/upi_icon.dart';
 
 class UPIPayment extends StatefulWidget {
-  const UPIPayment({super.key});
+  UPIPayment({super.key, required this.upiExpansionController});
+
+  final ExpansionTileController upiExpansionController;
 
   @override
   State<UPIPayment> createState() => _UPIPaymentState();
@@ -28,6 +30,7 @@ class _UPIPaymentState extends State<UPIPayment> {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
+      controller: widget.upiExpansionController,
       title: Container(
         alignment: Alignment.centerLeft,
         decoration: BoxDecoration(
