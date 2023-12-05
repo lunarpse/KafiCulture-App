@@ -9,12 +9,12 @@ class CompanyName extends StatelessWidget {
       required this.child,
       required this.points,
       required this.factor,
-      required this.equivalentValue});
+      required this.pointsUsed});
 
   final String companyName;
   final String companyLogo;
   final double value;
-  final double equivalentValue;
+  final String pointsUsed;
   final int points;
   final double factor;
 
@@ -49,7 +49,7 @@ class CompanyName extends StatelessWidget {
                 ],
               ),
               Text(
-                "${equivalentValue.toStringAsFixed(2)} pts.",
+                "$pointsUsed pts.",
                 style: TextStyle(fontSize: 18),
               ),
               // Container(

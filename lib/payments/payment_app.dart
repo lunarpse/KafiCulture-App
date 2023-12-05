@@ -262,7 +262,7 @@ class _PaymentAppState extends ConsumerState {
                         value: itcvalue,
                         points: 5,
                         factor: 0.2,
-                        equivalentValue: itcEquivalent,
+                        pointsUsed: (itcEquivalent * 5).toStringAsFixed(2),
                         child: Slider(
                           divisions: 100,
                           label: " ${itcvalue.toStringAsFixed(2)}/100",
@@ -285,7 +285,7 @@ class _PaymentAppState extends ConsumerState {
                         value: handm_value,
                         points: 100,
                         factor: 0.01,
-                        equivalentValue: h_mEquivalent,
+                        pointsUsed: (h_mEquivalent * 100).toStringAsFixed(2),
                         child: Slider(
                           divisions: 100,
                           label: " ${handm_value.toStringAsFixed(2)}/100",
@@ -309,7 +309,7 @@ class _PaymentAppState extends ConsumerState {
                         value: airvalue,
                         points: 2,
                         factor: 0.5,
-                        equivalentValue: airEquivalent,
+                        pointsUsed: (airEquivalent * 2).toStringAsFixed(2),
                         child: Slider(
                           divisions: 100,
                           label: " ${airvalue.toStringAsFixed(2)}/100",
