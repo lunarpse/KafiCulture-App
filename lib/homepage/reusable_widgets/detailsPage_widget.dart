@@ -74,524 +74,495 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
       y: 8.0,
       child: Padding(
         padding: EdgeInsets.only(left: 10, top: 10, right: 10),
-        child: BackgroundContainerWidget(
-          opacity: 0.2,
-          x: 8.0,
-          y: 8.0,
-          child: Container(
-            height: bodyHeight,
-            width: bodyWidth,
-            decoration: BoxDecoration(
-                // color: Colors.red,
-                borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
-            child: Stack(
-              children: [
-                Hero(
-                  tag: widget.details,
-                  child: Container(
-                    height: (bodyHeight / 3),
-                    width: bodyWidth,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.vertical(
-                          top: Radius.circular(20),
-                        ),
-                        image: DecorationImage(
-                            image: AssetImage("assets/images/$image.jpg"),
-                            fit: BoxFit.cover)),
-                  ),
-                ),
-                Positioned(
-                  top: (bodyHeight / 4) + 23,
-                  child: GlassContainer(
-                    height: 120.0,
-                    width: bodyWidth - 20,
-                    blur: 4,
-                    border: Border.fromBorderSide(BorderSide.none),
-                    borderRadius: BorderRadius.circular(30.0),
-                    color: Colors.white.withOpacity(0.2),
-                    child: Container(
-                      width: bodyWidth - 20.0,
-                      child: Row(
-                        children: [
-                          Container(
-                            padding: EdgeInsets.only(left: 25.0),
-                            width: (bodyWidth - 20.0) / 2,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  name,
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 25.0,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                SizedBox(height: 10),
-                                Row(
-                                  children: [
-                                    Icon(
-                                      Icons.star,
-                                      color: Colors.amber,
-                                      size: 23,
-                                    ),
-                                    SizedBox(width: 7),
-                                    Text(
-                                      rating,
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    SizedBox(width: 7),
-                                    Text(
-                                      '($totalRatings)',
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 18,
-                                      ),
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
-                          Container(
-                            padding: EdgeInsets.symmetric(horizontal: 20),
-                            height: 140,
-                            width: (bodyWidth - 20) / 2,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.only(left: 15),
-                                  height: 80,
-                                  width: 150,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Colors.black.withOpacity(0.6)),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "\$ $offerPrice",
-                                        style: TextStyle(
-                                            fontSize: 25, color: Colors.white),
-                                      ),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            "\$ $price ",
-                                            style: TextStyle(
-                                                fontSize: 18,
-                                                color: Colors.grey.shade400,
-                                                decoration:
-                                                    TextDecoration.lineThrough,
-                                                decorationColor:
-                                                    Colors.grey.shade400,
-                                                decorationThickness: 2,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          Text(
-                                            "($discount% Off)",
-                                            style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w500,
-                                                color: Colors.orange.shade800),
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                //
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Container(
-                                      height: 30,
-                                      width: 50,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          color: Colors.black.withOpacity(0.8)),
-                                      child: IconButton(
-                                        color: Colors.white,
-                                        onPressed: () {
-                                          setState(() {
-                                            quantity = quantity - 1 == 0
-                                                ? 1
-                                                : quantity - 1;
-                                          });
-                                        },
-                                        icon: Icon(
-                                          Icons.remove,
-                                          size: 17,
-                                        ),
-                                      ),
-                                    ),
-                                    Text(quantity.toString(),
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold)),
-                                    Container(
-                                      height: 30,
-                                      width: 50,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          color: Colors.black.withOpacity(0.8)),
-                                      child: IconButton(
-                                        color: Colors.white,
-                                        onPressed: () {
-                                          setState(() {
-                                            quantity = quantity + 1;
-                                          });
-                                        },
-                                        icon: Icon(
-                                          Icons.add,
-                                          size: 17,
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
+        child: Container(
+          height: bodyHeight,
+          width: bodyWidth,
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+          child: Stack(
+            children: [
+              Hero(
+                tag: widget.details,
+                child: Container(
+                  height: (bodyHeight / 3),
+                  width: bodyWidth,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(20),
                       ),
-                    ),
-                  ),
+                      image: DecorationImage(
+                          image: AssetImage("assets/images/$image.jpg"),
+                          fit: BoxFit.cover)),
                 ),
-                Positioned(
-                    top: bodyHeight / 2 - 62,
-                    child: Container(
-                      color: Colors.transparent,
-                      height: bodyHeight / 2 - 66,
-                      width: bodyWidth - 20,
-                      child: ListView(
-                        padding:
-                            EdgeInsets.only(left: 15, right: 15, bottom: 8),
-                        children: [
-                          Column(
+              ),
+              Positioned(
+                top: (bodyHeight / 4) + 23,
+                child: GlassContainer(
+                  height: 120.0,
+                  width: bodyWidth - 20,
+                  blur: 4,
+                  border: Border.fromBorderSide(BorderSide.none),
+                  borderRadius: BorderRadius.circular(30.0),
+                  color: Colors.white.withOpacity(0.2),
+                  child: Container(
+                    width: bodyWidth - 20.0,
+                    child: Row(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.only(left: 25.0),
+                          width: (bodyWidth - 20.0) / 2,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Description",
+                                name,
                                 style: TextStyle(
                                     color: Colors.black,
-                                    fontSize: 18,
+                                    fontSize: 25.0,
                                     fontWeight: FontWeight.bold),
                               ),
-                              SizedBox(height: 5),
+                              SizedBox(height: 10),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.star,
+                                    color: Colors.amber,
+                                    size: 23,
+                                  ),
+                                  SizedBox(width: 7),
+                                  Text(
+                                    rating,
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(width: 7),
+                                  Text(
+                                    '($totalRatings)',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 18,
+                                    ),
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          height: 140,
+                          width: (bodyWidth - 20) / 2,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
                               Container(
-                                // height: 43,
-                                width: bodyWidth - 30,
-                                child: ReadMoreText(
-                                  description,
-                                  // selectedIndex.toString(),
-                                  style: TextStyle(
-                                      color: Colors.black, fontSize: 17),
-                                  trimLines: 2,
-                                  trimMode: TrimMode.Line,
-                                  moreStyle: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.orange),
-                                  lessStyle: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.orange),
-                                ),
-                              ),
-                              SizedBox(height: 12),
-                              Text(
-                                'Size',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(height: 5),
-                              Container(
-                                width: bodyWidth,
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                padding: EdgeInsets.only(left: 15),
+                                height: 80,
+                                width: 150,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Colors.black.withOpacity(0.6)),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    _buildSizeButton(sizeName1, 0, "(354 ML)"),
-                                    _buildSizeButton(sizeName2, 1, "(473 ML)"),
-                                    _buildSizeButton(sizeName3, 2, "(591 ML)")
+                                    Text(
+                                      "\$ $offerPrice",
+                                      style: TextStyle(
+                                          fontSize: 25, color: Colors.white),
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          "\$ $price ",
+                                          style: TextStyle(
+                                              fontSize: 18,
+                                              color: Colors.grey.shade400,
+                                              decoration:
+                                                  TextDecoration.lineThrough,
+                                              decorationColor:
+                                                  Colors.grey.shade400,
+                                              decorationThickness: 2,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        Text(
+                                          "($discount% Off)",
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.orange.shade800),
+                                        ),
+                                      ],
+                                    )
                                   ],
                                 ),
                               ),
-                              SizedBox(height: 12),
-                              Text(
-                                'Customers also liked',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(height: 5),
-                              Container(
-                                height: 190,
-                                child: GridView.builder(
-                                  scrollDirection: Axis.horizontal,
-                                  physics: BouncingScrollPhysics(),
-                                  gridDelegate:
-                                      SliverGridDelegateWithFixedCrossAxisCount(
-                                          crossAxisCount: 1,
-                                          mainAxisSpacing: 5,
-                                          mainAxisExtent: 160),
-                                  itemCount: widget.fetchProducts.length,
-                                  itemBuilder: (context, index) {
-                                    var fetchProduct =
-                                        widget.fetchProducts[index];
-                                    final image = fetchProduct.image;
-                                    final name = fetchProduct.name;
-                                    final totalRating =
-                                        fetchProduct.totalRatings;
-                                    final rating = fetchProduct.rating;
-                                    final offerPrice = fetchProduct.offerPrice;
-                                    final discount = fetchProduct.discount;
-
-                                    return InkWell(
-                                      onTap: () => Navigator.pushNamed(
-                                          context, widget.nextPage,
-                                          arguments: fetchProduct),
-                                      child: Card(
-                                        elevation: 10,
-                                        shadowColor: Colors.grey,
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                              height: 115,
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.vertical(
-                                                        top: Radius.circular(
-                                                            10)),
-                                                child: Image.asset(
-                                                  'assets/images/$image.jpg',
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              height: 67,
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal: 8, vertical: 4),
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    name,
-                                                    style: TextStyle(
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
-                                                        fontSize: 17,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                  Row(
-                                                    children: [
-                                                      Icon(
-                                                        Icons.star,
-                                                        size: 17,
-                                                        color: Colors.orange,
-                                                      ),
-                                                      SizedBox(width: 3),
-                                                      Text(
-                                                        "$rating ($totalRating)",
-                                                        style: TextStyle(
-                                                            fontSize: 14,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  Row(
-                                                    children: [
-                                                      Text(
-                                                        "\$ $offerPrice ",
-                                                        style: TextStyle(
-                                                            fontSize: 15,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w500),
-                                                      ),
-                                                      Text(
-                                                        "($discount% Off)",
-                                                        style: TextStyle(
-                                                            fontSize: 13.5,
-                                                            color:
-                                                                Colors.orange,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w900),
-                                                      ),
-                                                    ],
-                                                  )
-                                                ],
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                ),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-                    )),
-                Positioned(
-                  bottom: 0,
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 15, vertical: 7),
-                    width: bodyWidth - 20,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius:
-                          BorderRadius.vertical(top: Radius.circular(20)),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            blurRadius: 3,
-                            spreadRadius: 2,
-                            offset: Offset(0, -2))
-                      ],
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        ElevatedButton.icon(
-                          onPressed: () {
-                            showDialog(
-                                context: context,
-                                builder: (context) => DialogBox(
-                                      productName: widget.details.name,
-                                      buttonName: "Pay Now",
-                                      call: (aname, aprice) {
-                                        func.additem({
-                                          "name": name,
-                                          "image": "assets/images/$image.jpg",
-                                          "price": offerPrice / quantity,
-                                          "quantity": quantity,
-                                          "addon": aname == ""
-                                              ? null
-                                              : {
-                                                  "addonname": aname,
-                                                  "addonprice": aprice
-                                                }
+                              //
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Container(
+                                    height: 30,
+                                    width: 50,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Colors.black.withOpacity(0.8)),
+                                    child: IconButton(
+                                      color: Colors.white,
+                                      onPressed: () {
+                                        setState(() {
+                                          quantity = quantity - 1 == 0
+                                              ? 1
+                                              : quantity - 1;
                                         });
-                                        Navigator.of(context).pop();
-                                        Navigator.pushNamed(
-                                            context, '/payment');
                                       },
-                                      addons: addons,
-                                      finalPrice: offerPrice,
-                                    ));
-                          },
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(
-                                  Color.fromRGBO(143, 93, 58, 1)),
-                              shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(16),
-                              )),
-                              fixedSize: MaterialStateProperty.all(
-                                  Size((bodyWidth / 3) + 25, 50))),
-                          icon: Icon(
-                            Icons.shopping_bag_outlined,
-                            color: Colors.orange,
-                            size: 20,
+                                      icon: Icon(
+                                        Icons.remove,
+                                        size: 17,
+                                      ),
+                                    ),
+                                  ),
+                                  Text(quantity.toString(),
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold)),
+                                  Container(
+                                    height: 30,
+                                    width: 50,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Colors.black.withOpacity(0.8)),
+                                    child: IconButton(
+                                      color: Colors.white,
+                                      onPressed: () {
+                                        setState(() {
+                                          quantity = quantity + 1;
+                                        });
+                                      },
+                                      icon: Icon(
+                                        Icons.add,
+                                        size: 17,
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ],
                           ),
-                          label: Text(
-                            "Buy Now",
-                            style: TextStyle(
-                                fontSize: 17,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white),
-                          ),
-                        ),
-                        OutlinedButton.icon(
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return DialogBox(
-                                  addons: addons,
-                                  productName: widget.details.name,
-                                  buttonName: "Proceed",
-                                  call: (aname, aprice) {
-                                    func.additem({
-                                      "name": name,
-                                      "image": "assets/images/$image.jpg",
-                                      "price": offerPrice / quantity,
-                                      "quantity": quantity,
-                                      "addon": aname == ""
-                                          ? null
-                                          : {
-                                              "addonname": aname,
-                                              "addonprice": aprice
-                                            }
-                                    });
-                                    Navigator.of(context).pop();
-                                    bottomSheet();
-                                  },
-                                  finalPrice: offerPrice,
-                                  // qty: quantity,
-                                );
-                              },
-                            );
-                          },
-                          icon: Icon(
-                            Icons.shopping_cart,
-                            color: Colors.orange,
-                            size: 20,
-                          ),
-                          label: Text(
-                            "Add To Cart",
-                            style: TextStyle(
-                                fontSize: 17,
-                                fontWeight: FontWeight.w700,
-                                color: Color.fromRGBO(143, 93, 58, 1)),
-                          ),
-                          style: ButtonStyle(
-                              shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              )),
-                              fixedSize: MaterialStateProperty.all(
-                                  Size((bodyWidth / 3) + 25, 50)),
-                              side: MaterialStatePropertyAll(BorderSide(
-                                  color: Color.fromRGBO(143, 93, 58, 1),
-                                  width: 3))),
                         )
                       ],
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+              Positioned(
+                  top: bodyHeight / 2 - 62,
+                  child: Container(
+                    color: Colors.white,
+                    height: bodyHeight / 2 - 66,
+                    width: bodyWidth - 20,
+                    child: ListView(
+                      padding: EdgeInsets.only(left: 15, right: 15, bottom: 8),
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Description",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(height: 5),
+                            Container(
+                              // height: 43,
+                              width: bodyWidth - 30,
+                              child: ReadMoreText(
+                                description,
+                                // selectedIndex.toString(),
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 17),
+                                trimLines: 2,
+                                trimMode: TrimMode.Line,
+                                moreStyle: TextStyle(
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.orange),
+                                lessStyle: TextStyle(
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.orange),
+                              ),
+                            ),
+                            SizedBox(height: 12),
+                            Text(
+                              'Size',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(height: 5),
+                            Container(
+                              width: bodyWidth,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  _buildSizeButton(sizeName1, 0, "(354 ML)"),
+                                  _buildSizeButton(sizeName2, 1, "(473 ML)"),
+                                  _buildSizeButton(sizeName3, 2, "(591 ML)")
+                                ],
+                              ),
+                            ),
+                            SizedBox(height: 12),
+                            Text(
+                              'Customers also liked',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(height: 5),
+                            Container(
+                              height: 190,
+                              child: GridView.builder(
+                                scrollDirection: Axis.horizontal,
+                                physics: BouncingScrollPhysics(),
+                                gridDelegate:
+                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 1,
+                                        mainAxisSpacing: 5,
+                                        mainAxisExtent: 160),
+                                itemCount: widget.fetchProducts.length,
+                                itemBuilder: (context, index) {
+                                  var fetchProduct =
+                                      widget.fetchProducts[index];
+                                  final image = fetchProduct.image;
+                                  final name = fetchProduct.name;
+                                  final totalRating = fetchProduct.totalRatings;
+                                  final rating = fetchProduct.rating;
+                                  final offerPrice = fetchProduct.offerPrice;
+                                  final discount = fetchProduct.discount;
+
+                                  return InkWell(
+                                    onTap: () => Navigator.pushNamed(
+                                        context, widget.nextPage,
+                                        arguments: fetchProduct),
+                                    child: Card(
+                                      elevation: 10,
+                                      shadowColor: Colors.grey,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            height: 115,
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.vertical(
+                                                      top: Radius.circular(10)),
+                                              child: Image.asset(
+                                                'assets/images/$image.jpg',
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                          Container(
+                                            height: 67,
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 8, vertical: 4),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  name,
+                                                  style: TextStyle(
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      fontSize: 17,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Icon(
+                                                      Icons.star,
+                                                      size: 17,
+                                                      color: Colors.orange,
+                                                    ),
+                                                    SizedBox(width: 3),
+                                                    Text(
+                                                      "$rating ($totalRating)",
+                                                      style: TextStyle(
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Text(
+                                                      "\$ $offerPrice ",
+                                                      style: TextStyle(
+                                                          fontSize: 15,
+                                                          fontWeight:
+                                                              FontWeight.w500),
+                                                    ),
+                                                    Text(
+                                                      "($discount% Off)",
+                                                      style: TextStyle(
+                                                          fontSize: 13.5,
+                                                          color: Colors.orange,
+                                                          fontWeight:
+                                                              FontWeight.w900),
+                                                    ),
+                                                  ],
+                                                )
+                                              ],
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  )),
+              Positioned(
+                bottom: 0,
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 7),
+                  width: bodyWidth - 20,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(20)),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          blurRadius: 3,
+                          spreadRadius: 2,
+                          offset: Offset(0, -2))
+                    ],
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ElevatedButton.icon(
+                        onPressed: () {
+                          showDialog(
+                              context: context,
+                              builder: (context) => DialogBox(
+                                    productName: widget.details.name,
+                                    buttonName: "Pay Now",
+                                    call: (value) {
+                                      func.additem({
+                                        "name": name,
+                                        "image": "assets/images/$image.jpg",
+                                        "price": value,
+                                        "quantity": quantity
+                                      });
+                                      Navigator.of(context).pop();
+                                      Navigator.pushNamed(context, '/payment');
+                                    },
+                                    addons: addons,
+                                    finalPrice: offerPrice,
+                                  ));
+                        },
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                                Color.fromRGBO(143, 93, 58, 1)),
+                            shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            )),
+                            fixedSize: MaterialStateProperty.all(
+                                Size((bodyWidth / 3) + 25, 50))),
+                        icon: Icon(
+                          Icons.shopping_bag_outlined,
+                          color: Colors.orange,
+                          size: 20,
+                        ),
+                        label: Text(
+                          "Buy Now",
+                          style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white),
+                        ),
+                      ),
+                      OutlinedButton.icon(
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return DialogBox(
+                                addons: addons,
+                                productName: widget.details.name,
+                                buttonName: "Proceed",
+                                call: (value) {
+                                  func.additem({
+                                    "name": name,
+                                    "image": "assets/images/$image.jpg",
+                                    "price": value,
+                                    "quantity": quantity
+                                  });
+                                  Navigator.of(context).pop();
+                                  bottomSheet();
+                                },
+                                finalPrice: offerPrice,
+                              );
+                            },
+                          );
+                        },
+                        icon: Icon(
+                          Icons.shopping_cart,
+                          color: Colors.orange,
+                          size: 20,
+                        ),
+                        label: Text(
+                          "Add To Cart",
+                          style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w700,
+                              color: Color.fromRGBO(143, 93, 58, 1)),
+                        ),
+                        style: ButtonStyle(
+                            shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            )),
+                            fixedSize: MaterialStateProperty.all(
+                                Size((bodyWidth / 3) + 25, 50)),
+                            side: MaterialStatePropertyAll(BorderSide(
+                                color: Color.fromRGBO(143, 93, 58, 1),
+                                width: 3))),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

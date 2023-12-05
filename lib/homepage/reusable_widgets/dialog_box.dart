@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import '../model/json_model.dart';
 
-class DialogBox extends StatefulWidget {
+class DialogBox extends StatelessWidget {
   const DialogBox({
     super.key,
     required this.productName,
@@ -18,17 +18,9 @@ class DialogBox extends StatefulWidget {
   final List<AddonModel> addons;
 
   @override
-  State<DialogBox> createState() => _DialogBoxState();
-}
-
-class _DialogBoxState extends State<DialogBox> {
-  var addonname = "";
-  double addonprice = 0;
-  @override
   Widget build(BuildContext context) {
     int? checkedIndex;
-    double totalPrice = widget.finalPrice;
-
+    double totalPrice = finalPrice;
     return AlertDialog(
         insetPadding: EdgeInsets.all(20),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -48,9 +40,9 @@ class _DialogBoxState extends State<DialogBox> {
                 ),
                 ListView.builder(
                   shrinkWrap: true,
-                  itemCount: widget.addons.length,
+                  itemCount: addons.length,
                   itemBuilder: (context, index) {
-                    var addon = widget.addons[index];
+                    var addon = addons[index];
                     var addonsName = addon.addonsName;
                     var price = addon.price;
                     return Padding(
@@ -66,16 +58,13 @@ class _DialogBoxState extends State<DialogBox> {
                         value: checkedIndex == index,
                         onChanged: (bool? newValue) {
                           setState(() {
-                            addonname = addonsName;
-                            addonprice = price;
                             if (newValue!) {
                               checkedIndex = index;
                               totalPrice = double.parse(
-                                  (widget.finalPrice + price)
-                                      .toStringAsFixed(2));
+                                  (finalPrice + price).toStringAsFixed(2));
                             } else {
                               checkedIndex = null;
-                              totalPrice = widget.finalPrice;
+                              totalPrice = finalPrice;
                             }
                           });
                         },
@@ -126,7 +115,7 @@ class _DialogBoxState extends State<DialogBox> {
                               ),
                               SizedBox(height: 5),
                               Text(
-                                widget.productName,
+                                productName,
                                 style: TextStyle(
                                     fontSize: 18,
                                     color: Colors.white,
@@ -156,10 +145,11 @@ class _DialogBoxState extends State<DialogBox> {
                                     )),
                                   ),
                                   onPressed: () {
-                                    widget.call(addonname, addonprice);
+                                    print("dialog $totalPrice");
+                                    call(totalPrice);
                                   },
                                   child: Text(
-                                    widget.buttonName,
+                                    buttonName,
                                     style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold),
