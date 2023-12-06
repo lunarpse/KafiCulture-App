@@ -15,9 +15,6 @@ class AppbarWidget extends StatefulWidget implements PreferredSizeWidget {
 
 class _AppbarWidgetState extends State<AppbarWidget> {
   @override
-  // Size get preferredSize => const Size.fromHeight(60);
-
-  @override
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: false,
@@ -66,12 +63,14 @@ class _AppbarWidgetState extends State<AppbarWidget> {
             icon: Icon(Icons.menu));
       }),
       actions: [
-        IconButton(
-            onPressed: _checkNFCStatus,
-            icon: Icon(
-              Icons.nfc,
-              size: 27,
-            )),
+        InkWell(
+          onTap: _checkNFCStatus,
+          child: CircleAvatar(
+            backgroundColor: Colors.white,
+            backgroundImage: AssetImage("assets/images/nfc.png"),
+            radius: 20,
+          ),
+        ),
         IconButton(
           onPressed: () {
             Navigator.pushNamed(context, "/cart");
@@ -89,8 +88,6 @@ class _AppbarWidgetState extends State<AppbarWidget> {
       bool isAvailable = await NfcManager.instance.isAvailable();
 
       if (isAvailable) {
-        print(isAvailable);
-
         _startNFCSession();
       } else {
         _showNoNFCDialog();
@@ -102,7 +99,38 @@ class _AppbarWidgetState extends State<AppbarWidget> {
 
   void _startNFCSession() {
     print("NFC working");
-    NfcManager.instance.startSession(onDiscovered: _handleNFCDiscovered);
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          alignment: Alignment.bottomCenter,
+          title: Text(
+            "Ready to Scan",
+            style: TextStyle(fontSize: 25),
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text("Move the NFC tag to the back of your phone",
+                  style: TextStyle(fontSize: 20)),
+              SizedBox(height: 10),
+              Icon(
+                Icons.nfc,
+                size: 55,
+              )
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: Text("Cancel", style: TextStyle(fontSize: 18)),
+            )
+          ],
+        );
+      },
+    );
+    // NfcManager.instance.startSession(onDiscovered: _handleNFCDiscovered);
   }
 
   Future<void> _handleNFCDiscovered(NfcTag tag) async {

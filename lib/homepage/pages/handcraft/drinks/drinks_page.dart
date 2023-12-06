@@ -47,12 +47,10 @@ class _DrinksPageState extends State<DrinksPage> {
             var drink = drinks[index];
             final name = drink.name;
             final image = drink.image;
-            // final addons = drink.addons[1].addons1;
-            // final description = drink.description;
             final totalRating = drink.totalRatings;
-            final rating = drink.rating;
+            final rating = double.parse(drink.rating);
             // final price = drink.price;
-            double foodRating = double.parse(totalRating);
+
             return Padding(
               padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
               child: Column(
@@ -126,7 +124,7 @@ class _DrinksPageState extends State<DrinksPage> {
                                       Row(
                                         children: List.generate(5, (index) {
                                           return Icon(
-                                            index < foodRating.toInt()
+                                            index < rating
                                                 ? Icons.star
                                                 : Icons.star_border,
                                             color: Colors.amber,
@@ -143,7 +141,7 @@ class _DrinksPageState extends State<DrinksPage> {
                                     ],
                                   ),
                                   Text(
-                                    rating,
+                                    "$rating",
                                     style: TextStyle(
                                       fontSize: 17,
                                       color: Colors.red,
