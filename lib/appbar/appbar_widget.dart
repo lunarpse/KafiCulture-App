@@ -1,12 +1,21 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:nfc_manager/nfc_manager.dart';
 
-class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
+class AppbarWidget extends StatefulWidget implements PreferredSizeWidget {
   const AppbarWidget({super.key});
 
   @override
+  State<AppbarWidget> createState() => _AppbarWidgetState();
+
+  @override
   Size get preferredSize => const Size.fromHeight(60);
+}
+
+class _AppbarWidgetState extends State<AppbarWidget> {
+  @override
+  // Size get preferredSize => const Size.fromHeight(60);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +51,7 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
                 Text(
                   "Where every cup tells a story",
                   style: TextStyle(
-                      fontFamily: 'Ephesis', fontSize: 18, letterSpacing: 1),
+                      fontFamily: 'Ephesis', fontSize: 17.5, letterSpacing: 1),
                 ),
               ],
             )
@@ -58,6 +67,12 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
       }),
       actions: [
         IconButton(
+            onPressed: _checkNFCStatus,
+            icon: Icon(
+              Icons.nfc,
+              size: 27,
+            )),
+        IconButton(
           onPressed: () {
             Navigator.pushNamed(context, "/cart");
           },
@@ -66,6 +81,51 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
           iconSize: 25,
         ),
       ],
+    );
+  }
+
+  void _checkNFCStatus() async {
+    try {
+      bool isAvailable = await NfcManager.instance.isAvailable();
+
+      if (isAvailable) {
+        print(isAvailable);
+
+        _startNFCSession();
+      } else {
+        _showNoNFCDialog();
+      }
+    } catch (e) {
+      debugPrint("error reading NFC: $e");
+    }
+  }
+
+  void _startNFCSession() {
+    print("NFC working");
+    NfcManager.instance.startSession(onDiscovered: _handleNFCDiscovered);
+  }
+
+  Future<void> _handleNFCDiscovered(NfcTag tag) async {
+    // String tagId = tag.id;
+    print("NFC Tag is discovered $tag");
+  }
+
+  void _showNoNFCDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("NFC not enabled or no NFC service"),
+          content: Text(
+              "Please enable NFC in your device settings or this device does not support NFC feature."),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: Text("OK"),
+            )
+          ],
+        );
+      },
     );
   }
 }
