@@ -14,6 +14,7 @@ class AppbarWidget extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _AppbarWidgetState extends State<AppbarWidget> {
+  bool _isNFCavailable = false;
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -67,8 +68,8 @@ class _AppbarWidgetState extends State<AppbarWidget> {
           onTap: _checkNFCStatus,
           child: CircleAvatar(
             backgroundColor: Colors.white,
-            backgroundImage: AssetImage("assets/images/nfc.png"),
-            radius: 20,
+            backgroundImage: AssetImage(getImage()),
+            radius: 16,
           ),
         ),
         IconButton(
@@ -77,15 +78,26 @@ class _AppbarWidgetState extends State<AppbarWidget> {
           },
           icon: Icon(Icons.shopping_cart),
           color: Color.fromRGBO(78, 43, 18, 0.9),
-          iconSize: 25,
+          iconSize: 27,
         ),
       ],
     );
   }
 
+  String getImage() {
+    if (_isNFCavailable) {
+      return "assets/images/nfc2.jpg";
+    } else {
+      return "assets/images/nfc.jpg";
+    }
+  }
+
   void _checkNFCStatus() async {
     try {
       bool isAvailable = await NfcManager.instance.isAvailable();
+      setState(() {
+        _isNFCavailable = isAvailable;
+      });
 
       if (isAvailable) {
         _startNFCSession();
@@ -123,8 +135,13 @@ class _AppbarWidgetState extends State<AppbarWidget> {
           ),
           actions: [
             TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: Text("Cancel", style: TextStyle(fontSize: 18)),
+              onPressed: () {
+                Navigator.of(context).pop();
+                // setState(() {
+                //   _isNFCavailable = false;
+                // });
+              },
+              child: Text("OK", style: TextStyle(fontSize: 18)),
             )
           ],
         );
@@ -143,7 +160,7 @@ class _AppbarWidgetState extends State<AppbarWidget> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("NFC not enabled or no NFC service"),
+          title: Text("NFC not enabled or No NFC service"),
           content: Text(
               "Please enable NFC in your device settings or this device does not support NFC feature."),
           actions: [
