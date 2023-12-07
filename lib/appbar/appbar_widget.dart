@@ -137,9 +137,6 @@ class _AppbarWidgetState extends State<AppbarWidget> {
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
-                // setState(() {
-                //   _isNFCavailable = false;
-                // });
               },
               child: Text("OK", style: TextStyle(fontSize: 18)),
             )
