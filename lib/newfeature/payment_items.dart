@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:project_2/constants/payment_constants.dart';
+
+
+import '../constants/text_constants.dart';
 
 class ThankYou extends StatelessWidget {
   const ThankYou({super.key});

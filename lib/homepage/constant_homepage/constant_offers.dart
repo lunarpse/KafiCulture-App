@@ -18,7 +18,6 @@ const double column_padding_edge = 20;
 const double image_height = 300;
 const double image_width = 700;
 const double name_fontSize = 21;
-const Color name_color = Colors.white;
 const double totalRating_fontSize = 15;
 const Color totalRating_Color = Color.fromARGB(255, 238, 238, 238);
 const double totalRating_padding_horizondal = 10;

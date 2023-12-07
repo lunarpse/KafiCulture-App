@@ -6,7 +6,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:project_2/cart/riverpod/state_provider.dart';
 
 
-import '../../constants/extraitems_constant.dart';
+import '../../constants/color_constants.dart';
+
+import '../../constants/text_constants.dart';
 
 class ExtraItems extends ConsumerWidget {
   const ExtraItems(
@@ -21,7 +23,7 @@ class ExtraItems extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Card(
       // elevation: 0,
-      color: cardcolor,
+      color: extraitemcardcolor,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 5),
         child: Container(
@@ -30,11 +32,11 @@ class ExtraItems extends ConsumerWidget {
           width: 280,
           margin: EdgeInsets.symmetric(horizontal: 2),
           decoration: BoxDecoration(
-              color: cardboxdecolor,
+              color: extraitemcardboxdecolor,
               borderRadius: BorderRadius.circular(15),
               boxShadow: [
                 BoxShadow(
-                  color: cardboxshadowcolor,
+                  color: extraitemcardboxshadowcolor,
                   spreadRadius: 3,
                   blurRadius: 3,
                   offset: Offset(0, 3),
@@ -78,7 +80,7 @@ class ExtraItems extends ConsumerWidget {
                           "\$ $price",
                           style: TextStyle(
                             fontSize: 17,
-                            color: pricetextcolor,
+                            color: extraitempricetextcolor,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -96,7 +98,7 @@ class ExtraItems extends ConsumerWidget {
                             },
                             icon: Icon(
                               Icons.shopping_cart_outlined,
-                              color: shoppingcartoutlinecolor,
+                              color: extraitemshoppingcartoutlinecolor,
                               size: 25,
                             ),
                           ),

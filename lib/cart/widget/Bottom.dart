@@ -5,7 +5,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:project_2/cart/riverpod/tipstate_provider.dart';
 
-import '../../constants/bottom_constants.dart';
+
+import '../../constants/color_constants.dart';
+import '../../constants/text_constants.dart';
 import 'charges.dart';
 
 class Bottom extends ConsumerWidget {
@@ -32,7 +34,7 @@ class Bottom extends ConsumerWidget {
         top: 4.0,
       ),
       decoration: BoxDecoration(
-          color: bottoboxdeccolor,
+          color: bottomboxdecorationcolor,
           boxShadow: [
             BoxShadow(
                 color: bottomboxshadowcolor,
@@ -71,8 +73,8 @@ class Bottom extends ConsumerWidget {
                   (index) => Expanded(
                         child: Container(
                           color: index % 2 == 0
-                              ? containercolor
-                              : containercolor1,
+                              ? bottomcontainercolor
+                              : bottomcontainercolor1,
                           height: 2,
                         ),
                       )),
@@ -89,11 +91,11 @@ class Bottom extends ConsumerWidget {
                     horizontal: 32,
                     vertical: 16.0,
                   ),
-                  backgroundColor:elevatebuttonbgcolor,
+                  backgroundColor:bottomelevatebuttonbgcolor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0),
                     side: BorderSide(
-                      color:roundrectanglebordercolor,
+                      color:bottomroundrectanglebordercolor,
                     ),
                   ),
                 ),
@@ -111,7 +113,7 @@ class Bottom extends ConsumerWidget {
                 },
                 child: Text(
                   checkout,
-                  style: TextStyle(color: checkoutcolor),
+                  style: TextStyle(color: bottomcheckoutcolor),
                 ),
               ),
             ],

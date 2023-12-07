@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:project_2/constants/removewidget_constants.dart';
+import 'package:project_2/constants/color_constants.dart';
 
-import '../constants/payment_constants.dart';
 
 class CompanyName extends StatelessWidget {
   const CompanyName(
@@ -109,8 +108,8 @@ class CompanyName extends StatelessWidget {
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      boxdecorationlineargradcolor,
-                      boxdecorationlineargradcolor1,
+                      companynameboxdecorationlineargradcolor,
+                      companynameboxdecorationlineargradcolor1,
                     ],
                   ),
                 ),

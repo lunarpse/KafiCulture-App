@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:project_2/constants/detailspage_constants.dart';
-import 'package:project_2/constants/feedback_constants.dart';
+import 'package:project_2/constants/color_constants.dart';
+
 
 class RatingStar extends StatefulWidget {
   RatingStar({super.key});
@@ -29,7 +29,7 @@ class _RatingStarState extends State<RatingStar> {
             child: Icon(
               starRatings[index] ? Icons.star : Icons.star_border,
               size: 40,
-              color:colorrating,
+              color:feedbackratingstarcolor,
             ),
           );
         }));

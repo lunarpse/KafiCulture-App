@@ -3,7 +3,10 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:project_2/cart/riverpod/state_provider.dart';
-import 'package:project_2/constants/removewidget_constants.dart';
+import 'package:project_2/constants/color_constants.dart';
+
+
+import '../../constants/text_constants.dart';
 // import 'package:project_2/hjc/cart_riverpod/state_provider.dart';
 // import 'package:project_2/cart/cart/riverpod/state_provider.dart';
 
@@ -23,10 +26,10 @@ class Remove_or_Cancel extends ConsumerWidget {
       width: 100,
       height: 120,
       decoration: BoxDecoration(
-          border: Border.all(width: 1, color: boxdecbordercolor),
+          border: Border.all(width: 1, color: removeboxdecbordercolor),
           boxShadow: [
             BoxShadow(
-              color: boxshadowcolor,
+              color: removeboxshadowcolor,
               spreadRadius: 1,
               blurRadius: 1,
               offset: Offset(0, 3),
@@ -67,7 +70,7 @@ class Remove_or_Cancel extends ConsumerWidget {
                       backgroundColor: canceliconbgcolor,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(20)))),
-                  child: Text(cancel))
+                  child:const Text(cancel))
             ],
           ),
         ),

@@ -2,8 +2,10 @@ import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:project_2/constants/loadingscreen_constants.dart';
+
 import 'package:project_2/constants/text_constants.dart';
+
+import '../constants/color_constants.dart';
 
 class LoadingScreen extends StatefulWidget {
   const LoadingScreen({
@@ -41,15 +43,15 @@ class _LoadingScreenState extends State<LoadingScreen> {
               borderRadius: const BorderRadius.all(Radius.circular(10)),
               border: Border.all(
                 width: 1.5,
-                color: bordercolor,
+                color: loadingbordercolor,
               ),
             ),
             child: Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                   lineargracolor1,
-                    lineargracolor2,
+                   loadinglineargracolor1,
+                    loadinglineargracolor2,
                   ],
                   begin: AlignmentDirectional.topStart,
                   end: AlignmentDirectional.bottomEnd,
@@ -57,7 +59,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 border: Border.all(
                   width: 1.5,
-                  color:bordercolor2,
+                  color:loadingbordercolor2,
                 ),
               ),
               child:  Center(
@@ -68,14 +70,14 @@ class _LoadingScreenState extends State<LoadingScreen> {
                     Text(
                       processing,
                       style: TextStyle(
-                          color: textcolor,
+                          color: loadingtextcolor,
                           fontSize: 28,
                           fontWeight: FontWeight.w400),
                     ),
                     SizedBox(height: 40),
                     //it provide loading animation
                     SpinKitFadingCircle(
-                      color: textcolor,
+                      color: loadingtextcolor,
                       size: 50.0,
                     )
                   ],

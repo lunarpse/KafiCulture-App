@@ -8,7 +8,7 @@ import 'package:project_2/homepage/constant_homepage/constant_offers.dart';
 import 'package:project_2/homepage/constant_homepage/constant_populars.dart';
 import 'package:project_2/customdrawer/drawerScreen.dart';
 import '../../../appbar/appbar_widget.dart';
-import '../../../constants/drawer_constants.dart';
+
 import '../../reusable_widgets/background_container_widget.dart';
 import '../../widgets/offerings_widget.dart';
 import '../../widgets/popular_widget.dart';
@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
                 padding: EdgeInsets.only(top: 10, left: 5),
                 child: HomeHeading(
                     headingText: offering,
-                    headingText_fontSize: headingFontSize)),
+                    headingText_fontSize: 20)),
 
             //---------------->Latest Offerings widget
             OfferingsWidget(),
@@ -43,7 +43,7 @@ class HomePage extends StatelessWidget {
                 padding: EdgeInsets.only(top: 10, left: 5),
                 child: HomeHeading(
                     headingText: handcrafted,
-                    headingText_fontSize: headingFontSize)),
+                    headingText_fontSize: 20)),
 
             //---------------->Categories widget
             HandCraftedWidget(),
@@ -53,7 +53,7 @@ class HomePage extends StatelessWidget {
                 padding: EdgeInsets.only(top: 10, left: 5),
                 child: HomeHeading(
                     headingText: populars,
-                    headingText_fontSize: headingFontSize)),
+                    headingText_fontSize: 20)),
 
             //-------------------------->popular widget
             PopularWidget(),

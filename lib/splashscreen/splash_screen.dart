@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:project_2/constants/splashscreen_constants.dart';
+import 'package:project_2/constants/color_constants.dart';
+
 
 import 'package:project_2/homepage/pages/home_page/home_page.dart';
 
@@ -30,9 +31,9 @@ class _SplashScreenState extends State<SplashScreen> {
           width: MediaQuery.of(context).size.width,
           decoration:  BoxDecoration(
               gradient: SweepGradient(colors: [
-            sweepgradientcolor1,
-            sweepgradientcolor2,
-            sweepgradientcolor3
+            spalshscreensweepgradientcolor1,
+            splashscreensweepgradientcolor2,
+            splashscreensweepgradientcolor3
           ])),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

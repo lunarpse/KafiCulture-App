@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:project_2/constants/drawer_constants.dart';
+import 'package:project_2/constants/color_constants.dart';
+
+
+import '../constants/text_constants.dart';
 
 
 // ignore: camel_case_types
@@ -15,8 +18,8 @@ class DrawerScreen extends StatefulWidget {
 
 class _DrawerScreenState extends State<DrawerScreen> {
   var colorr = LinearGradient(colors: [
-    lineargradientcolor,
-    lineargradientcolor1
+    drawerscreenlineargradientcolor,
+    drawerscreenlineargradientcolor1
   
   ]);
   @override
@@ -29,9 +32,9 @@ class _DrawerScreenState extends State<DrawerScreen> {
       child: Container(
         decoration:  BoxDecoration(
             gradient: LinearGradient(colors: [
-          boxdeclineargradient1,
-          boxdeclineargradient2,
-          boxdeclineargradient3,
+          drawerscreenboxdeclineargradient1,
+          drawerscreenboxdeclineargradient2,
+          drawerscreenboxdeclineargradient3,
         ])),
         child: ListView(
           children: [
@@ -44,7 +47,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
               ),
             ),
             Divider(
-              color: divcolor,
+              color: drawerscreendivcolor,
               thickness: 5,
             ),
             ListTile(
@@ -52,7 +55,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                 cart,
                 style: TextStyle(fontSize: fontsize),
               ),
-              textColor: textcolor,
+              textColor: drawerscreentextcolor,
               trailing: const Icon(Icons.shopping_cart),
               onTap: () {
                 Navigator.pushReplacementNamed(context, "/cart");
@@ -66,7 +69,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                   fontSize: fontsize,
                 ),
               ),
-              textColor: textcolor,
+              textColor: drawerscreentextcolor,
               trailing: const Icon(Icons.home),
               onTap: () {
                 Navigator.pushReplacementNamed(context, "/home");
@@ -74,7 +77,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
             ),
             Theme(
               data: Theme.of(context).copyWith(
-                dividerColor: dividercolor,
+                dividerColor: drawerscreendividercolor,
                 //listTileTheme: ListTileThemeData(tileColor: color)
               ),
               child: ExpansionTile(
@@ -84,7 +87,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                 ),
                 children: [
                   ExpansionTile(
-                    textColor: expansiontilecolor,
+                    textColor: drawerscreenexpansiontilecolor,
                     title: Text(
                       food,
                       style: TextStyle(fontSize: fontsize2),
@@ -98,7 +101,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                             snacks,
                             style: TextStyle(fontSize: fontsize3),
                           ),
-                          textColor: textcolor,
+                          textColor: drawerscreentextcolor,
                           trailing: const Icon(Icons.breakfast_dining),
                           onTap: () {
                             Navigator.pushReplacementNamed(context, "/snacks");
@@ -113,7 +116,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                             drinks,
                             style: TextStyle(fontSize: fontsize3),
                           ),
-                          textColor:textcolor,
+                          textColor:drawerscreentextcolor,
                           trailing: const Icon(Icons.local_drink),
                           onTap: () {
                             Navigator.pushReplacementNamed(context, "/drinks");
@@ -128,7 +131,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                             cookies,
                             style: TextStyle(fontSize: fontsize3),
                           ),
-                          textColor: textcolor,
+                          textColor: drawerscreentextcolor,
                           trailing: const Icon(Icons.cookie),
                           onTap: () {
                             Navigator.pushReplacementNamed(context, "/cookies");
@@ -148,7 +151,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                             apparelsmen,
                             style: TextStyle(fontSize: fontsize3),
                           ),
-                          textColor: textcolor,
+                          textColor: drawerscreentextcolor,
                           trailing: FaIcon(
                             FontAwesomeIcons.shirt,
                           ),
@@ -164,7 +167,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                             apparelswomen,
                             style: TextStyle(fontSize: fontsize3),
                           ),
-                          textColor:textcolor,
+                          textColor:drawerscreentextcolor,
                           trailing: FaIcon(
                             FontAwesomeIcons.shirt,
                           ),

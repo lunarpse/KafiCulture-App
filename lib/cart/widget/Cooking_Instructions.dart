@@ -3,7 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:project_2/cart/riverpod/tipstate_provider.dart';
 
-import '../../constants/cookinginstruction_constants.dart';
+import '../../constants/color_constants.dart';
+
+import '../../constants/text_constants.dart';
 
 class Cooking_Instructions extends ConsumerStatefulWidget {
   const Cooking_Instructions({super.key});
@@ -24,11 +26,11 @@ class _Cooking_InstructionsState extends ConsumerState<Cooking_Instructions> {
 
       margin: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
       decoration: BoxDecoration(
-       color: boxdecorationcolor,
+       color: cookinginstructionboxdecorationcolor,
         borderRadius: BorderRadius.circular(29),
         boxShadow: [
           BoxShadow(
-            color: boxshadowcolor,
+            color: cookinginstructionboxshadowcolor,
             offset: Offset(0, 2),
             blurRadius: 2,
             spreadRadius: 3,
@@ -39,7 +41,7 @@ class _Cooking_InstructionsState extends ConsumerState<Cooking_Instructions> {
       onExpansionChanged: (value) {
         
       },
-       textColor:textcolor,
+       textColor:cookinginstructiontextcolor,
        childrenPadding: EdgeInsets.only(left: 10,right: 10,bottom: 20),
         
         title: Text(cookinginstruction,
@@ -58,16 +60,16 @@ class _Cooking_InstructionsState extends ConsumerState<Cooking_Instructions> {
                 
              //   cursorColor: Color.fromARGB(255, 105, 73, 14),
                 cursorHeight:CircularProgressIndicator.strokeAlignCenter,
-                cursorColor: cursorcolor,
+                cursorColor: cookinginstructioncursorcolor,
                 style: TextStyle(fontWeight: FontWeight.w400,fontSize: 20,fontStyle: FontStyle.normal),
                 decoration: InputDecoration(
                   
                   enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: bordercolor)
+                    borderSide: BorderSide(color: cookinginstructionbordercolor)
                   ),
                   focusedBorder: UnderlineInputBorder(
                   
-                    borderSide: BorderSide(color:bordercolor)
+                    borderSide: BorderSide(color:cookinginstructionbordercolor)
                   )
                 ),
             

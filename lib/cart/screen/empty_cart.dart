@@ -2,7 +2,9 @@
 
 import 'package:flutter/material.dart';
 
-import '../../constants/emptycart_constants.dart';
+
+import '../../constants/color_constants.dart';
+import '../../constants/text_constants.dart';
 
 class EmptyCart extends StatelessWidget {
   const EmptyCart({super.key});
@@ -36,12 +38,12 @@ class EmptyCart extends StatelessWidget {
                 horizontal: 39,
                 vertical: 16.0,
               ),
-              primary:elevatebuttoncolor,
+              primary:emptycartelevatebuttoncolor,
               elevation: 0,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0),
                 side: BorderSide(
-                  color: roundedrectanglebordercolor,
+                  color: emptycartroundedrectanglebordercolor,
                 ),
               ),
             ),

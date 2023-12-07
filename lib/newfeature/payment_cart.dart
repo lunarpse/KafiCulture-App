@@ -4,10 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:project_2/cart/riverpod/state_provider.dart';
 import 'package:project_2/cart/widget/Remove_or_Cancel.dart';
-import 'package:project_2/constants/payment_constants.dart';
-import 'package:project_2/constants/text_constants.dart';
+import 'package:project_2/constants/color_constants.dart';
 
-import '../constants/cartitem_constants.dart';
+import '../constants/text_constants.dart';
 // import 'package:project_2/cart/cart/widget/Remove_or_Cancel.dart';
 
 class PaymentCart extends ConsumerStatefulWidget {
@@ -68,7 +67,7 @@ class _MyWidgetState extends ConsumerState<PaymentCart> {
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: boxshadoww,
+                              color: paymentcartboxshadow,
                               offset: Offset(0, 2),
                               blurRadius: 4,
                               spreadRadius: 2,
@@ -151,7 +150,7 @@ class _MyWidgetState extends ConsumerState<PaymentCart> {
                                               Radius.circular(50))),
                                       child: IconButton(
                                           mouseCursor: SystemMouseCursors.click,
-                                          color: texttcolor,
+                                          color: paymenttextcolor,
                                           onPressed: () {
                                             if (widget.data["quantity"] == 1) {
                                               setState(() {
@@ -186,7 +185,7 @@ class _MyWidgetState extends ConsumerState<PaymentCart> {
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(50))),
                                       child: IconButton(
-                                          color: texttcolor,
+                                          color: paymenttextcolor,
                                           onPressed: () {
                                             ref
                                                 .read(CartProvider.notifier)

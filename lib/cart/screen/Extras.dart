@@ -3,7 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:project_2/cart/widget/extraitems.dart';
 
-import '../../constants/extras_constants.dart';
+
+import '../../constants/text_constants.dart';
 // import 'package:project_2/hjc/cart_widget/extraitems.dart';
 
 class Extras extends StatelessWidget {

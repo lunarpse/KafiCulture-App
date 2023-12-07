@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
-import 'package:project_2/constants/payment_constants.dart';
+
 import 'package:project_2/constants/text_constants.dart';
+
+import '../constants/color_constants.dart';
 
 class CardPayment extends StatelessWidget {
   CardPayment({super.key});
@@ -15,8 +17,8 @@ class CardPayment extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(7)),
             gradient: LinearGradient(
               colors: [
-                lineargradient1,
-                lineargradient2,
+                cardpaymentlineargradient1,
+                cardpaymentlineargradient2,
               ],
             ),
           ),
@@ -59,13 +61,13 @@ class CardPayment extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0),
               ),
-              foregroundColor: foregroundcolor),
+              foregroundColor: cardpaymentforegroundcolor),
           child: Container(
             margin: EdgeInsets.all(8.0),
             child:  Text(
               validate,
               style: TextStyle(
-                color:texttcolor,
+                color:paymenttextcolor,
                 fontFamily: 'halter',
                 fontSize: 14,
                 package: 'flutter_credit-card',

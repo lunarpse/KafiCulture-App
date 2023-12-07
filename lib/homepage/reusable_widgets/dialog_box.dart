@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import '../../constants/dialogbox_constants.dart';
+import 'package:project_2/constants/color_constants.dart';
+// import '../../constants/dialogbox_constants.dart';
+import '../../constants/text_constants.dart';
 import '../model/json_model.dart';
 
 class DialogBox extends StatelessWidget {
@@ -51,11 +53,11 @@ class DialogBox extends StatelessWidget {
                       child: CheckboxListTile(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
-                        tileColor:checkboxtilecolor,
+                        tileColor:dialogboxcheckboxtilecolor,
                         checkboxShape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(4)),
                         side: BorderSide(
-                            color: bordersidecolor, width: 2),
+                            color: dialogboxbordersidecolor, width: 2),
                         value: checkedIndex == index,
                         onChanged: (bool? newValue) {
                           setState(() {
@@ -74,28 +76,28 @@ class DialogBox extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
-                              color: addonnamecolor),
+                              color: dialogboxaddonnamecolor),
                         ),
                         subtitle: Text(
                           "\$ $price",
                           style: TextStyle(
                               fontSize: 17, fontWeight: FontWeight.bold),
                         ),
-                        activeColor: activecolor,
-                        checkColor: checkcolor,
+                        activeColor: dialogboxactivecolor,
+                        checkColor: dialogboxcheckcolor,
                       ),
                     );
                   },
                 ),
                 Divider(
-                  color: divcolor,
+                  color: dialogboxdivcolor,
                   thickness: 3,
                 ),
                 Container(
                   // height: 82,
                   width: double.maxFinite,
                   decoration: BoxDecoration(
-                      color: boxdecorationcolor,
+                      color: dialogboxboxdecorationcolor,
                       borderRadius: BorderRadius.circular(10)),
                   child: Padding(
                     padding: const EdgeInsets.all(12),
@@ -111,7 +113,7 @@ class DialogBox extends StatelessWidget {
                                 currentitem,
                                 style: TextStyle(
                                     fontSize: 11,
-                                    color: currentitemcolor,
+                                    color: dialogboxcurrentitemcolor,
                                     letterSpacing: 0.8),
                               ),
                               SizedBox(height: 5),
@@ -119,13 +121,13 @@ class DialogBox extends StatelessWidget {
                                 productName,
                                 style: TextStyle(
                                     fontSize: 18,
-                                    color: productnamecolor,
+                                    color: dialogboxproductnamecolor,
                                     fontWeight: FontWeight.bold),
                               ),
                               Text(
                                 totalPrice.toString(),
                                 style: TextStyle(
-                                    fontSize: 16, color: pricetextcolor),
+                                    fontSize: 16, color: dialogboxpricetextcolor),
                               )
                             ],
                           ),
@@ -139,7 +141,7 @@ class DialogBox extends StatelessWidget {
                                         Size(130, 50)),
                                     elevation: MaterialStatePropertyAll(6),
                                     backgroundColor: MaterialStateProperty.all(
-                                        elevatebuttonbgcolor),
+                                        dialogboxelevatebuttonbgcolor),
                                     shape: MaterialStateProperty.all(
                                         RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10),

@@ -1,8 +1,9 @@
 // ignore_for_file: prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:project_2/constants/color_constants.dart';
 
-import 'package:project_2/constants/pagesconstants/snacks_constants.dart';
+//import 'package:project_2/constants/pagesconstants/snacks_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
 import 'package:project_2/homepage/model/json_model.dart';
 import 'package:project_2/customdrawer/drawerScreen.dart';
@@ -67,11 +68,11 @@ class _SnacksPageState extends State<SnacksPage> {
                       width: 380,
                       height: 170,
                       decoration: BoxDecoration(
-                          color:boxdeccolor,
+                          color:snacksboxdeccolor,
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
-                              color: boxshadoowcolor,
+                              color: snacksboxshadoowcolor,
                               spreadRadius: 3,
                               blurRadius: 10,
                               offset: Offset(0, 3),
@@ -133,7 +134,7 @@ class _SnacksPageState extends State<SnacksPage> {
                                             index < foodRating.toInt()
                                                 ? Icons.star
                                                 : Icons.star_border,
-                                            color: iconstarcolor,
+                                            color: snacksiconstarcolor,
                                             size: 18,
                                           );
                                         }),
@@ -150,7 +151,7 @@ class _SnacksPageState extends State<SnacksPage> {
                                     rating,
                                     style: TextStyle(
                                       fontSize: 17,
-                                      color:  ratingtextcolor,
+                                      color:snacksratingtextcolor,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),

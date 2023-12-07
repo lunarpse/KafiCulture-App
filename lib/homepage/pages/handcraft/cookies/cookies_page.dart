@@ -1,7 +1,8 @@
 // ignore_for_file: prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:project_2/constants/pagesconstants/cookies_constants.dart';
+import 'package:project_2/constants/color_constants.dart';
+
 import 'package:project_2/constants/text_constants.dart';
 import 'package:project_2/customdrawer/drawerScreen.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
@@ -66,11 +67,11 @@ class _CookiesPageState extends State<CookiesPage> {
                       width: 380,
                       height: 170,
                       decoration: BoxDecoration(
-                          color: boxdeccolor,
+                          color: cookieboxdeccolor,
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
-                              color: boxshadowcolor,
+                              color: cookieboxshadowcolor,
                               spreadRadius: 3,
                               blurRadius: 10,
                               offset: Offset(0, 3),
@@ -131,7 +132,7 @@ class _CookiesPageState extends State<CookiesPage> {
                                             index < foodRating.toInt()
                                                 ? Icons.star
                                                 : Icons.star_border,
-                                            color: iconstarcolor,
+                                            color: cookieiconstarcolor,
                                             size: 18,
                                           );
                                         }),
@@ -148,7 +149,7 @@ class _CookiesPageState extends State<CookiesPage> {
                                     rating,
                                     style: TextStyle(
                                       fontSize: 17,
-                                      color: ratingtextcolor,
+                                      color:cookieratingtextcolor ,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),

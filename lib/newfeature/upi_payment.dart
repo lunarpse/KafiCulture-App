@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:project_2/constants/payment_constants.dart';
+import 'package:project_2/constants/color_constants.dart';
+
 import 'package:project_2/newfeature/upi_icon.dart';
 
 class UPIPayment extends StatefulWidget {
@@ -17,8 +18,8 @@ class _UPIPaymentState extends State<UPIPayment> {
   String btnText = "Verify";
   String snackText = "Verified";
 
-  Color btnColor = btncolor;
-  Color btnTextColor = btntxtcolor;
+  Color btnColor = upibtncolor;
+  Color btnTextColor = upibtntxtcolor;
 
   // static final upiFormKey = GlobalKey();
 
@@ -38,8 +39,8 @@ class _UPIPaymentState extends State<UPIPayment> {
           borderRadius: BorderRadius.all(Radius.circular(7)),
           gradient: LinearGradient(
             colors: [
-              lineargradient1,
-              lineargradient2,
+              cardpaymentlineargradient1,
+              cardpaymentlineargradient2,
             ],
           ),
         ),

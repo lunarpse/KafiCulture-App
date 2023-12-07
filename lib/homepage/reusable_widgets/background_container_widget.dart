@@ -4,7 +4,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import '../../constants/dialogbox_constants.dart';
+import '../../constants/color_constants.dart';
 
 class BackgroundContainerWidget extends StatelessWidget {
   const BackgroundContainerWidget(
