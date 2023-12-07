@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:project_2/constants/offeringpopular_constants.dart';
 import 'package:project_2/homepage/model/json_model.dart';
 import 'package:project_2/homepage/constant_homepage/constant_offers.dart';
 import '../data_fetching/api_service.dart';
@@ -84,7 +85,7 @@ class _OfferingsState extends State<OfferingsWidget> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(15)),
                       gradient: LinearGradient(
-                          colors: [Colors.transparent, Colors.black],
+                          colors: [gradientcolor1, gradientcolor2],
                           begin: Alignment.center,
                           end: Alignment.bottomCenter),
                     )),
@@ -108,7 +109,7 @@ class _OfferingsState extends State<OfferingsWidget> {
                                 index < foodRating.toInt()
                                     ? Icons.star
                                     : Icons.star_border,
-                                color: Colors.amber,
+                                color: iconstarcolor,
                                 size: 17,
                               );
                             }),

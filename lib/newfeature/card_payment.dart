@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
+import 'package:project_2/constants/payment_constants.dart';
+import 'package:project_2/constants/text_constants.dart';
 
 class CardPayment extends StatelessWidget {
   CardPayment({super.key});
@@ -9,12 +11,12 @@ class CardPayment extends StatelessWidget {
     return ExpansionTile(
       title: Container(
           alignment: Alignment.centerLeft,
-          decoration: const BoxDecoration(
+          decoration:  BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(7)),
             gradient: LinearGradient(
               colors: [
-                Color.fromRGBO(255, 136, 102, 0.67),
-                Color.fromRGBO(255, 221, 136, 0.28),
+                lineargradient1,
+                lineargradient2,
               ],
             ),
           ),
@@ -27,9 +29,9 @@ class CardPayment extends StatelessWidget {
                 height: 60,
               ),
               Text(
-                "Credit/Debit Cards",
+                cardpayment,
                 style: TextStyle(
-                  color: Color.fromARGB(255, 37, 2, 2),
+                  color: cardpaymentcolor,
                   fontWeight: FontWeight.w500,
                   fontSize: 18,
                 ),
@@ -57,13 +59,13 @@ class CardPayment extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0),
               ),
-              foregroundColor: Color(0xff1b447)),
+              foregroundColor: foregroundcolor),
           child: Container(
             margin: EdgeInsets.all(8.0),
-            child: const Text(
-              'validate',
+            child:  Text(
+              validate,
               style: TextStyle(
-                color: Colors.white,
+                color:texttcolor,
                 fontFamily: 'halter',
                 fontSize: 14,
                 package: 'flutter_credit-card',

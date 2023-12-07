@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:project_2/cart/riverpod/tipstate_provider.dart';
 
+import '../../constants/cookinginstruction_constants.dart';
+
 class Cooking_Instructions extends ConsumerStatefulWidget {
   const Cooking_Instructions({super.key});
 
@@ -22,11 +24,11 @@ class _Cooking_InstructionsState extends ConsumerState<Cooking_Instructions> {
 
       margin: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
       decoration: BoxDecoration(
-       color: Color.fromARGB(255, 240, 234, 234),
+       color: boxdecorationcolor,
         borderRadius: BorderRadius.circular(29),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.9),
+            color: boxshadowcolor,
             offset: Offset(0, 2),
             blurRadius: 2,
             spreadRadius: 3,
@@ -37,10 +39,11 @@ class _Cooking_InstructionsState extends ConsumerState<Cooking_Instructions> {
       onExpansionChanged: (value) {
         
       },
-       textColor: Colors.black,
+       textColor:textcolor,
        childrenPadding: EdgeInsets.only(left: 10,right: 10,bottom: 20),
         
-        title: Text("  Add Cooking Instructions",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+        title: Text(cookinginstruction,
+        style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
         children: [
           
              Container(
@@ -55,16 +58,16 @@ class _Cooking_InstructionsState extends ConsumerState<Cooking_Instructions> {
                 
              //   cursorColor: Color.fromARGB(255, 105, 73, 14),
                 cursorHeight:CircularProgressIndicator.strokeAlignCenter,
-                cursorColor: Color.fromARGB(255, 105, 73, 14),
+                cursorColor: cursorcolor,
                 style: TextStyle(fontWeight: FontWeight.w400,fontSize: 20,fontStyle: FontStyle.normal),
                 decoration: InputDecoration(
                   
                   enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black)
+                    borderSide: BorderSide(color: bordercolor)
                   ),
                   focusedBorder: UnderlineInputBorder(
                   
-                    borderSide: BorderSide(color: Colors.black)
+                    borderSide: BorderSide(color:bordercolor)
                   )
                 ),
             

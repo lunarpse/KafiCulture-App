@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../../constants/emptycart_constants.dart';
+
 class EmptyCart extends StatelessWidget {
   const EmptyCart({super.key});
 
@@ -19,7 +21,7 @@ class EmptyCart extends StatelessWidget {
                 width: 10,
               ),
               Text(
-                "Cart Is Empty",
+                emptycart,
                 style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20),
               )
             ],
@@ -34,17 +36,19 @@ class EmptyCart extends StatelessWidget {
                 horizontal: 39,
                 vertical: 16.0,
               ),
-              primary: Colors.black,
+              primary:elevatebuttoncolor,
               elevation: 0,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0),
                 side: BorderSide(
-                  color: Colors.black38,
+                  color: roundedrectanglebordercolor,
                 ),
               ),
             ),
             onPressed: () {},
-            child: Text("Go To Home"),
+            child: Text(
+              gotohomepage,
+              ),
           ),
         ],
       ),

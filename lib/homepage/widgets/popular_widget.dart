@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors, avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:project_2/constants/detailspage_constants.dart';
+import 'package:project_2/constants/offeringpopular_constants.dart';
 import 'package:project_2/homepage/model/json_model.dart';
 import 'package:project_2/homepage/constant_homepage/constant_populars.dart';
 import '../pages/home_page/populars/popular_details_page.dart';
@@ -52,7 +54,7 @@ class _PopularState extends State<PopularWidget> {
         double foodRating = double.parse(totalRating);
         return Card(
           elevation: 20,
-          shadowColor: Colors.grey,
+          shadowColor: cardshadowcolor,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           child: InkWell(
@@ -101,7 +103,7 @@ class _PopularState extends State<PopularWidget> {
                                 index < foodRating.toInt()
                                     ? Icons.star
                                     : Icons.star_border,
-                                color: Colors.amber,
+                                color:iconstarcolor,
                                 size: 17,
                               );
                             }),

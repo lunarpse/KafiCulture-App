@@ -2,6 +2,10 @@
 
 import 'package:flutter/material.dart';
 
+import '../constants/appbar_constants.dart';
+
+
+
 class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
   const AppbarWidget({super.key});
 
@@ -24,7 +28,7 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             CircleAvatar(
-              backgroundColor: Colors.white,
+              backgroundColor:circleavatarbgcolor,
               backgroundImage: AssetImage("assets/images/logo1.png"),
               radius: 18,
             ),
@@ -33,14 +37,14 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "KAFICULTURE",
+                apptitle,
                   style: TextStyle(fontSize: 20),
                 ),
                 SizedBox(
                   height: 3,
                 ),
                 Text(
-                  "Where every cup tells a story",
+                  appslogan,
                   style: TextStyle(
                       fontFamily: 'Ephesis', fontSize: 18, letterSpacing: 1),
                 ),
@@ -62,7 +66,7 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
             Navigator.pushNamed(context, "/cart");
           },
           icon: Icon(Icons.shopping_cart),
-          color: Color.fromRGBO(78, 43, 18, 0.9),
+          color:carticonbuttoncolor,
           iconSize: 25,
         ),
       ],

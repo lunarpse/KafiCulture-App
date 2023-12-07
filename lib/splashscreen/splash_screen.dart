@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:project_2/constants/splashscreen_constants.dart';
 
 import 'package:project_2/homepage/pages/home_page/home_page.dart';
 
@@ -27,11 +28,11 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(
         child: Container(
           width: MediaQuery.of(context).size.width,
-          decoration: const BoxDecoration(
+          decoration:  BoxDecoration(
               gradient: SweepGradient(colors: [
-            Color.fromRGBO(239, 222, 216, 1),
-            Color.fromARGB(255, 234, 226, 226),
-            Color.fromARGB(255, 211, 206, 182)
+            sweepgradientcolor1,
+            sweepgradientcolor2,
+            sweepgradientcolor3
           ])),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

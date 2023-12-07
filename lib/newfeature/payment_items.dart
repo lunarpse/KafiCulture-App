@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_2/constants/payment_constants.dart';
 
 class ThankYou extends StatelessWidget {
   const ThankYou({super.key});
@@ -6,7 +7,7 @@ class ThankYou extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text("Thank you"),
+      child: Text(thankyou),
     );
   }
 }

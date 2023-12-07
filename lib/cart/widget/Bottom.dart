@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:project_2/cart/riverpod/tipstate_provider.dart';
 
+import '../../constants/bottom_constants.dart';
 import 'charges.dart';
 
 class Bottom extends ConsumerWidget {
@@ -31,10 +32,10 @@ class Bottom extends ConsumerWidget {
         top: 4.0,
       ),
       decoration: BoxDecoration(
-          color: Color.fromARGB(255, 218, 209, 207),
+          color: bottoboxdeccolor,
           boxShadow: [
             BoxShadow(
-                color: Colors.black,
+                color: bottomboxshadowcolor,
                 offset: Offset(1, 1),
                 spreadRadius: 2,
                 blurRadius: 1)
@@ -51,7 +52,7 @@ class Bottom extends ConsumerWidget {
                 width: 10,
               ),
               Text(
-                "Bill Details",
+                billdetails,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 27),
               ),
             ],
@@ -70,8 +71,8 @@ class Bottom extends ConsumerWidget {
                   (index) => Expanded(
                         child: Container(
                           color: index % 2 == 0
-                              ? Colors.transparent
-                              : Colors.black,
+                              ? containercolor
+                              : containercolor1,
                           height: 2,
                         ),
                       )),
@@ -88,11 +89,11 @@ class Bottom extends ConsumerWidget {
                     horizontal: 32,
                     vertical: 16.0,
                   ),
-                  backgroundColor: Color.fromARGB(255, 110, 47, 24),
+                  backgroundColor:elevatebuttonbgcolor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0),
                     side: BorderSide(
-                      color: Colors.black38,
+                      color:roundrectanglebordercolor,
                     ),
                   ),
                 ),
@@ -109,8 +110,8 @@ class Bottom extends ConsumerWidget {
                   Navigator.pushNamed(context, "/payment");
                 },
                 child: Text(
-                  "Check out",
-                  style: TextStyle(color: Colors.white),
+                  checkout,
+                  style: TextStyle(color: checkoutcolor),
                 ),
               ),
             ],

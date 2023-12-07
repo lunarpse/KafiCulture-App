@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
+import 'package:project_2/constants/feedback_constants.dart';
+import 'package:project_2/constants/text_constants.dart';
 import 'package:project_2/feedBack/ratingStar.dart';
 import 'package:project_2/feedBack/thankYou.dart';
 import 'package:project_2/customdrawer/drawerScreen.dart';
@@ -75,7 +77,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
                 const SizedBox(height: 20),
                 Container(
                   child: const Text(
-                    "Did You Received Your Order?",
+                    orderconfirmation,
                     style: TextStyle(fontSize: 30),
                   ),
                 ),
@@ -92,11 +94,11 @@ class _FeedBackPageState extends State<FeedBackPage> {
                         child: Container(
                           width: 100,
                           height: 50,
-                          color: isYesSelected ? Colors.green : Colors.grey,
+                          color: isYesSelected ? selectedyes :notselected,
                           child: Center(
                             child: Text(
-                              'Yes',
-                              style: TextStyle(color: Colors.white),
+                              yes,
+                              style: TextStyle(color: textcolorr),
                             ),
                           ),
                         ),
@@ -109,11 +111,11 @@ class _FeedBackPageState extends State<FeedBackPage> {
                         child: Container(
                           width: 100,
                           height: 50,
-                          color: isNoSelected ? Colors.red : Colors.grey,
+                          color: isNoSelected ? selectedno : notselected,
                           child: Center(
                             child: Text(
-                              'No',
-                              style: TextStyle(color: Colors.white),
+                              no,
+                              style: TextStyle(color: textcolorr),
                             ),
                           ),
                         ),
@@ -127,28 +129,28 @@ class _FeedBackPageState extends State<FeedBackPage> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ExpansionTile(
-                    collapsedBackgroundColor: Color.fromARGB(255, 134, 89, 22),
-                    backgroundColor: Color.fromARGB(255, 224, 169, 30),
-                    collapsedTextColor: Colors.white,
-                    textColor: Colors.white,
+                    collapsedBackgroundColor: collapsebgcolor,
+                    backgroundColor: collapsebackgroundcolor,
+                    collapsedTextColor: collapsetextcolor,
+                    textColor:textcolorr,
                     title:
-                        const Center(child: Text("Share Your FeedBack Here")),
+                        const Center(child: Text(feedbackbox)),
                     initiallyExpanded: isExpanded,
                     children: [
                       Container(
                         height: 180,
-                        color: Colors.white,
+                        color: textcolorr,
                         child: Column(
                           children: [
-                            const TextField(
-                              cursorColor: Colors.orange,
+                             TextField(
+                              cursorColor: cursorrcolor,
                               style: TextStyle(
-                                color: Colors.black,
+                                color:black,
                                 fontSize: 20,
                               ),
                               maxLines: 3,
                               decoration: InputDecoration(
-                                  hintText: "Write FeedBack Here...."),
+                                  hintText: feedbackmessage),
                             ),
                             const SizedBox(
                               height: 15,
@@ -157,13 +159,13 @@ class _FeedBackPageState extends State<FeedBackPage> {
                                 style: ButtonStyle(
                                     backgroundColor: MaterialStateProperty.all<
                                             Color>(
-                                        (Color.fromARGB(255, 134, 89, 22)))),
+                                        (collapsebgcolor))),
                                 onPressed: () {
                                   setState(() {
                                     isExpanded = false;
                                   });
                                 },
-                                child: Text("Submit"))
+                                child: Text(submit))
                           ],
                         ),
                       )
@@ -177,7 +179,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
                   height: 200,
                   width: MediaQuery.sizeOf(context).width - 20,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: textcolorr,
                     borderRadius: BorderRadius.circular(14),
                   ),
                   child: Center(
@@ -185,7 +187,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         const Text(
-                          "How Would You Rate Our App?",
+                          rating,
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 20),
                         ),
@@ -194,7 +196,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
                             style: ButtonStyle(
                                 backgroundColor:
                                     MaterialStateProperty.all<Color>(
-                                        (Color.fromARGB(255, 134, 89, 22)))),
+                                        (collapsebgcolor))),
                             onPressed: () {
                               showModalBottomSheet(
                                 context: context,
@@ -203,7 +205,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
                                 },
                               );
                             },
-                            child: Text("Submit")),
+                            child: Text(submit)),
                       ],
                     ),
                   ),

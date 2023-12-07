@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:project_2/constants/loadingscreen_constants.dart';
+import 'package:project_2/constants/text_constants.dart';
 
 class LoadingScreen extends StatefulWidget {
   const LoadingScreen({
@@ -30,8 +32,8 @@ class _LoadingScreenState extends State<LoadingScreen> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Colors.white.withOpacity(0.1),
-                  Colors.white.withOpacity(0.5),
+                  loadinggradientcolor1,
+                  loadinggradientcolor2,
                 ],
                 begin: AlignmentDirectional.topStart,
                 end: AlignmentDirectional.bottomEnd,
@@ -39,15 +41,15 @@ class _LoadingScreenState extends State<LoadingScreen> {
               borderRadius: const BorderRadius.all(Radius.circular(10)),
               border: Border.all(
                 width: 1.5,
-                color: Colors.white.withOpacity(0.2),
+                color: bordercolor,
               ),
             ),
             child: Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    Colors.white.withOpacity(0.1),
-                    Colors.white.withOpacity(0.5),
+                   lineargracolor1,
+                    lineargracolor2,
                   ],
                   begin: AlignmentDirectional.topStart,
                   end: AlignmentDirectional.bottomEnd,
@@ -55,25 +57,25 @@ class _LoadingScreenState extends State<LoadingScreen> {
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 border: Border.all(
                   width: 1.5,
-                  color: Colors.white.withOpacity(0.2),
+                  color:bordercolor2,
                 ),
               ),
-              child: const Center(
+              child:  Center(
                 child: Column(
                   // crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      "Processing",
+                      processing,
                       style: TextStyle(
-                          color: Colors.black,
+                          color: textcolor,
                           fontSize: 28,
                           fontWeight: FontWeight.w400),
                     ),
                     SizedBox(height: 40),
                     //it provide loading animation
                     SpinKitFadingCircle(
-                      color: Colors.black,
+                      color: textcolor,
                       size: 50.0,
                     )
                   ],

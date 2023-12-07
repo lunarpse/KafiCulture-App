@@ -3,6 +3,7 @@
 import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:project_2/constants/payment_constants.dart';
 
 class MyPopUp extends StatefulWidget {
   const MyPopUp({
@@ -42,8 +43,8 @@ class _MyPopUpState extends State<MyPopUp> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Colors.white.withOpacity(0.1),
-                  Colors.white.withOpacity(0.5),
+                  popupgradientcolor1,
+                  popupgradientcolor2,
                 ],
                 begin: AlignmentDirectional.topStart,
                 end: AlignmentDirectional.bottomEnd,
@@ -51,15 +52,15 @@ class _MyPopUpState extends State<MyPopUp> {
               borderRadius: const BorderRadius.all(Radius.circular(10)),
               border: Border.all(
                 width: 1.5,
-                color: Colors.white.withOpacity(0.2),
+                color: borderallcolor,
               ),
             ),
             child: Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    Colors.white.withOpacity(0.1),
-                    Colors.white.withOpacity(0.5),
+                    popupgradientcolor1,
+                    popupgradientcolor2,
                   ],
                   begin: AlignmentDirectional.topStart,
                   end: AlignmentDirectional.bottomEnd,
@@ -67,7 +68,7 @@ class _MyPopUpState extends State<MyPopUp> {
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 border: Border.all(
                   width: 1.5,
-                  color: Color.fromARGB(255, 20, 164, 61).withOpacity(0.2),
+                  color:borderradiuscolor,
                 ),
               ),
               child: Center(
@@ -96,7 +97,7 @@ class _MyPopUpState extends State<MyPopUp> {
                             Container(
                               height: widget.bottomHeight,
                               width: mediaWidth * 0.7,
-                              decoration: BoxDecoration(color: Colors.white),
+                              decoration: BoxDecoration(color: boxdeccolor),
                               child: Scaffold(
                                 body: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,

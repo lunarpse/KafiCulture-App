@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
+import 'package:project_2/constants/detailspage_constants.dart';
 import 'package:project_2/homepage/model/json_model.dart';
 import 'package:readmore/readmore.dart';
 import 'background_container_widget.dart';
@@ -104,7 +105,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                   blur: 4,
                   border: Border.fromBorderSide(BorderSide.none),
                   borderRadius: BorderRadius.circular(30.0),
-                  color: Colors.white.withOpacity(0.2),
+                  color:glasscontainercolor,
                   child: Container(
                     width: bodyWidth - 20.0,
                     child: Row(
@@ -119,7 +120,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                               Text(
                                 name,
                                 style: TextStyle(
-                                    color: Colors.black,
+                                    color:productnamecolor,
                                     fontSize: 25.0,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -128,14 +129,14 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                 children: [
                                   Icon(
                                     Icons.star,
-                                    color: Colors.amber,
+                                    color: ratingstarcolor,
                                     size: 23,
                                   ),
                                   SizedBox(width: 7),
                                   Text(
                                     rating,
                                     style: TextStyle(
-                                        color: Colors.black,
+                                        color: ratingcolor,
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -143,7 +144,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                   Text(
                                     '($totalRatings)',
                                     style: TextStyle(
-                                      color: Colors.black,
+                                      color: totalratingscolor,
                                       fontSize: 18,
                                     ),
                                   )
@@ -165,7 +166,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                 width: 150,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
-                                    color: Colors.black.withOpacity(0.6)),
+                                    color: boxdecorationcolor),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -173,7 +174,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                     Text(
                                       "\$ $offerPrice",
                                       style: TextStyle(
-                                          fontSize: 25, color: Colors.white),
+                                          fontSize: 25, color: boxcolor),
                                     ),
                                     Row(
                                       children: [
@@ -181,11 +182,11 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                           "\$ $price ",
                                           style: TextStyle(
                                               fontSize: 18,
-                                              color: Colors.grey.shade400,
+                                              color: pricefontcolor,
                                               decoration:
                                                   TextDecoration.lineThrough,
                                               decorationColor:
-                                                  Colors.grey.shade400,
+                                                  priceboxdecorationcolor,
                                               decorationThickness: 2,
                                               fontWeight: FontWeight.bold),
                                         ),
@@ -194,7 +195,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                           style: TextStyle(
                                               fontSize: 16,
                                               fontWeight: FontWeight.w500,
-                                              color: Colors.orange.shade800),
+                                              color: discountboxcolor),
                                         ),
                                       ],
                                     )
@@ -211,9 +212,9 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                     width: 50,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
-                                        color: Colors.black.withOpacity(0.8)),
+                                        color: boxdecoration1color),
                                     child: IconButton(
-                                      color: Colors.white,
+                                      color: iconbuttoncolor,
                                       onPressed: () {
                                         setState(() {
                                           quantity = quantity - 1 == 0
@@ -236,9 +237,9 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                     width: 50,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
-                                        color: Colors.black.withOpacity(0.8)),
+                                        color: boxdecoration2color),
                                     child: IconButton(
-                                      color: Colors.white,
+                                      color: iconbuttoncolor,
                                       onPressed: () {
                                         setState(() {
                                           quantity = quantity + 1;
@@ -263,7 +264,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
               Positioned(
                   top: bodyHeight / 2 - 62,
                   child: Container(
-                    color: Colors.white,
+                    color: iconbuttoncolor,
                     height: bodyHeight / 2 - 66,
                     width: bodyWidth - 20,
                     child: ListView(
@@ -273,9 +274,9 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Description",
+                              detaildescription,
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color: textcolor,
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -287,24 +288,24 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                 description,
                                 // selectedIndex.toString(),
                                 style: TextStyle(
-                                    color: Colors.black, fontSize: 17),
+                                    color: textcolor, fontSize: 17),
                                 trimLines: 2,
                                 trimMode: TrimMode.Line,
                                 moreStyle: TextStyle(
                                     fontSize: 17,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.orange),
+                                    color: readmore_showelesscolor),
                                 lessStyle: TextStyle(
                                     fontSize: 17,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.orange),
+                                    color: readmore_showelesscolor),
                               ),
                             ),
                             SizedBox(height: 12),
                             Text(
-                              'Size',
+                              size,
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color: textcolor,
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -323,9 +324,9 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                             ),
                             SizedBox(height: 12),
                             Text(
-                              'Customers also liked',
+                              recommendedproducts,
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color: textcolor,
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -357,7 +358,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                         arguments: fetchProduct),
                                     child: Card(
                                       elevation: 10,
-                                      shadowColor: Colors.grey,
+                                      shadowColor: shadowcolor,
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(10)),
@@ -402,7 +403,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                                     Icon(
                                                       Icons.star,
                                                       size: 17,
-                                                      color: Colors.orange,
+                                                      color: starcolor,
                                                     ),
                                                     SizedBox(width: 3),
                                                     Text(
@@ -427,7 +428,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                                       "($discount% Off)",
                                                       style: TextStyle(
                                                           fontSize: 13.5,
-                                                          color: Colors.orange,
+                                                          color: starcolor,
                                                           fontWeight:
                                                               FontWeight.w900),
                                                     ),
@@ -454,12 +455,12 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                   padding: EdgeInsets.symmetric(horizontal: 15, vertical: 7),
                   width: bodyWidth - 20,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: boxcolor,
                     borderRadius:
                         BorderRadius.vertical(top: Radius.circular(20)),
                     boxShadow: [
                       BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
+                          color: boxshadowcolor,
                           blurRadius: 3,
                           spreadRadius: 2,
                           offset: Offset(0, -2))
@@ -491,7 +492,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                         },
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(
-                                Color.fromRGBO(143, 93, 58, 1)),
+                                sizebuttonbgcolor),
                             shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16),
@@ -500,15 +501,15 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                 Size((bodyWidth / 3) + 25, 50))),
                         icon: Icon(
                           Icons.shopping_bag_outlined,
-                          color: Colors.orange,
+                          color: shoppingbagcolor,
                           size: 20,
                         ),
                         label: Text(
-                          "Buy Now",
+                          buynow,
                           style: TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.w500,
-                              color: Colors.white),
+                              color: boxcolor),
                         ),
                       ),
                       OutlinedButton.icon(
@@ -537,15 +538,15 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                         },
                         icon: Icon(
                           Icons.shopping_cart,
-                          color: Colors.orange,
+                          color: shoppingcartcolor,
                           size: 20,
                         ),
                         label: Text(
-                          "Add To Cart",
+                          addtocart,
                           style: TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.w700,
-                              color: Color.fromRGBO(143, 93, 58, 1)),
+                              color:addtocartbuttoncolor),
                         ),
                         style: ButtonStyle(
                             shape: MaterialStateProperty.all(
@@ -555,7 +556,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                             fixedSize: MaterialStateProperty.all(
                                 Size((bodyWidth / 3) + 25, 50)),
                             side: MaterialStatePropertyAll(BorderSide(
-                                color: Color.fromRGBO(143, 93, 58, 1),
+                                color: addtocartbuttoncolor,
                                 width: 3))),
                       )
                     ],
@@ -595,12 +596,12 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
         // width: 105,
         decoration: BoxDecoration(
             color: index == selectedIndex
-                ? Color.fromRGBO(143, 93, 58, 1)
-                : Colors.white,
+                ? addtocartbuttoncolor
+                : boxcolor,
             borderRadius: BorderRadius.circular(10),
             border: index == selectedIndex
-                ? Border.all(color: Colors.brown.shade900, width: 2)
-                : Border.all(color: Color.fromRGBO(143, 93, 58, 1), width: 2)),
+                ? Border.all(color: selectedindexbordercolor, width: 2)
+                : Border.all(color: addtocartbuttoncolor, width: 2)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -608,8 +609,8 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
               title,
               style: TextStyle(
                   color: index == selectedIndex
-                      ? Colors.white
-                      : Color.fromRGBO(143, 93, 58, 1),
+                      ? boxcolor
+                      : addtocartbuttoncolor,
                   fontSize: 17,
                   fontWeight: index == selectedIndex
                       ? FontWeight.normal
@@ -620,8 +621,8 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                 sizename,
                 style: TextStyle(
                     color: index == selectedIndex
-                        ? Colors.white
-                        : Color.fromRGBO(143, 93, 58, 1),
+                        ? boxcolor
+                        : addtocartbuttoncolor,
                     fontSize: 12,
                     fontWeight: index == selectedIndex
                         ? FontWeight.normal
@@ -648,13 +649,13 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
             Container(
               height: 20,
               decoration: BoxDecoration(
-                color: Color.fromRGBO(143, 93, 58, 0.8),
+                color: bottomsheetboxcolor,
                 borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
               ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 150),
                 child: Divider(
-                  color: Colors.black,
+                  color: textcolor,
                   thickness: 4,
                 ),
               ),
@@ -667,7 +668,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                   Icon(
                     Icons.done,
                     size: 35,
-                    color: Colors.green,
+                    color: doneiconcolor,
                   ),
                   SizedBox(width: 15),
                   Row(
@@ -678,7 +679,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                             fontSize: 20, fontWeight: FontWeight.w900),
                       ),
                       Text(
-                        "is addedd to Cart",
+                        cartconfirmationmsg,
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
@@ -699,15 +700,15 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                     },
                     icon: Icon(
                       Icons.shopping_cart,
-                      color: Colors.orange,
+                      color: shoppingcartcolor,
                       size: 20,
                     ),
                     label: Text(
-                      "Cart",
+                      cart,
                       style: TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.w700,
-                          color: Color.fromRGBO(143, 93, 58, 1)),
+                          color: addtocartbuttoncolor),
                     ),
                     style: ButtonStyle(
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
@@ -715,7 +716,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                         )),
                         fixedSize: MaterialStateProperty.all(Size(140, 50)),
                         side: MaterialStatePropertyAll(BorderSide(
-                            color: Color.fromRGBO(143, 93, 58, 1), width: 3))),
+                            color: addtocartbuttoncolor, width: 3))),
                   ),
                   ElevatedButton.icon(
                     onPressed: () {
@@ -724,22 +725,22 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                     },
                     style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
-                            Color.fromRGBO(143, 93, 58, 1)),
+                            addtocartbuttoncolor),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16),
                         )),
                         fixedSize: MaterialStateProperty.all(Size(230, 50))),
                     icon: Icon(
                       Icons.shopping_bag_outlined,
-                      color: Colors.orange,
+                      color: shoppingbagcolor,
                       size: 20,
                     ),
                     label: Text(
-                      "Continue Shopping",
+                      continueshopping,
                       style: TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.w500,
-                          color: Colors.white),
+                          color:boxcolor),
                     ),
                   ),
                 ],

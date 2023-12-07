@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:project_2/constants/drawer_constants.dart';
+
 
 // ignore: camel_case_types
 class DrawerScreen extends StatefulWidget {
@@ -13,8 +15,9 @@ class DrawerScreen extends StatefulWidget {
 
 class _DrawerScreenState extends State<DrawerScreen> {
   var colorr = LinearGradient(colors: [
-    Color.fromARGB(117, 243, 212, 150),
-    Color.fromARGB(117, 165, 118, 38),
+    lineargradientcolor,
+    lineargradientcolor1
+  
   ]);
   @override
   Widget build(BuildContext context) {
@@ -24,11 +27,11 @@ class _DrawerScreenState extends State<DrawerScreen> {
 
     return Drawer(
       child: Container(
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
             gradient: LinearGradient(colors: [
-          Color.fromARGB(117, 241, 216, 165),
-          Color.fromARGB(117, 170, 163, 151),
-          Color.fromARGB(117, 220, 182, 104),
+          boxdeclineargradient1,
+          boxdeclineargradient2,
+          boxdeclineargradient3,
         ])),
         child: ListView(
           children: [
@@ -41,15 +44,15 @@ class _DrawerScreenState extends State<DrawerScreen> {
               ),
             ),
             Divider(
-              color: Colors.black12,
+              color: divcolor,
               thickness: 5,
             ),
             ListTile(
               title: const Text(
-                'Cart',
+                cart,
                 style: TextStyle(fontSize: fontsize),
               ),
-              textColor: Colors.black87,
+              textColor: textcolor,
               trailing: const Icon(Icons.shopping_cart),
               onTap: () {
                 Navigator.pushReplacementNamed(context, "/cart");
@@ -58,12 +61,12 @@ class _DrawerScreenState extends State<DrawerScreen> {
 
             ListTile(
               title: const Text(
-                'Home',
+                home,
                 style: TextStyle(
                   fontSize: fontsize,
                 ),
               ),
-              textColor: Colors.black87,
+              textColor: textcolor,
               trailing: const Icon(Icons.home),
               onTap: () {
                 Navigator.pushReplacementNamed(context, "/home");
@@ -71,19 +74,19 @@ class _DrawerScreenState extends State<DrawerScreen> {
             ),
             Theme(
               data: Theme.of(context).copyWith(
-                dividerColor: Colors.transparent,
+                dividerColor: dividercolor,
                 //listTileTheme: ListTileThemeData(tileColor: color)
               ),
               child: ExpansionTile(
                 title: Text(
-                  "Cateogries",
+                  categories,
                   style: TextStyle(fontSize: fontsize),
                 ),
                 children: [
                   ExpansionTile(
-                    textColor: Color.fromARGB(255, 94, 27, 3),
+                    textColor: expansiontilecolor,
                     title: Text(
-                      "Food",
+                      food,
                       style: TextStyle(fontSize: fontsize2),
                     ),
                     children: [
@@ -92,10 +95,10 @@ class _DrawerScreenState extends State<DrawerScreen> {
                         decoration: BoxDecoration(gradient: colorr),
                         child: ListTile(
                           title: const Text(
-                            'Snacks',
+                            snacks,
                             style: TextStyle(fontSize: fontsize3),
                           ),
-                          textColor: Colors.black87,
+                          textColor: textcolor,
                           trailing: const Icon(Icons.breakfast_dining),
                           onTap: () {
                             Navigator.pushReplacementNamed(context, "/snacks");
@@ -107,10 +110,10 @@ class _DrawerScreenState extends State<DrawerScreen> {
                         child: ListTile(
                           // tileColor: color,
                           title: const Text(
-                            'Drinks',
+                            drinks,
                             style: TextStyle(fontSize: fontsize3),
                           ),
-                          textColor: Colors.black87,
+                          textColor:textcolor,
                           trailing: const Icon(Icons.local_drink),
                           onTap: () {
                             Navigator.pushReplacementNamed(context, "/drinks");
@@ -122,10 +125,10 @@ class _DrawerScreenState extends State<DrawerScreen> {
                         child: ListTile(
                           // tileColor: color,
                           title: const Text(
-                            'Cookies',
+                            cookies,
                             style: TextStyle(fontSize: fontsize3),
                           ),
-                          textColor: Colors.black87,
+                          textColor: textcolor,
                           trailing: const Icon(Icons.cookie),
                           onTap: () {
                             Navigator.pushReplacementNamed(context, "/cookies");
@@ -136,21 +139,21 @@ class _DrawerScreenState extends State<DrawerScreen> {
                   ),
                   ExpansionTile(
                     title:
-                        Text("Apparels", style: TextStyle(fontSize: fontsize2)),
+                        Text(apparels, style: TextStyle(fontSize: fontsize2)),
                     children: [
                       Container(
                         decoration: BoxDecoration(gradient: colorr),
                         child: ListTile(
                           title: const Text(
-                            'Men',
+                            apparelsmen,
                             style: TextStyle(fontSize: fontsize3),
                           ),
-                          textColor: Colors.black87,
+                          textColor: textcolor,
                           trailing: FaIcon(
                             FontAwesomeIcons.shirt,
                           ),
                           onTap: () {
-                            Navigator.pushReplacementNamed(context, "/snacks");
+                          Navigator.pushReplacementNamed(context, "/snacks");
                           },
                         ),
                       ),
@@ -158,10 +161,10 @@ class _DrawerScreenState extends State<DrawerScreen> {
                         decoration: BoxDecoration(gradient: colorr),
                         child: ListTile(
                           title: const Text(
-                            'Women',
+                            apparelswomen,
                             style: TextStyle(fontSize: fontsize3),
                           ),
-                          textColor: Colors.black87,
+                          textColor:textcolor,
                           trailing: FaIcon(
                             FontAwesomeIcons.shirt,
                           ),

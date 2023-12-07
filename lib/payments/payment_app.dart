@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:project_2/cart/riverpod/state_provider.dart';
 import 'package:project_2/cart/riverpod/tipstate_provider.dart';
+import 'package:project_2/constants/text_constants.dart';
 
 import 'package:project_2/customdrawer/drawerScreen.dart';
 
@@ -154,7 +155,7 @@ class _PaymentAppState extends ConsumerState {
                   ),
                   ExpansionTile(
                     title: Amount(
-                      text: "Loyality Point Equivalent",
+                      text: loyalitypointequivalent,
                       price:
                           "\$ ${(airEquivalent + h_mEquivalent + itcEquivalent).toStringAsFixed(2)}",
                       fontSize: 20,
@@ -166,7 +167,7 @@ class _PaymentAppState extends ConsumerState {
                     ),
                     children: [
                       Amount(
-                        text: "ITC International",
+                        text:hotel1,
                         price: "\$ ${(itcEquivalent).toStringAsFixed(2)}",
                         fontSize: 18,
                         fontColor: Colors.blue,
@@ -176,7 +177,7 @@ class _PaymentAppState extends ConsumerState {
                         bottomPadding: 5,
                       ),
                       Amount(
-                        text: "H&M",
+                        text: hotel2,
                         price: "\$ ${(h_mEquivalent).toStringAsFixed(2)}",
                         fontSize: 18,
                         fontColor: Colors.blue,
@@ -186,7 +187,7 @@ class _PaymentAppState extends ConsumerState {
                         bottomPadding: 5,
                       ),
                       Amount(
-                        text: "Emirates",
+                        text: hotel3,
                         price: "\$ ${(airEquivalent).toStringAsFixed(2)}",
                         fontSize: 18,
                         fontColor: Colors.blue,

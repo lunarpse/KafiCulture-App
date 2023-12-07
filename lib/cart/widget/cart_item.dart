@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:project_2/cart/widget/Remove_or_Cancel.dart';
 // import 'package:project_2/cart/cart/widget/Remove_or_Cancel.dart';
 
+import '../../constants/cartitem_constants.dart';
 import '../riverpod/state_provider.dart';
 
 class CartItem extends ConsumerStatefulWidget {
@@ -41,10 +42,10 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                 height: 120,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: Color.fromARGB(255, 247, 235, 231),
+                    color: boxdecorationcolor,
                     boxShadow: [
                       BoxShadow(
-                        color: const Color.fromARGB(255, 87, 76, 76),
+                        color: boxshadowcolor,
                         spreadRadius: 3,
                         blurRadius: 3,
                         offset: Offset(0, 3),
@@ -63,7 +64,7 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.grey,
+                              color: boxshadow,
                               offset: Offset(0, 2),
                               blurRadius: 4,
                               spreadRadius: 2,
@@ -116,7 +117,7 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      "Quantity",
+                                      cartquantity,
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 16),
@@ -142,12 +143,12 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                                       width: 30,
                                       decoration: BoxDecoration(
                                           color:
-                                              Color.fromARGB(255, 110, 47, 24),
+                                              boxdecorationcolor1,
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(50))),
                                       child: IconButton(
                                           mouseCursor: SystemMouseCursors.click,
-                                          color: Colors.white,
+                                          color: mousecursorcolor,
                                           onPressed: () {
                                             if (widget.data["quantity"] == 1) {
                                               setState(() {
@@ -178,11 +179,11 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                                       width: 30,
                                       decoration: BoxDecoration(
                                           color:
-                                              Color.fromARGB(255, 110, 47, 24),
+                                              boxdecorationcolor2,
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(50))),
                                       child: IconButton(
-                                          color: Colors.white,
+                                          color: iconbuttoncolor,
                                           onPressed: () {
                                             ref
                                                 .read(CartProvider.notifier)

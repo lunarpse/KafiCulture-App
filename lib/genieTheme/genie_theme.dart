@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:project_2/constants/genietheme_constant.dart';
 
 class GenieTheme {
   static final darkTheme = ThemeData(
-      scaffoldBackgroundColor: Colors.black, appBarTheme: const AppBarTheme());
+      scaffoldBackgroundColor: darkthemebgcolor, appBarTheme: const AppBarTheme());
 
   static final lightTheme = ThemeData(
-    scaffoldBackgroundColor: Color.fromARGB(255, 235, 228, 215),
+    scaffoldBackgroundColor: lightthemebgcolor,
     // scaffoldBackgroundColor: Color.fromARGB(255, 206, 191, 186),
-    appBarTheme: const AppBarTheme(
-      color: Color.fromARGB(255, 134, 89, 22),
+    appBarTheme:  AppBarTheme(
+      color: appbarthemecolor,
     ),
   );
 }
