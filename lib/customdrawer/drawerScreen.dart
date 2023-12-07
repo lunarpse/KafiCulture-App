@@ -150,7 +150,8 @@ class _DrawerScreenState extends State<DrawerScreen> {
                             FontAwesomeIcons.shirt,
                           ),
                           onTap: () {
-                            Navigator.pushReplacementNamed(context, "/snacks");
+                            Navigator.pushReplacementNamed(
+                                context, "/shoespage");
                           },
                         ),
                       ),
