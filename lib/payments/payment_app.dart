@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:project_2/cart/riverpod/state_provider.dart';
 import 'package:project_2/cart/riverpod/tipstate_provider.dart';
+import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
 
 import 'package:project_2/customdrawer/drawerScreen.dart';
@@ -93,7 +94,7 @@ class _PaymentAppState extends ConsumerState {
               //Order list need to be added
               Container(
                   height: 120,
-                  color: const Color.fromARGB(255, 240, 232, 232),
+                  color: paymentcartcontainercolor,
                   width: double.infinity,
                   margin: EdgeInsets.only(top: 8, bottom: 15),
                   child: SingleChildScrollView(
@@ -115,8 +116,8 @@ class _PaymentAppState extends ConsumerState {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(7)),
                       gradient: LinearGradient(colors: [
-                        Color.fromRGBO(255, 136, 102, 0.67),
-                        Color.fromRGBO(255, 221, 136, 0.28),
+                        paymentapplineargradient1,
+                      paymentapplineargradient2,
                       ])),
                   height: 60,
                   width: MediaQuery.of(context).size.width,
@@ -126,7 +127,7 @@ class _PaymentAppState extends ConsumerState {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Amount: ',
+                          totalamount,
                           style: TextStyle(
                               fontSize: 25, fontWeight: FontWeight.w500),
                         ),
@@ -135,7 +136,7 @@ class _PaymentAppState extends ConsumerState {
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 25,
-                              color: Colors.black,
+                              color: paymentapppricecolor,
                               fontStyle: FontStyle.normal),
                         ),
                       ],
@@ -144,10 +145,10 @@ class _PaymentAppState extends ConsumerState {
                 ),
                 children: [
                   Amount(
-                    text: "Sub-Total",
+                    text: subtotal,
                     price: "\$ ${amount.toString()}",
                     fontSize: 20,
-                    fontColor: Colors.black,
+                    fontColor: paymentapppricecolor,
                     leftPadding: 20,
                     rightPadding: 20,
                     topPadding: 5,
@@ -159,7 +160,7 @@ class _PaymentAppState extends ConsumerState {
                       price:
                           "\$ ${(airEquivalent + h_mEquivalent + itcEquivalent).toStringAsFixed(2)}",
                       fontSize: 20,
-                      fontColor: Colors.green,
+                      fontColor: loyalitypointcolor,
                       leftPadding: 5,
                       rightPadding: 0,
                       topPadding: 5,
@@ -170,7 +171,7 @@ class _PaymentAppState extends ConsumerState {
                         text:hotel1,
                         price: "\$ ${(itcEquivalent).toStringAsFixed(2)}",
                         fontSize: 18,
-                        fontColor: Colors.blue,
+                        fontColor: paymentapphotelcolor,
                         leftPadding: 20,
                         rightPadding: 20,
                         topPadding: 5,
@@ -180,7 +181,7 @@ class _PaymentAppState extends ConsumerState {
                         text: hotel2,
                         price: "\$ ${(h_mEquivalent).toStringAsFixed(2)}",
                         fontSize: 18,
-                        fontColor: Colors.blue,
+                        fontColor: paymentapphotelcolor,
                         leftPadding: 20,
                         rightPadding: 20,
                         topPadding: 5,
@@ -190,7 +191,7 @@ class _PaymentAppState extends ConsumerState {
                         text: hotel3,
                         price: "\$ ${(airEquivalent).toStringAsFixed(2)}",
                         fontSize: 18,
-                        fontColor: Colors.blue,
+                        fontColor: paymentapphotelcolor,
                         leftPadding: 20,
                         rightPadding: 20,
                         topPadding: 5,
@@ -208,7 +209,7 @@ class _PaymentAppState extends ConsumerState {
               Padding(
                 padding: EdgeInsets.only(left: 12, right: 8),
                 child: Text(
-                  'Select Payment Method ',
+                 selectpaymentmethod,
                   style: TextStyle(fontSize: 23, fontWeight: FontWeight.w500),
                 ),
               ),
@@ -226,8 +227,8 @@ class _PaymentAppState extends ConsumerState {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(7)),
                       gradient: LinearGradient(colors: [
-                        Color.fromRGBO(255, 136, 102, 0.67),
-                        Color.fromRGBO(255, 221, 136, 0.28),
+                        paymentappexpansiontilegradient1,
+                        paymentappexpansiontilegradient2,
                       ])),
                   height: 60,
                   width: MediaQuery.of(context).size.width,
@@ -243,10 +244,10 @@ class _PaymentAppState extends ConsumerState {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              "Recommended",
+                             recommended,
                               style: TextStyle(
                                   fontSize: 17,
-                                  color: Colors.black54,
+                                  color: recommendedtextcolor,
                                   fontWeight: FontWeight.bold),
                             ),
                           )
@@ -258,7 +259,7 @@ class _PaymentAppState extends ConsumerState {
                     children: [
                       //                                                        ITC International
                       CompanyName(
-                        companyName: "ITC International",
+                        companyName: hotel1,
                         companyLogo: "assets/images/itc.png",
                         value: itcvalue,
                         points: 5,
@@ -267,7 +268,7 @@ class _PaymentAppState extends ConsumerState {
                         child: Slider(
                           divisions: 100,
                           label: " ${itcvalue.toStringAsFixed(2)}/100",
-                          activeColor: Colors.black54,
+                          activeColor: companynamecolors,
                           value: itcvalue.toDouble(),
                           onChanged: (double newValue) {
                             setState(() {
@@ -281,7 +282,7 @@ class _PaymentAppState extends ConsumerState {
 
                       //                                                        H&M
                       CompanyName(
-                        companyName: "H&M",
+                        companyName:hotel2,
                         companyLogo: "assets/images/h&m.png",
                         value: handm_value,
                         points: 100,
@@ -290,7 +291,7 @@ class _PaymentAppState extends ConsumerState {
                         child: Slider(
                           divisions: 100,
                           label: " ${handm_value.toStringAsFixed(2)}/100",
-                          activeColor: Colors.black54,
+                          activeColor: companynamecolors,
                           value: handm_value.toDouble(),
                           onChanged: (double newValue) {
                             setState(() {
@@ -305,7 +306,7 @@ class _PaymentAppState extends ConsumerState {
                       //                                                         Emirates
 
                       CompanyName(
-                        companyName: "Emirates",
+                        companyName:hotel3,
                         companyLogo: "assets/images/air.png",
                         value: airvalue,
                         points: 2,
@@ -314,7 +315,7 @@ class _PaymentAppState extends ConsumerState {
                         child: Slider(
                           divisions: 100,
                           label: " ${airvalue.toStringAsFixed(2)}/100",
-                          activeColor: Colors.black54,
+                          activeColor: companynamecolors,
                           value: airvalue.toDouble(),
                           onChanged: (double newValue) {
                             setState(() {
@@ -349,9 +350,9 @@ class _PaymentAppState extends ConsumerState {
                                 context: context,
                                 builder: (context) {
                                   return MyPopUp(
-                                      bgcolor: Colors.greenAccent,
+                                      bgcolor: showdialogbackgroundcolor,
                                       textMsg:
-                                          "Thank you for using SWAP \n Continue with UPI/Card",
+                                          swapmessage,
                                       logo: "assets/images/smile.png",
                                       bottomHeight: 100);
                                 },
@@ -363,12 +364,12 @@ class _PaymentAppState extends ConsumerState {
                           child: Container(
                             decoration: BoxDecoration(
                               border: Border.all(
-                                  color: const Color.fromARGB(255, 98, 2, 2)),
+                                  color: paymentborderall),
                               borderRadius: BorderRadius.circular(10),
                               gradient: LinearGradient(
                                 colors: [
-                                  Color.fromRGBO(226, 215, 212, 0.467),
-                                  Color.fromRGBO(240, 214, 191, 1),
+                                  paymentborderallgradient1,
+                                  paymentborderallgradient2,
                                 ],
                               ),
                             ),
@@ -376,12 +377,12 @@ class _PaymentAppState extends ConsumerState {
                             height: 55,
                             child: Center(
                               child: Text(
-                                "Confirm",
+                                confirm,
                                 style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                     color:
-                                        const Color.fromARGB(255, 255, 106, 7)),
+                                        confirmcolor),
                               ),
                             ),
                           ),
@@ -394,14 +395,14 @@ class _PaymentAppState extends ConsumerState {
 
               //--------------------------------------------------newSwap
 
-              const Divider(
+               Divider(
                 height: 25,
-                color: Colors.black,
+                color: paymentdivdercolor,
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 12.0),
                 child: Text(
-                  'Other Payment Method ',
+                  otherpaymentmethod,
                   style: TextStyle(
                     fontSize: 23,
                     fontWeight: FontWeight.w500,

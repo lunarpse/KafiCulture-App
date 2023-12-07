@@ -63,6 +63,10 @@ const String processing ="Processing";
 //paymentScreen
 const String cardpayment ="Credit/Debit Cards";
 const String thankyou ="Thank You";
+const String selectpaymentmethod = "Select Payment Method";
+const String recommended = "Recommended";
+const String subtotal ="Sub-Total";
+const String totalamount ="Amount: ";
 
 //creditcardwidget
 const String validate ="Validate";
@@ -72,7 +76,9 @@ const String loyalitypointequivalent ="Loyality Point Equivalent";
 const String hotel1 ="ITC International";
 const String hotel2 ="H&M";
 const String hotel3 ="Emirates";
-
+const String swapmessage ="Thank you for using SWAP \n Continue with UPI/Card";
+const String confirm ="Confirm";
+const String otherpaymentmethod ="Other Payment Method";
 //dialogbox
 const String addon ="Addons";
 const String currentitem ="CURRENT ITEM";
@@ -84,7 +90,7 @@ const String buynow="Buy Now";
 const String addtocart ="Add to cart";
 const String cartconfirmationmsg ="is added to cart";
 const String detailscart ="Cart";
-const continueshopping ="Continue Shopping";
+const String continueshopping ="Continue Shopping";
 const String detaildescription ="Description";
 
 //extras 

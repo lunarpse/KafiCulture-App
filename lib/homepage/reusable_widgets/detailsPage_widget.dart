@@ -584,14 +584,14 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
         });
       },
       child: Container(
-        height: widget.details.category == "Snacks"
+        height: widget.details.category == snacks
             ? 40
-            : widget.details.category == "Cookies"
+            : widget.details.category == cookies
                 ? 40
                 : 48,
-        width: widget.details.category == "Snacks"
+        width: widget.details.category == snacks
             ? 105
-            : widget.details.category == "Cookies"
+            : widget.details.category == cookies
                 ? 105
                 : 110,
         // height: 40,

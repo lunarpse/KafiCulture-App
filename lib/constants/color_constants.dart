@@ -171,13 +171,28 @@ Color mypopupborderallcolor =Colors.white.withOpacity(0.2);
 Color mypopupborderradiuscolor= Color.fromARGB(255, 20, 164, 61).withOpacity(0.2);
 Color mypopupboxdeccolor =Colors.white;
 Color companynameboxdecorationlineargradcolor =Colors.white;
- Color companynameboxdecorationlineargradcolor1 =Color.fromARGB(255, 229, 193, 159);
-
+Color companynameboxdecorationlineargradcolor1 =Color.fromARGB(255, 229, 193, 159);
+Color paymentapplineargradient1=Color.fromRGBO(255, 136, 102, 0.67);
+Color paymentapplineargradient2 =  Color.fromRGBO(255, 221, 136, 0.28);
+Color paymentapppricecolor =Colors.black;
+Color loyalitypointcolor =Colors.green;
+Color paymentapphotelcolor =Colors.blue;
+Color paymentappexpansiontilegradient1=Color.fromRGBO(255, 136, 102, 0.67);
+Color paymentappexpansiontilegradient2 =Color.fromRGBO(255, 221, 136, 0.28);
+Color recommendedtextcolor =Colors.black54;
+Color companynamecolors=Colors.black54;
+Color showdialogbackgroundcolor =Colors.greenAccent;
+Color paymentborderall =const Color.fromARGB(255, 98, 2, 2);
+Color paymentborderallgradient1 =Color.fromRGBO(226, 215, 212, 0.467);
+Color paymentborderallgradient2=Color.fromRGBO(240, 214, 191, 1);
+Color confirmcolor =const Color.fromARGB(255, 255, 106, 7);
+Color paymentdivdercolor =Colors.black;
 //paymentcart
  Color paymentcartdeccolor =Color.fromARGB(255, 247, 235, 231);
  Color paymentcartboxshadow =const Color.fromARGB(255, 87, 76, 76);
  Color paymentcartboxshadoww =Colors.grey;
  Color paymentcartdeccolor1 =Color.fromARGB(255, 110, 47, 24);
+ Color paymentcartcontainercolor =const Color.fromARGB(255, 240, 232, 232);
 
  //btncolor
  Color upibtncolor =Colors.white;
