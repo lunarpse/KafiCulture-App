@@ -147,7 +147,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                           ),
                           textColor: Colors.black87,
                           trailing: FaIcon(
-                            FontAwesomeIcons.shirt,
+                            FontAwesomeIcons.shoePrints,
                           ),
                           onTap: () {
                             Navigator.pushReplacementNamed(
@@ -164,10 +164,10 @@ class _DrawerScreenState extends State<DrawerScreen> {
                           ),
                           textColor: Colors.black87,
                           trailing: FaIcon(
-                            FontAwesomeIcons.shirt,
+                            FontAwesomeIcons.bagShopping,
                           ),
                           onTap: () {
-                            Navigator.pushReplacementNamed(context, "/drinks");
+                            Navigator.pushReplacementNamed(context, "/bagpage");
                           },
                         ),
                       ),
