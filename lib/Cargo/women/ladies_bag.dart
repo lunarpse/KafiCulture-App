@@ -75,7 +75,7 @@ class _LadiesBagState extends State<LadiesBag> {
                           ]),
                       child: InkWell(
                         onTap: () => Navigator.pushNamed(
-                            context, '/snacksdetails',
+                            context, '/ladiesdetails',
                             arguments: bag),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -116,6 +116,7 @@ class _LadiesBagState extends State<LadiesBag> {
                                   Text(
                                     name,
                                     maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
                                     style: const TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold,
@@ -152,7 +153,8 @@ class _LadiesBagState extends State<LadiesBag> {
                                   ),
                                   Text(
                                     description,
-                                    maxLines: 2,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                       fontSize: 14,
                                     ),

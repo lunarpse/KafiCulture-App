@@ -87,7 +87,7 @@ class _MenShoesState extends State<MenShoes> {
                                   tag: shoe,
                                   child: Image.asset(
                                     "assets/images/MenShoes/$image.jpg",
-                                    fit: BoxFit.cover,
+                                    fit: BoxFit.fill,
                                   ),
                                 ),
                               ),
