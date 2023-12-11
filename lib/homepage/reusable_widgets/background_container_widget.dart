@@ -4,6 +4,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+import '../../constants/color_constants.dart';
+
 class BackgroundContainerWidget extends StatelessWidget {
   const BackgroundContainerWidget(
       {super.key,
@@ -29,7 +31,7 @@ class BackgroundContainerWidget extends StatelessWidget {
           fit: BoxFit.fill,
           colorFilter: ColorFilter.mode(
               // const Color.fromARGB(255, 248, 205, 189).withOpacity(0.4),
-              const Color.fromARGB(255, 248, 205, 189).withOpacity(opacity),
+              bgcontainercolor.withOpacity(opacity),
               BlendMode.dstATop),
         ),
       ),

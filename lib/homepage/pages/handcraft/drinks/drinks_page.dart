@@ -1,5 +1,8 @@
 // ignore_for_file: prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
+import 'package:project_2/constants/color_constants.dart';
+//import 'package:project_2/constants/pagesconstants/drinks_constants.dart';
+import 'package:project_2/constants/text_constants.dart';
 import 'package:project_2/homepage/model/json_model.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/customdrawer/drawerScreen.dart';
@@ -47,10 +50,12 @@ class _DrinksPageState extends State<DrinksPage> {
             var drink = drinks[index];
             final name = drink.name;
             final image = drink.image;
+            // final addons = drink.addons[1].addons1;
+            // final description = drink.description;
             final totalRating = drink.totalRatings;
-            final rating = double.parse(drink.rating);
+            final rating = drink.rating;
             // final price = drink.price;
-
+            double foodRating = double.parse(totalRating);
             return Padding(
               padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
               child: Column(
@@ -61,11 +66,11 @@ class _DrinksPageState extends State<DrinksPage> {
                       width: 380,
                       height: 170,
                       decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: drinksboxdeccolor,
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.grey,
+                              color: drinksboxshadowcolor,
                               spreadRadius: 3,
                               blurRadius: 10,
                               offset: Offset(0, 3),
@@ -110,7 +115,7 @@ class _DrinksPageState extends State<DrinksPage> {
                                     ),
                                   ),
                                   Text(
-                                    "Discover the artistry of flavors, where every sip is a celebration of perfection.",
+                                    productdescription,
                                     // addons,
                                     style: TextStyle(
                                       fontSize: 14,
@@ -124,10 +129,10 @@ class _DrinksPageState extends State<DrinksPage> {
                                       Row(
                                         children: List.generate(5, (index) {
                                           return Icon(
-                                            index < rating
+                                            index < foodRating.toInt()
                                                 ? Icons.star
                                                 : Icons.star_border,
-                                            color: Colors.amber,
+                                            color: drinksiconstarcolor,
                                             size: 18,
                                           );
                                         }),
@@ -141,10 +146,10 @@ class _DrinksPageState extends State<DrinksPage> {
                                     ],
                                   ),
                                   Text(
-                                    "$rating",
+                                    rating,
                                     style: TextStyle(
                                       fontSize: 17,
-                                      color: Colors.red,
+                                      color: drinksratingtextcolor,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),

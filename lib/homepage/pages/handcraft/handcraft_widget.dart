@@ -1,7 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:project_2/constants/color_constants.dart';
+import 'package:project_2/constants/text_constants.dart';
 import 'package:project_2/homepage/constant_homepage/constant_categories.dart';
+
+
 
 class HandCraftedWidget extends StatelessWidget {
   const HandCraftedWidget({super.key});
@@ -14,8 +18,8 @@ class HandCraftedWidget extends StatelessWidget {
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: gridView_crossAxisCount,
-          crossAxisSpacing: gridView_crossAxisSpacing,
+          crossAxisCount:gridView_crossAxisCount,
+          crossAxisSpacing: griddView_crossAxisSpacing,
         ),
         children: [
           InkWell(
@@ -33,7 +37,7 @@ class HandCraftedWidget extends StatelessWidget {
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: boxShadow_color,
+                        color: handcraftboxShadowcolor,
                         blurRadius: boxShadow_blurRadius,
                         spreadRadius: boxShadow_spreadRadius,
                         offset: Offset(boxShadow_offSet_startPoint,
@@ -44,9 +48,9 @@ class HandCraftedWidget extends StatelessWidget {
                   )),
                 ),
                 Text(
-                  categories1,
+                  snacks,
                   style: TextStyle(
-                      fontSize: categories_fontSize,
+                      fontSize: 17,
                       fontWeight: FontWeight.bold),
                 ),
               ],
@@ -67,7 +71,7 @@ class HandCraftedWidget extends StatelessWidget {
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: boxShadow_color
+                        color: handcraftboxShadowcolor
                             .withOpacity(boxShadow_color_opacity),
                         blurRadius: boxShadow_blurRadius,
                         spreadRadius: boxShadow_spreadRadius,
@@ -79,9 +83,9 @@ class HandCraftedWidget extends StatelessWidget {
                   )),
                 ),
                 Text(
-                  categories2,
+                  drinks,
                   style: TextStyle(
-                      fontSize: categories_fontSize,
+                      fontSize: 17,
                       fontWeight: FontWeight.bold),
                 ),
               ],
@@ -102,7 +106,7 @@ class HandCraftedWidget extends StatelessWidget {
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: boxShadow_color
+                        color: handcraftboxShadowcolor
                             .withOpacity(boxShadow_color_opacity),
                         blurRadius: boxShadow_blurRadius,
                         spreadRadius: boxShadow_spreadRadius,
@@ -114,9 +118,9 @@ class HandCraftedWidget extends StatelessWidget {
                   )),
                 ),
                 Text(
-                  categories3,
+                  cookies,
                   style: TextStyle(
-                      fontSize: categories_fontSize,
+                      fontSize: 17,
                       fontWeight: FontWeight.bold),
                 ),
               ],

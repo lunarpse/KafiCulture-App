@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
-import 'package:project_2/Cargo/men/men_shoes.dart';
-import 'package:project_2/Cargo/women/ladies_bag.dart';
-import 'package:project_2/Cargo/women/ladies_bag_details.dart';
+import 'package:project_2/addAddress/address.dart';
 import 'package:project_2/cart/screen/cart.dart';
 import 'package:project_2/feedBack/FeedBack_page.dart';
 import 'package:project_2/loading/loadingScreen.dart';
@@ -70,17 +68,7 @@ class RouteGenerator {
             builder: (_) => PopularDetailsPage(
                   popular: args,
                 ));
-      case '/shoespage':
-        return MaterialPageRoute(builder: (_) => MenShoes());
-      case '/bagpage':
-        return MaterialPageRoute(builder: (_) => LadiesBag());
-      case '/ladiesdetails':
-        return MaterialPageRoute(
-            builder: (_) => LadiesBagDetailsPage(
-                  detail: args,
-                ));
     }
-
     throw AboutListTile();
   }
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:project_2/constants/color_constants.dart';
+
 
 class CompanyName extends StatelessWidget {
   const CompanyName(
@@ -99,15 +101,15 @@ class CompanyName extends StatelessWidget {
           // ),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 16),
+          padding:  EdgeInsets.only(left: 16),
           child: Row(
             children: [
               Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      Colors.white,
-                      Color.fromARGB(255, 229, 193, 159),
+                      companynameboxdecorationlineargradcolor,
+                      companynameboxdecorationlineargradcolor1,
                     ],
                   ),
                 ),

@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:project_2/constants/color_constants.dart';
+
+import 'package:project_2/constants/text_constants.dart';
 import 'package:project_2/customdrawer/drawerScreen.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 
@@ -49,9 +52,11 @@ class _CookiesPageState extends State<CookiesPage> {
             var cookie = cookies[index];
             final name = cookie.name;
             final image = cookie.image;
+            // final description = cookie.description;
             final totalRating = cookie.totalRatings;
-            final rating = double.parse(cookie.rating);
+            final rating = cookie.rating;
             // final price = cookie.price;
+            double foodRating = double.parse(totalRating);
             return Padding(
               padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
               child: Column(
@@ -62,11 +67,11 @@ class _CookiesPageState extends State<CookiesPage> {
                       width: 380,
                       height: 170,
                       decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: cookieboxdeccolor,
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.grey,
+                              color: cookieboxshadowcolor,
                               spreadRadius: 3,
                               blurRadius: 10,
                               offset: Offset(0, 3),
@@ -111,7 +116,7 @@ class _CookiesPageState extends State<CookiesPage> {
                                     ),
                                   ),
                                   Text(
-                                    "Discover the artistry of flavors, where every sip is a celebration of perfection.",
+                                    productdescription,
                                     style: TextStyle(
                                       fontSize: 14,
                                       // fontWeight: FontWeight.bold,
@@ -124,10 +129,10 @@ class _CookiesPageState extends State<CookiesPage> {
                                       Row(
                                         children: List.generate(5, (index) {
                                           return Icon(
-                                            index < rating
+                                            index < foodRating.toInt()
                                                 ? Icons.star
                                                 : Icons.star_border,
-                                            color: Colors.amber,
+                                            color: cookieiconstarcolor,
                                             size: 18,
                                           );
                                         }),
@@ -141,10 +146,10 @@ class _CookiesPageState extends State<CookiesPage> {
                                     ],
                                   ),
                                   Text(
-                                    "$rating",
+                                    rating,
                                     style: TextStyle(
                                       fontSize: 17,
-                                      color: Colors.red,
+                                      color:cookieratingtextcolor ,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
