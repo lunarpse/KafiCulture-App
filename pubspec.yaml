@@ -47,6 +47,7 @@ dependencies:
   glassmorphism_ui: ^0.3.0
   readmore: ^2.2.0
   font_awesome_flutter: ^10.6.0
+  nfc_manager: ^3.3.0
 
 
 dev_dependencies:

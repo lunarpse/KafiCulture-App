@@ -48,8 +48,8 @@ class _PopularState extends State<PopularWidget> {
         final image = popular.image;
         final name = popular.name;
         final totalRating = popular.totalRatings;
-        final rating = popular.rating;
-        double foodRating = double.parse(totalRating);
+        final rating = double.parse(popular.rating);
+
         return Card(
           elevation: 20,
           shadowColor: Colors.grey,
@@ -98,9 +98,9 @@ class _PopularState extends State<PopularWidget> {
                           Row(
                             children: List.generate(5, (index) {
                               return Icon(
-                                index < foodRating.toInt()
+                                index < rating
                                     ? Icons.star
-                                    : Icons.star_border,
+                                    : Icons.star_border_purple500,
                                 color: Colors.amber,
                                 size: 17,
                               );
@@ -115,7 +115,7 @@ class _PopularState extends State<PopularWidget> {
                         ],
                       ),
                       Text(
-                        rating,
+                        "$rating",
                         style: TextStyle(
                             fontSize: rating_fontSize,
                             fontWeight: FontWeight.w500),
