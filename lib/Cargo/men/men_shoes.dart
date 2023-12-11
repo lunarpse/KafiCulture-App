@@ -72,7 +72,7 @@ class _MenShoesState extends State<MenShoes> {
                           ]),
                       child: InkWell(
                         onTap: () => Navigator.pushNamed(
-                            context, '/snacksdetails',
+                            context, '/shoedetails',
                             arguments: shoe),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
