@@ -1,4 +1,4 @@
-class ShoesJsonModel {
+class LadiesBagJsonModel {
   final int id;
   final String name;
   final String brand;
@@ -11,7 +11,7 @@ class ShoesJsonModel {
   final double offerPrice;
   final String category;
 
-  ShoesJsonModel({
+  LadiesBagJsonModel({
     required this.id,
     required this.name,
     required this.brand,
@@ -26,8 +26,8 @@ class ShoesJsonModel {
   });
 
   //deserialization
-  factory ShoesJsonModel.fromJson(Map<String, dynamic> json) {
-    return ShoesJsonModel(
+  factory LadiesBagJsonModel.fromJson(Map<String, dynamic> json) {
+    return LadiesBagJsonModel(
       id: json['id'],
       name: json['name'],
       brand: json["brand"],

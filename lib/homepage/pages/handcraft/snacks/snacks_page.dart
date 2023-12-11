@@ -49,11 +49,9 @@ class _SnacksPageState extends State<SnacksPage> {
             var snack = snacks[index];
             final name = snack.name;
             final image = snack.image;
-            // final description = snack.description;
             final totalRating = snack.totalRatings;
-            final rating = snack.rating;
+            final rating = double.parse(snack.rating);
             // final price = snack.price;
-            double foodRating = double.parse(totalRating);
             return Padding(
               padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
               child: Column(
@@ -127,7 +125,7 @@ class _SnacksPageState extends State<SnacksPage> {
                                       Row(
                                         children: List.generate(5, (index) {
                                           return Icon(
-                                            index < foodRating.toInt()
+                                            index < rating
                                                 ? Icons.star
                                                 : Icons.star_border,
                                             color: Colors.amber,
@@ -144,7 +142,7 @@ class _SnacksPageState extends State<SnacksPage> {
                                     ],
                                   ),
                                   Text(
-                                    rating,
+                                    "$rating",
                                     style: TextStyle(
                                       fontSize: 17,
                                       color: Colors.red,

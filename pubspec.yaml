@@ -47,6 +47,7 @@ dependencies:
   glassmorphism_ui: ^0.3.0
   readmore: ^2.2.0
   font_awesome_flutter: ^10.6.0
+  nfc_manager: ^3.3.0
 
 
 dev_dependencies:
@@ -75,10 +76,12 @@ flutter:
   assets:
     - assets/images/
     - assets/images/MenShoes/
+    - assets/images/LadiesBag/
     - assets/remove/
     - assets/images/Bank/
     - assets/json/
     - assets/json/men/
+    - assets/json/ladies/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

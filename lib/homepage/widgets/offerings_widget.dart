@@ -33,7 +33,7 @@ class _OfferingsState extends State<OfferingsWidget> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: containerheight,
-      width: MediaQuery.of(context).size.width,
+      // width: MediaQuery.of(context).size.width,
       child: PageView.builder(
         itemCount: offers.length,
         // padEnds: false,
@@ -48,8 +48,8 @@ class _OfferingsState extends State<OfferingsWidget> {
           final name = offer.name;
           final image = offer.image;
           final totalRating = offer.totalRatings;
-          final rating = offer.rating;
-          double foodRating = double.parse(totalRating);
+          final rating = double.parse(offer.rating);
+
           return InkWell(
             onTap: () =>
                 Navigator.pushNamed(context, '/offerspage', arguments: offer),
@@ -105,9 +105,7 @@ class _OfferingsState extends State<OfferingsWidget> {
                           Row(
                             children: List.generate(5, (index) {
                               return Icon(
-                                index < foodRating.toInt()
-                                    ? Icons.star
-                                    : Icons.star_border,
+                                index < rating ? Icons.star : Icons.star_border,
                                 color: Colors.amber,
                                 size: 17,
                               );
@@ -127,7 +125,7 @@ class _OfferingsState extends State<OfferingsWidget> {
                         ],
                       ),
                       Text(
-                        rating,
+                        "$rating",
                         style: TextStyle(
                           fontSize: rating_fontSize,
                           fontWeight: FontWeight.bold,

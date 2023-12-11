@@ -1,59 +1,60 @@
-// ignore_for_file: prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
+import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/customdrawer/drawerScreen.dart';
+import 'package:project_2/homepage/data_fetching/api_service.dart';
+import 'package:project_2/homepage/model/ladiesbag_model.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 
-import '../../../model/json_model.dart';
-import '../../../data_fetching/api_service.dart';
-import '../../../../appbar/appbar_widget.dart';
-
-class CookiesPage extends StatefulWidget {
-  const CookiesPage({super.key});
+class LadiesBag extends StatefulWidget {
+  const LadiesBag({super.key});
 
   @override
-  State<CookiesPage> createState() => _CookiesPageState();
+  State<LadiesBag> createState() => _LadiesBagState();
 }
 
-class _CookiesPageState extends State<CookiesPage> {
-  List<JsonModel> cookies = [];
+class _LadiesBagState extends State<LadiesBag> {
+  List<LadiesBagJsonModel> ladiesBag = [];
 
   @override
   void initState() {
     super.initState();
-
-    fetchCookies();
+    fetchLadiesBag();
   }
 
-  Future<void> fetchCookies() async {
-    print("fetchCookies Called");
-    cookies = await ApiService.fetchCookiesData();
+  Future<void> fetchLadiesBag() async {
+    print("fetchLadiesbag Called");
+    ladiesBag = await ApiService.fetchLadiesBagData();
     setState(() {});
-    print("fetchCookies Completed");
+    print("fetchLadiesbag Completed");
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppbarWidget(),
-      drawer: DrawerScreen(),
+      appBar: const AppbarWidget(),
+      drawer: const DrawerScreen(),
       body: BackgroundContainerWidget(
         opacity: 1.0,
         x: 3.0,
         y: 3.0,
         child: ListView.builder(
-          shrinkWrap: true,
-          physics: BouncingScrollPhysics(),
-          itemCount: cookies.length,
+          // shrinkWrap: true,
+          physics: const BouncingScrollPhysics(),
+          itemCount: ladiesBag.length,
           itemBuilder: (context, index) {
-            var cookie = cookies[index];
-            final name = cookie.name;
-            final image = cookie.image;
-            final totalRating = cookie.totalRatings;
-            final rating = double.parse(cookie.rating);
-            // final price = cookie.price;
+            var bag = ladiesBag[index];
+            final name = bag.name;
+            final brand = bag.brand;
+            final image = bag.image;
+            final description = bag.description;
+            final totalRating = bag.totalRatings;
+            final rating = bag.rating;
+            final price = bag.price;
+            final discount = bag.discount;
+            final offerPrice = bag.offerPrice;
+            double foodRating = double.parse(totalRating);
             return Padding(
-              padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
               child: Column(
                 children: [
                   Padding(
@@ -64,7 +65,7 @@ class _CookiesPageState extends State<CookiesPage> {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               color: Colors.grey,
                               spreadRadius: 3,
@@ -74,26 +75,27 @@ class _CookiesPageState extends State<CookiesPage> {
                           ]),
                       child: InkWell(
                         onTap: () => Navigator.pushNamed(
-                            context, '/cookiesdetails',
-                            arguments: cookie),
+                            context, '/ladiesdetails',
+                            arguments: bag),
                         child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(
+                            SizedBox(
                               height: 170,
                               width: 180,
                               child: ClipRRect(
-                                borderRadius: BorderRadius.horizontal(
+                                borderRadius: const BorderRadius.horizontal(
                                     left: Radius.circular(10)),
                                 child: Hero(
-                                  tag: cookie,
+                                  tag: bag,
                                   child: Image.asset(
-                                    "assets/images/$image.jpg",
-                                    fit: BoxFit.cover,
+                                    "assets/images/LadiesBag/$image.jpg",
+                                    fit: BoxFit.fill,
                                   ),
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 12,
                             ),
                             Container(
@@ -104,17 +106,57 @@ class _CookiesPageState extends State<CookiesPage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    name,
-                                    style: TextStyle(
-                                      fontSize: 18,
+                                    brand,
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.black54,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                   Text(
-                                    "Discover the artistry of flavors, where every sip is a celebration of perfection.",
+                                    name,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        "\$${price.toString()} ",
+                                        style: const TextStyle(
+                                          decoration:
+                                              TextDecoration.lineThrough,
+                                          color: Colors.black54,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      Text(
+                                        "\$${offerPrice.toString()} ",
+                                        style: const TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      Text(
+                                        "(${discount}%)",
+                                        style: TextStyle(
+                                          color: Colors.green[700],
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Text(
+                                    description,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                       fontSize: 14,
-                                      // fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                   Row(
@@ -124,7 +166,7 @@ class _CookiesPageState extends State<CookiesPage> {
                                       Row(
                                         children: List.generate(5, (index) {
                                           return Icon(
-                                            index < rating
+                                            index < foodRating.toInt()
                                                 ? Icons.star
                                                 : Icons.star_border,
                                             color: Colors.amber,
@@ -134,15 +176,15 @@ class _CookiesPageState extends State<CookiesPage> {
                                       ),
                                       Text(
                                         "($totalRating Ratings)",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.w500),
                                       ),
                                     ],
                                   ),
                                   Text(
-                                    "$rating",
-                                    style: TextStyle(
+                                    rating,
+                                    style: const TextStyle(
                                       fontSize: 17,
                                       color: Colors.red,
                                       fontWeight: FontWeight.bold,
