@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:project_2/constants/color_constants.dart';
+// import '../../constants/dialogbox_constants.dart';
+import '../../constants/text_constants.dart';
 import '../model/json_model.dart';
 
 class DialogBox extends StatelessWidget {
@@ -22,9 +25,10 @@ class DialogBox extends StatelessWidget {
     int? checkedIndex;
     double totalPrice = finalPrice;
     return AlertDialog(
-        insetPadding: EdgeInsets.all(20),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        content: StatefulBuilder(builder: (context, setState) {
+      insetPadding: EdgeInsets.all(20),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      content: StatefulBuilder(
+        builder: (context, setState) {
           return Container(
             width: double.maxFinite,
             child: Column(
@@ -32,7 +36,7 @@ class DialogBox extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Addons",
+                  addon,
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
@@ -50,11 +54,11 @@ class DialogBox extends StatelessWidget {
                       child: CheckboxListTile(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
-                        tileColor: Colors.grey.withOpacity(0.4),
+                        tileColor: dialogboxcheckboxtilecolor,
                         checkboxShape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(4)),
                         side: BorderSide(
-                            color: Color.fromRGBO(168, 93, 38, 1), width: 2),
+                            color: dialogboxbordersidecolor, width: 2),
                         value: checkedIndex == index,
                         onChanged: (bool? newValue) {
                           setState(() {
@@ -73,28 +77,28 @@ class DialogBox extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
-                              color: Color.fromRGBO(168, 93, 38, 1)),
+                              color: dialogboxaddonnamecolor),
                         ),
                         subtitle: Text(
                           "\$ $price",
                           style: TextStyle(
                               fontSize: 17, fontWeight: FontWeight.bold),
                         ),
-                        activeColor: Color.fromRGBO(168, 93, 38, 1),
-                        checkColor: Colors.white,
+                        activeColor: dialogboxactivecolor,
+                        checkColor: dialogboxcheckcolor,
                       ),
                     );
                   },
                 ),
                 Divider(
-                  color: Colors.black,
+                  color: dialogboxdivcolor,
                   thickness: 3,
                 ),
                 Container(
                   // height: 82,
                   width: double.maxFinite,
                   decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.7),
+                      color: dialogboxboxdecorationcolor,
                       borderRadius: BorderRadius.circular(10)),
                   child: Padding(
                     padding: const EdgeInsets.all(12),
@@ -107,10 +111,10 @@ class DialogBox extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Text(
-                                "CURRENT ITEM",
+                                currentitem,
                                 style: TextStyle(
                                     fontSize: 11,
-                                    color: Colors.white60,
+                                    color: dialogboxcurrentitemcolor,
                                     letterSpacing: 0.8),
                               ),
                               SizedBox(height: 5),
@@ -118,43 +122,45 @@ class DialogBox extends StatelessWidget {
                                 productName,
                                 style: TextStyle(
                                     fontSize: 18,
-                                    color: Colors.white,
+                                    color: dialogboxproductnamecolor,
                                     fontWeight: FontWeight.bold),
                               ),
                               Text(
                                 totalPrice.toString(),
                                 style: TextStyle(
-                                    fontSize: 16, color: Colors.white),
+                                    fontSize: 16,
+                                    color: dialogboxpricetextcolor),
                               )
                             ],
                           ),
                         ),
                         Container(
-                            width: 129,
-                            child: Center(
-                              child: ElevatedButton(
-                                  style: ButtonStyle(
-                                    fixedSize: MaterialStateProperty.all(
-                                        Size(130, 50)),
-                                    elevation: MaterialStatePropertyAll(6),
-                                    backgroundColor: MaterialStateProperty.all(
-                                        Color.fromRGBO(168, 93, 38, 1)),
-                                    shape: MaterialStateProperty.all(
-                                        RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                    )),
-                                  ),
-                                  onPressed: () {
-                                    print("dialog $totalPrice");
-                                    call(totalPrice);
-                                  },
-                                  child: Text(
-                                    buttonName,
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold),
-                                  )),
-                            ))
+                          width: 129,
+                          child: Center(
+                            child: ElevatedButton(
+                              style: ButtonStyle(
+                                fixedSize:
+                                    MaterialStateProperty.all(Size(130, 50)),
+                                elevation: MaterialStatePropertyAll(6),
+                                backgroundColor: MaterialStateProperty.all(
+                                    dialogboxelevatebuttonbgcolor),
+                                shape: MaterialStateProperty.all(
+                                    RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                )),
+                              ),
+                              onPressed: () {
+                                print("dialog $totalPrice");
+                                call(totalPrice);
+                              },
+                              child: Text(
+                                buttonName,
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -162,6 +168,8 @@ class DialogBox extends StatelessWidget {
               ],
             ),
           );
-        }));
+        },
+      ),
+    );
   }
 }

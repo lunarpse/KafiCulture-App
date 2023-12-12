@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:project_2/constants/color_constants.dart';
+import 'package:project_2/constants/text_constants.dart';
 
 class ThankYou extends StatelessWidget {
   const ThankYou({super.key});
 
   @override
   Widget build(BuildContext context) {
-    bool feedbackGiven = true;
+    // bool feedbackGiven = true;
     return Container(
       height: 100,
       color: Colors.green,
@@ -15,11 +17,11 @@ class ThankYou extends StatelessWidget {
           children: [
             Icon(
               Icons.check_circle_outlined,
-              color: Colors.white,
+              color: textcolour,
             ),
             Text(
-              'Thank you for your feedback',
-              style: TextStyle(color: Colors.white),
+              endrating,
+              style: TextStyle(color: textcolour),
             ),
           ],
         ),

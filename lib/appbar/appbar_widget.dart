@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:nfc_manager/nfc_manager.dart';
+import 'package:project_2/constants/color_constants.dart';
+import 'package:project_2/constants/text_constants.dart';
 
 class AppbarWidget extends StatefulWidget implements PreferredSizeWidget {
   const AppbarWidget({super.key});
@@ -31,7 +33,7 @@ class _AppbarWidgetState extends State<AppbarWidget> {
           mainAxisSize: MainAxisSize.min,
           children: [
             CircleAvatar(
-              backgroundColor: Colors.white,
+              backgroundColor: circleavatarbgcolor,
               backgroundImage: AssetImage("assets/images/logo1.png"),
               radius: 18,
             ),
@@ -40,14 +42,14 @@ class _AppbarWidgetState extends State<AppbarWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "KAFICULTURE",
+                  apptitle,
                   style: TextStyle(fontSize: 20),
                 ),
                 SizedBox(
                   height: 3,
                 ),
                 Text(
-                  "Where every cup tells a story",
+                  appslogan,
                   style: TextStyle(
                       fontFamily: 'Ephesis', fontSize: 17.5, letterSpacing: 1),
                 ),
@@ -67,7 +69,7 @@ class _AppbarWidgetState extends State<AppbarWidget> {
         InkWell(
           onTap: _checkNFCStatus,
           child: CircleAvatar(
-            backgroundColor: Colors.white,
+            backgroundColor: circleavatarbgcolor,
             backgroundImage: AssetImage(getImage()),
             radius: 16,
           ),
@@ -77,7 +79,7 @@ class _AppbarWidgetState extends State<AppbarWidget> {
             Navigator.pushNamed(context, "/cart");
           },
           icon: Icon(Icons.shopping_cart),
-          color: Color.fromRGBO(78, 43, 18, 0.9),
+          color: carticonbuttoncolor,
           iconSize: 27,
         ),
       ],
@@ -118,14 +120,13 @@ class _AppbarWidgetState extends State<AppbarWidget> {
         return AlertDialog(
           alignment: Alignment.bottomCenter,
           title: Text(
-            "Ready to Scan",
+            readyToScan,
             style: TextStyle(fontSize: 25),
           ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text("Move the NFC tag to the back of your phone",
-                  style: TextStyle(fontSize: 20)),
+              Text(moveTheNFC, style: TextStyle(fontSize: 20)),
               SizedBox(height: 10),
               Icon(
                 Icons.nfc,
@@ -138,7 +139,7 @@ class _AppbarWidgetState extends State<AppbarWidget> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text("OK", style: TextStyle(fontSize: 18)),
+              child: Text(ok, style: TextStyle(fontSize: 18)),
             )
           ],
         );
