@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 import 'package:project_2/Cargo/reusablewidgets/dialogueBox.dart';
-import 'package:project_2/Cargo/reusablewidgets/size_button.dart';
+// import 'package:project_2/Cargo/reusablewidgets/size_button.dart';
 import 'package:project_2/homepage/model/json_model.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 import 'package:project_2/homepage/reusable_widgets/dialog_box.dart';
@@ -89,7 +89,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                       ),
                       image: DecorationImage(
                           image:
-                              AssetImage("assets/images/MenShoes/$image.jpg"),
+                              AssetImage("assets/images/MenShoes/$image.png"),
                           fit: BoxFit.fill)),
                 ),
               ),
@@ -305,67 +305,67 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),
-                            SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Row(
-                                children: List.generate(
-                                  13 - 5 + 1,
-                                  (index) {
-                                    final number = index + 5;
-                                    return GestureDetector(
-                                      onTap: () {
-                                        setState(() {
-                                          selectedIndex= index;
-                                        });
-                                      },
-                                      child: Padding(
-                                        padding: EdgeInsets.all(8.0),
-                                        child: Container(
-                                          height: 40,
-                                          width: 40,
-                                          decoration: BoxDecoration(
-                                              color: index == selectedIndex
-                                                  ? Color.fromRGBO(
-                                                      143, 93, 58, 1)
-                                                  : Colors.white,
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                              border: index == selectedIndex
-                                                  ? Border.all(
-                                                      color:
-                                                          Colors.brown.shade900,
-                                                      width: 2)
-                                                  : Border.all(
-                                                      color: Color.fromRGBO(
-                                                          143, 93, 58, 1),
-                                                      width: 2)),
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                '$number',
-                                                style: TextStyle(
-                                                    color:
-                                                        index == selectedIndex
-                                                            ? Colors.white
-                                                            : Color.fromRGBO(
-                                                                143, 93, 58, 1),
-                                                    fontSize: 17,
-                                                    fontWeight:
-                                                        index == selectedIndex
-                                                            ? FontWeight.normal
-                                                            : FontWeight.bold),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                ),
-                              ),
-                            ),
+                            // SingleChildScrollView(
+                            //   scrollDirection: Axis.horizontal,
+                            //   child: Row(
+                            //     children: List.generate(
+                            //       13 - 5 + 1,
+                            //       (index) {
+                            //         final number = index + 5;
+                            //         return GestureDetector(
+                            //           onTap: () {
+                            //             setState(() {
+                            //               selectedIndex = index;
+                            //             });
+                            //           },
+                            //           child: Padding(
+                            //             padding: EdgeInsets.all(8.0),
+                            //             child: Container(
+                            //               height: 40,
+                            //               width: 40,
+                            //               decoration: BoxDecoration(
+                            //                   color: index == selectedIndex
+                            //                       ? Color.fromRGBO(
+                            //                           143, 93, 58, 1)
+                            //                       : Colors.white,
+                            //                   borderRadius:
+                            //                       BorderRadius.circular(10),
+                            //                   border: index == selectedIndex
+                            //                       ? Border.all(
+                            //                           color:
+                            //                               Colors.brown.shade900,
+                            //                           width: 2)
+                            //                       : Border.all(
+                            //                           color: Color.fromRGBO(
+                            //                               143, 93, 58, 1),
+                            //                           width: 2)),
+                            //               child: Column(
+                            //                 mainAxisAlignment:
+                            //                     MainAxisAlignment.center,
+                            //                 children: [
+                            //                   Text(
+                            //                     '$number',
+                            //                     style: TextStyle(
+                            //                         color:
+                            //                             index == selectedIndex
+                            //                                 ? Colors.white
+                            //                                 : Color.fromRGBO(
+                            //                                     143, 93, 58, 1),
+                            //                         fontSize: 17,
+                            //                         fontWeight:
+                            //                             index == selectedIndex
+                            //                                 ? FontWeight.normal
+                            //                                 : FontWeight.bold),
+                            //                   ),
+                            //                 ],
+                            //               ),
+                            //             ),
+                            //           ),
+                            //         );
+                            //       },
+                            //     ),
+                            //   ),
+                            // ),
                             SizedBox(height: 5),
                             SizedBox(height: 12),
                             Text(
