@@ -75,7 +75,7 @@ class _LadiesBagState extends State<LadiesBag> {
                           ]),
                       child: InkWell(
                         onTap: () => Navigator.pushNamed(
-                            context, '/ladiesdetails',
+                            context, '/ladiesDetails',
                             arguments: bag),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,

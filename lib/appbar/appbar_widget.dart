@@ -67,13 +67,18 @@ class _AppbarWidgetState extends State<AppbarWidget> {
       }),
       actions: [
         InkWell(
-          onTap: _checkNFCStatus,
-          child: CircleAvatar(
-            backgroundColor: circleavatarbgcolor,
-            backgroundImage: AssetImage(getImage()),
-            radius: 16,
-          ),
-        ),
+            onTap: _checkNFCStatus,
+            child: CircleAvatar(
+              backgroundColor: _isNFCavailable == true
+                  ? Color.fromARGB(255, 1, 255, 9)
+                  : circleavatarbgcolor,
+              radius: 14,
+              child: Icon(
+                Icons.nfc_rounded,
+                size: 22,
+                color: Colors.black,
+              ),
+            )),
         IconButton(
           onPressed: () {
             Navigator.pushNamed(context, "/cart");
@@ -84,14 +89,6 @@ class _AppbarWidgetState extends State<AppbarWidget> {
         ),
       ],
     );
-  }
-
-  String getImage() {
-    if (_isNFCavailable) {
-      return "assets/images/nfc2.jpg";
-    } else {
-      return "assets/images/nfc.jpg";
-    }
   }
 
   void _checkNFCStatus() async {
