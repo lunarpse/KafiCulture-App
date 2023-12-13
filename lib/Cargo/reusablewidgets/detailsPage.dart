@@ -3,14 +3,16 @@
 import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 import 'package:project_2/Cargo/reusablewidgets/dialogueBox.dart';
+import 'package:project_2/Cargo/reusablewidgets/size_button.dart';
+import 'package:project_2/homepage/model/json_model.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
+import 'package:project_2/homepage/reusable_widgets/dialog_box.dart';
 import 'package:readmore/readmore.dart';
-
 import 'package:project_2/cart/riverpod/state_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class LadiesDetailsWidget extends ConsumerStatefulWidget {
-  const LadiesDetailsWidget(
+class CargoDetailsPageWidget extends ConsumerStatefulWidget {
+  const CargoDetailsPageWidget(
       {super.key,
       required this.details,
       required this.fetchProducts,
@@ -21,12 +23,13 @@ class LadiesDetailsWidget extends ConsumerStatefulWidget {
   final nextPage;
 
   @override
-  ConsumerState<LadiesDetailsWidget> createState() => _DetailsPageState();
+  ConsumerState<CargoDetailsPageWidget> createState() => _DetailsPageState();
 }
 
-class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
-  int quantity = 1;
+class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
   int selectedIndex = 0;
+  int quantity = 1;
+  int selectedNumber = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -40,11 +43,19 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
     final name = widget.details.name;
     final description = widget.details.description;
 
-    final price1 = widget.details.price;
+    final price1 = selectedIndex == 0
+        ? widget.details.price
+        : selectedIndex == 1
+            ? double.parse((widget.details.price * 2).toStringAsFixed(2))
+            : double.parse((widget.details.price * 3).toStringAsFixed(2));
 
     final price = double.parse((quantity * price1).toStringAsFixed(2));
 
-    final offerPrice1 = widget.details.offerPrice;
+    final offerPrice1 = selectedIndex == 0
+        ? widget.details.offerPrice
+        : selectedIndex == 1
+            ? double.parse((widget.details.offerPrice * 2).toStringAsFixed(2))
+            : double.parse((widget.details.offerPrice * 3).toStringAsFixed(2));
 
     final offerPrice =
         double.parse((quantity * offerPrice1).toStringAsFixed(2));
@@ -78,8 +89,8 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                       ),
                       image: DecorationImage(
                           image:
-                              AssetImage("assets/images/LadiesBag/$image.jpg"),
-                          fit: BoxFit.cover)),
+                              AssetImage("assets/images/MenShoes/$image.jpg"),
+                          fit: BoxFit.fill)),
                 ),
               ),
               Positioned(
@@ -106,7 +117,7 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                                 name,
                                 style: TextStyle(
                                     color: Colors.black,
-                                    fontSize: 20,
+                                    fontSize: 25.0,
                                     fontWeight: FontWeight.bold),
                               ),
                               SizedBox(height: 10),
@@ -148,7 +159,7 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                               Container(
                                 padding: EdgeInsets.only(left: 15),
                                 height: 80,
-                                width: 160,
+                                width: 150,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
                                     color: Colors.black.withOpacity(0.6)),
@@ -166,7 +177,7 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                                         Text(
                                           "\$ $price ",
                                           style: TextStyle(
-                                              fontSize: 16,
+                                              fontSize: 18,
                                               color: Colors.grey.shade400,
                                               decoration:
                                                   TextDecoration.lineThrough,
@@ -178,7 +189,7 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                                         Text(
                                           "($discount% Off)",
                                           style: TextStyle(
-                                              fontSize: 14,
+                                              fontSize: 16,
                                               fontWeight: FontWeight.w500,
                                               color: Colors.orange.shade800),
                                         ),
@@ -274,7 +285,7 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                                 // selectedIndex.toString(),
                                 style: TextStyle(
                                     color: Colors.black, fontSize: 17),
-                                trimLines: 3,
+                                trimLines: 2,
                                 trimMode: TrimMode.Line,
                                 moreStyle: TextStyle(
                                     fontSize: 17,
@@ -286,20 +297,6 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                                     color: Colors.orange),
                               ),
                             ),
-
-                            // SizedBox(height: 5),
-                            // Container(
-                            //   width: bodyWidth,
-                            //   child: Row(
-                            //     mainAxisAlignment:
-                            //         MainAxisAlignment.spaceBetween,
-                            //     children: [
-                            //       _buildSizeButton(sizeName1, 0, "(354 ML)"),
-                            //       _buildSizeButton(sizeName2, 1, "(473 ML)"),
-                            //       _buildSizeButton(sizeName3, 2, "(591 ML)")
-                            //     ],
-                            //   ),
-                            // ),
                             SizedBox(height: 12),
                             Text(
                               'Size',
@@ -318,7 +315,7 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                                     return GestureDetector(
                                       onTap: () {
                                         setState(() {
-                                          selectedIndex = index;
+                                          selectedIndex= index;
                                         });
                                       },
                                       child: Padding(
@@ -371,8 +368,6 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                             ),
                             SizedBox(height: 5),
                             SizedBox(height: 12),
-
-                            SizedBox(height: 22),
                             Text(
                               'Customers also liked',
                               style: TextStyle(
@@ -521,24 +516,6 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                     children: [
                       ElevatedButton.icon(
                         onPressed: () {
-                          // showDialog(
-                          //     context: context,
-                          //     builder: (context) => DialogBox(
-                          //           productName: widget.details.name,
-                          //           buttonName: "Pay Now",
-                          //           call: (value) {
-                          //             func.additem({
-                          //               "name": name,
-                          //               "image": "assets/images/$image.jpg",
-                          //               "price": value,
-                          //               "quantity": quantity
-                          //             });
-                          //             Navigator.of(context).pop();
-                          //             Navigator.pushNamed(context, '/payment');
-                          //           },
-                          //           addons: addons,
-                          //           finalPrice: offerPrice,
-                          //         ));
                           showDialog(
                               context: context,
                               builder: (BuildContext context) {
