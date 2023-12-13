@@ -26,6 +26,7 @@ class LadiesDetailsWidget extends ConsumerStatefulWidget {
 
 class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
   int quantity = 1;
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -299,6 +300,77 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                             //     ],
                             //   ),
                             // ),
+                            SizedBox(height: 12),
+                            Text(
+                              'Size',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                children: List.generate(
+                                  13 - 5 + 1,
+                                  (index) {
+                                    final number = index + 5;
+                                    return GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          selectedIndex = index;
+                                        });
+                                      },
+                                      child: Padding(
+                                        padding: EdgeInsets.all(8.0),
+                                        child: Container(
+                                          height: 40,
+                                          width: 40,
+                                          decoration: BoxDecoration(
+                                              color: index == selectedIndex
+                                                  ? Color.fromRGBO(
+                                                      143, 93, 58, 1)
+                                                  : Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              border: index == selectedIndex
+                                                  ? Border.all(
+                                                      color:
+                                                          Colors.brown.shade900,
+                                                      width: 2)
+                                                  : Border.all(
+                                                      color: Color.fromRGBO(
+                                                          143, 93, 58, 1),
+                                                      width: 2)),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                '$number',
+                                                style: TextStyle(
+                                                    color:
+                                                        index == selectedIndex
+                                                            ? Colors.white
+                                                            : Color.fromRGBO(
+                                                                143, 93, 58, 1),
+                                                    fontSize: 17,
+                                                    fontWeight:
+                                                        index == selectedIndex
+                                                            ? FontWeight.normal
+                                                            : FontWeight.bold),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 5),
+                            SizedBox(height: 12),
 
                             SizedBox(height: 22),
                             Text(

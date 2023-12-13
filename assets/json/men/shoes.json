@@ -2,7 +2,7 @@
     {
         "id": 1,
         "name": "AIR JORDAN SILVER SHOES",
-        "brand":"Judith Leiber",
+        "brand":"Nike",
         "description": "Timeless and comfortable loafers for a casual yet refined look.",
         "rating": "4.2",
         "totalRatings": "90",
@@ -15,7 +15,7 @@
     {
         "id": 2,
         "name": "TESTONI SHOES",
-        "brand":"Judith Leiber",
+        "brand":"Testoni",
         "description": "Versatile athletic shoes designed for intensive training sessions.",
         "rating": "4.6",
         "totalRatings": "120",
@@ -28,7 +28,7 @@
     {
         "id": 3,
         "name": "NIKE AIR MAG 2016",
-        "brand":"Judith Leiber",
+        "brand":"Nike",
         "description": "Stylish and durable leather Chelsea boots for a sophisticated look.",
         "rating": "4.8",
         "totalRatings": "150",
@@ -41,7 +41,7 @@
     {
         "id": 4,
         "name": "LOUIS VUITTON MANHATTAN RICHELIEU MENS SHOES ",
-        "brand":"Judith Leiber",
+        "brand":"Louis",
         "description": "Comfortable sneakers suitable for everyday casual wear.",
         "rating": "4.4",
         "totalRatings": "110",
@@ -54,7 +54,7 @@
     {
         "id": 5,
         "name": "KANYE WEST NIKE AIR YEEZY",
-        "brand":"Judith Leiber",
+        "brand":"Nike",
         "description": "Durable trail running shoes for outdoor adventures and off-road runs.",
         "rating": "4.7",
         "totalRatings": "130",

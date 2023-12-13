@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 import 'package:project_2/Cargo/reusablewidgets/dialogueBox.dart';
+import 'package:project_2/Cargo/reusablewidgets/size_button.dart';
 import 'package:project_2/homepage/model/json_model.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 import 'package:project_2/homepage/reusable_widgets/dialog_box.dart';
@@ -28,7 +29,7 @@ class CargoDetailsPageWidget extends ConsumerStatefulWidget {
 class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
   int selectedIndex = 0;
   int quantity = 1;
-  int selectedNumber = 0;
+  int selectedNumber = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -314,36 +315,49 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                                     return GestureDetector(
                                       onTap: () {
                                         setState(() {
-                                          selectedNumber = number;
+                                          selectedIndex= index;
                                         });
                                       },
                                       child: Padding(
                                         padding: EdgeInsets.all(8.0),
                                         child: Container(
+                                          height: 40,
+                                          width: 40,
                                           decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            border: Border.all(
-                                              color: selectedNumber == number
-                                                  ? Colors.brown
-                                                  : Colors.transparent,
-                                              width: 2.0,
-                                            ),
-                                          ),
-                                          child: CircleAvatar(
-                                            backgroundColor:
-                                                selectedNumber == number
-                                                    ? Colors.brown
-                                                    : Colors.transparent,
-                                            radius: 20,
-                                            child: Text(
-                                              '$number',
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                color: selectedNumber == number
-                                                    ? Colors.white
-                                                    : Colors.black,
+                                              color: index == selectedIndex
+                                                  ? Color.fromRGBO(
+                                                      143, 93, 58, 1)
+                                                  : Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              border: index == selectedIndex
+                                                  ? Border.all(
+                                                      color:
+                                                          Colors.brown.shade900,
+                                                      width: 2)
+                                                  : Border.all(
+                                                      color: Color.fromRGBO(
+                                                          143, 93, 58, 1),
+                                                      width: 2)),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                '$number',
+                                                style: TextStyle(
+                                                    color:
+                                                        index == selectedIndex
+                                                            ? Colors.white
+                                                            : Color.fromRGBO(
+                                                                143, 93, 58, 1),
+                                                    fontSize: 17,
+                                                    fontWeight:
+                                                        index == selectedIndex
+                                                            ? FontWeight.normal
+                                                            : FontWeight.bold),
                                               ),
-                                            ),
+                                            ],
                                           ),
                                         ),
                                       ),
@@ -405,7 +419,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                                                       top: Radius.circular(10)),
                                               child: Image.asset(
                                                 'assets/images/MenShoes/$image.jpg',
-                                                fit: BoxFit.cover,
+                                                fit: BoxFit.fill,
                                               ),
                                             ),
                                           ),

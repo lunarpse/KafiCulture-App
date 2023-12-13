@@ -31,27 +31,30 @@ class _MenShoesState extends State<MenShoes> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppbarWidget(),
-      drawer: DrawerScreen(),
+      appBar: const AppbarWidget(),
+      drawer: const DrawerScreen(),
       body: BackgroundContainerWidget(
         opacity: 1.0,
         x: 3.0,
         y: 3.0,
         child: ListView.builder(
           // shrinkWrap: true,
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           itemCount: shoes.length,
           itemBuilder: (context, index) {
-            var shoe = shoes[index];
-            final name = shoe.name;
-            final image = shoe.image;
-            // final description = snack.description;
-            final totalRating = shoe.totalRatings;
-            final rating = shoe.rating;
-            // final price = snack.price;
+            var bag = shoes[index];
+            final name = bag.name;
+            final brand = bag.brand;
+            final image = bag.image;
+            final description = bag.description;
+            final totalRating = bag.totalRatings;
+            final rating = bag.rating;
+            final price = bag.price;
+            final discount = bag.discount;
+            final offerPrice = bag.offerPrice;
             double foodRating = double.parse(totalRating);
             return Padding(
-              padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
               child: Column(
                 children: [
                   Padding(
@@ -62,7 +65,7 @@ class _MenShoesState extends State<MenShoes> {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               color: Colors.grey,
                               spreadRadius: 3,
@@ -73,18 +76,18 @@ class _MenShoesState extends State<MenShoes> {
                       child: InkWell(
                         onTap: () => Navigator.pushNamed(
                             context, '/shoedetails',
-                            arguments: shoe),
+                            arguments: bag),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(
+                            SizedBox(
                               height: 170,
                               width: 180,
                               child: ClipRRect(
-                                borderRadius: BorderRadius.horizontal(
+                                borderRadius: const BorderRadius.horizontal(
                                     left: Radius.circular(10)),
                                 child: Hero(
-                                  tag: shoe,
+                                  tag: bag,
                                   child: Image.asset(
                                     "assets/images/MenShoes/$image.jpg",
                                     fit: BoxFit.fill,
@@ -92,7 +95,7 @@ class _MenShoesState extends State<MenShoes> {
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 12,
                             ),
                             Container(
@@ -103,17 +106,57 @@ class _MenShoesState extends State<MenShoes> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    name,
-                                    style: TextStyle(
-                                      fontSize: 18,
+                                    brand,
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.black54,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                   Text(
-                                    "Discover the artistry of flavors, where every sip is a celebration of perfection.",
+                                    name,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        "\$${price.toString()} ",
+                                        style: const TextStyle(
+                                          decoration:
+                                              TextDecoration.lineThrough,
+                                          color: Colors.black54,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      Text(
+                                        "\$${offerPrice.toString()} ",
+                                        style: const TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      Text(
+                                        "(${discount}%)",
+                                        style: TextStyle(
+                                          color: Colors.green[700],
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Text(
+                                    description,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                       fontSize: 14,
-                                      // fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                   Row(
@@ -133,7 +176,7 @@ class _MenShoesState extends State<MenShoes> {
                                       ),
                                       Text(
                                         "($totalRating Ratings)",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.w500),
                                       ),
@@ -141,7 +184,7 @@ class _MenShoesState extends State<MenShoes> {
                                   ),
                                   Text(
                                     rating,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 17,
                                       color: Colors.red,
                                       fontWeight: FontWeight.bold,

@@ -74,14 +74,14 @@ class RouteGenerator {
                 ));
       case '/shoespage':
         return MaterialPageRoute(builder: (_) => MenShoes());
+      case '/bagpage':
+        return MaterialPageRoute(builder: (_) => LadiesBag());
 
       case '/shoedetails':
         return MaterialPageRoute(
             builder: (_) => MenShoesDetailPage(
                   detail: args,
                 ));
-      case '/bagpage':
-        return MaterialPageRoute(builder: (_) => LadiesBag());
       case '/ladiesdetails':
         return MaterialPageRoute(
             builder: (_) => LadiesBagDetailsPage(
