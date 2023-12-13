@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:project_2/cart/riverpod/state_provider.dart';
+import 'package:project_2/constants/color_constants.dart';
+import 'package:project_2/constants/text_constants.dart';
 
 class ExtraItems extends ConsumerWidget {
   const ExtraItems(
@@ -18,7 +20,7 @@ class ExtraItems extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Card(
       // elevation: 0,
-      color: Color.fromARGB(255, 236, 219, 219),
+      color: extraitemcardcolor,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 5),
         child: Container(
@@ -27,11 +29,11 @@ class ExtraItems extends ConsumerWidget {
           width: 280,
           margin: EdgeInsets.symmetric(horizontal: 2),
           decoration: BoxDecoration(
-              color: Color.fromARGB(255, 236, 219, 219),
+              color: extraitemcardboxdecolor,
               borderRadius: BorderRadius.circular(15),
               boxShadow: [
                 BoxShadow(
-                  color: const Color.fromARGB(255, 97, 82, 82),
+                  color: extraitemcardboxshadowcolor,
                   spreadRadius: 3,
                   blurRadius: 3,
                   offset: Offset(0, 3),
@@ -62,7 +64,7 @@ class ExtraItems extends ConsumerWidget {
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
                     ),
                     Text(
-                      "Discover the artistry of flavors",
+                      extraslogan,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 15,
@@ -75,7 +77,7 @@ class ExtraItems extends ConsumerWidget {
                           "\$ $price",
                           style: TextStyle(
                             fontSize: 17,
-                            color: Color.fromARGB(255, 15, 15, 14),
+                            color: extraitempricetextcolor,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -93,22 +95,13 @@ class ExtraItems extends ConsumerWidget {
                             },
                             icon: Icon(
                               Icons.shopping_cart_outlined,
-                              color: const Color.fromARGB(255, 25, 29, 25),
+                              color: extraitemshoppingcartoutlinecolor,
                               size: 25,
                             ),
                           ),
                         )
                       ],
                     ),
-                    // ElevatedButton(
-                    //     onPressed: () {
-                    // ref.watch(CartProvider.notifier).additem({
-                    //   "name": name,
-                    //   "image": image,
-                    //   "price": price.toString()
-                    // });
-                    //     },
-                    //     child: Text("Add"))
                   ],
                 ),
               )

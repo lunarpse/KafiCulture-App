@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_2/constants/color_constants.dart';
 
 class RatingStar extends StatefulWidget {
   RatingStar({super.key});
@@ -8,7 +9,6 @@ class RatingStar extends StatefulWidget {
 }
 
 class _RatingStarState extends State<RatingStar> {
-  @override
   List<bool> starRatings = [false, false, false, false, false];
   void updateStarRating(int index) {
     setState(() {
@@ -27,7 +27,7 @@ class _RatingStarState extends State<RatingStar> {
             child: Icon(
               starRatings[index] ? Icons.star : Icons.star_border,
               size: 40,
-              color: Color.fromARGB(255, 248, 231, 77),
+              color: feedbackratingstarcolor,
             ),
           );
         }));

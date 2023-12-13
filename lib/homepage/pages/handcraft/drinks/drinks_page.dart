@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
+import 'package:project_2/constants/color_constants.dart';
+import 'package:project_2/constants/text_constants.dart';
 import 'package:project_2/homepage/model/json_model.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/customdrawer/drawerScreen.dart';
@@ -61,11 +63,11 @@ class _DrinksPageState extends State<DrinksPage> {
                       width: 380,
                       height: 170,
                       decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: cookieboxdeccolor,
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.grey,
+                              color: cookieboxshadowcolor,
                               spreadRadius: 3,
                               blurRadius: 10,
                               offset: Offset(0, 3),
@@ -110,7 +112,7 @@ class _DrinksPageState extends State<DrinksPage> {
                                     ),
                                   ),
                                   Text(
-                                    "Discover the artistry of flavors, where every sip is a celebration of perfection.",
+                                    productdescription,
                                     // addons,
                                     style: TextStyle(
                                       fontSize: 14,
@@ -127,7 +129,7 @@ class _DrinksPageState extends State<DrinksPage> {
                                             index < rating
                                                 ? Icons.star
                                                 : Icons.star_border,
-                                            color: Colors.amber,
+                                            color: cookieiconstarcolor,
                                             size: 18,
                                           );
                                         }),
@@ -144,7 +146,7 @@ class _DrinksPageState extends State<DrinksPage> {
                                     "$rating",
                                     style: TextStyle(
                                       fontSize: 17,
-                                      color: Colors.red,
+                                      color: cookieratingtextcolor,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
