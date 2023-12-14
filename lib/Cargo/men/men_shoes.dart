@@ -5,23 +5,23 @@ import 'package:project_2/homepage/data_fetching/api_service.dart';
 import 'package:project_2/homepage/model/shoe_model.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 
-class MenShoes extends StatefulWidget {
-  const MenShoes({super.key});
+class MenShoe extends StatefulWidget {
+  const MenShoe({super.key});
 
   @override
-  State<MenShoes> createState() => _MenShoesState();
+  State<MenShoe> createState() => _MenShoeState();
 }
 
-class _MenShoesState extends State<MenShoes> {
+class _MenShoeState extends State<MenShoe> {
   List<ShoesJsonModel> shoes = [];
 
   @override
   void initState() {
     super.initState();
-    fetchShoes();
+    fetchMenShoe();
   }
 
-  Future<void> fetchShoes() async {
+  Future<void> fetchMenShoe() async {
     print("fetchShoes Called");
     shoes = await ApiService.fetchMenShoesData();
     setState(() {});
@@ -42,16 +42,16 @@ class _MenShoesState extends State<MenShoes> {
           physics: const BouncingScrollPhysics(),
           itemCount: shoes.length,
           itemBuilder: (context, index) {
-            var bag = shoes[index];
-            final name = bag.name;
-            final brand = bag.brand;
-            final image = bag.image;
-            final description = bag.description;
-            final totalRating = bag.totalRatings;
-            final rating = bag.rating;
-            final price = bag.price;
-            final discount = bag.discount;
-            final offerPrice = bag.offerPrice;
+            var shoe = shoes[index];
+            final name = shoe.name;
+            final brand = shoe.brand;
+            final image = shoe.image;
+            final description = shoe.description;
+            final totalRating = shoe.totalRatings;
+            final rating = shoe.rating;
+            final price = shoe.price;
+            final discount = shoe.discount;
+            final offerPrice = shoe.offerPrice;
             double foodRating = double.parse(totalRating);
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
@@ -74,9 +74,8 @@ class _MenShoesState extends State<MenShoes> {
                             )
                           ]),
                       child: InkWell(
-                        onTap: () => Navigator.pushNamed(
-                            context, '/shoedetails',
-                            arguments: bag),
+                        onTap: () => Navigator.pushNamed(context, '/menDetails',
+                            arguments: shoe),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -87,7 +86,7 @@ class _MenShoesState extends State<MenShoes> {
                                 borderRadius: const BorderRadius.horizontal(
                                     left: Radius.circular(10)),
                                 child: Hero(
-                                  tag: bag,
+                                  tag: shoe,
                                   child: Image.asset(
                                     "assets/images/MenShoes/$image.png",
                                     fit: BoxFit.fill,

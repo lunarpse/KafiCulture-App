@@ -2,17 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
-import 'package:project_2/Cargo/reusablewidgets/dialogueBox.dart';
-import 'package:project_2/Cargo/reusablewidgets/size_button.dart';
-import 'package:project_2/homepage/model/json_model.dart';
+import 'package:project_2/Cargo/men/widget/dialogueBox.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
-import 'package:project_2/homepage/reusable_widgets/dialog_box.dart';
 import 'package:readmore/readmore.dart';
 import 'package:project_2/cart/riverpod/state_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CargoDetailsPageWidget extends ConsumerStatefulWidget {
-  const CargoDetailsPageWidget(
+class LadiesDetailsWidget extends ConsumerStatefulWidget {
+  const LadiesDetailsWidget(
       {super.key,
       required this.details,
       required this.fetchProducts,
@@ -23,13 +20,12 @@ class CargoDetailsPageWidget extends ConsumerStatefulWidget {
   final nextPage;
 
   @override
-  ConsumerState<CargoDetailsPageWidget> createState() => _DetailsPageState();
+  ConsumerState<LadiesDetailsWidget> createState() => _DetailsPageState();
 }
 
-class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
-  int selectedIndex = 0;
+class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
   int quantity = 1;
-  int selectedNumber = 2;
+  // int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -43,19 +39,11 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
     final name = widget.details.name;
     final description = widget.details.description;
 
-    final price1 = selectedIndex == 0
-        ? widget.details.price
-        : selectedIndex == 1
-            ? double.parse((widget.details.price * 2).toStringAsFixed(2))
-            : double.parse((widget.details.price * 3).toStringAsFixed(2));
+    final price1 = widget.details.price;
 
     final price = double.parse((quantity * price1).toStringAsFixed(2));
 
-    final offerPrice1 = selectedIndex == 0
-        ? widget.details.offerPrice
-        : selectedIndex == 1
-            ? double.parse((widget.details.offerPrice * 2).toStringAsFixed(2))
-            : double.parse((widget.details.offerPrice * 3).toStringAsFixed(2));
+    final offerPrice1 = widget.details.offerPrice;
 
     final offerPrice =
         double.parse((quantity * offerPrice1).toStringAsFixed(2));
@@ -89,8 +77,8 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                       ),
                       image: DecorationImage(
                           image:
-                              AssetImage("assets/images/MenShoes/$image.jpg"),
-                          fit: BoxFit.fill)),
+                              AssetImage("assets/images/LadiesBag/$image.jpg"),
+                          fit: BoxFit.cover)),
                 ),
               ),
               Positioned(
@@ -117,7 +105,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                                 name,
                                 style: TextStyle(
                                     color: Colors.black,
-                                    fontSize: 25.0,
+                                    fontSize: 20,
                                     fontWeight: FontWeight.bold),
                               ),
                               SizedBox(height: 10),
@@ -159,7 +147,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                               Container(
                                 padding: EdgeInsets.only(left: 15),
                                 height: 80,
-                                width: 150,
+                                width: 167,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
                                     color: Colors.black.withOpacity(0.6)),
@@ -177,7 +165,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                                         Text(
                                           "\$ $price ",
                                           style: TextStyle(
-                                              fontSize: 18,
+                                              fontSize: 15,
                                               color: Colors.grey.shade400,
                                               decoration:
                                                   TextDecoration.lineThrough,
@@ -189,7 +177,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                                         Text(
                                           "($discount% Off)",
                                           style: TextStyle(
-                                              fontSize: 16,
+                                              fontSize: 13.5,
                                               fontWeight: FontWeight.w500,
                                               color: Colors.orange.shade800),
                                         ),
@@ -282,10 +270,9 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                               width: bodyWidth - 30,
                               child: ReadMoreText(
                                 description,
-                                // selectedIndex.toString(),
                                 style: TextStyle(
                                     color: Colors.black, fontSize: 17),
-                                trimLines: 2,
+                                trimLines: 3,
                                 trimMode: TrimMode.Line,
                                 moreStyle: TextStyle(
                                     fontSize: 17,
@@ -297,77 +284,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                                     color: Colors.orange),
                               ),
                             ),
-                            SizedBox(height: 12),
-                            Text(
-                              'Size',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Row(
-                                children: List.generate(
-                                  13 - 5 + 1,
-                                  (index) {
-                                    final number = index + 5;
-                                    return GestureDetector(
-                                      onTap: () {
-                                        setState(() {
-                                          selectedIndex= index;
-                                        });
-                                      },
-                                      child: Padding(
-                                        padding: EdgeInsets.all(8.0),
-                                        child: Container(
-                                          height: 40,
-                                          width: 40,
-                                          decoration: BoxDecoration(
-                                              color: index == selectedIndex
-                                                  ? Color.fromRGBO(
-                                                      143, 93, 58, 1)
-                                                  : Colors.white,
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                              border: index == selectedIndex
-                                                  ? Border.all(
-                                                      color:
-                                                          Colors.brown.shade900,
-                                                      width: 2)
-                                                  : Border.all(
-                                                      color: Color.fromRGBO(
-                                                          143, 93, 58, 1),
-                                                      width: 2)),
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                '$number',
-                                                style: TextStyle(
-                                                    color:
-                                                        index == selectedIndex
-                                                            ? Colors.white
-                                                            : Color.fromRGBO(
-                                                                143, 93, 58, 1),
-                                                    fontSize: 17,
-                                                    fontWeight:
-                                                        index == selectedIndex
-                                                            ? FontWeight.normal
-                                                            : FontWeight.bold),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 5),
-                            SizedBox(height: 12),
+                            SizedBox(height: 22),
                             Text(
                               'Customers also liked',
                               style: TextStyle(
@@ -418,7 +335,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                                                   BorderRadius.vertical(
                                                       top: Radius.circular(10)),
                                               child: Image.asset(
-                                                'assets/images/MenShoes/$image.jpg',
+                                                "assets/images/MenShoes/$image.png",
                                                 fit: BoxFit.fill,
                                               ),
                                             ),
@@ -516,6 +433,24 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                     children: [
                       ElevatedButton.icon(
                         onPressed: () {
+                          // showDialog(
+                          //     context: context,
+                          //     builder: (context) => DialogBox(
+                          //           productName: widget.details.name,
+                          //           buttonName: "Pay Now",
+                          //           call: (value) {
+                          //             func.additem({
+                          //               "name": name,
+                          //               "image": "assets/images/$image.jpg",
+                          //               "price": value,
+                          //               "quantity": quantity
+                          //             });
+                          //             Navigator.of(context).pop();
+                          //             Navigator.pushNamed(context, '/payment');
+                          //           },
+                          //           addons: addons,
+                          //           finalPrice: offerPrice,
+                          //         ));
                           showDialog(
                               context: context,
                               builder: (BuildContext context) {
@@ -580,185 +515,121 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
     );
   }
 
-  // Widget _buildSizeButton(
-  //   String title,
-  //   int index,
-  //   String sizename,
-  // ) {
-  //   return GestureDetector(
-  //     onTap: () {
-  //       setState(() {
-  //         selectedIndex = index;
-  //       });
-  //     },
-  //     child: Container(
-  //       height: widget.details.category == "Snacks"
-  //           ? 40
-  //           : widget.details.category == "Cookies"
-  //               ? 40
-  //               : 48,
-  //       width: widget.details.category == "Snacks"
-  //           ? 105
-  //           : widget.details.category == "Cookies"
-  //               ? 105
-  //               : 110,
-  //       // height: 40,
-  //       // width: 105,
-  //       decoration: BoxDecoration(
-  //           color: index == selectedIndex
-  //               ? Color.fromRGBO(143, 93, 58, 1)
-  //               : Colors.white,
-  //           borderRadius: BorderRadius.circular(10),
-  //           border: index == selectedIndex
-  //               ? Border.all(color: Colors.brown.shade900, width: 2)
-  //               : Border.all(color: Color.fromRGBO(143, 93, 58, 1), width: 2)),
-  //       child: Column(
-  //         mainAxisAlignment: MainAxisAlignment.center,
+  // Future bottomSheet() {
+  //   return showModalBottomSheet(
+  //     elevation: 20,
+  //     shape: RoundedRectangleBorder(
+  //         borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+  //     enableDrag: true,
+  //     isDismissible: true,
+  //     context: context,
+  //     builder: (context) {
+  //       return Column(
+  //         mainAxisSize: MainAxisSize.min,
   //         children: [
-  //           Text(
-  //             title,
-  //             style: TextStyle(
-  //                 color: index == selectedIndex
-  //                     ? Colors.white
-  //                     : Color.fromRGBO(143, 93, 58, 1),
-  //                 fontSize: 17,
-  //                 fontWeight: index == selectedIndex
-  //                     ? FontWeight.normal
-  //                     : FontWeight.bold),
-  //           ),
-  //           if (widget.details.category == "Coffee")
-  //             Text(
-  //               sizename,
-  //               style: TextStyle(
-  //                   color: index == selectedIndex
-  //                       ? Colors.white
-  //                       : Color.fromRGBO(143, 93, 58, 1),
-  //                   fontSize: 12,
-  //                   fontWeight: index == selectedIndex
-  //                       ? FontWeight.normal
-  //                       : FontWeight.bold),
+  //           Container(
+  //             height: 20,
+  //             decoration: BoxDecoration(
+  //               color: Color.fromRGBO(143, 93, 58, 0.8),
+  //               borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
   //             ),
+  //             child: Padding(
+  //               padding: const EdgeInsets.symmetric(horizontal: 150),
+  //               child: Divider(
+  //                 color: Colors.black,
+  //                 thickness: 4,
+  //               ),
+  //             ),
+  //           ),
+  //           Padding(
+  //             padding: const EdgeInsets.all(12.0),
+  //             child: Row(
+  //               mainAxisAlignment: MainAxisAlignment.center,
+  //               children: [
+  //                 Icon(
+  //                   Icons.done,
+  //                   size: 35,
+  //                   color: Colors.green,
+  //                 ),
+  //                 SizedBox(width: 15),
+  //                 Row(
+  //                   children: [
+  //                     Text(
+  //                       "${widget.details.name} ",
+  //                       style: TextStyle(
+  //                           fontSize: 20, fontWeight: FontWeight.w900),
+  //                     ),
+  //                     Text(
+  //                       "is addedd to Cart",
+  //                       style: TextStyle(
+  //                           fontSize: 20, fontWeight: FontWeight.bold),
+  //                     ),
+  //                   ],
+  //                 ),
+  //               ],
+  //             ),
+  //           ),
+  //           Padding(
+  //             padding: const EdgeInsets.only(left: 16, right: 16, bottom: 10),
+  //             child: Row(
+  //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //               children: [
+  //                 OutlinedButton.icon(
+  //                   onPressed: () {
+  //                     Navigator.of(context).pop();
+  //                     Navigator.pushNamed(context, '/cart');
+  //                   },
+  //                   icon: Icon(
+  //                     Icons.shopping_cart,
+  //                     color: Colors.orange,
+  //                     size: 20,
+  //                   ),
+  //                   label: Text(
+  //                     "Cart",
+  //                     style: TextStyle(
+  //                         fontSize: 17,
+  //                         fontWeight: FontWeight.w700,
+  //                         color: Color.fromRGBO(143, 93, 58, 1)),
+  //                   ),
+  //                   style: ButtonStyle(
+  //                       shape: MaterialStateProperty.all(RoundedRectangleBorder(
+  //                         borderRadius: BorderRadius.circular(20),
+  //                       )),
+  //                       fixedSize: MaterialStateProperty.all(Size(140, 50)),
+  //                       side: MaterialStatePropertyAll(BorderSide(
+  //                           color: Color.fromRGBO(143, 93, 58, 1), width: 3))),
+  //                 ),
+  //                 ElevatedButton.icon(
+  //                   onPressed: () {
+  //                     Navigator.of(context).pop();
+  //                     Navigator.pushNamed(context, '/home');
+  //                   },
+  //                   style: ButtonStyle(
+  //                       backgroundColor: MaterialStateProperty.all(
+  //                           Color.fromRGBO(143, 93, 58, 1)),
+  //                       shape: MaterialStateProperty.all(RoundedRectangleBorder(
+  //                         borderRadius: BorderRadius.circular(16),
+  //                       )),
+  //                       fixedSize: MaterialStateProperty.all(Size(230, 50))),
+  //                   icon: Icon(
+  //                     Icons.shopping_bag_outlined,
+  //                     color: Colors.orange,
+  //                     size: 20,
+  //                   ),
+  //                   label: Text(
+  //                     "Continue Shopping",
+  //                     style: TextStyle(
+  //                         fontSize: 17,
+  //                         fontWeight: FontWeight.w500,
+  //                         color: Colors.white),
+  //                   ),
+  //                 ),
+  //               ],
+  //             ),
+  //           )
   //         ],
-  //       ),
-  //     ),
+  //       );
+  //     },
   //   );
   // }
-
-  Future bottomSheet() {
-    return showModalBottomSheet(
-      elevation: 20,
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
-      enableDrag: true,
-      isDismissible: true,
-      context: context,
-      builder: (context) {
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              height: 20,
-              decoration: BoxDecoration(
-                color: Color.fromRGBO(143, 93, 58, 0.8),
-                borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 150),
-                child: Divider(
-                  color: Colors.black,
-                  thickness: 4,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.done,
-                    size: 35,
-                    color: Colors.green,
-                  ),
-                  SizedBox(width: 15),
-                  Row(
-                    children: [
-                      Text(
-                        "${widget.details.name} ",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w900),
-                      ),
-                      Text(
-                        "is addedd to Cart",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 16, right: 16, bottom: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  OutlinedButton.icon(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                      Navigator.pushNamed(context, '/cart');
-                    },
-                    icon: Icon(
-                      Icons.shopping_cart,
-                      color: Colors.orange,
-                      size: 20,
-                    ),
-                    label: Text(
-                      "Cart",
-                      style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.w700,
-                          color: Color.fromRGBO(143, 93, 58, 1)),
-                    ),
-                    style: ButtonStyle(
-                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        )),
-                        fixedSize: MaterialStateProperty.all(Size(140, 50)),
-                        side: MaterialStatePropertyAll(BorderSide(
-                            color: Color.fromRGBO(143, 93, 58, 1), width: 3))),
-                  ),
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                      Navigator.pushNamed(context, '/home');
-                    },
-                    style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                            Color.fromRGBO(143, 93, 58, 1)),
-                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        )),
-                        fixedSize: MaterialStateProperty.all(Size(230, 50))),
-                    icon: Icon(
-                      Icons.shopping_bag_outlined,
-                      color: Colors.orange,
-                      size: 20,
-                    ),
-                    label: Text(
-                      "Continue Shopping",
-                      style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white),
-                    ),
-                  ),
-                ],
-              ),
-            )
-          ],
-        );
-      },
-    );
-  }
 }

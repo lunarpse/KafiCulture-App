@@ -153,7 +153,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                           ),
                           onTap: () {
                             Navigator.pushReplacementNamed(
-                                context, "/shoespage");
+                                context, "/shoepage");
                           },
                         ),
                       ),

@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:project_2/Cargo/women/ladies_details_widget.dart';
+import 'package:project_2/Cargo/women/widget/ladies_details_widget.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/customdrawer/drawerScreen.dart';
 import 'package:project_2/homepage/data_fetching/api_service.dart';
@@ -41,7 +41,7 @@ class _LadiesBagDetailsPageState extends State<LadiesBagDetailsPage> {
       body: LadiesDetailsWidget(
         details: widget.detail,
         fetchProducts: mens,
-        nextPage: '/ladiesdetails',
+        nextPage: '/menDetails',
       ),
     );
   }

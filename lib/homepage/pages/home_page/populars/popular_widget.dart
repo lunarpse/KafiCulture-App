@@ -3,8 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_2/homepage/model/json_model.dart';
 import 'package:project_2/homepage/constant_homepage/constant_populars.dart';
-import '../pages/home_page/populars/popular_details_page.dart';
-import '../data_fetching/api_service.dart';
+import '../../../data_fetching/api_service.dart';
 
 class PopularWidget extends StatefulWidget {
   const PopularWidget({super.key});

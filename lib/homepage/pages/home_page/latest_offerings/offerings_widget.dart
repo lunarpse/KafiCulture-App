@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_2/homepage/model/json_model.dart';
 import 'package:project_2/homepage/constant_homepage/constant_offers.dart';
-import '../data_fetching/api_service.dart';
+import '../../../data_fetching/api_service.dart';
 
 class OfferingsWidget extends StatefulWidget {
   const OfferingsWidget({super.key});
