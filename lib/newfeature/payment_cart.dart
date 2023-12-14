@@ -31,7 +31,7 @@ class _MyWidgetState extends ConsumerState<PaymentCart> {
     return Padding(
         padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 8),
         child: _showremove == true
-            ? Remove_or_Cancel(
+            ? RemoveOrCancel(
                 image: widget.data["icon"],
                 name: widget.data["name"],
                 setremove: () {
@@ -144,8 +144,7 @@ class _MyWidgetState extends ConsumerState<PaymentCart> {
                                       height: 30,
                                       width: 30,
                                       decoration: BoxDecoration(
-                                          color:
-                                              paymentcartdeccolor1,
+                                          color: paymentcartdeccolor1,
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(50))),
                                       child: IconButton(
@@ -180,8 +179,7 @@ class _MyWidgetState extends ConsumerState<PaymentCart> {
                                       height: 30,
                                       width: 30,
                                       decoration: BoxDecoration(
-                                          color:
-                                              paymentcartdeccolor1,
+                                          color: paymentcartdeccolor1,
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(50))),
                                       child: IconButton(

@@ -2,9 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:project_2/cart/widget/extraitems.dart';
-
-
-import '../../constants/text_constants.dart';
 // import 'package:project_2/hjc/cart_widget/extraitems.dart';
 
 class Extras extends StatelessWidget {
@@ -23,15 +20,15 @@ class Extras extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           children: [
             ExtraItems(
-                name: extraitem1,
+                name: "Hot Chocolate",
                 image: "assets/images/hot_choc.jpg",
                 price: 12),
             ExtraItems(
-                name: extraitem2,
+                name: "Aloo Snacks",
                 image: "assets/images/Aloo_snacks.jpg",
                 price: 23),
             ExtraItems(
-                name: extraitem3,
+                name: "Dahi Vada",
                 image: "assets/images/Dahi_Vada.jpg",
                 price: 40)
           ],

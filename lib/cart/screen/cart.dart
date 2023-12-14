@@ -7,9 +7,9 @@ import 'package:project_2/cart/riverpod/tipstate_provider.dart';
 import 'package:project_2/cart/screen/Extras.dart';
 import 'package:project_2/cart/widget/Bottom.dart';
 import 'package:project_2/cart/widget/Cooking_Instructions.dart';
+import 'package:project_2/constants/text_constants.dart';
 import 'package:project_2/customdrawer/drawerScreen.dart';
 
-import '../../constants/text_constants.dart';
 import '../../homepage/reusable_widgets/background_container_widget.dart';
 import '../riverpod/state_provider.dart';
 
@@ -81,7 +81,7 @@ class _CartState extends ConsumerState<Cart> {
                                         height: 0,
                                       );
                                     } else if (index == data.length) {
-                                      return Cooking_Instructions();
+                                      return CookingInstructions();
                                     } else if (index == data.length + 1) {
                                       return Column(
                                         crossAxisAlignment:

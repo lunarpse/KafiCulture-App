@@ -2,18 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
-import 'package:project_2/constants/color_constants.dart';
-
-import 'package:project_2/homepage/model/json_model.dart';
+import 'package:project_2/Cargo/men/widget/dialogueBox.dart';
+import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 import 'package:readmore/readmore.dart';
-import '../../constants/text_constants.dart';
-import 'background_container_widget.dart';
 import 'package:project_2/cart/riverpod/state_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'dialog_box.dart';
 
-class DetailsPageWidget extends ConsumerStatefulWidget {
-  const DetailsPageWidget(
+class LadiesDetailsWidget extends ConsumerStatefulWidget {
+  const LadiesDetailsWidget(
       {super.key,
       required this.details,
       required this.fetchProducts,
@@ -24,14 +20,12 @@ class DetailsPageWidget extends ConsumerStatefulWidget {
   final nextPage;
 
   @override
-  ConsumerState<DetailsPageWidget> createState() => _DetailsPageState();
+  ConsumerState<LadiesDetailsWidget> createState() => _DetailsPageState();
 }
 
-class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
-  int selectedIndex = 0;
+class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
   int quantity = 1;
-
-  List<AddonModel> addons = [];
+  // int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -45,19 +39,11 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
     final name = widget.details.name;
     final description = widget.details.description;
 
-    final price1 = selectedIndex == 0
-        ? widget.details.price
-        : selectedIndex == 1
-            ? double.parse((widget.details.price * 2).toStringAsFixed(2))
-            : double.parse((widget.details.price * 3).toStringAsFixed(2));
+    final price1 = widget.details.price;
 
     final price = double.parse((quantity * price1).toStringAsFixed(2));
 
-    final offerPrice1 = selectedIndex == 0
-        ? widget.details.offerPrice
-        : selectedIndex == 1
-            ? double.parse((widget.details.offerPrice * 2).toStringAsFixed(2))
-            : double.parse((widget.details.offerPrice * 3).toStringAsFixed(2));
+    final offerPrice1 = widget.details.offerPrice;
 
     final offerPrice =
         double.parse((quantity * offerPrice1).toStringAsFixed(2));
@@ -65,11 +51,6 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
     final discount = widget.details.discount;
     final rating = widget.details.rating;
     final totalRatings = widget.details.totalRatings;
-    final sizeName1 = widget.details.size.sizeName1;
-    final sizeName2 = widget.details.size.sizeName2;
-    final sizeName3 = widget.details.size.sizeName3;
-
-    addons = widget.details.addons;
 
     return BackgroundContainerWidget(
       opacity: 0.6,
@@ -95,7 +76,8 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                         top: Radius.circular(20),
                       ),
                       image: DecorationImage(
-                          image: AssetImage("assets/images/$image.jpg"),
+                          image:
+                              AssetImage("assets/images/LadiesBag/$image.jpg"),
                           fit: BoxFit.cover)),
                 ),
               ),
@@ -107,7 +89,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                   blur: 4,
                   border: Border.fromBorderSide(BorderSide.none),
                   borderRadius: BorderRadius.circular(30.0),
-                  color: detailsglasscontainercolor,
+                  color: Colors.white.withOpacity(0.2),
                   child: Container(
                     width: bodyWidth - 20.0,
                     child: Row(
@@ -122,8 +104,8 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                               Text(
                                 name,
                                 style: TextStyle(
-                                    color: detailsproductnamecolor,
-                                    fontSize: 25.0,
+                                    color: Colors.black,
+                                    fontSize: 20,
                                     fontWeight: FontWeight.bold),
                               ),
                               SizedBox(height: 10),
@@ -131,14 +113,14 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                 children: [
                                   Icon(
                                     Icons.star,
-                                    color: detailsratingstarcolor,
+                                    color: Colors.amber,
                                     size: 23,
                                   ),
                                   SizedBox(width: 7),
                                   Text(
                                     rating,
                                     style: TextStyle(
-                                        color: detailsratingcolor,
+                                        color: Colors.black,
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -146,7 +128,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                   Text(
                                     '($totalRatings)',
                                     style: TextStyle(
-                                      color: detailstotalratingscolor,
+                                      color: Colors.black,
                                       fontSize: 18,
                                     ),
                                   )
@@ -165,10 +147,10 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                               Container(
                                 padding: EdgeInsets.only(left: 15),
                                 height: 80,
-                                width: 150,
+                                width: 167,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
-                                    color: detailsboxdecorationcolor),
+                                    color: Colors.black.withOpacity(0.6)),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -176,28 +158,28 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                     Text(
                                       "\$ $offerPrice",
                                       style: TextStyle(
-                                          fontSize: 25, color: detailsboxcolor),
+                                          fontSize: 25, color: Colors.white),
                                     ),
                                     Row(
                                       children: [
                                         Text(
                                           "\$ $price ",
                                           style: TextStyle(
-                                              fontSize: 18,
-                                              color: detailspricefontcolor,
+                                              fontSize: 15,
+                                              color: Colors.grey.shade400,
                                               decoration:
                                                   TextDecoration.lineThrough,
                                               decorationColor:
-                                                  detailspriceboxdecorationcolor,
+                                                  Colors.grey.shade400,
                                               decorationThickness: 2,
                                               fontWeight: FontWeight.bold),
                                         ),
                                         Text(
                                           "($discount% Off)",
                                           style: TextStyle(
-                                              fontSize: 16,
+                                              fontSize: 13.5,
                                               fontWeight: FontWeight.w500,
-                                              color: detailsdiscountboxcolor),
+                                              color: Colors.orange.shade800),
                                         ),
                                       ],
                                     )
@@ -214,9 +196,9 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                     width: 50,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
-                                        color: detailsboxdecoration1color),
+                                        color: Colors.black.withOpacity(0.8)),
                                     child: IconButton(
-                                      color: detailsiconbuttoncolor,
+                                      color: Colors.white,
                                       onPressed: () {
                                         setState(() {
                                           quantity = quantity - 1 == 0
@@ -239,9 +221,9 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                     width: 50,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
-                                        color: detailsboxdecoration2color),
+                                        color: Colors.black.withOpacity(0.8)),
                                     child: IconButton(
-                                      color: detailsiconbuttoncolor,
+                                      color: Colors.white,
                                       onPressed: () {
                                         setState(() {
                                           quantity = quantity + 1;
@@ -266,7 +248,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
               Positioned(
                   top: bodyHeight / 2 - 62,
                   child: Container(
-                    color: detailsiconbuttoncolor,
+                    color: Colors.white,
                     height: bodyHeight / 2 - 66,
                     width: bodyWidth - 20,
                     child: ListView(
@@ -276,9 +258,9 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              detaildescription,
+                              "Description",
                               style: TextStyle(
-                                  color: detailstextcolor,
+                                  color: Colors.black,
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -288,47 +270,25 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                               width: bodyWidth - 30,
                               child: ReadMoreText(
                                 description,
-                                // selectedIndex.toString(),
                                 style: TextStyle(
-                                    color: detailstextcolor, fontSize: 17),
-                                trimLines: 2,
+                                    color: Colors.black, fontSize: 17),
+                                trimLines: 3,
                                 trimMode: TrimMode.Line,
                                 moreStyle: TextStyle(
                                     fontSize: 17,
                                     fontWeight: FontWeight.bold,
-                                    color: detailsreadmoreshowelesscolor),
+                                    color: Colors.orange),
                                 lessStyle: TextStyle(
                                     fontSize: 17,
                                     fontWeight: FontWeight.bold,
-                                    color: detailsreadmoreshowelesscolor),
+                                    color: Colors.orange),
                               ),
                             ),
-                            SizedBox(height: 12),
+                            SizedBox(height: 22),
                             Text(
-                              size,
+                              'Customers also liked',
                               style: TextStyle(
-                                  color: detailstextcolor,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(height: 5),
-                            Container(
-                              width: bodyWidth,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  _buildSizeButton(sizeName1, 0, "(354 ML)"),
-                                  _buildSizeButton(sizeName2, 1, "(473 ML)"),
-                                  _buildSizeButton(sizeName3, 2, "(591 ML)")
-                                ],
-                              ),
-                            ),
-                            SizedBox(height: 12),
-                            Text(
-                              recommendedproducts,
-                              style: TextStyle(
-                                  color: detailstextcolor,
+                                  color: Colors.black,
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -360,7 +320,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                         arguments: fetchProduct),
                                     child: Card(
                                       elevation: 10,
-                                      shadowColor: detailsshadowcolor,
+                                      shadowColor: Colors.grey,
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(10)),
@@ -375,8 +335,8 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                                   BorderRadius.vertical(
                                                       top: Radius.circular(10)),
                                               child: Image.asset(
-                                                'assets/images/$image.jpg',
-                                                fit: BoxFit.cover,
+                                                "assets/images/MenShoes/$image.png",
+                                                fit: BoxFit.fill,
                                               ),
                                             ),
                                           ),
@@ -405,7 +365,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                                     Icon(
                                                       Icons.star,
                                                       size: 17,
-                                                      color: detailsstarcolor,
+                                                      color: Colors.orange,
                                                     ),
                                                     SizedBox(width: 3),
                                                     Text(
@@ -430,8 +390,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                                       "($discount% Off)",
                                                       style: TextStyle(
                                                           fontSize: 13.5,
-                                                          color:
-                                                              detailsstarcolor,
+                                                          color: Colors.orange,
                                                           fontWeight:
                                                               FontWeight.w900),
                                                     ),
@@ -458,12 +417,12 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                   padding: EdgeInsets.symmetric(horizontal: 15, vertical: 7),
                   width: bodyWidth - 20,
                   decoration: BoxDecoration(
-                    color: detailsboxcolor,
+                    color: Colors.white,
                     borderRadius:
                         BorderRadius.vertical(top: Radius.circular(20)),
                     boxShadow: [
                       BoxShadow(
-                          color: detailsboxshadowcolor,
+                          color: Colors.grey.withOpacity(0.5),
                           blurRadius: 3,
                           spreadRadius: 2,
                           offset: Offset(0, -2))
@@ -474,28 +433,33 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                     children: [
                       ElevatedButton.icon(
                         onPressed: () {
+                          // showDialog(
+                          //     context: context,
+                          //     builder: (context) => DialogBox(
+                          //           productName: widget.details.name,
+                          //           buttonName: "Pay Now",
+                          //           call: (value) {
+                          //             func.additem({
+                          //               "name": name,
+                          //               "image": "assets/images/$image.jpg",
+                          //               "price": value,
+                          //               "quantity": quantity
+                          //             });
+                          //             Navigator.of(context).pop();
+                          //             Navigator.pushNamed(context, '/payment');
+                          //           },
+                          //           addons: addons,
+                          //           finalPrice: offerPrice,
+                          //         ));
                           showDialog(
                               context: context,
-                              builder: (context) => DialogBox(
-                                    productName: widget.details.name,
-                                    buttonName: "Pay Now",
-                                    call: (value) {
-                                      func.additem({
-                                        "name": name,
-                                        "image": "assets/images/$image.jpg",
-                                        "price": value,
-                                        "quantity": quantity
-                                      });
-                                      Navigator.of(context).pop();
-                                      Navigator.pushNamed(context, '/payment');
-                                    },
-                                    addons: addons,
-                                    finalPrice: offerPrice,
-                                  ));
+                              builder: (BuildContext context) {
+                                return CargoDialogueBox();
+                              });
                         },
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(
-                                detailssizebuttonbgcolor),
+                                Color.fromRGBO(143, 93, 58, 1)),
                             shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16),
@@ -504,52 +468,30 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                 Size((bodyWidth / 3) + 25, 50))),
                         icon: Icon(
                           Icons.shopping_bag_outlined,
-                          color: detailsshoppingbagcolor,
+                          color: Colors.orange,
                           size: 20,
                         ),
                         label: Text(
-                          buynow,
+                          "Buy Now",
                           style: TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.w500,
-                              color: detailsboxcolor),
+                              color: Colors.white),
                         ),
                       ),
                       OutlinedButton.icon(
-                        onPressed: () {
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return DialogBox(
-                                addons: addons,
-                                productName: widget.details.name,
-                                buttonName: "Proceed",
-                                call: (value) {
-                                  func.additem({
-                                    "name": name,
-                                    "image": "assets/images/$image.jpg",
-                                    "price": value,
-                                    "quantity": quantity
-                                  });
-                                  Navigator.of(context).pop();
-                                  bottomSheet();
-                                },
-                                finalPrice: offerPrice,
-                              );
-                            },
-                          );
-                        },
+                        onPressed: () {},
                         icon: Icon(
                           Icons.shopping_cart,
-                          color: detailsshoppingcartcolor,
+                          color: Colors.orange,
                           size: 20,
                         ),
                         label: Text(
-                          addtocart,
+                          "Add To Cart",
                           style: TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.w700,
-                              color: detailsaddtocartbuttoncolor),
+                              color: Color.fromRGBO(143, 93, 58, 1)),
                         ),
                         style: ButtonStyle(
                             shape: MaterialStateProperty.all(
@@ -559,7 +501,8 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                             fixedSize: MaterialStateProperty.all(
                                 Size((bodyWidth / 3) + 25, 50)),
                             side: MaterialStatePropertyAll(BorderSide(
-                                color: detailsaddtocartbuttoncolor, width: 3))),
+                                color: Color.fromRGBO(143, 93, 58, 1),
+                                width: 3))),
                       )
                     ],
                   ),
@@ -572,185 +515,121 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
     );
   }
 
-  Widget _buildSizeButton(
-    String title,
-    int index,
-    String sizename,
-  ) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          selectedIndex = index;
-        });
-      },
-      child: Container(
-        height: widget.details.category == snacks
-            ? 40
-            : widget.details.category == cookies
-                ? 40
-                : 48,
-        width: widget.details.category == snacks
-            ? 105
-            : widget.details.category == cookies
-                ? 105
-                : 110,
-        // height: 40,
-        // width: 105,
-        decoration: BoxDecoration(
-            color: index == selectedIndex
-                ? detailsaddtocartbuttoncolor
-                : detailsboxcolor,
-            borderRadius: BorderRadius.circular(10),
-            border: index == selectedIndex
-                ? Border.all(color: detailsselectedindexbordercolor, width: 2)
-                : Border.all(color: detailsaddtocartbuttoncolor, width: 2)),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              title,
-              style: TextStyle(
-                  color: index == selectedIndex
-                      ? detailsboxcolor
-                      : detailsaddtocartbuttoncolor,
-                  fontSize: 17,
-                  fontWeight: index == selectedIndex
-                      ? FontWeight.normal
-                      : FontWeight.bold),
-            ),
-            if (widget.details.category == "Coffee")
-              Text(
-                sizename,
-                style: TextStyle(
-                    color: index == selectedIndex
-                        ? detailsboxcolor
-                        : detailsaddtocartbuttoncolor,
-                    fontSize: 12,
-                    fontWeight: index == selectedIndex
-                        ? FontWeight.normal
-                        : FontWeight.bold),
-              ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Future bottomSheet() {
-    return showModalBottomSheet(
-      elevation: 20,
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
-      enableDrag: true,
-      isDismissible: true,
-      context: context,
-      builder: (context) {
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              height: 20,
-              decoration: BoxDecoration(
-                color: detailsbottomsheetboxcolor,
-                borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 150),
-                child: Divider(
-                  color: detailstextcolor,
-                  thickness: 4,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.done,
-                    size: 35,
-                    color: detailsdoneiconcolor,
-                  ),
-                  SizedBox(width: 15),
-                  Row(
-                    children: [
-                      Text(
-                        "${widget.details.name} ",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w900),
-                      ),
-                      Text(
-                        cartconfirmationmsg,
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 16, right: 16, bottom: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  OutlinedButton.icon(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                      Navigator.pushNamed(context, '/cart');
-                    },
-                    icon: Icon(
-                      Icons.shopping_cart,
-                      color: detailsshoppingcartcolor,
-                      size: 20,
-                    ),
-                    label: Text(
-                      cart,
-                      style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.w700,
-                          color: detailsaddtocartbuttoncolor),
-                    ),
-                    style: ButtonStyle(
-                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        )),
-                        fixedSize: MaterialStateProperty.all(Size(140, 50)),
-                        side: MaterialStatePropertyAll(BorderSide(
-                            color: detailsaddtocartbuttoncolor, width: 3))),
-                  ),
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                      Navigator.pushNamed(context, '/home');
-                    },
-                    style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                            detailsaddtocartbuttoncolor),
-                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        )),
-                        fixedSize: MaterialStateProperty.all(Size(230, 50))),
-                    icon: Icon(
-                      Icons.shopping_bag_outlined,
-                      color: detailsshoppingbagcolor,
-                      size: 20,
-                    ),
-                    label: Text(
-                      continueshopping,
-                      style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.w500,
-                          color: detailsboxcolor),
-                    ),
-                  ),
-                ],
-              ),
-            )
-          ],
-        );
-      },
-    );
-  }
+  // Future bottomSheet() {
+  //   return showModalBottomSheet(
+  //     elevation: 20,
+  //     shape: RoundedRectangleBorder(
+  //         borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+  //     enableDrag: true,
+  //     isDismissible: true,
+  //     context: context,
+  //     builder: (context) {
+  //       return Column(
+  //         mainAxisSize: MainAxisSize.min,
+  //         children: [
+  //           Container(
+  //             height: 20,
+  //             decoration: BoxDecoration(
+  //               color: Color.fromRGBO(143, 93, 58, 0.8),
+  //               borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+  //             ),
+  //             child: Padding(
+  //               padding: const EdgeInsets.symmetric(horizontal: 150),
+  //               child: Divider(
+  //                 color: Colors.black,
+  //                 thickness: 4,
+  //               ),
+  //             ),
+  //           ),
+  //           Padding(
+  //             padding: const EdgeInsets.all(12.0),
+  //             child: Row(
+  //               mainAxisAlignment: MainAxisAlignment.center,
+  //               children: [
+  //                 Icon(
+  //                   Icons.done,
+  //                   size: 35,
+  //                   color: Colors.green,
+  //                 ),
+  //                 SizedBox(width: 15),
+  //                 Row(
+  //                   children: [
+  //                     Text(
+  //                       "${widget.details.name} ",
+  //                       style: TextStyle(
+  //                           fontSize: 20, fontWeight: FontWeight.w900),
+  //                     ),
+  //                     Text(
+  //                       "is addedd to Cart",
+  //                       style: TextStyle(
+  //                           fontSize: 20, fontWeight: FontWeight.bold),
+  //                     ),
+  //                   ],
+  //                 ),
+  //               ],
+  //             ),
+  //           ),
+  //           Padding(
+  //             padding: const EdgeInsets.only(left: 16, right: 16, bottom: 10),
+  //             child: Row(
+  //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //               children: [
+  //                 OutlinedButton.icon(
+  //                   onPressed: () {
+  //                     Navigator.of(context).pop();
+  //                     Navigator.pushNamed(context, '/cart');
+  //                   },
+  //                   icon: Icon(
+  //                     Icons.shopping_cart,
+  //                     color: Colors.orange,
+  //                     size: 20,
+  //                   ),
+  //                   label: Text(
+  //                     "Cart",
+  //                     style: TextStyle(
+  //                         fontSize: 17,
+  //                         fontWeight: FontWeight.w700,
+  //                         color: Color.fromRGBO(143, 93, 58, 1)),
+  //                   ),
+  //                   style: ButtonStyle(
+  //                       shape: MaterialStateProperty.all(RoundedRectangleBorder(
+  //                         borderRadius: BorderRadius.circular(20),
+  //                       )),
+  //                       fixedSize: MaterialStateProperty.all(Size(140, 50)),
+  //                       side: MaterialStatePropertyAll(BorderSide(
+  //                           color: Color.fromRGBO(143, 93, 58, 1), width: 3))),
+  //                 ),
+  //                 ElevatedButton.icon(
+  //                   onPressed: () {
+  //                     Navigator.of(context).pop();
+  //                     Navigator.pushNamed(context, '/home');
+  //                   },
+  //                   style: ButtonStyle(
+  //                       backgroundColor: MaterialStateProperty.all(
+  //                           Color.fromRGBO(143, 93, 58, 1)),
+  //                       shape: MaterialStateProperty.all(RoundedRectangleBorder(
+  //                         borderRadius: BorderRadius.circular(16),
+  //                       )),
+  //                       fixedSize: MaterialStateProperty.all(Size(230, 50))),
+  //                   icon: Icon(
+  //                     Icons.shopping_bag_outlined,
+  //                     color: Colors.orange,
+  //                     size: 20,
+  //                   ),
+  //                   label: Text(
+  //                     "Continue Shopping",
+  //                     style: TextStyle(
+  //                         fontSize: 17,
+  //                         fontWeight: FontWeight.w500,
+  //                         color: Colors.white),
+  //                   ),
+  //                 ),
+  //               ],
+  //             ),
+  //           )
+  //         ],
+  //       );
+  //     },
+  //   );
+  // }
 }

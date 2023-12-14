@@ -4,17 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:project_2/cart/riverpod/tipstate_provider.dart';
+import 'package:project_2/constants/color_constants.dart';
+import 'package:project_2/constants/text_constants.dart';
 
-
-import '../../constants/color_constants.dart';
-import '../../constants/text_constants.dart';
 import 'charges.dart';
 
 class Bottom extends ConsumerWidget {
   final double subtotal;
   final tip;
   final double gst;
-  Bottom(
+  const Bottom(
       {super.key,
       required this.gst,
       required this.subtotal,
@@ -60,10 +59,9 @@ class Bottom extends ConsumerWidget {
             ],
           ),
           Charges(
-              name: "Subtotal",
-              cost: double.parse(subtotal.toStringAsFixed(2))),
+              name: subTotal, cost: double.parse(subtotal.toStringAsFixed(2))),
           //Charges(name: "Shipping Cost", cost: 10),
-          Charges(name: "GST", cost: double.parse(gst.toStringAsFixed(2))),
+          Charges(name: gstString, cost: double.parse(gst.toStringAsFixed(2))),
 
           Container(
             margin: EdgeInsets.only(top: 10, bottom: 10),
@@ -80,7 +78,8 @@ class Bottom extends ConsumerWidget {
                       )),
             ),
           ),
-          Charges(name: "Total", cost: double.parse(total.toStringAsFixed(2))),
+          Charges(
+              name: totalString, cost: double.parse(total.toStringAsFixed(2))),
           SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -91,11 +90,11 @@ class Bottom extends ConsumerWidget {
                     horizontal: 32,
                     vertical: 16.0,
                   ),
-                  backgroundColor:bottomelevatebuttonbgcolor,
+                  backgroundColor: bottomelevatebuttonbgcolor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0),
                     side: BorderSide(
-                      color:bottomroundrectanglebordercolor,
+                      color: bottomroundrectanglebordercolor,
                     ),
                   ),
                 ),

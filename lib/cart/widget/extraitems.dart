@@ -4,11 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:project_2/cart/riverpod/state_provider.dart';
-
-
-import '../../constants/color_constants.dart';
-
-import '../../constants/text_constants.dart';
+import 'package:project_2/constants/color_constants.dart';
+import 'package:project_2/constants/text_constants.dart';
 
 class ExtraItems extends ConsumerWidget {
   const ExtraItems(
@@ -105,15 +102,6 @@ class ExtraItems extends ConsumerWidget {
                         )
                       ],
                     ),
-                    // ElevatedButton(
-                    //     onPressed: () {
-                    // ref.watch(CartProvider.notifier).additem({
-                    //   "name": name,
-                    //   "image": image,
-                    //   "price": price.toString()
-                    // });
-                    //     },
-                    //     child: Text("Add"))
                   ],
                 ),
               )

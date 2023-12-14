@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:project_2/constants/color_constants.dart';
-
-
-import '../constants/text_constants.dart';
-
+import 'package:project_2/constants/text_constants.dart';
 
 // ignore: camel_case_types
 class DrawerScreen extends StatefulWidget {
@@ -19,8 +16,7 @@ class DrawerScreen extends StatefulWidget {
 class _DrawerScreenState extends State<DrawerScreen> {
   var colorr = LinearGradient(colors: [
     drawerscreenlineargradientcolor,
-    drawerscreenlineargradientcolor1
-  
+    drawerscreenlineargradientcolor1,
   ]);
   @override
   Widget build(BuildContext context) {
@@ -30,7 +26,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
 
     return Drawer(
       child: Container(
-        decoration:  BoxDecoration(
+        decoration: BoxDecoration(
             gradient: LinearGradient(colors: [
           drawerscreenboxdeclineargradient1,
           drawerscreenboxdeclineargradient2,
@@ -81,14 +77,14 @@ class _DrawerScreenState extends State<DrawerScreen> {
                 //listTileTheme: ListTileThemeData(tileColor: color)
               ),
               child: ExpansionTile(
-                title: Text(
+                title: const Text(
                   categories,
                   style: TextStyle(fontSize: fontsize),
                 ),
                 children: [
                   ExpansionTile(
                     textColor: drawerscreenexpansiontilecolor,
-                    title: Text(
+                    title: const Text(
                       food,
                       style: TextStyle(fontSize: fontsize2),
                     ),
@@ -116,7 +112,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                             drinks,
                             style: TextStyle(fontSize: fontsize3),
                           ),
-                          textColor:drawerscreentextcolor,
+                          textColor: drawerscreentextcolor,
                           trailing: const Icon(Icons.local_drink),
                           onTap: () {
                             Navigator.pushReplacementNamed(context, "/drinks");
@@ -141,8 +137,8 @@ class _DrawerScreenState extends State<DrawerScreen> {
                     ],
                   ),
                   ExpansionTile(
-                    title:
-                        Text(apparels, style: TextStyle(fontSize: fontsize2)),
+                    title: const Text(apparels,
+                        style: TextStyle(fontSize: fontsize2)),
                     children: [
                       Container(
                         decoration: BoxDecoration(gradient: colorr),
@@ -152,11 +148,12 @@ class _DrawerScreenState extends State<DrawerScreen> {
                             style: TextStyle(fontSize: fontsize3),
                           ),
                           textColor: drawerscreentextcolor,
-                          trailing: FaIcon(
-                            FontAwesomeIcons.shirt,
+                          trailing: const FaIcon(
+                            FontAwesomeIcons.shoePrints,
                           ),
                           onTap: () {
-                          Navigator.pushReplacementNamed(context, "/snacks");
+                            Navigator.pushReplacementNamed(
+                                context, "/shoepage");
                           },
                         ),
                       ),
@@ -167,12 +164,12 @@ class _DrawerScreenState extends State<DrawerScreen> {
                             apparelswomen,
                             style: TextStyle(fontSize: fontsize3),
                           ),
-                          textColor:drawerscreentextcolor,
-                          trailing: FaIcon(
-                            FontAwesomeIcons.shirt,
+                          textColor: drawerscreentextcolor,
+                          trailing: const FaIcon(
+                            FontAwesomeIcons.bagShopping,
                           ),
                           onTap: () {
-                            Navigator.pushReplacementNamed(context, "/drinks");
+                            Navigator.pushReplacementNamed(context, "/bagpage");
                           },
                         ),
                       ),

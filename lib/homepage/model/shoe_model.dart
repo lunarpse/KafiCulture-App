@@ -1,6 +1,7 @@
 class ShoesJsonModel {
   final int id;
   final String name;
+  final String brand;
   final String description;
   final String rating;
   final String totalRatings;
@@ -13,6 +14,7 @@ class ShoesJsonModel {
   ShoesJsonModel({
     required this.id,
     required this.name,
+    required this.brand,
     required this.description,
     required this.rating,
     required this.totalRatings,
@@ -28,6 +30,7 @@ class ShoesJsonModel {
     return ShoesJsonModel(
       id: json['id'],
       name: json['name'],
+      brand: json["brand"],
       description: json['description'],
       rating: json['rating'],
       totalRatings: json['totalRatings'],
