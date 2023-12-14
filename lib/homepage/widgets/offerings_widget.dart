@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:project_2/homepage/bloc/home_bloc.dart';
 import 'package:project_2/homepage/model/json_model.dart';
 import 'package:project_2/homepage/constant_homepage/constant_offers.dart';
 import '../data_fetching/api_service.dart';
@@ -31,6 +32,7 @@ class _OfferingsState extends State<OfferingsWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final HomeBloc homeBloc = HomeBloc();
     return SizedBox(
       height: containerheight,
       // width: MediaQuery.of(context).size.width,
@@ -52,7 +54,8 @@ class _OfferingsState extends State<OfferingsWidget> {
 
           return InkWell(
             onTap: () =>
-                Navigator.pushNamed(context, '/offerspage', arguments: offer),
+                // Navigator.pushNamed(context, '/offerspage', arguments: offer),
+                homeBloc.add(HomeOffersClickedNavigateEvent()),
             child: Stack(
               children: [
                 Container(

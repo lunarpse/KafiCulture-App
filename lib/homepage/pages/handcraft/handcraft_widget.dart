@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:project_2/homepage/bloc/home_bloc.dart';
 import 'package:project_2/homepage/constant_homepage/constant_categories.dart';
 
 class HandCraftedWidget extends StatelessWidget {
@@ -8,6 +9,7 @@ class HandCraftedWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final HomeBloc homeBloc = HomeBloc();
     return Padding(
       padding: const EdgeInsets.all(padding_edge),
       child: GridView(
@@ -20,7 +22,8 @@ class HandCraftedWidget extends StatelessWidget {
         children: [
           InkWell(
             onTap: () {
-              Navigator.pushNamed(context, '/snacks');
+              // Navigator.pushNamed(context, '/snacks');
+              homeBloc.add(HomeCurationsNavigateEvent());
             },
             child: Column(
               children: [
