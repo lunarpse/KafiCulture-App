@@ -2,14 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
-import 'package:project_2/Cargo/men/widget/dialogueBox.dart';
-// import 'package:project_2/Cargo/reusablewidgets/size_button.dart';
-import 'package:project_2/homepage/model/json_model.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
-import 'package:project_2/homepage/reusable_widgets/dialog_box.dart';
 import 'package:readmore/readmore.dart';
 import 'package:project_2/cart/riverpod/state_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../constants/color_constants.dart';
+import '../../reusable_widget/cargo_dialogBox.dart';
 
 class CargoDetailsPageWidget extends ConsumerStatefulWidget {
   const CargoDetailsPageWidget(
@@ -43,19 +41,11 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
     final name = widget.details.name;
     final description = widget.details.description;
 
-    final price1 = selectedIndex == 0
-        ? widget.details.price
-        : selectedIndex == 1
-            ? double.parse((widget.details.price * 2).toStringAsFixed(2))
-            : double.parse((widget.details.price * 3).toStringAsFixed(2));
+    final price1 = widget.details.price;
 
     final price = double.parse((quantity * price1).toStringAsFixed(2));
 
-    final offerPrice1 = selectedIndex == 0
-        ? widget.details.offerPrice
-        : selectedIndex == 1
-            ? double.parse((widget.details.offerPrice * 2).toStringAsFixed(2))
-            : double.parse((widget.details.offerPrice * 3).toStringAsFixed(2));
+    final offerPrice1 = widget.details.offerPrice;
 
     final offerPrice =
         double.parse((quantity * offerPrice1).toStringAsFixed(2));
@@ -297,75 +287,87 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                               ),
                             ),
                             SizedBox(height: 12),
-                            Text(
-                              'Size',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold),
+                            Row(
+                              children: [
+                                Text(
+                                  'Size - ',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  'UK/India',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 16.5,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ],
                             ),
-                            // SingleChildScrollView(
-                            //   scrollDirection: Axis.horizontal,
-                            //   child: Row(
-                            //     children: List.generate(
-                            //       13 - 5 + 1,
-                            //       (index) {
-                            //         final number = index + 5;
-                            //         return GestureDetector(
-                            //           onTap: () {
-                            //             setState(() {
-                            //               selectedIndex = index;
-                            //             });
-                            //           },
-                            //           child: Padding(
-                            //             padding: EdgeInsets.all(8.0),
-                            //             child: Container(
-                            //               height: 40,
-                            //               width: 40,
-                            //               decoration: BoxDecoration(
-                            //                   color: index == selectedIndex
-                            //                       ? Color.fromRGBO(
-                            //                           143, 93, 58, 1)
-                            //                       : Colors.white,
-                            //                   borderRadius:
-                            //                       BorderRadius.circular(10),
-                            //                   border: index == selectedIndex
-                            //                       ? Border.all(
-                            //                           color:
-                            //                               Colors.brown.shade900,
-                            //                           width: 2)
-                            //                       : Border.all(
-                            //                           color: Color.fromRGBO(
-                            //                               143, 93, 58, 1),
-                            //                           width: 2)),
-                            //               child: Column(
-                            //                 mainAxisAlignment:
-                            //                     MainAxisAlignment.center,
-                            //                 children: [
-                            //                   Text(
-                            //                     '$number',
-                            //                     style: TextStyle(
-                            //                         color:
-                            //                             index == selectedIndex
-                            //                                 ? Colors.white
-                            //                                 : Color.fromRGBO(
-                            //                                     143, 93, 58, 1),
-                            //                         fontSize: 17,
-                            //                         fontWeight:
-                            //                             index == selectedIndex
-                            //                                 ? FontWeight.normal
-                            //                                 : FontWeight.bold),
-                            //                   ),
-                            //                 ],
-                            //               ),
-                            //             ),
-                            //           ),
-                            //         );
-                            //       },
-                            //     ),
-                            //   ),
-                            // ),
-
+                            SizedBox(height: 5),
+                            SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                children: List.generate(
+                                  13 - 5 + 1,
+                                  (index) {
+                                    final number = index + 5;
+                                    return GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          selectedIndex = index;
+                                        });
+                                      },
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 8),
+                                        child: Container(
+                                          height: 40,
+                                          width: 40,
+                                          decoration: BoxDecoration(
+                                              color: index == selectedIndex
+                                                  ? Color.fromRGBO(
+                                                      143, 93, 58, 1)
+                                                  : Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              border: index == selectedIndex
+                                                  ? Border.all(
+                                                      color:
+                                                          Colors.brown.shade900,
+                                                      width: 2)
+                                                  : Border.all(
+                                                      color: Color.fromRGBO(
+                                                          143, 93, 58, 1),
+                                                      width: 2)),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                '$number',
+                                                style: TextStyle(
+                                                    color:
+                                                        index == selectedIndex
+                                                            ? Colors.white
+                                                            : Color.fromRGBO(
+                                                                143, 93, 58, 1),
+                                                    fontSize: 17,
+                                                    fontWeight:
+                                                        index == selectedIndex
+                                                            ? FontWeight.normal
+                                                            : FontWeight.bold),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                            ),
                             SizedBox(height: 12),
                             Text(
                               'Customers also liked',
@@ -517,9 +519,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                         onPressed: () {
                           showDialog(
                               context: context,
-                              builder: (BuildContext context) {
-                                return CargoDialogueBox();
-                              });
+                              builder: (context) => CargoDialogBox());
                         },
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(
@@ -544,7 +544,9 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                         ),
                       ),
                       OutlinedButton.icon(
-                        onPressed: () {},
+                        onPressed: () {
+                          bottomSheet();
+                        },
                         icon: Icon(
                           Icons.shopping_cart,
                           color: Colors.orange,
@@ -579,70 +581,6 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
     );
   }
 
-  // Widget _buildSizeButton(
-  //   String title,
-  //   int index,
-  //   String sizename,
-  // ) {
-  //   return GestureDetector(
-  //     onTap: () {
-  //       setState(() {
-  //         selectedIndex = index;
-  //       });
-  //     },
-  //     child: Container(
-  //       height: widget.details.category == "Snacks"
-  //           ? 40
-  //           : widget.details.category == "Cookies"
-  //               ? 40
-  //               : 48,
-  //       width: widget.details.category == "Snacks"
-  //           ? 105
-  //           : widget.details.category == "Cookies"
-  //               ? 105
-  //               : 110,
-  //       // height: 40,
-  //       // width: 105,
-  //       decoration: BoxDecoration(
-  //           color: index == selectedIndex
-  //               ? Color.fromRGBO(143, 93, 58, 1)
-  //               : Colors.white,
-  //           borderRadius: BorderRadius.circular(10),
-  //           border: index == selectedIndex
-  //               ? Border.all(color: Colors.brown.shade900, width: 2)
-  //               : Border.all(color: Color.fromRGBO(143, 93, 58, 1), width: 2)),
-  //       child: Column(
-  //         mainAxisAlignment: MainAxisAlignment.center,
-  //         children: [
-  //           Text(
-  //             title,
-  //             style: TextStyle(
-  //                 color: index == selectedIndex
-  //                     ? Colors.white
-  //                     : Color.fromRGBO(143, 93, 58, 1),
-  //                 fontSize: 17,
-  //                 fontWeight: index == selectedIndex
-  //                     ? FontWeight.normal
-  //                     : FontWeight.bold),
-  //           ),
-  //           if (widget.details.category == "Coffee")
-  //             Text(
-  //               sizename,
-  //               style: TextStyle(
-  //                   color: index == selectedIndex
-  //                       ? Colors.white
-  //                       : Color.fromRGBO(143, 93, 58, 1),
-  //                   fontSize: 12,
-  //                   fontWeight: index == selectedIndex
-  //                       ? FontWeight.normal
-  //                       : FontWeight.bold),
-  //             ),
-  //         ],
-  //       ),
-  //     ),
-  //   );
-  // }
-
   Future bottomSheet() {
     return showModalBottomSheet(
       elevation: 20,
@@ -658,7 +596,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
             Container(
               height: 20,
               decoration: BoxDecoration(
-                color: Color.fromRGBO(143, 93, 58, 0.8),
+                color: Color.fromRGBO(143, 93, 58, 1),
                 borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
               ),
               child: Padding(
@@ -670,27 +608,28 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: const EdgeInsets.all(15.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(
                     Icons.done,
                     size: 35,
-                    color: Colors.green,
+                    color: detailsdoneiconcolor,
                   ),
                   SizedBox(width: 15),
-                  Row(
+                  Column(
                     children: [
                       Text(
                         "${widget.details.name} ",
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.w900),
+                        maxLines: 2,
                       ),
                       Text(
                         "is addedd to Cart",
                         style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+                            fontSize: 19, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -730,7 +669,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                   ElevatedButton.icon(
                     onPressed: () {
                       Navigator.of(context).pop();
-                      Navigator.pushNamed(context, '/home');
+                      Navigator.pushNamed(context, '/shoepage');
                     },
                     style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(

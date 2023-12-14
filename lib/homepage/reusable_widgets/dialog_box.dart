@@ -95,7 +95,6 @@ class DialogBox extends StatelessWidget {
                   thickness: 3,
                 ),
                 Container(
-                  // height: 82,
                   width: double.maxFinite,
                   decoration: BoxDecoration(
                       color: dialogboxboxdecorationcolor,

@@ -284,11 +284,9 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                             ),
                             SizedBox(height: 5),
                             Container(
-                              // height: 43,
                               width: bodyWidth - 30,
                               child: ReadMoreText(
                                 description,
-                                // selectedIndex.toString(),
                                 style: TextStyle(
                                     color: detailstextcolor, fontSize: 17),
                                 trimLines: 2,
@@ -594,8 +592,6 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
             : widget.details.category == cookies
                 ? 105
                 : 110,
-        // height: 40,
-        // width: 105,
         decoration: BoxDecoration(
             color: index == selectedIndex
                 ? detailsaddtocartbuttoncolor
