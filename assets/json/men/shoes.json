@@ -7,9 +7,9 @@
         "rating": "4.2",
         "totalRatings": "90",
         "image": "AIR JORDAN SILVER SHOES",
-        "price": 6000.0,
+        "price": 60.0,
         "discount": "15",
-        "offerPrice": 5100.0,
+        "offerPrice": 51.0,
         "category": "Shoe"
     },
     {
@@ -20,9 +20,9 @@
         "rating": "4.6",
         "totalRatings": "120",
         "image": "TESTONI SHOES",
-        "price": 3800.0,
+        "price": 38.0,
         "discount": "10",
-        "offerPrice": 3420.0,
+        "offerPrice": 34.0,
         "category": "Shoe"
     },
     {
@@ -33,9 +33,9 @@
         "rating": "4.8",
         "totalRatings": "150",
         "image": "NIKE AIR MAG 2016",
-        "price": 2600.0,
+        "price": 26.0,
         "discount": "20",
-        "offerPrice": 2080.0,
+        "offerPrice": 20.0,
         "category": "Shoe"
     },
     {
@@ -46,9 +46,9 @@
         "rating": "4.4",
         "totalRatings": "110",
         "image": "LOUIS VUITTON MANHATTAN RICHELIEU MENS SHOES",
-        "price": 1000.0,
+        "price": 10.0,
         "discount": "12",
-        "offerPrice": 880.0,
+        "offerPrice": 8.0,
         "category": "Shoe"
     },
     {
@@ -59,9 +59,9 @@
         "rating": "4.7",
         "totalRatings": "130",
         "image": "KANYE WEST NIKE AIR YEEZY",
-        "price": 2200.0,
+        "price": 22.0,
         "discount": "10",
-        "offerPrice": 1980.0,
+        "offerPrice": 19.0,
         "category": "Shoe"
     },
     {
@@ -72,9 +72,9 @@
         "rating": "4.5",
         "totalRatings": "100",
         "image": "MOLECULE SHOE",
-        "price": 5000.0,
+        "price": 50.0,
         "discount": "10",
-        "offerPrice": 4500.0,
+        "offerPrice": 45.0,
         "category": "Shoe"
     }
 ]

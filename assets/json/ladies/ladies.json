@@ -7,9 +7,9 @@
         "rating": "4.0",
         "totalRatings": "450",
         "image": "GEMMA FULLBEAD CHOCOLATE",
-        "price": 1295.0,
+        "price": 12.0,
         "discount":"20",
-        "offerPrice": 1036.0,
+        "offerPrice": 10.0,
         "category": "ladies"
     },
     {
@@ -20,9 +20,9 @@
         "rating": "4.5",
         "totalRatings": "380",
         "image": "PIPER BUCKET BLACK",
-        "price": 1495.0,
+        "price": 14.0,
         "discount":"15",
-        "offerPrice": 1270.75,
+        "offerPrice": 12.75,
         "category": "ladies"      
     },
     {
@@ -33,9 +33,9 @@
         "rating": "4.8",
         "totalRatings": "48",
         "image": "HERMES MINI KELLY II",
-        "price": 84495.0,
+        "price": 844.0,
         "discount":"20",
-        "offerPrice": 67596.0,
+        "offerPrice": 675.0,
         "category": "ladies"
         
     },
@@ -47,9 +47,9 @@
         "rating": "4.3",
         "totalRatings": "340",
         "image": "UFO ORBITER",
-        "price": 6995.0,
+        "price": 69.0,
         "discount":"25",
-        "offerPrice": 5246.25,
+        "offerPrice": 52.25,
         "category": "ladies"
     },
     {
@@ -60,9 +60,9 @@
         "rating": "4.2",
         "totalRatings": "170",
         "image": "TRAVELER NAVY",
-        "price":495.0,
+        "price":49.0,
         "discount":"18",
-        "offerPrice": 405.9,
+        "offerPrice": 40.9,
         "category": "ladies"
     },
     {
@@ -73,9 +73,9 @@
         "rating": "4.0",
         "totalRatings": "240",
         "image": "PARADA ARQUE LEATHER SHOULDER BAG",
-        "price": 2700.0,
+        "price": 270.0,
         "discount":"30",
-        "offerPrice": 1890.0,
+        "offerPrice": 189.0,
         "category": "ladies"
     },
 
@@ -87,9 +87,9 @@
         "rating": "4.7",
         "totalRatings": "247",
         "image": "TRIANGULAR PATENT LEATHER MINI POUCH",
-        "price": 1690.0,
+        "price": 169.0,
         "discount":"40",
-        "offerPrice": 1014.0,
+        "offerPrice": 101.0,
         "category": "ladies"
     }
 

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 import 'package:project_2/Cargo/men/widget/dialogueBox.dart';
+import 'package:project_2/cart/riverpod/cargo_state_provider.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 import 'package:readmore/readmore.dart';
 import 'package:project_2/cart/riverpod/state_provider.dart';
@@ -34,7 +35,7 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
     final bodyHeight = screenHeight - appBarHeight;
     final bodyWidth = MediaQuery.of(context).size.width;
 
-    final func = ref.read(CartProvider.notifier);
+    final func = ref.read(CargoProvider.notifier);
     final image = widget.details.image;
     final name = widget.details.name;
     final description = widget.details.description;
@@ -454,7 +455,16 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                           showDialog(
                               context: context,
                               builder: (BuildContext context) {
-                                return CargoDialogueBox();
+                                return CargoDialogueBox(buyadd: () {
+                                  func.additem({
+                                    "name": name,
+                                    "image":
+                                        "assets/images/LadiesBag/$image.jpg",
+                                    "price": offerPrice1,
+                                    "cost": offerPrice1 * quantity,
+                                    "quantity": quantity
+                                  });
+                                });
                               });
                         },
                         style: ButtonStyle(
@@ -480,7 +490,17 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                         ),
                       ),
                       OutlinedButton.icon(
-                        onPressed: () {},
+                        onPressed: () {
+                          func.additem({
+                            "name": name,
+                            "image": "assets/images/LadiesBag/$image.jpg",
+                            "price": offerPrice1,
+                            "cost": offerPrice1 * quantity,
+                            "quantity": quantity
+                          });
+
+                          Navigator.of(context).pushNamed("/cart");
+                        },
                         icon: Icon(
                           Icons.shopping_cart,
                           color: Colors.orange,

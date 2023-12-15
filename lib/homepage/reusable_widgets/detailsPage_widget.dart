@@ -483,7 +483,8 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                       func.additem({
                                         "name": name,
                                         "image": "assets/images/$image.jpg",
-                                        "price": value,
+                                        "cost": value,
+                                        "price": offerPrice1,
                                         "quantity": quantity
                                       });
                                       Navigator.of(context).pop();
@@ -528,7 +529,8 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                   func.additem({
                                     "name": name,
                                     "image": "assets/images/$image.jpg",
-                                    "price": value,
+                                    "price": offerPrice1,
+                                    "cost": value,
                                     "quantity": quantity
                                   });
                                   Navigator.of(context).pop();

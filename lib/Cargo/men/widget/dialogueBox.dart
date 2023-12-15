@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 
 class CargoDialogueBox extends StatelessWidget {
-  const CargoDialogueBox({super.key});
-
+  const CargoDialogueBox({super.key, required this.buyadd});
+  final buyadd;
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -23,7 +23,9 @@ class CargoDialogueBox extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               )),
             ),
-            onPressed: () {},
+            onPressed: () {
+              buyadd();
+            },
             child: Text(
               "Deliver",
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
@@ -42,6 +44,7 @@ class CargoDialogueBox extends StatelessWidget {
               )),
             ),
             onPressed: () {
+              buyadd();
               Navigator.of(context).pop();
               Navigator.pushNamed(context, '/payment');
             },

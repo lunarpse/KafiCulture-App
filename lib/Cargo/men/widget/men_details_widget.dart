@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 import 'package:project_2/Cargo/men/widget/dialogueBox.dart';
+import 'package:project_2/cart/riverpod/cargo_state_provider.dart';
 // import 'package:project_2/Cargo/reusablewidgets/size_button.dart';
 import 'package:project_2/homepage/model/json_model.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
@@ -38,7 +39,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
     final bodyHeight = screenHeight - appBarHeight;
     final bodyWidth = MediaQuery.of(context).size.width;
 
-    final func = ref.read(CartProvider.notifier);
+    final func = ref.read(CargoProvider.notifier);
     final image = widget.details.image;
     final name = widget.details.name;
     final description = widget.details.description;
@@ -518,7 +519,16 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                           showDialog(
                               context: context,
                               builder: (BuildContext context) {
-                                return CargoDialogueBox();
+                                return CargoDialogueBox(buyadd: () {
+                                  func.additem({
+                                    "name": name,
+                                    "image":
+                                        "assets/images/MenShoes/$image.png",
+                                    "price": offerPrice1,
+                                    "cost": offerPrice1 * quantity,
+                                    "quantity": quantity
+                                  });
+                                });
                               });
                         },
                         style: ButtonStyle(
@@ -544,7 +554,17 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                         ),
                       ),
                       OutlinedButton.icon(
-                        onPressed: () {},
+                        onPressed: () {
+                          func.additem({
+                            "name": name,
+                            "image": "assets/images/MenShoes/$image.png",
+                            "price": offerPrice1,
+                            "cost": offerPrice1 * quantity,
+                            "quantity": quantity
+                          });
+
+                          Navigator.of(context).pushNamed("/cart");
+                        },
                         icon: Icon(
                           Icons.shopping_cart,
                           color: Colors.orange,
