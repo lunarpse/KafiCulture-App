@@ -2,10 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:project_2/cart/riverpod/cargo_state_provider.dart';
 
 import 'package:project_2/cart/riverpod/state_provider.dart';
-import 'package:project_2/cart/riverpod/switch_provider.dart';
 import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
 
@@ -20,7 +18,6 @@ class ExtraItems extends ConsumerWidget {
   final price;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var show = ref.watch(SwitchProvider);
     return Card(
       // elevation: 0,
       color: extraitemcardcolor,
@@ -89,19 +86,12 @@ class ExtraItems extends ConsumerWidget {
                           child: IconButton(
                             mouseCursor: SystemMouseCursors.grab,
                             onPressed: () {
-                              show == true
-                                  ? ref.watch(CartProvider.notifier).additem({
-                                      "name": name,
-                                      "image": image,
-                                      "price": price,
-                                      "quantity": 1
-                                    })
-                                  : ref.watch(CargoProvider.notifier).additem({
-                                      "name": name,
-                                      "image": image,
-                                      "price": price,
-                                      "quantity": 1
-                                    });
+                              ref.watch(CartProvider.notifier).additem({
+                                "name": name,
+                                "image": image,
+                                "price": price,
+                                "quantity": 1
+                              });
                             },
                             icon: Icon(
                               Icons.shopping_cart_outlined,
