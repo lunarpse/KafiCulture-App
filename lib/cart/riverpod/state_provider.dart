@@ -5,7 +5,6 @@ class CartItems extends StateNotifier<List> {
 
   void additem(Map data) {
     var present;
-    print(data);
     for (int i = 0; i < state.length; i++) {
       if (state[i]["name"] == data["name"]) {
         present = state[i];
@@ -22,7 +21,7 @@ class CartItems extends StateNotifier<List> {
           "price": double.parse(data["price"].toStringAsFixed(2)),
           // "price":double.parse(double.parse(data["price"]).toStringAsFixed(2)),
           // "cost":double.parse(double.parse(data["price"]).toStringAsFixed(2)),
-          "cost": data["cost"],
+          "cost": double.parse(data["price"].toStringAsFixed(2)),
           "quantity": data["quantity"]
         }
       ];
@@ -34,9 +33,11 @@ class CartItems extends StateNotifier<List> {
 
     final nl = state.map((e) {
       if (e["name"] == name) {
-        print(e);
-        var oc = e["cost"];
-        return {...e, "cost": e["price"] + oc, "quantity": e["quantity"] + 1};
+        return {
+          ...e,
+          "cost": e["price"] * (e["quantity"] + 1),
+          "quantity": e["quantity"] + 1
+        };
       }
       return e;
     });
@@ -73,10 +74,9 @@ class CartItems extends StateNotifier<List> {
   void decrease_quantity(String name) {
     final nl = state.map((e) {
       if (e["name"] == name) {
-        var oc = e["cost"];
         return {
           ...e,
-          "cost": e["quantity"] - 1 < 0 ? e["cost"] : oc - e["price"],
+          "cost": e["price"] * (e["quantity"] - 1 < 0 ? 0 : e["quantity"] - 1),
           "quantity": e["quantity"] - 1 < 0 ? 0 : e["quantity"] - 1
         };
       }
