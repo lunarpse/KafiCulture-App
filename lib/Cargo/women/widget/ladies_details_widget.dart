@@ -6,6 +6,7 @@ import 'package:project_2/homepage/reusable_widgets/background_container_widget.
 import 'package:readmore/readmore.dart';
 import 'package:project_2/cart/riverpod/state_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../cart/riverpod/cargo_state_provider.dart';
 import '../../../constants/color_constants.dart';
 import '../../reusable_widget/cargo_dialogBox.dart';
 
@@ -35,7 +36,7 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
     final bodyHeight = screenHeight - appBarHeight;
     final bodyWidth = MediaQuery.of(context).size.width;
 
-    final func = ref.read(CartProvider.notifier);
+    final func = ref.read(CargoProvider.notifier);
     final image = widget.details.image;
     final name = widget.details.name;
     final description = widget.details.description;
@@ -434,9 +435,15 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                     children: [
                       ElevatedButton.icon(
                         onPressed: () {
-                          showDialog(
-                              context: context,
-                              builder: (context) => CargoDialogBox());
+                          func.additem({
+                            "name": name,
+                            "image": "assets/images/LadiesBag/$image.jpg",
+                            "price": offerPrice1,
+                            "cost": offerPrice1 * quantity,
+                            "quantity": quantity
+                          });
+
+                          Navigator.pushNamed(context, '/cart');
                         },
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(
@@ -462,7 +469,14 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                       ),
                       OutlinedButton.icon(
                         onPressed: () {
-                          // Navigator.of(context).pop();
+                          func.additem({
+                            "name": name,
+                            "image": "assets/images/LadiesBag/$image.jpg",
+                            "price": offerPrice1,
+                            "cost": offerPrice1 * quantity,
+                            "quantity": quantity
+                          });
+
                           bottomSheet();
                         },
                         icon: Icon(
