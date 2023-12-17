@@ -1,11 +1,9 @@
 // ignore_for_file: prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:project_2/constants/color_constants.dart';
-
 import 'package:project_2/homepage/model/json_model.dart';
 import 'package:project_2/homepage/constant_homepage/constant_offers.dart';
-import '../data_fetching/api_service.dart';
+import '../../../data_fetching/api_service.dart';
 
 class OfferingsWidget extends StatefulWidget {
   const OfferingsWidget({super.key});
@@ -35,7 +33,7 @@ class _OfferingsState extends State<OfferingsWidget> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: containerheight,
-      width: MediaQuery.of(context).size.width,
+      // width: MediaQuery.of(context).size.width,
       child: PageView.builder(
         itemCount: offers.length,
         // padEnds: false,
@@ -50,8 +48,8 @@ class _OfferingsState extends State<OfferingsWidget> {
           final name = offer.name;
           final image = offer.image;
           final totalRating = offer.totalRatings;
-          final rating = offer.rating;
-          double foodRating = double.parse(totalRating);
+          final rating = double.parse(offer.rating);
+
           return InkWell(
             onTap: () =>
                 Navigator.pushNamed(context, '/offerspage', arguments: offer),
@@ -86,7 +84,7 @@ class _OfferingsState extends State<OfferingsWidget> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(15)),
                       gradient: LinearGradient(
-                          colors: [offeringgradientcolor1, offeringgradientcolor2],
+                          colors: [Colors.transparent, Colors.black],
                           begin: Alignment.center,
                           end: Alignment.bottomCenter),
                     )),
@@ -99,7 +97,7 @@ class _OfferingsState extends State<OfferingsWidget> {
                     children: [
                       Text(name,
                           style: TextStyle(
-                              color: offernamecolor,
+                              color: name_color,
                               fontSize: name_fontSize,
                               fontWeight: FontWeight.bold)),
                       Row(
@@ -107,10 +105,8 @@ class _OfferingsState extends State<OfferingsWidget> {
                           Row(
                             children: List.generate(5, (index) {
                               return Icon(
-                                index < foodRating.toInt()
-                                    ? Icons.star
-                                    : Icons.star_border,
-                                color: offeringiconstarcolor,
+                                index < rating ? Icons.star : Icons.star_border,
+                                color: Colors.amber,
                                 size: 17,
                               );
                             }),
@@ -129,7 +125,7 @@ class _OfferingsState extends State<OfferingsWidget> {
                         ],
                       ),
                       Text(
-                        rating,
+                        "$rating",
                         style: TextStyle(
                           fontSize: rating_fontSize,
                           fontWeight: FontWeight.bold,

@@ -2,10 +2,8 @@ import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-
+import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
-
-import '../constants/color_constants.dart';
 
 class LoadingScreen extends StatefulWidget {
   const LoadingScreen({
@@ -50,7 +48,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                   loadinglineargracolor1,
+                    loadinglineargracolor1,
                     loadinglineargracolor2,
                   ],
                   begin: AlignmentDirectional.topStart,
@@ -59,10 +57,10 @@ class _LoadingScreenState extends State<LoadingScreen> {
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 border: Border.all(
                   width: 1.5,
-                  color:loadingbordercolor2,
+                  color: loadingbordercolor2,
                 ),
               ),
-              child:  Center(
+              child: const Center(
                 child: Column(
                   // crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -77,7 +75,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
                     SizedBox(height: 40),
                     //it provide loading animation
                     SpinKitFadingCircle(
-                      color: loadingtextcolor,
+                      color: Colors.black,
                       size: 50.0,
                     )
                   ],

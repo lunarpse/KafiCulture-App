@@ -2,14 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
-
+import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
 import 'package:project_2/feedBack/ratingStar.dart';
 import 'package:project_2/feedBack/thankYou.dart';
 import 'package:project_2/customdrawer/drawerScreen.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
-
-import '../constants/color_constants.dart';
 
 class FeedBackPage extends StatefulWidget {
   const FeedBackPage({super.key});
@@ -96,11 +94,11 @@ class _FeedBackPageState extends State<FeedBackPage> {
                         child: Container(
                           width: 100,
                           height: 50,
-                          color: isYesSelected ? selectedyes :notselected,
+                          color: isYesSelected ? selectedyes : notselected,
                           child: Center(
                             child: Text(
                               yes,
-                              style: TextStyle(color: feedbacktextcolorr),
+                              style: TextStyle(color: feedbacktextcolor),
                             ),
                           ),
                         ),
@@ -113,11 +111,12 @@ class _FeedBackPageState extends State<FeedBackPage> {
                         child: Container(
                           width: 100,
                           height: 50,
-                          color: isNoSelected ? feedbackselectedno : notselected,
+                          color:
+                              isNoSelected ? feedbackselectedno : notselected,
                           child: Center(
                             child: Text(
                               no,
-                              style: TextStyle(color: feedbacktextcolorr),
+                              style: TextStyle(color: feedbacktextcolor),
                             ),
                           ),
                         ),
@@ -134,34 +133,33 @@ class _FeedBackPageState extends State<FeedBackPage> {
                     collapsedBackgroundColor: feedbackcollapsebgcolor,
                     backgroundColor: feedbackcollapsebackgroundcolor,
                     collapsedTextColor: feedbackcollapsetextcolor,
-                    textColor:feedbacktextcolorr,
-                    title:
-                        const Center(child: Text(feedbackbox)),
+                    textColor: feedbackcollapsetextcolor,
+                    title: Center(child: Text(feedbackbox)),
                     initiallyExpanded: isExpanded,
                     children: [
                       Container(
                         height: 180,
-                        color: feedbacktextcolorr,
+                        color: feedbackcollapsetextcolor,
                         child: Column(
                           children: [
-                             TextField(
+                            TextField(
                               cursorColor: feedbackcursorrcolor,
                               style: TextStyle(
-                                color:feedbackblack,
+                                color: feedbackblack,
                                 fontSize: 20,
                               ),
                               maxLines: 3,
-                              decoration: InputDecoration(
-                                  hintText: feedbackmessage),
+                              decoration:
+                                  InputDecoration(hintText: feedbackmessage),
                             ),
                             const SizedBox(
                               height: 15,
                             ),
                             ElevatedButton(
                                 style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all<
-                                            Color>(
-                                        (feedbackcollapsebgcolor))),
+                                    backgroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            (feedbackcollapsebgcolor))),
                                 onPressed: () {
                                   setState(() {
                                     isExpanded = false;
@@ -181,7 +179,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
                   height: 200,
                   width: MediaQuery.sizeOf(context).width - 20,
                   decoration: BoxDecoration(
-                    color: feedbacktextcolorr,
+                    color: textcolour,
                     borderRadius: BorderRadius.circular(14),
                   ),
                   child: Center(

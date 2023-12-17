@@ -1,36 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:project_2/cart/riverpod/switch_provider.dart';
 import 'package:project_2/constants/color_constants.dart';
-
-
-import '../constants/text_constants.dart';
-
+import 'package:project_2/constants/text_constants.dart';
 
 // ignore: camel_case_types
-class DrawerScreen extends StatefulWidget {
+class DrawerScreen extends ConsumerStatefulWidget {
   const DrawerScreen({
     super.key,
   });
 
   @override
-  State<DrawerScreen> createState() => _DrawerScreenState();
+  ConsumerState<DrawerScreen> createState() => _DrawerScreenState();
 }
 
-class _DrawerScreenState extends State<DrawerScreen> {
+class _DrawerScreenState extends ConsumerState<DrawerScreen> {
   var colorr = LinearGradient(colors: [
     drawerscreenlineargradientcolor,
-    drawerscreenlineargradientcolor1
-  
+    drawerscreenlineargradientcolor1,
   ]);
   @override
   Widget build(BuildContext context) {
+    final func = ref.watch(SwitchProvider.notifier);
     const double fontsize = 22;
     const double fontsize2 = 19.6;
     const double fontsize3 = 17.2;
 
     return Drawer(
       child: Container(
-        decoration:  BoxDecoration(
+        decoration: BoxDecoration(
             gradient: LinearGradient(colors: [
           drawerscreenboxdeclineargradient1,
           drawerscreenboxdeclineargradient2,
@@ -81,14 +80,14 @@ class _DrawerScreenState extends State<DrawerScreen> {
                 //listTileTheme: ListTileThemeData(tileColor: color)
               ),
               child: ExpansionTile(
-                title: Text(
+                title: const Text(
                   categories,
                   style: TextStyle(fontSize: fontsize),
                 ),
                 children: [
                   ExpansionTile(
                     textColor: drawerscreenexpansiontilecolor,
-                    title: Text(
+                    title: const Text(
                       food,
                       style: TextStyle(fontSize: fontsize2),
                     ),
@@ -104,6 +103,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                           textColor: drawerscreentextcolor,
                           trailing: const Icon(Icons.breakfast_dining),
                           onTap: () {
+                            func.toggle(true);
                             Navigator.pushReplacementNamed(context, "/snacks");
                           },
                         ),
@@ -116,9 +116,10 @@ class _DrawerScreenState extends State<DrawerScreen> {
                             drinks,
                             style: TextStyle(fontSize: fontsize3),
                           ),
-                          textColor:drawerscreentextcolor,
+                          textColor: drawerscreentextcolor,
                           trailing: const Icon(Icons.local_drink),
                           onTap: () {
+                            func.toggle(true);
                             Navigator.pushReplacementNamed(context, "/drinks");
                           },
                         ),
@@ -134,6 +135,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                           textColor: drawerscreentextcolor,
                           trailing: const Icon(Icons.cookie),
                           onTap: () {
+                            func.toggle(true);
                             Navigator.pushReplacementNamed(context, "/cookies");
                           },
                         ),
@@ -141,8 +143,8 @@ class _DrawerScreenState extends State<DrawerScreen> {
                     ],
                   ),
                   ExpansionTile(
-                    title:
-                        Text(apparels, style: TextStyle(fontSize: fontsize2)),
+                    title: const Text(apparels,
+                        style: TextStyle(fontSize: fontsize2)),
                     children: [
                       Container(
                         decoration: BoxDecoration(gradient: colorr),
@@ -152,11 +154,13 @@ class _DrawerScreenState extends State<DrawerScreen> {
                             style: TextStyle(fontSize: fontsize3),
                           ),
                           textColor: drawerscreentextcolor,
-                          trailing: FaIcon(
-                            FontAwesomeIcons.shirt,
+                          trailing: const FaIcon(
+                            FontAwesomeIcons.shoePrints,
                           ),
                           onTap: () {
-                          Navigator.pushReplacementNamed(context, "/snacks");
+                            func.toggle(false);
+                            Navigator.pushReplacementNamed(
+                                context, "/shoepage");
                           },
                         ),
                       ),
@@ -167,12 +171,13 @@ class _DrawerScreenState extends State<DrawerScreen> {
                             apparelswomen,
                             style: TextStyle(fontSize: fontsize3),
                           ),
-                          textColor:drawerscreentextcolor,
+                          textColor: drawerscreentextcolor,
                           trailing: FaIcon(
                             FontAwesomeIcons.shirt,
                           ),
                           onTap: () {
-                            Navigator.pushReplacementNamed(context, "/drinks");
+                            func.toggle(false);
+                            Navigator.pushReplacementNamed(context, "/bagpage");
                           },
                         ),
                       ),

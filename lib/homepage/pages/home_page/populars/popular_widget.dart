@@ -1,12 +1,9 @@
 // ignore_for_file: prefer_const_constructors, avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:project_2/constants/color_constants.dart';
-
 import 'package:project_2/homepage/model/json_model.dart';
 import 'package:project_2/homepage/constant_homepage/constant_populars.dart';
-
-import '../data_fetching/api_service.dart';
+import '../../../data_fetching/api_service.dart';
 
 class PopularWidget extends StatefulWidget {
   const PopularWidget({super.key});
@@ -50,11 +47,11 @@ class _PopularState extends State<PopularWidget> {
         final image = popular.image;
         final name = popular.name;
         final totalRating = popular.totalRatings;
-        final rating = popular.rating;
-        double foodRating = double.parse(totalRating);
+        final rating = double.parse(popular.rating);
+
         return Card(
           elevation: 20,
-          shadowColor: offeringcardshadowcolor,
+          shadowColor: Colors.grey,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           child: InkWell(
@@ -100,10 +97,10 @@ class _PopularState extends State<PopularWidget> {
                           Row(
                             children: List.generate(5, (index) {
                               return Icon(
-                                index < foodRating.toInt()
+                                index < rating
                                     ? Icons.star
-                                    : Icons.star_border,
-                                color:offeringiconstarcolor,
+                                    : Icons.star_border_purple500,
+                                color: Colors.amber,
                                 size: 17,
                               );
                             }),
@@ -117,7 +114,7 @@ class _PopularState extends State<PopularWidget> {
                         ],
                       ),
                       Text(
-                        rating,
+                        "$rating",
                         style: TextStyle(
                             fontSize: rating_fontSize,
                             fontWeight: FontWeight.w500),

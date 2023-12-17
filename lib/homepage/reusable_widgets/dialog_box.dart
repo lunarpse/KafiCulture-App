@@ -25,9 +25,10 @@ class DialogBox extends StatelessWidget {
     int? checkedIndex;
     double totalPrice = finalPrice;
     return AlertDialog(
-        insetPadding: EdgeInsets.all(20),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        content: StatefulBuilder(builder: (context, setState) {
+      insetPadding: EdgeInsets.all(20),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      content: StatefulBuilder(
+        builder: (context, setState) {
           return Container(
             width: double.maxFinite,
             child: Column(
@@ -53,7 +54,7 @@ class DialogBox extends StatelessWidget {
                       child: CheckboxListTile(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
-                        tileColor:dialogboxcheckboxtilecolor,
+                        tileColor: dialogboxcheckboxtilecolor,
                         checkboxShape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(4)),
                         side: BorderSide(
@@ -94,7 +95,6 @@ class DialogBox extends StatelessWidget {
                   thickness: 3,
                 ),
                 Container(
-                  // height: 82,
                   width: double.maxFinite,
                   decoration: BoxDecoration(
                       color: dialogboxboxdecorationcolor,
@@ -127,37 +127,39 @@ class DialogBox extends StatelessWidget {
                               Text(
                                 totalPrice.toString(),
                                 style: TextStyle(
-                                    fontSize: 16, color: dialogboxpricetextcolor),
+                                    fontSize: 16,
+                                    color: dialogboxpricetextcolor),
                               )
                             ],
                           ),
                         ),
                         Container(
-                            width: 129,
-                            child: Center(
-                              child: ElevatedButton(
-                                  style: ButtonStyle(
-                                    fixedSize: MaterialStateProperty.all(
-                                        Size(130, 50)),
-                                    elevation: MaterialStatePropertyAll(6),
-                                    backgroundColor: MaterialStateProperty.all(
-                                        dialogboxelevatebuttonbgcolor),
-                                    shape: MaterialStateProperty.all(
-                                        RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                    )),
-                                  ),
-                                  onPressed: () {
-                                    print("dialog $totalPrice");
-                                    call(totalPrice);
-                                  },
-                                  child: Text(
-                                    buttonName,
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold),
-                                  )),
-                            ))
+                          width: 129,
+                          child: Center(
+                            child: ElevatedButton(
+                              style: ButtonStyle(
+                                fixedSize:
+                                    MaterialStateProperty.all(Size(130, 50)),
+                                elevation: MaterialStatePropertyAll(6),
+                                backgroundColor: MaterialStateProperty.all(
+                                    dialogboxelevatebuttonbgcolor),
+                                shape: MaterialStateProperty.all(
+                                    RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                )),
+                              ),
+                              onPressed: () {
+                                print("dialog $totalPrice");
+                                call(totalPrice);
+                              },
+                              child: Text(
+                                buttonName,
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -165,6 +167,8 @@ class DialogBox extends StatelessWidget {
               ],
             ),
           );
-        }));
+        },
+      ),
+    );
   }
 }
