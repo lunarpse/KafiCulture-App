@@ -1,21 +1,27 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nfc_manager/nfc_manager.dart';
 import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
 
-class AppbarWidget extends StatefulWidget implements PreferredSizeWidget {
-  const AppbarWidget({super.key});
+import '../cart/riverpod/switch_provider.dart';
+
+class AppbarWidget extends ConsumerStatefulWidget
+    implements PreferredSizeWidget {
+  const AppbarWidget({super.key, this.incart = false});
+
+  final incart;
 
   @override
-  State<AppbarWidget> createState() => _AppbarWidgetState();
+  ConsumerState<AppbarWidget> createState() => _AppbarWidgetState();
 
   @override
   Size get preferredSize => const Size.fromHeight(60);
 }
 
-class _AppbarWidgetState extends State<AppbarWidget> {
+class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
   bool _isNFCavailable = false;
   @override
   Widget build(BuildContext context) {
@@ -28,6 +34,7 @@ class _AppbarWidgetState extends State<AppbarWidget> {
       title: GestureDetector(
         onTap: () {
           Navigator.pushReplacementNamed(context, "/home");
+          ref.watch(SwitchProvider.notifier).toggle(true);
         },
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -79,14 +86,18 @@ class _AppbarWidgetState extends State<AppbarWidget> {
                 color: Colors.black,
               ),
             )),
-        IconButton(
-          onPressed: () {
-            Navigator.pushNamed(context, "/cart");
-          },
-          icon: Icon(Icons.shopping_cart),
-          color: carticonbuttoncolor,
-          iconSize: 27,
-        ),
+        widget.incart == false
+            ? IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, "/cart");
+                },
+                icon: Icon(Icons.shopping_cart),
+                color: carticonbuttoncolor,
+                iconSize: 27,
+              )
+            : SizedBox(
+                width: 15,
+              ),
       ],
     );
   }

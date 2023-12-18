@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:project_2/genieTheme/genie_theme.dart';
 import 'package:project_2/router/routing.dart';
 

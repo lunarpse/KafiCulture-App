@@ -53,7 +53,9 @@ class _CartState extends ConsumerState<Cart> {
       },
       child: Scaffold(
           // backgroundColor: Colors.grey[100],
-          appBar: AppbarWidget(),
+          appBar: AppbarWidget(
+            incart: true,
+          ),
           drawer: DrawerScreen(),
           resizeToAvoidBottomInset: false,
           body: (subt == 0 || data.length == 0)
