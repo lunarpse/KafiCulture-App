@@ -3,10 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nfc_manager/nfc_manager.dart';
+import 'package:project_2/cart/riverpod/cargo_state_provider.dart';
+import 'package:project_2/cart/riverpod/state_provider.dart';
 import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
-
 import '../cart/riverpod/switch_provider.dart';
+import 'package:badges/badges.dart' as badges;
 
 class AppbarWidget extends ConsumerStatefulWidget
     implements PreferredSizeWidget {
@@ -23,8 +25,14 @@ class AppbarWidget extends ConsumerStatefulWidget
 
 class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
   bool _isNFCavailable = false;
+
   @override
   Widget build(BuildContext context) {
+    final cartItemNos = ref.watch(SwitchProvider) == true
+        ? ref.watch(CartProvider)
+        : ref.watch(CargoProvider);
+    final cartItemNo = cartItemNos.length;
+
     return AppBar(
       automaticallyImplyLeading: false,
       flexibleSpace: Image.asset(
@@ -87,13 +95,24 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
               ),
             )),
         widget.incart == false
-            ? IconButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, "/cart");
-                },
-                icon: Icon(Icons.shopping_cart),
-                color: carticonbuttoncolor,
-                iconSize: 27,
+            ? Padding(
+                padding: const EdgeInsets.only(right: 5),
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/cart");
+                  },
+                  icon: badges.Badge(
+                    badgeContent: Text(
+                      "$cartItemNo",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    badgeAnimation: badges.BadgeAnimation.scale(),
+                    showBadge: cartItemNo == 0 ? false : true,
+                    child: Icon(Icons.shopping_cart),
+                  ),
+                  color: carticonbuttoncolor,
+                  iconSize: 27,
+                ),
               )
             : SizedBox(
                 width: 15,
