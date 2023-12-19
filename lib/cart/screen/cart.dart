@@ -16,6 +16,7 @@ import '../../homepage/reusable_widgets/background_container_widget.dart';
 import '../riverpod/state_provider.dart';
 
 import '../widget/cart_item.dart';
+import 'delivery_dialog.dart';
 import 'empty_cart.dart';
 
 class Cart extends ConsumerStatefulWidget {
@@ -96,6 +97,16 @@ class _CartState extends ConsumerState<Cart> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
+                                          ElevatedButton(
+                                              onPressed: () {
+                                                showDialog(
+                                                  context: context,
+                                                  builder: (context) {
+                                                    return DeliveryDialog();
+                                                  },
+                                                );
+                                              },
+                                              child: Text("Deliver")),
                                           Padding(
                                             padding: const EdgeInsets.symmetric(
                                                 horizontal: 10, vertical: 3),

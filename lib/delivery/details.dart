@@ -1,0 +1,79 @@
+import 'dart:convert';
+
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:project_2/delivery/address_page/address.dart';
+//import 'package:flutter_application_1/address_page/address.dart';
+
+class DetailsPage extends StatefulWidget {
+  DetailsPage({Key? key, required this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  _DetailsPageState createState() => _DetailsPageState();
+}
+
+class _DetailsPageState extends State<DetailsPage> {
+  Future<Map<String, dynamic>> loadJson() async {
+    final String jsonString = await rootBundle.loadString('assets/aadar.json');
+    final jsonResponse = json.decode(jsonString);
+    return jsonResponse;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    TextEditingController aadharController = TextEditingController();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Aadhar validator',
+          selectionColor: Colors.black,
+        ),
+      ),
+      body: FutureBuilder(
+        future: loadJson(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            String key = '123456789012'; // 10-digit key (Aadhar number)
+            var data = snapshot.data[key];
+            print(data);
+            var name1 = '${data['name']}';
+            // return address();
+            return Column(
+              children: [
+                const SizedBox(
+                  height: 100,
+                ),
+                TextField(
+                  controller: aadharController,
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.grey[200],
+                    labelText: 'Enter Aadhar Number',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Address(
+                                  data: data,
+                                )));
+                  },
+                  child: Text("next"),
+                )
+              ],
+            );
+          } else {
+            return Center(child: CircularProgressIndicator());
+          }
+        },
+      ),
+    );
+  }
+}
