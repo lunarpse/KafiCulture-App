@@ -65,7 +65,7 @@ const String handcrafted = "Handcrafted Curations";
 const String populars = "Populars";
 
 //loadingscreen
-const String processing = "Processing";
+const String processingg= "Processing";
 
 //paymentScreen
 const String cardpayment = "Credit/Debit Cards";
