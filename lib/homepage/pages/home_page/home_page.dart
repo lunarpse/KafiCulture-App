@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
         if (state is HomeNavigateToOfferPageActionState)
           {
             print("Hi"),
-            Navigator.pushNamed(context, '/checking'),
+            Navigator.pushNamed(context, '/drinks'),
           }
       },
       builder: (context, state) {

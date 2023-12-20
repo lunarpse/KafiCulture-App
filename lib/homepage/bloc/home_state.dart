@@ -14,13 +14,21 @@ class HomeLoadedSuccessState extends HomeState {
 class HomeErrorState extends HomeState {}
 
 class HomeNavigateToOfferPageActionState extends HomeActionState {
-  // JsonModel offer;
+  JsonModel offer;
 
-  // HomeNavigateToOfferPageActionState({required this.offer});
+  HomeNavigateToOfferPageActionState({required this.offer});
 }
 
-class HomeNavigateToCurationPageActionState extends HomeActionState {}
+class HomeNavigateToSnackPageActionState extends HomeActionState {}
 
-class HomeNavigateToPopularPageActionState extends HomeActionState {}
+class HomeNavigateToDrinkPageActionState extends HomeActionState {}
+
+class HomeNavigateToCookiesPageActionState extends HomeActionState {}
+
+class HomeNavigateToPopularPageActionState extends HomeActionState {
+  JsonModel popular;
+
+  HomeNavigateToPopularPageActionState({required this.popular});
+}
 
 class HomeNavigateToCartPageActionState extends HomeActionState {}

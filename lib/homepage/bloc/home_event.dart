@@ -6,13 +6,20 @@ abstract class HomeEvent {}
 class HomeInitialEvent extends HomeEvent {}
 
 class HomeOffersClickedNavigateEvent extends HomeEvent {
-  // JsonModel offer;
-  // HomeOffersClickedNavigateEvent(this.offer);
+  JsonModel offer;
+  HomeOffersClickedNavigateEvent(this.offer);
 }
 
-class HomeCurationsNavigateEvent extends HomeEvent {}
+class HomeCurationsSnackNavigateEvent extends HomeEvent {}
 
-class HomePopularsNavigateEvent extends HomeEvent {}
+class HomeCurationsDrinkNavigateEvent extends HomeEvent {}
+
+class HomeCurationsCokkiesNavigateEvent extends HomeEvent {}
+
+class HomePopularsNavigateEvent extends HomeEvent {
+  JsonModel popular;
+  HomePopularsNavigateEvent(this.popular);
+}
 
 class HomeCartNavigateEvent extends HomeEvent {}
 

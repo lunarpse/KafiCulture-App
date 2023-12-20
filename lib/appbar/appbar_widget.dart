@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nfc_manager/nfc_manager.dart';
+import 'package:project_2/appbar/bloc/appbar_bloc.dart';
 import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
 
@@ -19,70 +21,90 @@ class _AppbarWidgetState extends State<AppbarWidget> {
   bool _isNFCavailable = false;
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      automaticallyImplyLeading: false,
-      flexibleSpace: Image.asset(
-        "assets/images/appbarbg4.jpg",
-        fit: BoxFit.cover,
-      ),
-      title: GestureDetector(
-        onTap: () {
+    final AppbarBloc appbarBloc = AppbarBloc();
+    return BlocConsumer<AppbarBloc, AppbarState>(
+      bloc: appbarBloc,
+      listenWhen: (previous, current) => current is AppbarActionState,
+      buildWhen: (previous, current) => current is! AppbarActionState,
+      listener: (context, state) {
+        if (state is AppbarDrawerClickedActionState) {
+          print("Drawer Clicked");
+          Scaffold.of(context).openDrawer();
+        } else if (state is AppbarLogoClickedActionState) {
           Navigator.pushReplacementNamed(context, "/home");
-        },
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            CircleAvatar(
-              backgroundColor: circleavatarbgcolor,
-              backgroundImage: AssetImage("assets/images/logo1.png"),
-              radius: 18,
-            ),
-            SizedBox(width: 8),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  apptitle,
-                  style: TextStyle(fontSize: 20),
-                ),
-                SizedBox(
-                  height: 3,
-                ),
-                Text(
-                  appslogan,
-                  style: TextStyle(
-                      fontFamily: 'Ephesis', fontSize: 17.5, letterSpacing: 1),
-                ),
-              ],
-            )
-          ],
-        ),
-      ),
-      leading: Builder(builder: (BuildContext context) {
-        return IconButton(
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
-            icon: Icon(Icons.menu));
-      }),
-      actions: [
-        InkWell(
-          onTap: _checkNFCStatus,
-          child: CircleAvatar(
-            backgroundColor: circleavatarbgcolor,
-            backgroundImage: AssetImage(getImage()),
-            radius: 16,
+        } else if (state is AppbarCartClickedActionState) {
+          Navigator.pushNamed(context, "/cart");
+        }
+      },
+      builder: (context, state) {
+        return AppBar(
+          automaticallyImplyLeading: false,
+          flexibleSpace: Image.asset(
+            "assets/images/appbarbg4.jpg",
+            fit: BoxFit.cover,
           ),
-        ),
-        IconButton(
-          onPressed: () {
-            Navigator.pushNamed(context, "/cart");
-          },
-          icon: Icon(Icons.shopping_cart),
-          color: carticonbuttoncolor,
-          iconSize: 27,
-        ),
-      ],
+          title: GestureDetector(
+            onTap: () {
+              appbarBloc.add(AppbarLogoClickedEvent());
+            },
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CircleAvatar(
+                  backgroundColor: circleavatarbgcolor,
+                  backgroundImage: AssetImage("assets/images/logo1.png"),
+                  radius: 18,
+                ),
+                SizedBox(width: 8),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      apptitle,
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    SizedBox(
+                      height: 3,
+                    ),
+                    Text(
+                      appslogan,
+                      style: TextStyle(
+                          fontFamily: 'Ephesis',
+                          fontSize: 17.5,
+                          letterSpacing: 1),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+          leading: Builder(builder: (BuildContext context) {
+            return IconButton(
+                onPressed: () {
+                  appbarBloc.add(AppbarDrawerClickedEvent());
+                },
+                icon: Icon(Icons.menu));
+          }),
+          actions: [
+            InkWell(
+              onTap: _checkNFCStatus,
+              child: CircleAvatar(
+                backgroundColor: circleavatarbgcolor,
+                backgroundImage: AssetImage(getImage()),
+                radius: 16,
+              ),
+            ),
+            IconButton(
+              onPressed: () {
+                appbarBloc.add(AppbarCartButtonNavigateEvent());
+              },
+              icon: Icon(Icons.shopping_cart),
+              color: carticonbuttoncolor,
+              iconSize: 27,
+            ),
+          ],
+        );
+      },
     );
   }
 

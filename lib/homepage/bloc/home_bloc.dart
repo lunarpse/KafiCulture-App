@@ -10,18 +10,39 @@ part 'home_state.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(HomeInitial()) {
     on<HomeOffersClickedNavigateEvent>(homeOffersClickedNavigateEvent);
-    on<HomeCurationsNavigateEvent>(homeCurationsNavigateEvent);
+    on<HomeCurationsSnackNavigateEvent>(homeCurationsSnackNavigateEvent);
+    on<HomeCurationsDrinkNavigateEvent>(homeCurationsDrinkNavigateEvent);
+    on<HomeCurationsCokkiesNavigateEvent>(homeCurationsCokkiesNavigateEvent);
+    on<HomePopularsNavigateEvent>(homePopularsNavigateEvent);
+    on<HomeLogoClickedEvent>(homeLogoClickedEvent);
   }
 
   FutureOr<void> homeOffersClickedNavigateEvent(
       HomeOffersClickedNavigateEvent event, Emitter<HomeState> emit) {
     print("Offer Widget Clicked");
-    emit(HomeNavigateToOfferPageActionState());
+    emit(HomeNavigateToOfferPageActionState(offer: event.offer));
   }
 
-  FutureOr<void> homeCurationsNavigateEvent(
-      HomeCurationsNavigateEvent event, Emitter<HomeState> emit) {
-    print("HIIIIIIIIIIIII");
-    emit(HomeNavigateToCurationPageActionState());
+  FutureOr<void> homeLogoClickedEvent(
+      HomeLogoClickedEvent event, Emitter<HomeState> emit) {}
+
+  FutureOr<void> homeCurationsSnackNavigateEvent(
+      HomeCurationsSnackNavigateEvent event, Emitter<HomeState> emit) {
+    emit(HomeNavigateToSnackPageActionState());
+  }
+
+  FutureOr<void> homeCurationsDrinkNavigateEvent(
+      HomeCurationsDrinkNavigateEvent event, Emitter<HomeState> emit) {
+    emit(HomeNavigateToDrinkPageActionState());
+  }
+
+  FutureOr<void> homeCurationsCokkiesNavigateEvent(
+      HomeCurationsCokkiesNavigateEvent event, Emitter<HomeState> emit) {
+    emit(HomeNavigateToCookiesPageActionState());
+  }
+
+  FutureOr<void> homePopularsNavigateEvent(
+      HomePopularsNavigateEvent event, Emitter<HomeState> emit) {
+    emit(HomeNavigateToPopularPageActionState(popular: event.popular));
   }
 }
