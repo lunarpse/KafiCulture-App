@@ -99,16 +99,6 @@ class _CartState extends ConsumerState<Cart> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          ElevatedButton(
-                                              onPressed: () {
-                                                showDialog(
-                                                  context: context,
-                                                  builder: (context) {
-                                                    return DeliveryDialog();
-                                                  },
-                                                );
-                                              },
-                                              child: Text("Deliver")),
                                           Padding(
                                             padding: const EdgeInsets.symmetric(
                                                 horizontal: 10, vertical: 3),

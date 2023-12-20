@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:project_2/delivery/address_page/address.dart';
+import 'package:project_2/delivery/function.dart';
 //import 'package:flutter_application_1/address_page/address.dart';
 
 class DetailsPage extends StatefulWidget {
@@ -45,8 +46,13 @@ class _DetailsPageState extends State<DetailsPage> {
                 const SizedBox(
                   height: 100,
                 ),
-                TextField(
+                TextFormField(
                   controller: aadharController,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                    LengthLimitingTextInputFormatter(14),
+                    AadharInputFormatter(),
+                  ],
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.grey[200],
