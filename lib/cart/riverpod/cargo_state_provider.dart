@@ -54,20 +54,6 @@ class CargoState extends StateNotifier<List> {
     }).toList();
     nl.removeWhere((element) => element == null);
     state = nl;
-    // for(int i=0;i<nl.length;i++){
-    //   if(nl[i]!=null){
-    //     newl.add(nl[i]);
-    //   }
-    // }
-    // state=newl;
-
-    // var nl=[];
-    // for(int i=0;i<state.length;i++){
-    //   if(state[i]["id"]!=id){
-    //     nl.add(state[i]);
-    //   }
-    // }
-    // state=nl;
   }
 
   void decrease_quantity(String name) {

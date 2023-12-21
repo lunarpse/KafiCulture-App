@@ -23,7 +23,6 @@ class Bottom extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // print("hhh $gst    $tip  ${double.parse(subtotal.toStringAsFixed(2))}");
     double total = double.parse(gst.toStringAsFixed(2)) +
         double.parse(subtotal.toStringAsFixed(2));
 
