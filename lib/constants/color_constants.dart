@@ -183,7 +183,8 @@ const Color paymentappexpansiontilegradient2 =
     Color.fromRGBO(255, 221, 136, 0.28);
 const Color recommendedtextcolor = Colors.black54;
 const Color companynamecolors = Colors.black54;
-const Color showdialogbackgroundcolor = Colors.greenAccent;
+const Color showdialogbackgroundcolor1 = Color.fromRGBO(255, 136, 102, 0.67);
+const Color showdialogbackgroundcolor2 = Color.fromRGBO(255, 221, 136, 0.28);
 const Color paymentborderall = Color.fromARGB(255, 98, 2, 2);
 const Color paymentborderallgradient1 = Color.fromRGBO(226, 215, 212, 0.467);
 const Color paymentborderallgradient2 = Color.fromRGBO(240, 214, 191, 1);

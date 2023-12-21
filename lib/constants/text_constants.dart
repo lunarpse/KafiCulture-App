@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 //appbar
 const String apptitle = "KAFICULTURE";
 const String appslogan = "Where every cup tells a story";
@@ -63,9 +61,6 @@ const String productdescription =
 const String offering = "Latest  Offerings";
 const String handcrafted = "Handcrafted Curations";
 const String populars = "Populars";
-
-//loadingscreen
-const String processing = "Processing";
 
 //paymentScreen
 const String cardpayment = "Credit/Debit Cards";

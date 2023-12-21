@@ -370,9 +370,9 @@ class _PaymentAppState extends ConsumerState {
                                 context: context,
                                 builder: (context) {
                                   return MyPopUp(
-                                      bgcolor: showdialogbackgroundcolor,
+                                      bgcolor1: showdialogbackgroundcolor1,
+                                      bgcolor2: showdialogbackgroundcolor2,
                                       textMsg: swapmessage,
-                                      logo: "assets/images/smile.png",
                                       bottomHeight: 100);
                                 },
                               );
