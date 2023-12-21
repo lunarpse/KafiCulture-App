@@ -13,7 +13,7 @@ class CardPayment extends StatelessWidget {
     return ExpansionTile(
       title: Container(
           alignment: Alignment.centerLeft,
-          decoration:  BoxDecoration(
+          decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(7)),
             gradient: LinearGradient(
               colors: [
@@ -64,10 +64,10 @@ class CardPayment extends StatelessWidget {
               foregroundColor: cardpaymentforegroundcolor),
           child: Container(
             margin: EdgeInsets.all(8.0),
-            child:  Text(
+            child: Text(
               validate,
               style: TextStyle(
-                color:paymenttextcolor,
+                color: paymenttextcolor,
                 fontFamily: 'halter',
                 fontSize: 14,
                 package: 'flutter_credit-card',

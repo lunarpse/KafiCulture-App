@@ -3,21 +3,22 @@
 import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:project_2/constants/color_constants.dart';
-
 
 class MyPopUp extends StatefulWidget {
   const MyPopUp({
     Key? key,
-    required this.bgcolor,
+    required this.bgcolor1,
     required this.textMsg,
-    required this.logo,
     required this.bottomHeight,
+    required this.bgcolor2,
   }) : super(key: key);
 
-  final Color bgcolor;
+  final Color bgcolor1;
+  final Color bgcolor2;
   final String textMsg;
-  final String logo;
+
   final double bottomHeight;
 
   @override
@@ -53,7 +54,7 @@ class _MyPopUpState extends State<MyPopUp> {
               borderRadius: const BorderRadius.all(Radius.circular(10)),
               border: Border.all(
                 width: 1.5,
-                color:mypopupborderallcolor,
+                color: mypopupborderallcolor,
               ),
             ),
             child: Container(
@@ -69,7 +70,7 @@ class _MyPopUpState extends State<MyPopUp> {
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 border: Border.all(
                   width: 1.5,
-                  color:mypopupborderradiuscolor,
+                  color: mypopupborderradiuscolor,
                 ),
               ),
               child: Center(
@@ -85,20 +86,24 @@ class _MyPopUpState extends State<MyPopUp> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
-                              height: 200,
-                              width: mediaWidth * 0.7,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(17),
-                                    topRight: Radius.circular(17)),
-                                color: widget.bgcolor,
-                              ),
-                              child: Image.asset(widget.logo),
-                            ),
+                                height: 200,
+                                width: mediaWidth * 0.7,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(17),
+                                        topRight: Radius.circular(17)),
+                                    gradient: RadialGradient(colors: [
+                                      widget.bgcolor1,
+                                      widget.bgcolor2
+                                    ])),
+                                child: //it provide loading animation
+                                    Lottie.asset(
+                                        "assets/json/animations/thankyou.json")),
                             Container(
                               height: widget.bottomHeight,
                               width: mediaWidth * 0.7,
-                              decoration: BoxDecoration(color: mypopupboxdeccolor),
+                              decoration:
+                                  BoxDecoration(color: mypopupboxdeccolor),
                               child: Scaffold(
                                 body: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
