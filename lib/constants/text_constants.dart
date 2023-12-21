@@ -1,11 +1,13 @@
-import 'package:flutter/material.dart';
-
 //appbar
 const String apptitle = "KAFICULTURE";
 const String appslogan = "Where every cup tells a story";
 const String readyToScan = "Ready to Scan";
 const String moveTheNFC = "Move the NFC tag to the back of your phone";
 const String ok = "OK";
+const String dialogTitle = "NFC not enabled or No NFC service";
+const String dialogContent =
+    "Please enable NFC in your device settings or this device does not support NFC feature.";
+
 //cart-->screen-->cart
 const String popular = "Populars";
 
@@ -86,6 +88,7 @@ const String hotel3 = "Emirates";
 const String swapmessage = "Thank you for using SWAP \n Continue with UPI/Card";
 const String confirm = "Confirm";
 const String otherpaymentmethod = "Other Payment Method";
+
 //dialogbox
 const String addon = "Addons";
 const String currentitem = "CURRENT ITEM";

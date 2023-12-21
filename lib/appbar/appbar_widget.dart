@@ -85,13 +85,13 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
             onTap: _checkNFCStatus,
             child: CircleAvatar(
               backgroundColor: _isNFCavailable == true
-                  ? Color.fromARGB(255, 1, 255, 9)
-                  : circleavatarbgcolor,
+                  ? nfcCircleAvatarAvailableColor
+                  : nfcCircleAvatarNotAvailableColor,
               radius: 14,
               child: Icon(
                 Icons.nfc_rounded,
                 size: 22,
-                color: Colors.black,
+                color: nfcIconColor,
               ),
             )),
         widget.incart == false
@@ -104,13 +104,13 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
                   icon: badges.Badge(
                     badgeContent: Text(
                       "$cartItemNo",
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: badgeTextColor),
                     ),
                     badgeAnimation: badges.BadgeAnimation.scale(),
                     showBadge: cartItemNo == 0 ? false : true,
                     child: Icon(Icons.shopping_cart),
                   ),
-                  color: carticonbuttoncolor,
+                  color: cartIconColor,
                   iconSize: 27,
                 ),
               )
@@ -185,13 +185,15 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("NFC not enabled or No NFC service"),
-          content: Text(
-              "Please enable NFC in your device settings or this device does not support NFC feature."),
+          title: Text(dialogTitle),
+          content: Text(dialogContent),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: Text("OK"),
+              child: Text(
+                ok,
+                style: TextStyle(fontSize: 17),
+              ),
             )
           ],
         );

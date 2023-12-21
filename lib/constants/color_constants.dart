@@ -2,7 +2,11 @@
 import 'package:flutter/material.dart';
 
 const Color circleavatarbgcolor = Colors.white;
-const Color carticonbuttoncolor = Color.fromRGBO(78, 43, 18, 0.9);
+const Color cartIconColor = Color.fromRGBO(78, 43, 18, 0.9);
+const Color nfcCircleAvatarAvailableColor = Color.fromARGB(255, 1, 255, 9);
+const Color nfcCircleAvatarNotAvailableColor = Colors.white;
+const Color nfcIconColor = Colors.black;
+const Color badgeTextColor = Colors.white;
 
 //emptycartconstants
 const Color emptycartelevatebuttoncolor = Colors.black;
@@ -20,7 +24,7 @@ const Color bottomcheckoutcolor = Colors.white;
 
 //cartitemconstants
 const Color cartboxdecorationcolor = Color.fromARGB(255, 247, 235, 231);
-const Color cartboxshadowcolor = const Color.fromARGB(255, 87, 76, 76);
+const Color cartboxshadowcolor = Color.fromARGB(255, 87, 76, 76);
 const Color cartboxshadow = Colors.grey;
 const Color cartboxdecorationcolor1 = Color.fromARGB(255, 110, 47, 24);
 const Color cartmousecursorcolor = Colors.white;
