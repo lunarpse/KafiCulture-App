@@ -189,6 +189,7 @@ const Color paymentborderallgradient1 = Color.fromRGBO(226, 215, 212, 0.467);
 const Color paymentborderallgradient2 = Color.fromRGBO(240, 214, 191, 1);
 const Color confirmcolor = Color.fromARGB(255, 255, 106, 7);
 const Color paymentdivdercolor = Colors.black;
+const Color payOnDeliveryBtn = Color.fromRGBO(143, 93, 58, 1);
 //paymentcart
 const Color paymentcartdeccolor = Color.fromARGB(255, 247, 235, 231);
 const Color paymentcartboxshadow = Color.fromARGB(255, 87, 76, 76);

@@ -74,6 +74,8 @@ const String selectpaymentmethod = "Select Payment Method";
 const String recommended = "Recommended";
 const String subtotal = "Sub-Total";
 const String totalamount = "Amount: ";
+const String orders = "Orders ";
+const String payOnDelivery = "Pay On Delivery";
 
 //creditcardwidget
 const String validate = "Validate";
