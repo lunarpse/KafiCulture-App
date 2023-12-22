@@ -42,6 +42,7 @@ class _PaymentAppState extends ConsumerState {
   final ExpansionTileController controller = ExpansionTileController();
   final ExpansionTileController upiExpansionController =
       ExpansionTileController();
+
   double itcvalue = 0;
   double handm_value = 0;
   double airvalue = 0;
@@ -96,12 +97,22 @@ class _PaymentAppState extends ConsumerState {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              //Order list need to be added
-              Container(
-                  height: 120,
-                  color: paymentcartcontainercolor,
-                  width: double.infinity,
-                  margin: EdgeInsets.only(top: 8, bottom: 15),
+              SizedBox(
+                height: 10,
+              ),
+
+              Padding(
+                padding: EdgeInsets.only(left: 12, right: 8),
+                child: Text(
+                  orders,
+                  style: TextStyle(fontSize: 23, fontWeight: FontWeight.w500),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              LimitedBox(
+                  maxHeight: 250,
                   child: SingleChildScrollView(
                     child: Column(
                       children: data.map((data1) {
@@ -114,6 +125,27 @@ class _PaymentAppState extends ConsumerState {
                   )),
 
               //--------------------------------------------------------Amount
+
+              SizedBox(height: 15),
+              Divider(
+                height: 25,
+                color: paymentdivdercolor,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+
+              Padding(
+                padding: EdgeInsets.only(left: 12, right: 8),
+                child: Text(
+                  selectpaymentmethod,
+                  style: TextStyle(fontSize: 23, fontWeight: FontWeight.w500),
+                ),
+              ),
+
+              SizedBox(
+                height: 10,
+              ),
 
               ExpansionTile(
                 title: Container(
@@ -420,9 +452,6 @@ class _PaymentAppState extends ConsumerState {
                   upiExpansionController: upiExpansionController,
                 ),
               ),
-              const SizedBox(height: 15),
-
-              const SizedBox(height: 10),
 
               //------------------------------------------------CardPayment
 
@@ -430,30 +459,23 @@ class _PaymentAppState extends ConsumerState {
                 padding: const EdgeInsets.all(8.0),
                 child: CardPayment(),
               ),
-              const SizedBox(height: 15),
+              const SizedBox(height: 20),
 
-              //---------------------------------------------------wallets
-
-              // const Padding(
-              //   padding: EdgeInsets.all(8.0),
-              //   child: Text(
-              //     'Wallets',
-              //     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-              //   ),
-              // ),
-              // const SizedBox(height: 10),
-              // const WalletList(),
-              // const SizedBox(height: 15),
-              // const Padding(
-              //   padding: EdgeInsets.all(8.0),
-              //   child: Text(
-              //     'Net Banking',
-              //     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-              //   ),
-              // ),
-              // const SizedBox(height: 10),
-              // const NetbankingList(),
-              // const SizedBox(height: 10)
+              Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/loading");
+                  },
+                  style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStatePropertyAll(payOnDeliveryBtn),
+                      fixedSize: MaterialStatePropertyAll(Size(360, 60))),
+                  child: Text(
+                    payOnDelivery,
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
