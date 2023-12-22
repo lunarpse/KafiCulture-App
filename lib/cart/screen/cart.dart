@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
+import 'package:project_2/cart/riverpod/cargo_state_provider.dart';
+import 'package:project_2/cart/riverpod/switch_provider.dart';
 import 'package:project_2/cart/riverpod/tipstate_provider.dart';
 import 'package:project_2/cart/screen/Extras.dart';
 import 'package:project_2/cart/widget/Bottom.dart';
@@ -14,6 +16,7 @@ import '../../homepage/reusable_widgets/background_container_widget.dart';
 import '../riverpod/state_provider.dart';
 
 import '../widget/cart_item.dart';
+import 'delivery_dialog.dart';
 import 'empty_cart.dart';
 
 class Cart extends ConsumerStatefulWidget {
@@ -24,9 +27,14 @@ class Cart extends ConsumerStatefulWidget {
 }
 
 class _CartState extends ConsumerState<Cart> {
+  var pop = false;
+
   @override
   Widget build(BuildContext context) {
-    final data = ref.watch(CartProvider);
+    final data = ref.watch(SwitchProvider) == false
+        ? ref.watch(CargoProvider)
+        : ref.watch(CartProvider);
+
     final tipfee = ref.watch(TipProvider)["tip"];
 
     final tc = data.length != 0
@@ -46,7 +54,9 @@ class _CartState extends ConsumerState<Cart> {
       },
       child: Scaffold(
           // backgroundColor: Colors.grey[100],
-          appBar: AppbarWidget(),
+          appBar: AppbarWidget(
+            incart: true,
+          ),
           drawer: DrawerScreen(),
           resizeToAvoidBottomInset: false,
           body: (subt == 0 || data.length == 0)
@@ -81,7 +91,9 @@ class _CartState extends ConsumerState<Cart> {
                                         height: 0,
                                       );
                                     } else if (index == data.length) {
-                                      return CookingInstructions();
+                                      return ref.watch(SwitchProvider) == true
+                                          ? CookingInstructions()
+                                          : SizedBox();
                                     } else if (index == data.length + 1) {
                                       return Column(
                                         crossAxisAlignment:
@@ -91,7 +103,7 @@ class _CartState extends ConsumerState<Cart> {
                                             padding: const EdgeInsets.symmetric(
                                                 horizontal: 10, vertical: 3),
                                             child: Text(
-                                              popular,
+                                              "Populars",
                                               style: TextStyle(
                                                   fontSize: 25,
                                                   fontWeight: FontWeight.bold),

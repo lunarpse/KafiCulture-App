@@ -2,11 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
-import 'package:project_2/Cargo/men/widget/dialogueBox.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 import 'package:readmore/readmore.dart';
 import 'package:project_2/cart/riverpod/state_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../cart/riverpod/cargo_state_provider.dart';
+import '../../../constants/color_constants.dart';
+import '../../reusable_widget/cargo_dialogBox.dart';
 
 class LadiesDetailsWidget extends ConsumerStatefulWidget {
   const LadiesDetailsWidget(
@@ -34,7 +36,7 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
     final bodyHeight = screenHeight - appBarHeight;
     final bodyWidth = MediaQuery.of(context).size.width;
 
-    final func = ref.read(CartProvider.notifier);
+    final func = ref.read(CargoProvider.notifier);
     final image = widget.details.image;
     final name = widget.details.name;
     final description = widget.details.description;
@@ -433,29 +435,15 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                     children: [
                       ElevatedButton.icon(
                         onPressed: () {
-                          // showDialog(
-                          //     context: context,
-                          //     builder: (context) => DialogBox(
-                          //           productName: widget.details.name,
-                          //           buttonName: "Pay Now",
-                          //           call: (value) {
-                          //             func.additem({
-                          //               "name": name,
-                          //               "image": "assets/images/$image.jpg",
-                          //               "price": value,
-                          //               "quantity": quantity
-                          //             });
-                          //             Navigator.of(context).pop();
-                          //             Navigator.pushNamed(context, '/payment');
-                          //           },
-                          //           addons: addons,
-                          //           finalPrice: offerPrice,
-                          //         ));
-                          showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return CargoDialogueBox();
-                              });
+                          func.additem({
+                            "name": name,
+                            "image": "assets/images/LadiesBag/$image.jpg",
+                            "price": offerPrice1,
+                            "cost": offerPrice1 * quantity,
+                            "quantity": quantity
+                          });
+
+                          Navigator.pushNamed(context, '/cart');
                         },
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(
@@ -480,7 +468,17 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                         ),
                       ),
                       OutlinedButton.icon(
-                        onPressed: () {},
+                        onPressed: () {
+                          func.additem({
+                            "name": name,
+                            "image": "assets/images/LadiesBag/$image.jpg",
+                            "price": offerPrice1,
+                            "cost": offerPrice1 * quantity,
+                            "quantity": quantity
+                          });
+
+                          bottomSheet();
+                        },
                         icon: Icon(
                           Icons.shopping_cart,
                           color: Colors.orange,
@@ -515,121 +513,122 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
     );
   }
 
-  // Future bottomSheet() {
-  //   return showModalBottomSheet(
-  //     elevation: 20,
-  //     shape: RoundedRectangleBorder(
-  //         borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
-  //     enableDrag: true,
-  //     isDismissible: true,
-  //     context: context,
-  //     builder: (context) {
-  //       return Column(
-  //         mainAxisSize: MainAxisSize.min,
-  //         children: [
-  //           Container(
-  //             height: 20,
-  //             decoration: BoxDecoration(
-  //               color: Color.fromRGBO(143, 93, 58, 0.8),
-  //               borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-  //             ),
-  //             child: Padding(
-  //               padding: const EdgeInsets.symmetric(horizontal: 150),
-  //               child: Divider(
-  //                 color: Colors.black,
-  //                 thickness: 4,
-  //               ),
-  //             ),
-  //           ),
-  //           Padding(
-  //             padding: const EdgeInsets.all(12.0),
-  //             child: Row(
-  //               mainAxisAlignment: MainAxisAlignment.center,
-  //               children: [
-  //                 Icon(
-  //                   Icons.done,
-  //                   size: 35,
-  //                   color: Colors.green,
-  //                 ),
-  //                 SizedBox(width: 15),
-  //                 Row(
-  //                   children: [
-  //                     Text(
-  //                       "${widget.details.name} ",
-  //                       style: TextStyle(
-  //                           fontSize: 20, fontWeight: FontWeight.w900),
-  //                     ),
-  //                     Text(
-  //                       "is addedd to Cart",
-  //                       style: TextStyle(
-  //                           fontSize: 20, fontWeight: FontWeight.bold),
-  //                     ),
-  //                   ],
-  //                 ),
-  //               ],
-  //             ),
-  //           ),
-  //           Padding(
-  //             padding: const EdgeInsets.only(left: 16, right: 16, bottom: 10),
-  //             child: Row(
-  //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //               children: [
-  //                 OutlinedButton.icon(
-  //                   onPressed: () {
-  //                     Navigator.of(context).pop();
-  //                     Navigator.pushNamed(context, '/cart');
-  //                   },
-  //                   icon: Icon(
-  //                     Icons.shopping_cart,
-  //                     color: Colors.orange,
-  //                     size: 20,
-  //                   ),
-  //                   label: Text(
-  //                     "Cart",
-  //                     style: TextStyle(
-  //                         fontSize: 17,
-  //                         fontWeight: FontWeight.w700,
-  //                         color: Color.fromRGBO(143, 93, 58, 1)),
-  //                   ),
-  //                   style: ButtonStyle(
-  //                       shape: MaterialStateProperty.all(RoundedRectangleBorder(
-  //                         borderRadius: BorderRadius.circular(20),
-  //                       )),
-  //                       fixedSize: MaterialStateProperty.all(Size(140, 50)),
-  //                       side: MaterialStatePropertyAll(BorderSide(
-  //                           color: Color.fromRGBO(143, 93, 58, 1), width: 3))),
-  //                 ),
-  //                 ElevatedButton.icon(
-  //                   onPressed: () {
-  //                     Navigator.of(context).pop();
-  //                     Navigator.pushNamed(context, '/home');
-  //                   },
-  //                   style: ButtonStyle(
-  //                       backgroundColor: MaterialStateProperty.all(
-  //                           Color.fromRGBO(143, 93, 58, 1)),
-  //                       shape: MaterialStateProperty.all(RoundedRectangleBorder(
-  //                         borderRadius: BorderRadius.circular(16),
-  //                       )),
-  //                       fixedSize: MaterialStateProperty.all(Size(230, 50))),
-  //                   icon: Icon(
-  //                     Icons.shopping_bag_outlined,
-  //                     color: Colors.orange,
-  //                     size: 20,
-  //                   ),
-  //                   label: Text(
-  //                     "Continue Shopping",
-  //                     style: TextStyle(
-  //                         fontSize: 17,
-  //                         fontWeight: FontWeight.w500,
-  //                         color: Colors.white),
-  //                   ),
-  //                 ),
-  //               ],
-  //             ),
-  //           )
-  //         ],
-  //       );
-  //     },
-  //   );
-  // }
+  Future bottomSheet() {
+    return showModalBottomSheet(
+      elevation: 20,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+      enableDrag: true,
+      isDismissible: true,
+      context: context,
+      builder: (context) {
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              height: 20,
+              decoration: BoxDecoration(
+                color: Color.fromRGBO(143, 93, 58, 1),
+                borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 150),
+                child: Divider(
+                  color: Colors.black,
+                  thickness: 4,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.done,
+                    size: 35,
+                    color: detailsdoneiconcolor,
+                  ),
+                  SizedBox(width: 15),
+                  Column(
+                    children: [
+                      Text(
+                        "${widget.details.name} ",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w900),
+                        maxLines: 2,
+                      ),
+                      Text(
+                        "is addedd to Cart",
+                        style: TextStyle(
+                            fontSize: 19, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 16, right: 16, bottom: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  OutlinedButton.icon(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      Navigator.pushNamed(context, '/cart');
+                    },
+                    icon: Icon(
+                      Icons.shopping_cart,
+                      color: Colors.orange,
+                      size: 20,
+                    ),
+                    label: Text(
+                      "Cart",
+                      style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w700,
+                          color: Color.fromRGBO(143, 93, 58, 1)),
+                    ),
+                    style: ButtonStyle(
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        )),
+                        fixedSize: MaterialStateProperty.all(Size(140, 50)),
+                        side: MaterialStatePropertyAll(BorderSide(
+                            color: Color.fromRGBO(143, 93, 58, 1), width: 3))),
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      Navigator.pushNamed(context, '/bagpage');
+                    },
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                            Color.fromRGBO(143, 93, 58, 1)),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        )),
+                        fixedSize: MaterialStateProperty.all(Size(230, 50))),
+                    icon: Icon(
+                      Icons.shopping_bag_outlined,
+                      color: Colors.orange,
+                      size: 20,
+                    ),
+                    label: Text(
+                      "Continue Shopping",
+                      style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
+            )
+          ],
+        );
+      },
+    );
+  }
 }

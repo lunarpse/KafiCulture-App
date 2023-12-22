@@ -20,6 +20,9 @@ import 'package:project_2/newfeature/mypopUp.dart';
 import 'package:project_2/newfeature/payment_cart.dart';
 import 'package:project_2/newfeature/upi_payment.dart';
 
+import '../cart/riverpod/cargo_state_provider.dart';
+import '../cart/riverpod/switch_provider.dart';
+
 // ignore: constant_identifier_names
 enum SingingCharacter { Paytm, Amazonpay }
 
@@ -52,7 +55,10 @@ class _PaymentAppState extends ConsumerState {
   Widget build(BuildContext context) {
     double mediaWidth = MediaQuery.of(context).size.width;
 
-    final data = ref.watch(CartProvider);
+    final data = ref.watch(SwitchProvider) == true
+        ? ref.watch(CartProvider)
+        : ref.watch(CargoProvider);
+
     double addonprice = 0;
     for (int i = 0; i < data.length; i++) {
       addonprice +=
@@ -60,8 +66,7 @@ class _PaymentAppState extends ConsumerState {
     }
     double gst = ref.watch(TipProvider)["gst"];
 
-    final tc =
-        data.isNotEmpty ? data.map((e) => e["price"] * e["quantity"]) : [];
+    final tc = data.isNotEmpty ? data.map((e) => e["cost"] * 1) : [];
 
     final double subt = tc.length != 0
         ? tc.reduce((value, element) => value + element) + gst + addonprice
@@ -235,7 +240,19 @@ class _PaymentAppState extends ConsumerState {
               ),
 
               SizedBox(
-                height: 20,
+                height: 10,
+              ),
+
+              Padding(
+                padding: EdgeInsets.only(left: 12, right: 8),
+                child: Text(
+                  selectpaymentmethod,
+                  style: TextStyle(fontSize: 23, fontWeight: FontWeight.w500),
+                ),
+              ),
+
+              SizedBox(
+                height: 10,
               ),
 
               //-------------------------------------------------newSwap
@@ -370,9 +387,9 @@ class _PaymentAppState extends ConsumerState {
                                 context: context,
                                 builder: (context) {
                                   return MyPopUp(
-                                      bgcolor1: showdialogbackgroundcolor1,
-                                      bgcolor2: showdialogbackgroundcolor2,
+                                      bgcolor: showdialogbackgroundcolor,
                                       textMsg: swapmessage,
+                                      logo: "assets/images/smile.png",
                                       bottomHeight: 100);
                                 },
                               );

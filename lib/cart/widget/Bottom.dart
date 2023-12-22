@@ -2,8 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:project_2/cart/riverpod/switch_provider.dart';
 
 import 'package:project_2/cart/riverpod/tipstate_provider.dart';
+import 'package:project_2/cart/screen/delivery_dialog.dart';
 import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
 
@@ -24,6 +26,36 @@ class Bottom extends ConsumerWidget {
     // print("hhh $gst    $tip  ${double.parse(subtotal.toStringAsFixed(2))}");
     double total = double.parse(gst.toStringAsFixed(2)) +
         double.parse(subtotal.toStringAsFixed(2));
+
+    var incoffee = ref.watch(SwitchProvider);
+
+    Widget delievery = ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        padding: EdgeInsets.symmetric(
+          horizontal: 32,
+          vertical: 16.0,
+        ),
+        backgroundColor: bottomelevatebuttonbgcolor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0),
+          side: BorderSide(
+            color: bottomroundrectanglebordercolor,
+          ),
+        ),
+      ),
+      onPressed: () {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return DeliveryDialog();
+          },
+        );
+      },
+      child: Text(
+        "Delivery",
+        style: TextStyle(color: bottomcheckoutcolor),
+      ),
+    );
 
     return Container(
       padding: const EdgeInsets.only(
@@ -82,7 +114,9 @@ class Bottom extends ConsumerWidget {
               name: totalString, cost: double.parse(total.toStringAsFixed(2))),
           SizedBox(height: 10),
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: incoffee == true
+                ? MainAxisAlignment.center
+                : MainAxisAlignment.spaceEvenly,
             children: [
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -115,6 +149,7 @@ class Bottom extends ConsumerWidget {
                   style: TextStyle(color: bottomcheckoutcolor),
                 ),
               ),
+              incoffee == false ? delievery : SizedBox()
             ],
           ),
         ],
