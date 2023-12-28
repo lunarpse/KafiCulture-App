@@ -4,7 +4,7 @@
 import 'package:flutter/material.dart';
 
 const Color circleavatarbgcolor = Colors.white;
-const Color cartIconColor = Color.fromRGBO(78, 43, 18, 0.9);
+const Color cartIconColor = Color.fromRGBO(107, 49, 20, 1);
 const Color nfcCircleAvatarAvailableColor = Color.fromARGB(255, 1, 255, 9);
 const Color nfcCircleAvatarNotAvailableColor = Colors.white;
 const Color nfcIconColor = Colors.black;
@@ -216,7 +216,7 @@ const Color offernamecolor = Colors.white;
 //----------------------------------------------------------------------------------> Cargo
 //------------------------------->Cargo----->men/women----->widget
 
-const Color parentContainerBoxdecorationColor = Colors.white;
+const Color parentContainerBoxdecorationColor = Colors.transparent;
 
 //1st positioned widget
 Color glasscontainerColor = Colors.white.withOpacity(0.2);
@@ -234,7 +234,6 @@ Color glasscontainerAddIconDecorationColor = Colors.black.withOpacity(0.8);
 const Color glasscontainerAddIconButtonColor = Colors.white;
 
 //2nd positioned widget
-const Color containerColor = Colors.white;
 const Color descriptiontextColor = Colors.black;
 const Color descriptionColor = Colors.black;
 const Color descriptionMoreStyleColor = Colors.orange;

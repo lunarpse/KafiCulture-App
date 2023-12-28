@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
+import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/constants/color_constants.dart';
 
 import 'package:project_2/homepage/model/json_model.dart';
@@ -35,7 +36,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    double appBarHeight = AppBar().preferredSize.height;
+    double appBarHeight = AppbarWidget().preferredSize.height;
     final screenHeight = MediaQuery.of(context).size.height;
     final bodyHeight = screenHeight - appBarHeight;
     final bodyWidth = MediaQuery.of(context).size.width;
@@ -72,7 +73,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
     addons = widget.details.addons;
 
     return BackgroundContainerWidget(
-      opacity: 0.6,
+      opacity: 0.4,
       x: 8.0,
       y: 8.0,
       child: Padding(
@@ -81,7 +82,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
           height: bodyHeight,
           width: bodyWidth,
           decoration: BoxDecoration(
-              color: Colors.white,
+              color: Colors.transparent,
               borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
           child: Stack(
             children: [
@@ -266,7 +267,6 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
               Positioned(
                   top: bodyHeight / 2 - 62,
                   child: Container(
-                    color: detailsiconbuttoncolor,
                     height: bodyHeight / 2 - 66,
                     width: bodyWidth - 20,
                     child: ListView(

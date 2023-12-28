@@ -55,7 +55,9 @@ class _FeedBackPageState extends State<FeedBackPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppbarWidget(),
+      appBar: AppbarWidget(
+        incart: false,
+      ),
       drawer: DrawerScreen(),
       body: BackgroundContainerWidget(
         opacity: 0.5,

@@ -38,9 +38,9 @@ class _DrinksPageState extends State<DrinksPage> {
       appBar: AppbarWidget(),
       drawer: DrawerScreen(),
       body: BackgroundContainerWidget(
-        opacity: 1.0,
-        x: 3.0,
-        y: 3.0,
+        opacity: 0.7,
+        x: 2.0,
+        y: 2.0,
         child: ListView.builder(
           shrinkWrap: true,
           physics: BouncingScrollPhysics(),
@@ -68,9 +68,9 @@ class _DrinksPageState extends State<DrinksPage> {
                           boxShadow: [
                             BoxShadow(
                               color: cookieboxshadowcolor,
-                              spreadRadius: 3,
-                              blurRadius: 10,
-                              offset: Offset(0, 3),
+                              spreadRadius: 2,
+                              blurRadius: 4,
+                              offset: Offset(0, 2),
                             )
                           ]),
                       child: InkWell(

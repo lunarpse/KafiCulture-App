@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
+import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 import 'package:readmore/readmore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -31,7 +32,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    double appBarHeight = AppBar().preferredSize.height;
+    double appBarHeight = AppbarWidget().preferredSize.height;
     final screenHeight = MediaQuery.of(context).size.height;
     final bodyHeight = screenHeight - appBarHeight;
     final bodyWidth = MediaQuery.of(context).size.width;
@@ -55,7 +56,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
     final totalRatings = widget.details.totalRatings;
 
     return BackgroundContainerWidget(
-      opacity: 0.6,
+      opacity: 0.3,
       x: 8.0,
       y: 8.0,
       child: Padding(
@@ -255,7 +256,6 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
               Positioned(
                   top: bodyHeight / 2 - 62,
                   child: Container(
-                    color: containerColor,
                     height: bodyHeight / 2 - 66,
                     width: bodyWidth - 20,
                     child: ListView(

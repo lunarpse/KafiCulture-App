@@ -130,20 +130,3 @@ class _PopularState extends State<PopularWidget> {
     );
   }
 }
-
-
-//use this inside container------------>
-// decoration: BoxDecoration(
-//                 color: card_container_boxDecoration_color,
-//                 boxShadow: const [
-//                   BoxShadow(
-//                     color: card_container_boxShadow_color,
-//                     offset: Offset(card_container_boxShadow_offSet_startPoint,
-//                         card_container_boxShadow_offSet_endPoint),
-//                     blurRadius: card_container_boxShadow_blurRadius,
-//                     spreadRadius: card_container_boxShadow_spreadRadius,
-//                   ),
-//                 ],
-//                 borderRadius: BorderRadius.circular(
-//                     card_container_boxShadow_borderRadius),
-//               ),
