@@ -1,4 +1,4 @@
-//-----------------------------------------------------> appbar
+//appbar
 const String apptitle = "KAFICULTURE";
 const String appslogan = "Where every cup tells a story";
 const String readyToScan = "Ready to Scan";
@@ -67,9 +67,6 @@ const String offering = "Latest  Offerings";
 const String handcrafted = "Handcrafted Curations";
 const String populars = "Populars";
 
-//loadingscreen
-const String processing = "Processing";
-
 //paymentScreen
 const String cardpayment = "Credit/Debit Cards";
 const String thankyou = "Thank You";
@@ -77,6 +74,8 @@ const String selectpaymentmethod = "Select Payment Method";
 const String recommended = "Recommended";
 const String subtotal = "Sub-Total";
 const String totalamount = "Amount: ";
+const String orders = "Orders ";
+const String payOnDelivery = "Pay On Delivery";
 
 //creditcardwidget
 const String validate = "Validate";

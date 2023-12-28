@@ -184,8 +184,8 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
                             style: TextStyle(fontSize: fontsize3),
                           ),
                           textColor: drawerscreentextcolor,
-                          trailing: const FaIcon(
-                            FontAwesomeIcons.bagShopping,
+                          trailing: FaIcon(
+                            FontAwesomeIcons.shirt,
                           ),
                           onTap: () {
                             func.toggle(false);

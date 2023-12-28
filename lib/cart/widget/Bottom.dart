@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:project_2/cart/riverpod/switch_provider.dart';
 
 import 'package:project_2/cart/riverpod/tipstate_provider.dart';
+import 'package:project_2/cart/screen/delivery_dialog.dart';
 import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
 
@@ -41,9 +42,16 @@ class Bottom extends ConsumerWidget {
           ),
         ),
       ),
-      onPressed: () {},
+      onPressed: () {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return DeliveryDialog();
+          },
+        );
+      },
       child: Text(
-        "Delievery",
+        "Delivery",
         style: TextStyle(color: bottomcheckoutcolor),
       ),
     );
