@@ -17,7 +17,7 @@ class LoadingScreen extends StatefulWidget {
 class _LoadingScreenState extends State<LoadingScreen> {
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 4), () {
+    Timer(const Duration(seconds: 4), () {
       Navigator.pushReplacementNamed(context, "/feedback");
     });
   }
@@ -66,7 +66,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      processing,
+                      processingg,
                       style: TextStyle(
                           color: loadingtextcolor,
                           fontSize: 28,
