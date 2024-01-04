@@ -39,7 +39,7 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
       buildWhen: (previous, current) => current is! AppbarActionState,
       listener: (context, state) {
         if (state is AppbarDrawerClickedActionState) {
-          print("Drawer Clicked");
+         
           Scaffold.of(context).openDrawer();
         } else if (state is AppbarLogoClickedActionState) {
           Navigator.pushReplacementNamed(context, "/home");

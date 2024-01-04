@@ -19,7 +19,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   FutureOr<void> homeOffersClickedNavigateEvent(
       HomeOffersClickedNavigateEvent event, Emitter<HomeState> emit) {
-    print("Offer Widget Clicked");
     emit(HomeNavigateToOfferPageActionState(offer: event.offer));
   }
 

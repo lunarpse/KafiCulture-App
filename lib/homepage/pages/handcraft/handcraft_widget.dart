@@ -17,7 +17,7 @@ class HandCraftedWidget extends StatelessWidget {
       buildWhen: (previous, current) => current is! HomeActionState,
       listener: (context, state) {
         if (state is HomeNavigateToSnackPageActionState) {
-          print("Snacks");
+          
           Navigator.pushNamed(context, '/snacks');
         } else if (state is HomeNavigateToDrinkPageActionState) {
           Navigator.pushNamed(context, '/drinks');

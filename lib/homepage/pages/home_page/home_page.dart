@@ -37,12 +37,12 @@ class _HomePageState extends State<HomePage> {
       listener: (context, state) => {
         if (state is HomeNavigateToOfferPageActionState)
           {
-            print("Hi"),
+            
             Navigator.pushNamed(context, '/drinks'),
           }
       },
       builder: (context, state) {
-        print("object");
+        
         return Scaffold(
           appBar: AppbarWidget(),
           body: BackgroundContainerWidget(
