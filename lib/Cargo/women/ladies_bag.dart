@@ -33,7 +33,7 @@ class _LadiesBagState extends State<LadiesBag> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppbarWidget(),
+      appBar: AppbarWidget(),
       drawer: const DrawerScreen(),
       body: BackgroundContainerWidget(
         opacity: 1.0,

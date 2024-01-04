@@ -12,7 +12,7 @@ import 'package:badges/badges.dart' as badges;
 
 class AppbarWidget extends ConsumerStatefulWidget
     implements PreferredSizeWidget {
-  const AppbarWidget({super.key, this.incart = false});
+  AppbarWidget({super.key, this.incart = true});
 
   final incart;
 
@@ -94,7 +94,7 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
                 color: nfcIconColor,
               ),
             )),
-        widget.incart == false
+        widget.incart == true
             ? Padding(
                 padding: const EdgeInsets.only(right: 5),
                 child: IconButton(

@@ -1,16 +1,29 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/customdrawer/drawerScreen.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 import 'package:project_2/profile/profile_menu_item.dart';
 
-class Profile extends StatelessWidget {
-  const Profile({super.key});
+class Profile extends StatefulWidget {
+  Profile({super.key});
+
+  @override
+  State<Profile> createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> {
+  var name = "John Doe";
+
+  var email = "johndoe@gmail.com";
 
   @override
   Widget build(BuildContext context) {
+    var namecontroller = TextEditingController(text: name);
+    var emailcontroller = TextEditingController(text: email);
     return Scaffold(
       appBar: AppbarWidget(),
       drawer: DrawerScreen(),
@@ -83,21 +96,64 @@ class Profile extends StatelessWidget {
                             height: 15,
                           ),
                           Text(
-                            "Deepsundar",
+                            name,
                             style: TextStyle(fontSize: 22, color: Colors.white),
                           ),
                           SizedBox(
                             height: 2,
                           ),
                           Text(
-                            "deep123@gmail.com",
+                            email,
                             style: TextStyle(
                               fontSize: 16,
                               color: Colors.white,
                             ),
                           ),
                           TextButton.icon(
-                              onPressed: () {},
+                              onPressed: () {
+                                showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return BackdropFilter(
+                                        filter: ImageFilter.blur(
+                                            sigmaX: 10, sigmaY: 11),
+                                        child: Container(
+                                          width: 400,
+                                          height: 40,
+                                          child: Dialog(
+                                            child: Container(
+                                              padding: EdgeInsets.all(10),
+                                              width: 400,
+                                              height: 170,
+                                              child: Column(
+                                                children: [
+                                                  TextFormField(
+                                                    controller: namecontroller,
+                                                  ),
+                                                  TextFormField(
+                                                    controller: emailcontroller,
+                                                  ),
+                                                  TextButton(
+                                                      onPressed: () {
+                                                        setState(() {
+                                                          name = namecontroller
+                                                              .text;
+                                                          email =
+                                                              emailcontroller
+                                                                  .text;
+                                                          Navigator.of(context)
+                                                              .pop();
+                                                        });
+                                                      },
+                                                      child: Text("Submit"))
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    });
+                              },
                               icon: Icon(
                                 Icons.edit,
                                 size: 15,
