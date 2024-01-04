@@ -15,7 +15,7 @@ import '../../homepage/reusable_widgets/background_container_widget.dart';
 import '../riverpod/state_provider.dart';
 
 import '../widget/cart_item.dart';
-import 'delivery_dialog.dart';
+
 import 'empty_cart.dart';
 
 class Cart extends ConsumerStatefulWidget {
