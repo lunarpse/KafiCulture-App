@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:project_2/loading/loadingScreen.dart';
-import 'package:project_2/loading/loadingScreen.dart';
 
 class UpiIcon extends StatelessWidget {
   const UpiIcon(

@@ -2,23 +2,34 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nfc_manager/nfc_manager.dart';
 import 'package:project_2/appbar/bloc/appbar_bloc.dart';
+import 'package:project_2/cart/riverpod/cargo_state_provider.dart';
+import 'package:project_2/cart/riverpod/state_provider.dart';
 import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
+import '../cart/riverpod/switch_provider.dart';
+import 'package:badges/badges.dart' as badges;
 
-class AppbarWidget extends StatefulWidget implements PreferredSizeWidget {
-  const AppbarWidget({super.key});
+
+
+class AppbarWidget extends ConsumerStatefulWidget
+    implements PreferredSizeWidget {
+  const AppbarWidget({super.key, this.incart = false});
+
+  final incart;
 
   @override
-  State<AppbarWidget> createState() => _AppbarWidgetState();
+  ConsumerState<AppbarWidget> createState() => _AppbarWidgetState();
 
   @override
   Size get preferredSize => const Size.fromHeight(60);
 }
 
-class _AppbarWidgetState extends State<AppbarWidget> {
+class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
   bool _isNFCavailable = false;
+
   @override
   Widget build(BuildContext context) {
     final AppbarBloc appbarBloc = AppbarBloc();
@@ -32,11 +43,16 @@ class _AppbarWidgetState extends State<AppbarWidget> {
           Scaffold.of(context).openDrawer();
         } else if (state is AppbarLogoClickedActionState) {
           Navigator.pushReplacementNamed(context, "/home");
+          ref.watch(SwitchProvider.notifier).toggle(true);
         } else if (state is AppbarCartClickedActionState) {
           Navigator.pushNamed(context, "/cart");
         }
       },
       builder: (context, state) {
+        final cartItemNos = ref.watch(SwitchProvider) == true
+        ? ref.watch(CartProvider)
+        : ref.watch(CargoProvider);
+    final cartItemNo = cartItemNos.length;
         return AppBar(
           automaticallyImplyLeading: false,
           flexibleSpace: Image.asset(
@@ -89,31 +105,44 @@ class _AppbarWidgetState extends State<AppbarWidget> {
             InkWell(
               onTap: _checkNFCStatus,
               child: CircleAvatar(
-                backgroundColor: circleavatarbgcolor,
-                backgroundImage: AssetImage(getImage()),
-                radius: 16,
+              backgroundColor: _isNFCavailable == true
+                  ? nfcCircleAvatarAvailableColor
+                  : nfcCircleAvatarNotAvailableColor,
+              radius: 14,
+              child: Icon(
+                Icons.nfc_rounded,
+                size: 22,
+                color: nfcIconColor,
               ),
             ),
-            IconButton(
-              onPressed: () {
-                appbarBloc.add(AppbarCartButtonNavigateEvent());
-              },
-              icon: Icon(Icons.shopping_cart),
-              color: carticonbuttoncolor,
-              iconSize: 27,
             ),
+            widget.incart == false
+            ? Padding(
+                padding: const EdgeInsets.only(right: 5),
+                child: IconButton(
+                  onPressed: () {
+                   appbarBloc.add(AppbarCartButtonNavigateEvent());
+                  },
+                  icon: badges.Badge(
+                    badgeContent: Text(
+                      "$cartItemNo",
+                      style: TextStyle(color: badgeTextColor),
+                    ),
+                    badgeAnimation: badges.BadgeAnimation.scale(),
+                    showBadge: cartItemNo == 0 ? false : true,
+                    child: Icon(Icons.shopping_cart),
+                  ),
+                  color: cartIconColor,
+                  iconSize: 27,
+                ),
+              )
+            : SizedBox(
+                width: 15,
+              ),
           ],
         );
       },
     );
-  }
-
-  String getImage() {
-    if (_isNFCavailable) {
-      return "assets/images/nfc2.jpg";
-    } else {
-      return "assets/images/nfc.jpg";
-    }
   }
 
   void _checkNFCStatus() async {
@@ -180,13 +209,15 @@ class _AppbarWidgetState extends State<AppbarWidget> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("NFC not enabled or No NFC service"),
-          content: Text(
-              "Please enable NFC in your device settings or this device does not support NFC feature."),
+          title: Text(dialogTitle),
+          content: Text(dialogContent),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: Text("OK"),
+              child: Text(
+                ok,
+                style: TextStyle(fontSize: 17),
+              ),
             )
           ],
         );

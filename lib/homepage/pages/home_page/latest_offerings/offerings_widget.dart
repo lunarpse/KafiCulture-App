@@ -5,8 +5,8 @@ import 'package:project_2/homepage/bloc/home_bloc.dart';
 import 'package:project_2/homepage/model/json_model.dart';
 import 'package:project_2/homepage/constant_homepage/constant_offers.dart';
 import 'package:project_2/homepage/widgets/checking.dart';
-import '../data_fetching/api_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../data_fetching/api_service.dart';
 
 class OfferingsWidget extends StatefulWidget {
   const OfferingsWidget({super.key});

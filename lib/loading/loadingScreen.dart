@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+
+import 'package:lottie/lottie.dart';
 import 'package:project_2/constants/color_constants.dart';
-import 'package:project_2/constants/text_constants.dart';
 
 class LoadingScreen extends StatefulWidget {
   const LoadingScreen({
@@ -17,7 +17,7 @@ class LoadingScreen extends StatefulWidget {
 class _LoadingScreenState extends State<LoadingScreen> {
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 4), () {
+    Timer(const Duration(seconds: 4), () {
       Navigator.pushReplacementNamed(context, "/feedback");
     });
   }
@@ -54,30 +54,20 @@ class _LoadingScreenState extends State<LoadingScreen> {
                   begin: AlignmentDirectional.topStart,
                   end: AlignmentDirectional.bottomEnd,
                 ),
-                borderRadius: BorderRadius.all(Radius.circular(10)),
+                borderRadius: const BorderRadius.all(Radius.circular(10)),
                 border: Border.all(
                   width: 1.5,
                   color: loadingbordercolor2,
                 ),
               ),
-              child: const Center(
+              child: Center(
                 child: Column(
                   // crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text(
-                      processing,
-                      style: TextStyle(
-                          color: loadingtextcolor,
-                          fontSize: 28,
-                          fontWeight: FontWeight.w400),
-                    ),
                     SizedBox(height: 40),
                     //it provide loading animation
-                    SpinKitFadingCircle(
-                      color: Colors.black,
-                      size: 50.0,
-                    )
+                    Lottie.asset("assets/json/animations/processing.json")
                   ],
                 ),
               ),

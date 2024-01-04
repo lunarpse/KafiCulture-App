@@ -20,6 +20,9 @@ import 'package:project_2/newfeature/mypopUp.dart';
 import 'package:project_2/newfeature/payment_cart.dart';
 import 'package:project_2/newfeature/upi_payment.dart';
 
+import '../cart/riverpod/cargo_state_provider.dart';
+import '../cart/riverpod/switch_provider.dart';
+
 // ignore: constant_identifier_names
 enum SingingCharacter { Paytm, Amazonpay }
 
@@ -39,6 +42,7 @@ class _PaymentAppState extends ConsumerState {
   final ExpansionTileController controller = ExpansionTileController();
   final ExpansionTileController upiExpansionController =
       ExpansionTileController();
+
   double itcvalue = 0;
   double handm_value = 0;
   double airvalue = 0;
@@ -51,7 +55,10 @@ class _PaymentAppState extends ConsumerState {
   Widget build(BuildContext context) {
     double mediaWidth = MediaQuery.of(context).size.width;
 
-    final data = ref.watch(CartProvider);
+    final data = ref.watch(SwitchProvider) == true
+        ? ref.watch(CartProvider)
+        : ref.watch(CargoProvider);
+
     double addonprice = 0;
     for (int i = 0; i < data.length; i++) {
       addonprice +=
@@ -59,8 +66,7 @@ class _PaymentAppState extends ConsumerState {
     }
     double gst = ref.watch(TipProvider)["gst"];
 
-    final tc =
-        data.isNotEmpty ? data.map((e) => e["price"] * e["quantity"]) : [];
+    final tc = data.isNotEmpty ? data.map((e) => e["cost"] * 1) : [];
 
     final double subt = tc.length != 0
         ? tc.reduce((value, element) => value + element) + gst + addonprice
@@ -91,12 +97,22 @@ class _PaymentAppState extends ConsumerState {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              //Order list need to be added
-              Container(
-                  height: 120,
-                  color: paymentcartcontainercolor,
-                  width: double.infinity,
-                  margin: EdgeInsets.only(top: 8, bottom: 15),
+              SizedBox(
+                height: 10,
+              ),
+
+              Padding(
+                padding: EdgeInsets.only(left: 12, right: 8),
+                child: Text(
+                  orders,
+                  style: TextStyle(fontSize: 23, fontWeight: FontWeight.w500),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              LimitedBox(
+                  maxHeight: 250,
                   child: SingleChildScrollView(
                     child: Column(
                       children: data.map((data1) {
@@ -110,6 +126,27 @@ class _PaymentAppState extends ConsumerState {
 
               //--------------------------------------------------------Amount
 
+              SizedBox(height: 15),
+              Divider(
+                height: 25,
+                color: paymentdivdercolor,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+
+              Padding(
+                padding: EdgeInsets.only(left: 12, right: 8),
+                child: Text(
+                  selectpaymentmethod,
+                  style: TextStyle(fontSize: 23, fontWeight: FontWeight.w500),
+                ),
+              ),
+
+              SizedBox(
+                height: 10,
+              ),
+
               ExpansionTile(
                 title: Container(
                   alignment: Alignment.centerLeft,
@@ -117,7 +154,7 @@ class _PaymentAppState extends ConsumerState {
                       borderRadius: BorderRadius.all(Radius.circular(7)),
                       gradient: LinearGradient(colors: [
                         paymentapplineargradient1,
-                      paymentapplineargradient2,
+                        paymentapplineargradient2,
                       ])),
                   height: 60,
                   width: MediaQuery.of(context).size.width,
@@ -168,7 +205,7 @@ class _PaymentAppState extends ConsumerState {
                     ),
                     children: [
                       Amount(
-                        text:hotel1,
+                        text: hotel1,
                         price: "\$ ${(itcEquivalent).toStringAsFixed(2)}",
                         fontSize: 18,
                         fontColor: paymentapphotelcolor,
@@ -209,7 +246,7 @@ class _PaymentAppState extends ConsumerState {
               Padding(
                 padding: EdgeInsets.only(left: 12, right: 8),
                 child: Text(
-                 selectpaymentmethod,
+                  selectpaymentmethod,
                   style: TextStyle(fontSize: 23, fontWeight: FontWeight.w500),
                 ),
               ),
@@ -244,7 +281,7 @@ class _PaymentAppState extends ConsumerState {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                             recommended,
+                              recommended,
                               style: TextStyle(
                                   fontSize: 17,
                                   color: recommendedtextcolor,
@@ -282,7 +319,7 @@ class _PaymentAppState extends ConsumerState {
 
                       //                                                        H&M
                       CompanyName(
-                        companyName:hotel2,
+                        companyName: hotel2,
                         companyLogo: "assets/images/h&m.png",
                         value: handm_value,
                         points: 100,
@@ -306,7 +343,7 @@ class _PaymentAppState extends ConsumerState {
                       //                                                         Emirates
 
                       CompanyName(
-                        companyName:hotel3,
+                        companyName: hotel3,
                         companyLogo: "assets/images/air.png",
                         value: airvalue,
                         points: 2,
@@ -350,10 +387,9 @@ class _PaymentAppState extends ConsumerState {
                                 context: context,
                                 builder: (context) {
                                   return MyPopUp(
-                                      bgcolor: showdialogbackgroundcolor,
-                                      textMsg:
-                                          swapmessage,
-                                      logo: "assets/images/smile.png",
+                                      bgcolor1: showdialogbackgroundcolor1,
+                                      bgcolor2: showdialogbackgroundcolor2,
+                                      textMsg: swapmessage,
                                       bottomHeight: 100);
                                 },
                               );
@@ -363,8 +399,7 @@ class _PaymentAppState extends ConsumerState {
                           },
                           child: Container(
                             decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: paymentborderall),
+                              border: Border.all(color: paymentborderall),
                               borderRadius: BorderRadius.circular(10),
                               gradient: LinearGradient(
                                 colors: [
@@ -381,8 +416,7 @@ class _PaymentAppState extends ConsumerState {
                                 style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
-                                    color:
-                                        confirmcolor),
+                                    color: confirmcolor),
                               ),
                             ),
                           ),
@@ -395,7 +429,7 @@ class _PaymentAppState extends ConsumerState {
 
               //--------------------------------------------------newSwap
 
-               Divider(
+              Divider(
                 height: 25,
                 color: paymentdivdercolor,
               ),
@@ -418,9 +452,6 @@ class _PaymentAppState extends ConsumerState {
                   upiExpansionController: upiExpansionController,
                 ),
               ),
-              const SizedBox(height: 15),
-
-              const SizedBox(height: 10),
 
               //------------------------------------------------CardPayment
 
@@ -428,30 +459,23 @@ class _PaymentAppState extends ConsumerState {
                 padding: const EdgeInsets.all(8.0),
                 child: CardPayment(),
               ),
-              const SizedBox(height: 15),
+              const SizedBox(height: 20),
 
-              //---------------------------------------------------wallets
-
-              // const Padding(
-              //   padding: EdgeInsets.all(8.0),
-              //   child: Text(
-              //     'Wallets',
-              //     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-              //   ),
-              // ),
-              // const SizedBox(height: 10),
-              // const WalletList(),
-              // const SizedBox(height: 15),
-              // const Padding(
-              //   padding: EdgeInsets.all(8.0),
-              //   child: Text(
-              //     'Net Banking',
-              //     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-              //   ),
-              // ),
-              // const SizedBox(height: 10),
-              // const NetbankingList(),
-              // const SizedBox(height: 10)
+              Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/loading");
+                  },
+                  style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStatePropertyAll(payOnDeliveryBtn),
+                      fixedSize: MaterialStatePropertyAll(Size(360, 60))),
+                  child: Text(
+                    payOnDelivery,
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+              ),
             ],
           ),
         ),

@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 import 'package:project_2/constants/color_constants.dart';
@@ -284,11 +282,9 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                             ),
                             SizedBox(height: 5),
                             Container(
-                              // height: 43,
                               width: bodyWidth - 30,
                               child: ReadMoreText(
                                 description,
-                                // selectedIndex.toString(),
                                 style: TextStyle(
                                     color: detailstextcolor, fontSize: 17),
                                 trimLines: 2,
@@ -483,7 +479,8 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                       func.additem({
                                         "name": name,
                                         "image": "assets/images/$image.jpg",
-                                        "price": value,
+                                        "cost": value,
+                                        "price": offerPrice1,
                                         "quantity": quantity
                                       });
                                       Navigator.of(context).pop();
@@ -528,7 +525,8 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                   func.additem({
                                     "name": name,
                                     "image": "assets/images/$image.jpg",
-                                    "price": value,
+                                    "cost": value,
+                                    "price": offerPrice1,
                                     "quantity": quantity
                                   });
                                   Navigator.of(context).pop();
@@ -594,8 +592,6 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
             : widget.details.category == cookies
                 ? 105
                 : 110,
-        // height: 40,
-        // width: 105,
         decoration: BoxDecoration(
             color: index == selectedIndex
                 ? detailsaddtocartbuttoncolor

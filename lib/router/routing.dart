@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:project_2/Cargo/men/men_shoes.dart';
-import 'package:project_2/Cargo/men/men_shoes_details.dart';
-import 'package:project_2/Cargo/reusablewidgets/detailsPage.dart';
+import 'package:project_2/Cargo/men/men_shoes_details_page.dart';
+
 import 'package:project_2/Cargo/women/ladies_bag.dart';
-import 'package:project_2/Cargo/women/ladies_bag_details.dart';
+import 'package:project_2/Cargo/women/ladies_bag_details_page.dart';
 import 'package:project_2/cart/screen/cart.dart';
 import 'package:project_2/feedBack/FeedBack_page.dart';
 import 'package:project_2/homepage/widgets/checking.dart';
@@ -75,17 +75,17 @@ class RouteGenerator {
             builder: (_) => PopularDetailsPage(
                   popular: args,
                 ));
-      case '/shoespage':
-        return MaterialPageRoute(builder: (_) => MenShoes());
+      case '/shoepage':
+        return MaterialPageRoute(builder: (_) => MenShoe());
       case '/bagpage':
         return MaterialPageRoute(builder: (_) => LadiesBag());
 
-      case '/shoedetails':
+      case '/menDetails':
         return MaterialPageRoute(
-            builder: (_) => MenShoesDetailPage(
+            builder: (_) => MenShoeDetailPage(
                   detail: args,
                 ));
-      case '/ladiesdetails':
+      case '/ladiesDetails':
         return MaterialPageRoute(
             builder: (_) => LadiesBagDetailsPage(
                   detail: args,
