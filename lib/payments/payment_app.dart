@@ -361,7 +361,7 @@ class _PaymentAppState extends ConsumerState {
                         child: InkWell(
                           onTap: () {
                             if (final_price > 0) {
-                              double dollar = amount * 83.17;
+                              double dollar = amount * 84;
                               var options = {
                                 'key': 'rzp_test_rZVf4rZ90TsWfh',
                                 'amount': 100 * dollar,
