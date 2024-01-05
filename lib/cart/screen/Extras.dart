@@ -15,28 +15,28 @@ class Extras extends ConsumerWidget {
       ExtraItems(
           name: "Hot Chocolate",
           image: "assets/images/hot_choc.jpg",
-          price: 12),
+          price: 12.0),
       ExtraItems(
           name: "Aloo Snacks",
           image: "assets/images/Aloo_snacks.jpg",
-          price: 23),
+          price: 23.0),
       ExtraItems(
-          name: "Dahi Vada", image: "assets/images/Dahi_Vada.jpg", price: 40)
+          name: "Dahi Vada", image: "assets/images/Dahi_Vada.jpg", price: 40.0)
     ];
     final b = [
       ExtraItems(
           coffee: false,
-          price: 12,
+          price: 12.0,
           image: "assets/images/MenShoes/TESTONI SHOES.png",
           name: "Testoni"),
       ExtraItems(
           coffee: false,
-          price: 23,
+          price: 23.0,
           image: "assets/images/MenShoes/MOLECULE SHOE.png",
           name: "Molecule"),
       ExtraItems(
           coffee: false,
-          price: 20,
+          price: 20.0,
           image: "assets/images/MenShoes/NIKE AIR MAG 2016.png",
           name: "AIR jordans 2016")
     ];

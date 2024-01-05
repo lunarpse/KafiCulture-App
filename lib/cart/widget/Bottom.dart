@@ -134,7 +134,7 @@ class Bottom extends ConsumerWidget {
                       .watch(TipProvider.notifier)
                       .setgst(double.parse(gst.toStringAsFixed(2)));
 
-                  Navigator.push(
+                  Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                           builder: (context) => PaymentApp(

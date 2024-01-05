@@ -59,23 +59,18 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
         ? ref.watch(CartProvider)
         : ref.watch(CargoProvider);
 
-    double addonprice = 0;
-    for (int i = 0; i < data.length; i++) {
-      addonprice +=
-          data[i]["addons"] == null ? 0 : data[i]["addons"]["addonprice"];
-    }
     double gst = ref.watch(TipProvider)["gst"];
 
     final tc = data.isNotEmpty ? data.map((e) => e["cost"] * 1) : [];
 
     final double subt = tc.length != 0
-        ? tc.reduce((value, element) => value + element) + gst + addonprice
+        ? tc.reduce((value, element) => value + element) + gst
         : 0;
-
+    print("ssss $subt");
     final amount = double.parse(subt.toStringAsFixed(2));
     double final_price =
         amount - itcvalue * 0.2 - handm_value * 0.01 - airvalue * 0.5;
-
+    print(amount);
     String strPrice;
     if (final_price < 0.00) {
       strPrice = "0.00";
@@ -85,6 +80,7 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
       airEquivalent = airvalue * 0.5;
       strPrice = "\$ ${final_price.toStringAsFixed(2)}";
     }
+
     return Scaffold(
       appBar: AppbarWidget(
         coffee: widget.coffee,
@@ -397,7 +393,8 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                                 },
                               );
                             } else {
-                              Navigator.pushNamed(context, "/loading");
+                              Navigator.pushReplacementNamed(
+                                  context, "/loading");
                             }
                           },
                           child: Container(
@@ -468,7 +465,7 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
               Center(
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, "/loading");
+                    Navigator.pushReplacementNamed(context, "/loading");
                   },
                   style: ButtonStyle(
                       backgroundColor:

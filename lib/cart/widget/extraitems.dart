@@ -95,11 +95,13 @@ class ExtraItems extends ConsumerWidget {
                                       "name": name,
                                       "image": image,
                                       "price": price,
+                                      "cost": price,
                                       "quantity": 1
                                     })
                                   : ref.watch(CargoProvider.notifier).additem({
                                       "name": name,
                                       "image": image,
+                                      "cost": price,
                                       "price": price,
                                       "quantity": 1
                                     });

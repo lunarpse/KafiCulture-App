@@ -18,7 +18,8 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 4), () {
-      Navigator.pushReplacementNamed(context, "/feedback");
+      Navigator.of(context).popUntil((route) => route.isFirst);
+      Navigator.pushNamed(context, "/feedback");
     });
   }
 

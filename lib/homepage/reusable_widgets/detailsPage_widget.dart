@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
+import 'package:project_2/cart/riverpod/tipstate_provider.dart';
 import 'package:project_2/constants/color_constants.dart';
 
 import 'package:project_2/homepage/model/json_model.dart';
@@ -479,6 +480,10 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                     productName: widget.details.name,
                                     buttonName: "Pay Now",
                                     call: (value) {
+                                      double gst = value * 0.05;
+                                      ref.watch(TipProvider.notifier).setgst(
+                                          double.parse(gst.toStringAsFixed(2)));
+
                                       func.additem({
                                         "name": name,
                                         "image": "assets/images/$image.jpg",
@@ -529,6 +534,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                 productName: widget.details.name,
                                 buttonName: "Proceed",
                                 call: (value) {
+                                  print(value);
                                   func.additem({
                                     "name": name,
                                     "image": "assets/images/$image.jpg",

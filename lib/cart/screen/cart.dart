@@ -34,9 +34,7 @@ class _CartState extends ConsumerState<Cart> {
 
     final tipfee = ref.watch(TipProvider)["tip"];
 
-    final tc = data.length != 0
-        ? data.map((e) => e["price"] * e["quantity"]).toList()
-        : [];
+    final tc = data.length != 0 ? data.map((e) => e["cost"] * 1).toList() : [];
 
     final subt =
         tc.length != 0 ? tc.reduce((value, element) => value + element) : 0;

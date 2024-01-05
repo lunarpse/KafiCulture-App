@@ -58,6 +58,7 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
               textColor: drawerscreentextcolor,
               trailing: const Icon(Icons.person),
               onTap: () {
+                Navigator.of(context).pop();
                 Navigator.pushNamed(context, "/profile");
               },
             ),
@@ -69,6 +70,7 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
               textColor: drawerscreentextcolor,
               trailing: const Icon(Icons.shopping_cart),
               onTap: () {
+                Navigator.of(context).pop();
                 Navigator.pushNamed(context, "/cart");
               },
             ),
@@ -83,6 +85,7 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
               textColor: drawerscreentextcolor,
               trailing: const Icon(Icons.home),
               onTap: () {
+                Navigator.of(context).pop();
                 Navigator.pushNamed(context, "/home");
               },
             ),
@@ -115,6 +118,7 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
                           textColor: drawerscreentextcolor,
                           trailing: const Icon(Icons.breakfast_dining),
                           onTap: () {
+                            Navigator.of(context).pop();
                             Navigator.pushNamed(context, "/snacks");
                           },
                         ),
@@ -130,6 +134,7 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
                           textColor: drawerscreentextcolor,
                           trailing: const Icon(Icons.local_drink),
                           onTap: () {
+                            Navigator.of(context).pop();
                             Navigator.pushNamed(context, "/drinks");
                           },
                         ),
@@ -145,6 +150,7 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
                           textColor: drawerscreentextcolor,
                           trailing: const Icon(Icons.cookie),
                           onTap: () {
+                            Navigator.of(context).pop();
                             Navigator.pushNamed(context, "/cookies");
                           },
                         ),
@@ -167,6 +173,7 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
                             FontAwesomeIcons.shoePrints,
                           ),
                           onTap: () {
+                            Navigator.of(context).pop();
                             Navigator.pushNamed(context, "/shoepage");
                           },
                         ),
@@ -183,6 +190,7 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
                             FontAwesomeIcons.shirt,
                           ),
                           onTap: () {
+                            Navigator.of(context).pop();
                             Navigator.pushNamed(context, "/bagpage");
                           },
                         ),
