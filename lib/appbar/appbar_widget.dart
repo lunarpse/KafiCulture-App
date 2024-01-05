@@ -7,14 +7,15 @@ import 'package:project_2/cart/riverpod/cargo_state_provider.dart';
 import 'package:project_2/cart/riverpod/state_provider.dart';
 import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
-import '../cart/riverpod/switch_provider.dart';
+
 import 'package:badges/badges.dart' as badges;
 
 class AppbarWidget extends ConsumerStatefulWidget
     implements PreferredSizeWidget {
-  AppbarWidget({super.key, this.incart = true});
+  AppbarWidget({super.key, this.incart = true, this.coffee = true});
 
   final incart;
+  final coffee;
 
   @override
   ConsumerState<AppbarWidget> createState() => _AppbarWidgetState();
@@ -28,7 +29,7 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final cartItemNos = ref.watch(SwitchProvider) == true
+    final cartItemNos = widget.coffee == true
         ? ref.watch(CartProvider)
         : ref.watch(CargoProvider);
     final cartItemNo = cartItemNos.length;
@@ -42,7 +43,6 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
       title: GestureDetector(
         onTap: () {
           Navigator.pushReplacementNamed(context, "/home");
-          ref.watch(SwitchProvider.notifier).toggle(true);
         },
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -99,7 +99,9 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
                 padding: const EdgeInsets.only(right: 5),
                 child: IconButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, "/cart");
+                    widget.coffee == true
+                        ? Navigator.pushNamed(context, "/cart")
+                        : Navigator.pushNamed(context, "/cargocart");
                   },
                   icon: badges.Badge(
                     badgeContent: Text(

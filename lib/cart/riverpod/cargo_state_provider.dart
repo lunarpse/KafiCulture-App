@@ -2,6 +2,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CargoState extends StateNotifier<List> {
   CargoState() : super([]);
+
+  void empty() {
+    state = [];
+  }
+
   void additem(data) {
     print(data);
     var present;
@@ -39,10 +44,6 @@ class CargoState extends StateNotifier<List> {
     });
 
     state = nl.toList();
-  }
-
-  void empty() {
-    state = [];
   }
 
   void remove_item(String name) {

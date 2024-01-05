@@ -521,7 +521,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                     children: [
                       ElevatedButton.icon(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/cart');
+                          Navigator.pushNamed(context, '/cargocart');
                           func.additem({
                             "name": name,
                             "image": "assets/images/MenShoes/$image.png",
@@ -660,7 +660,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                   OutlinedButton.icon(
                     onPressed: () {
                       Navigator.of(context).pop();
-                      Navigator.pushNamed(context, '/cart');
+                      Navigator.pushNamed(context, '/cargocart');
                     },
                     icon: Icon(
                       Icons.shopping_cart,

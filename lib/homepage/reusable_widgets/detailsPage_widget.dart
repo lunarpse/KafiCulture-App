@@ -6,6 +6,7 @@ import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/constants/color_constants.dart';
 
 import 'package:project_2/homepage/model/json_model.dart';
+import 'package:project_2/payments/payment_app.dart';
 import 'package:readmore/readmore.dart';
 import '../../constants/text_constants.dart';
 import 'background_container_widget.dart';
@@ -486,7 +487,11 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                         "quantity": quantity
                                       });
                                       Navigator.of(context).pop();
-                                      Navigator.pushNamed(context, '/payment');
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  PaymentApp(coffee: true)));
                                     },
                                     addons: addons,
                                     finalPrice: offerPrice,

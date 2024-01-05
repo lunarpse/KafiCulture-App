@@ -21,21 +21,21 @@ import 'package:project_2/newfeature/payment_cart.dart';
 import 'package:project_2/newfeature/upi_payment.dart';
 
 import '../cart/riverpod/cargo_state_provider.dart';
-import '../cart/riverpod/switch_provider.dart';
 
 // ignore: constant_identifier_names
 enum SingingCharacter { Paytm, Amazonpay }
 
 // ignore: camel_case_types
 class PaymentApp extends ConsumerStatefulWidget {
-  const PaymentApp({super.key});
+  PaymentApp({super.key, required this.coffee});
+  final coffee;
 
   @override
   ConsumerState createState() => _PaymentAppState();
 }
 
 // ignore: camel_case_types
-class _PaymentAppState extends ConsumerState {
+class _PaymentAppState extends ConsumerState<PaymentApp> {
   // ignore: unused_field, prefer_final_fields
   SingingCharacter? _character = SingingCharacter.Paytm;
 
@@ -55,7 +55,7 @@ class _PaymentAppState extends ConsumerState {
   Widget build(BuildContext context) {
     double mediaWidth = MediaQuery.of(context).size.width;
 
-    final data = ref.watch(SwitchProvider) == true
+    final data = widget.coffee == true
         ? ref.watch(CartProvider)
         : ref.watch(CargoProvider);
 
@@ -86,7 +86,9 @@ class _PaymentAppState extends ConsumerState {
       strPrice = "\$ ${final_price.toStringAsFixed(2)}";
     }
     return Scaffold(
-      appBar: AppbarWidget(),
+      appBar: AppbarWidget(
+        coffee: widget.coffee,
+      ),
       drawer: DrawerScreen(),
       body: BackgroundContainerWidget(
         opacity: 0.3,
@@ -450,6 +452,7 @@ class _PaymentAppState extends ConsumerState {
               Padding(
                 padding: EdgeInsets.all(8.0),
                 child: UPIPayment(
+                  coffee: widget.coffee,
                   upiExpansionController: upiExpansionController,
                 ),
               ),

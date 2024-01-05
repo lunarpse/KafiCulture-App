@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:project_2/cart/riverpod/cargo_state_provider.dart';
 
 import 'package:project_2/cart/riverpod/state_provider.dart';
-import 'package:project_2/cart/riverpod/switch_provider.dart';
+
 import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
 
@@ -14,13 +14,14 @@ class ExtraItems extends ConsumerWidget {
       {required this.price,
       super.key,
       required this.image,
-      required this.name});
+      required this.name,
+      this.coffee = true});
   final image;
+  final coffee;
   final name;
   final price;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var show = ref.watch(SwitchProvider);
     return Card(
       // elevation: 0,
       color: extraitemcardcolor,
@@ -89,7 +90,7 @@ class ExtraItems extends ConsumerWidget {
                           child: IconButton(
                             mouseCursor: SystemMouseCursors.grab,
                             onPressed: () {
-                              show == true
+                              coffee == true
                                   ? ref.watch(CartProvider.notifier).additem({
                                       "name": name,
                                       "image": image,

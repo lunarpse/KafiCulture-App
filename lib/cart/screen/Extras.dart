@@ -2,13 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:project_2/cart/riverpod/switch_provider.dart';
+
 import 'package:project_2/cart/widget/extraitems.dart';
 // import 'package:project_2/hjc/cart_widget/extraitems.dart';
 
 class Extras extends ConsumerWidget {
-  Extras({super.key});
-
+  Extras({super.key, required this.coffee});
+  final coffee;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final a = [
@@ -25,14 +25,17 @@ class Extras extends ConsumerWidget {
     ];
     final b = [
       ExtraItems(
+          coffee: false,
           price: 12,
           image: "assets/images/MenShoes/TESTONI SHOES.png",
           name: "Testoni"),
       ExtraItems(
+          coffee: false,
           price: 23,
           image: "assets/images/MenShoes/MOLECULE SHOE.png",
           name: "Molecule"),
       ExtraItems(
+          coffee: false,
           price: 20,
           image: "assets/images/MenShoes/NIKE AIR MAG 2016.png",
           name: "AIR jordans 2016")
@@ -46,7 +49,7 @@ class Extras extends ConsumerWidget {
         child: ListView(
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
-          children: ref.watch(SwitchProvider) == true ? a : b,
+          children: coffee == true ? a : b,
         ));
   }
 }
