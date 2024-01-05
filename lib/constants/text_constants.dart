@@ -75,7 +75,7 @@ const String recommended = "Recommended";
 const String subtotal = "Sub-Total";
 const String totalamount = "Amount: ";
 const String orders = "Orders ";
-const String payOnDelivery = "Pay On Delivery";
+const String key = 'rzp_test_rZVf4rZ90TsWfh';
 
 //creditcardwidget
 const String validate = "Validate";

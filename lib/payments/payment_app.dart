@@ -363,10 +363,10 @@ class _PaymentAppState extends ConsumerState {
                             if (final_price > 0) {
                               double dollar = amount * 84;
                               var options = {
-                                'key': 'rzp_test_rZVf4rZ90TsWfh',
+                                'key': key,
                                 'amount': 100 * dollar,
-                                'name': 'KafiCulture',
-                                'description': 'Where every cup tells a story',
+                                'name': apptitle,
+                                'description': appslogan,
                               };
                               _razorpay.open(options);
                             } else {
