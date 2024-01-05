@@ -3,11 +3,11 @@
 import 'package:flutter/material.dart';
 
 const String heading2 = "Handcrafted Curations";
-const double heading2_fontSize = 20;
+const double heading2_fontSize = 20.5;
 const String categories1 = "Snacks";
 const String categories2 = "Drinks";
 const String categories3 = "Cookies";
-const double categories_fontSize = 17;
+const double categories_fontSize = 17.5;
 const double padding_edge = 8.0;
 const int gridView_crossAxisCount = 3;
 const double gridView_crossAxisSpacing = 20;

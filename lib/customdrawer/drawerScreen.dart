@@ -53,29 +53,6 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
             ),
             ListTile(
               title: const Text(
-                "Profile",
-                style: TextStyle(fontSize: fontsize),
-              ),
-              textColor: drawerscreentextcolor,
-              trailing: const Icon(Icons.person),
-              onTap: () {
-                Navigator.pushNamed(context, "/profile");
-              },
-            ),
-            ListTile(
-              title: const Text(
-                cart,
-                style: TextStyle(fontSize: fontsize),
-              ),
-              textColor: drawerscreentextcolor,
-              trailing: const Icon(Icons.shopping_cart),
-              onTap: () {
-                Navigator.pushNamed(context, "/cart");
-              },
-            ),
-
-            ListTile(
-              title: const Text(
                 home,
                 style: TextStyle(
                   fontSize: fontsize,
@@ -87,10 +64,21 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
                 Navigator.pushNamed(context, "/home");
               },
             ),
+            ListTile(
+              title: const Text(
+                "Profile",
+                style: TextStyle(fontSize: fontsize),
+              ),
+              textColor: drawerscreentextcolor,
+              trailing: const Icon(Icons.person),
+              onTap: () {
+                Navigator.pushNamed(context, "/profile");
+              },
+            ),
+
             Theme(
               data: Theme.of(context).copyWith(
                 dividerColor: drawerscreendividercolor,
-                //listTileTheme: ListTileThemeData(tileColor: color)
               ),
               child: ExpansionTile(
                 title: const Text(
@@ -156,8 +144,10 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
                     ],
                   ),
                   ExpansionTile(
-                    title: const Text(apparels,
-                        style: TextStyle(fontSize: fontsize2)),
+                    title: const Text(
+                      apparels,
+                      style: TextStyle(fontSize: fontsize2),
+                    ),
                     children: [
                       Container(
                         decoration: BoxDecoration(gradient: colorr),

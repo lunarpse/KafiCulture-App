@@ -47,7 +47,7 @@ class HandCraftedWidget extends StatelessWidget {
                   categories1,
                   style: TextStyle(
                       fontSize: categories_fontSize,
-                      fontWeight: FontWeight.bold),
+                      fontWeight: FontWeight.w800),
                 ),
               ],
             ),

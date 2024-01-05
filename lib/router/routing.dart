@@ -18,8 +18,11 @@ import 'package:project_2/homepage/pages/home_page/latest_offerings/offerings_de
 import 'package:project_2/homepage/pages/home_page/populars/popular_details_page.dart';
 import 'package:project_2/payments/payment_app.dart';
 import 'package:project_2/splashscreen/splash_screen.dart';
-import '../my orders/order_page.dart';
+import '../profile/address/address.dart';
+import '../profile/help/help.dart';
+import '../profile/my orders/order_page.dart';
 import '../profile/profile.dart';
+import '../profile/wishlist/wishlist.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -90,6 +93,12 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => Profile());
       case '/myOrders':
         return MaterialPageRoute(builder: (_) => MyOrders());
+      case '/wishlist':
+        return MaterialPageRoute(builder: (_) => Wishlist());
+      case '/help':
+        return MaterialPageRoute(builder: (_) => Help());
+      case '/address':
+        return MaterialPageRoute(builder: (_) => Address());
     }
 
     throw AboutListTile();

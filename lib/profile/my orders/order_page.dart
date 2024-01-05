@@ -5,7 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/customdrawer/drawerScreen.dart';
 
-import '../homepage/reusable_widgets/background_container_widget.dart';
+import '../../homepage/reusable_widgets/background_container_widget.dart';
 
 class MyOrders extends StatelessWidget {
   const MyOrders({super.key});
@@ -13,13 +13,12 @@ class MyOrders extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppbarWidget(),
       drawer: DrawerScreen(),
       body: BackgroundContainerWidget(
         opacity: 0.7,
-        x: 2.0,
-        y: 2.0,
+        x: 4.0,
+        y: 4.0,
         child: ListView.builder(
           physics: BouncingScrollPhysics(),
           itemCount: 2,
@@ -111,13 +110,6 @@ class MyOrders extends StatelessWidget {
                               ],
                             ),
                           ),
-                          IconButton(
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.arrow_forward_ios,
-                                size: 16,
-                                color: Color.fromRGBO(107, 49, 20, 1),
-                              ))
                         ],
                       ),
                       SizedBox(

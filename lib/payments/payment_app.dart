@@ -89,9 +89,9 @@ class _PaymentAppState extends ConsumerState {
       appBar: AppbarWidget(),
       drawer: DrawerScreen(),
       body: BackgroundContainerWidget(
-        opacity: 0.3,
-        x: 7.0,
-        y: 7.0,
+        opacity: 0.5,
+        x: 6.0,
+        y: 6.0,
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

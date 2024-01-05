@@ -73,9 +73,9 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
     addons = widget.details.addons;
 
     return BackgroundContainerWidget(
-      opacity: 0.4,
-      x: 8.0,
-      y: 8.0,
+      opacity: 0.5,
+      x: 5.0,
+      y: 5.0,
       child: Padding(
         padding: EdgeInsets.only(left: 10, top: 10, right: 10),
         child: Container(
@@ -288,7 +288,10 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                               child: ReadMoreText(
                                 description,
                                 style: TextStyle(
-                                    color: detailstextcolor, fontSize: 17),
+                                  color: detailstextcolor,
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w500,
+                                ),
                                 trimLines: 2,
                                 trimMode: TrimMode.Line,
                                 moreStyle: TextStyle(
@@ -547,7 +550,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                         label: Text(
                           addtocart,
                           style: TextStyle(
-                              fontSize: 17,
+                              fontSize: 18,
                               fontWeight: FontWeight.w700,
                               color: detailsaddtocartbuttoncolor),
                         ),

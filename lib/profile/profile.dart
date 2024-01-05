@@ -1,13 +1,21 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/customdrawer/drawerScreen.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 import 'package:project_2/profile/profile_menu_item.dart';
 
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget {
   const Profile({super.key});
+
+  @override
+  State<Profile> createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> {
+  bool _customIcon = false;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +23,7 @@ class Profile extends StatelessWidget {
       appBar: AppbarWidget(),
       drawer: DrawerScreen(),
       body: BackgroundContainerWidget(
-        opacity: 0.7,
+        opacity: 0.9,
         x: 2.0,
         y: 2.0,
         child: Padding(
@@ -143,19 +151,77 @@ class Profile extends StatelessWidget {
                       },
                     ),
                     ProfileMenuItem(
-                      title: "Saved Recipes",
+                      title: "Wishlist",
                       iconName: Icons.bookmark,
-                      pressed: () {},
+                      pressed: () {
+                        Navigator.pushNamed(context, "/wishlist");
+                      },
                     ),
-                    ProfileMenuItem(
-                      title: "Settings",
-                      iconName: Icons.settings,
-                      pressed: () {},
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 7),
+                      child: ExpansionTile(
+                        leading: Icon(
+                          Icons.settings,
+                          size: 26,
+                          color: Color.fromRGBO(107, 49, 20, 1),
+                        ),
+                        title: Text(
+                          "Settings",
+                          style: TextStyle(
+                            fontSize: 19,
+                            fontWeight: FontWeight.w600,
+                            color: Color.fromRGBO(107, 49, 20, 1),
+                          ),
+                        ),
+                        trailing: Icon(
+                          _customIcon
+                              ? FontAwesomeIcons.angleDown
+                              : FontAwesomeIcons.angleUp,
+                          size: 18,
+                          color: _customIcon
+                              ? Colors.cyan
+                              : Color.fromRGBO(107, 49, 20, 1),
+                        ),
+                        onExpansionChanged: (bool expanded) {
+                          setState(() => _customIcon = expanded);
+                        },
+                        children: [
+                          InkWell(
+                            onTap: () =>
+                                Navigator.pushNamed(context, "/address"),
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: ListTile(
+                                  leading: Icon(
+                                    FontAwesomeIcons.mapLocationDot,
+                                    size: 23,
+                                    color: Color.fromRGBO(107, 49, 20, 1),
+                                  ),
+                                  title: Text(
+                                    "Address",
+                                    style: TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.bold,
+                                      color: Color.fromRGBO(107, 49, 20, 1),
+                                    ),
+                                  ),
+                                  trailing: Icon(
+                                    FontAwesomeIcons.angleRight,
+                                    size: 17,
+                                    color: Color.fromRGBO(107, 49, 20, 1),
+                                  )),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     ProfileMenuItem(
                       title: "Help",
                       iconName: Icons.info,
-                      pressed: () {},
+                      pressed: () {
+                        Navigator.pushNamed(context, "/help");
+                      },
                     ),
                   ],
                 ),
