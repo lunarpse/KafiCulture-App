@@ -42,7 +42,7 @@ class _MyWidgetState extends ConsumerState<PaymentCart> {
             : Container(
                 padding: EdgeInsets.all(8),
                 width: double.infinity,
-                height: 120,
+                height: 80,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: paymentcartdeccolor,

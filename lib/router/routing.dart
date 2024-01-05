@@ -6,6 +6,7 @@ import 'package:project_2/Cargo/women/ladies_bag.dart';
 import 'package:project_2/Cargo/women/ladies_bag_details_page.dart';
 import 'package:project_2/cart/screen/cart.dart';
 import 'package:project_2/feedBack/FeedBack_page.dart';
+import 'package:project_2/homepage/widgets/checking.dart';
 import 'package:project_2/loading/loadingScreen.dart';
 import 'package:project_2/homepage/pages/handcraft/cookies/cookies_page.dart';
 import 'package:project_2/homepage/pages/handcraft/cookies/cookies_page_details.dart';
@@ -48,6 +49,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => DrinksPage());
       case '/cookies':
         return MaterialPageRoute(builder: (_) => CookiesPage());
+      case '/checking':
+        return MaterialPageRoute(builder: (_) => Checking());
       case '/cookiesdetails':
         return MaterialPageRoute(
             builder: (_) => CookiesPageDetails(
