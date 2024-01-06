@@ -1,29 +1,21 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import "package:flutter/material.dart";
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:project_2/cart/riverpod/order_provider.dart';
 import 'package:project_2/cart/riverpod/state_provider.dart';
 import 'package:project_2/cart/riverpod/tipstate_provider.dart';
 import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
-
 import 'package:project_2/customdrawer/drawerScreen.dart';
-
 import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 import 'package:project_2/newfeature/amount.dart';
-
-import 'package:project_2/newfeature/card_payment.dart';
 import 'package:project_2/newfeature/company_name.dart';
-import 'package:project_2/newfeature/mypopUp.dart';
 import 'package:project_2/newfeature/payment_cart.dart';
-import 'package:project_2/newfeature/upi_payment.dart';
-
 import '../cart/riverpod/cargo_state_provider.dart';
 
-// ignore: constant_identifier_names
-enum SingingCharacter { Paytm, Amazonpay }
+import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 // ignore: camel_case_types
 class PaymentApp extends ConsumerStatefulWidget {
@@ -37,11 +29,47 @@ class PaymentApp extends ConsumerStatefulWidget {
 // ignore: camel_case_types
 class _PaymentAppState extends ConsumerState<PaymentApp> {
   // ignore: unused_field, prefer_final_fields
-  SingingCharacter? _character = SingingCharacter.Paytm;
+  //SingingCharacter? _character = SingingCharacter.Paytm;
 
   final ExpansionTileController controller = ExpansionTileController();
   final ExpansionTileController upiExpansionController =
       ExpansionTileController();
+  final Razorpay _razorpay = Razorpay();
+
+  @override
+  void initState() {
+    _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+    _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
+    _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
+    super.initState();
+  }
+
+  void _handlePaymentSuccess(PaymentSuccessResponse response) {
+    // Do something when payment succeeds
+
+    if (widget.coffee == true) {
+      ref.read(OrderProvider.notifier).add(ref.read(CartProvider));
+      ref.read(CartProvider.notifier).empty();
+    } else {
+      ref.read(OrderProvider.notifier).add(ref.read(CargoProvider));
+      ref.read(CargoProvider.notifier).empty();
+    }
+    Navigator.pushNamed(context, "/feedback");
+  }
+
+  void _handlePaymentError(PaymentFailureResponse response) {
+    // Do something when payment fails
+  }
+
+  void _handleExternalWallet(ExternalWalletResponse response) {
+    // Do something when an external wallet was selected
+  }
+
+  @override
+  void dispose() {
+    _razorpay.clear(); // Removes all listeners
+    super.dispose();
+  }
 
   double itcvalue = 0;
   double handm_value = 0;
@@ -96,7 +124,7 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
-                height: 10,
+                height: 5,
               ),
 
               Padding(
@@ -107,7 +135,7 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: 5,
               ),
               LimitedBox(
                   maxHeight: 250,
@@ -124,25 +152,10 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
 
               //--------------------------------------------------------Amount
 
-              SizedBox(height: 15),
+              // SizedBox(height: 15),
               Divider(
                 height: 25,
                 color: paymentdivdercolor,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-
-              Padding(
-                padding: EdgeInsets.only(left: 12, right: 8),
-                child: Text(
-                  selectpaymentmethod,
-                  style: TextStyle(fontSize: 23, fontWeight: FontWeight.w500),
-                ),
-              ),
-
-              SizedBox(
-                height: 10,
               ),
 
               ExpansionTile(
@@ -154,7 +167,7 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                         paymentapplineargradient1,
                         paymentapplineargradient2,
                       ])),
-                  height: 60,
+                  height: 50,
                   width: MediaQuery.of(context).size.width,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 10.0),
@@ -235,18 +248,6 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                     ],
                   ),
                 ],
-              ),
-
-              SizedBox(
-                height: 10,
-              ),
-
-              Padding(
-                padding: EdgeInsets.only(left: 12, right: 8),
-                child: Text(
-                  selectpaymentmethod,
-                  style: TextStyle(fontSize: 23, fontWeight: FontWeight.w500),
-                ),
               ),
 
               SizedBox(
@@ -371,27 +372,16 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                         ),
                         child: InkWell(
                           onTap: () {
-                            setState(() {
-                              if (controller.isExpanded && final_price > 0) {
-                                controller.collapse();
-                                upiExpansionController.expand();
-                              } else {
-                                upiExpansionController.collapse();
-                              }
-                            });
-
                             if (final_price > 0) {
-                              showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return MyPopUp(
-                                    bgcolor1: Colors.transparent,
-                                    textMsg: swapmessage,
-                                    bottomHeight: 100,
-                                    bgcolor2: Colors.transparent,
-                                  );
-                                },
-                              );
+                              double dollar = amount * 84;
+                              var options = {
+                                'key': key,
+                                'amount': 100 * dollar,
+                                'name': apptitle,
+                                'description': appslogan,
+                              };
+
+                              _razorpay.open(options);
                             } else {
                               Navigator.pushReplacementNamed(
                                   context, "/loading");
@@ -425,57 +415,6 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                     ],
                   ),
                 ],
-              ),
-
-              //--------------------------------------------------newSwap
-
-              Divider(
-                height: 25,
-                color: paymentdivdercolor,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 12.0),
-                child: Text(
-                  otherpaymentmethod,
-                  style: TextStyle(
-                    fontSize: 23,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-              //---------------------------------------------UPI
-
-              const SizedBox(height: 10),
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: UPIPayment(
-                  coffee: widget.coffee,
-                  upiExpansionController: upiExpansionController,
-                ),
-              ),
-
-              //------------------------------------------------CardPayment
-
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: CardPayment(),
-              ),
-              const SizedBox(height: 20),
-
-              Center(
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(context, "/loading");
-                  },
-                  style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStatePropertyAll(payOnDeliveryBtn),
-                      fixedSize: MaterialStatePropertyAll(Size(360, 60))),
-                  child: Text(
-                    payOnDelivery,
-                    style: TextStyle(fontSize: 20),
-                  ),
-                ),
               ),
             ],
           ),

@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nfc_manager/nfc_manager.dart';
+import 'package:project_2/appbar/bloc/appbar_bloc.dart';
 import 'package:project_2/cart/riverpod/cargo_state_provider.dart';
 import 'package:project_2/cart/riverpod/state_provider.dart';
 import 'package:project_2/constants/color_constants.dart';
@@ -29,97 +31,116 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final cartItemNos = widget.coffee == true
-        ? ref.watch(CartProvider)
-        : ref.watch(CargoProvider);
-    final cartItemNo = cartItemNos.length;
-
-    return AppBar(
-      automaticallyImplyLeading: false,
-      flexibleSpace: Image.asset(
-        "assets/images/appbarbg4.jpg",
-        fit: BoxFit.cover,
-      ),
-      title: GestureDetector(
-        onTap: () {
+    final AppbarBloc appbarBloc = AppbarBloc();
+    return BlocConsumer<AppbarBloc, AppbarState>(
+      bloc: appbarBloc,
+      listenWhen: (previous, current) => current is AppbarActionState,
+      buildWhen: (previous, current) => current is! AppbarActionState,
+      listener: (context, state) {
+        if (state is AppbarDrawerClickedActionState) {
+          Scaffold.of(context).openDrawer();
+        } else if (state is AppbarLogoClickedActionState) {
           Navigator.pushReplacementNamed(context, "/home");
-        },
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            CircleAvatar(
-              backgroundColor: circleavatarbgcolor,
-              backgroundImage: AssetImage("assets/images/logo1.png"),
-              radius: 18,
-            ),
-            SizedBox(width: 8),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  apptitle,
-                  style: TextStyle(fontSize: 20),
-                ),
-                SizedBox(
-                  height: 3,
-                ),
-                Text(
-                  appslogan,
-                  style: TextStyle(
-                      fontFamily: 'Ephesis', fontSize: 17.5, letterSpacing: 1),
-                ),
-              ],
-            )
-          ],
-        ),
-      ),
-      leading: Builder(builder: (BuildContext context) {
-        return IconButton(
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
+        } else if (state is AppbarCartClickedActionState) {
+          Navigator.pushNamed(context, "/cart");
+        }
+      },
+      builder: (context, state) {
+        final cartItemNos = widget.coffee == true
+            ? ref.watch(CartProvider)
+            : ref.watch(CargoProvider);
+        final cartItemNo = cartItemNos.length;
+
+        return AppBar(
+          automaticallyImplyLeading: false,
+          flexibleSpace: Image.asset(
+            "assets/images/appbarbg4.jpg",
+            fit: BoxFit.cover,
+          ),
+          title: GestureDetector(
+            onTap: () {
+              Navigator.pushReplacementNamed(context, "/home");
             },
-            icon: Icon(Icons.menu));
-      }),
-      actions: [
-        InkWell(
-            onTap: _checkNFCStatus,
-            child: CircleAvatar(
-              backgroundColor: _isNFCavailable == true
-                  ? nfcCircleAvatarAvailableColor
-                  : nfcCircleAvatarNotAvailableColor,
-              radius: 14,
-              child: Icon(
-                Icons.nfc_rounded,
-                size: 22,
-                color: nfcIconColor,
-              ),
-            )),
-        widget.incart == true
-            ? Padding(
-                padding: const EdgeInsets.only(right: 5),
-                child: IconButton(
-                  onPressed: () {
-                    widget.coffee == true
-                        ? Navigator.pushNamed(context, "/cart")
-                        : Navigator.pushNamed(context, "/cargocart");
-                  },
-                  icon: badges.Badge(
-                    badgeContent: Text(
-                      "$cartItemNo",
-                      style: TextStyle(color: badgeTextColor),
-                    ),
-                    badgeAnimation: badges.BadgeAnimation.scale(),
-                    showBadge: cartItemNo == 0 ? false : true,
-                    child: Icon(Icons.shopping_cart),
-                  ),
-                  color: cartIconColor,
-                  iconSize: 27,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CircleAvatar(
+                  backgroundColor: circleavatarbgcolor,
+                  backgroundImage: AssetImage("assets/images/logo1.png"),
+                  radius: 18,
                 ),
-              )
-            : SizedBox(
-                width: 15,
-              ),
-      ],
+                SizedBox(width: 8),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      apptitle,
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    SizedBox(
+                      height: 3,
+                    ),
+                    Text(
+                      appslogan,
+                      style: TextStyle(
+                          fontFamily: 'Ephesis',
+                          fontSize: 17.5,
+                          letterSpacing: 1),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+          leading: Builder(builder: (BuildContext context) {
+            return IconButton(
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                icon: Icon(Icons.menu));
+          }),
+          actions: [
+            InkWell(
+                onTap: _checkNFCStatus,
+                child: CircleAvatar(
+                  backgroundColor: _isNFCavailable == true
+                      ? nfcCircleAvatarAvailableColor
+                      : nfcCircleAvatarNotAvailableColor,
+                  radius: 14,
+                  child: Icon(
+                    Icons.nfc_rounded,
+                    size: 22,
+                    color: nfcIconColor,
+                  ),
+                )),
+            widget.incart == true
+                ? Padding(
+                    padding: const EdgeInsets.only(right: 5),
+                    child: IconButton(
+                      onPressed: () {
+                        widget.coffee == true
+                            ? Navigator.pushNamed(context, "/cart")
+                            : Navigator.pushNamed(context, "/cargocart");
+                      },
+                      icon: badges.Badge(
+                        badgeContent: Text(
+                          "$cartItemNo",
+                          style: TextStyle(color: badgeTextColor),
+                        ),
+                        badgeAnimation: badges.BadgeAnimation.scale(),
+                        showBadge: cartItemNo == 0 ? false : true,
+                        child: Icon(Icons.shopping_cart),
+                      ),
+                      color: cartIconColor,
+                      iconSize: 27,
+                    ),
+                  )
+                : SizedBox(
+                    width: 15,
+                  ),
+          ],
+        );
+      },
     );
   }
 
