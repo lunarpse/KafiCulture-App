@@ -1,7 +1,8 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
+import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/constants/color_constants.dart';
 
 import 'package:project_2/homepage/model/json_model.dart';
@@ -35,7 +36,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    double appBarHeight = AppBar().preferredSize.height;
+    double appBarHeight = AppbarWidget().preferredSize.height;
     final screenHeight = MediaQuery.of(context).size.height;
     final bodyHeight = screenHeight - appBarHeight;
     final bodyWidth = MediaQuery.of(context).size.width;
@@ -72,16 +73,16 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
     addons = widget.details.addons;
 
     return BackgroundContainerWidget(
-      opacity: 0.6,
-      x: 8.0,
-      y: 8.0,
+      opacity: 0.5,
+      x: 5.0,
+      y: 5.0,
       child: Padding(
         padding: EdgeInsets.only(left: 10, top: 10, right: 10),
         child: Container(
           height: bodyHeight,
           width: bodyWidth,
           decoration: BoxDecoration(
-              color: Colors.white,
+              color: Colors.transparent,
               borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
           child: Stack(
             children: [
@@ -266,7 +267,6 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
               Positioned(
                   top: bodyHeight / 2 - 62,
                   child: Container(
-                    color: detailsiconbuttoncolor,
                     height: bodyHeight / 2 - 66,
                     width: bodyWidth - 20,
                     child: ListView(
@@ -288,7 +288,10 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                               child: ReadMoreText(
                                 description,
                                 style: TextStyle(
-                                    color: detailstextcolor, fontSize: 17),
+                                  color: detailstextcolor,
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w500,
+                                ),
                                 trimLines: 2,
                                 trimMode: TrimMode.Line,
                                 moreStyle: TextStyle(
@@ -547,7 +550,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                         label: Text(
                           addtocart,
                           style: TextStyle(
-                              fontSize: 17,
+                              fontSize: 18,
                               fontWeight: FontWeight.w700,
                               color: detailsaddtocartbuttoncolor),
                         ),

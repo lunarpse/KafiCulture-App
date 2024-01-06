@@ -53,18 +53,6 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
             ),
             ListTile(
               title: const Text(
-                cart,
-                style: TextStyle(fontSize: fontsize),
-              ),
-              textColor: drawerscreentextcolor,
-              trailing: const Icon(Icons.shopping_cart),
-              onTap: () {
-                Navigator.pushReplacementNamed(context, "/cart");
-              },
-            ),
-
-            ListTile(
-              title: const Text(
                 home,
                 style: TextStyle(
                   fontSize: fontsize,
@@ -73,13 +61,24 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
               textColor: drawerscreentextcolor,
               trailing: const Icon(Icons.home),
               onTap: () {
-                Navigator.pushReplacementNamed(context, "/home");
+                Navigator.pushNamed(context, "/home");
               },
             ),
+            ListTile(
+              title: const Text(
+                profile,
+                style: TextStyle(fontSize: fontsize),
+              ),
+              textColor: drawerscreentextcolor,
+              trailing: const Icon(Icons.person),
+              onTap: () {
+                Navigator.pushNamed(context, "/profile");
+              },
+            ),
+
             Theme(
               data: Theme.of(context).copyWith(
                 dividerColor: drawerscreendividercolor,
-                //listTileTheme: ListTileThemeData(tileColor: color)
               ),
               child: ExpansionTile(
                 title: const Text(
@@ -106,7 +105,7 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
                           trailing: const Icon(Icons.breakfast_dining),
                           onTap: () {
                             func.toggle(true);
-                            Navigator.pushReplacementNamed(context, "/snacks");
+                            Navigator.pushNamed(context, "/snacks");
                           },
                         ),
                       ),
@@ -122,7 +121,7 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
                           trailing: const Icon(Icons.local_drink),
                           onTap: () {
                             func.toggle(true);
-                            Navigator.pushReplacementNamed(context, "/drinks");
+                            Navigator.pushNamed(context, "/drinks");
                           },
                         ),
                       ),
@@ -138,15 +137,17 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
                           trailing: const Icon(Icons.cookie),
                           onTap: () {
                             func.toggle(true);
-                            Navigator.pushReplacementNamed(context, "/cookies");
+                            Navigator.pushNamed(context, "/cookies");
                           },
                         ),
                       ),
                     ],
                   ),
                   ExpansionTile(
-                    title: const Text(apparels,
-                        style: TextStyle(fontSize: fontsize2)),
+                    title: const Text(
+                      apparels,
+                      style: TextStyle(fontSize: fontsize2),
+                    ),
                     children: [
                       Container(
                         decoration: BoxDecoration(gradient: colorr),
@@ -161,8 +162,7 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
                           ),
                           onTap: () {
                             func.toggle(false);
-                            Navigator.pushReplacementNamed(
-                                context, "/shoepage");
+                            Navigator.pushNamed(context, "/shoepage");
                           },
                         ),
                       ),
@@ -179,7 +179,7 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
                           ),
                           onTap: () {
                             func.toggle(false);
-                            Navigator.pushReplacementNamed(context, "/bagpage");
+                            Navigator.pushNamed(context, "/bagpage");
                           },
                         ),
                       ),

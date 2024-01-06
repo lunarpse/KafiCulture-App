@@ -1,1 +1,0 @@
-enum SingingCharacter { Paytm, Amazonpay }
