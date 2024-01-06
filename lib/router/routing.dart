@@ -2,14 +2,12 @@
 import 'package:flutter/material.dart';
 import 'package:project_2/Cargo/men/men_shoes.dart';
 import 'package:project_2/Cargo/men/men_shoes_details_page.dart';
-
 import 'package:project_2/Cargo/women/ladies_bag.dart';
 import 'package:project_2/Cargo/women/ladies_bag_details_page.dart';
 import 'package:project_2/cart/screen/cart.dart';
 import 'package:project_2/feedBack/FeedBack_page.dart';
 import 'package:project_2/homepage/widgets/checking.dart';
 import 'package:project_2/loading/loadingScreen.dart';
-
 import 'package:project_2/homepage/pages/handcraft/cookies/cookies_page.dart';
 import 'package:project_2/homepage/pages/handcraft/cookies/cookies_page_details.dart';
 import 'package:project_2/homepage/pages/handcraft/drinks/drinks_page.dart';
@@ -21,6 +19,11 @@ import 'package:project_2/homepage/pages/home_page/latest_offerings/offerings_de
 import 'package:project_2/homepage/pages/home_page/populars/popular_details_page.dart';
 import 'package:project_2/payments/payment_app.dart';
 import 'package:project_2/splashscreen/splash_screen.dart';
+import '../profile/address/address.dart';
+import '../profile/help/help.dart';
+import '../profile/myOrders/order_page.dart';
+import '../profile/profile.dart';
+import '../profile/wishlist/wishlist.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -38,8 +41,6 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => FeedBackPage());
       case '/home':
         return MaterialPageRoute(builder: (_) => HomePage());
-      // case '/login':
-      //   return MaterialPageRoute(builder: (_) => Login());
       case '/payment':
         return MaterialPageRoute(builder: (_) => PaymentApp());
       case '/snacks':
@@ -90,6 +91,17 @@ class RouteGenerator {
             builder: (_) => LadiesBagDetailsPage(
                   detail: args,
                 ));
+
+      case '/profile':
+        return MaterialPageRoute(builder: (_) => Profile());
+      case '/myOrders':
+        return MaterialPageRoute(builder: (_) => MyOrders());
+      case '/wishlist':
+        return MaterialPageRoute(builder: (_) => Wishlist());
+      case '/help':
+        return MaterialPageRoute(builder: (_) => Help());
+      case '/address':
+        return MaterialPageRoute(builder: (_) => Address());
     }
 
     throw AboutListTile();

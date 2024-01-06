@@ -18,7 +18,6 @@ class MyPopUp extends StatefulWidget {
   final Color bgcolor1;
   final Color bgcolor2;
   final String textMsg;
-
   final double bottomHeight;
 
   @override
