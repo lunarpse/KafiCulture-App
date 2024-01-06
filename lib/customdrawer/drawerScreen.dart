@@ -89,10 +89,21 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
                 Navigator.pushNamed(context, "/home");
               },
             ),
+            ListTile(
+              title: const Text(
+                profile,
+                style: TextStyle(fontSize: fontsize),
+              ),
+              textColor: drawerscreentextcolor,
+              trailing: const Icon(Icons.person),
+              onTap: () {
+                Navigator.pushNamed(context, "/profile");
+              },
+            ),
+
             Theme(
               data: Theme.of(context).copyWith(
                 dividerColor: drawerscreendividercolor,
-                //listTileTheme: ListTileThemeData(tileColor: color)
               ),
               child: ExpansionTile(
                 title: const Text(
@@ -158,8 +169,10 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
                     ],
                   ),
                   ExpansionTile(
-                    title: const Text(apparels,
-                        style: TextStyle(fontSize: fontsize2)),
+                    title: const Text(
+                      apparels,
+                      style: TextStyle(fontSize: fontsize2),
+                    ),
                     children: [
                       Container(
                         decoration: BoxDecoration(gradient: colorr),

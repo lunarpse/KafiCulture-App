@@ -37,8 +37,8 @@ const String cookinginstruction = " Add Cooking Instructions";
 const String extraslogan = "Discover the artistry of flavors";
 
 //-----------------------------------------------> drawerScreen
-const String cart = "Cart";
 const String home = "Home";
+const String profile = "Profile";
 const String categories = "Categories";
 const String food = "Food";
 const String snacks = "Snacks";
@@ -47,6 +47,19 @@ const String cookies = "Cookies";
 const String apparels = "Apparels";
 const String apparelsmen = "Men";
 const String apparelswomen = "Women";
+
+//-----------------------------------------------> drawerScreen
+//--------------------------------------------->Profile
+const String profileHeadingText = "Profile";
+const String editButtonName = "Edit";
+const String myorderText = "My Orders";
+const String wishlistText = "Wishlist";
+const String settingsText = "Settings";
+const String addressText = "Address";
+const String helpText = "Help";
+
+//----->Profile---->widgets---->
+const String comingsoonText = "Feature Coming Soon..";
 
 //-------------------------------------------------------------> Feedbackpage
 const String orderconfirmation = "Did You Received Your Order?";
@@ -102,6 +115,7 @@ const String cartconfirmationmsg = "is added to cart";
 const String detailscart = "Cart";
 const String continueshopping = "Continue Shopping";
 const String detaildescription = "Description";
+const String cart = "Cart";
 
 //extras
 const String extraitem1 = "Hot Chocolate";

@@ -3,23 +3,26 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/customdrawer/drawerScreen.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 import 'package:project_2/profile/profile_menu_item.dart';
 
+import '../constants/color_constants.dart';
+import '../constants/text_constants.dart';
+
 class Profile extends StatefulWidget {
-  Profile({super.key});
+  const Profile({super.key});
 
   @override
   State<Profile> createState() => _ProfileState();
 }
 
 class _ProfileState extends State<Profile> {
+  bool _customIcon = false;
   var name = "John Doe";
-
   var email = "johndoe@gmail.com";
-
   @override
   Widget build(BuildContext context) {
     var namecontroller = TextEditingController(text: name);
@@ -28,7 +31,7 @@ class _ProfileState extends State<Profile> {
       appBar: AppbarWidget(),
       drawer: DrawerScreen(),
       body: BackgroundContainerWidget(
-        opacity: 0.7,
+        opacity: 0.9,
         x: 2.0,
         y: 2.0,
         child: Padding(
@@ -38,7 +41,7 @@ class _ProfileState extends State<Profile> {
               Container(
                 height: 330,
                 decoration: BoxDecoration(
-                    color: Colors.transparent,
+                    color: firstContainerColor,
                     borderRadius:
                         BorderRadius.vertical(top: Radius.circular(20))),
                 child: Stack(
@@ -49,11 +52,11 @@ class _ProfileState extends State<Profile> {
                           alignment: AlignmentDirectional(0, -0.8),
                           height: 330 / 2,
                           child: Text(
-                            "Profile",
+                            profileHeadingText,
                             style: TextStyle(
                               fontSize: 21,
                               fontWeight: FontWeight.w600,
-                              color: Color.fromRGBO(107, 49, 20, 1),
+                              color: profileHeadingTextColor,
                             ),
                           ),
                         ),
@@ -62,13 +65,12 @@ class _ProfileState extends State<Profile> {
                           decoration: BoxDecoration(
                               boxShadow: [
                                 BoxShadow(
-                                    color: Colors.grey,
+                                    color: boxShadowColor,
                                     blurRadius: 4,
                                     spreadRadius: 2,
                                     offset: Offset(0, 2))
                               ],
-                              // color: Color.fromRGBO(137, 71, 37, 1),
-                              color: Color.fromRGBO(134, 67, 33, 1),
+                              color: secondContainerColor,
                               borderRadius: BorderRadius.vertical(
                                   top: Radius.circular(20))),
                         ),
@@ -89,24 +91,25 @@ class _ProfileState extends State<Profile> {
                                       AssetImage("assets/images/profile.png"),
                                   fit: BoxFit.cover,
                                 ),
-                                border:
-                                    Border.all(color: Colors.white, width: 6)),
+                                border: Border.all(
+                                    color: circularImageBorderColor, width: 6)),
                           ),
                           SizedBox(
                             height: 15,
                           ),
                           Text(
-                            name,
-                            style: TextStyle(fontSize: 22, color: Colors.white),
+                            namecontroller.text,
+                            style:
+                                TextStyle(fontSize: 22, color: userNameColor),
                           ),
                           SizedBox(
                             height: 2,
                           ),
                           Text(
-                            email,
+                            emailcontroller.text,
                             style: TextStyle(
                               fontSize: 16,
-                              color: Colors.white,
+                              color: userGmailColor,
                             ),
                           ),
                           TextButton.icon(
@@ -157,13 +160,13 @@ class _ProfileState extends State<Profile> {
                               icon: Icon(
                                 Icons.edit,
                                 size: 15,
-                                color: Colors.cyan,
+                                color: editButtonIconColor,
                               ),
                               label: Text(
-                                "Edit",
+                                editButtonName,
                                 style: TextStyle(
                                   fontSize: 14,
-                                  color: Colors.cyan,
+                                  color: editButtonColor,
                                 ),
                               ))
                         ],
@@ -175,16 +178,16 @@ class _ProfileState extends State<Profile> {
               Container(
                 height: 370,
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: bigContainerColor,
                     boxShadow: [
                       BoxShadow(
-                          color: Colors.grey,
+                          color: boxShadowColor,
                           blurRadius: 4,
                           spreadRadius: 2,
                           offset: Offset(0, 2))
                     ],
                     border: Border.all(
-                      color: Color.fromRGBO(137, 71, 37, 1),
+                      color: bigContainerBorderColor,
                       width: 1,
                     ),
                     borderRadius:
@@ -192,26 +195,84 @@ class _ProfileState extends State<Profile> {
                 child: Column(
                   children: [
                     ProfileMenuItem(
-                      title: "My Orders",
+                      title: myorderText,
                       iconName: Icons.shopping_bag,
                       pressed: () {
                         Navigator.pushNamed(context, "/myOrders");
                       },
                     ),
                     ProfileMenuItem(
-                      title: "Saved Recipes",
+                      title: wishlistText,
                       iconName: Icons.bookmark,
-                      pressed: () {},
+                      pressed: () {
+                        Navigator.pushNamed(context, "/wishlist");
+                      },
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 7),
+                      child: ExpansionTile(
+                        leading: Icon(
+                          Icons.settings,
+                          size: 26,
+                          color: settingsIconColor,
+                        ),
+                        title: Text(
+                          settingsText,
+                          style: TextStyle(
+                            fontSize: 19,
+                            fontWeight: FontWeight.w600,
+                            color: settingsTextColor,
+                          ),
+                        ),
+                        trailing: Icon(
+                          _customIcon
+                              ? FontAwesomeIcons.angleUp
+                              : FontAwesomeIcons.angleDown,
+                          size: 18,
+                          color: _customIcon
+                              ? angleUpIconColor
+                              : angleDownIconColor,
+                        ),
+                        onExpansionChanged: (bool expanded) {
+                          setState(() => _customIcon = expanded);
+                        },
+                        children: [
+                          InkWell(
+                            onTap: () =>
+                                Navigator.pushNamed(context, "/address"),
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: ListTile(
+                                  leading: Icon(
+                                    FontAwesomeIcons.mapLocationDot,
+                                    size: 23,
+                                    color: addressTextIconColor,
+                                  ),
+                                  title: Text(
+                                    addressText,
+                                    style: TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.bold,
+                                      color: addressTextColor,
+                                    ),
+                                  ),
+                                  trailing: Icon(
+                                    FontAwesomeIcons.angleRight,
+                                    size: 17,
+                                    color: SettingsangleRightIconColor,
+                                  )),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     ProfileMenuItem(
-                      title: "Settings",
-                      iconName: Icons.settings,
-                      pressed: () {},
-                    ),
-                    ProfileMenuItem(
-                      title: "Help",
+                      title: helpText,
                       iconName: Icons.info,
-                      pressed: () {},
+                      pressed: () {
+                        Navigator.pushNamed(context, "/help");
+                      },
                     ),
                   ],
                 ),

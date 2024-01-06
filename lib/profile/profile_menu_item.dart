@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../constants/color_constants.dart';
 
 class ProfileMenuItem extends StatelessWidget {
   const ProfileMenuItem(
@@ -23,20 +26,20 @@ class ProfileMenuItem extends StatelessWidget {
             leading: Icon(
               iconName,
               size: 26,
-              color: Color.fromRGBO(107, 49, 20, 1),
+              color: leadingIconColor,
             ),
             title: Text(
               title,
               style: TextStyle(
                 fontSize: 19,
                 fontWeight: FontWeight.w600,
-                color: Color.fromRGBO(107, 49, 20, 1),
+                color: titleColor,
               ),
             ),
             trailing: Icon(
-              Icons.arrow_forward_ios,
+              FontAwesomeIcons.angleRight,
               size: 18,
-              color: Color.fromRGBO(107, 49, 20, 1),
+              color: trailingIconColor,
             )),
       ),
     );
