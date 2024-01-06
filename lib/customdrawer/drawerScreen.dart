@@ -1,25 +1,30 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:project_2/cart/riverpod/switch_provider.dart';
 import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
 
 // ignore: camel_case_types
-class DrawerScreen extends StatefulWidget {
+class DrawerScreen extends ConsumerStatefulWidget {
   const DrawerScreen({
     super.key,
   });
 
   @override
-  State<DrawerScreen> createState() => _DrawerScreenState();
+  ConsumerState<DrawerScreen> createState() => _DrawerScreenState();
 }
 
-class _DrawerScreenState extends State<DrawerScreen> {
+class _DrawerScreenState extends ConsumerState<DrawerScreen> {
   var colorr = LinearGradient(colors: [
     drawerscreenlineargradientcolor,
     drawerscreenlineargradientcolor1,
   ]);
   @override
   Widget build(BuildContext context) {
+    final func = ref.watch(SwitchProvider.notifier);
     const double fontsize = 22;
     const double fontsize2 = 19.6;
     const double fontsize3 = 17.2;
@@ -100,6 +105,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                           textColor: drawerscreentextcolor,
                           trailing: const Icon(Icons.breakfast_dining),
                           onTap: () {
+                            func.toggle(true);
                             Navigator.pushReplacementNamed(context, "/snacks");
                           },
                         ),
@@ -115,6 +121,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                           textColor: drawerscreentextcolor,
                           trailing: const Icon(Icons.local_drink),
                           onTap: () {
+                            func.toggle(true);
                             Navigator.pushReplacementNamed(context, "/drinks");
                           },
                         ),
@@ -130,6 +137,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                           textColor: drawerscreentextcolor,
                           trailing: const Icon(Icons.cookie),
                           onTap: () {
+                            func.toggle(true);
                             Navigator.pushReplacementNamed(context, "/cookies");
                           },
                         ),
@@ -152,6 +160,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                             FontAwesomeIcons.shoePrints,
                           ),
                           onTap: () {
+                            func.toggle(false);
                             Navigator.pushReplacementNamed(
                                 context, "/shoepage");
                           },
@@ -165,10 +174,11 @@ class _DrawerScreenState extends State<DrawerScreen> {
                             style: TextStyle(fontSize: fontsize3),
                           ),
                           textColor: drawerscreentextcolor,
-                          trailing: const FaIcon(
-                            FontAwesomeIcons.bagShopping,
+                          trailing: FaIcon(
+                            FontAwesomeIcons.shirt,
                           ),
                           onTap: () {
+                            func.toggle(false);
                             Navigator.pushReplacementNamed(context, "/bagpage");
                           },
                         ),

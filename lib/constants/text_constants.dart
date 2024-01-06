@@ -1,11 +1,14 @@
-import 'package:flutter/material.dart';
-
 //appbar
 const String apptitle = "KAFICULTURE";
 const String appslogan = "Where every cup tells a story";
 const String readyToScan = "Ready to Scan";
 const String moveTheNFC = "Move the NFC tag to the back of your phone";
 const String ok = "OK";
+const String dialogTitle = "NFC not enabled or No NFC service";
+const String dialogContent =
+    "Please enable NFC in your device settings or this device does not support NFC feature.";
+
+//--------------------------------------------------> Cart
 //cart-->screen-->cart
 const String popular = "Populars";
 
@@ -33,7 +36,7 @@ const String cookinginstruction = " Add Cooking Instructions";
 //cart-->widget-->extraitems
 const String extraslogan = "Discover the artistry of flavors";
 
-//drawerScreen
+//-----------------------------------------------> drawerScreen
 const String cart = "Cart";
 const String home = "Home";
 const String categories = "Categories";
@@ -45,7 +48,7 @@ const String apparels = "Apparels";
 const String apparelsmen = "Men";
 const String apparelswomen = "Women";
 
-//Feedbackpage
+//-------------------------------------------------------------> Feedbackpage
 const String orderconfirmation = "Did You Received Your Order?";
 const String yes = "Yes";
 const String no = "No";
@@ -64,9 +67,6 @@ const String offering = "Latest  Offerings";
 const String handcrafted = "Handcrafted Curations";
 const String populars = "Populars";
 
-//loadingscreen
-const String processingg= "Processing";
-
 //paymentScreen
 const String cardpayment = "Credit/Debit Cards";
 const String thankyou = "Thank You";
@@ -74,6 +74,8 @@ const String selectpaymentmethod = "Select Payment Method";
 const String recommended = "Recommended";
 const String subtotal = "Sub-Total";
 const String totalamount = "Amount: ";
+const String orders = "Orders ";
+const String payOnDelivery = "Pay On Delivery";
 
 //creditcardwidget
 const String validate = "Validate";
@@ -86,6 +88,7 @@ const String hotel3 = "Emirates";
 const String swapmessage = "Thank you for using SWAP \n Continue with UPI/Card";
 const String confirm = "Confirm";
 const String otherpaymentmethod = "Other Payment Method";
+
 //dialogbox
 const String addon = "Addons";
 const String currentitem = "CURRENT ITEM";
@@ -104,3 +107,15 @@ const String detaildescription = "Description";
 const String extraitem1 = "Hot Chocolate";
 const String extraitem2 = "Aloo Snacks";
 const String extraitem3 = "Dahi Vada";
+
+//------------------------------------------------------------------> Cargo
+//Cargo--->men/women--->widget
+const String descriptionText = "Description";
+const String sizeText1 = "Size - ";
+const String sizeText2 = "UK/India";
+const String suggestionText = "Customers also liked";
+const String buttonName1 = "Buy Now";
+const String buttonName2 = "Add To Cart";
+const String buttomsheetText = "is addedd to Cart";
+const String buttomsheetButtonName1 = "Cart";
+const String buttomsheetButtonName2 = "Continue Shopping";

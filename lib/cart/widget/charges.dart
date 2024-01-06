@@ -1,15 +1,17 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class Charges extends StatelessWidget {
   final String name;
-  final  cost;
+  final cost;
   const Charges({super.key, required this.name, required this.cost});
 
   @override
   Widget build(BuildContext context) {
-    final n=cost;
+    final n = cost;
     return Container(
-      margin: EdgeInsets.only(top: 5),
+      margin: const EdgeInsets.only(top: 5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -17,11 +19,10 @@ class Charges extends StatelessWidget {
           Text(
             name,
             style: TextStyle(
-              fontWeight: (name == "Subtotal" || name == "Total")
-                  ? FontWeight.bold
-                  : FontWeight.w500,
-              fontSize: (name == "Subtotal" || name == "Total")?22:17
-            ),
+                fontWeight: (name == "Subtotal" || name == "Total")
+                    ? FontWeight.bold
+                    : FontWeight.w500,
+                fontSize: (name == "Subtotal" || name == "Total") ? 22 : 17),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -29,11 +30,9 @@ class Charges extends StatelessWidget {
               Text(
                 "\$ ${cost}",
                 style: TextStyle(
-                  fontWeight: 
-                       FontWeight.bold,
-                      
-                  fontSize: (name == "Subtotal" || name == "Total")?22:17
-                ),
+                    fontWeight: FontWeight.bold,
+                    fontSize:
+                        (name == "Subtotal" || name == "Total") ? 22 : 17),
               ),
             ],
           ),

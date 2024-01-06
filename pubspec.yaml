@@ -50,6 +50,8 @@ dependencies:
   readmore: ^2.2.0
   font_awesome_flutter: ^10.6.0
   nfc_manager: ^3.3.0
+  badges: ^3.1.2
+  lottie: ^2.7.0
 
 
 dev_dependencies:
@@ -84,6 +86,7 @@ flutter:
     - assets/json/
     - assets/json/men/
     - assets/json/ladies/
+    - assets/json/animations/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_2/Cargo/men/men_shoes.dart';
 import 'package:project_2/Cargo/men/men_shoes_details_page.dart';
-import 'package:project_2/Cargo/men/widget/men_details_widget.dart';
+
 import 'package:project_2/Cargo/women/ladies_bag.dart';
 import 'package:project_2/Cargo/women/ladies_bag_details_page.dart';
 import 'package:project_2/cart/screen/cart.dart';

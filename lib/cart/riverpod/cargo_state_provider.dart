@@ -1,18 +1,17 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CartItems extends StateNotifier<List> {
-  CartItems() : super([]);
-
-  void additem(Map data) {
-    var present;
+class CargoState extends StateNotifier<List> {
+  CargoState() : super([]);
+  void additem(data) {
     print(data);
+    var present;
     for (int i = 0; i < state.length; i++) {
       if (state[i]["name"] == data["name"]) {
         present = state[i];
       }
     }
     if (present != null) {
-      increase_quantity(present["name"]);
+      increase_quantity(present["name"], data["quantity"]);
     } else {
       state = [
         ...state,
@@ -20,29 +19,30 @@ class CartItems extends StateNotifier<List> {
           "name": data["name"],
           "icon": data["image"],
           "price": double.parse(data["price"].toStringAsFixed(2)),
-          // "price":double.parse(double.parse(data["price"]).toStringAsFixed(2)),
-          // "cost":double.parse(double.parse(data["price"]).toStringAsFixed(2)),
-          "cost": data["cost"],
+          "cost": double.parse(data["cost"].toStringAsFixed(2)),
           "quantity": data["quantity"]
         }
       ];
     }
   }
 
-  void increase_quantity(String name) {
-    print("in state");
-
+  void increase_quantity(name, qty) {
     final nl = state.map((e) {
       if (e["name"] == name) {
-        print(e);
-        var oc = e["cost"];
-        return {...e, "cost": e["price"] + oc, "quantity": e["quantity"] + 1};
+        return {
+          ...e,
+          "cost": e["price"] * (e["quantity"] + qty),
+          "quantity": e["quantity"] + qty
+        };
       }
       return e;
     });
 
     state = nl.toList();
-    print(state);
+  }
+
+  void empty() {
+    state = [];
   }
 
   void remove_item(String name) {
@@ -54,29 +54,14 @@ class CartItems extends StateNotifier<List> {
     }).toList();
     nl.removeWhere((element) => element == null);
     state = nl;
-    // for(int i=0;i<nl.length;i++){
-    //   if(nl[i]!=null){
-    //     newl.add(nl[i]);
-    //   }
-    // }
-    // state=newl;
-
-    // var nl=[];
-    // for(int i=0;i<state.length;i++){
-    //   if(state[i]["id"]!=id){
-    //     nl.add(state[i]);
-    //   }
-    // }
-    // state=nl;
   }
 
   void decrease_quantity(String name) {
     final nl = state.map((e) {
       if (e["name"] == name) {
-        var oc = e["cost"];
         return {
           ...e,
-          "cost": e["quantity"] - 1 < 0 ? e["cost"] : oc - e["price"],
+          "cost": e["price"] * (e["quantity"] - 1 < 0 ? 0 : e["quantity"] - 1),
           "quantity": e["quantity"] - 1 < 0 ? 0 : e["quantity"] - 1
         };
       }
@@ -88,5 +73,5 @@ class CartItems extends StateNotifier<List> {
   }
 }
 
-final CartProvider =
-    StateNotifierProvider<CartItems, List>((ref) => CartItems());
+final CargoProvider =
+    StateNotifierProvider<CargoState, List>((ref) => CargoState());

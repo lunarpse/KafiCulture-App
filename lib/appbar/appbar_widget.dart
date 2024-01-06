@@ -1,24 +1,36 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_print
-
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nfc_manager/nfc_manager.dart';
+import 'package:project_2/cart/riverpod/cargo_state_provider.dart';
+import 'package:project_2/cart/riverpod/state_provider.dart';
 import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
-
-class AppbarWidget extends StatefulWidget implements PreferredSizeWidget {
-  const AppbarWidget({super.key});
-
+import '../cart/riverpod/switch_provider.dart';
+import 'package:badges/badges.dart' as badges;
+ 
+class AppbarWidget extends ConsumerStatefulWidget
+    implements PreferredSizeWidget {
+  const AppbarWidget({super.key, this.incart = false});
+ 
+  final incart;
+ 
   @override
-  State<AppbarWidget> createState() => _AppbarWidgetState();
-
+  ConsumerState<AppbarWidget> createState() => _AppbarWidgetState();
+ 
   @override
   Size get preferredSize => const Size.fromHeight(60);
 }
-
-class _AppbarWidgetState extends State<AppbarWidget> {
+ 
+class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
   bool _isNFCavailable = false;
+ 
   @override
   Widget build(BuildContext context) {
+    final cartItemNos = ref.watch(SwitchProvider) == true
+        ? ref.watch(CartProvider)
+        : ref.watch(CargoProvider);
+    final cartItemNo = cartItemNos.length;
+ 
     return AppBar(
       automaticallyImplyLeading: false,
       flexibleSpace: Image.asset(
@@ -28,6 +40,7 @@ class _AppbarWidgetState extends State<AppbarWidget> {
       title: GestureDetector(
         onTap: () {
           Navigator.pushReplacementNamed(context, "/home");
+          ref.watch(SwitchProvider.notifier).toggle(true);
         },
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -70,34 +83,49 @@ class _AppbarWidgetState extends State<AppbarWidget> {
             onTap: _checkNFCStatus,
             child: CircleAvatar(
               backgroundColor: _isNFCavailable == true
-                  ? Color.fromARGB(255, 1, 255, 9)
-                  : circleavatarbgcolor,
+                  ? nfcCircleAvatarAvailableColor
+                  : nfcCircleAvatarNotAvailableColor,
               radius: 14,
               child: Icon(
                 Icons.nfc_rounded,
                 size: 22,
-                color: Colors.black,
+                color: nfcIconColor,
               ),
             )),
-        IconButton(
-          onPressed: () {
-            Navigator.pushNamed(context, "/cart");
-          },
-          icon: Icon(Icons.shopping_cart),
-          color: carticonbuttoncolor,
-          iconSize: 27,
-        ),
+        widget.incart == false
+            ? Padding(
+                padding: const EdgeInsets.only(right: 5),
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/cart");
+                  },
+                  icon: badges.Badge(
+                    badgeContent: Text(
+                      "$cartItemNo",
+                      style: TextStyle(color: badgeTextColor),
+                    ),
+                    badgeAnimation: badges.BadgeAnimation.scale(),
+                    showBadge: cartItemNo == 0 ? false : true,
+                    child: Icon(Icons.shopping_cart),
+                  ),
+                  color: cartIconColor,
+                  iconSize: 27,
+                ),
+              )
+            : SizedBox(
+                width: 15,
+              ),
       ],
     );
   }
-
+ 
   void _checkNFCStatus() async {
     try {
       bool isAvailable = await NfcManager.instance.isAvailable();
       setState(() {
         _isNFCavailable = isAvailable;
       });
-
+ 
       if (isAvailable) {
         _startNFCSession();
       } else {
@@ -107,7 +135,7 @@ class _AppbarWidgetState extends State<AppbarWidget> {
       debugPrint("error reading NFC: $e");
     }
   }
-
+ 
   void _startNFCSession() {
     print("NFC working");
     showDialog(
@@ -144,24 +172,26 @@ class _AppbarWidgetState extends State<AppbarWidget> {
     );
     // NfcManager.instance.startSession(onDiscovered: _handleNFCDiscovered);
   }
-
+ 
   Future<void> _handleNFCDiscovered(NfcTag tag) async {
     // String tagId = tag.id;
     print("NFC Tag is discovered $tag");
   }
-
+ 
   void _showNoNFCDialog() {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("NFC not enabled or No NFC service"),
-          content: Text(
-              "Please enable NFC in your device settings or this device does not support NFC feature."),
+          title: Text(dialogTitle),
+          content: Text(dialogContent),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: Text("OK"),
+              child: Text(
+                ok,
+                style: TextStyle(fontSize: 17),
+              ),
             )
           ],
         );
