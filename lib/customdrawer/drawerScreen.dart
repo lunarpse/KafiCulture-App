@@ -66,7 +66,7 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
             ),
             ListTile(
               title: const Text(
-                "Profile",
+                profile,
                 style: TextStyle(fontSize: fontsize),
               ),
               textColor: drawerscreentextcolor,

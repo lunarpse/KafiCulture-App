@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:project_2/constants/color_constants.dart';
 
+import '../../constants/text_constants.dart';
+
 class CommingSoonWidget extends StatelessWidget {
   const CommingSoonWidget({super.key});
 
@@ -25,18 +27,18 @@ class CommingSoonWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            "Feature Coming Soon..",
+            comingsoonText,
             style: TextStyle(
               fontSize: 25,
               fontWeight: FontWeight.bold,
-              color: Color.fromRGBO(107, 49, 20, 1),
+              color: comingsoonTextColor,
             ),
           ),
           SizedBox(width: 5),
           Icon(
             FontAwesomeIcons.faceSmile,
             size: 32,
-            color: Color.fromRGBO(107, 49, 20, 1),
+            color: comingsoonTexticonColor,
           )
         ],
       )),

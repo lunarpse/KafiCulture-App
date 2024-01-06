@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/customdrawer/drawerScreen.dart';
 
+import '../../constants/color_constants.dart';
 import '../../homepage/reusable_widgets/background_container_widget.dart';
 
 class MyOrders extends StatelessWidget {
@@ -28,17 +29,17 @@ class MyOrders extends StatelessWidget {
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 248, 248, 248),
+                  color: everyOrderContainerColor,
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: [
                     BoxShadow(
-                        color: Colors.grey.shade500,
+                        color: everyOrderContainerShadowColor,
                         blurRadius: 4,
                         spreadRadius: 2,
                         offset: Offset(0, 2))
                   ],
                   border: Border.all(
-                    color: Colors.grey.shade400,
+                    color: everyOrderContainerBorderColor,
                     width: 0.5,
                   ),
                 ),
@@ -74,14 +75,14 @@ class MyOrders extends StatelessWidget {
                                   style: TextStyle(
                                       fontSize: 19,
                                       fontWeight: FontWeight.bold,
-                                      color: Color.fromRGBO(107, 49, 20, 1)),
+                                      color: orderNameColor),
                                 ),
                                 Row(
                                   children: [
                                     Icon(
                                       FontAwesomeIcons.dollarSign,
                                       size: 21,
-                                      color: Color.fromRGBO(137, 71, 37, 1),
+                                      color: orderPriceIconColor,
                                     ),
                                     SizedBox(width: 3),
                                     Column(
@@ -93,15 +94,14 @@ class MyOrders extends StatelessWidget {
                                           style: TextStyle(
                                               fontSize: 15,
                                               fontWeight: FontWeight.w600,
-                                              color: Colors.grey.shade500),
+                                              color: orderPriceHeadingColor),
                                         ),
                                         Text(
                                           "345.67",
                                           style: TextStyle(
                                               fontSize: 17,
                                               fontWeight: FontWeight.bold,
-                                              color: Color.fromRGBO(
-                                                  137, 71, 37, 1)),
+                                              color: orderPriceTextColor),
                                         ),
                                       ],
                                     ),
@@ -125,7 +125,7 @@ class MyOrders extends StatelessWidget {
                                 Icon(
                                   FontAwesomeIcons.tag,
                                   size: 23,
-                                  color: Color.fromRGBO(137, 71, 37, 1),
+                                  color: orderNoIconColor,
                                 ),
                                 SizedBox(width: 5),
                                 Column(
@@ -136,7 +136,7 @@ class MyOrders extends StatelessWidget {
                                       style: TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w600,
-                                          color: Colors.grey.shade500),
+                                          color: orderNoHeadingColor),
                                     ),
                                     SizedBox(height: 3),
                                     Text(
@@ -144,8 +144,7 @@ class MyOrders extends StatelessWidget {
                                       style: TextStyle(
                                           fontSize: 19,
                                           fontWeight: FontWeight.w600,
-                                          color:
-                                              Color.fromRGBO(137, 71, 37, 1)),
+                                          color: orderNoTextColor),
                                     ),
                                   ],
                                 )
@@ -156,7 +155,7 @@ class MyOrders extends StatelessWidget {
                                 Icon(
                                   FontAwesomeIcons.truckFast,
                                   size: 23,
-                                  color: Color.fromRGBO(137, 71, 37, 1),
+                                  color: orderProcessingIconColor,
                                 ),
                                 SizedBox(width: 15),
                                 Column(
@@ -167,7 +166,7 @@ class MyOrders extends StatelessWidget {
                                       style: TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w600,
-                                          color: Colors.grey.shade500),
+                                          color: orderProcessingHeadingColor),
                                     ),
                                     SizedBox(height: 3),
                                     Text(
@@ -176,8 +175,7 @@ class MyOrders extends StatelessWidget {
                                           fontSize: 19,
                                           letterSpacing: -0.4,
                                           fontWeight: FontWeight.w600,
-                                          color:
-                                              Color.fromRGBO(137, 71, 37, 1)),
+                                          color: orderProcessingTextColor),
                                     ),
                                   ],
                                 )

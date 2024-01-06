@@ -71,6 +71,50 @@ const Color drawerscreendivcolor = Colors.black12;
 const Color drawerscreendividercolor = Colors.transparent;
 const Color drawerscreenexpansiontilecolor = Color.fromARGB(255, 94, 27, 3);
 
+//---------------------------->Profile------->profile
+const Color firstContainerColor = Colors.transparent;
+const Color profileHeadingTextColor = Color.fromRGBO(107, 49, 20, 1);
+const Color boxShadowColor = Colors.grey;
+const Color secondContainerColor = Color.fromRGBO(134, 67, 33, 1);
+const Color circularImageBorderColor = Colors.white;
+const Color userNameColor = Colors.white;
+const Color userGmailColor = Colors.white;
+const Color editButtonIconColor = Colors.cyan;
+const Color editButtonColor = Colors.cyan;
+const Color bigContainerColor = Colors.white;
+const Color bigContainerBorderColor = Color.fromRGBO(137, 71, 37, 1);
+const Color settingsIconColor = Color.fromRGBO(107, 49, 20, 1);
+const Color settingsTextColor = Color.fromRGBO(107, 49, 20, 1);
+const Color angleUpIconColor = Colors.cyan;
+const Color angleDownIconColor = Color.fromRGBO(107, 49, 20, 1);
+const Color addressTextIconColor = Color.fromRGBO(107, 49, 20, 1);
+const Color addressTextColor = Color.fromRGBO(107, 49, 20, 1);
+const Color SettingsangleRightIconColor = Color.fromRGBO(107, 49, 20, 1);
+
+//---------------------------->Profile------->profile_menu_item
+const Color leadingIconColor = Color.fromRGBO(107, 49, 20, 1);
+const Color titleColor = Color.fromRGBO(107, 49, 20, 1);
+const Color trailingIconColor = Color.fromRGBO(107, 49, 20, 1);
+
+//---------------------------->Profile------->reusable_widget
+const Color comingsoonTextColor = Color.fromRGBO(107, 49, 20, 1);
+const Color comingsoonTexticonColor = Color.fromRGBO(107, 49, 20, 1);
+
+//---------------------------->Profile------->myOrders
+const Color everyOrderContainerColor = Color.fromARGB(255, 248, 248, 248);
+Color everyOrderContainerShadowColor = Colors.grey.shade500;
+Color everyOrderContainerBorderColor = Colors.grey.shade500;
+const Color orderNameColor = Color.fromRGBO(107, 49, 20, 1);
+const Color orderPriceIconColor = Color.fromRGBO(137, 71, 37, 1);
+Color orderPriceHeadingColor = Colors.grey.shade500;
+const Color orderPriceTextColor = Color.fromRGBO(137, 71, 37, 1);
+const Color orderNoIconColor = Color.fromRGBO(137, 71, 37, 1);
+Color orderNoHeadingColor = Colors.grey.shade500;
+const Color orderNoTextColor = Color.fromRGBO(137, 71, 37, 1);
+const Color orderProcessingIconColor = Color.fromRGBO(137, 71, 37, 1);
+Color orderProcessingHeadingColor = Colors.grey.shade500;
+const Color orderProcessingTextColor = Color.fromRGBO(137, 71, 37, 1);
+
 //feeback color constants
 const Color selectedyes = Colors.green;
 const Color notselected = Colors.grey;

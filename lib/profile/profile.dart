@@ -7,6 +7,9 @@ import 'package:project_2/customdrawer/drawerScreen.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 import 'package:project_2/profile/profile_menu_item.dart';
 
+import '../constants/color_constants.dart';
+import '../constants/text_constants.dart';
+
 class Profile extends StatefulWidget {
   const Profile({super.key});
 
@@ -33,7 +36,7 @@ class _ProfileState extends State<Profile> {
               Container(
                 height: 330,
                 decoration: BoxDecoration(
-                    color: Colors.transparent,
+                    color: firstContainerColor,
                     borderRadius:
                         BorderRadius.vertical(top: Radius.circular(20))),
                 child: Stack(
@@ -44,11 +47,11 @@ class _ProfileState extends State<Profile> {
                           alignment: AlignmentDirectional(0, -0.8),
                           height: 330 / 2,
                           child: Text(
-                            "Profile",
+                            profileHeadingText,
                             style: TextStyle(
                               fontSize: 21,
                               fontWeight: FontWeight.w600,
-                              color: Color.fromRGBO(107, 49, 20, 1),
+                              color: profileHeadingTextColor,
                             ),
                           ),
                         ),
@@ -57,13 +60,12 @@ class _ProfileState extends State<Profile> {
                           decoration: BoxDecoration(
                               boxShadow: [
                                 BoxShadow(
-                                    color: Colors.grey,
+                                    color: boxShadowColor,
                                     blurRadius: 4,
                                     spreadRadius: 2,
                                     offset: Offset(0, 2))
                               ],
-                              // color: Color.fromRGBO(137, 71, 37, 1),
-                              color: Color.fromRGBO(134, 67, 33, 1),
+                              color: secondContainerColor,
                               borderRadius: BorderRadius.vertical(
                                   top: Radius.circular(20))),
                         ),
@@ -84,15 +86,16 @@ class _ProfileState extends State<Profile> {
                                       AssetImage("assets/images/profile.png"),
                                   fit: BoxFit.cover,
                                 ),
-                                border:
-                                    Border.all(color: Colors.white, width: 6)),
+                                border: Border.all(
+                                    color: circularImageBorderColor, width: 6)),
                           ),
                           SizedBox(
                             height: 15,
                           ),
                           Text(
                             "Deepsundar",
-                            style: TextStyle(fontSize: 22, color: Colors.white),
+                            style:
+                                TextStyle(fontSize: 22, color: userNameColor),
                           ),
                           SizedBox(
                             height: 2,
@@ -101,7 +104,7 @@ class _ProfileState extends State<Profile> {
                             "deep123@gmail.com",
                             style: TextStyle(
                               fontSize: 16,
-                              color: Colors.white,
+                              color: userGmailColor,
                             ),
                           ),
                           TextButton.icon(
@@ -109,13 +112,13 @@ class _ProfileState extends State<Profile> {
                               icon: Icon(
                                 Icons.edit,
                                 size: 15,
-                                color: Colors.cyan,
+                                color: editButtonIconColor,
                               ),
                               label: Text(
-                                "Edit",
+                                editButtonName,
                                 style: TextStyle(
                                   fontSize: 14,
-                                  color: Colors.cyan,
+                                  color: editButtonColor,
                                 ),
                               ))
                         ],
@@ -127,16 +130,16 @@ class _ProfileState extends State<Profile> {
               Container(
                 height: 370,
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: bigContainerColor,
                     boxShadow: [
                       BoxShadow(
-                          color: Colors.grey,
+                          color: boxShadowColor,
                           blurRadius: 4,
                           spreadRadius: 2,
                           offset: Offset(0, 2))
                     ],
                     border: Border.all(
-                      color: Color.fromRGBO(137, 71, 37, 1),
+                      color: bigContainerBorderColor,
                       width: 1,
                     ),
                     borderRadius:
@@ -144,14 +147,14 @@ class _ProfileState extends State<Profile> {
                 child: Column(
                   children: [
                     ProfileMenuItem(
-                      title: "My Orders",
+                      title: myorderText,
                       iconName: Icons.shopping_bag,
                       pressed: () {
                         Navigator.pushNamed(context, "/myOrders");
                       },
                     ),
                     ProfileMenuItem(
-                      title: "Wishlist",
+                      title: wishlistText,
                       iconName: Icons.bookmark,
                       pressed: () {
                         Navigator.pushNamed(context, "/wishlist");
@@ -164,24 +167,24 @@ class _ProfileState extends State<Profile> {
                         leading: Icon(
                           Icons.settings,
                           size: 26,
-                          color: Color.fromRGBO(107, 49, 20, 1),
+                          color: settingsIconColor,
                         ),
                         title: Text(
-                          "Settings",
+                          settingsText,
                           style: TextStyle(
                             fontSize: 19,
                             fontWeight: FontWeight.w600,
-                            color: Color.fromRGBO(107, 49, 20, 1),
+                            color: settingsTextColor,
                           ),
                         ),
                         trailing: Icon(
                           _customIcon
-                              ? FontAwesomeIcons.angleDown
-                              : FontAwesomeIcons.angleUp,
+                              ? FontAwesomeIcons.angleUp
+                              : FontAwesomeIcons.angleDown,
                           size: 18,
                           color: _customIcon
-                              ? Colors.cyan
-                              : Color.fromRGBO(107, 49, 20, 1),
+                              ? angleUpIconColor
+                              : angleDownIconColor,
                         ),
                         onExpansionChanged: (bool expanded) {
                           setState(() => _customIcon = expanded);
@@ -196,20 +199,20 @@ class _ProfileState extends State<Profile> {
                                   leading: Icon(
                                     FontAwesomeIcons.mapLocationDot,
                                     size: 23,
-                                    color: Color.fromRGBO(107, 49, 20, 1),
+                                    color: addressTextIconColor,
                                   ),
                                   title: Text(
-                                    "Address",
+                                    addressText,
                                     style: TextStyle(
                                       fontSize: 17,
                                       fontWeight: FontWeight.bold,
-                                      color: Color.fromRGBO(107, 49, 20, 1),
+                                      color: addressTextColor,
                                     ),
                                   ),
                                   trailing: Icon(
                                     FontAwesomeIcons.angleRight,
                                     size: 17,
-                                    color: Color.fromRGBO(107, 49, 20, 1),
+                                    color: SettingsangleRightIconColor,
                                   )),
                             ),
                           ),
@@ -217,7 +220,7 @@ class _ProfileState extends State<Profile> {
                       ),
                     ),
                     ProfileMenuItem(
-                      title: "Help",
+                      title: helpText,
                       iconName: Icons.info,
                       pressed: () {
                         Navigator.pushNamed(context, "/help");
