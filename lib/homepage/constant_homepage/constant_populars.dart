@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 const String heading3 = "Populars";
-const double heading3_fontSize = 20;
+const double heading3_fontSize = 20.5;
 const int gridView_crossAxisCount = 2;
 const double gridView_crossAxisSpacing = 10;
 const double gridView_mainAxisSpacing = 10;
