@@ -50,6 +50,7 @@ class _PaymentAppState extends ConsumerState {
   double itcEquivalent = 0;
   double h_mEquivalent = 0;
   double airEquivalent = 0;
+  bool isPaused=false;
 
   @override
   Widget build(BuildContext context) {
@@ -73,12 +74,18 @@ class _PaymentAppState extends ConsumerState {
         : 0;
 
     final amount = double.parse(subt.toStringAsFixed(2));
+    final  double loyality_value=itcvalue * 0.2 + handm_value * 0.01 + airvalue * 0.5;
     double final_price =
-        amount - itcvalue * 0.2 - handm_value * 0.01 - airvalue * 0.5;
+        amount -loyality_value ;
 
     String strPrice;
     if (final_price < 0.00) {
       strPrice = "0.00";
+       itcEquivalent = itcvalue * 0.2;
+      h_mEquivalent = handm_value * 0.01;
+      airEquivalent = airvalue * 0.5;
+      
+      isPaused=true;
     } else {
       itcEquivalent = itcvalue * 0.2;
       h_mEquivalent = handm_value * 0.01;
@@ -169,7 +176,7 @@ class _PaymentAppState extends ConsumerState {
                               fontSize: 25, fontWeight: FontWeight.w500),
                         ),
                         Text(
-                          ' $strPrice',
+                          ' ${strPrice=="-0.00"?0.00:strPrice}',
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 25,
@@ -307,9 +314,14 @@ class _PaymentAppState extends ConsumerState {
                           label: " ${itcvalue.toStringAsFixed(2)}/100",
                           activeColor: companynamecolors,
                           value: itcvalue.toDouble(),
-                          onChanged: (double newValue) {
+                          onChanged:isPaused?null:(double newValue ) {
                             setState(() {
+                              if(final_price>0.39)
+                              {
+                              
+                              }    
                               itcvalue = newValue;
+                              
                             });
                           },
                           min: 0,
@@ -330,7 +342,7 @@ class _PaymentAppState extends ConsumerState {
                           label: " ${handm_value.toStringAsFixed(2)}/100",
                           activeColor: companynamecolors,
                           value: handm_value.toDouble(),
-                          onChanged: (double newValue) {
+                          onChanged: isPaused?null:(double newValue) {
                             setState(() {
                               handm_value = newValue;
                             });
@@ -354,9 +366,10 @@ class _PaymentAppState extends ConsumerState {
                           label: " ${airvalue.toStringAsFixed(2)}/100",
                           activeColor: companynamecolors,
                           value: airvalue.toDouble(),
-                          onChanged: (double newValue) {
+                          onChanged: isPaused?null:(double newValue) {
                             setState(() {
                               airvalue = newValue;
+                              
                             });
                           },
                           min: 0,
