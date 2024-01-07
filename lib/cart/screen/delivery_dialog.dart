@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:project_2/constants/color_constants.dart';
 
 import '../../delivery/address_page/address.dart';
 
@@ -76,7 +77,7 @@ class _DeliveryDialogState extends State<DeliveryDialog> {
                         ],
                         decoration: InputDecoration(
                           filled: true,
-                          fillColor: Colors.grey[200],
+                          fillColor: delieveryItemColor,
                           labelText: 'Aadhar Number',
                           // hintText: 'Enter Aadhar Number',
                           //prefixText: 'XXXX-XXXX-XXXX',

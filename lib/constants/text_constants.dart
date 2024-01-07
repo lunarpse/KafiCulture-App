@@ -11,6 +11,30 @@ const String dialogContent =
 //--------------------------------------------------> Cart
 //cart-->screen-->cart
 const String popular = "Populars";
+const String extraItemMtapName2 = "Aloo Snacks";
+const String extraItemMtapName1 = "Hot Chocolate";
+const String extraItemMtapName3 = "Dahi Vada";
+
+const String extraItemCargoName1 = "Testoni";
+const String extraItemCargoName2 = "Molecules";
+const String extraItemCargoName3 = "Air Jordans 2016";
+
+const String extraItemMtapimage3 = "assets/images/Dahi_Vada.jpg";
+const String extraItemMtapimage2 = "assets/images/Aloo_snacks.jpg";
+const String extraItemMtapimage1 = "assets/images/hot_choc.jpg";
+
+const String extraItemCargoimage1 = "assets/images/MenShoes/TESTONI SHOES.png";
+const String extraItemCargoimage2 = "assets/images/MenShoes/MOLECULE SHOE.png";
+const String extraItemCargoimage3 =
+    "assets/images/MenShoes/NIKE AIR MAG 2016.png";
+const double extraItemMtapPrice1 = 12;
+const double extraItemMtapPrice2 = 10;
+const double extraItemMtapPrice3 = 11;
+const double extraItemCargoPrice1 = 1243.0;
+
+const double extraItemCargoPrice2 = 2311.0;
+
+const double extraItemCargoPrice3 = 2022.0;
 
 //cart-->emptycart
 const String emptycart = "Cart Is Empty";
