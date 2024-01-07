@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
 
@@ -46,6 +47,30 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
             Divider(
               color: drawerscreendivcolor,
               thickness: 5,
+            ),
+            ListTile(
+              title: const Text(
+                "Profile",
+                style: TextStyle(fontSize: fontsize),
+              ),
+              textColor: drawerscreentextcolor,
+              trailing: const Icon(Icons.person),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.pushNamed(context, "/profile");
+              },
+            ),
+            ListTile(
+              title: const Text(
+                cart,
+                style: TextStyle(fontSize: fontsize),
+              ),
+              textColor: drawerscreentextcolor,
+              trailing: const Icon(Icons.shopping_cart),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.pushNamed(context, "/cart");
+              },
             ),
             ListTile(
               title: const Text(
