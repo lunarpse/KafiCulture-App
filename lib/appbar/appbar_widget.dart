@@ -75,7 +75,7 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
                   children: [
                     Text(
                       apptitle,
-                      style: TextStyle(fontSize: 20),
+                      style: TextStyle(fontSize: 20, color: Colors.white),
                     ),
                     SizedBox(
                       height: 3,
@@ -83,6 +83,7 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
                     Text(
                       appslogan,
                       style: TextStyle(
+                          color: Colors.white,
                           fontFamily: 'Ephesis',
                           fontSize: 17.5,
                           letterSpacing: 1),
@@ -97,7 +98,10 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
                 onPressed: () {
                   Scaffold.of(context).openDrawer();
                 },
-                icon: Icon(Icons.menu));
+                icon: Icon(
+                  Icons.menu,
+                  color: Colors.white,
+                ));
           }),
           actions: [
             InkWell(

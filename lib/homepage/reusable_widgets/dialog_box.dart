@@ -155,7 +155,9 @@ class DialogBox extends StatelessWidget {
                               child: Text(
                                 buttonName,
                                 style: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.bold),
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold),
                               ),
                             ),
                           ),
