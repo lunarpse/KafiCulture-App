@@ -3,17 +3,39 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
-class EditDialogBox extends StatelessWidget {
-  EditDialogBox({super.key});
+import '../constants/color_constants.dart';
+import '../constants/text_constants.dart';
 
+class EditDialogBox extends StatefulWidget {
+  const EditDialogBox(
+      {super.key,
+      required this.currentName,
+      required this.currentEmail,
+      required this.onSave});
+  final String currentName;
+  final String currentEmail;
+  final Function(String, String) onSave;
+
+  @override
+  State<EditDialogBox> createState() => _EditDialogBoxState();
+}
+
+class _EditDialogBoxState extends State<EditDialogBox> {
   final formKey = GlobalKey<FormState>();
   final TextEditingController userNameController = TextEditingController();
-  final TextEditingController userGmailController = TextEditingController();
+  final TextEditingController userEmailController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    userNameController.text = widget.currentName;
+    userEmailController.text = widget.currentEmail;
+  }
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Colors.transparent,
+      backgroundColor: alertDialogBackgroundColor,
       insetPadding: EdgeInsets.only(bottom: 100),
       content: StatefulBuilder(builder: (context, setState) {
         return Container(
@@ -34,35 +56,24 @@ class EditDialogBox extends StatelessWidget {
                           image: AssetImage("assets/images/profile.png"),
                           fit: BoxFit.cover,
                         ),
-                        // border: Border.all(
-                        //   // color: Colors.white,
-                        //   color: Color.fromRGBO(137, 71, 37, 1),
-                        //   width: 3,
-                        // ),
                       ),
                     ).animate().scale(),
                     SizedBox(width: 18),
                     Container(
-                      // height: 200,
                       width: 290,
                       padding: EdgeInsets.all(13),
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 248, 248, 248),
-                        // color: Colors.blue,
+                        color: thirdContainerColor,
                         borderRadius: BorderRadius.circular(12),
-                        // border: Border.all(
-                        //   color: Color.fromRGBO(137, 71, 37, 1),
-                        //   width: 1,
-                        // ),
                       ),
                       child: Column(
                         children: [
                           Text(
-                            "Profile",
+                            editDialogHeadingText,
                             style: TextStyle(
                                 fontSize: 19,
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromRGBO(107, 49, 20, 1)),
+                                color: profileTextColor),
                           ),
                           SizedBox(height: 10),
                           Form(
@@ -71,9 +82,9 @@ class EditDialogBox extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "Name",
+                                    nameText,
                                     style: TextStyle(
-                                        color: Color.fromRGBO(137, 71, 37, 1),
+                                        color: nameTextColor,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 16),
                                   ),
@@ -83,19 +94,19 @@ class EditDialogBox extends StatelessWidget {
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.all(10),
                                       filled: true,
-                                      fillColor: Colors.grey[300],
-                                      hintText: "Enter User name",
+                                      fillColor: inputFillColor,
+                                      hintText: nameInputHintText,
                                       hintStyle: TextStyle(fontSize: 15),
                                       enabledBorder: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(7),
                                           borderSide: BorderSide(
-                                              color: Colors.grey.shade400)),
+                                              color:
+                                                  inputEnabledBordersideColor)),
                                       focusedBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(7),
                                         borderSide: BorderSide(
-                                            color:
-                                                Color.fromRGBO(137, 71, 37, 1)),
+                                            color: inputFocusedBordersideColor),
                                       ),
                                     ),
                                     validator: (value) {
@@ -109,38 +120,39 @@ class EditDialogBox extends StatelessWidget {
                                     height: 12,
                                   ),
                                   Text(
-                                    "Gmail",
+                                    emailText,
                                     style: TextStyle(
-                                        color: Color.fromRGBO(107, 49, 20, 1),
+                                        color: emailTextColor,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 16),
                                   ),
                                   SizedBox(height: 5),
                                   TextFormField(
-                                    controller: userGmailController,
+                                    controller: userEmailController,
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.all(10),
                                       filled: true,
-                                      fillColor: Colors.grey[300],
-                                      hintText: "Enter Gmail",
+                                      fillColor: inputFillColor,
+                                      hintText: emailInputHintText,
                                       hintStyle: TextStyle(fontSize: 15),
                                       enabledBorder: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(7),
                                           borderSide: BorderSide(
-                                              color: Colors.grey.shade400)),
+                                              color:
+                                                  inputEnabledBordersideColor)),
                                       focusedBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(7),
                                         borderSide: BorderSide(
-                                          color: Color.fromRGBO(107, 49, 20, 1),
+                                          color: inputFocusedBordersideColor,
                                         ),
                                       ),
                                     ),
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
-                                        return "Please enter Gmail";
+                                        return "Please enter Email";
                                       } else if (!value.contains("@")) {
-                                        return "Gmail format is incorrect";
+                                        return "Email format is incorrect";
                                       }
                                       return null;
                                     },
@@ -149,7 +161,7 @@ class EditDialogBox extends StatelessWidget {
                                   ElevatedButton(
                                     style: ElevatedButton.styleFrom(
                                         backgroundColor:
-                                            Color.fromRGBO(137, 71, 37, 1),
+                                            saveElevatedButtonBackgroundColor,
                                         fixedSize: Size(
                                             MediaQuery.of(context).size.width,
                                             45),
@@ -158,16 +170,16 @@ class EditDialogBox extends StatelessWidget {
                                                 BorderRadius.circular(7))),
                                     onPressed: () {
                                       if (formKey.currentState!.validate()) {
-                                        // submitForm();
                                         // formKey.currentState!.reset();
+                                        widget.onSave(userNameController.text,
+                                            userEmailController.text);
                                         Navigator.pop(context);
                                       }
                                     },
                                     child: Text(
-                                      "Save Changes",
+                                      saveElevatedButtonText,
                                       style: TextStyle(
                                         fontSize: 15,
-                                        // fontWeight: FontWeight,
                                       ),
                                     ),
                                   )
@@ -175,7 +187,9 @@ class EditDialogBox extends StatelessWidget {
                               ))
                         ],
                       ),
-                    ).animate().slideX(duration: 300.ms, begin: -0.1),
+                    )
+                        .animate()
+                        .slideX(delay: 100.ms, duration: 300.ms, begin: -0.1),
                   ].animate(interval: 80.ms).fade(duration: 300.ms)),
             ],
           ),

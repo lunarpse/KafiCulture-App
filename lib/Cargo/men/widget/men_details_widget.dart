@@ -3,7 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
+import 'package:project_2/homepage/model/json_model.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
+import 'package:project_2/homepage/reusable_widgets/dialog_box.dart';
 import 'package:readmore/readmore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../cart/riverpod/cargo_state_provider.dart';
@@ -42,11 +44,19 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
     final name = widget.details.name;
     final description = widget.details.description;
 
-    final price1 = widget.details.price;
+    final price1 = selectedIndex == 0
+        ? widget.details.price
+        : selectedIndex == 1
+            ? double.parse((widget.details.price * 2).toStringAsFixed(2))
+            : double.parse((widget.details.price * 3).toStringAsFixed(2));
 
     final price = double.parse((quantity * price1).toStringAsFixed(2));
 
-    final offerPrice1 = widget.details.offerPrice;
+    final offerPrice1 = selectedIndex == 0
+        ? widget.details.offerPrice
+        : selectedIndex == 1
+            ? double.parse((widget.details.offerPrice * 2).toStringAsFixed(2))
+            : double.parse((widget.details.offerPrice * 3).toStringAsFixed(2));
 
     final offerPrice =
         double.parse((quantity * offerPrice1).toStringAsFixed(2));
@@ -521,7 +531,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                     children: [
                       ElevatedButton.icon(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/cart');
+                          Navigator.pushNamed(context, '/cargocart');
                           func.additem({
                             "name": name,
                             "image": "assets/images/MenShoes/$image.png",
@@ -660,7 +670,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                   OutlinedButton.icon(
                     onPressed: () {
                       Navigator.of(context).pop();
-                      Navigator.pushNamed(context, '/cart');
+                      Navigator.pushNamed(context, '/cargocart');
                     },
                     icon: Icon(
                       Icons.shopping_cart,

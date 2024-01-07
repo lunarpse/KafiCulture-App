@@ -1,13 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/customdrawer/drawerScreen.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 import 'package:project_2/profile/profile_menu_item.dart';
-
 import '../constants/color_constants.dart';
 import '../constants/text_constants.dart';
 import 'edit_dialog_box.dart';
@@ -21,6 +19,8 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   bool _customIcon = false;
+  var name = "John Doe";
+  var email = "john.doe@gmail.com";
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +96,7 @@ class _ProfileState extends State<Profile> {
                             height: 15,
                           ),
                           Text(
-                            "Deepsundar",
+                            name,
                             style:
                                 TextStyle(fontSize: 22, color: userNameColor),
                           ),
@@ -104,18 +104,26 @@ class _ProfileState extends State<Profile> {
                             height: 2,
                           ),
                           Text(
-                            "deep123@gmail.com",
+                            email,
                             style: TextStyle(
                               fontSize: 16,
-                              color: userGmailColor,
+                              color: userEmailColor,
                             ),
                           ),
                           TextButton.icon(
                               onPressed: () {
                                 showDialog(
-                                  barrierColor: Colors.black.withOpacity(0.7),
+                                  barrierColor: editDialogBoxBarrierColor,
                                   context: context,
-                                  builder: (context) => EditDialogBox(),
+                                  builder: (context) => EditDialogBox(
+                                      currentName: name,
+                                      currentEmail: email,
+                                      onSave: (newName, newEmail) {
+                                        setState(() {
+                                          name = newName;
+                                          email = newEmail;
+                                        });
+                                      }),
                                 );
                               },
                               icon: Icon(

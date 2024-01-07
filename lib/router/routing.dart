@@ -4,6 +4,7 @@ import 'package:project_2/Cargo/men/men_shoes.dart';
 import 'package:project_2/Cargo/men/men_shoes_details_page.dart';
 import 'package:project_2/Cargo/women/ladies_bag.dart';
 import 'package:project_2/Cargo/women/ladies_bag_details_page.dart';
+import 'package:project_2/cart/screen/cargocart.dart';
 import 'package:project_2/cart/screen/cart.dart';
 import 'package:project_2/feedBack/FeedBack_page.dart';
 import 'package:project_2/homepage/widgets/checking.dart';
@@ -18,10 +19,11 @@ import 'package:project_2/homepage/pages/home_page/home_page.dart';
 import 'package:project_2/homepage/pages/home_page/latest_offerings/offerings_details_page.dart';
 import 'package:project_2/homepage/pages/home_page/populars/popular_details_page.dart';
 import 'package:project_2/payments/payment_app.dart';
+//import 'package:project_2/payments/payment_app.dart';
 import 'package:project_2/splashscreen/splash_screen.dart';
 import '../profile/address/address.dart';
 import '../profile/help/help.dart';
-import '../profile/myOrders/order_page.dart';
+import '../profile/my orders/order_page.dart';
 import '../profile/profile.dart';
 import '../profile/wishlist/wishlist.dart';
 
@@ -39,10 +41,12 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => LoadingScreen());
       case '/feedback':
         return MaterialPageRoute(builder: (_) => FeedBackPage());
+      case '/cargocart':
+        return MaterialPageRoute(builder: (_) => Cargocart());
       case '/home':
         return MaterialPageRoute(builder: (_) => HomePage());
-      case '/payment':
-        return MaterialPageRoute(builder: (_) => PaymentApp());
+      // case '/payment':
+      //   return MaterialPageRoute(builder: (_) => PaymentApp(coffee:true));
       case '/snacks':
         return MaterialPageRoute(builder: (_) => SnacksPage());
       case '/drinks':
