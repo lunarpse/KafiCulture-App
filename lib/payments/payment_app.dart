@@ -101,7 +101,7 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
          
     print("ssss $subt");
     final amount = double.parse(subt.toStringAsFixed(2));
-      double loyality_value=itcvalue * 0.2 + handm_value * 0.01 + airvalue * 0.5;
+      double loyality_value=itcvalue * 0.2 + handm_value * 0.2 + airvalue * 0.5;
     double final_price =
         amount -loyality_value ;
 
@@ -111,17 +111,17 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
     if (final_price <= 0.00) {
       strPrice = "0.00";
        itcEquivalent = itcvalue * 0.2;
-      h_mEquivalent = handm_value * 0.01;
+      h_mEquivalent = handm_value * 0.2;
       airEquivalent = airvalue * 0.5;
-      loyality_value=itcvalue * 0.2 + handm_value * 0.01 + airvalue * 0.5; 
+      loyality_value=itcvalue * 0.2 + handm_value * 0.2 + airvalue * 0.5; 
       isPaused=true;
       final_value=0;
     } else {
       itcEquivalent = itcvalue * 0.2;
-      h_mEquivalent = handm_value * 0.01;
+      h_mEquivalent = handm_value * 0.2;
       airEquivalent = airvalue * 0.5;
       strPrice = "\$ ${final_price.toStringAsFixed(2)}";
-      loyality_value=itcvalue * 0.2 + handm_value * 0.01 + airvalue * 0.5;
+      loyality_value=itcvalue * 0.2 + handm_value * 0.2 + airvalue * 0.5;
       final_value=final_price;
       if(isPaused==true){
         isPaused=false;
@@ -330,8 +330,12 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                           value: itcvalue.toDouble(),
                           onChanged:(double newValue ) {
                             
-                              if(subt<=newValue*0.2){
-                                setState(() {
+                              if(final_value<=newValue*0.2 ){
+                                if(itcvalue>newValue){
+                                  itcvalue=newValue;
+                                }
+                                else{
+                                  setState(() {
                                    if(itcvalue==0){
                                     itcvalue =final_value*5;
                                    }
@@ -340,6 +344,7 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                                    }
                                 
                                 });
+                                }
                                 
                                 }
                                 else{
@@ -349,16 +354,7 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                                 }
                             
                           },
-                          // onChangeEnd: ( double value){
-                          //   if( loyality_value>subt){
-                          //   setState(() { 
-                          //     itcvalue=final_value*5; 
-                          //   });
-                          //   }
-                          //   else if(loyality_value<subt){
-                          //        itcvalue=value;
-                          //   }
-                          // },
+                          
                           min: 0,
                           max: 100,
                         ),
@@ -369,24 +365,40 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                         companyName: hotel2,
                         companyLogo: "assets/images/h&m.png",
                         value: handm_value,
-                        points: 100,
-                        factor: 0.01,
-                        pointsUsed: (h_mEquivalent * 100).toStringAsFixed(2),
+                        points: 5,
+                        factor: 0.2,
+                        pointsUsed: (h_mEquivalent * 5).toStringAsFixed(2),
                         child: Slider(
                           divisions: 100,
                           label: " ${handm_value.toStringAsFixed(2)}/100",
                           activeColor: companynamecolors,
                           value: handm_value.toDouble(),
-                          onChanged:isPaused?null:(double newValue) {
-                            setState(() {
-                              if(subt<=newValue*0.2){
-                                print(final_value);
-                                handm_value = final_value*5; 
-                                }
-                                else{
+                          onChanged:(double newValue ) {
+                            
+                              if(final_value<=newValue*0.2){
+                                if(handm_value>newValue){
                                   handm_value=newValue;
                                 }
-                            });
+
+                               else{
+                                 setState(() {
+                                   if(handm_value==0){
+                                    handm_value =final_value*5;
+                                   }
+                                   else{
+                                    handm_value=handm_value+final_value*5;
+                                   }
+                                
+                                });
+                               }
+                                
+                                }
+                                else{
+                                 setState(() {
+                                    handm_value=newValue;
+                                 });
+                                }
+                            
                           },
                           //  onChangeEnd: ( double value){
                           //   if( loyality_value>subt){
@@ -420,8 +432,12 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                           value: airvalue.toDouble(),
                            onChanged:(double newValue ) {
                             
-                              if(subt<=newValue*0.5){
-                                setState(() {
+                              if(final_value<=newValue*0.5){
+                                if(airvalue>newValue){
+                                  airvalue=newValue;
+                                }
+                                else{
+                                  setState(() {
                                    if(airvalue==0){
                                     airvalue =final_value*2;
                                    }
@@ -430,6 +446,7 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                                    }
                                 
                                 });
+                                }
                                 
                                 }
                                 else{
