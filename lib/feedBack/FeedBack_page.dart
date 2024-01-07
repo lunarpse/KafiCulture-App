@@ -6,9 +6,11 @@ import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
 import 'package:project_2/feedBack/bloc/feedback_bloc.dart';
+import 'package:project_2/feedBack/orderrecieved.dart';
 import 'package:project_2/feedBack/ratingStar.dart';
 import 'package:project_2/feedBack/thankYou.dart';
 import 'package:project_2/customdrawer/drawerScreen.dart';
+import 'package:project_2/feedBack/yesrecieved.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 
 class FeedBackPage extends StatefulWidget {
@@ -50,14 +52,32 @@ class _FeedBackPageState extends State<FeedBackPage> {
             if (isYesSelected) {
               isNoSelected = false;
             }
-          });
+          }
+          );
+          showModalBottomSheet(
+            context: context,
+            builder: (context) {
+              return yesreceived();
+              
+            },
+          );
+
+
         } else if (state is FeedbackNoButtonClickedState) {
           setState(() {
+  
             isNoSelected = !isNoSelected;
             if (isNoSelected) {
               isYesSelected = false;
             }
           });
+          showModalBottomSheet(
+            context: context,
+            builder: (context) {
+              return orderrecieved();
+              
+            },
+          );
         } else if (state is FeedbackSubmitButtonClickedState) {
           showModalBottomSheet(
             context: context,

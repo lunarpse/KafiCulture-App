@@ -128,6 +128,9 @@ const Color feedbackblack = Colors.black;
 const Color feedbackratingstarcolor = Color.fromARGB(255, 248, 231, 77);
 const Color thankyoufeedbackcolor = Colors.green;
 const Color textcolour = Colors.white;
+const Color nobuttonpressedcolor=Colors.yellow;
+const Color scheduleiconcolor =Colors.black;
+const Color schedulemsgcolor =Colors.black;
 
 //geniethemecolor
 const Color geniedarkthemebgcolor = Colors.black;
