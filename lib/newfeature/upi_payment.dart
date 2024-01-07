@@ -65,8 +65,8 @@ class _UPIPaymentState extends State<UPIPayment> {
                     UpiIcon(
                         coffee: widget.coffee,
                         height: 85,
-                        width: 85,
-                        assets: "assets/images/gpay2.png"),
+                         width: 85,
+                         assets: "assets/images/gpay2.png"),
                     UpiIcon(
                         coffee: widget.coffee,
                         height: 85,
