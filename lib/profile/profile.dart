@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
@@ -19,9 +21,12 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   bool _customIcon = false;
-
+  var name = "John Doe";
+  var email = "johndoe@gmail.com";
   @override
   Widget build(BuildContext context) {
+    var namecontroller = TextEditingController(text: name);
+    var emailcontroller = TextEditingController(text: email);
     return Scaffold(
       appBar: AppbarWidget(),
       drawer: DrawerScreen(),
@@ -93,7 +98,7 @@ class _ProfileState extends State<Profile> {
                             height: 15,
                           ),
                           Text(
-                            "Deepsundar",
+                            namecontroller.text,
                             style:
                                 TextStyle(fontSize: 22, color: userNameColor),
                           ),
@@ -101,14 +106,57 @@ class _ProfileState extends State<Profile> {
                             height: 2,
                           ),
                           Text(
-                            "deep123@gmail.com",
+                            emailcontroller.text,
                             style: TextStyle(
                               fontSize: 16,
                               color: userGmailColor,
                             ),
                           ),
                           TextButton.icon(
-                              onPressed: () {},
+                              onPressed: () {
+                                showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return BackdropFilter(
+                                        filter: ImageFilter.blur(
+                                            sigmaX: 10, sigmaY: 11),
+                                        child: Container(
+                                          width: 400,
+                                          height: 40,
+                                          child: Dialog(
+                                            child: Container(
+                                              padding: EdgeInsets.all(10),
+                                              width: 400,
+                                              height: 170,
+                                              child: Column(
+                                                children: [
+                                                  TextFormField(
+                                                    controller: namecontroller,
+                                                  ),
+                                                  TextFormField(
+                                                    controller: emailcontroller,
+                                                  ),
+                                                  TextButton(
+                                                      onPressed: () {
+                                                        setState(() {
+                                                          name = namecontroller
+                                                              .text;
+                                                          email =
+                                                              emailcontroller
+                                                                  .text;
+                                                          Navigator.of(context)
+                                                              .pop();
+                                                        });
+                                                      },
+                                                      child: Text("Submit"))
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    });
+                              },
                               icon: Icon(
                                 Icons.edit,
                                 size: 15,

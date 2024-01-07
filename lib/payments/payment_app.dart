@@ -2,6 +2,7 @@
 
 import "package:flutter/material.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:project_2/cart/riverpod/order_provider.dart';
 import 'package:project_2/cart/riverpod/state_provider.dart';
 import 'package:project_2/cart/riverpod/tipstate_provider.dart';
 import 'package:project_2/constants/color_constants.dart';
@@ -13,18 +14,23 @@ import 'package:project_2/newfeature/amount.dart';
 import 'package:project_2/newfeature/company_name.dart';
 import 'package:project_2/newfeature/payment_cart.dart';
 import '../cart/riverpod/cargo_state_provider.dart';
-import '../cart/riverpod/switch_provider.dart';
+
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 // ignore: camel_case_types
 class PaymentApp extends ConsumerStatefulWidget {
-  const PaymentApp({super.key});
+  PaymentApp({super.key, required this.coffee});
+  final coffee;
 
   @override
   ConsumerState createState() => _PaymentAppState();
 }
 
-class _PaymentAppState extends ConsumerState {
+// ignore: camel_case_types
+class _PaymentAppState extends ConsumerState<PaymentApp> {
+  // ignore: unused_field, prefer_final_fields
+  //SingingCharacter? _character = SingingCharacter.Paytm;
+
   final ExpansionTileController controller = ExpansionTileController();
   final ExpansionTileController upiExpansionController =
       ExpansionTileController();
@@ -40,6 +46,14 @@ class _PaymentAppState extends ConsumerState {
 
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     // Do something when payment succeeds
+
+    if (widget.coffee == true) {
+      ref.read(OrderProvider.notifier).add(ref.read(CartProvider));
+      ref.read(CartProvider.notifier).empty();
+    } else {
+      ref.read(OrderProvider.notifier).add(ref.read(CargoProvider));
+      ref.read(CargoProvider.notifier).empty();
+    }
     Navigator.pushNamed(context, "/feedback");
   }
 
@@ -69,27 +83,22 @@ class _PaymentAppState extends ConsumerState {
   Widget build(BuildContext context) {
     double mediaWidth = MediaQuery.of(context).size.width;
 
-    final data = ref.watch(SwitchProvider) == true
+    final data = widget.coffee == true
         ? ref.watch(CartProvider)
         : ref.watch(CargoProvider);
 
-    double addonprice = 0;
-    for (int i = 0; i < data.length; i++) {
-      addonprice +=
-          data[i]["addons"] == null ? 0 : data[i]["addons"]["addonprice"];
-    }
     double gst = ref.watch(TipProvider)["gst"];
 
     final tc = data.isNotEmpty ? data.map((e) => e["cost"] * 1) : [];
 
     final double subt = tc.length != 0
-        ? tc.reduce((value, element) => value + element) + gst + addonprice
+        ? tc.reduce((value, element) => value + element) + gst
         : 0;
-
+    print("ssss $subt");
     final amount = double.parse(subt.toStringAsFixed(2));
     double final_price =
         amount - itcvalue * 0.2 - handm_value * 0.01 - airvalue * 0.5;
-
+    print(amount);
     String strPrice;
     if (final_price < 0.00) {
       strPrice = "0.00";
@@ -99,8 +108,11 @@ class _PaymentAppState extends ConsumerState {
       airEquivalent = airvalue * 0.5;
       strPrice = "\$ ${final_price.toStringAsFixed(2)}";
     }
+
     return Scaffold(
-      appBar: AppbarWidget(),
+      appBar: AppbarWidget(
+        coffee: widget.coffee,
+      ),
       drawer: DrawerScreen(),
       body: BackgroundContainerWidget(
         opacity: 0.5,
@@ -368,9 +380,11 @@ class _PaymentAppState extends ConsumerState {
                                 'name': apptitle,
                                 'description': appslogan,
                               };
+
                               _razorpay.open(options);
                             } else {
-                              Navigator.pushNamed(context, "/loading");
+                              Navigator.pushReplacementNamed(
+                                  context, "/loading");
                             }
                           },
                           child: Container(

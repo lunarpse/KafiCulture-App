@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:project_2/cart/riverpod/switch_provider.dart';
+
 import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
 
@@ -24,7 +24,6 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
   ]);
   @override
   Widget build(BuildContext context) {
-    final func = ref.watch(SwitchProvider.notifier);
     const double fontsize = 22;
     const double fontsize2 = 19.6;
     const double fontsize3 = 17.2;
@@ -53,6 +52,31 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
             ),
             ListTile(
               title: const Text(
+                "Profile",
+                style: TextStyle(fontSize: fontsize),
+              ),
+              textColor: drawerscreentextcolor,
+              trailing: const Icon(Icons.person),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.pushNamed(context, "/profile");
+              },
+            ),
+            ListTile(
+              title: const Text(
+                cart,
+                style: TextStyle(fontSize: fontsize),
+              ),
+              textColor: drawerscreentextcolor,
+              trailing: const Icon(Icons.shopping_cart),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.pushNamed(context, "/cart");
+              },
+            ),
+
+            ListTile(
+              title: const Text(
                 home,
                 style: TextStyle(
                   fontSize: fontsize,
@@ -61,6 +85,7 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
               textColor: drawerscreentextcolor,
               trailing: const Icon(Icons.home),
               onTap: () {
+                Navigator.of(context).pop();
                 Navigator.pushNamed(context, "/home");
               },
             ),
@@ -104,7 +129,7 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
                           textColor: drawerscreentextcolor,
                           trailing: const Icon(Icons.breakfast_dining),
                           onTap: () {
-                            func.toggle(true);
+                            Navigator.of(context).pop();
                             Navigator.pushNamed(context, "/snacks");
                           },
                         ),
@@ -120,7 +145,7 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
                           textColor: drawerscreentextcolor,
                           trailing: const Icon(Icons.local_drink),
                           onTap: () {
-                            func.toggle(true);
+                            Navigator.of(context).pop();
                             Navigator.pushNamed(context, "/drinks");
                           },
                         ),
@@ -136,7 +161,7 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
                           textColor: drawerscreentextcolor,
                           trailing: const Icon(Icons.cookie),
                           onTap: () {
-                            func.toggle(true);
+                            Navigator.of(context).pop();
                             Navigator.pushNamed(context, "/cookies");
                           },
                         ),
@@ -161,7 +186,7 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
                             FontAwesomeIcons.shoePrints,
                           ),
                           onTap: () {
-                            func.toggle(false);
+                            Navigator.of(context).pop();
                             Navigator.pushNamed(context, "/shoepage");
                           },
                         ),
@@ -178,7 +203,7 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
                             FontAwesomeIcons.shirt,
                           ),
                           onTap: () {
-                            func.toggle(false);
+                            Navigator.of(context).pop();
                             Navigator.pushNamed(context, "/bagpage");
                           },
                         ),

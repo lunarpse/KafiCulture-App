@@ -4,8 +4,9 @@ import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/newfeature/upi_icon.dart';
 
 class UPIPayment extends StatefulWidget {
-  UPIPayment({super.key, required this.upiExpansionController});
-
+  const UPIPayment(
+      {super.key, required this.upiExpansionController, required this.coffee});
+  final coffee;
   final ExpansionTileController upiExpansionController;
 
   @override
@@ -51,7 +52,7 @@ class _UPIPaymentState extends State<UPIPayment> {
           height: 40,
         ),
       ),
-      children: const [
+      children: [
         Padding(
           padding: EdgeInsets.only(left: 16, right: 16),
           child: Card(
@@ -62,18 +63,22 @@ class _UPIPaymentState extends State<UPIPayment> {
                 Row(
                   children: [
                     UpiIcon(
+                        coffee: widget.coffee,
                         height: 85,
                         width: 85,
                         assets: "assets/images/gpay2.png"),
                     UpiIcon(
+                        coffee: widget.coffee,
                         height: 85,
                         width: 85,
                         assets: "assets/images/phonepe2.png"),
                     UpiIcon(
+                        coffee: widget.coffee,
                         height: 85,
                         width: 85,
                         assets: "assets/images/paytm2.png"),
                     UpiIcon(
+                        coffee: widget.coffee,
                         height: 85,
                         width: 85,
                         assets: "assets/images/bhim2.png"),

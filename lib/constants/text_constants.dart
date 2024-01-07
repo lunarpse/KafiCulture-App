@@ -11,7 +11,36 @@ const String dialogContent =
 //--------------------------------------------------> Cart
 //cart-->screen-->cart
 const String popular = "Populars";
+const String extraItemMtapName2 = "Aloo Snacks";
+const String extraItemMtapName1 = "Hot Chocolate";
+const String extraItemMtapName3 = "Dahi Vada";
 
+const String extraItemCargoName1 = "Testoni";
+const String extraItemCargoName2 = "Molecules";
+const String extraItemCargoName3 = "Air Jordans 2016";
+
+const String extraItemMtapimage3 = "assets/images/Dahi_Vada.jpg";
+const String extraItemMtapimage2 = "assets/images/Aloo_snacks.jpg";
+const String extraItemMtapimage1 = "assets/images/hot_choc.jpg";
+
+const String extraItemCargoimage1 = "assets/images/MenShoes/TESTONI SHOES.png";
+const String extraItemCargoimage2 = "assets/images/MenShoes/MOLECULE SHOE.png";
+const String extraItemCargoimage3 =
+    "assets/images/MenShoes/NIKE AIR MAG 2016.png";
+const double extraItemMtapPrice1 = 12;
+const double extraItemMtapPrice2 = 10;
+const double extraItemMtapPrice3 = 11;
+const double extraItemCargoPrice1 = 1243.0;
+const String cartPopular = "Populars";
+const double extraItemCargoPrice2 = 2311.0;
+const String akey = '123456789012';
+const String AadharNumber = "Aadhar Number";
+const String Next = "Next";
+const double extraItemCargoPrice3 = 2022.0;
+const String delivery = "Delivery";
+const String subtotal = "Subtotal";
+const String billGst = "GST";
+const String billTotal = "Total";
 //cart-->emptycart
 const String emptycart = "Cart Is Empty";
 const String gotohomepage = "Go To Home";
@@ -85,11 +114,15 @@ const String cardpayment = "Credit/Debit Cards";
 const String thankyou = "Thank You";
 const String selectpaymentmethod = "Select Payment Method";
 const String recommended = "Recommended";
-const String subtotal = "Sub-Total";
+const String quantity = "Quantity";
 const String totalamount = "Amount: ";
 const String orders = "Orders ";
 const String key = 'rzp_test_rZVf4rZ90TsWfh';
-
+const String deliveryInstruction = "Delievery Instructions";
+const String deliveryInstruction1 = "Proper Sanitization";
+const String deliveryInstruction2 = "Leave At Door";
+const String deliveryInstruction3 = "Avoid Ringing Bell";
+const String tip = "Tip Your Delivery Partner";
 //creditcardwidget
 const String validate = "Validate";
 

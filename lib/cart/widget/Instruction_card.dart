@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:project_2/constants/text_constants.dart';
 
 class InstructionCard extends StatelessWidget {
   const InstructionCard({super.key, this.instruction});
@@ -24,8 +25,8 @@ class InstructionCard extends StatelessWidget {
 
     return Container(
       width: 100,
-      height:120,
-      margin: EdgeInsets.fromLTRB(7, 10, 7,7),
+      height: 120,
+      margin: EdgeInsets.fromLTRB(7, 10, 7, 7),
       padding: EdgeInsets.all(8),
       decoration: BoxDecoration(
         color: Color.fromARGB(255, 224, 220, 218),
@@ -44,7 +45,7 @@ class InstructionCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            "Delievery Instructions",
+            deliveryInstruction,
             style: TextStyle(
               fontSize: 25,
               fontWeight: FontWeight.bold,
@@ -66,7 +67,7 @@ class InstructionCard extends StatelessWidget {
                         Icons.sanitizer_outlined,
                         size: 50,
                       ),
-                      Text("Proper sanitization"),
+                      Text(deliveryInstruction1),
                     ],
                   ),
                   Column(
@@ -76,7 +77,7 @@ class InstructionCard extends StatelessWidget {
                         Icons.door_back_door_outlined,
                         size: 50,
                       ),
-                      Text("Leave At Door"),
+                      Text(deliveryInstruction2),
                     ],
                   ),
                   Column(
@@ -86,7 +87,7 @@ class InstructionCard extends StatelessWidget {
                         Icons.doorbell_outlined,
                         size: 50,
                       ),
-                      Text("Avoid ringing bell"),
+                      Text(deliveryInstruction3),
                     ],
                   ),
                 ],
