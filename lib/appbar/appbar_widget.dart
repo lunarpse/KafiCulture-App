@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_print
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,14 +19,14 @@ class AppbarWidget extends ConsumerStatefulWidget
 
   @override
   ConsumerState<AppbarWidget> createState() => _AppbarWidgetState();
-
+ 
   @override
   Size get preferredSize => const Size.fromHeight(60);
 }
-
+ 
 class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
   bool _isNFCavailable = false;
-
+ 
   @override
   Widget build(BuildContext context) {
     final AppbarBloc appbarBloc = AppbarBloc();
@@ -147,14 +145,14 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
       },
     );
   }
-
+ 
   void _checkNFCStatus() async {
     try {
       bool isAvailable = await NfcManager.instance.isAvailable();
       setState(() {
         _isNFCavailable = isAvailable;
       });
-
+ 
       if (isAvailable) {
         _startNFCSession();
       } else {
@@ -164,7 +162,7 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
       debugPrint("error reading NFC: $e");
     }
   }
-
+ 
   void _startNFCSession() {
     print("NFC working");
     showDialog(
@@ -201,12 +199,12 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
     );
     // NfcManager.instance.startSession(onDiscovered: _handleNFCDiscovered);
   }
-
+ 
   Future<void> _handleNFCDiscovered(NfcTag tag) async {
     // String tagId = tag.id;
     print("NFC Tag is discovered $tag");
   }
-
+ 
   void _showNoNFCDialog() {
     showDialog(
       context: context,

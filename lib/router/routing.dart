@@ -18,7 +18,9 @@ import 'package:project_2/homepage/pages/handcraft/snacks/snacks_page_details.da
 import 'package:project_2/homepage/pages/home_page/home_page.dart';
 import 'package:project_2/homepage/pages/home_page/latest_offerings/offerings_details_page.dart';
 import 'package:project_2/homepage/pages/home_page/populars/popular_details_page.dart';
+import 'package:project_2/loading/loadingScreen.dart';
 import 'package:project_2/payments/payment_app.dart';
+//import 'package:project_2/payments/payment_app.dart';
 import 'package:project_2/splashscreen/splash_screen.dart';
 import '../profile/address/address.dart';
 import '../profile/help/help.dart';
