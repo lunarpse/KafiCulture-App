@@ -3,15 +3,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:project_2/cart/riverpod/cargo_state_provider.dart';
-import 'package:project_2/cart/riverpod/switch_provider.dart';
+
 import 'package:project_2/cart/widget/Remove_or_Cancel.dart';
+import 'package:project_2/constants/text_constants.dart';
 import '../riverpod/state_provider.dart';
 
 class CartItem extends ConsumerStatefulWidget {
   final data;
   final atpayment;
+  final coffee;
 
   const CartItem({
+    required this.coffee,
     super.key,
     required this.data,
     this.atpayment = false,
@@ -30,7 +33,6 @@ class _MyWidgetState extends ConsumerState<CartItem> {
 
   @override
   Widget build(BuildContext context) {
-    var show = ref.watch(SwitchProvider);
     double amount = widget.data["cost"];
     final amount2 = double.parse(amount.toStringAsFixed(2));
 
@@ -126,7 +128,7 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "Quantity",
+                                    quantity,
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 16),
@@ -163,7 +165,7 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                                               _showremove = true;
                                             });
                                           } else {
-                                            show == true
+                                            widget.coffee == true
                                                 ? ref
                                                     .watch(
                                                         CartProvider.notifier)
@@ -200,7 +202,7 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                                     child: IconButton(
                                         color: Colors.white,
                                         onPressed: () {
-                                          ref.watch(SwitchProvider) == true
+                                          widget.coffee == true
                                               ? ref
                                                   .watch(CartProvider.notifier)
                                                   .increase_quantity(
@@ -220,7 +222,7 @@ class _MyWidgetState extends ConsumerState<CartItem> {
 
                               IconButton(
                                   onPressed: () {
-                                    ref.watch(SwitchProvider) == true
+                                    widget.coffee == true
                                         ? ref
                                             .watch(CartProvider.notifier)
                                             .remove_item(widget.data["name"])

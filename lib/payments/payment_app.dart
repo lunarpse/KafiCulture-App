@@ -2,6 +2,7 @@
 
 import "package:flutter/material.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:project_2/cart/riverpod/order_provider.dart';
 import 'package:project_2/cart/riverpod/state_provider.dart';
 import 'package:project_2/cart/riverpod/tipstate_provider.dart';
 import 'package:project_2/constants/color_constants.dart';
@@ -13,18 +14,23 @@ import 'package:project_2/newfeature/amount.dart';
 import 'package:project_2/newfeature/company_name.dart';
 import 'package:project_2/newfeature/payment_cart.dart';
 import '../cart/riverpod/cargo_state_provider.dart';
-import '../cart/riverpod/switch_provider.dart';
+
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 // ignore: camel_case_types
 class PaymentApp extends ConsumerStatefulWidget {
-  const PaymentApp({super.key});
+  PaymentApp({super.key, required this.coffee});
+  final coffee;
 
   @override
   ConsumerState createState() => _PaymentAppState();
 }
 
-class _PaymentAppState extends ConsumerState {
+// ignore: camel_case_types
+class _PaymentAppState extends ConsumerState<PaymentApp> {
+  // ignore: unused_field, prefer_final_fields
+  //SingingCharacter? _character = SingingCharacter.Paytm;
+
   final ExpansionTileController controller = ExpansionTileController();
   final ExpansionTileController upiExpansionController =
       ExpansionTileController();
@@ -40,6 +46,14 @@ class _PaymentAppState extends ConsumerState {
 
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     // Do something when payment succeeds
+
+    if (widget.coffee == true) {
+      ref.read(OrderProvider.notifier).add(ref.read(CartProvider));
+      ref.read(CartProvider.notifier).empty();
+    } else {
+      ref.read(OrderProvider.notifier).add(ref.read(CargoProvider));
+      ref.read(CargoProvider.notifier).empty();
+    }
     Navigator.pushNamed(context, "/feedback");
   }
 
@@ -71,29 +85,27 @@ class _PaymentAppState extends ConsumerState {
   Widget build(BuildContext context) {
     double mediaWidth = MediaQuery.of(context).size.width;
 
-    final data = ref.watch(SwitchProvider) == true
+    final data = widget.coffee == true
         ? ref.watch(CartProvider)
         : ref.watch(CargoProvider);
 
-    double addonprice = 0;
-    for (int i = 0; i < data.length; i++) {
-      addonprice +=
-          data[i]["addons"] == null ? 0 : data[i]["addons"]["addonprice"];
-    }
     double gst = ref.watch(TipProvider)["gst"];
 
     final tc = data.isNotEmpty ? data.map((e) => e["cost"] * 1) : [];
 
     final double subt = tc.length != 0
-        ? tc.reduce((value, element) => value + element) + gst + addonprice
+        ? tc.reduce((value, element) => value + element) + gst
         : 0;
-
+         
+          final_value=subt;
+         
+    print("ssss $subt");
     final amount = double.parse(subt.toStringAsFixed(2));
       double loyality_value=itcvalue * 0.2 + handm_value * 0.01 + airvalue * 0.5;
     double final_price =
         amount -loyality_value ;
 
-        final_value=subt;
+       
 
     String strPrice;
     if (final_price <= 0.00) {
@@ -101,26 +113,28 @@ class _PaymentAppState extends ConsumerState {
        itcEquivalent = itcvalue * 0.2;
       h_mEquivalent = handm_value * 0.01;
       airEquivalent = airvalue * 0.5;
-      loyality_value=itcvalue * 0.2 + handm_value * 0.01 + airvalue * 0.5;
-      
-    
-      
+      loyality_value=itcvalue * 0.2 + handm_value * 0.01 + airvalue * 0.5; 
       isPaused=true;
+      final_value=0;
     } else {
       itcEquivalent = itcvalue * 0.2;
       h_mEquivalent = handm_value * 0.01;
       airEquivalent = airvalue * 0.5;
       strPrice = "\$ ${final_price.toStringAsFixed(2)}";
       loyality_value=itcvalue * 0.2 + handm_value * 0.01 + airvalue * 0.5;
+      final_value=final_price;
       if(isPaused==true){
         isPaused=false;
       }
       
-        final_value=final_price;
+        
       
     }
+
     return Scaffold(
-      appBar: AppbarWidget(),
+      appBar: AppbarWidget(
+        coffee: widget.coffee,
+      ),
       drawer: DrawerScreen(),
       body: BackgroundContainerWidget(
         opacity: 0.5,
@@ -315,26 +329,36 @@ class _PaymentAppState extends ConsumerState {
                           activeColor: companynamecolors,
                           value: itcvalue.toDouble(),
                           onChanged:(double newValue ) {
-                            setState(() {
+                            
                               if(subt<=newValue*0.2){
-                                print(final_value);
-                                itcvalue = final_value*5; 
+                                setState(() {
+                                   if(itcvalue==0){
+                                    itcvalue =final_value*5;
+                                   }
+                                   else{
+                                    itcvalue=itcvalue+final_value*5;
+                                   }
+                                
+                                });
+                                
                                 }
                                 else{
-                                  itcvalue=newValue;
+                                 setState(() {
+                                    itcvalue=newValue;
+                                 });
                                 }
-                            });
+                            
                           },
-                          onChangeEnd: ( double value){
-                            if( loyality_value>subt){
-                            setState(() { 
-                              itcvalue=final_value*5; 
-                            });
-                            }
-                            else if(loyality_value<subt){
-                                 itcvalue=value;
-                            }
-                          },
+                          // onChangeEnd: ( double value){
+                          //   if( loyality_value>subt){
+                          //   setState(() { 
+                          //     itcvalue=final_value*5; 
+                          //   });
+                          //   }
+                          //   else if(loyality_value<subt){
+                          //        itcvalue=value;
+                          //   }
+                          // },
                           min: 0,
                           max: 100,
                         ),
@@ -355,20 +379,26 @@ class _PaymentAppState extends ConsumerState {
                           value: handm_value.toDouble(),
                           onChanged:isPaused?null:(double newValue) {
                             setState(() {
-                              handm_value = newValue;
+                              if(subt<=newValue*0.2){
+                                print(final_value);
+                                handm_value = final_value*5; 
+                                }
+                                else{
+                                  handm_value=newValue;
+                                }
                             });
                           },
-                           onChangeEnd: ( double value){
-                            if( loyality_value>subt){
-                            setState(() { 
-                              print(final_value);
-                              handm_value=final_value*10; 
-                            });
-                            }
-                            else if(loyality_value<subt){
-                                 handm_value=value;
-                            }
-                          },
+                          //  onChangeEnd: ( double value){
+                          //   if( loyality_value>subt){
+                          //   setState(() { 
+                          //     print(final_value);
+                          //     handm_value=final_value*100; 
+                          //   });
+                          //   }
+                          //   else if(loyality_value<subt){
+                          //        handm_value=value;
+                          //   }
+                          // },
                           min: 0,
                           max: 100,
                         ),
@@ -388,12 +418,38 @@ class _PaymentAppState extends ConsumerState {
                           label: " ${airvalue.toStringAsFixed(2)}/100",
                           activeColor: companynamecolors,
                           value: airvalue.toDouble(),
-                          onChanged: isPaused?null:(double newValue) {
-                            setState(() {
-                              airvalue = newValue;
-                              
-                            });
+                           onChanged:(double newValue ) {
+                            
+                              if(subt<=newValue*0.5){
+                                setState(() {
+                                   if(airvalue==0){
+                                    airvalue =final_value*2;
+                                   }
+                                   else{
+                                    airvalue=airvalue+final_value*2;
+                                   }
+                                
+                                });
+                                
+                                }
+                                else{
+                                 setState(() {
+                                    airvalue=newValue;
+                                 });
+                                }
+                            
                           },
+                          //  onChangeEnd: ( double value){
+                          //   if( loyality_value>subt){
+                          //   setState(() { 
+                          //     print(final_value);
+                          //     airvalue=final_value*2; 
+                          //   });
+                          //   }
+                          //   else if(loyality_value<subt){
+                          //        airvalue=value;
+                          //   }
+                          // },
                           min: 0,
                           max: 100,
                         ),
@@ -416,9 +472,11 @@ class _PaymentAppState extends ConsumerState {
                                 'name': apptitle,
                                 'description': appslogan,
                               };
+
                               _razorpay.open(options);
                             } else {
-                              Navigator.pushNamed(context, "/loading");
+                              Navigator.pushReplacementNamed(
+                                  context, "/loading");
                             }
                           },
                           child: Container(

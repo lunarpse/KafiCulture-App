@@ -34,7 +34,7 @@ class Tip extends ConsumerWidget {
           Container(
             margin: EdgeInsets.only(top: 2, bottom: 5),
             child: Text(
-              "Tip Your Delievery Partner",
+              tip,
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),

@@ -29,7 +29,7 @@ class address extends StatelessWidget {
                   const SizedBox(height: 10),
                   TextFormField(
                     decoration: InputDecoration(
-                        hintText: 'Enter the name',
+                        hintText: 'Enter your name',
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15))),
                   ),

@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:project_2/constants/color_constants.dart';
 
-
 import 'package:project_2/homepage/pages/home_page/home_page.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -19,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(const Duration(seconds: 4), () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const HomePage()));
+          context, MaterialPageRoute(builder: (context) => HomePage()));
     });
   }
 
@@ -29,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(
         child: Container(
           width: MediaQuery.of(context).size.width,
-          decoration:  BoxDecoration(
+          decoration: BoxDecoration(
               gradient: SweepGradient(colors: [
             spalshscreensweepgradientcolor1,
             splashscreensweepgradientcolor2,

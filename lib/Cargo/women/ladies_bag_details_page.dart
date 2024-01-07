@@ -36,7 +36,9 @@ class _LadiesBagDetailsPageState extends State<LadiesBagDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppbarWidget(),
+      appBar: AppbarWidget(
+        coffee: false,
+      ),
       drawer: DrawerScreen(),
       body: LadiesDetailsWidget(
         details: widget.detail,

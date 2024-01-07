@@ -9,16 +9,15 @@ import 'package:project_2/cart/riverpod/cargo_state_provider.dart';
 import 'package:project_2/cart/riverpod/state_provider.dart';
 import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
-import '../cart/riverpod/switch_provider.dart';
+
 import 'package:badges/badges.dart' as badges;
-
-
 
 class AppbarWidget extends ConsumerStatefulWidget
     implements PreferredSizeWidget {
-  const AppbarWidget({super.key, this.incart = false});
+  AppbarWidget({super.key, this.incart = true, this.coffee = true});
 
   final incart;
+  final coffee;
 
   @override
   ConsumerState<AppbarWidget> createState() => _AppbarWidgetState();
@@ -39,20 +38,19 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
       buildWhen: (previous, current) => current is! AppbarActionState,
       listener: (context, state) {
         if (state is AppbarDrawerClickedActionState) {
-         
           Scaffold.of(context).openDrawer();
         } else if (state is AppbarLogoClickedActionState) {
           Navigator.pushReplacementNamed(context, "/home");
-          ref.watch(SwitchProvider.notifier).toggle(true);
         } else if (state is AppbarCartClickedActionState) {
           Navigator.pushNamed(context, "/cart");
         }
       },
       builder: (context, state) {
-        final cartItemNos = ref.watch(SwitchProvider) == true
-        ? ref.watch(CartProvider)
-        : ref.watch(CargoProvider);
-    final cartItemNo = cartItemNos.length;
+        final cartItemNos = widget.coffee == true
+            ? ref.watch(CartProvider)
+            : ref.watch(CargoProvider);
+        final cartItemNo = cartItemNos.length;
+
         return AppBar(
           automaticallyImplyLeading: false,
           flexibleSpace: Image.asset(
@@ -61,7 +59,7 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
           ),
           title: GestureDetector(
             onTap: () {
-              appbarBloc.add(AppbarLogoClickedEvent());
+              Navigator.pushReplacementNamed(context, "/home");
             },
             child: Row(
               mainAxisSize: MainAxisSize.min,
@@ -77,7 +75,7 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
                   children: [
                     Text(
                       apptitle,
-                      style: TextStyle(fontSize: 20),
+                      style: TextStyle(fontSize: 20, color: badgeTextColor),
                     ),
                     SizedBox(
                       height: 3,
@@ -85,6 +83,7 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
                     Text(
                       appslogan,
                       style: TextStyle(
+                          color: badgeTextColor,
                           fontFamily: 'Ephesis',
                           fontSize: 17.5,
                           letterSpacing: 1),
@@ -97,48 +96,52 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
           leading: Builder(builder: (BuildContext context) {
             return IconButton(
                 onPressed: () {
-                  appbarBloc.add(AppbarDrawerClickedEvent());
+                  Scaffold.of(context).openDrawer();
                 },
-                icon: Icon(Icons.menu));
+                icon: Icon(
+                  Icons.menu,
+                  color: badgeTextColor,
+                ));
           }),
           actions: [
             InkWell(
-              onTap: _checkNFCStatus,
-              child: CircleAvatar(
-              backgroundColor: _isNFCavailable == true
-                  ? nfcCircleAvatarAvailableColor
-                  : nfcCircleAvatarNotAvailableColor,
-              radius: 14,
-              child: Icon(
-                Icons.nfc_rounded,
-                size: 22,
-                color: nfcIconColor,
-              ),
-            ),
-            ),
-            widget.incart == false
-            ? Padding(
-                padding: const EdgeInsets.only(right: 5),
-                child: IconButton(
-                  onPressed: () {
-                   appbarBloc.add(AppbarCartButtonNavigateEvent());
-                  },
-                  icon: badges.Badge(
-                    badgeContent: Text(
-                      "$cartItemNo",
-                      style: TextStyle(color: badgeTextColor),
-                    ),
-                    badgeAnimation: badges.BadgeAnimation.scale(),
-                    showBadge: cartItemNo == 0 ? false : true,
-                    child: Icon(Icons.shopping_cart),
+                onTap: _checkNFCStatus,
+                child: CircleAvatar(
+                  backgroundColor: _isNFCavailable == true
+                      ? nfcCircleAvatarAvailableColor
+                      : nfcCircleAvatarNotAvailableColor,
+                  radius: 14,
+                  child: Icon(
+                    Icons.nfc_rounded,
+                    size: 22,
+                    color: nfcIconColor,
                   ),
-                  color: cartIconColor,
-                  iconSize: 27,
-                ),
-              )
-            : SizedBox(
-                width: 15,
-              ),
+                )),
+            widget.incart == true
+                ? Padding(
+                    padding: const EdgeInsets.only(right: 5),
+                    child: IconButton(
+                      onPressed: () {
+                        widget.coffee == true
+                            ? Navigator.pushNamed(context, "/cart")
+                            : Navigator.pushNamed(context, "/cargocart");
+                      },
+                      icon: badges.Badge(
+                        badgeContent: Text(
+                          "$cartItemNo",
+                          style: TextStyle(color: badgeTextColor),
+                        ),
+                        badgeAnimation: badges.BadgeAnimation.scale(),
+                        showBadge: cartItemNo == 0 ? false : true,
+                        child: Icon(Icons.shopping_cart),
+                      ),
+                      color: cartIconColor,
+                      iconSize: 27,
+                    ),
+                  )
+                : SizedBox(
+                    width: 15,
+                  ),
           ],
         );
       },
