@@ -65,6 +65,7 @@ class _PaymentAppState extends ConsumerState {
   double h_mEquivalent = 0;
   double airEquivalent = 0;
   bool isPaused=false;
+  double final_value=0;
 
   @override
   Widget build(BuildContext context) {
@@ -88,16 +89,21 @@ class _PaymentAppState extends ConsumerState {
         : 0;
 
     final amount = double.parse(subt.toStringAsFixed(2));
-    final  double loyality_value=itcvalue * 0.2 + handm_value * 0.01 + airvalue * 0.5;
+      double loyality_value=itcvalue * 0.2 + handm_value * 0.01 + airvalue * 0.5;
     double final_price =
         amount -loyality_value ;
 
+        final_value=subt;
+
     String strPrice;
-    if (final_price < 0.00) {
+    if (final_price <= 0.00) {
       strPrice = "0.00";
        itcEquivalent = itcvalue * 0.2;
       h_mEquivalent = handm_value * 0.01;
       airEquivalent = airvalue * 0.5;
+      loyality_value=itcvalue * 0.2 + handm_value * 0.01 + airvalue * 0.5;
+      
+    
       
       isPaused=true;
     } else {
@@ -105,6 +111,13 @@ class _PaymentAppState extends ConsumerState {
       h_mEquivalent = handm_value * 0.01;
       airEquivalent = airvalue * 0.5;
       strPrice = "\$ ${final_price.toStringAsFixed(2)}";
+      loyality_value=itcvalue * 0.2 + handm_value * 0.01 + airvalue * 0.5;
+      if(isPaused==true){
+        isPaused=false;
+      }
+      
+        final_value=final_price;
+      
     }
     return Scaffold(
       appBar: AppbarWidget(),
@@ -301,15 +314,26 @@ class _PaymentAppState extends ConsumerState {
                           label: " ${itcvalue.toStringAsFixed(2)}/100",
                           activeColor: companynamecolors,
                           value: itcvalue.toDouble(),
-                          onChanged:isPaused?null:(double newValue ) {
+                          onChanged:(double newValue ) {
                             setState(() {
-                              if(final_price>0.39)
-                              {
-                              
-                              }    
-                              itcvalue = newValue;
-                              
+                              if(subt<=newValue*0.2){
+                                print(final_value);
+                                itcvalue = final_value*5; 
+                                }
+                                else{
+                                  itcvalue=newValue;
+                                }
                             });
+                          },
+                          onChangeEnd: ( double value){
+                            if( loyality_value>subt){
+                            setState(() { 
+                              itcvalue=final_value*5; 
+                            });
+                            }
+                            else if(loyality_value<subt){
+                                 itcvalue=value;
+                            }
                           },
                           min: 0,
                           max: 100,
@@ -329,10 +353,21 @@ class _PaymentAppState extends ConsumerState {
                           label: " ${handm_value.toStringAsFixed(2)}/100",
                           activeColor: companynamecolors,
                           value: handm_value.toDouble(),
-                          onChanged: isPaused?null:(double newValue) {
+                          onChanged:isPaused?null:(double newValue) {
                             setState(() {
                               handm_value = newValue;
                             });
+                          },
+                           onChangeEnd: ( double value){
+                            if( loyality_value>subt){
+                            setState(() { 
+                              print(final_value);
+                              handm_value=final_value*10; 
+                            });
+                            }
+                            else if(loyality_value<subt){
+                                 handm_value=value;
+                            }
                           },
                           min: 0,
                           max: 100,
