@@ -75,7 +75,7 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
                   children: [
                     Text(
                       apptitle,
-                      style: TextStyle(fontSize: 20, color: Colors.white),
+                      style: TextStyle(fontSize: 20, color: badgeTextColor),
                     ),
                     SizedBox(
                       height: 3,
@@ -83,7 +83,7 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
                     Text(
                       appslogan,
                       style: TextStyle(
-                          color: Colors.white,
+                          color: badgeTextColor,
                           fontFamily: 'Ephesis',
                           fontSize: 17.5,
                           letterSpacing: 1),
@@ -100,7 +100,7 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
                 },
                 icon: Icon(
                   Icons.menu,
-                  color: Colors.white,
+                  color: badgeTextColor,
                 ));
           }),
           actions: [
