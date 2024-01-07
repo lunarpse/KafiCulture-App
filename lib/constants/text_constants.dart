@@ -31,11 +31,16 @@ const double extraItemMtapPrice1 = 12;
 const double extraItemMtapPrice2 = 10;
 const double extraItemMtapPrice3 = 11;
 const double extraItemCargoPrice1 = 1243.0;
-
+const String cartPopular = "Populars";
 const double extraItemCargoPrice2 = 2311.0;
-
+const String akey = '123456789012';
+const String AadharNumber = "Aadhar Number";
+const String Next = "Next";
 const double extraItemCargoPrice3 = 2022.0;
-
+const String delivery = "Delivery";
+const String subtotal = "Subtotal";
+const String billGst = "GST";
+const String billTotal = "Total";
 //cart-->emptycart
 const String emptycart = "Cart Is Empty";
 const String gotohomepage = "Go To Home";
@@ -109,11 +114,15 @@ const String cardpayment = "Credit/Debit Cards";
 const String thankyou = "Thank You";
 const String selectpaymentmethod = "Select Payment Method";
 const String recommended = "Recommended";
-const String subtotal = "Sub-Total";
+const String quantity = "Quantity";
 const String totalamount = "Amount: ";
 const String orders = "Orders ";
 const String key = 'rzp_test_rZVf4rZ90TsWfh';
-
+const String deliveryInstruction = "Delievery Instructions";
+const String deliveryInstruction1 = "Proper Sanitization";
+const String deliveryInstruction2 = "Leave At Door";
+const String deliveryInstruction3 = "Avoid Ringing Bell";
+const String tip = "Tip Your Delivery Partner";
 //creditcardwidget
 const String validate = "Validate";
 

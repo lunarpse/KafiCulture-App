@@ -51,7 +51,7 @@ class Bottom extends ConsumerWidget {
         );
       },
       child: Text(
-        "Delivery",
+        delivery,
         style: TextStyle(color: bottomcheckoutcolor),
       ),
     );
@@ -90,10 +90,9 @@ class Bottom extends ConsumerWidget {
             ],
           ),
           Charges(
-              name: "SubTotal",
-              cost: double.parse(subtotal.toStringAsFixed(2))),
+              name: subTotal, cost: double.parse(subtotal.toStringAsFixed(2))),
           //Charges(name: "Shipping Cost", cost: 10),
-          Charges(name: "GST", cost: double.parse(gst.toStringAsFixed(2))),
+          Charges(name: billGst, cost: double.parse(gst.toStringAsFixed(2))),
 
           Container(
             margin: EdgeInsets.only(top: 10, bottom: 10),
@@ -110,7 +109,8 @@ class Bottom extends ConsumerWidget {
                       )),
             ),
           ),
-          Charges(name: "Total", cost: double.parse(total.toStringAsFixed(2))),
+          Charges(
+              name: billTotal, cost: double.parse(total.toStringAsFixed(2))),
           SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

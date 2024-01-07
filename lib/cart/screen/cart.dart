@@ -9,6 +9,7 @@ import 'package:project_2/cart/riverpod/tipstate_provider.dart';
 import 'package:project_2/cart/screen/Extras.dart';
 import 'package:project_2/cart/widget/Bottom.dart';
 import 'package:project_2/cart/widget/Cooking_Instructions.dart';
+import 'package:project_2/constants/text_constants.dart';
 import 'package:project_2/customdrawer/drawerScreen.dart';
 
 import '../../homepage/reusable_widgets/background_container_widget.dart';
@@ -97,7 +98,7 @@ class _CartState extends ConsumerState<Cart> {
                                             padding: const EdgeInsets.symmetric(
                                                 horizontal: 10, vertical: 3),
                                             child: Text(
-                                              "Populars",
+                                              cartPopular,
                                               style: TextStyle(
                                                   fontSize: 25,
                                                   fontWeight: FontWeight.bold),

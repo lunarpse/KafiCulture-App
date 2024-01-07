@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:project_2/cart/riverpod/cargo_state_provider.dart';
 
 import 'package:project_2/cart/widget/Remove_or_Cancel.dart';
+import 'package:project_2/constants/text_constants.dart';
 import '../riverpod/state_provider.dart';
 
 class CartItem extends ConsumerStatefulWidget {
@@ -127,7 +128,7 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "Quantity",
+                                    quantity,
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 16),
