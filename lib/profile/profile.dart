@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/customdrawer/drawerScreen.dart';
@@ -9,6 +10,7 @@ import 'package:project_2/profile/profile_menu_item.dart';
 
 import '../constants/color_constants.dart';
 import '../constants/text_constants.dart';
+import 'edit_dialog_box.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -23,6 +25,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppbarWidget(),
       drawer: DrawerScreen(),
       body: BackgroundContainerWidget(
@@ -108,7 +111,13 @@ class _ProfileState extends State<Profile> {
                             ),
                           ),
                           TextButton.icon(
-                              onPressed: () {},
+                              onPressed: () {
+                                showDialog(
+                                  barrierColor: Colors.black.withOpacity(0.7),
+                                  context: context,
+                                  builder: (context) => EditDialogBox(),
+                                );
+                              },
                               icon: Icon(
                                 Icons.edit,
                                 size: 15,
@@ -228,7 +237,7 @@ class _ProfileState extends State<Profile> {
                     ),
                   ],
                 ),
-              ),
+              )
             ],
           ),
         ),
