@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:project_2/constants/color_constants.dart';
+import 'package:project_2/constants/text_constants.dart';
 
 import '../../delivery/address_page/address.dart';
 
@@ -57,8 +59,8 @@ class _DeliveryDialogState extends State<DeliveryDialog> {
             future: loadJson(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.hasData) {
-                String key = '123456789012'; // 10-digit key (Aadhar number)
-                var data = snapshot.data[key];
+                // 10-digit key (Aadhar number)
+                var data = snapshot.data[akey];
                 print(data);
                 var name1 = '${data['name']}';
                 // return address();
@@ -76,8 +78,8 @@ class _DeliveryDialogState extends State<DeliveryDialog> {
                         ],
                         decoration: InputDecoration(
                           filled: true,
-                          fillColor: Colors.grey[200],
-                          labelText: 'Aadhar Number',
+                          fillColor: delieveryItemColor,
+                          labelText: AadharNumber,
                           // hintText: 'Enter Aadhar Number',
                           //prefixText: 'XXXX-XXXX-XXXX',
                           border: OutlineInputBorder(
@@ -97,7 +99,7 @@ class _DeliveryDialogState extends State<DeliveryDialog> {
                                         data: data,
                                       )));
                         },
-                        child: Text("next"),
+                        child: Text(Next),
                       )
                     ],
                   ),

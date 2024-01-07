@@ -89,7 +89,9 @@ class _FeedBackPageState extends State<FeedBackPage> {
       },
       builder: (context, state) {
         return Scaffold(
-          appBar: AppbarWidget(),
+          appBar: AppbarWidget(
+            incart: false,
+          ),
           drawer: DrawerScreen(),
           body: BackgroundContainerWidget(
             opacity: 0.5,

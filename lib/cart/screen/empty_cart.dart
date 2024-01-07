@@ -46,8 +46,13 @@ class EmptyCart extends StatelessWidget {
                 ),
               ),
             ),
-            onPressed: () {},
-            child: Text(gotohomepage),
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, "/home");
+            },
+            child: Text(
+              gotohomepage,
+              style: TextStyle(color: Colors.white),
+            ),
           ),
         ],
       ),

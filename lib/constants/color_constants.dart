@@ -9,7 +9,7 @@ const Color nfcCircleAvatarAvailableColor = Color.fromARGB(255, 1, 255, 9);
 const Color nfcCircleAvatarNotAvailableColor = Colors.white;
 const Color nfcIconColor = Colors.black;
 const Color badgeTextColor = Colors.white;
-
+const Color delieveryItemColor = Colors.grey;
 //emptycartconstants
 const Color emptycartelevatebuttoncolor = Colors.black;
 const Color emptycartroundedrectanglebordercolor = Colors.black38;

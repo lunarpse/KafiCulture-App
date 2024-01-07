@@ -70,6 +70,10 @@ class CartItems extends StateNotifier<List> {
     // state=nl;
   }
 
+  void empty() {
+    state = [];
+  }
+
   void decrease_quantity(String name) {
     final nl = state.map((e) {
       if (e["name"] == name) {

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
+import 'package:project_2/homepage/model/json_model.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 import 'package:project_2/homepage/reusable_widgets/dialog_box.dart';
 import 'package:readmore/readmore.dart';
@@ -530,7 +531,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                     children: [
                       ElevatedButton.icon(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/cart');
+                          Navigator.pushNamed(context, '/cargocart');
                           func.additem({
                             "name": name,
                             "image": "assets/images/MenShoes/$image.png",
@@ -669,7 +670,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                   OutlinedButton.icon(
                     onPressed: () {
                       Navigator.of(context).pop();
-                      Navigator.pushNamed(context, '/cart');
+                      Navigator.pushNamed(context, '/cargocart');
                     },
                     icon: Icon(
                       Icons.shopping_cart,

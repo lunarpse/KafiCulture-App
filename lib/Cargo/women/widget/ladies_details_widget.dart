@@ -449,7 +449,7 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                             "quantity": quantity
                           });
 
-                          Navigator.pushNamed(context, '/cart');
+                          Navigator.pushNamed(context, '/cargocart');
                         },
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(
@@ -581,7 +581,7 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                   OutlinedButton.icon(
                     onPressed: () {
                       Navigator.of(context).pop();
-                      Navigator.pushNamed(context, '/cart');
+                      Navigator.pushNamed(context, '/cargocart');
                     },
                     icon: Icon(
                       Icons.shopping_cart,

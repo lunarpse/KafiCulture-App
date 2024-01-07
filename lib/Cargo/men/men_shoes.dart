@@ -33,7 +33,9 @@ class _MenShoeState extends State<MenShoe> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppbarWidget(),
+      appBar: AppbarWidget(
+        coffee: false,
+      ),
       drawer: const DrawerScreen(),
       body: BackgroundContainerWidget(
         opacity: 1.0,
