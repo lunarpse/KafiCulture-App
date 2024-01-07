@@ -2,13 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
+import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 import 'package:readmore/readmore.dart';
-import 'package:project_2/cart/riverpod/state_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../cart/riverpod/cargo_state_provider.dart';
 import '../../../constants/color_constants.dart';
-//import '../../reusable_widget/cargo_dialogBox.dart';
+import '../../../constants/text_constants.dart';
 
 class CargoDetailsPageWidget extends ConsumerStatefulWidget {
   const CargoDetailsPageWidget(
@@ -32,7 +32,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    double appBarHeight = AppBar().preferredSize.height;
+    double appBarHeight = AppbarWidget().preferredSize.height;
     final screenHeight = MediaQuery.of(context).size.height;
     final bodyHeight = screenHeight - appBarHeight;
     final bodyWidth = MediaQuery.of(context).size.width;
@@ -56,7 +56,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
     final totalRatings = widget.details.totalRatings;
 
     return BackgroundContainerWidget(
-      opacity: 0.6,
+      opacity: 0.3,
       x: 8.0,
       y: 8.0,
       child: Padding(
@@ -65,7 +65,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
           height: bodyHeight,
           width: bodyWidth,
           decoration: BoxDecoration(
-              color: Colors.white,
+              color: parentContainerBoxdecorationColor,
               borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
           child: Stack(
             children: [
@@ -92,7 +92,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                   blur: 4,
                   border: Border.fromBorderSide(BorderSide.none),
                   borderRadius: BorderRadius.circular(30.0),
-                  color: Colors.white.withOpacity(0.2),
+                  color: glasscontainerColor,
                   child: Container(
                     width: bodyWidth - 20.0,
                     child: Row(
@@ -107,7 +107,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                               Text(
                                 name,
                                 style: TextStyle(
-                                    color: Colors.black,
+                                    color: glasscontainerNameColor,
                                     fontSize: 21,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -116,14 +116,14 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                                 children: [
                                   Icon(
                                     Icons.star,
-                                    color: Colors.amber,
+                                    color: glasscontainerStarIconColor,
                                     size: 23,
                                   ),
                                   SizedBox(width: 7),
                                   Text(
                                     rating,
                                     style: TextStyle(
-                                        color: ratingcolor,
+                                        color: glasscontainerRatingColor,
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -131,7 +131,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                                   Text(
                                     '($totalRatings)',
                                     style: TextStyle(
-                                      color: ratingcolor,
+                                      color: glasscontainerTotalratingColor,
                                       fontSize: 18,
                                     ),
                                   )
@@ -161,7 +161,8 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                                     Text(
                                       "\$ $offerPrice",
                                       style: TextStyle(
-                                          fontSize: 25, color: offerTextColor),
+                                          fontSize: 25,
+                                          color: glasscontainerOfferpriceColor),
                                     ),
                                     Row(
                                       children: [
@@ -169,10 +170,11 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                                           "\$ $price ",
                                           style: TextStyle(
                                               fontSize: 16,
-                                              color: pricetextcolor,
+                                              color: glasscontainerPriceColor,
                                               decoration:
                                                   TextDecoration.lineThrough,
-                                              decorationColor: pricetextcolor,
+                                              decorationColor:
+                                                  glasscontainerPriceDecorationColor,
                                               decorationThickness: 2,
                                               fontWeight: FontWeight.bold),
                                         ),
@@ -181,7 +183,8 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                                           style: TextStyle(
                                               fontSize: 13.5,
                                               fontWeight: FontWeight.w500,
-                                              color: discountColor),
+                                              color:
+                                                  glasscontainerDiscountColor),
                                         ),
                                       ],
                                     )
@@ -198,9 +201,11 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                                     width: 50,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
-                                        color: Colors.black.withOpacity(0.8)),
+                                        color:
+                                            glasscontainerRemoveIconDecorationColor),
                                     child: IconButton(
-                                      color: Colors.white,
+                                      color:
+                                          glasscontainerRemoveIconButtonColor,
                                       onPressed: () {
                                         setState(() {
                                           quantity = quantity - 1 == 0
@@ -223,9 +228,10 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                                     width: 50,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
-                                        color: Colors.black.withOpacity(0.8)),
+                                        color:
+                                            glasscontainerAddIconDecorationColor),
                                     child: IconButton(
-                                      color: Colors.white,
+                                      color: glasscontainerAddIconButtonColor,
                                       onPressed: () {
                                         setState(() {
                                           quantity = quantity + 1;
@@ -250,7 +256,6 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
               Positioned(
                   top: bodyHeight / 2 - 62,
                   child: Container(
-                    color: Colors.white,
                     height: bodyHeight / 2 - 66,
                     width: bodyWidth - 20,
                     child: ListView(
@@ -260,46 +265,45 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Description",
+                              descriptionText,
                               style: TextStyle(
-                                  color: ratingcolor,
+                                  color: descriptiontextColor,
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),
                             SizedBox(height: 5),
                             Container(
-                              // height: 43,
                               width: bodyWidth - 30,
                               child: ReadMoreText(
                                 description,
-                                style:
-                                    TextStyle(color: ratingcolor, fontSize: 17),
+                                style: TextStyle(
+                                    color: descriptionColor, fontSize: 17),
                                 trimLines: 2,
                                 trimMode: TrimMode.Line,
                                 moreStyle: TextStyle(
                                     fontSize: 17,
                                     fontWeight: FontWeight.bold,
-                                    color: descriptioncolor),
+                                    color: descriptionMoreStyleColor),
                                 lessStyle: TextStyle(
                                     fontSize: 17,
                                     fontWeight: FontWeight.bold,
-                                    color: descriptioncolor),
+                                    color: descriptionLessStyleColor),
                               ),
                             ),
                             SizedBox(height: 12),
                             Row(
                               children: [
                                 Text(
-                                  'Size - ',
+                                  sizeText1,
                                   style: TextStyle(
-                                      color: ratingcolor,
+                                      color: sizeText1Color,
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold),
                                 ),
                                 Text(
-                                  'UK/India',
+                                  sizeText2,
                                   style: TextStyle(
-                                      color: ratingcolor,
+                                      color: sizeText2Color,
                                       fontSize: 16.5,
                                       fontWeight: FontWeight.w500),
                                 ),
@@ -327,19 +331,18 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                                           width: 40,
                                           decoration: BoxDecoration(
                                               color: index == selectedIndex
-                                                  ? Color.fromRGBO(
-                                                      143, 93, 58, 1)
-                                                  : Colors.white,
+                                                  ? sizeActiveColor
+                                                  : sizeInactiveColor,
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               border: index == selectedIndex
                                                   ? Border.all(
                                                       color:
-                                                          Colors.brown.shade900,
+                                                          sizeActiveBorderColor,
                                                       width: 2)
                                                   : Border.all(
-                                                      color: Color.fromRGBO(
-                                                          143, 93, 58, 1),
+                                                      color:
+                                                          sizeInactiveBorderColor,
                                                       width: 2)),
                                           child: Column(
                                             mainAxisAlignment:
@@ -348,11 +351,10 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                                               Text(
                                                 '$number',
                                                 style: TextStyle(
-                                                    color:
-                                                        index == selectedIndex
-                                                            ? Colors.white
-                                                            : Color.fromRGBO(
-                                                                143, 93, 58, 1),
+                                                    color: index ==
+                                                            selectedIndex
+                                                        ? sizeNameActiveColor
+                                                        : sizeNameInactiveColor,
                                                     fontSize: 17,
                                                     fontWeight:
                                                         index == selectedIndex
@@ -370,9 +372,9 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                             ),
                             SizedBox(height: 12),
                             Text(
-                              'Customers also liked',
+                              suggestionText,
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color: suggestionTextColor,
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -404,7 +406,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                                         arguments: fetchProduct),
                                     child: Card(
                                       elevation: 10,
-                                      shadowColor: Colors.grey,
+                                      shadowColor: suggestionCardShadowColor,
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(10)),
@@ -449,7 +451,8 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                                                     Icon(
                                                       Icons.star,
                                                       size: 17,
-                                                      color: Colors.orange,
+                                                      color:
+                                                          suggestionCardIconColor,
                                                     ),
                                                     SizedBox(width: 3),
                                                     Text(
@@ -474,7 +477,8 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                                                       "($discount% Off)",
                                                       style: TextStyle(
                                                           fontSize: 13.5,
-                                                          color: Colors.orange,
+                                                          color:
+                                                              suggestionCardDiscountColor,
                                                           fontWeight:
                                                               FontWeight.w900),
                                                     ),
@@ -501,12 +505,12 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                   padding: EdgeInsets.symmetric(horizontal: 15, vertical: 7),
                   width: bodyWidth - 20,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: container_Color,
                     borderRadius:
                         BorderRadius.vertical(top: Radius.circular(20)),
                     boxShadow: [
                       BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
+                          color: container_ShadowColor,
                           blurRadius: 3,
                           spreadRadius: 2,
                           offset: Offset(0, -2))
@@ -528,7 +532,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                         },
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(
-                                Color.fromRGBO(143, 93, 58, 1)),
+                                elevatedButtonBackgroundColor),
                             shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16),
@@ -537,15 +541,15 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                                 Size((bodyWidth / 3) + 25, 50))),
                         icon: Icon(
                           Icons.shopping_bag_outlined,
-                          color: Colors.orange,
+                          color: elevatedButtonIconColor,
                           size: 20,
                         ),
                         label: Text(
-                          "Buy Now",
+                          buttonName1,
                           style: TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.w500,
-                              color: Colors.white),
+                              color: elevatedButtonTextColor),
                         ),
                       ),
                       OutlinedButton.icon(
@@ -562,15 +566,15 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                         },
                         icon: Icon(
                           Icons.shopping_cart,
-                          color: Colors.orange,
+                          color: outlinedButtonIconColor,
                           size: 20,
                         ),
                         label: Text(
-                          "Add To Cart",
+                          buttonName2,
                           style: TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.w700,
-                              color: Color.fromRGBO(143, 93, 58, 1)),
+                              color: outlinedButtonTextColor),
                         ),
                         style: ButtonStyle(
                             shape: MaterialStateProperty.all(
@@ -580,8 +584,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                             fixedSize: MaterialStateProperty.all(
                                 Size((bodyWidth / 3) + 25, 50)),
                             side: MaterialStatePropertyAll(BorderSide(
-                                color: Color.fromRGBO(143, 93, 58, 1),
-                                width: 3))),
+                                color: outlinedButtonSideColor, width: 3))),
                       )
                     ],
                   ),
@@ -609,13 +612,13 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
             Container(
               height: 20,
               decoration: BoxDecoration(
-                color: Color.fromRGBO(143, 93, 58, 1),
+                color: bottomsheetContainerColor,
                 borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
               ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 150),
                 child: Divider(
-                  color: Colors.black,
+                  color: bottomsheetDividerColor,
                   thickness: 4,
                 ),
               ),
@@ -628,7 +631,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                   Icon(
                     Icons.done,
                     size: 35,
-                    color: detailsdoneiconcolor,
+                    color: bottomsheetDoneIconColor,
                   ),
                   SizedBox(width: 15),
                   Column(
@@ -640,7 +643,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                         maxLines: 2,
                       ),
                       Text(
-                        "is addedd to Cart",
+                        buttomsheetText,
                         style: TextStyle(
                             fontSize: 19, fontWeight: FontWeight.bold),
                       ),
@@ -661,15 +664,15 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                     },
                     icon: Icon(
                       Icons.shopping_cart,
-                      color: Colors.orange,
+                      color: outlinedButtonShopping_cartIconColor,
                       size: 20,
                     ),
                     label: Text(
-                      "Cart",
+                      buttomsheetButtonName1,
                       style: TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.w700,
-                          color: Color.fromRGBO(143, 93, 58, 1)),
+                          color: outlinedButton_TextColor),
                     ),
                     style: ButtonStyle(
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
@@ -677,7 +680,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                         )),
                         fixedSize: MaterialStateProperty.all(Size(140, 50)),
                         side: MaterialStatePropertyAll(BorderSide(
-                            color: Color.fromRGBO(143, 93, 58, 1), width: 3))),
+                            color: outlinedButton_SideColor, width: 3))),
                   ),
                   ElevatedButton.icon(
                     onPressed: () {
@@ -686,18 +689,18 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                     },
                     style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
-                            Color.fromRGBO(143, 93, 58, 1)),
+                            elevatedButton_BackgroundColor),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16),
                         )),
                         fixedSize: MaterialStateProperty.all(Size(230, 50))),
                     icon: Icon(
                       Icons.shopping_bag_outlined,
-                      color: Colors.orange,
+                      color: elevatedButtonShopping_bagIconColor,
                       size: 20,
                     ),
                     label: Text(
-                      "Continue Shopping",
+                      buttomsheetButtonName2,
                       style: TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.w500,

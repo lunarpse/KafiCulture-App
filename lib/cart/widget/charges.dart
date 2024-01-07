@@ -11,7 +11,7 @@ class Charges extends StatelessWidget {
   Widget build(BuildContext context) {
     final n = cost;
     return Container(
-      margin: EdgeInsets.only(top: 5),
+      margin: const EdgeInsets.only(top: 5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,

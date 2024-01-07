@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/constants/color_constants.dart';
+import 'package:project_2/constants/text_constants.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 
 // ignore: camel_case_types
@@ -15,6 +16,7 @@ class Address extends StatefulWidget {
 
 class _AddressState extends State<Address> {
   bool isEditable = false;
+  bool _isEditable = false;
   @override
   Widget build(BuildContext context) {
     final TextEditingController nameController =
@@ -87,6 +89,15 @@ class _AddressState extends State<Address> {
                       controller: emailController,
                       decoration: InputDecoration(
                           hintText: 'Enter the E-mail Address',
+                          //enabled: _isEditable,
+                          suffixIcon: IconButton(
+                            icon: Icon(Icons.edit),
+                            onPressed: () {
+                              setState(() {
+                                _isEditable = !_isEditable;
+                              });
+                            },
+                          ),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15))),
                     ),
@@ -98,8 +109,17 @@ class _AddressState extends State<Address> {
                     const SizedBox(height: 10),
                     TextFormField(
                       controller: MobileController,
+                      enabled: _isEditable,
                       decoration: InputDecoration(
-                          hintText: 'Enter the Mobile Number',
+                          hintText: mobileHintText,
+                          suffixIcon: IconButton(
+                            icon: Icon(Icons.edit),
+                            onPressed: () {
+                              setState(() {
+                                _isEditable = !_isEditable;
+                              });
+                            },
+                          ),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15))),
                     ),
@@ -109,7 +129,7 @@ class _AddressState extends State<Address> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             const Text(
-                              'Address ',
+                              deliveryAddressText,
                               style: TextStyle(fontSize: 20),
                             ),
                             TextButton(
@@ -120,7 +140,7 @@ class _AddressState extends State<Address> {
                                 },
                                 // ignore: prefer_const_constructors
                                 child: Text(
-                                  'Edit',
+                                  editableText,
                                   style: TextStyle(
                                       color: Colors.blue, fontSize: 18),
                                 )),
@@ -129,7 +149,7 @@ class _AddressState extends State<Address> {
                         TextFormField(
                           controller: add1Controller,
                           decoration: InputDecoration(
-                              hintText: 'Enter the Address line 1',
+                              hintText: addressoneText,
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15))),
                           enabled: isEditable,
@@ -141,7 +161,7 @@ class _AddressState extends State<Address> {
                               controller: add2Controller,
                               enabled: isEditable,
                               decoration: InputDecoration(
-                                  hintText: 'Enter the Address line 2',
+                                  hintText: addresstwoText,
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(15))),
                             ),
@@ -152,14 +172,14 @@ class _AddressState extends State<Address> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Text(
-                                  "City",
+                                  cityName,
                                   style: TextStyle(fontSize: 20),
                                 ),
                                 SizedBox(
                                   width: 160,
                                 ),
                                 Text(
-                                  "Pincode",
+                                  pinNum,
                                   style: TextStyle(fontSize: 20),
                                 ),
                               ],
@@ -173,7 +193,7 @@ class _AddressState extends State<Address> {
                                       controller: cityController,
                                       enabled: isEditable,
                                       decoration: InputDecoration(
-                                          hintText: 'Enter the city name',
+                                          hintText: cityName1,
                                           border: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(15))),
@@ -189,7 +209,7 @@ class _AddressState extends State<Address> {
                                     child: TextFormField(
                                       controller: pinController,
                                       decoration: InputDecoration(
-                                          hintText: 'Enter the Pincode',
+                                          hintText: pinNum1,
                                           border: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(15))),
@@ -203,14 +223,14 @@ class _AddressState extends State<Address> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Text(
-                                  "State",
+                                  state,
                                   style: TextStyle(fontSize: 20),
                                 ),
                                 SizedBox(
                                   width: 160,
                                 ),
                                 Text(
-                                  "Country",
+                                  country,
                                   style: TextStyle(fontSize: 20),
                                 ),
                               ],
@@ -224,7 +244,7 @@ class _AddressState extends State<Address> {
                                       controller: stateController,
                                       enabled: isEditable,
                                       decoration: InputDecoration(
-                                          hintText: 'Enter the state name',
+                                          hintText: state1,
                                           border: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(15))),
@@ -241,7 +261,7 @@ class _AddressState extends State<Address> {
                                       controller: countryController,
                                       enabled: isEditable,
                                       decoration: InputDecoration(
-                                          hintText: 'Enter the Country',
+                                          hintText: country1,
                                           border: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(15))),
@@ -265,7 +285,7 @@ class _AddressState extends State<Address> {
                             Navigator.pushNamed(context, '/payment');
                           },
                           child: const Text(
-                            'SAVE ADDRESS',
+                            saveAddressBttn,
                             style: TextStyle(fontSize: 20, color: Colors.white),
                           )),
                     )

@@ -2,13 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
+import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 import 'package:readmore/readmore.dart';
-import 'package:project_2/cart/riverpod/state_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../cart/riverpod/cargo_state_provider.dart';
 import '../../../constants/color_constants.dart';
-//import '../../reusable_widget/cargo_dialogBox.dart';
+import '../../../constants/text_constants.dart';
 
 class LadiesDetailsWidget extends ConsumerStatefulWidget {
   const LadiesDetailsWidget(
@@ -31,7 +31,7 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    double appBarHeight = AppBar().preferredSize.height;
+    double appBarHeight = AppbarWidget().preferredSize.height;
     final screenHeight = MediaQuery.of(context).size.height;
     final bodyHeight = screenHeight - appBarHeight;
     final bodyWidth = MediaQuery.of(context).size.width;
@@ -55,7 +55,7 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
     final totalRatings = widget.details.totalRatings;
 
     return BackgroundContainerWidget(
-      opacity: 0.6,
+      opacity: 0.3,
       x: 8.0,
       y: 8.0,
       child: Padding(
@@ -64,7 +64,7 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
           height: bodyHeight,
           width: bodyWidth,
           decoration: BoxDecoration(
-              color: Colors.white,
+              color: parentContainerBoxdecorationColor,
               borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
           child: Stack(
             children: [
@@ -91,7 +91,7 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                   blur: 4,
                   border: Border.fromBorderSide(BorderSide.none),
                   borderRadius: BorderRadius.circular(30.0),
-                  color: Colors.white.withOpacity(0.2),
+                  color: glasscontainerColor,
                   child: Container(
                     width: bodyWidth - 20.0,
                     child: Row(
@@ -106,7 +106,7 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                               Text(
                                 name,
                                 style: TextStyle(
-                                    color: Colors.black,
+                                    color: glasscontainerNameColor,
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -115,14 +115,14 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                                 children: [
                                   Icon(
                                     Icons.star,
-                                    color: Colors.amber,
+                                    color: glasscontainerStarIconColor,
                                     size: 23,
                                   ),
                                   SizedBox(width: 7),
                                   Text(
                                     rating,
                                     style: TextStyle(
-                                        color: Colors.black,
+                                        color: glasscontainerRatingColor,
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -130,7 +130,7 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                                   Text(
                                     '($totalRatings)',
                                     style: TextStyle(
-                                      color: Colors.black,
+                                      color: glasscontainerTotalratingColor,
                                       fontSize: 18,
                                     ),
                                   )
@@ -160,7 +160,8 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                                     Text(
                                       "\$ $offerPrice",
                                       style: TextStyle(
-                                          fontSize: 25, color: Colors.white),
+                                          fontSize: 25,
+                                          color: glasscontainerOfferpriceColor),
                                     ),
                                     Row(
                                       children: [
@@ -168,11 +169,11 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                                           "\$ $price ",
                                           style: TextStyle(
                                               fontSize: 15,
-                                              color: Colors.grey.shade400,
+                                              color: glasscontainerPriceColor,
                                               decoration:
                                                   TextDecoration.lineThrough,
                                               decorationColor:
-                                                  Colors.grey.shade400,
+                                                  glasscontainerPriceDecorationColor,
                                               decorationThickness: 2,
                                               fontWeight: FontWeight.bold),
                                         ),
@@ -181,7 +182,8 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                                           style: TextStyle(
                                               fontSize: 13.5,
                                               fontWeight: FontWeight.w500,
-                                              color: Colors.orange.shade800),
+                                              color:
+                                                  glasscontainerDiscountColor),
                                         ),
                                       ],
                                     )
@@ -198,9 +200,11 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                                     width: 50,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
-                                        color: Colors.black.withOpacity(0.8)),
+                                        color:
+                                            glasscontainerRemoveIconDecorationColor),
                                     child: IconButton(
-                                      color: Colors.white,
+                                      color:
+                                          glasscontainerRemoveIconButtonColor,
                                       onPressed: () {
                                         setState(() {
                                           quantity = quantity - 1 == 0
@@ -223,9 +227,10 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                                     width: 50,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
-                                        color: Colors.black.withOpacity(0.8)),
+                                        color:
+                                            glasscontainerAddIconDecorationColor),
                                     child: IconButton(
-                                      color: Colors.white,
+                                      color: glasscontainerAddIconButtonColor,
                                       onPressed: () {
                                         setState(() {
                                           quantity = quantity + 1;
@@ -250,7 +255,6 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
               Positioned(
                   top: bodyHeight / 2 - 62,
                   child: Container(
-                    color: Colors.white,
                     height: bodyHeight / 2 - 66,
                     width: bodyWidth - 20,
                     child: ListView(
@@ -260,9 +264,9 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Description",
+                              descriptionText,
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color: descriptiontextColor,
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -273,24 +277,24 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                               child: ReadMoreText(
                                 description,
                                 style: TextStyle(
-                                    color: Colors.black, fontSize: 17),
+                                    color: descriptionColor, fontSize: 17),
                                 trimLines: 3,
                                 trimMode: TrimMode.Line,
                                 moreStyle: TextStyle(
                                     fontSize: 17,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.orange),
+                                    color: descriptionMoreStyleColor),
                                 lessStyle: TextStyle(
                                     fontSize: 17,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.orange),
+                                    color: descriptionLessStyleColor),
                               ),
                             ),
                             SizedBox(height: 22),
                             Text(
-                              'Customers also liked',
+                              suggestionText,
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color: suggestionTextColor,
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -322,7 +326,7 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                                         arguments: fetchProduct),
                                     child: Card(
                                       elevation: 10,
-                                      shadowColor: Colors.grey,
+                                      shadowColor: suggestionCardShadowColor,
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(10)),
@@ -367,7 +371,8 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                                                     Icon(
                                                       Icons.star,
                                                       size: 17,
-                                                      color: Colors.orange,
+                                                      color:
+                                                          suggestionCardIconColor,
                                                     ),
                                                     SizedBox(width: 3),
                                                     Text(
@@ -392,7 +397,8 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                                                       "($discount% Off)",
                                                       style: TextStyle(
                                                           fontSize: 13.5,
-                                                          color: Colors.orange,
+                                                          color:
+                                                              suggestionCardDiscountColor,
                                                           fontWeight:
                                                               FontWeight.w900),
                                                     ),
@@ -419,12 +425,12 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                   padding: EdgeInsets.symmetric(horizontal: 15, vertical: 7),
                   width: bodyWidth - 20,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: container_Color,
                     borderRadius:
                         BorderRadius.vertical(top: Radius.circular(20)),
                     boxShadow: [
                       BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
+                          color: container_ShadowColor,
                           blurRadius: 3,
                           spreadRadius: 2,
                           offset: Offset(0, -2))
@@ -447,7 +453,7 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                         },
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(
-                                Color.fromRGBO(143, 93, 58, 1)),
+                                elevatedButtonBackgroundColor),
                             shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16),
@@ -456,15 +462,15 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                                 Size((bodyWidth / 3) + 25, 50))),
                         icon: Icon(
                           Icons.shopping_bag_outlined,
-                          color: Colors.orange,
+                          color: elevatedButtonIconColor,
                           size: 20,
                         ),
                         label: Text(
-                          "Buy Now",
+                          buttonName1,
                           style: TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.w500,
-                              color: Colors.white),
+                              color: elevatedButtonTextColor),
                         ),
                       ),
                       OutlinedButton.icon(
@@ -481,15 +487,15 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                         },
                         icon: Icon(
                           Icons.shopping_cart,
-                          color: Colors.orange,
+                          color: outlinedButtonIconColor,
                           size: 20,
                         ),
                         label: Text(
-                          "Add To Cart",
+                          buttonName2,
                           style: TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.w700,
-                              color: Color.fromRGBO(143, 93, 58, 1)),
+                              color: outlinedButtonTextColor),
                         ),
                         style: ButtonStyle(
                             shape: MaterialStateProperty.all(
@@ -499,8 +505,7 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                             fixedSize: MaterialStateProperty.all(
                                 Size((bodyWidth / 3) + 25, 50)),
                             side: MaterialStatePropertyAll(BorderSide(
-                                color: Color.fromRGBO(143, 93, 58, 1),
-                                width: 3))),
+                                color: outlinedButtonSideColor, width: 3))),
                       )
                     ],
                   ),
@@ -528,13 +533,13 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
             Container(
               height: 20,
               decoration: BoxDecoration(
-                color: Color.fromRGBO(143, 93, 58, 1),
+                color: bottomsheetContainerColor,
                 borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
               ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 150),
                 child: Divider(
-                  color: Colors.black,
+                  color: bottomsheetDividerColor,
                   thickness: 4,
                 ),
               ),
@@ -547,7 +552,7 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                   Icon(
                     Icons.done,
                     size: 35,
-                    color: detailsdoneiconcolor,
+                    color: bottomsheetDoneIconColor,
                   ),
                   SizedBox(width: 15),
                   Column(
@@ -559,7 +564,7 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                         maxLines: 2,
                       ),
                       Text(
-                        "is addedd to Cart",
+                        buttomsheetText,
                         style: TextStyle(
                             fontSize: 19, fontWeight: FontWeight.bold),
                       ),
@@ -580,15 +585,15 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                     },
                     icon: Icon(
                       Icons.shopping_cart,
-                      color: Colors.orange,
+                      color: outlinedButtonShopping_cartIconColor,
                       size: 20,
                     ),
                     label: Text(
-                      "Cart",
+                      buttomsheetButtonName1,
                       style: TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.w700,
-                          color: Color.fromRGBO(143, 93, 58, 1)),
+                          color: outlinedButton_TextColor),
                     ),
                     style: ButtonStyle(
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
@@ -596,7 +601,7 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                         )),
                         fixedSize: MaterialStateProperty.all(Size(140, 50)),
                         side: MaterialStatePropertyAll(BorderSide(
-                            color: Color.fromRGBO(143, 93, 58, 1), width: 3))),
+                            color: outlinedButton_SideColor, width: 3))),
                   ),
                   ElevatedButton.icon(
                     onPressed: () {
@@ -605,22 +610,22 @@ class _DetailsPageState extends ConsumerState<LadiesDetailsWidget> {
                     },
                     style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
-                            Color.fromRGBO(143, 93, 58, 1)),
+                            elevatedButton_BackgroundColor),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16),
                         )),
                         fixedSize: MaterialStateProperty.all(Size(230, 50))),
                     icon: Icon(
                       Icons.shopping_bag_outlined,
-                      color: Colors.orange,
+                      color: elevatedButtonShopping_bagIconColor,
                       size: 20,
                     ),
                     label: Text(
-                      "Continue Shopping",
+                      buttomsheetButtonName2,
                       style: TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.w500,
-                          color: Colors.white),
+                          color: elevatedButton_TextColor),
                     ),
                   ),
                 ],
