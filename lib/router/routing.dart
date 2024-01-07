@@ -21,6 +21,8 @@ import 'package:project_2/homepage/pages/home_page/populars/popular_details_page
 import 'package:project_2/payments/payment_app.dart';
 import 'package:project_2/splashscreen/splash_screen.dart';
 
+import '../Cargo/feedback_page/feedback.dart';
+
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -34,7 +36,9 @@ class RouteGenerator {
       case '/loading':
         return MaterialPageRoute(builder: (_) => LoadingScreen());
       case '/feedback':
-        return MaterialPageRoute(builder: (_) => FeedBackPage());
+        // return MaterialPageRoute(builder: (_) => FeedBackPage());
+        return MaterialPageRoute(builder: (_) => FeedbackPageCargo());
+
       case '/home':
         return MaterialPageRoute(builder: (_) => HomePage());
       // case '/login':

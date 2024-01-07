@@ -8,7 +8,7 @@ import 'package:project_2/cart/riverpod/state_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../cart/riverpod/cargo_state_provider.dart';
 import '../../../constants/color_constants.dart';
-import '../../reusable_widget/cargo_dialogBox.dart';
+//import '../../reusable_widget/cargo_dialogBox.dart';
 
 class CargoDetailsPageWidget extends ConsumerStatefulWidget {
   const CargoDetailsPageWidget(
@@ -123,7 +123,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                                   Text(
                                     rating,
                                     style: TextStyle(
-                                        color: Colors.black,
+                                        color: ratingcolor,
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -131,7 +131,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                                   Text(
                                     '($totalRatings)',
                                     style: TextStyle(
-                                      color: Colors.black,
+                                      color: ratingcolor,
                                       fontSize: 18,
                                     ),
                                   )
@@ -161,7 +161,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                                     Text(
                                       "\$ $offerPrice",
                                       style: TextStyle(
-                                          fontSize: 25, color: Colors.white),
+                                          fontSize: 25, color: offerTextColor),
                                     ),
                                     Row(
                                       children: [
@@ -169,11 +169,10 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                                           "\$ $price ",
                                           style: TextStyle(
                                               fontSize: 16,
-                                              color: Colors.grey.shade400,
+                                              color: pricetextcolor,
                                               decoration:
                                                   TextDecoration.lineThrough,
-                                              decorationColor:
-                                                  Colors.grey.shade400,
+                                              decorationColor: pricetextcolor,
                                               decorationThickness: 2,
                                               fontWeight: FontWeight.bold),
                                         ),
@@ -182,7 +181,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                                           style: TextStyle(
                                               fontSize: 13.5,
                                               fontWeight: FontWeight.w500,
-                                              color: Colors.orange.shade800),
+                                              color: discountColor),
                                         ),
                                       ],
                                     )
@@ -263,7 +262,7 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                             Text(
                               "Description",
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color: ratingcolor,
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -273,18 +272,18 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                               width: bodyWidth - 30,
                               child: ReadMoreText(
                                 description,
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 17),
+                                style:
+                                    TextStyle(color: ratingcolor, fontSize: 17),
                                 trimLines: 2,
                                 trimMode: TrimMode.Line,
                                 moreStyle: TextStyle(
                                     fontSize: 17,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.orange),
+                                    color: descriptioncolor),
                                 lessStyle: TextStyle(
                                     fontSize: 17,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.orange),
+                                    color: descriptioncolor),
                               ),
                             ),
                             SizedBox(height: 12),
@@ -293,14 +292,14 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
                                 Text(
                                   'Size - ',
                                   style: TextStyle(
-                                      color: Colors.black,
+                                      color: ratingcolor,
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold),
                                 ),
                                 Text(
                                   'UK/India',
                                   style: TextStyle(
-                                      color: Colors.black,
+                                      color: ratingcolor,
                                       fontSize: 16.5,
                                       fontWeight: FontWeight.w500),
                                 ),

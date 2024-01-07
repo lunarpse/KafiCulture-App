@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 const Color circleavatarbgcolor = Colors.white;
 const Color carticonbuttoncolor = Color.fromRGBO(78, 43, 18, 0.9);
+const Color slogoncolor = Colors.white;
 
 //emptycartconstants
 const Color emptycartelevatebuttoncolor = Colors.black;
@@ -204,3 +205,13 @@ const Color upibtntxtcolor = Colors.blueAccent;
 const Color handcraftboxShadowcolor = Colors.grey;
 //offerss
 const Color offernamecolor = Colors.white;
+
+//delivery
+
+const Color aadharboxcolor = Colors.grey;
+const Color ratingcolor = Colors.black;
+const Color offerTextColor = Colors.white;
+const Color pricetextcolor = Color.fromRGBO(189, 189, 189, 1);
+const Color pricetextcolor2 = Color.fromRGBO(189, 189, 189, 1);
+const Color discountColor = Color.fromRGBO(239, 108, 0, 1);
+const Color descriptioncolor = Colors.orange;

@@ -8,7 +8,7 @@ import 'package:project_2/cart/riverpod/state_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../cart/riverpod/cargo_state_provider.dart';
 import '../../../constants/color_constants.dart';
-import '../../reusable_widget/cargo_dialogBox.dart';
+//import '../../reusable_widget/cargo_dialogBox.dart';
 
 class LadiesDetailsWidget extends ConsumerStatefulWidget {
   const LadiesDetailsWidget(

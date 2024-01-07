@@ -90,9 +90,10 @@ class Bottom extends ConsumerWidget {
             ],
           ),
           Charges(
-              name: subTotal, cost: double.parse(subtotal.toStringAsFixed(2))),
+              name: "subTotal",
+              cost: double.parse(subtotal.toStringAsFixed(2))),
           //Charges(name: "Shipping Cost", cost: 10),
-          Charges(name: gstString, cost: double.parse(gst.toStringAsFixed(2))),
+          Charges(name: "tax", cost: double.parse(gst.toStringAsFixed(2))),
 
           Container(
             margin: EdgeInsets.only(top: 10, bottom: 10),
@@ -109,8 +110,7 @@ class Bottom extends ConsumerWidget {
                       )),
             ),
           ),
-          Charges(
-              name: totalString, cost: double.parse(total.toStringAsFixed(2))),
+          Charges(name: "total", cost: double.parse(total.toStringAsFixed(2))),
           SizedBox(height: 10),
           Row(
             mainAxisAlignment: incoffee == true

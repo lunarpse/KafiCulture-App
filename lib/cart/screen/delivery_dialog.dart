@@ -1,9 +1,13 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:project_2/delivery/function.dart';
 
 import '../../delivery/address_page/address.dart';
+import '../../homepage/reusable_widgets/background_container_widget.dart';
 
 class DeliveryDialog extends StatefulWidget {
   const DeliveryDialog({super.key});
@@ -15,7 +19,7 @@ class DeliveryDialog extends StatefulWidget {
 class _DeliveryDialogState extends State<DeliveryDialog> {
   Future<Map<String, dynamic>> loadJson() async {
     final String jsonString =
-        await rootBundle.loadString('assets/json/aadar.json');
+        await rootBundle.loadString('assets/json/aadhar.json');
     final jsonResponse = json.decode(jsonString);
     return jsonResponse;
   }
@@ -23,32 +27,6 @@ class _DeliveryDialogState extends State<DeliveryDialog> {
   @override
   Widget build(BuildContext context) {
     TextEditingController aadharController = TextEditingController();
-
-    void _formatAadharInput() {
-      final text = aadharController.text;
-      if (text.length == 4 || text.length == 9) {
-        aadharController.text = '$text-';
-        aadharController.selection = TextSelection.fromPosition(
-          TextPosition(offset: aadharController.text.length),
-        );
-      }
-    }
-
-    @override
-    void initState() {
-      super.initState();
-      aadharController.addListener(() {
-        if (aadharController.text.isNotEmpty) {
-          _formatAadharInput();
-        }
-      });
-    }
-
-    @override
-    void dispose() {
-      aadharController.dispose();
-      super.dispose();
-    }
 
     return AlertDialog(
         insetPadding: EdgeInsets.all(20),
@@ -62,44 +40,64 @@ class _DeliveryDialogState extends State<DeliveryDialog> {
                 print(data);
                 var name1 = '${data['name']}';
                 // return address();
-                return Container(
-                  width: double.maxFinite,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      TextField(
-                        keyboardType: TextInputType.number,
-                        controller: aadharController,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.digitsOnly,
-                          LengthLimitingTextInputFormatter(14),
-                        ],
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.grey[200],
-                          labelText: 'Aadhar Number',
-                          // hintText: 'Enter Aadhar Number',
-                          //prefixText: 'XXXX-XXXX-XXXX',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
+                return BackgroundContainerWidget(
+                  opacity: 0.6,
+                  x: 2.0,
+                  y: 2.0,
+                  child: Container(
+                    width: double.maxFinite,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        TextField(
+                          keyboardType: TextInputType.number,
+                          controller: aadharController,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.digitsOnly,
+                            LengthLimitingTextInputFormatter(16),
+                            AadharInputFormatter()
+                          ],
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.grey[200],
+                            labelText: 'Aadhar Number',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
                           ),
+                          maxLength: 16,
+                          onChanged: (value) {},
                         ),
-                        maxLength: 14,
-                        onChanged: (value) {},
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Address(
-                                        data: data,
-                                      )));
-                        },
-                        child: Text("next"),
-                      )
-                    ],
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 30,
+                              vertical: 11,
+                            ),
+                            backgroundColor: Color.fromARGB(255, 110, 47, 24),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                              side: BorderSide(
+                                color: Colors.black38,
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.pop(context);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Address(
+                                          data: data,
+                                        )));
+                          },
+                          child: Text(
+                            "next",
+                            style: TextStyle(fontSize: 17, color: Colors.white),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 );
               } else {

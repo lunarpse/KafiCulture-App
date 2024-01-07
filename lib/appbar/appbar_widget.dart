@@ -66,7 +66,10 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
                 Text(
                   appslogan,
                   style: TextStyle(
-                      fontFamily: 'Ephesis', fontSize: 17.5, letterSpacing: 1),
+                      fontFamily: 'Ephesis',
+                      fontSize: 17.5,
+                      letterSpacing: 1,
+                      color: Colors.white),
                 ),
               ],
             )
