@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
+import 'package:project_2/payments/payment_app.dart';
 
 // ignore: camel_case_types
 class Address extends StatelessWidget {
-  Address({super.key, required this.data});
+  Address({super.key, required this.data, required this.coffee});
+  final coffee;
 
   final Map<String, dynamic> data;
 
@@ -188,7 +190,11 @@ class Address extends StatelessWidget {
                                   (feedbackcollapsebgcolor))),
                           onPressed: () {
                             Navigator.of(context).pop();
-                            Navigator.pushNamed(context, '/payment');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        PaymentApp(coffee: coffee)));
                           },
                           child: const Text(
                             'SAVE ADDRESS',

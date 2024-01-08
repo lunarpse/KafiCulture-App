@@ -46,7 +46,7 @@ class Bottom extends ConsumerWidget {
         showDialog(
           context: context,
           builder: (context) {
-            return DeliveryDialog();
+            return DeliveryDialog(coffee: coffee);
           },
         );
       },
