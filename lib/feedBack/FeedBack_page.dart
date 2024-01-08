@@ -52,20 +52,15 @@ class _FeedBackPageState extends State<FeedBackPage> {
             if (isYesSelected) {
               isNoSelected = false;
             }
-          }
-          );
+          });
           showModalBottomSheet(
             context: context,
             builder: (context) {
               return yesreceived();
-              
             },
           );
-
-
         } else if (state is FeedbackNoButtonClickedState) {
           setState(() {
-  
             isNoSelected = !isNoSelected;
             if (isNoSelected) {
               isYesSelected = false;
@@ -75,7 +70,6 @@ class _FeedBackPageState extends State<FeedBackPage> {
             context: context,
             builder: (context) {
               return orderrecieved();
-              
             },
           );
         } else if (state is FeedbackSubmitButtonClickedState) {
@@ -84,7 +78,8 @@ class _FeedBackPageState extends State<FeedBackPage> {
             builder: (context) {
               return ThankYou();
             },
-          );
+          ).whenComplete(
+              () => Navigator.pushReplacementNamed(context, "/home"));
         }
       },
       builder: (context, state) {
