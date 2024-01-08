@@ -46,8 +46,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => Cargocart());
       case '/home':
         return MaterialPageRoute(builder: (_) => HomePage());
-      // case '/payment':
-      //   return MaterialPageRoute(builder: (_) => PaymentApp(coffee:true));
+      case '/payment':
+        return MaterialPageRoute(builder: (_) => PaymentApp(coffee: true));
       case '/snacks':
         return MaterialPageRoute(builder: (_) => SnacksPage());
       case '/drinks':
