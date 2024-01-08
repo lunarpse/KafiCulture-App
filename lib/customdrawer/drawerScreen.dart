@@ -52,31 +52,6 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
             ),
             ListTile(
               title: const Text(
-                "Profile",
-                style: TextStyle(fontSize: fontsize),
-              ),
-              textColor: drawerscreentextcolor,
-              trailing: const Icon(Icons.person),
-              onTap: () {
-                Navigator.of(context).pop();
-                Navigator.pushNamed(context, "/profile");
-              },
-            ),
-            ListTile(
-              title: const Text(
-                cart,
-                style: TextStyle(fontSize: fontsize),
-              ),
-              textColor: drawerscreentextcolor,
-              trailing: const Icon(Icons.shopping_cart),
-              onTap: () {
-                Navigator.of(context).pop();
-                Navigator.pushNamed(context, "/cart");
-              },
-            ),
-
-            ListTile(
-              title: const Text(
                 home,
                 style: TextStyle(
                   fontSize: fontsize,
@@ -89,14 +64,28 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
                 Navigator.pushNamed(context, "/home");
               },
             ),
+
             ListTile(
               title: const Text(
-                profile,
+                cart,
+                style: TextStyle(fontSize: fontsize),
+              ),
+              textColor: drawerscreentextcolor,
+              trailing: const Icon(Icons.shopping_cart),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.pushNamed(context, "/cart");
+              },
+            ),
+            ListTile(
+              title: const Text(
+                "Profile",
                 style: TextStyle(fontSize: fontsize),
               ),
               textColor: drawerscreentextcolor,
               trailing: const Icon(Icons.person),
               onTap: () {
+                Navigator.of(context).pop();
                 Navigator.pushNamed(context, "/profile");
               },
             ),
