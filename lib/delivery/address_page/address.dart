@@ -6,39 +6,61 @@ import 'package:project_2/homepage/reusable_widgets/background_container_widget.
 import 'package:project_2/payments/payment_app.dart';
 
 // ignore: camel_case_types
-class Address extends StatelessWidget {
+class Address extends StatefulWidget {
   Address({super.key, required this.data, required this.coffee});
   final coffee;
 
   final Map<String, dynamic> data;
 
   @override
+  State<Address> createState() => _AddressState();
+}
+
+class _AddressState extends State<Address> {
+  bool isEditable = false;
+  bool _isEditable = false;
+  @override
   Widget build(BuildContext context) {
     final TextEditingController nameController =
-        TextEditingController(text: data["name"].toString());
+        TextEditingController(text: widget.data["name"].toString());
     final TextEditingController emailController =
-        TextEditingController(text: data["email_id"].toString());
+        TextEditingController(text: widget.data["email_id"].toString());
     final TextEditingController MobileController =
-        TextEditingController(text: data["mobile_number"].toString());
+        TextEditingController(text: widget.data["mobile_number"].toString());
     final TextEditingController add1Controller =
-        TextEditingController(text: data["address1"].toString());
+        TextEditingController(text: widget.data["address1"].toString());
     final TextEditingController add2Controller =
-        TextEditingController(text: data["address2"].toString());
+        TextEditingController(text: widget.data["address2"].toString());
     final TextEditingController cityController =
-        TextEditingController(text: data["city"].toString());
+        TextEditingController(text: widget.data["city"].toString());
     final TextEditingController pinController =
-        TextEditingController(text: data["pin_code"].toString());
+        TextEditingController(text: widget.data["pin_code"].toString());
+    final TextEditingController stateController =
+        TextEditingController(text: widget.data["state"].toString());
+    final TextEditingController countryController =
+        TextEditingController(text: widget.data["country"].toString());
+    final TextEditingController controller = TextEditingController();
+
+    @override
+    void dispose() {
+      add1Controller.dispose();
+      add2Controller.dispose();
+      cityController.dispose();
+      pinController.dispose();
+      stateController.dispose();
+      countryController.dispose();
+      super.dispose();
+    }
 
     return Scaffold(
-      // backgroundColor: Colors.white,
       appBar: AppbarWidget(),
       body: BackgroundContainerWidget(
-          opacity: 0.5,
-          x: 7.0,
-          y: 7.0,
+          opacity: 0.4,
+          x: 9.0,
+          y: 9.0,
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(16.0),
               child: Form(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,12 +68,15 @@ class Address extends StatelessWidget {
                     const Text(
                       adrname,
                       // "$data",
-                      style: TextStyle(fontSize: 20),
+                      style:
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 10),
                     TextFormField(
                       controller: nameController,
                       enabled: false,
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                       decoration: InputDecoration(
                           hintText: adrename,
                           border: OutlineInputBorder(
@@ -62,68 +87,97 @@ class Address extends StatelessWidget {
                     ),
                     const Text(
                       adremail,
-                      style: TextStyle(fontSize: 20),
+                      style:
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 10),
                     TextFormField(
                       controller: emailController,
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                       decoration: InputDecoration(
                           hintText: adreemail,
+                          //enabled: _isEditable,
+                          suffixIcon: IconButton(
+                            icon: Icon(Icons.edit),
+                            onPressed: () {
+                              setState(() {
+                                _isEditable = !_isEditable;
+                              });
+                            },
+                          ),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15))),
                     ),
                     const SizedBox(height: 10),
                     const Text(
                       adrmobile,
-                      style: TextStyle(fontSize: 20),
+                      style:
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 10),
                     TextFormField(
                       controller: MobileController,
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                      enabled: _isEditable,
                       decoration: InputDecoration(
-                          hintText: adremobile,
+                          hintText: mobileHintText,
+                          suffixIcon: IconButton(
+                            icon: Icon(Icons.edit),
+                            onPressed: () {
+                              setState(() {
+                                _isEditable = !_isEditable;
+                              });
+                            },
+                          ),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15))),
                     ),
                     Column(
                       children: <Widget>[
-                        // TextButton(onPressed: () {}, child: Text('Edit')),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             const Text(
-                              adradress,
-                              style: TextStyle(fontSize: 20),
+                              deliveryAddressText,
+                              style: TextStyle(
+                                  fontSize: 22, fontWeight: FontWeight.bold),
                             ),
                             TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(() {
+                                    isEditable = !isEditable;
+                                  });
+                                },
+                                // ignore: prefer_const_constructors
                                 child: Text(
-                                  adredit,
+                                  editableText,
                                   style: TextStyle(
-                                      color: Colors.blue, fontSize: 18),
+                                      color: editBttnColor, fontSize: 18),
                                 )),
                           ],
                         ),
-
                         TextFormField(
                           controller: add1Controller,
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.w500),
                           decoration: InputDecoration(
-                              hintText: adrl1,
+                              hintText: addressoneText,
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15))),
+                          enabled: isEditable,
                         ),
                         const SizedBox(height: 10),
                         Column(
                           children: [
-                            // const Text(
-                            //   'Address line 2 (optional)',
-                            //   style: TextStyle(fontSize: 20),
-                            // ),
-                            // const SizedBox(height: 10),
                             TextFormField(
                               controller: add2Controller,
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.w500),
+                              enabled: isEditable,
                               decoration: InputDecoration(
-                                  hintText: adrl2,
+                                  hintText: addresstwoText,
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(15))),
                             ),
@@ -134,15 +188,19 @@ class Address extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Text(
-                                  adrcity,
-                                  style: TextStyle(fontSize: 20),
+                                  cityName,
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 SizedBox(
                                   width: 160,
                                 ),
                                 Text(
-                                  adrpincode,
-                                  style: TextStyle(fontSize: 20),
+                                  pinNum,
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
@@ -153,8 +211,12 @@ class Address extends StatelessWidget {
                                     padding: const EdgeInsets.all(8.0),
                                     child: TextFormField(
                                       controller: cityController,
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500),
+                                      enabled: isEditable,
                                       decoration: InputDecoration(
-                                          hintText: adrecity,
+                                          hintText: cityName1,
                                           border: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(15))),
@@ -169,6 +231,71 @@ class Address extends StatelessWidget {
                                     padding: const EdgeInsets.all(8.0),
                                     child: TextFormField(
                                       controller: pinController,
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500),
+                                      decoration: InputDecoration(
+                                          hintText: pinNum1,
+                                          border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(15))),
+                                      enabled: isEditable,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  state,
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  width: 160,
+                                ),
+                                Text(
+                                  country,
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: TextFormField(
+                                      controller: stateController,
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500),
+                                      enabled: isEditable,
+                                      decoration: InputDecoration(
+                                          hintText: state1,
+                                          border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(15))),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: TextFormField(
+                                      controller: countryController,
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w500),
+                                      enabled: isEditable,
                                       decoration: InputDecoration(
                                           hintText: adrepin,
                                           border: OutlineInputBorder(
@@ -195,11 +322,12 @@ class Address extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        PaymentApp(coffee: coffee)));
+                                        PaymentApp(coffee: widget.coffee)));
                           },
                           child: const Text(
-                            adradress,
-                            style: TextStyle(fontSize: 20),
+                            saveAddressBttn,
+                            style:
+                                TextStyle(fontSize: 20, color: saveBttnColor),
                           )),
                     )
                   ],

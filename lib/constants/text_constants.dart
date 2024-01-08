@@ -196,3 +196,32 @@ const String buttonName2 = "Add To Cart";
 const String buttomsheetText = "is addedd to Cart";
 const String buttomsheetButtonName1 = "Cart";
 const String buttomsheetButtonName2 = "Continue Shopping";
+
+//Delivery
+const String mobileHintText = "Enter the Mobile Number";
+const String deliveryAddressText = "Address";
+const String editableText = "Edit";
+const String addressoneText = "Enter the Address line 1";
+const String addresstwoText = "Enter the Address line 2";
+const String cityName = "City";
+const String pinNum = "Pincode";
+const String cityName1 = "Enter the city name";
+const String pinNum1 = "Enter the Pincode";
+const String state = "State";
+const String country = "Country";
+const String state1 = "Enter the state name";
+const String country1 = "Enter the Country";
+const String saveAddressBttn = "SAVE ADDRESS";
+const String aadharNum = "'Aadhar Number";
+const String nextbttn = "Next";
+
+//Feedback
+const String username = "Hi John ,";
+const String orderPlacedText = "Your Order Has Been Placed Successfully";
+const String orderId = "Your order id is :123u09u";
+const String deliveryDetails = "Delievery by 14/01/24  1:00pm";
+const String manageOrder = "Manage Order";
+const String deliveryAdd = " Delivery Address";
+const String deliverydata =
+    "34 -B . Church Street Main Road ,Opp. Church , Bangalore 110085 ,Karnataka ,India";
+const String navText = "Back to Home";

@@ -50,11 +50,12 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
     if (widget.coffee == true) {
       ref.read(OrderProvider.notifier).add(ref.read(CartProvider));
       ref.read(CartProvider.notifier).empty();
+      Navigator.pushNamed(context, "/feedback");
     } else {
       ref.read(OrderProvider.notifier).add(ref.read(CargoProvider));
       ref.read(CargoProvider.notifier).empty();
+      Navigator.pushNamed(context, "/cargofeedback");
     }
-    Navigator.pushNamed(context, "/feedback");
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
@@ -461,8 +462,19 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
 
                               _razorpay.open(options);
                             } else {
-                              Navigator.pushReplacementNamed(
-                                  context, "/loading");
+                              if (widget.coffee == true) {
+                                ref
+                                    .read(OrderProvider.notifier)
+                                    .add(ref.read(CartProvider));
+                                ref.read(CartProvider.notifier).empty();
+                                Navigator.pushNamed(context, "/feedback");
+                              } else {
+                                ref
+                                    .read(OrderProvider.notifier)
+                                    .add(ref.read(CargoProvider));
+                                ref.read(CargoProvider.notifier).empty();
+                                Navigator.pushNamed(context, "/cargofeedback");
+                              }
                             }
                           },
                           child: Container(

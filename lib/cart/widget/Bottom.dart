@@ -96,7 +96,8 @@ class Bottom extends ConsumerWidget {
             ],
           ),
           Charges(
-              name: subTotal, cost: double.parse(subtotal.toStringAsFixed(2))),
+              name: "subTotal",
+              cost: double.parse(subtotal.toStringAsFixed(2))),
           //Charges(name: "Shipping Cost", cost: 10),
           Charges(name: billGst, cost: double.parse(gst.toStringAsFixed(2))),
 
