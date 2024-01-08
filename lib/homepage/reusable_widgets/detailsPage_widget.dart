@@ -483,10 +483,6 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                     productName: widget.details.name,
                                     buttonName: "Pay Now",
                                     call: (value) {
-                                      double gst = value * 0.05;
-                                      ref.watch(TipProvider.notifier).setgst(
-                                          double.parse(gst.toStringAsFixed(2)));
-
                                       func.additem({
                                         "name": name,
                                         "image": "assets/images/$image.jpg",
