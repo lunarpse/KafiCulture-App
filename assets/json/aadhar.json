@@ -6,7 +6,9 @@
       "pin_code": "12345",
       "mobile_number": "9876543210",
       "email_id": "john.doe@example.com",
-      "city": "Cityville"
+      "city": "Cityville",
+      "state":"California",
+      "country":"USA"
     },
     "987654321098": {
       "name": "Jane Smith",
@@ -15,7 +17,9 @@
       "pin_code": "67890",
       "mobile_number": "8765432109",
       "email_id": "jane.smith@example.com",
-      "city": "Townsville"
+      "city": "Townsville",
+      "state":"Ontario",
+      "country":"Canada"
     }
     
   }
