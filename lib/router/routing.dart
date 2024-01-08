@@ -18,10 +18,10 @@ import 'package:project_2/homepage/pages/handcraft/snacks/snacks_page_details.da
 import 'package:project_2/homepage/pages/home_page/home_page.dart';
 import 'package:project_2/homepage/pages/home_page/latest_offerings/offerings_details_page.dart';
 import 'package:project_2/homepage/pages/home_page/populars/popular_details_page.dart';
-import 'package:project_2/loading/loadingScreen.dart';
-import 'package:project_2/payments/payment_app.dart';
-//import 'package:project_2/payments/payment_app.dart';
+
 import 'package:project_2/splashscreen/splash_screen.dart';
+import '../Cargo/feedback_page/feedback.dart';
+import '../payments/payment_app.dart';
 import '../profile/address/address.dart';
 import '../profile/help/help.dart';
 import '../profile/my orders/order_page.dart';
@@ -42,12 +42,13 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => LoadingScreen());
       case '/feedback':
         return MaterialPageRoute(builder: (_) => FeedBackPage());
-      case '/cargocart':
-        return MaterialPageRoute(builder: (_) => Cargocart());
       case '/home':
         return MaterialPageRoute(builder: (_) => HomePage());
       case '/payment':
-        return MaterialPageRoute(builder: (_) => PaymentApp(coffee: true));
+        return MaterialPageRoute(
+            builder: (_) => PaymentApp(
+                  coffee: true,
+                ));
       case '/snacks':
         return MaterialPageRoute(builder: (_) => SnacksPage());
       case '/drinks':
@@ -107,6 +108,10 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => Help());
       case '/address':
         return MaterialPageRoute(builder: (_) => Address());
+      case '/cargocart':
+        return MaterialPageRoute(builder: (_) => Cargocart());
+      case '/cargofeedback':
+        return MaterialPageRoute(builder: (_) => FeedbackPageCargo());
     }
 
     throw AboutListTile();

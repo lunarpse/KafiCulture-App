@@ -54,7 +54,7 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
       ref.read(OrderProvider.notifier).add(ref.read(CargoProvider));
       ref.read(CargoProvider.notifier).empty();
     }
-    Navigator.pushNamed(context, "/feedback");
+    Navigator.pushNamed(context, "/cargofeedback");
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
