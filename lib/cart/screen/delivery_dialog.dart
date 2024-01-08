@@ -8,8 +8,8 @@ import 'package:project_2/constants/text_constants.dart';
 import '../../delivery/address_page/address.dart';
 
 class DeliveryDialog extends StatefulWidget {
-  const DeliveryDialog({super.key});
-
+  const DeliveryDialog({super.key, required this.coffee});
+  final coffee;
   @override
   State<DeliveryDialog> createState() => _DeliveryDialogState();
 }
@@ -96,8 +96,7 @@ class _DeliveryDialogState extends State<DeliveryDialog> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => Address(
-                                        data: data,
-                                      )));
+                                      data: data, coffee: widget.coffee)));
                         },
                         child: Text(Next),
                       )
