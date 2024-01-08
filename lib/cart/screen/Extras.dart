@@ -2,40 +2,46 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:project_2/cart/riverpod/switch_provider.dart';
+
 import 'package:project_2/cart/widget/extraitems.dart';
+import 'package:project_2/constants/text_constants.dart';
 // import 'package:project_2/hjc/cart_widget/extraitems.dart';
 
 class Extras extends ConsumerWidget {
-  Extras({super.key});
-
+  const Extras({super.key, required this.coffee});
+  final coffee;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final a = [
       ExtraItems(
-          name: "Hot Chocolate",
-          image: "assets/images/hot_choc.jpg",
-          price: 12),
+          name: extraItemMtapName1,
+          image: extraItemMtapimage1,
+          price: extraItemMtapPrice1),
       ExtraItems(
-          name: "Aloo Snacks",
-          image: "assets/images/Aloo_snacks.jpg",
-          price: 23),
+          name: extraItemMtapName2,
+          image: extraItemMtapimage2,
+          price: extraItemMtapPrice2),
       ExtraItems(
-          name: "Dahi Vada", image: "assets/images/Dahi_Vada.jpg", price: 40)
+          name: extraItemMtapName3,
+          image: extraItemMtapimage3,
+          price: extraItemMtapPrice3)
     ];
     final b = [
       ExtraItems(
-          price: 12,
-          image: "assets/images/MenShoes/TESTONI SHOES.png",
-          name: "Testoni"),
+          coffee: false,
+          price: extraItemCargoPrice1,
+          image: extraItemCargoimage1,
+          name: extraItemCargoName1),
       ExtraItems(
-          price: 23,
-          image: "assets/images/MenShoes/MOLECULE SHOE.png",
-          name: "Molecule"),
+          coffee: false,
+          price: extraItemCargoPrice2,
+          image: extraItemCargoimage2,
+          name: extraItemCargoName2),
       ExtraItems(
-          price: 20,
-          image: "assets/images/MenShoes/NIKE AIR MAG 2016.png",
-          name: "AIR jordans 2016")
+          coffee: false,
+          price: extraItemCargoPrice3,
+          image: extraItemCargoimage3,
+          name: extraItemCargoName3)
     ];
     return Container(
         margin: EdgeInsets.all(2),
@@ -46,7 +52,7 @@ class Extras extends ConsumerWidget {
         child: ListView(
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
-          children: ref.watch(SwitchProvider) == true ? a : b,
+          children: coffee == true ? a : b,
         ));
   }
 }

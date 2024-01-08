@@ -4,9 +4,11 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:project_2/delivery/function.dart';
+import 'package:project_2/constants/color_constants.dart';
+import 'package:project_2/constants/text_constants.dart';
 
 import '../../delivery/address_page/address.dart';
+import '../../delivery/function.dart';
 import '../../homepage/reusable_widgets/background_container_widget.dart';
 
 class DeliveryDialog extends StatefulWidget {
@@ -35,8 +37,8 @@ class _DeliveryDialogState extends State<DeliveryDialog> {
             future: loadJson(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.hasData) {
-                String key = '123456789012'; // 10-digit key (Aadhar number)
-                var data = snapshot.data[key];
+                // 10-digit key (Aadhar number)
+                var data = snapshot.data[akey];
                 print(data);
                 var name1 = '${data['name']}';
                 // return address();
@@ -59,7 +61,7 @@ class _DeliveryDialogState extends State<DeliveryDialog> {
                           ],
                           decoration: InputDecoration(
                             filled: true,
-                            fillColor: Colors.grey[200],
+                            fillColor: aadharBackgroundColor,
                             labelText: 'Aadhar Number',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
@@ -74,11 +76,11 @@ class _DeliveryDialogState extends State<DeliveryDialog> {
                               horizontal: 30,
                               vertical: 11,
                             ),
-                            backgroundColor: Color.fromARGB(255, 110, 47, 24),
+                            backgroundColor: buttonBgColor,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8.0),
                               side: BorderSide(
-                                color: Colors.black38,
+                                color: bordorColor,
                               ),
                             ),
                           ),
@@ -93,7 +95,8 @@ class _DeliveryDialogState extends State<DeliveryDialog> {
                           },
                           child: Text(
                             "next",
-                            style: TextStyle(fontSize: 17, color: Colors.white),
+                            style: TextStyle(
+                                fontSize: 17, color: containerDecorationColor),
                           ),
                         )
                       ],

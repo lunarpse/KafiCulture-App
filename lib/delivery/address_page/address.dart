@@ -66,12 +66,15 @@ class _AddressState extends State<Address> {
                     const Text(
                       "Name",
                       // "$data",
-                      style: TextStyle(fontSize: 20),
+                      style:
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 10),
                     TextFormField(
                       controller: nameController,
                       enabled: false,
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                       decoration: InputDecoration(
                           hintText: 'Enter the name',
                           border: OutlineInputBorder(
@@ -82,11 +85,14 @@ class _AddressState extends State<Address> {
                     ),
                     const Text(
                       'Email',
-                      style: TextStyle(fontSize: 20),
+                      style:
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 10),
                     TextFormField(
                       controller: emailController,
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                       decoration: InputDecoration(
                           hintText: 'Enter the E-mail Address',
                           //enabled: _isEditable,
@@ -104,11 +110,14 @@ class _AddressState extends State<Address> {
                     const SizedBox(height: 10),
                     const Text(
                       'Mobile Number',
-                      style: TextStyle(fontSize: 20),
+                      style:
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 10),
                     TextFormField(
                       controller: MobileController,
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                       enabled: _isEditable,
                       decoration: InputDecoration(
                           hintText: mobileHintText,
@@ -130,7 +139,8 @@ class _AddressState extends State<Address> {
                           children: [
                             const Text(
                               deliveryAddressText,
-                              style: TextStyle(fontSize: 20),
+                              style: TextStyle(
+                                  fontSize: 22, fontWeight: FontWeight.bold),
                             ),
                             TextButton(
                                 onPressed: () {
@@ -142,12 +152,14 @@ class _AddressState extends State<Address> {
                                 child: Text(
                                   editableText,
                                   style: TextStyle(
-                                      color: Colors.blue, fontSize: 18),
+                                      color: editBttnColor, fontSize: 18),
                                 )),
                           ],
                         ),
                         TextFormField(
                           controller: add1Controller,
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.w500),
                           decoration: InputDecoration(
                               hintText: addressoneText,
                               border: OutlineInputBorder(
@@ -159,6 +171,8 @@ class _AddressState extends State<Address> {
                           children: [
                             TextFormField(
                               controller: add2Controller,
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.w500),
                               enabled: isEditable,
                               decoration: InputDecoration(
                                   hintText: addresstwoText,
@@ -173,14 +187,18 @@ class _AddressState extends State<Address> {
                               children: [
                                 Text(
                                   cityName,
-                                  style: TextStyle(fontSize: 20),
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 SizedBox(
                                   width: 160,
                                 ),
                                 Text(
                                   pinNum,
-                                  style: TextStyle(fontSize: 20),
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
@@ -191,6 +209,9 @@ class _AddressState extends State<Address> {
                                     padding: const EdgeInsets.all(8.0),
                                     child: TextFormField(
                                       controller: cityController,
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500),
                                       enabled: isEditable,
                                       decoration: InputDecoration(
                                           hintText: cityName1,
@@ -208,6 +229,9 @@ class _AddressState extends State<Address> {
                                     padding: const EdgeInsets.all(8.0),
                                     child: TextFormField(
                                       controller: pinController,
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500),
                                       decoration: InputDecoration(
                                           hintText: pinNum1,
                                           border: OutlineInputBorder(
@@ -224,14 +248,18 @@ class _AddressState extends State<Address> {
                               children: [
                                 Text(
                                   state,
-                                  style: TextStyle(fontSize: 20),
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 SizedBox(
                                   width: 160,
                                 ),
                                 Text(
                                   country,
-                                  style: TextStyle(fontSize: 20),
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
@@ -242,6 +270,9 @@ class _AddressState extends State<Address> {
                                     padding: const EdgeInsets.all(8.0),
                                     child: TextFormField(
                                       controller: stateController,
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500),
                                       enabled: isEditable,
                                       decoration: InputDecoration(
                                           hintText: state1,
@@ -259,6 +290,9 @@ class _AddressState extends State<Address> {
                                     padding: const EdgeInsets.all(8.0),
                                     child: TextFormField(
                                       controller: countryController,
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w500),
                                       enabled: isEditable,
                                       decoration: InputDecoration(
                                           hintText: country1,
@@ -286,7 +320,8 @@ class _AddressState extends State<Address> {
                           },
                           child: const Text(
                             saveAddressBttn,
-                            style: TextStyle(fontSize: 20, color: Colors.white),
+                            style:
+                                TextStyle(fontSize: 20, color: saveBttnColor),
                           )),
                     )
                   ],

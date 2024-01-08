@@ -3,9 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
+import 'package:project_2/cart/riverpod/tipstate_provider.dart';
 import 'package:project_2/constants/color_constants.dart';
 
 import 'package:project_2/homepage/model/json_model.dart';
+import 'package:project_2/payments/payment_app.dart';
 import 'package:readmore/readmore.dart';
 import '../../constants/text_constants.dart';
 import 'background_container_widget.dart';
@@ -384,7 +386,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                           Container(
                                             height: 67,
                                             padding: EdgeInsets.symmetric(
-                                                horizontal: 8, vertical: 4),
+                                                horizontal: 8, vertical: 0),
                                             child: Column(
                                               mainAxisAlignment:
                                                   MainAxisAlignment
@@ -481,6 +483,10 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                     productName: widget.details.name,
                                     buttonName: "Pay Now",
                                     call: (value) {
+                                      double gst = value * 0.05;
+                                      ref.watch(TipProvider.notifier).setgst(
+                                          double.parse(gst.toStringAsFixed(2)));
+
                                       func.additem({
                                         "name": name,
                                         "image": "assets/images/$image.jpg",
@@ -489,7 +495,11 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                         "quantity": quantity
                                       });
                                       Navigator.of(context).pop();
-                                      Navigator.pushNamed(context, '/payment');
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  PaymentApp(coffee: true)));
                                     },
                                     addons: addons,
                                     finalPrice: offerPrice,
@@ -527,6 +537,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                 productName: widget.details.name,
                                 buttonName: "Proceed",
                                 call: (value) {
+                                  print(value);
                                   func.additem({
                                     "name": name,
                                     "image": "assets/images/$image.jpg",

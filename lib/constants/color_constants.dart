@@ -9,7 +9,7 @@ const Color nfcCircleAvatarAvailableColor = Color.fromARGB(255, 1, 255, 9);
 const Color nfcCircleAvatarNotAvailableColor = Colors.white;
 const Color nfcIconColor = Colors.black;
 const Color badgeTextColor = Colors.white;
-
+const Color delieveryItemColor = Colors.grey;
 //emptycartconstants
 const Color emptycartelevatebuttoncolor = Colors.black;
 const Color emptycartroundedrectanglebordercolor = Colors.black38;
@@ -128,6 +128,9 @@ const Color feedbackblack = Colors.black;
 const Color feedbackratingstarcolor = Color.fromARGB(255, 248, 231, 77);
 const Color thankyoufeedbackcolor = Colors.green;
 const Color textcolour = Colors.white;
+const Color nobuttonpressedcolor = Colors.yellow;
+const Color scheduleiconcolor = Colors.black;
+const Color schedulemsgcolor = Colors.black;
 
 //geniethemecolor
 const Color geniedarkthemebgcolor = Colors.black;
@@ -325,3 +328,18 @@ const Color priceColor = Colors.black54;
 Color discountColor = Colors.green.shade500;
 const Color iconColor = Colors.amber;
 const Color ratingColor = Colors.red;
+
+//Delivery
+const Color editBttnColor = Colors.blue;
+const Color saveBttnColor = Colors.white;
+Color aadharBackgroundColor = Colors.grey;
+const Color buttonBgColor = Color.fromARGB(255, 110, 47, 24);
+const Color bordorColor = Color.fromRGBO(0, 0, 0, 0.38);
+
+//Feedback
+const Color navTextColor = Colors.white;
+const Color feedbackBoxColor = Colors.brown;
+const Color manageOrderTextColor = Colors.white;
+const Color feedbackbttnColor = Colors.brown;
+const Color feedbackBackShadow = Colors.brown;
+const Color bttnBoxColor = Color.fromARGB(255, 235, 211, 197);

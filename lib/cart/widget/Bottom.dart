@@ -2,21 +2,23 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:project_2/cart/riverpod/switch_provider.dart';
 
 import 'package:project_2/cart/riverpod/tipstate_provider.dart';
 import 'package:project_2/cart/screen/delivery_dialog.dart';
 import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
+import 'package:project_2/payments/payment_app.dart';
 
 import 'charges.dart';
 
 class Bottom extends ConsumerWidget {
   final double subtotal;
   final tip;
+  final coffee;
   final double gst;
   const Bottom(
       {super.key,
+      required this.coffee,
       required this.gst,
       required this.subtotal,
       required this.tip});
@@ -25,8 +27,6 @@ class Bottom extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     double total = double.parse(gst.toStringAsFixed(2)) +
         double.parse(subtotal.toStringAsFixed(2));
-
-    var incoffee = ref.watch(SwitchProvider);
 
     Widget delievery = ElevatedButton(
       style: ElevatedButton.styleFrom(
@@ -51,7 +51,7 @@ class Bottom extends ConsumerWidget {
         );
       },
       child: Text(
-        "Delivery",
+        delivery,
         style: TextStyle(color: bottomcheckoutcolor),
       ),
     );
@@ -93,7 +93,7 @@ class Bottom extends ConsumerWidget {
               name: "subTotal",
               cost: double.parse(subtotal.toStringAsFixed(2))),
           //Charges(name: "Shipping Cost", cost: 10),
-          Charges(name: "tax", cost: double.parse(gst.toStringAsFixed(2))),
+          Charges(name: billGst, cost: double.parse(gst.toStringAsFixed(2))),
 
           Container(
             margin: EdgeInsets.only(top: 10, bottom: 10),
@@ -110,12 +110,11 @@ class Bottom extends ConsumerWidget {
                       )),
             ),
           ),
-          Charges(name: "total", cost: double.parse(total.toStringAsFixed(2))),
+          Charges(
+              name: billTotal, cost: double.parse(total.toStringAsFixed(2))),
           SizedBox(height: 10),
           Row(
-            mainAxisAlignment: incoffee == true
-                ? MainAxisAlignment.center
-                : MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -136,14 +135,19 @@ class Bottom extends ConsumerWidget {
                       .watch(TipProvider.notifier)
                       .setgst(double.parse(gst.toStringAsFixed(2)));
 
-                  Navigator.pushNamed(context, "/payment");
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => PaymentApp(
+                                coffee: coffee,
+                              )));
                 },
                 child: Text(
                   checkout,
                   style: TextStyle(color: bottomcheckoutcolor),
                 ),
               ),
-              incoffee == false ? delievery : SizedBox()
+              delievery
             ],
           ),
         ],

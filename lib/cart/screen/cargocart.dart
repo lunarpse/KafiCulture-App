@@ -19,19 +19,19 @@ import '../widget/cart_item.dart';
 
 import 'empty_cart.dart';
 
-class Cart extends ConsumerStatefulWidget {
-  const Cart({super.key});
+class Cargocart extends ConsumerStatefulWidget {
+  const Cargocart({super.key});
 
   @override
-  ConsumerState<Cart> createState() => _CartState();
+  ConsumerState<Cargocart> createState() => _CartState();
 }
 
-class _CartState extends ConsumerState<Cart> {
+class _CartState extends ConsumerState<Cargocart> {
   var pop = false;
 
   @override
   Widget build(BuildContext context) {
-    final data = ref.watch(CartProvider);
+    final data = ref.watch(CargoProvider);
 
     final tipfee = ref.watch(TipProvider)["tip"];
 
@@ -52,6 +52,7 @@ class _CartState extends ConsumerState<Cart> {
           // backgroundColor: Colors.grey[100],
           appBar: AppbarWidget(
             incart: true,
+            coffee: false,
           ),
           drawer: DrawerScreen(),
           resizeToAvoidBottomInset: false,
@@ -80,7 +81,7 @@ class _CartState extends ConsumerState<Cart> {
                                     if (index < data.length) {
                                       if (data[index]["quantity"] != 0) {
                                         return CartItem(
-                                            coffee: true,
+                                            coffee: false,
                                             key: GlobalObjectKey(data[index]),
                                             data: data[index]);
                                       }
@@ -88,7 +89,7 @@ class _CartState extends ConsumerState<Cart> {
                                         height: 0,
                                       );
                                     } else if (index == data.length) {
-                                      return CookingInstructions();
+                                      return SizedBox();
                                     } else if (index == data.length + 1) {
                                       return Column(
                                         crossAxisAlignment:
@@ -104,9 +105,7 @@ class _CartState extends ConsumerState<Cart> {
                                                   fontWeight: FontWeight.bold),
                                             ),
                                           ),
-                                          Extras(
-                                            coffee: true,
-                                          ),
+                                          Extras(coffee: false),
                                         ],
                                       );
                                       // return Extras();
@@ -118,7 +117,7 @@ class _CartState extends ConsumerState<Cart> {
                       ),
                       //total cost review widget
                       Bottom(
-                        coffee: true,
+                        coffee: false,
                         gst: gst,
                         subtotal: subt,
                         tip: tipfee,
