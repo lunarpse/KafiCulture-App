@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:project_2/cart/riverpod/tipstate_provider.dart';
 import 'package:project_2/cart/screen/delivery_dialog.dart';
+import 'package:project_2/cart/widget/Tip.dart';
 import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
 import 'package:project_2/payments/payment_app.dart';
@@ -43,10 +44,13 @@ class Bottom extends ConsumerWidget {
         ),
       ),
       onPressed: () {
+        ref.read(TipProvider.notifier)
+          ..setgst(double.parse(gst.toStringAsFixed(2)));
+
         showDialog(
           context: context,
           builder: (context) {
-            return DeliveryDialog();
+            return DeliveryDialog(coffee: coffee);
           },
         );
       },
@@ -77,7 +81,9 @@ class Bottom extends ConsumerWidget {
       child: Column(
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: coffee == true
+                ? MainAxisAlignment.center
+                : MainAxisAlignment.spaceAround,
             children: const [
               Icon(Icons.receipt),
               SizedBox(
@@ -90,7 +96,8 @@ class Bottom extends ConsumerWidget {
             ],
           ),
           Charges(
-              name: subTotal, cost: double.parse(subtotal.toStringAsFixed(2))),
+              name: "subTotal",
+              cost: double.parse(subtotal.toStringAsFixed(2))),
           //Charges(name: "Shipping Cost", cost: 10),
           Charges(name: billGst, cost: double.parse(gst.toStringAsFixed(2))),
 
@@ -113,7 +120,9 @@ class Bottom extends ConsumerWidget {
               name: billTotal, cost: double.parse(total.toStringAsFixed(2))),
           SizedBox(height: 10),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: coffee == false
+                ? MainAxisAlignment.spaceEvenly
+                : MainAxisAlignment.center,
             children: [
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -146,7 +155,11 @@ class Bottom extends ConsumerWidget {
                   style: TextStyle(color: bottomcheckoutcolor),
                 ),
               ),
-              delievery
+              coffee == false
+                  ? delievery
+                  : SizedBox(
+                      width: 0,
+                    )
             ],
           ),
         ],

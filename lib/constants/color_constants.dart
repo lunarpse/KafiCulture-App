@@ -341,3 +341,18 @@ const Color priceColor = Colors.black54;
 Color discountColor = Colors.green.shade500;
 const Color iconColor = Colors.amber;
 const Color ratingColor = Colors.red;
+
+//Delivery
+const Color editBttnColor = Colors.blue;
+const Color saveBttnColor = Colors.white;
+Color aadharBackgroundColor = Colors.grey;
+const Color buttonBgColor = Color.fromARGB(255, 110, 47, 24);
+const Color bordorColor = Color.fromRGBO(0, 0, 0, 0.38);
+
+//Feedback
+const Color navTextColor = Colors.white;
+const Color feedbackBoxColor = Colors.brown;
+const Color manageOrderTextColor = Colors.white;
+const Color feedbackbttnColor = Colors.brown;
+const Color feedbackBackShadow = Colors.brown;
+const Color bttnBoxColor = Color.fromARGB(255, 235, 211, 197);

@@ -25,3 +25,38 @@ class AadharInputFormatter extends TextInputFormatter {
         ));
   }
 }
+
+
+// class MaskTextInputFormatter extends TextInputFormatter {
+//   final String mask;
+//   final Map<String, RegExp> filter;
+
+//   MaskTextInputFormatter({required this.mask, required this.filter});
+
+//   @override
+//   TextEditingValue formatEditUpdate(
+//       TextEditingValue oldValue, TextEditingValue newValue) {
+//     String maskedText = '';
+//     int maskCharIndex = 0;
+
+//     for (int i = 0; i < mask.length; i++) {
+//       if (mask[i] == '#') {
+//         if (maskCharIndex < newValue.text.length) {
+//           String char = newValue.text[maskCharIndex];
+//           if (filter.containsKey('#') && filter['#']!.hasMatch(char)) {
+//             maskedText += char;
+//             maskCharIndex++;
+//           }
+//         }
+//       } else {
+//         maskedText += mask[i];
+//       }
+//     }
+
+//     return TextEditingValue(
+//       text: maskedText,
+//       selection: TextSelection.collapsed(offset: maskedText.length),
+//     );
+//   }
+// }
+

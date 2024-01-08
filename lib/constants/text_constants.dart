@@ -154,7 +154,21 @@ const String otherpaymentmethod = "Other Payment Method";
 //dialogbox
 const String addon = "Addons";
 const String currentitem = "CURRENT ITEM";
-
+const String adrname = "Name";
+const String adrename = "Enter the Name";
+const String adremail = "Email";
+const String adreemail = "Enter Email Address";
+const String adrmobile = "Mobile Number";
+const String adremobile = "Enter the Mobile Number";
+const String adradress = "Address";
+const String adredit = "Edit";
+const String adrcity = "City";
+const String adrpincode = "Pincode";
+const String adrl1 = "Enter address Line 1";
+const String adrl2 = "Enter address Line 2";
+const String adrecity = "Enter City Name";
+const String adrepin = "Enter the Pincode";
+const String adrsave = "SAVE ADDRESS";
 //detailspage
 const String size = "Size";
 const String recommendedproducts = "Customers also liked";
@@ -182,3 +196,32 @@ const String buttonName2 = "Add To Cart";
 const String buttomsheetText = "is addedd to Cart";
 const String buttomsheetButtonName1 = "Cart";
 const String buttomsheetButtonName2 = "Continue Shopping";
+
+//Delivery
+const String mobileHintText = "Enter the Mobile Number";
+const String deliveryAddressText = "Address";
+const String editableText = "Edit";
+const String addressoneText = "Enter the Address line 1";
+const String addresstwoText = "Enter the Address line 2";
+const String cityName = "City";
+const String pinNum = "Pincode";
+const String cityName1 = "Enter the city name";
+const String pinNum1 = "Enter the Pincode";
+const String state = "State";
+const String country = "Country";
+const String state1 = "Enter the state name";
+const String country1 = "Enter the Country";
+const String saveAddressBttn = "SAVE ADDRESS";
+const String aadharNum = "'Aadhar Number";
+const String nextbttn = "Next";
+
+//Feedback
+const String username = "Hi John ,";
+const String orderPlacedText = "Your Order Has Been Placed Successfully";
+const String orderId = "Your order id is :123u09u";
+const String deliveryDetails = "Delievery by 14/01/24  1:00pm";
+const String manageOrder = "Manage Order";
+const String deliveryAdd = " Delivery Address";
+const String deliverydata =
+    "34 -B . Church Street Main Road ,Opp. Church , Bangalore 110085 ,Karnataka ,India";
+const String navText = "Back to Home";

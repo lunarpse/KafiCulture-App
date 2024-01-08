@@ -7,8 +7,9 @@ import 'package:project_2/delivery/function.dart';
 //import 'package:flutter_application_1/address_page/address.dart';
 
 class DetailsPage extends StatefulWidget {
-  DetailsPage({Key? key, required this.title}) : super(key: key);
-
+  DetailsPage({Key? key, required this.title, required this.coffee})
+      : super(key: key);
+  final coffee;
   final String title;
 
   @override
@@ -17,14 +18,17 @@ class DetailsPage extends StatefulWidget {
 
 class _DetailsPageState extends State<DetailsPage> {
   Future<Map<String, dynamic>> loadJson() async {
-    final String jsonString = await rootBundle.loadString('assets/aadar.json');
+    final String jsonString = await rootBundle.loadString('assets/aadhar.json');
     final jsonResponse = json.decode(jsonString);
     return jsonResponse;
   }
 
+  TextEditingController aadharController = TextEditingController();
+  // final _aadharFormatter = MaskTextInputFormatter(
+  //     mask: '#### #### ####', filter: {"#": RegExp(r'[0-9]')});
+
   @override
   Widget build(BuildContext context) {
-    TextEditingController aadharController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -40,7 +44,7 @@ class _DetailsPageState extends State<DetailsPage> {
             var data = snapshot.data[key];
             print(data);
             var name1 = '${data['name']}';
-            // return address();
+
             return Column(
               children: [
                 const SizedBox(
@@ -51,7 +55,8 @@ class _DetailsPageState extends State<DetailsPage> {
                   inputFormatters: [
                     FilteringTextInputFormatter.digitsOnly,
                     LengthLimitingTextInputFormatter(14),
-                    AadharInputFormatter(),
+                    AadharInputFormatter()
+                    //_aadharFormatter
                   ],
                   decoration: InputDecoration(
                     filled: true,
@@ -69,6 +74,7 @@ class _DetailsPageState extends State<DetailsPage> {
                         MaterialPageRoute(
                             builder: (context) => Address(
                                   data: data,
+                                  coffee: widget.coffee,
                                 )));
                   },
                   child: Text("next"),
