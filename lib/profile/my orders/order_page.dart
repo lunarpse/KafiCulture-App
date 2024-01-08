@@ -4,11 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
-import 'package:project_2/cart/riverpod/cargo_state_provider.dart';
-import 'package:project_2/cart/riverpod/order_provider.dart';
-import 'package:project_2/cart/riverpod/state_provider.dart';
 import 'package:project_2/customdrawer/drawerScreen.dart';
-
+import '../../cart/riverpod/order_provider.dart';
+import '../../constants/color_constants.dart';
+import '../../constants/text_constants.dart';
 import '../../homepage/reusable_widgets/background_container_widget.dart';
 
 class MyOrders extends ConsumerWidget {
@@ -19,19 +18,17 @@ class MyOrders extends ConsumerWidget {
     final data = ref.read(OrderProvider);
     Widget no_order = Center(
         child: Text(
-      "Nothing Order",
-      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),
+      noOrderText,
+      style: TextStyle(
+          fontWeight: FontWeight.bold, fontSize: 25, color: noOrderTextColor),
     ));
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppbarWidget(
-        incart: false,
-      ),
+      appBar: AppbarWidget(),
       drawer: DrawerScreen(),
       body: BackgroundContainerWidget(
         opacity: 0.7,
-        x: 2.0,
-        y: 2.0,
+        x: 4.0,
+        y: 4.0,
         child: data.length == 0
             ? no_order
             : ListView.builder(
@@ -42,31 +39,30 @@ class MyOrders extends ConsumerWidget {
                     padding: const EdgeInsets.all(13),
                     child: Container(
                       width: MediaQuery.of(context).size.width,
-                      height: 155,
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 248, 248, 248),
+                        color: everyOrderContainerColor,
                         borderRadius: BorderRadius.circular(20),
                         boxShadow: [
                           BoxShadow(
-                              color: Colors.grey.shade500,
+                              color: everyOrderContainerShadowColor,
                               blurRadius: 4,
                               spreadRadius: 2,
                               offset: Offset(0, 2))
                         ],
                         border: Border.all(
-                          color: Colors.grey.shade400,
+                          color: everyOrderContainerBorderColor,
                           width: 0.5,
                         ),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(13),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Row(
                               children: [
                                 Container(
-                                  height: 60,
+                                  height: 75,
                                   width: 100,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(13),
@@ -75,9 +71,9 @@ class MyOrders extends ConsumerWidget {
                                               AssetImage(data[index]["icon"]),
                                           fit: BoxFit.cover)),
                                 ),
-                                SizedBox(width: 13),
+                                SizedBox(width: 20),
                                 Container(
-                                  width: 190,
+                                  width: 235,
                                   height: 80,
                                   child: Column(
                                     crossAxisAlignment:
@@ -90,40 +86,36 @@ class MyOrders extends ConsumerWidget {
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
                                         style: TextStyle(
-                                            fontSize: 19,
+                                            fontSize: 20,
                                             fontWeight: FontWeight.bold,
-                                            color:
-                                                Color.fromRGBO(107, 49, 20, 1)),
+                                            color: orderNameColor),
                                       ),
                                       Row(
                                         children: [
                                           Icon(
                                             FontAwesomeIcons.dollarSign,
                                             size: 21,
-                                            color:
-                                                Color.fromRGBO(137, 71, 37, 1),
+                                            color: orderPriceIconColor,
                                           ),
                                           SizedBox(width: 3),
                                           Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              // Text(
-                                              //   "Price",
-                                              //   style: TextStyle(
-                                              //       fontSize: 15,
-                                              //       fontWeight:
-                                              //           FontWeight.w600,
-                                              //       color:
-                                              //           Colors.grey.shade500),
-                                              // ),
+                                              Text(
+                                                priceHeadingText,
+                                                style: TextStyle(
+                                                    fontSize: 15,
+                                                    fontWeight: FontWeight.w600,
+                                                    color:
+                                                        orderPriceHeadingColor),
+                                              ),
                                               Text(
                                                 data[index]["cost"].toString(),
                                                 style: TextStyle(
                                                     fontSize: 17,
                                                     fontWeight: FontWeight.bold,
-                                                    color: Color.fromRGBO(
-                                                        137, 71, 37, 1)),
+                                                    color: orderPriceTextColor),
                                               ),
                                             ],
                                           ),
@@ -132,21 +124,14 @@ class MyOrders extends ConsumerWidget {
                                     ],
                                   ),
                                 ),
-                                // IconButton(
-                                //     onPressed: () {},
-                                //     icon: Icon(
-                                //       Icons.arrow_forward_ios,
-                                //       size: 16,
-                                //       color: Color.fromRGBO(107, 49, 20, 1),
-                                //     ))
                               ],
                             ),
-                            // SizedBox(
-                            //   height: 1,
-                            // ),
+                            SizedBox(
+                              height: 6,
+                            ),
                             Padding(
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 5),
+                                  const EdgeInsets.symmetric(horizontal: 10),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -156,7 +141,7 @@ class MyOrders extends ConsumerWidget {
                                       Icon(
                                         FontAwesomeIcons.tag,
                                         size: 23,
-                                        color: Color.fromRGBO(137, 71, 37, 1),
+                                        color: orderNoIconColor,
                                       ),
                                       SizedBox(width: 5),
                                       Column(
@@ -164,11 +149,11 @@ class MyOrders extends ConsumerWidget {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            "Order",
+                                            orderHeadingText,
                                             style: TextStyle(
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.w600,
-                                                color: Colors.grey.shade500),
+                                                color: orderNoHeadingColor),
                                           ),
                                           SizedBox(height: 3),
                                           Text(
@@ -176,8 +161,7 @@ class MyOrders extends ConsumerWidget {
                                             style: TextStyle(
                                                 fontSize: 19,
                                                 fontWeight: FontWeight.w600,
-                                                color: Color.fromRGBO(
-                                                    137, 71, 37, 1)),
+                                                color: orderNoTextColor),
                                           ),
                                         ],
                                       )
@@ -188,7 +172,7 @@ class MyOrders extends ConsumerWidget {
                                       Icon(
                                         FontAwesomeIcons.truckFast,
                                         size: 23,
-                                        color: Color.fromRGBO(137, 71, 37, 1),
+                                        color: orderProcessingIconColor,
                                       ),
                                       SizedBox(width: 15),
                                       Column(
@@ -196,21 +180,22 @@ class MyOrders extends ConsumerWidget {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            "Delievery By",
+                                            deliveryHeadingText,
                                             style: TextStyle(
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.w600,
-                                                color: Colors.grey.shade500),
+                                                color:
+                                                    orderProcessingHeadingColor),
                                           ),
-                                          SizedBox(height: 1),
+                                          SizedBox(height: 3),
                                           Text(
                                             "01 Jan 2024",
                                             style: TextStyle(
                                                 fontSize: 19,
                                                 letterSpacing: -0.4,
                                                 fontWeight: FontWeight.w600,
-                                                color: Color.fromRGBO(
-                                                    137, 71, 37, 1)),
+                                                color:
+                                                    orderProcessingTextColor),
                                           ),
                                         ],
                                       )
