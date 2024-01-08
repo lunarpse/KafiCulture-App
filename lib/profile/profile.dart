@@ -21,8 +21,8 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   bool _customIcon = false;
-  var name = "John Doe";
-  var email = "johndoe@gmail.com";
+  var name = "Shyam Mishra";
+  var email = "shyam45@gmail.com";
   @override
   Widget build(BuildContext context) {
     var namecontroller = TextEditingController(text: name);
