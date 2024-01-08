@@ -78,6 +78,8 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
   double itcEquivalent = 0;
   double h_mEquivalent = 0;
   double airEquivalent = 0;
+  bool isPaused=false;
+  double final_value=0;
 
   @override
   Widget build(BuildContext context) {
@@ -94,19 +96,39 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
     final double subt = tc.length != 0
         ? tc.reduce((value, element) => value + element) + gst
         : 0;
+         
+          final_value=subt;
+         
     print("ssss $subt");
     final amount = double.parse(subt.toStringAsFixed(2));
+      double loyality_value=itcvalue * 0.2 + handm_value * 0.2 + airvalue * 0.5;
     double final_price =
-        amount - itcvalue * 0.2 - handm_value * 0.01 - airvalue * 0.5;
-    print(amount);
+        amount -loyality_value ;
+
+       
+
     String strPrice;
-    if (final_price < 0.00) {
+    if (final_price <= 0.00) {
       strPrice = "0.00";
+       itcEquivalent = itcvalue * 0.2;
+      h_mEquivalent = handm_value * 0.2;
+      airEquivalent = airvalue * 0.5;
+      loyality_value=itcvalue * 0.2 + handm_value * 0.2 + airvalue * 0.5; 
+      isPaused=true;
+      final_value=0;
     } else {
       itcEquivalent = itcvalue * 0.2;
-      h_mEquivalent = handm_value * 0.01;
+      h_mEquivalent = handm_value * 0.2;
       airEquivalent = airvalue * 0.5;
       strPrice = "\$ ${final_price.toStringAsFixed(2)}";
+      loyality_value=itcvalue * 0.2 + handm_value * 0.2 + airvalue * 0.5;
+      final_value=final_price;
+      if(isPaused==true){
+        isPaused=false;
+      }
+      
+        
+      
     }
 
     return Scaffold(
@@ -180,7 +202,7 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                               fontSize: 25, fontWeight: FontWeight.w500),
                         ),
                         Text(
-                          ' $strPrice',
+                          ' ${strPrice=="-0.00"?0.00:strPrice}',
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 25,
@@ -306,11 +328,33 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                           label: " ${itcvalue.toStringAsFixed(2)}/100",
                           activeColor: companynamecolors,
                           value: itcvalue.toDouble(),
-                          onChanged: (double newValue) {
-                            setState(() {
-                              itcvalue = newValue;
-                            });
+                          onChanged:(double newValue ) {
+                            
+                              if(final_value<=newValue*0.2 ){
+                                if(itcvalue>newValue){
+                                  itcvalue=newValue;
+                                }
+                                else{
+                                  setState(() {
+                                   if(itcvalue==0){
+                                    itcvalue =final_value*5;
+                                   }
+                                   else{
+                                    itcvalue=itcvalue+final_value*5;
+                                   }
+                                
+                                });
+                                }
+                                
+                                }
+                                else{
+                                 setState(() {
+                                    itcvalue=newValue;
+                                 });
+                                }
+                            
                           },
+                          
                           min: 0,
                           max: 100,
                         ),
@@ -321,19 +365,52 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                         companyName: hotel2,
                         companyLogo: "assets/images/h&m.png",
                         value: handm_value,
-                        points: 100,
-                        factor: 0.01,
-                        pointsUsed: (h_mEquivalent * 100).toStringAsFixed(2),
+                        points: 5,
+                        factor: 0.2,
+                        pointsUsed: (h_mEquivalent * 5).toStringAsFixed(2),
                         child: Slider(
                           divisions: 100,
                           label: " ${handm_value.toStringAsFixed(2)}/100",
                           activeColor: companynamecolors,
                           value: handm_value.toDouble(),
-                          onChanged: (double newValue) {
-                            setState(() {
-                              handm_value = newValue;
-                            });
+                          onChanged:(double newValue ) {
+                            
+                              if(final_value<=newValue*0.2){
+                                if(handm_value>newValue){
+                                  handm_value=newValue;
+                                }
+
+                               else{
+                                 setState(() {
+                                   if(handm_value==0){
+                                    handm_value =final_value*5;
+                                   }
+                                   else{
+                                    handm_value=handm_value+final_value*5;
+                                   }
+                                
+                                });
+                               }
+                                
+                                }
+                                else{
+                                 setState(() {
+                                    handm_value=newValue;
+                                 });
+                                }
+                            
                           },
+                          //  onChangeEnd: ( double value){
+                          //   if( loyality_value>subt){
+                          //   setState(() { 
+                          //     print(final_value);
+                          //     handm_value=final_value*100; 
+                          //   });
+                          //   }
+                          //   else if(loyality_value<subt){
+                          //        handm_value=value;
+                          //   }
+                          // },
                           min: 0,
                           max: 100,
                         ),
@@ -353,11 +430,43 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                           label: " ${airvalue.toStringAsFixed(2)}/100",
                           activeColor: companynamecolors,
                           value: airvalue.toDouble(),
-                          onChanged: (double newValue) {
-                            setState(() {
-                              airvalue = newValue;
-                            });
+                           onChanged:(double newValue ) {
+                            
+                              if(final_value<=newValue*0.5){
+                                if(airvalue>newValue){
+                                  airvalue=newValue;
+                                }
+                                else{
+                                  setState(() {
+                                   if(airvalue==0){
+                                    airvalue =final_value*2;
+                                   }
+                                   else{
+                                    airvalue=airvalue+final_value*2;
+                                   }
+                                
+                                });
+                                }
+                                
+                                }
+                                else{
+                                 setState(() {
+                                    airvalue=newValue;
+                                 });
+                                }
+                            
                           },
+                          //  onChangeEnd: ( double value){
+                          //   if( loyality_value>subt){
+                          //   setState(() { 
+                          //     print(final_value);
+                          //     airvalue=final_value*2; 
+                          //   });
+                          //   }
+                          //   else if(loyality_value<subt){
+                          //        airvalue=value;
+                          //   }
+                          // },
                           min: 0,
                           max: 100,
                         ),

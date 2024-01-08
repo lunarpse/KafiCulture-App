@@ -8,9 +8,9 @@ import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/customdrawer/drawerScreen.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 import 'package:project_2/profile/profile_menu_item.dart';
-
 import '../constants/color_constants.dart';
 import '../constants/text_constants.dart';
+import 'edit_dialog_box.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -28,6 +28,7 @@ class _ProfileState extends State<Profile> {
     var namecontroller = TextEditingController(text: name);
     var emailcontroller = TextEditingController(text: email);
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppbarWidget(),
       drawer: DrawerScreen(),
       body: BackgroundContainerWidget(
@@ -98,7 +99,7 @@ class _ProfileState extends State<Profile> {
                             height: 15,
                           ),
                           Text(
-                            namecontroller.text,
+                            name,
                             style:
                                 TextStyle(fontSize: 22, color: userNameColor),
                           ),
@@ -106,56 +107,27 @@ class _ProfileState extends State<Profile> {
                             height: 2,
                           ),
                           Text(
-                            emailcontroller.text,
+                            email,
                             style: TextStyle(
                               fontSize: 16,
-                              color: userGmailColor,
+                              color: userEmailColor,
                             ),
                           ),
                           TextButton.icon(
                               onPressed: () {
                                 showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return BackdropFilter(
-                                        filter: ImageFilter.blur(
-                                            sigmaX: 10, sigmaY: 11),
-                                        child: Container(
-                                          width: 400,
-                                          height: 40,
-                                          child: Dialog(
-                                            child: Container(
-                                              padding: EdgeInsets.all(10),
-                                              width: 400,
-                                              height: 170,
-                                              child: Column(
-                                                children: [
-                                                  TextFormField(
-                                                    controller: namecontroller,
-                                                  ),
-                                                  TextFormField(
-                                                    controller: emailcontroller,
-                                                  ),
-                                                  TextButton(
-                                                      onPressed: () {
-                                                        setState(() {
-                                                          name = namecontroller
-                                                              .text;
-                                                          email =
-                                                              emailcontroller
-                                                                  .text;
-                                                          Navigator.of(context)
-                                                              .pop();
-                                                        });
-                                                      },
-                                                      child: Text("Submit"))
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      );
-                                    });
+                                  barrierColor: editDialogBoxBarrierColor,
+                                  context: context,
+                                  builder: (context) => EditDialogBox(
+                                      currentName: name,
+                                      currentEmail: email,
+                                      onSave: (newName, newEmail) {
+                                        setState(() {
+                                          name = newName;
+                                          email = newEmail;
+                                        });
+                                      }),
+                                );
                               },
                               icon: Icon(
                                 Icons.edit,
@@ -276,7 +248,7 @@ class _ProfileState extends State<Profile> {
                     ),
                   ],
                 ),
-              ),
+              )
             ],
           ),
         ),

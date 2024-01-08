@@ -7,7 +7,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
 
-// ignore: camel_case_types
 class DrawerScreen extends ConsumerStatefulWidget {
   const DrawerScreen({
     super.key,
@@ -38,7 +37,6 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
         ])),
         child: ListView(
           children: [
-            // SizedBox(height: 40),
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Image.asset(
@@ -74,7 +72,6 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
                 Navigator.pushNamed(context, "/cart");
               },
             ),
-
             ListTile(
               title: const Text(
                 home,
@@ -97,10 +94,10 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
               textColor: drawerscreentextcolor,
               trailing: const Icon(Icons.person),
               onTap: () {
+                Navigator.of(context).pop();
                 Navigator.pushNamed(context, "/profile");
               },
             ),
-
             Theme(
               data: Theme.of(context).copyWith(
                 dividerColor: drawerscreendividercolor,

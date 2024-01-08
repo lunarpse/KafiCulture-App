@@ -24,7 +24,7 @@ import '../Cargo/feedback_page/feedback.dart';
 import '../payments/payment_app.dart';
 import '../profile/address/address.dart';
 import '../profile/help/help.dart';
-import '../profile/myOrders/order_page.dart';
+import '../profile/my orders/order_page.dart';
 import '../profile/profile.dart';
 import '../profile/wishlist/wishlist.dart';
 
