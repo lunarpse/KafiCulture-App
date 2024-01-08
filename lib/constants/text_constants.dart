@@ -99,8 +99,9 @@ const String feedbackmessage = "Write FeedBack Here....";
 const String submit = "Submit";
 const String rating = "How Would You Rate Our App?";
 const String endrating = "Thank you for your feedback";
-const String noclicked ="Your Order is getting ready.Please wait for some time";
-const String yesclicked="Thank you.Please submit your feedback below";
+const String noclicked =
+    "Your Order is getting ready.Please wait for some time";
+const String yesclicked = "Thank you.Please submit your feedback below";
 //description
 const String productdescription =
     "Discover the artistry of flavors, where every sip is a celebration of perfection.";
@@ -139,7 +140,21 @@ const String otherpaymentmethod = "Other Payment Method";
 //dialogbox
 const String addon = "Addons";
 const String currentitem = "CURRENT ITEM";
-
+const String adrname = "Name";
+const String adrename = "Enter the Name";
+const String adremail = "Email";
+const String adreemail = "Enter Email Address";
+const String adrmobile = "Mobile Number";
+const String adremobile = "Enter the Mobile Number";
+const String adradress = "Address";
+const String adredit = "Edit";
+const String adrcity = "City";
+const String adrpincode = "Pincode";
+const String adrl1 = "Enter address Line 1";
+const String adrl2 = "Enter address Line 2";
+const String adrecity = "Enter City Name";
+const String adrepin = "Enter the Pincode";
+const String adrsave = "SAVE ADDRESS";
 //detailspage
 const String size = "Size";
 const String recommendedproducts = "Customers also liked";

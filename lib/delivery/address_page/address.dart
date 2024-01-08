@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/constants/color_constants.dart';
+import 'package:project_2/constants/text_constants.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 import 'package:project_2/payments/payment_app.dart';
 
@@ -43,7 +44,7 @@ class Address extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      "Name",
+                      adrname,
                       // "$data",
                       style: TextStyle(fontSize: 20),
                     ),
@@ -52,7 +53,7 @@ class Address extends StatelessWidget {
                       controller: nameController,
                       enabled: false,
                       decoration: InputDecoration(
-                          hintText: 'Enter the name',
+                          hintText: adrename,
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15))),
                     ),
@@ -60,27 +61,27 @@ class Address extends StatelessWidget {
                       height: 10,
                     ),
                     const Text(
-                      'Email',
+                      adremail,
                       style: TextStyle(fontSize: 20),
                     ),
                     const SizedBox(height: 10),
                     TextFormField(
                       controller: emailController,
                       decoration: InputDecoration(
-                          hintText: 'Enter the E-mail Address',
+                          hintText: adreemail,
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15))),
                     ),
                     const SizedBox(height: 10),
                     const Text(
-                      'Mobile Number',
+                      adrmobile,
                       style: TextStyle(fontSize: 20),
                     ),
                     const SizedBox(height: 10),
                     TextFormField(
                       controller: MobileController,
                       decoration: InputDecoration(
-                          hintText: 'Enter the Mobile Number',
+                          hintText: adremobile,
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15))),
                     ),
@@ -91,13 +92,13 @@ class Address extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             const Text(
-                              'Address ',
+                              adradress,
                               style: TextStyle(fontSize: 20),
                             ),
                             TextButton(
                                 onPressed: () {},
                                 child: Text(
-                                  'Edit',
+                                  adredit,
                                   style: TextStyle(
                                       color: Colors.blue, fontSize: 18),
                                 )),
@@ -107,7 +108,7 @@ class Address extends StatelessWidget {
                         TextFormField(
                           controller: add1Controller,
                           decoration: InputDecoration(
-                              hintText: 'Enter the Address line 1',
+                              hintText: adrl1,
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15))),
                         ),
@@ -122,7 +123,7 @@ class Address extends StatelessWidget {
                             TextFormField(
                               controller: add2Controller,
                               decoration: InputDecoration(
-                                  hintText: 'Enter the Address line 2',
+                                  hintText: adrl2,
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(15))),
                             ),
@@ -133,14 +134,14 @@ class Address extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Text(
-                                  "City",
+                                  adrcity,
                                   style: TextStyle(fontSize: 20),
                                 ),
                                 SizedBox(
                                   width: 160,
                                 ),
                                 Text(
-                                  "Pincode",
+                                  adrpincode,
                                   style: TextStyle(fontSize: 20),
                                 ),
                               ],
@@ -153,7 +154,7 @@ class Address extends StatelessWidget {
                                     child: TextFormField(
                                       controller: cityController,
                                       decoration: InputDecoration(
-                                          hintText: 'Enter the city name',
+                                          hintText: adrecity,
                                           border: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(15))),
@@ -169,7 +170,7 @@ class Address extends StatelessWidget {
                                     child: TextFormField(
                                       controller: pinController,
                                       decoration: InputDecoration(
-                                          hintText: 'Enter the Pincode',
+                                          hintText: adrepin,
                                           border: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(15))),
@@ -197,7 +198,7 @@ class Address extends StatelessWidget {
                                         PaymentApp(coffee: coffee)));
                           },
                           child: const Text(
-                            'SAVE ADDRESS',
+                            adradress,
                             style: TextStyle(fontSize: 20),
                           )),
                     )
