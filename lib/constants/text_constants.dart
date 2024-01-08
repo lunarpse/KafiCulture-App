@@ -154,7 +154,21 @@ const String otherpaymentmethod = "Other Payment Method";
 //dialogbox
 const String addon = "Addons";
 const String currentitem = "CURRENT ITEM";
-
+const String adrname = "Name";
+const String adrename = "Enter the Name";
+const String adremail = "Email";
+const String adreemail = "Enter Email Address";
+const String adrmobile = "Mobile Number";
+const String adremobile = "Enter the Mobile Number";
+const String adradress = "Address";
+const String adredit = "Edit";
+const String adrcity = "City";
+const String adrpincode = "Pincode";
+const String adrl1 = "Enter address Line 1";
+const String adrl2 = "Enter address Line 2";
+const String adrecity = "Enter City Name";
+const String adrepin = "Enter the Pincode";
+const String adrsave = "SAVE ADDRESS";
 //detailspage
 const String size = "Size";
 const String recommendedproducts = "Customers also liked";
@@ -198,6 +212,8 @@ const String country = "Country";
 const String state1 = "Enter the state name";
 const String country1 = "Enter the Country";
 const String saveAddressBttn = "SAVE ADDRESS";
+const String aadharNum = "'Aadhar Number";
+const String nextbttn = "Next";
 
 //Feedback
 const String username = "Hi John ,";

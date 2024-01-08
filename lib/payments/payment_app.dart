@@ -78,8 +78,8 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
   double itcEquivalent = 0;
   double h_mEquivalent = 0;
   double airEquivalent = 0;
-  bool isPaused=false;
-  double final_value=0;
+  bool isPaused = false;
+  double final_value = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -89,46 +89,38 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
         ? ref.watch(CartProvider)
         : ref.watch(CargoProvider);
 
-    double gst = ref.watch(TipProvider)["gst"];
-
     final tc = data.isNotEmpty ? data.map((e) => e["cost"] * 1) : [];
 
-    final double subt = tc.length != 0
-        ? tc.reduce((value, element) => value + element) + gst
-        : 0;
-         
-          final_value=subt;
-         
+    double subt =
+        tc.length != 0 ? tc.reduce((value, element) => value + element) : 0;
+    final double gst = double.parse((subt * 0.05).toStringAsFixed(2));
+    subt += gst;
+    final_value = subt;
+
     print("ssss $subt");
     final amount = double.parse(subt.toStringAsFixed(2));
-      double loyality_value=itcvalue * 0.2 + handm_value * 0.2 + airvalue * 0.5;
-    double final_price =
-        amount -loyality_value ;
-
-       
+    double loyality_value = itcvalue * 0.2 + handm_value * 0.2 + airvalue * 0.5;
+    double final_price = amount - loyality_value;
 
     String strPrice;
     if (final_price <= 0.00) {
       strPrice = "0.00";
-       itcEquivalent = itcvalue * 0.2;
+      itcEquivalent = itcvalue * 0.2;
       h_mEquivalent = handm_value * 0.2;
       airEquivalent = airvalue * 0.5;
-      loyality_value=itcvalue * 0.2 + handm_value * 0.2 + airvalue * 0.5; 
-      isPaused=true;
-      final_value=0;
+      loyality_value = itcvalue * 0.2 + handm_value * 0.2 + airvalue * 0.5;
+      isPaused = true;
+      final_value = 0;
     } else {
       itcEquivalent = itcvalue * 0.2;
       h_mEquivalent = handm_value * 0.2;
       airEquivalent = airvalue * 0.5;
       strPrice = "\$ ${final_price.toStringAsFixed(2)}";
-      loyality_value=itcvalue * 0.2 + handm_value * 0.2 + airvalue * 0.5;
-      final_value=final_price;
-      if(isPaused==true){
-        isPaused=false;
+      loyality_value = itcvalue * 0.2 + handm_value * 0.2 + airvalue * 0.5;
+      final_value = final_price;
+      if (isPaused == true) {
+        isPaused = false;
       }
-      
-        
-      
     }
 
     return Scaffold(
@@ -202,7 +194,7 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                               fontSize: 25, fontWeight: FontWeight.w500),
                         ),
                         Text(
-                          ' ${strPrice=="-0.00"?0.00:strPrice}',
+                          ' ${strPrice == "-0.00" ? 0.00 : strPrice}',
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 25,
@@ -328,33 +320,25 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                           label: " ${itcvalue.toStringAsFixed(2)}/100",
                           activeColor: companynamecolors,
                           value: itcvalue.toDouble(),
-                          onChanged:(double newValue ) {
-                            
-                              if(final_value<=newValue*0.2 ){
-                                if(itcvalue>newValue){
-                                  itcvalue=newValue;
-                                }
-                                else{
-                                  setState(() {
-                                   if(itcvalue==0){
-                                    itcvalue =final_value*5;
-                                   }
-                                   else{
-                                    itcvalue=itcvalue+final_value*5;
-                                   }
-                                
+                          onChanged: (double newValue) {
+                            if (final_value <= newValue * 0.2) {
+                              if (itcvalue > newValue) {
+                                itcvalue = newValue;
+                              } else {
+                                setState(() {
+                                  if (itcvalue == 0) {
+                                    itcvalue = final_value * 5;
+                                  } else {
+                                    itcvalue = itcvalue + final_value * 5;
+                                  }
                                 });
-                                }
-                                
-                                }
-                                else{
-                                 setState(() {
-                                    itcvalue=newValue;
-                                 });
-                                }
-                            
+                              }
+                            } else {
+                              setState(() {
+                                itcvalue = newValue;
+                              });
+                            }
                           },
-                          
                           min: 0,
                           max: 100,
                         ),
@@ -373,38 +357,30 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                           label: " ${handm_value.toStringAsFixed(2)}/100",
                           activeColor: companynamecolors,
                           value: handm_value.toDouble(),
-                          onChanged:(double newValue ) {
-                            
-                              if(final_value<=newValue*0.2){
-                                if(handm_value>newValue){
-                                  handm_value=newValue;
-                                }
-
-                               else{
-                                 setState(() {
-                                   if(handm_value==0){
-                                    handm_value =final_value*5;
-                                   }
-                                   else{
-                                    handm_value=handm_value+final_value*5;
-                                   }
-                                
+                          onChanged: (double newValue) {
+                            if (final_value <= newValue * 0.2) {
+                              if (handm_value > newValue) {
+                                handm_value = newValue;
+                              } else {
+                                setState(() {
+                                  if (handm_value == 0) {
+                                    handm_value = final_value * 5;
+                                  } else {
+                                    handm_value = handm_value + final_value * 5;
+                                  }
                                 });
-                               }
-                                
-                                }
-                                else{
-                                 setState(() {
-                                    handm_value=newValue;
-                                 });
-                                }
-                            
+                              }
+                            } else {
+                              setState(() {
+                                handm_value = newValue;
+                              });
+                            }
                           },
                           //  onChangeEnd: ( double value){
                           //   if( loyality_value>subt){
-                          //   setState(() { 
+                          //   setState(() {
                           //     print(final_value);
-                          //     handm_value=final_value*100; 
+                          //     handm_value=final_value*100;
                           //   });
                           //   }
                           //   else if(loyality_value<subt){
@@ -430,37 +406,30 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                           label: " ${airvalue.toStringAsFixed(2)}/100",
                           activeColor: companynamecolors,
                           value: airvalue.toDouble(),
-                           onChanged:(double newValue ) {
-                            
-                              if(final_value<=newValue*0.5){
-                                if(airvalue>newValue){
-                                  airvalue=newValue;
-                                }
-                                else{
-                                  setState(() {
-                                   if(airvalue==0){
-                                    airvalue =final_value*2;
-                                   }
-                                   else{
-                                    airvalue=airvalue+final_value*2;
-                                   }
-                                
+                          onChanged: (double newValue) {
+                            if (final_value <= newValue * 0.5) {
+                              if (airvalue > newValue) {
+                                airvalue = newValue;
+                              } else {
+                                setState(() {
+                                  if (airvalue == 0) {
+                                    airvalue = final_value * 2;
+                                  } else {
+                                    airvalue = airvalue + final_value * 2;
+                                  }
                                 });
-                                }
-                                
-                                }
-                                else{
-                                 setState(() {
-                                    airvalue=newValue;
-                                 });
-                                }
-                            
+                              }
+                            } else {
+                              setState(() {
+                                airvalue = newValue;
+                              });
+                            }
                           },
                           //  onChangeEnd: ( double value){
                           //   if( loyality_value>subt){
-                          //   setState(() { 
+                          //   setState(() {
                           //     print(final_value);
-                          //     airvalue=final_value*2; 
+                          //     airvalue=final_value*2;
                           //   });
                           //   }
                           //   else if(loyality_value<subt){

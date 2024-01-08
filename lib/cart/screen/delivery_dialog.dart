@@ -12,8 +12,8 @@ import '../../delivery/function.dart';
 import '../../homepage/reusable_widgets/background_container_widget.dart';
 
 class DeliveryDialog extends StatefulWidget {
-  const DeliveryDialog({super.key});
-
+  const DeliveryDialog({super.key, required this.coffee});
+  final coffee;
   @override
   State<DeliveryDialog> createState() => _DeliveryDialogState();
 }
@@ -62,7 +62,7 @@ class _DeliveryDialogState extends State<DeliveryDialog> {
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: aadharBackgroundColor,
-                            labelText: 'Aadhar Number',
+                            labelText: aadharNum,
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
                             ),
@@ -91,10 +91,11 @@ class _DeliveryDialogState extends State<DeliveryDialog> {
                                 MaterialPageRoute(
                                     builder: (context) => Address(
                                           data: data,
+                                          coffee: widget.coffee,
                                         )));
                           },
                           child: Text(
-                            "next",
+                            nextbttn,
                             style: TextStyle(
                                 fontSize: 17, color: containerDecorationColor),
                           ),

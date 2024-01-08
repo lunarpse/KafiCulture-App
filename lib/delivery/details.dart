@@ -7,8 +7,9 @@ import 'package:project_2/delivery/function.dart';
 //import 'package:flutter_application_1/address_page/address.dart';
 
 class DetailsPage extends StatefulWidget {
-  DetailsPage({Key? key, required this.title}) : super(key: key);
-
+  DetailsPage({Key? key, required this.title, required this.coffee})
+      : super(key: key);
+  final coffee;
   final String title;
 
   @override
@@ -73,6 +74,7 @@ class _DetailsPageState extends State<DetailsPage> {
                         MaterialPageRoute(
                             builder: (context) => Address(
                                   data: data,
+                                  coffee: widget.coffee,
                                 )));
                   },
                   child: Text("next"),

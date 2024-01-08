@@ -3,10 +3,12 @@ import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
+import 'package:project_2/payments/payment_app.dart';
 
 // ignore: camel_case_types
 class Address extends StatefulWidget {
-  Address({super.key, required this.data});
+  Address({super.key, required this.data, required this.coffee});
+  final coffee;
 
   final Map<String, dynamic> data;
 
@@ -64,7 +66,7 @@ class _AddressState extends State<Address> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      "Name",
+                      adrname,
                       // "$data",
                       style:
                           TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
@@ -76,7 +78,7 @@ class _AddressState extends State<Address> {
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                       decoration: InputDecoration(
-                          hintText: 'Enter the name',
+                          hintText: adrename,
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15))),
                     ),
@@ -84,7 +86,7 @@ class _AddressState extends State<Address> {
                       height: 10,
                     ),
                     const Text(
-                      'Email',
+                      adremail,
                       style:
                           TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
@@ -94,7 +96,7 @@ class _AddressState extends State<Address> {
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                       decoration: InputDecoration(
-                          hintText: 'Enter the E-mail Address',
+                          hintText: adreemail,
                           //enabled: _isEditable,
                           suffixIcon: IconButton(
                             icon: Icon(Icons.edit),
@@ -109,7 +111,7 @@ class _AddressState extends State<Address> {
                     ),
                     const SizedBox(height: 10),
                     const Text(
-                      'Mobile Number',
+                      adrmobile,
                       style:
                           TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
@@ -295,7 +297,7 @@ class _AddressState extends State<Address> {
                                           fontWeight: FontWeight.w500),
                                       enabled: isEditable,
                                       decoration: InputDecoration(
-                                          hintText: country1,
+                                          hintText: adrepin,
                                           border: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(15))),
@@ -316,7 +318,11 @@ class _AddressState extends State<Address> {
                                   (feedbackcollapsebgcolor))),
                           onPressed: () {
                             Navigator.of(context).pop();
-                            Navigator.pushNamed(context, '/payment');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        PaymentApp(coffee: widget.coffee)));
                           },
                           child: const Text(
                             saveAddressBttn,
