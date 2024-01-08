@@ -87,6 +87,20 @@ const String settingsText = "Settings";
 const String addressText = "Address";
 const String helpText = "Help";
 
+//--------------------------->Profile----->edit_dialog_box
+const String editDialogHeadingText = "Profile";
+const String nameText = "Name";
+const String nameInputHintText = "Enter User name";
+const String emailText = "Email";
+const String emailInputHintText = "Enter Email";
+const String saveElevatedButtonText = "Save Changes";
+
+//----->Profile---->my orders---->
+const String noOrderText = "No Orders Found";
+const String priceHeadingText = "Price";
+const String orderHeadingText = "Order";
+const String deliveryHeadingText = "Delievery By";
+
 //----->Profile---->widgets---->
 const String comingsoonText = "Feature Coming Soon..";
 
@@ -99,8 +113,9 @@ const String feedbackmessage = "Write FeedBack Here....";
 const String submit = "Submit";
 const String rating = "How Would You Rate Our App?";
 const String endrating = "Thank you for your feedback";
-const String noclicked ="Your Order is getting ready.Please wait for some time";
-const String yesclicked="Thank you.Please submit your feedback below";
+const String noclicked =
+    "Your Order is getting ready.Please wait for some time";
+const String yesclicked = "Thank you.Please submit your feedback below";
 //description
 const String productdescription =
     "Discover the artistry of flavors, where every sip is a celebration of perfection.";
