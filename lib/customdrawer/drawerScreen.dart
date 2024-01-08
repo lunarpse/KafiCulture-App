@@ -63,21 +63,10 @@ class _DrawerScreenState extends ConsumerState<DrawerScreen> {
               },
             ),
 
+            
             ListTile(
               title: const Text(
-                cart,
-                style: TextStyle(fontSize: fontsize),
-              ),
-              textColor: drawerscreentextcolor,
-              trailing: const Icon(Icons.shopping_cart),
-              onTap: () {
-                Navigator.of(context).pop();
-                Navigator.pushNamed(context, "/cart");
-              },
-            ),
-            ListTile(
-              title: const Text(
-                "Profile",
+          profileHeadingText,
                 style: TextStyle(fontSize: fontsize),
               ),
               textColor: drawerscreentextcolor,
