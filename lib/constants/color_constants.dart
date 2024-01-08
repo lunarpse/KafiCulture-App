@@ -78,10 +78,11 @@ const Color boxShadowColor = Colors.grey;
 const Color secondContainerColor = Color.fromRGBO(134, 67, 33, 1);
 const Color circularImageBorderColor = Colors.white;
 const Color userNameColor = Colors.white;
-const Color userGmailColor = Colors.white;
+const Color userEmailColor = Colors.white;
 const Color editButtonIconColor = Colors.cyan;
 const Color editButtonColor = Colors.cyan;
 const Color bigContainerColor = Colors.white;
+Color editDialogBoxBarrierColor = Colors.black.withOpacity(0.7);
 const Color bigContainerBorderColor = Color.fromRGBO(137, 71, 37, 1);
 const Color settingsIconColor = Color.fromRGBO(107, 49, 20, 1);
 const Color settingsTextColor = Color.fromRGBO(107, 49, 20, 1);
@@ -96,11 +97,23 @@ const Color leadingIconColor = Color.fromRGBO(107, 49, 20, 1);
 const Color titleColor = Color.fromRGBO(107, 49, 20, 1);
 const Color trailingIconColor = Color.fromRGBO(107, 49, 20, 1);
 
+//---------------------------->Profile------->edit_dialog_box
+const Color alertDialogBackgroundColor = Colors.transparent;
+const Color thirdContainerColor = Color.fromARGB(255, 248, 248, 248);
+const Color profileTextColor = Color.fromRGBO(107, 49, 20, 1);
+const Color nameTextColor = Color.fromRGBO(137, 71, 37, 1);
+Color inputFillColor = Colors.grey.shade300;
+Color inputEnabledBordersideColor = Colors.grey.shade400;
+const Color inputFocusedBordersideColor = Color.fromRGBO(137, 71, 37, 1);
+const Color emailTextColor = Color.fromRGBO(137, 71, 37, 1);
+const Color saveElevatedButtonBackgroundColor = Color.fromRGBO(137, 71, 37, 1);
+
 //---------------------------->Profile------->reusable_widget
 const Color comingsoonTextColor = Color.fromRGBO(107, 49, 20, 1);
 const Color comingsoonTexticonColor = Color.fromRGBO(107, 49, 20, 1);
 
-//---------------------------->Profile------->myOrders
+//---------------------------->Profile------->my orders
+const Color noOrderTextColor = Color.fromRGBO(107, 49, 20, 1);
 const Color everyOrderContainerColor = Color.fromARGB(255, 248, 248, 248);
 Color everyOrderContainerShadowColor = Colors.grey.shade500;
 Color everyOrderContainerBorderColor = Colors.grey.shade500;
@@ -128,9 +141,9 @@ const Color feedbackblack = Colors.black;
 const Color feedbackratingstarcolor = Color.fromARGB(255, 248, 231, 77);
 const Color thankyoufeedbackcolor = Colors.green;
 const Color textcolour = Colors.white;
-const Color nobuttonpressedcolor=Colors.yellow;
-const Color scheduleiconcolor =Colors.black;
-const Color schedulemsgcolor =Colors.black;
+const Color nobuttonpressedcolor = Colors.yellow;
+const Color scheduleiconcolor = Colors.black;
+const Color schedulemsgcolor = Colors.black;
 
 //geniethemecolor
 const Color geniedarkthemebgcolor = Colors.black;

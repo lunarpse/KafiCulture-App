@@ -24,7 +24,7 @@ import 'package:project_2/payments/payment_app.dart';
 import 'package:project_2/splashscreen/splash_screen.dart';
 import '../profile/address/address.dart';
 import '../profile/help/help.dart';
-import '../profile/myOrders/order_page.dart';
+import '../profile/my orders/order_page.dart';
 import '../profile/profile.dart';
 import '../profile/wishlist/wishlist.dart';
 
@@ -46,8 +46,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => Cargocart());
       case '/home':
         return MaterialPageRoute(builder: (_) => HomePage());
-      // case '/payment':
-      //   return MaterialPageRoute(builder: (_) => PaymentApp(coffee:true));
+      case '/payment':
+        return MaterialPageRoute(builder: (_) => PaymentApp(coffee: true));
       case '/snacks':
         return MaterialPageRoute(builder: (_) => SnacksPage());
       case '/drinks':
