@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "name": "GEMMA FULLBEAD CHOCOLATE",
+        "name": "GEMMA FULLBEAD",
         "brand":"Judith Leiber",
         "description": " Soft and sparkling, our gathered evening clutch dazzles in smoked topaz crystals. A removable chain strap in a mix of crystals adds to the drama and makes it a must-have in your formal handbag collection",
         "rating": "4.0",
@@ -27,15 +27,15 @@
     },
     {
         "id": 3,
-        "name": "HERMES MINI KELLY II",
+        "name": "HERMES KELLY",
         "brand":"MAISON deLUX",
         "description": "Prepare for a ravishing rendezvous of glamour with our red Hot Lips crystal clutch. The vibrant shades of red are like a crimson crush or crystals that leaves an indelible mark. These luscious lips with their dazzling handset crystal pattern is a sensational party piece that's as fiery as it is fabulous.",
         "rating": "4.8",
         "totalRatings": "48",
         "image": "HERMES MINI KELLY II",
-        "price": 84495.0,
+        "price": 8449.0,
         "discount":"20",
-        "offerPrice": 67596.0,
+        "offerPrice": 6759.2,
         "category": "ladies"
         
     },
@@ -67,7 +67,7 @@
     },
     {
         "id": 6,
-        "name": "PARADA ARQUE LEATHER SHOULDER BAG",
+        "name": "PARADA ARQUE LEATHER  BAG",
         "brand":"Parada",
         "description": "This sleek leather bag has a versatile, modernist allure. The accessory with a sinuous silhouette is completed by the leather extension and detachable shoulder strap for wearing different ways. The bag with nappa leather interior and metal hardware is embellished with the enameled metal triangle logo on the front.",
         "rating": "4.0",
@@ -81,7 +81,7 @@
 
   {
         "id": 7,
-        "name": "TRIANGULAR PATENT LEATHER MINI POUCH",
+        "name": "TRIANGULAR PATENT POUCH",
         "brand":"Parada",
         "description": "The triangle, an iconic hallmark of Prada collections, comes in a three-dimensional version in the shape of this patent leather mini pouch. The accessory with metal hardware synthesizes the brand's stylistic codes in an elegant and versatile design with removable shoulder strap and chain handle. The enameled metal triangle logo completes the look with a distinctive note.",
         "rating": "4.7",
