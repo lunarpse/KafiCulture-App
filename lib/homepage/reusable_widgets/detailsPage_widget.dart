@@ -386,7 +386,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                           Container(
                                             height: 67,
                                             padding: EdgeInsets.symmetric(
-                                                horizontal: 8, vertical: 4),
+                                                horizontal: 8, vertical: 0),
                                             child: Column(
                                               mainAxisAlignment:
                                                   MainAxisAlignment
