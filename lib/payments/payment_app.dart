@@ -324,19 +324,13 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                           label: " ${itcvalue.toStringAsFixed(2)}/100",
                           activeColor: companynamecolors,
                           value: itcvalue.toDouble(),
-                          
                           onChanged: (double newValue) {
-                             print("$subt finalvalue");
-                            print("$final_value finalvalue");
                             final value = newValue - itcvalue;
                             if (value > 0) {
                               if (final_value <= value * 0.2) {
-                                print(value);
-                                print("value is greater than final value");
                                 if (itcvalue > newValue) {
                                   itcvalue = newValue;
                                 } else {
-                                  print("2nd else");
                                   setState(() {
                                     if (itcvalue == 0) {
                                       itcvalue = final_value * 5;
@@ -346,13 +340,11 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                                   });
                                 }
                               } else {
-                                print("3rd else");
                                 setState(() {
                                   itcvalue = newValue;
                                 });
                               }
                             } else {
-                              print("1st else");
                               setState(() {
                                 itcvalue = newValue;
                               });
@@ -377,16 +369,24 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                           activeColor: companynamecolors,
                           value: handm_value.toDouble(),
                           onChanged: (double newValue) {
-                            if (final_value <= newValue * 0.2) {
-                              if (handm_value > newValue) {
-                                handm_value = newValue;
+                            final value = newValue - handm_value;
+                            if (value > 0) {
+                              if (final_value <= value * 0.2) {
+                                if (handm_value > newValue) {
+                                  handm_value = newValue;
+                                } else {
+                                  setState(() {
+                                    if (handm_value == 0) {
+                                      handm_value = final_value * 5;
+                                    } else {
+                                      handm_value =
+                                          handm_value + final_value * 5;
+                                    }
+                                  });
+                                }
                               } else {
                                 setState(() {
-                                  if (handm_value == 0) {
-                                    handm_value = final_value * 5;
-                                  } else {
-                                    handm_value = handm_value + final_value * 5;
-                                  }
+                                  handm_value = newValue;
                                 });
                               }
                             } else {
@@ -426,16 +426,23 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                           activeColor: companynamecolors,
                           value: airvalue.toDouble(),
                           onChanged: (double newValue) {
-                            if (final_value <= newValue * 0.5) {
-                              if (airvalue > newValue) {
-                                airvalue = newValue;
+                            final value = newValue - airvalue;
+                            if (value > 0) {
+                              if (final_value <= value * 0.5) {
+                                if (airvalue > newValue) {
+                                  airvalue = newValue;
+                                } else {
+                                  setState(() {
+                                    if (airvalue == 0) {
+                                      airvalue = final_value * 2;
+                                    } else {
+                                      airvalue = airvalue + final_value * 2;
+                                    }
+                                  });
+                                }
                               } else {
                                 setState(() {
-                                  if (airvalue == 0) {
-                                    airvalue = final_value * 2;
-                                  } else {
-                                    airvalue = airvalue + final_value * 2;
-                                  }
+                                  airvalue = newValue;
                                 });
                               }
                             } else {
