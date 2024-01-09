@@ -237,7 +237,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
                                   feedbackBloc
                                       .add(FeedbackSubmitButtonClickedEvent());
                                 },
-                                child: Text(submit)),
+                                child: Text(submit,style:TextStyle(color: textcolour),)),
                           ],
                         ),
                       ),

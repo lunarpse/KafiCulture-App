@@ -14,10 +14,7 @@ class yesreceived extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.schedule,
-              color: scheduleiconcolor,
-            ),
+            
             Text(
               yesclicked,
               style: TextStyle(color: schedulemsgcolor),

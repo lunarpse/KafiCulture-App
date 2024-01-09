@@ -115,7 +115,7 @@ const String rating = "How Would You Rate Our App?";
 const String endrating = "Thank you for your feedback";
 const String noclicked =
     "Your Order is getting ready.Please wait for some time";
-const String yesclicked = "Thank you.Please submit your feedback below";
+const String yesclicked = "Thank you:) Please submit your feedback below";
 //description
 const String productdescription =
     "Discover the artistry of flavors, where every sip is a celebration of perfection.";
