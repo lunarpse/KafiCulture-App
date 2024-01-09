@@ -9,6 +9,7 @@ import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
 import 'package:project_2/customdrawer/drawerScreen.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
+import 'package:project_2/feedBack/thankYou.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 import 'package:project_2/newfeature/amount.dart';
 import 'package:project_2/newfeature/company_name.dart';
@@ -96,16 +97,18 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
         tc.length != 0 ? tc.reduce((value, element) => value + element) : 0;
     final double gst = double.parse((subt * 0.05).toStringAsFixed(2));
     subt += gst;
-    final_value = subt;
+    final_value = subt * 0.5;
 
-    print("ssss $subt");
     final amount = double.parse(subt.toStringAsFixed(2));
+    final amount1 = double.parse(final_value.toStringAsFixed(2));
     double loyality_value = itcvalue * 0.2 + handm_value * 0.2 + airvalue * 0.5;
     double final_price = amount - loyality_value;
+    double final_price1 = amount1 - loyality_value;
 
     String strPrice;
-    if (final_price <= 0.00) {
-      strPrice = "0.00";
+    if (final_price1 <= 0.00) {
+      strPrice = "\$ ${amount1.toStringAsFixed(2)}";
+      ;
       itcEquivalent = itcvalue * 0.2;
       h_mEquivalent = handm_value * 0.2;
       airEquivalent = airvalue * 0.5;
@@ -118,7 +121,7 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
       airEquivalent = airvalue * 0.5;
       strPrice = "\$ ${final_price.toStringAsFixed(2)}";
       loyality_value = itcvalue * 0.2 + handm_value * 0.2 + airvalue * 0.5;
-      final_value = final_price;
+      final_value = final_price1;
       if (isPaused == true) {
         isPaused = false;
       }
@@ -321,20 +324,35 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                           label: " ${itcvalue.toStringAsFixed(2)}/100",
                           activeColor: companynamecolors,
                           value: itcvalue.toDouble(),
+                          
                           onChanged: (double newValue) {
-                            if (final_value <= newValue * 0.2) {
-                              if (itcvalue > newValue) {
-                                itcvalue = newValue;
+                             print("$subt finalvalue");
+                            print("$final_value finalvalue");
+                            final value = newValue - itcvalue;
+                            if (value > 0) {
+                              if (final_value <= value * 0.2) {
+                                print(value);
+                                print("value is greater than final value");
+                                if (itcvalue > newValue) {
+                                  itcvalue = newValue;
+                                } else {
+                                  print("2nd else");
+                                  setState(() {
+                                    if (itcvalue == 0) {
+                                      itcvalue = final_value * 5;
+                                    } else {
+                                      itcvalue = itcvalue + final_value * 5;
+                                    }
+                                  });
+                                }
                               } else {
+                                print("3rd else");
                                 setState(() {
-                                  if (itcvalue == 0) {
-                                    itcvalue = final_value * 5;
-                                  } else {
-                                    itcvalue = itcvalue + final_value * 5;
-                                  }
+                                  itcvalue = newValue;
                                 });
                               }
                             } else {
+                              print("1st else");
                               setState(() {
                                 itcvalue = newValue;
                               });
