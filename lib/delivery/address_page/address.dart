@@ -18,7 +18,9 @@ class Address extends StatefulWidget {
 
 class _AddressState extends State<Address> {
   bool isEditable = false;
-  bool _isEditable = false;
+  bool isEditableEmail = false;
+  bool isEditableMobile = false;
+
   @override
   Widget build(BuildContext context) {
     final TextEditingController nameController =
@@ -97,12 +99,12 @@ class _AddressState extends State<Address> {
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                       decoration: InputDecoration(
                           hintText: adreemail,
-                          //enabled: _isEditable,
+                          enabled: isEditableEmail,
                           suffixIcon: IconButton(
                             icon: Icon(Icons.edit),
                             onPressed: () {
                               setState(() {
-                                _isEditable = !_isEditable;
+                                isEditableEmail = !isEditableEmail;
                               });
                             },
                           ),
@@ -120,14 +122,14 @@ class _AddressState extends State<Address> {
                       controller: MobileController,
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-                      enabled: _isEditable,
+                      enabled: isEditableMobile,
                       decoration: InputDecoration(
                           hintText: mobileHintText,
                           suffixIcon: IconButton(
                             icon: Icon(Icons.edit),
                             onPressed: () {
                               setState(() {
-                                _isEditable = !_isEditable;
+                                isEditableMobile = !isEditableMobile;
                               });
                             },
                           ),

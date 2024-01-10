@@ -99,7 +99,7 @@ const String saveElevatedButtonText = "Save Changes";
 const String noOrderText = "No Orders Found";
 const String priceHeadingText = "Price";
 const String orderHeadingText = "Order";
-const String deliveryHeadingText = "Delievery By";
+const String deliveryHeadingText = "Ordered On";
 
 //----->Profile---->widgets---->
 const String comingsoonText = "Feature Coming Soon..";
