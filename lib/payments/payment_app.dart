@@ -46,13 +46,28 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
 
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     // Do something when payment succeeds
-
+    var datedata = DateTime.now();
+    var date = "${datedata.day}/${datedata.month}/${datedata.year}";
+    var time = "${datedata.hour}:${datedata.minute}";
+    var newday = (datedata.day + 4) % 31 == 0 ? 1 : (datedata.day + 4) % 31;
+    var deliveryby = "${newday}/${datedata.month}/${datedata.year}";
+    print(deliveryby);
     if (widget.coffee == true) {
-      ref.read(OrderProvider.notifier).add(ref.read(CartProvider));
+      ref.read(OrderProvider.notifier).add({
+        "data": ref.read(CartProvider),
+        "date": date,
+        "time": time,
+        "deliveryby": deliveryby
+      });
       ref.read(CartProvider.notifier).empty();
       Navigator.pushNamed(context, "/feedback");
     } else {
-      ref.read(OrderProvider.notifier).add(ref.read(CargoProvider));
+      ref.read(OrderProvider.notifier).add({
+        "data": ref.read(CargoProvider),
+        "date": date,
+        "time": time,
+        "deliveryby": (datedata.day + 4) % 31 == 0 ? 1 : (datedata.day + 4) % 31
+      });
       ref.read(CargoProvider.notifier).empty();
       Navigator.pushNamed(context, "/cargofeedback");
     }
@@ -462,10 +477,20 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
 
                               _razorpay.open(options);
                             } else {
+                              var datedata = DateTime.now();
+                              var date =
+                                  "${datedata.day}/${datedata.month}/${datedata.year}";
+                              var time = "${datedata.hour}:${datedata.minute}";
+
                               if (widget.coffee == true) {
-                                ref
-                                    .read(OrderProvider.notifier)
-                                    .add(ref.read(CartProvider));
+                                ref.read(OrderProvider.notifier).add({
+                                  "data": ref.read(CartProvider),
+                                  "date": date,
+                                  "time": time,
+                                  "deliveryby": (datedata.day + 4) % 31 == 0
+                                      ? 1
+                                      : (datedata.day + 4) % 31
+                                });
                                 ref.read(CartProvider.notifier).empty();
                                 Navigator.pushNamed(context, "/feedback");
                               } else {
@@ -473,6 +498,7 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                                     .read(OrderProvider.notifier)
                                     .add(ref.read(CargoProvider));
                                 ref.read(CargoProvider.notifier).empty();
+
                                 Navigator.pushNamed(context, "/cargofeedback");
                               }
                             }
