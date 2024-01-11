@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:ui';
+
 import "package:flutter/material.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:project_2/cart/riverpod/order_provider.dart';
@@ -36,6 +38,10 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
   final ExpansionTileController upiExpansionController =
       ExpansionTileController();
   final Razorpay _razorpay = Razorpay();
+
+  bool swapChecked = true;
+  bool cashOnDeliveryChecked = false;
+  bool initiallyExpanded = true;
 
   @override
   void initState() {
@@ -76,7 +82,6 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
   double itcvalue = 0;
   double handm_value = 0;
   double airvalue = 0;
-  bool initiallyExpanded = true;
   double itcEquivalent = 0;
   double h_mEquivalent = 0;
   double airEquivalent = 0;
@@ -133,9 +138,9 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
       ),
       drawer: DrawerScreen(),
       body: BackgroundContainerWidget(
-        opacity: 0.3,
-        x: 7.0,
-        y: 7.0,
+        opacity: 0.4,
+        x: 5.0,
+        y: 5.0,
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -286,26 +291,47 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                       ])),
                   height: 60,
                   width: MediaQuery.of(context).size.width,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 0.0),
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
                         children: [
+                          SizedBox(
+                            width: 35,
+                            child: Checkbox(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(4)),
+                                materialTapTargetSize:
+                                    MaterialTapTargetSize.shrinkWrap,
+                                side: BorderSide(
+                                    color: checkboxSideColor, width: 2),
+                                activeColor: checkboxActiveColor,
+                                checkColor: checkboxCheckColor,
+                                value: swapChecked,
+                                onChanged: (bool? value) {
+                                  setState(() {
+                                    swapChecked = value!;
+                                    cashOnDeliveryChecked = !value;
+                                  });
+                                }),
+                          ),
                           Image.asset(
                             "assets/images/swap.png",
                             height: 50,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              recommended,
-                              style: TextStyle(
-                                  fontSize: 17,
-                                  color: recommendedtextcolor,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          )
-                        ]),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          recommended,
+                          style: TextStyle(
+                              fontSize: 15,
+                              color: recommendedtextcolor,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      )
+                    ],
                   ),
                 ),
                 children: [
@@ -530,6 +556,56 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                     ],
                   ),
                 ],
+              ),
+              // SizedBox(
+              //   height: 10,
+              // ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 18),
+                child: Container(
+                  height: 60,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(7)),
+                      gradient: LinearGradient(colors: [
+                        paymentappexpansiontilegradient1,
+                        paymentappexpansiontilegradient2,
+                      ])),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 35,
+                        child: Checkbox(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(4)),
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
+                          side: BorderSide(color: checkboxSideColor, width: 2),
+                          activeColor: checkboxActiveColor,
+                          checkColor: checkboxCheckColor,
+                          value: cashOnDeliveryChecked,
+                          onChanged: (bool? value) {
+                            setState(() {
+                              cashOnDeliveryChecked = value!;
+                              swapChecked = !value;
+                            });
+                          },
+                        ),
+                      ),
+                      SizedBox(width: 10),
+                      Text(
+                        payOnDeliveryText,
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: payOnDeliveryTextColor),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
               ),
             ],
           ),
