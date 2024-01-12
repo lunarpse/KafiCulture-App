@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:ui';
+
 import "package:flutter/material.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:project_2/cart/riverpod/order_provider.dart';
@@ -36,6 +38,10 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
   final ExpansionTileController upiExpansionController =
       ExpansionTileController();
   final Razorpay _razorpay = Razorpay();
+
+  bool swapChecked = true;
+  bool cashOnDeliveryChecked = false;
+  bool initiallyExpanded = true;
 
   @override
   void initState() {
@@ -91,7 +97,6 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
   double itcvalue = 0;
   double handm_value = 0;
   double airvalue = 0;
-  bool initiallyExpanded = true;
   double itcEquivalent = 0;
   double h_mEquivalent = 0;
   double airEquivalent = 0;
@@ -147,216 +152,229 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
         coffee: widget.coffee,
       ),
       drawer: DrawerScreen(),
-      body: BackgroundContainerWidget(
-        opacity: 0.3,
-        x: 7.0,
-        y: 7.0,
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SizedBox(
-                height: 5,
-              ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            SizedBox(
+              height: 5,
+            ),
 
-              Padding(
-                padding: EdgeInsets.only(left: 12, right: 8),
-                child: Text(
-                  orders,
-                  style: TextStyle(fontSize: 23, fontWeight: FontWeight.w500),
-                ),
+            Padding(
+              padding: EdgeInsets.only(left: 12, right: 8),
+              child: Text(
+                orders,
+                style: TextStyle(fontSize: 23, fontWeight: FontWeight.w500),
               ),
-              SizedBox(
-                height: 5,
-              ),
-              LimitedBox(
-                  maxHeight: 250,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: data.map((data1) {
-                        return PaymentCart(
-                          data: data1,
-                          atpayment: true,
-                        );
-                      }).toList(),
-                    ),
-                  )),
-
-              //--------------------------------------------------------Amount
-
-              // SizedBox(height: 15),
-              Divider(
-                height: 25,
-                color: paymentdivdercolor,
-              ),
-
-              ExpansionTile(
-                title: Container(
-                  alignment: Alignment.centerLeft,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(7)),
-                      gradient: LinearGradient(colors: [
-                        paymentapplineargradient1,
-                        paymentapplineargradient2,
-                      ])),
-                  height: 50,
-                  width: MediaQuery.of(context).size.width,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          totalamount,
-                          style: TextStyle(
-                              fontSize: 25, fontWeight: FontWeight.w500),
-                        ),
-                        Text(
-                          ' ${strPrice == "-0.00" ? 0.00 : strPrice}',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 25,
-                              color: paymentapppricecolor,
-                              fontStyle: FontStyle.normal),
-                        ),
-                      ],
-                    ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            LimitedBox(
+                maxHeight: 250,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: data.map((data1) {
+                      return PaymentCart(
+                        data: data1,
+                        atpayment: true,
+                      );
+                    }).toList(),
                   ),
-                ),
-                children: [
-                  Amount(
-                    text: subtotal,
-                    price: "\$ ${amount.toString()}",
-                    fontSize: 20,
-                    fontColor: paymentapppricecolor,
-                    leftPadding: 20,
-                    rightPadding: 20,
-                    topPadding: 5,
-                    bottomPadding: 5,
-                  ),
-                  ExpansionTile(
-                    title: Amount(
-                      text: loyalitypointequivalent,
-                      price:
-                          "\$ ${(airEquivalent + h_mEquivalent + itcEquivalent).toStringAsFixed(2)}",
-                      fontSize: 20,
-                      fontColor: loyalitypointcolor,
-                      leftPadding: 5,
-                      rightPadding: 0,
-                      topPadding: 5,
-                      bottomPadding: 5,
-                    ),
+                )),
+
+            //--------------------------------------------------------Amount
+
+            // SizedBox(height: 15),
+            Divider(
+              height: 25,
+              color: paymentdivdercolor,
+            ),
+
+            ExpansionTile(
+              title: Container(
+                alignment: Alignment.centerLeft,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(7)),
+                    gradient: LinearGradient(colors: [
+                      paymentapplineargradient1,
+                      paymentapplineargradient2,
+                    ])),
+                height: 50,
+                width: MediaQuery.of(context).size.width,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Amount(
-                        text: hotel1,
-                        price: "\$ ${(itcEquivalent).toStringAsFixed(2)}",
-                        fontSize: 18,
-                        fontColor: paymentapphotelcolor,
-                        leftPadding: 20,
-                        rightPadding: 20,
-                        topPadding: 5,
-                        bottomPadding: 5,
+                      Text(
+                        totalamount,
+                        style: TextStyle(
+                            fontSize: 25, fontWeight: FontWeight.w500),
                       ),
-                      Amount(
-                        text: hotel2,
-                        price: "\$ ${(h_mEquivalent).toStringAsFixed(2)}",
-                        fontSize: 18,
-                        fontColor: paymentapphotelcolor,
-                        leftPadding: 20,
-                        rightPadding: 20,
-                        topPadding: 5,
-                        bottomPadding: 5,
-                      ),
-                      Amount(
-                        text: hotel3,
-                        price: "\$ ${(airEquivalent).toStringAsFixed(2)}",
-                        fontSize: 18,
-                        fontColor: paymentapphotelcolor,
-                        leftPadding: 20,
-                        rightPadding: 20,
-                        topPadding: 5,
-                        bottomPadding: 5,
+                      Text(
+                        "${swapChecked == false ? "\$ ${amount.toString()}" : strPrice == "-0.00" ? 0.00 : strPrice}",
+                        // ' ${strPrice == "-0.00" ? 0.00 : strPrice}',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 25,
+                            color: paymentapppricecolor,
+                            fontStyle: FontStyle.normal),
                       ),
                     ],
                   ),
-                ],
-              ),
-
-              SizedBox(
-                height: 10,
-              ),
-
-              //-------------------------------------------------newSwap
-              ExpansionTile(
-                initiallyExpanded: initiallyExpanded,
-                controller: controller,
-                title: Container(
-                  alignment: Alignment.centerLeft,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(7)),
-                      gradient: LinearGradient(colors: [
-                        paymentappexpansiontilegradient1,
-                        paymentappexpansiontilegradient2,
-                      ])),
-                  height: 60,
-                  width: MediaQuery.of(context).size.width,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 0.0),
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Image.asset(
-                            "assets/images/swap.png",
-                            height: 50,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              recommended,
-                              style: TextStyle(
-                                  fontSize: 17,
-                                  color: recommendedtextcolor,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          )
-                        ]),
-                  ),
                 ),
-                children: [
-                  Column(
-                    children: [
-                      //                                                        ITC International
-                      CompanyName(
-                        companyName: hotel1,
-                        companyLogo: "assets/images/itc.png",
-                        value: itcvalue,
-                        points: 5,
-                        factor: 0.2,
-                        pointsUsed: (itcEquivalent * 5).toStringAsFixed(2),
-                        child: Slider(
-                          divisions: 100,
-                          label: " ${itcvalue.toStringAsFixed(2)}/100",
-                          activeColor: companynamecolors,
-                          value: itcvalue.toDouble(),
-                          onChanged: (double newValue) {
-                            final value = newValue - itcvalue;
-                            if (value > 0) {
-                              if (final_value <= value * 0.2) {
-                                if (itcvalue > newValue) {
-                                  itcvalue = newValue;
-                                } else {
-                                  setState(() {
-                                    if (itcvalue == 0) {
-                                      itcvalue = final_value * 5;
-                                    } else {
-                                      itcvalue = itcvalue + final_value * 5;
-                                    }
-                                  });
-                                }
+              ),
+              children: [
+                Amount(
+                  text: subtotal,
+                  price: "\$ ${amount.toString()}",
+                  fontSize: 20,
+                  fontColor: paymentapppricecolor,
+                  leftPadding: 20,
+                  rightPadding: 20,
+                  topPadding: 5,
+                  bottomPadding: 5,
+                ),
+                ExpansionTile(
+                  title: Amount(
+                    text: loyalitypointequivalent,
+                    price:
+                        "\$ ${(airEquivalent + h_mEquivalent + itcEquivalent).toStringAsFixed(2)}",
+                    fontSize: 20,
+                    fontColor: loyalitypointcolor,
+                    leftPadding: 5,
+                    rightPadding: 0,
+                    topPadding: 5,
+                    bottomPadding: 5,
+                  ),
+                  children: [
+                    Amount(
+                      text: hotel1,
+                      price: "\$ ${(itcEquivalent).toStringAsFixed(2)}",
+                      fontSize: 18,
+                      fontColor: paymentapphotelcolor,
+                      leftPadding: 20,
+                      rightPadding: 20,
+                      topPadding: 5,
+                      bottomPadding: 5,
+                    ),
+                    Amount(
+                      text: hotel2,
+                      price: "\$ ${(h_mEquivalent).toStringAsFixed(2)}",
+                      fontSize: 18,
+                      fontColor: paymentapphotelcolor,
+                      leftPadding: 20,
+                      rightPadding: 20,
+                      topPadding: 5,
+                      bottomPadding: 5,
+                    ),
+                    Amount(
+                      text: hotel3,
+                      price: "\$ ${(airEquivalent).toStringAsFixed(2)}",
+                      fontSize: 18,
+                      fontColor: paymentapphotelcolor,
+                      leftPadding: 20,
+                      rightPadding: 20,
+                      topPadding: 5,
+                      bottomPadding: 5,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+
+            SizedBox(
+              height: 10,
+            ),
+
+            //-------------------------------------------------newSwap
+            ExpansionTile(
+              initiallyExpanded: initiallyExpanded,
+              controller: controller,
+              title: Container(
+                alignment: Alignment.centerLeft,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(7)),
+                    gradient: LinearGradient(colors: [
+                      paymentappexpansiontilegradient1,
+                      paymentappexpansiontilegradient2,
+                    ])),
+                height: 60,
+                width: MediaQuery.of(context).size.width,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 35,
+                          child: Checkbox(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(4)),
+                              materialTapTargetSize:
+                                  MaterialTapTargetSize.shrinkWrap,
+                              side: BorderSide(
+                                  color: checkboxSideColor, width: 2),
+                              activeColor: checkboxActiveColor,
+                              checkColor: checkboxCheckColor,
+                              value: swapChecked,
+                              onChanged: (bool? value) {
+                                setState(() {
+                                  swapChecked = value!;
+                                  // cashOnDeliveryChecked = !value;
+                                });
+                              }),
+                        ),
+                        Image.asset(
+                          "assets/images/swap.png",
+                          height: 50,
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        recommended,
+                        style: TextStyle(
+                            fontSize: 15,
+                            color: recommendedtextcolor,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              children: [
+                Column(
+                  children: [
+                    //                                                        ITC International
+                    CompanyName(
+                      companyName: hotel1,
+                      companyLogo: "assets/images/itc.png",
+                      value: itcvalue,
+                      points: 5,
+                      factor: 0.2,
+                      pointsUsed: (itcEquivalent * 5).toStringAsFixed(2),
+                      child: Slider(
+                        divisions: 100,
+                        label: " ${itcvalue.toStringAsFixed(2)}/100",
+                        activeColor: companynamecolors,
+                        value: itcvalue.toDouble(),
+                        onChanged: (double newValue) {
+                          final value = newValue - itcvalue;
+                          if (value > 0) {
+                            if (final_value <= value * 0.2) {
+                              if (itcvalue > newValue) {
+                                itcvalue = newValue;
                               } else {
                                 setState(() {
-                                  itcvalue = newValue;
+                                  if (itcvalue == 0) {
+                                    itcvalue = final_value * 5;
+                                  } else {
+                                    itcvalue = itcvalue + final_value * 5;
+                                  }
                                 });
                               }
                             } else {
@@ -364,44 +382,43 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                                 itcvalue = newValue;
                               });
                             }
-                          },
-                          min: 0,
-                          max: 100,
-                        ),
+                          } else {
+                            setState(() {
+                              itcvalue = newValue;
+                            });
+                          }
+                        },
+                        min: 0,
+                        max: 100,
                       ),
+                    ),
 
-                      //                                                        H&M
-                      CompanyName(
-                        companyName: hotel2,
-                        companyLogo: "assets/images/h&m.png",
-                        value: handm_value,
-                        points: 5,
-                        factor: 0.2,
-                        pointsUsed: (h_mEquivalent * 5).toStringAsFixed(2),
-                        child: Slider(
-                          divisions: 100,
-                          label: " ${handm_value.toStringAsFixed(2)}/100",
-                          activeColor: companynamecolors,
-                          value: handm_value.toDouble(),
-                          onChanged: (double newValue) {
-                            final value = newValue - handm_value;
-                            if (value > 0) {
-                              if (final_value <= value * 0.2) {
-                                if (handm_value > newValue) {
-                                  handm_value = newValue;
-                                } else {
-                                  setState(() {
-                                    if (handm_value == 0) {
-                                      handm_value = final_value * 5;
-                                    } else {
-                                      handm_value =
-                                          handm_value + final_value * 5;
-                                    }
-                                  });
-                                }
+                    //                                                        H&M
+                    CompanyName(
+                      companyName: hotel2,
+                      companyLogo: "assets/images/h&m.png",
+                      value: handm_value,
+                      points: 5,
+                      factor: 0.2,
+                      pointsUsed: (h_mEquivalent * 5).toStringAsFixed(2),
+                      child: Slider(
+                        divisions: 100,
+                        label: " ${handm_value.toStringAsFixed(2)}/100",
+                        activeColor: companynamecolors,
+                        value: handm_value.toDouble(),
+                        onChanged: (double newValue) {
+                          final value = newValue - handm_value;
+                          if (value > 0) {
+                            if (final_value <= value * 0.2) {
+                              if (handm_value > newValue) {
+                                handm_value = newValue;
                               } else {
                                 setState(() {
-                                  handm_value = newValue;
+                                  if (handm_value == 0) {
+                                    handm_value = final_value * 5;
+                                  } else {
+                                    handm_value = handm_value + final_value * 5;
+                                  }
                                 });
                               }
                             } else {
@@ -409,55 +426,55 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                                 handm_value = newValue;
                               });
                             }
-                          },
-                          //  onChangeEnd: ( double value){
-                          //   if( loyality_value>subt){
-                          //   setState(() {
-                          //     print(final_value);
-                          //     handm_value=final_value*100;
-                          //   });
-                          //   }
-                          //   else if(loyality_value<subt){
-                          //        handm_value=value;
-                          //   }
-                          // },
-                          min: 0,
-                          max: 100,
-                        ),
+                          } else {
+                            setState(() {
+                              handm_value = newValue;
+                            });
+                          }
+                        },
+                        //  onChangeEnd: ( double value){
+                        //   if( loyality_value>subt){
+                        //   setState(() {
+                        //     print(final_value);
+                        //     handm_value=final_value*100;
+                        //   });
+                        //   }
+                        //   else if(loyality_value<subt){
+                        //        handm_value=value;
+                        //   }
+                        // },
+                        min: 0,
+                        max: 100,
                       ),
+                    ),
 
-                      //                                                         Emirates
+                    //                                                         Emirates
 
-                      CompanyName(
-                        companyName: hotel3,
-                        companyLogo: "assets/images/air.png",
-                        value: airvalue,
-                        points: 2,
-                        factor: 0.5,
-                        pointsUsed: (airEquivalent * 2).toStringAsFixed(2),
-                        child: Slider(
-                          divisions: 100,
-                          label: " ${airvalue.toStringAsFixed(2)}/100",
-                          activeColor: companynamecolors,
-                          value: airvalue.toDouble(),
-                          onChanged: (double newValue) {
-                            final value = newValue - airvalue;
-                            if (value > 0) {
-                              if (final_value <= value * 0.5) {
-                                if (airvalue > newValue) {
-                                  airvalue = newValue;
-                                } else {
-                                  setState(() {
-                                    if (airvalue == 0) {
-                                      airvalue = final_value * 2;
-                                    } else {
-                                      airvalue = airvalue + final_value * 2;
-                                    }
-                                  });
-                                }
+                    CompanyName(
+                      companyName: hotel3,
+                      companyLogo: "assets/images/air.png",
+                      value: airvalue,
+                      points: 2,
+                      factor: 0.5,
+                      pointsUsed: (airEquivalent * 2).toStringAsFixed(2),
+                      child: Slider(
+                        divisions: 100,
+                        label: " ${airvalue.toStringAsFixed(2)}/100",
+                        activeColor: companynamecolors,
+                        value: airvalue.toDouble(),
+                        onChanged: (double newValue) {
+                          final value = newValue - airvalue;
+                          if (value > 0) {
+                            if (final_value <= value * 0.5) {
+                              if (airvalue > newValue) {
+                                airvalue = newValue;
                               } else {
                                 setState(() {
-                                  airvalue = newValue;
+                                  if (airvalue == 0) {
+                                    airvalue = final_value * 2;
+                                  } else {
+                                    airvalue = airvalue + final_value * 2;
+                                  }
                                 });
                               }
                             } else {
@@ -465,100 +482,219 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                                 airvalue = newValue;
                               });
                             }
-                          },
-                          //  onChangeEnd: ( double value){
-                          //   if( loyality_value>subt){
-                          //   setState(() {
-                          //     print(final_value);
-                          //     airvalue=final_value*2;
-                          //   });
-                          //   }
-                          //   else if(loyality_value<subt){
-                          //        airvalue=value;
-                          //   }
-                          // },
-                          min: 0,
-                          max: 100,
-                        ),
+                          } else {
+                            setState(() {
+                              airvalue = newValue;
+                            });
+                          }
+                        },
+                        //  onChangeEnd: ( double value){
+                        //   if( loyality_value>subt){
+                        //   setState(() {
+                        //     print(final_value);
+                        //     airvalue=final_value*2;
+                        //   });
+                        //   }
+                        //   else if(loyality_value<subt){
+                        //        airvalue=value;
+                        //   }
+                        // },
+                        min: 0,
+                        max: 100,
                       ),
+                    ),
 
-                      //                                                    Confirmation button
+                    //                                                    Confirmation button
 
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          top: 25,
-                          bottom: 10,
-                        ),
-                        child: InkWell(
-                          onTap: () {
-                            if (final_price > 0) {
-                              double dollar = final_price * 84;
-                              var options = {
-                                'key': key,
-                                'amount': 100 * dollar,
-                                'name': apptitle,
-                                'description': appslogan,
-                              };
+                    // Padding(
+                    //   padding: const EdgeInsets.only(
+                    //     top: 25,
+                    //     bottom: 10,
+                    //   ),
+                    //   child: InkWell(
+                    //     onTap: () {
+                    //       if (final_price > 0) {
+                    //         double dollar = final_price * 84;
+                    //         var options = {
+                    //           'key': key,
+                    //           'amount': 100 * dollar,
+                    //           'name': apptitle,
+                    //           'description': appslogan,
+                    //         };
 
-                              _razorpay.open(options);
-                            } else {
-                              var datedata = DateTime.now();
-                              var date =
-                                  "${datedata.day}/${datedata.month}/${datedata.year}";
-                              var time = "${datedata.hour}:${datedata.minute}";
+                    //         _razorpay.open(options);
+                    //       } else {
+                    //         if (widget.coffee == true) {
+                    //           ref
+                    //               .read(OrderProvider.notifier)
+                    //               .add(ref.read(CartProvider));
+                    //           ref.read(CartProvider.notifier).empty();
+                    //           Navigator.pushNamed(context, "/feedback");
+                    //         } else {
+                    //           ref
+                    //               .read(OrderProvider.notifier)
+                    //               .add(ref.read(CargoProvider));
+                    //           ref.read(CargoProvider.notifier).empty();
+                    //           Navigator.pushNamed(context, "/cargofeedback");
+                    //         }
+                    //       }
+                    //     },
+                    //     child: Container(
+                    //       decoration: BoxDecoration(
+                    //         border: Border.all(color: paymentborderall),
+                    //         borderRadius: BorderRadius.circular(10),
+                    //         gradient: LinearGradient(
+                    //           colors: [
+                    //             paymentborderallgradient1,
+                    //             paymentborderallgradient2,
+                    //           ],
+                    //         ),
+                    //       ),
+                    //       width: mediaWidth * 0.9,
+                    //       height: 55,
+                    //       child: Center(
+                    //         child: Text(
+                    //           confirm,
+                    //           style: TextStyle(
+                    //               fontSize: 20,
+                    //               fontWeight: FontWeight.bold,
+                    //               color: confirmcolor),
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
+                  ],
+                ),
+              ],
+            ),
+            // SizedBox(
+            //   height: 10,
+            // ),
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 18),
+            //   child: Container(
+            //     height: 60,
+            //     width: MediaQuery.of(context).size.width,
+            //     decoration: BoxDecoration(
+            //         borderRadius: BorderRadius.all(Radius.circular(7)),
+            //         gradient: LinearGradient(colors: [
+            //           paymentappexpansiontilegradient1,
+            //           paymentappexpansiontilegradient2,
+            //         ])),
+            //     child: Row(
+            //       children: [
+            //         SizedBox(
+            //           width: 35,
+            //           child: Checkbox(
+            //             shape: RoundedRectangleBorder(
+            //                 borderRadius: BorderRadius.circular(4)),
+            //             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            //             side: BorderSide(color: checkboxSideColor, width: 2),
+            //             activeColor: checkboxActiveColor,
+            //             checkColor: checkboxCheckColor,
+            //             value: cashOnDeliveryChecked,
+            //             onChanged: (bool? value) {
+            //               setState(() {
+            //                 cashOnDeliveryChecked = value!;
+            //                 swapChecked = !value;
+            //               });
+            //             },
+            //           ),
+            //         ),
+            //         SizedBox(width: 10),
+            //         Text(
+            //           payOnDeliveryText,
+            //           style: TextStyle(
+            //               fontSize: 20,
+            //               fontWeight: FontWeight.bold,
+            //               color: payOnDeliveryTextColor),
+            //         )
+            //       ],
+            //     ),
+            //   ),
+            // ),
+            SizedBox(
+              height: 10,
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        color: paymentborderallgradient1,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              children: [
+                Text(
+                  "${swapChecked == false ? "\$ ${amount.toString()}" : strPrice == "-0.00" ? 0.00 : strPrice}",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
+                Text(incltaxes)
+              ],
+            ),
+            InkWell(
+              onTap: () {
+                if (final_price > 0) {
+                  double dollar;
+                  if (swapChecked) {
+                    dollar = final_price * 84;
+                  } else {
+                    dollar = amount * 84;
+                  }
+                  // double dollar = final_price * 84;
+                  //double dollar =${swapChecked == false ? "\$ ${amount.toString()}" : (strPrice == "-0.00") ? 0.00 : strPrice;};
 
-                              if (widget.coffee == true) {
-                                ref.read(OrderProvider.notifier).add({
-                                  "data": ref.read(CartProvider),
-                                  "date": date,
-                                  "time": time,
-                                  "deliveryby": (datedata.day + 4) % 31 == 0
-                                      ? 1
-                                      : (datedata.day + 4) % 31
-                                });
-                                ref.read(CartProvider.notifier).empty();
-                                Navigator.pushNamed(context, "/feedback");
-                              } else {
-                                ref
-                                    .read(OrderProvider.notifier)
-                                    .add(ref.read(CargoProvider));
-                                ref.read(CargoProvider.notifier).empty();
+                  var options = {
+                    'key': key,
+                    'amount': 100 * dollar,
+                    'name': apptitle,
+                    'description': appslogan,
+                  };
 
-                                Navigator.pushNamed(context, "/cargofeedback");
-                              }
-                            }
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(color: paymentborderall),
-                              borderRadius: BorderRadius.circular(10),
-                              gradient: LinearGradient(
-                                colors: [
-                                  paymentborderallgradient1,
-                                  paymentborderallgradient2,
-                                ],
-                              ),
-                            ),
-                            width: mediaWidth * 0.9,
-                            height: 55,
-                            child: Center(
-                              child: Text(
-                                confirm,
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: confirmcolor),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
+                  _razorpay.open(options);
+                } else {
+                  if (widget.coffee == true) {
+                    ref
+                        .read(OrderProvider.notifier)
+                        .add(ref.read(CartProvider));
+                    ref.read(CartProvider.notifier).empty();
+                    Navigator.pushNamed(context, "/feedback");
+                  } else {
+                    ref
+                        .read(OrderProvider.notifier)
+                        .add(ref.read(CargoProvider));
+                    ref.read(CargoProvider.notifier).empty();
+                    Navigator.pushNamed(context, "/cargofeedback");
+                  }
+                }
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: paymentborderall),
+                  borderRadius: BorderRadius.circular(10),
+                  gradient: LinearGradient(
+                    colors: [
+                      paymentborderallgradient1,
+                      paymentborderallgradient2,
                     ],
                   ),
-                ],
+                ),
+                width: mediaWidth * 0.65,
+                height: 55,
+                child: Center(
+                  child: Text(
+                    confirm,
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: confirmcolor),
+                  ),
+                ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

@@ -115,7 +115,7 @@ const String rating = "How Would You Rate Our App?";
 const String endrating = "Thank you for your feedback";
 const String noclicked =
     "Your Order is getting ready.Please wait for some time";
-const String yesclicked = "Thank you.Please submit your feedback below";
+const String yesclicked = "Thank you:) Please submit your feedback below";
 //description
 const String productdescription =
     "Discover the artistry of flavors, where every sip is a celebration of perfection.";
@@ -148,9 +148,9 @@ const String hotel1 = "ITC International";
 const String hotel2 = "H&M";
 const String hotel3 = "Emirates";
 const String swapmessage = "Thank you for using SWAP \n Continue with UPI/Card";
-const String confirm = "Confirm";
+const String confirm = "Proceed to Pay";
 const String otherpaymentmethod = "Other Payment Method";
-
+const String incltaxes ="(inc.all taxes)";
 //dialogbox
 const String addon = "Addons";
 const String currentitem = "CURRENT ITEM";
