@@ -201,7 +201,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
                                         isExpanded = false;
                                       });
                                     },
-                                    child: Text(submit))
+                                    child: Text(submit,style:TextStyle(color: textcolour),))
                               ],
                             ),
                           )

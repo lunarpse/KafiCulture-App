@@ -99,7 +99,7 @@ const String saveElevatedButtonText = "Save Changes";
 const String noOrderText = "No Orders Found";
 const String priceHeadingText = "Price";
 const String orderHeadingText = "Order";
-const String deliveryHeadingText = "Delievery By";
+const String deliveryHeadingText = "Ordered On";
 
 //----->Profile---->widgets---->
 const String comingsoonText = "Feature Coming Soon..";
@@ -148,9 +148,9 @@ const String hotel1 = "ITC International";
 const String hotel2 = "H&M";
 const String hotel3 = "Emirates";
 const String swapmessage = "Thank you for using SWAP \n Continue with UPI/Card";
-const String confirm = "Confirm";
+const String confirm = "Proceed to Pay";
 const String otherpaymentmethod = "Other Payment Method";
-
+const String incltaxes ="(inc.all taxes)";
 //dialogbox
 const String addon = "Addons";
 const String currentitem = "CURRENT ITEM";

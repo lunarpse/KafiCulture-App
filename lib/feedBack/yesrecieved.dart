@@ -14,7 +14,6 @@ class yesreceived extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            
             Text(
               yesclicked,
               style: TextStyle(color: schedulemsgcolor),
