@@ -491,64 +491,64 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
 
                     //                                                    Confirmation button
 
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 25,
-                        bottom: 10,
-                      ),
-                      child: InkWell(
-                        onTap: () {
-                          if (final_price > 0) {
-                            double dollar = final_price * 84;
-                            var options = {
-                              'key': key,
-                              'amount': 100 * dollar,
-                              'name': apptitle,
-                              'description': appslogan,
-                            };
+                    // Padding(
+                    //   padding: const EdgeInsets.only(
+                    //     top: 25,
+                    //     bottom: 10,
+                    //   ),
+                    //   child: InkWell(
+                    //     onTap: () {
+                    //       if (final_price > 0) {
+                    //         double dollar = final_price * 84;
+                    //         var options = {
+                    //           'key': key,
+                    //           'amount': 100 * dollar,
+                    //           'name': apptitle,
+                    //           'description': appslogan,
+                    //         };
 
-                            _razorpay.open(options);
-                          } else {
-                            if (widget.coffee == true) {
-                              ref
-                                  .read(OrderProvider.notifier)
-                                  .add(ref.read(CartProvider));
-                              ref.read(CartProvider.notifier).empty();
-                              Navigator.pushNamed(context, "/feedback");
-                            } else {
-                              ref
-                                  .read(OrderProvider.notifier)
-                                  .add(ref.read(CargoProvider));
-                              ref.read(CargoProvider.notifier).empty();
-                              Navigator.pushNamed(context, "/cargofeedback");
-                            }
-                          }
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(color: paymentborderall),
-                            borderRadius: BorderRadius.circular(10),
-                            gradient: LinearGradient(
-                              colors: [
-                                paymentborderallgradient1,
-                                paymentborderallgradient2,
-                              ],
-                            ),
-                          ),
-                          width: mediaWidth * 0.9,
-                          height: 55,
-                          child: Center(
-                            child: Text(
-                              confirm,
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: confirmcolor),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                    //         _razorpay.open(options);
+                    //       } else {
+                    //         if (widget.coffee == true) {
+                    //           ref
+                    //               .read(OrderProvider.notifier)
+                    //               .add(ref.read(CartProvider));
+                    //           ref.read(CartProvider.notifier).empty();
+                    //           Navigator.pushNamed(context, "/feedback");
+                    //         } else {
+                    //           ref
+                    //               .read(OrderProvider.notifier)
+                    //               .add(ref.read(CargoProvider));
+                    //           ref.read(CargoProvider.notifier).empty();
+                    //           Navigator.pushNamed(context, "/cargofeedback");
+                    //         }
+                    //       }
+                    //     },
+                    //     child: Container(
+                    //       decoration: BoxDecoration(
+                    //         border: Border.all(color: paymentborderall),
+                    //         borderRadius: BorderRadius.circular(10),
+                    //         gradient: LinearGradient(
+                    //           colors: [
+                    //             paymentborderallgradient1,
+                    //             paymentborderallgradient2,
+                    //           ],
+                    //         ),
+                    //       ),
+                    //       width: mediaWidth * 0.9,
+                    //       height: 55,
+                    //       child: Center(
+                    //         child: Text(
+                    //           confirm,
+                    //           style: TextStyle(
+                    //               fontSize: 20,
+                    //               fontWeight: FontWeight.bold,
+                    //               color: confirmcolor),
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
               ],
@@ -601,6 +601,83 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
             // ),
             SizedBox(
               height: 10,
+            ),
+          ],
+        ),
+      ),
+       bottomNavigationBar: BottomAppBar(
+        color: paymentborderallgradient1,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              children: [
+                Text(
+                  "${swapChecked == false ? "\$ ${amount.toString()}" : strPrice == "-0.00" ? 0.00 : strPrice}",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
+                Text(incltaxes)
+              ],
+            ),
+            InkWell(
+              onTap: () {
+                if (final_price > 0) {
+                  double dollar;
+                  if(swapChecked){
+                    dollar=final_price*84;
+                  }else{
+                    dollar=amount*84;
+                  }
+                  // double dollar = final_price * 84;
+                  //double dollar =${swapChecked == false ? "\$ ${amount.toString()}" : (strPrice == "-0.00") ? 0.00 : strPrice;};
+
+                  var options = {
+                    'key': key,
+                    'amount': 100 * dollar,
+                    'name': apptitle,
+                    'description': appslogan,
+                  };
+
+                  _razorpay.open(options);
+                } else {
+                  if (widget.coffee == true) {
+                    ref
+                        .read(OrderProvider.notifier)
+                        .add(ref.read(CartProvider));
+                    ref.read(CartProvider.notifier).empty();
+                    Navigator.pushNamed(context, "/feedback");
+                  } else {
+                    ref
+                        .read(OrderProvider.notifier)
+                        .add(ref.read(CargoProvider));
+                    ref.read(CargoProvider.notifier).empty();
+                    Navigator.pushNamed(context, "/cargofeedback");
+                  }
+                }
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: paymentborderall),
+                  borderRadius: BorderRadius.circular(10),
+                  gradient: LinearGradient(
+                    colors: [
+                      paymentborderallgradient1,
+                      paymentborderallgradient2,
+                    ],
+                  ),
+                ),
+                width: mediaWidth * 0.65,
+                height: 55,
+                child: Center(
+                  child: Text(
+                    confirm,
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: confirmcolor),
+                  ),
+                ),
+              ),
             ),
           ],
         ),
