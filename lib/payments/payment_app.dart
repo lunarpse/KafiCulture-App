@@ -53,13 +53,28 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
 
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     // Do something when payment succeeds
-
+    var datedata = DateTime.now();
+    var date = "${datedata.day}/${datedata.month}/${datedata.year}";
+    var time = "${datedata.hour}:${datedata.minute}";
+    var newday = (datedata.day + 4) % 31 == 0 ? 1 : (datedata.day + 4) % 31;
+    var deliveryby = "${newday}/${datedata.month}/${datedata.year}";
+    print(deliveryby);
     if (widget.coffee == true) {
-      ref.read(OrderProvider.notifier).add(ref.read(CartProvider));
+      ref.read(OrderProvider.notifier).add({
+        "data": ref.read(CartProvider),
+        "date": date,
+        "time": time,
+        "deliveryby": deliveryby
+      });
       ref.read(CartProvider.notifier).empty();
       Navigator.pushNamed(context, "/feedback");
     } else {
-      ref.read(OrderProvider.notifier).add(ref.read(CargoProvider));
+      ref.read(OrderProvider.notifier).add({
+        "data": ref.read(CargoProvider),
+        "date": date,
+        "time": time,
+        "deliveryby": deliveryby
+      });
       ref.read(CargoProvider.notifier).empty();
       Navigator.pushNamed(context, "/cargofeedback");
     }
@@ -605,7 +620,7 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
           ],
         ),
       ),
-       bottomNavigationBar: BottomAppBar(
+      bottomNavigationBar: BottomAppBar(
         color: paymentborderallgradient1,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -623,10 +638,10 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
               onTap: () {
                 if (final_price > 0) {
                   double dollar;
-                  if(swapChecked){
-                    dollar=final_price*84;
-                  }else{
-                    dollar=amount*84;
+                  if (swapChecked) {
+                    dollar = final_price * 84;
+                  } else {
+                    dollar = amount * 84;
                   }
                   // double dollar = final_price * 84;
                   //double dollar =${swapChecked == false ? "\$ ${amount.toString()}" : (strPrice == "-0.00") ? 0.00 : strPrice;};

@@ -137,7 +137,8 @@ class _FeedbackPageCargoState extends State<FeedbackPageCargo> {
                 child: TextButton(
                   onPressed: () {
                     Navigator.of(context).pop();
-                    Navigator.pushNamed(context, '/home');
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, '/home', (route) => false);
                   },
                   child: Text(
                     navText,

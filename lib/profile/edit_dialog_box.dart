@@ -179,6 +179,7 @@ class _EditDialogBoxState extends State<EditDialogBox> {
                                     child: Text(
                                       saveElevatedButtonText,
                                       style: TextStyle(
+                                        color: Colors.white,
                                         fontSize: 15,
                                       ),
                                     ),

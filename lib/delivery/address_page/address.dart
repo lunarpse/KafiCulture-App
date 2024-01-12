@@ -18,7 +18,9 @@ class Address extends StatefulWidget {
 
 class _AddressState extends State<Address> {
   bool isEditable = false;
-  bool _isEditable = false;
+  bool isEditableEmail = false;
+  bool isEditableMobile = false;
+
   @override
   Widget build(BuildContext context) {
     final TextEditingController nameController =
@@ -85,10 +87,27 @@ class _AddressState extends State<Address> {
                     const SizedBox(
                       height: 10,
                     ),
-                    const Text(
-                      adremail,
-                      style:
-                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          emailText,
+                          style: TextStyle(
+                              fontSize: 22, fontWeight: FontWeight.bold),
+                        ),
+                        TextButton(
+                            onPressed: () {
+                              setState(() {
+                                isEditableEmail = !isEditableEmail;
+                              });
+                            },
+                            // ignore: prefer_const_constructors
+                            child: Text(
+                              editableText,
+                              style:
+                                  TextStyle(color: editBttnColor, fontSize: 18),
+                            )),
+                      ],
                     ),
                     const SizedBox(height: 10),
                     TextFormField(
@@ -97,40 +116,41 @@ class _AddressState extends State<Address> {
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                       decoration: InputDecoration(
                           hintText: adreemail,
-                          //enabled: _isEditable,
-                          suffixIcon: IconButton(
-                            icon: Icon(Icons.edit),
-                            onPressed: () {
-                              setState(() {
-                                _isEditable = !_isEditable;
-                              });
-                            },
-                          ),
+                          enabled: isEditableEmail,
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15))),
                     ),
                     const SizedBox(height: 10),
-                    const Text(
-                      adrmobile,
-                      style:
-                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          adrmobile,
+                          style: TextStyle(
+                              fontSize: 22, fontWeight: FontWeight.bold),
+                        ),
+                        TextButton(
+                            onPressed: () {
+                              setState(() {
+                                isEditableMobile = !isEditableMobile;
+                              });
+                            },
+                            // ignore: prefer_const_constructors
+                            child: Text(
+                              editableText,
+                              style:
+                                  TextStyle(color: editBttnColor, fontSize: 18),
+                            )),
+                      ],
                     ),
                     const SizedBox(height: 10),
                     TextFormField(
                       controller: MobileController,
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-                      enabled: _isEditable,
+                      enabled: isEditableMobile,
                       decoration: InputDecoration(
                           hintText: mobileHintText,
-                          suffixIcon: IconButton(
-                            icon: Icon(Icons.edit),
-                            onPressed: () {
-                              setState(() {
-                                _isEditable = !_isEditable;
-                              });
-                            },
-                          ),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15))),
                     ),
