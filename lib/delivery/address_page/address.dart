@@ -87,10 +87,27 @@ class _AddressState extends State<Address> {
                     const SizedBox(
                       height: 10,
                     ),
-                    const Text(
-                      adremail,
-                      style:
-                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          emailText,
+                          style: TextStyle(
+                              fontSize: 22, fontWeight: FontWeight.bold),
+                        ),
+                        TextButton(
+                            onPressed: () {
+                              setState(() {
+                                isEditableEmail = !isEditableEmail;
+                              });
+                            },
+                            // ignore: prefer_const_constructors
+                            child: Text(
+                              editableText,
+                              style:
+                                  TextStyle(color: editBttnColor, fontSize: 18),
+                            )),
+                      ],
                     ),
                     const SizedBox(height: 10),
                     TextFormField(
@@ -100,22 +117,31 @@ class _AddressState extends State<Address> {
                       decoration: InputDecoration(
                           hintText: adreemail,
                           enabled: isEditableEmail,
-                          suffixIcon: IconButton(
-                            icon: Icon(Icons.edit),
-                            onPressed: () {
-                              setState(() {
-                                isEditableEmail = !isEditableEmail;
-                              });
-                            },
-                          ),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15))),
                     ),
                     const SizedBox(height: 10),
-                    const Text(
-                      adrmobile,
-                      style:
-                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          adrmobile,
+                          style: TextStyle(
+                              fontSize: 22, fontWeight: FontWeight.bold),
+                        ),
+                        TextButton(
+                            onPressed: () {
+                              setState(() {
+                                isEditableMobile = !isEditableMobile;
+                              });
+                            },
+                            // ignore: prefer_const_constructors
+                            child: Text(
+                              editableText,
+                              style:
+                                  TextStyle(color: editBttnColor, fontSize: 18),
+                            )),
+                      ],
                     ),
                     const SizedBox(height: 10),
                     TextFormField(
@@ -125,14 +151,6 @@ class _AddressState extends State<Address> {
                       enabled: isEditableMobile,
                       decoration: InputDecoration(
                           hintText: mobileHintText,
-                          suffixIcon: IconButton(
-                            icon: Icon(Icons.edit),
-                            onPressed: () {
-                              setState(() {
-                                isEditableMobile = !isEditableMobile;
-                              });
-                            },
-                          ),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15))),
                     ),
