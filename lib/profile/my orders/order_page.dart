@@ -30,37 +30,6 @@ class MyOrders extends ConsumerWidget {
             opacity: 0.7,
             x: 4.0,
             y: 4.0,
-
-            // data1=  [
-
-            //     {
-            //
-            //     data:
-
-            //    [
-            //    {name: Cappuccino, icon: assets/images/cap_coffee.jpg, price: 4.8, cost: 4.8, quantity: 1},
-            //    {name: Hot Chocolate, icon: assets/images/hot_choc.jpg, price: 7.5, cost: 7.5, quantity: 1}
-            //    ],
-
-            //    date: 9/1/2024, time: 14:35, deliveryby: 13/1/2024
-            //    },
-
-            //      {data:
-
-            //    [{name: Cappuccino, icon: assets/images/cap_coffee.jpg, price: 4.8, cost: 4.8, quantity: 1},
-            //    {name: Hot Chocolate, icon: assets/images/hot_choc.jpg, price: 7.5, cost: 7.5, quantity: 1}],
-
-            //    date: 9/1/2024, time: 14:35, deliveryby: 13/1/2024},
-
-            //      {data:
-
-            //    [{name: Cappuccino, icon: assets/images/cap_coffee.jpg, price: 4.8, cost: 4.8, quantity: 1},
-            //    {name: Hot Chocolate, icon: assets/images/hot_choc.jpg, price: 7.5, cost: 7.5, quantity: 1}],
-
-            //    date: 9/1/2024, time: 14:35, deliveryby: 13/1/2024}
-
-            //    ]
-
             child: data.length == 0
                 ? no_order
                 : ListView.builder(
@@ -68,240 +37,220 @@ class MyOrders extends ConsumerWidget {
                     itemCount: data.length,
                     itemBuilder: (context, index) {
                       return Column(
-                          children:
-                              // for (int i = 0; i < data[index]["data"].length; i++) {
-                              //   Text(data[index]["data"][i]["name"]);
-
-                              // }
-                              data[index]["data"]
-                                  .map<Widget>((e) => Padding(
-                                        padding: const EdgeInsets.all(13),
-                                        child: Container(
-                                          width:
-                                              MediaQuery.of(context).size.width,
-                                          decoration: BoxDecoration(
-                                            color: everyOrderContainerColor,
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                  color:
-                                                      everyOrderContainerShadowColor,
-                                                  blurRadius: 4,
-                                                  spreadRadius: 2,
-                                                  offset: Offset(0, 2))
-                                            ],
-                                            border: Border.all(
+                          children: data[index]["data"]
+                              .map<Widget>((e) => Padding(
+                                    padding: const EdgeInsets.all(13),
+                                    child: Container(
+                                      width: MediaQuery.of(context).size.width,
+                                      decoration: BoxDecoration(
+                                        color: everyOrderContainerColor,
+                                        borderRadius: BorderRadius.circular(20),
+                                        boxShadow: [
+                                          BoxShadow(
                                               color:
-                                                  everyOrderContainerBorderColor,
-                                              width: 0.5,
-                                            ),
-                                          ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(13),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.min,
+                                                  everyOrderContainerShadowColor,
+                                              blurRadius: 4,
+                                              spreadRadius: 2,
+                                              offset: Offset(0, 2))
+                                        ],
+                                        border: Border.all(
+                                          color: everyOrderContainerBorderColor,
+                                          width: 0.5,
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(13),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Row(
                                               children: [
-                                                Row(
-                                                  children: [
-                                                    Container(
-                                                      height: 75,
-                                                      width: 100,
-                                                      decoration: BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(13),
-                                                          image: DecorationImage(
-                                                              image: AssetImage(
-                                                                  e["icon"]),
-                                                              fit: BoxFit
-                                                                  .cover)),
-                                                    ),
-                                                    SizedBox(width: 20),
-                                                    Container(
-                                                      width: 235,
-                                                      height: 80,
-                                                      child: Column(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceAround,
-                                                        children: [
-                                                          Text(
-                                                            e["name"],
-                                                            maxLines: 1,
-                                                            overflow:
-                                                                TextOverflow
-                                                                    .ellipsis,
-                                                            style: TextStyle(
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                color:
-                                                                    orderNameColor),
-                                                          ),
-                                                          Row(
-                                                            children: [
-                                                              Icon(
-                                                                FontAwesomeIcons
-                                                                    .dollarSign,
-                                                                size: 21,
-                                                                color:
-                                                                    orderPriceIconColor,
-                                                              ),
-                                                              SizedBox(
-                                                                  width: 3),
-                                                              Column(
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Text(
-                                                                    priceHeadingText,
-                                                                    style: TextStyle(
-                                                                        fontSize:
-                                                                            15,
-                                                                        fontWeight:
-                                                                            FontWeight
-                                                                                .w600,
-                                                                        color:
-                                                                            orderPriceHeadingColor),
-                                                                  ),
-                                                                  Text(
-                                                                    e["cost"]
-                                                                        .toString(),
-                                                                    style: TextStyle(
-                                                                        fontSize:
-                                                                            17,
-                                                                        fontWeight:
-                                                                            FontWeight
-                                                                                .bold,
-                                                                        color:
-                                                                            orderPriceTextColor),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ],
+                                                Container(
+                                                  height: 75,
+                                                  width: 100,
+                                                  decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              13),
+                                                      image: DecorationImage(
+                                                          image: AssetImage(
+                                                              e["icon"]),
+                                                          fit: BoxFit.cover)),
                                                 ),
-                                                SizedBox(
-                                                  height: 6,
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsets
-                                                      .symmetric(
-                                                      horizontal: 10),
-                                                  child: Row(
+                                                SizedBox(width: 20),
+                                                Container(
+                                                  width: 235,
+                                                  height: 80,
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     mainAxisAlignment:
                                                         MainAxisAlignment
-                                                            .spaceBetween,
+                                                            .spaceAround,
                                                     children: [
-                                                      Row(
-                                                        children: [
-                                                          Icon(
-                                                            FontAwesomeIcons
-                                                                .tag,
-                                                            size: 23,
+                                                      Text(
+                                                        e["name"],
+                                                        maxLines: 1,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        style: TextStyle(
+                                                            fontSize: 20,
+                                                            fontWeight:
+                                                                FontWeight.bold,
                                                             color:
-                                                                orderNoIconColor,
-                                                          ),
-                                                          SizedBox(width: 5),
-                                                          Column(
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Text(
-                                                                orderHeadingText,
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        16,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                    color:
-                                                                        orderNoHeadingColor),
-                                                              ),
-                                                              SizedBox(
-                                                                  height: 3),
-                                                              Text(
-                                                                "CWT00$index",
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        19,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                    color:
-                                                                        orderNoTextColor),
-                                                              ),
-                                                            ],
-                                                          )
-                                                        ],
+                                                                orderNameColor),
                                                       ),
                                                       Row(
                                                         children: [
                                                           Icon(
                                                             FontAwesomeIcons
-                                                                .truckFast,
-                                                            size: 23,
+                                                                .dollarSign,
+                                                            size: 21,
                                                             color:
-                                                                orderProcessingIconColor,
+                                                                orderPriceIconColor,
                                                           ),
-                                                          SizedBox(width: 15),
+                                                          SizedBox(width: 3),
                                                           Column(
                                                             crossAxisAlignment:
                                                                 CrossAxisAlignment
                                                                     .start,
                                                             children: [
                                                               Text(
-                                                                deliveryHeadingText,
+                                                                priceHeadingText,
                                                                 style: TextStyle(
                                                                     fontSize:
-                                                                        16,
+                                                                        15,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w600,
                                                                     color:
-                                                                        orderProcessingHeadingColor),
+                                                                        orderPriceHeadingColor),
                                                               ),
-                                                              SizedBox(
-                                                                  height: 3),
                                                               Text(
-                                                                //data[index]["date"],
-                                                                data[index][
-                                                                    "deliveryby"],
+                                                                e["cost"]
+                                                                    .toString(),
                                                                 style: TextStyle(
                                                                     fontSize:
-                                                                        19,
-                                                                    letterSpacing:
-                                                                        -0.4,
+                                                                        17,
                                                                     fontWeight:
                                                                         FontWeight
-                                                                            .w600,
+                                                                            .bold,
                                                                     color:
-                                                                        orderProcessingTextColor),
+                                                                        orderPriceTextColor),
                                                               ),
                                                             ],
-                                                          )
+                                                          ),
                                                         ],
                                                       ),
                                                     ],
                                                   ),
-                                                )
+                                                ),
                                               ],
                                             ),
-                                          ),
+                                            SizedBox(
+                                              height: 6,
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 10),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      Icon(
+                                                        FontAwesomeIcons.tag,
+                                                        size: 23,
+                                                        color: orderNoIconColor,
+                                                      ),
+                                                      SizedBox(width: 5),
+                                                      Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            orderHeadingText,
+                                                            style: TextStyle(
+                                                                fontSize: 16,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                color:
+                                                                    orderNoHeadingColor),
+                                                          ),
+                                                          SizedBox(height: 3),
+                                                          Text(
+                                                            "CWT00$index",
+                                                            style: TextStyle(
+                                                                fontSize: 19,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                color:
+                                                                    orderNoTextColor),
+                                                          ),
+                                                        ],
+                                                      )
+                                                    ],
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      Icon(
+                                                        FontAwesomeIcons
+                                                            .truckFast,
+                                                        size: 23,
+                                                        color:
+                                                            orderProcessingIconColor,
+                                                      ),
+                                                      SizedBox(width: 15),
+                                                      Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            deliveryHeadingText,
+                                                            style: TextStyle(
+                                                                fontSize: 16,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                color:
+                                                                    orderProcessingHeadingColor),
+                                                          ),
+                                                          SizedBox(height: 3),
+                                                          Text(
+                                                            //data[index]["date"],
+                                                            data[index]
+                                                                ["deliveryby"],
+                                                            style: TextStyle(
+                                                                fontSize: 19,
+                                                                letterSpacing:
+                                                                    -0.4,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                color:
+                                                                    orderProcessingTextColor),
+                                                          ),
+                                                        ],
+                                                      )
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            )
+                                          ],
                                         ),
-                                      ))
-                                  .toList());
+                                      ),
+                                    ),
+                                  ))
+                              .toList());
                     })
             // for(int i=0;i<data.length;i++){
             //   ListView.builder(
@@ -321,183 +270,3 @@ class MyOrders extends ConsumerWidget {
             ));
   }
 }
-
-
-
-    // Padding(
-    //                   padding: const EdgeInsets.all(13),
-    //                   child: Container(
-    //                     width: MediaQuery.of(context).size.width,
-    //                     decoration: BoxDecoration(
-    //                       color: everyOrderContainerColor,
-    //                       borderRadius: BorderRadius.circular(20),
-    //                       boxShadow: [
-    //                         BoxShadow(
-    //                             color: everyOrderContainerShadowColor,
-    //                             blurRadius: 4,
-    //                             spreadRadius: 2,
-    //                             offset: Offset(0, 2))
-    //                       ],
-    //                       border: Border.all(
-    //                         color: everyOrderContainerBorderColor,
-    //                         width: 0.5,
-    //                       ),
-    //                     ),
-    //                     child: Padding(
-    //                       padding: const EdgeInsets.all(13),
-    //                       child: Column(
-    //                         mainAxisSize: MainAxisSize.min,
-    //                         children: [
-    //                           Row(
-    //                             children: [
-    //                               Container(
-    //                                 height: 75,
-    //                                 width: 100,
-    //                                 decoration: BoxDecoration(
-    //                                     borderRadius: BorderRadius.circular(13),
-    //                                     image: DecorationImage(
-    //                                         image: AssetImage(ndata["icon"]),
-    //                                         fit: BoxFit.cover)),
-    //                               ),
-    //                               SizedBox(width: 20),
-    //                               Container(
-    //                                 width: 235,
-    //                                 height: 80,
-    //                                 child: Column(
-    //                                   crossAxisAlignment:
-    //                                       CrossAxisAlignment.start,
-    //                                   mainAxisAlignment:
-    //                                       MainAxisAlignment.spaceAround,
-    //                                   children: [
-    //                                     Text(
-    //                                       "-----------------${ndata["name"]}",
-    //                                       maxLines: 1,
-    //                                       overflow: TextOverflow.ellipsis,
-    //                                       style: TextStyle(
-    //                                           fontSize: 20,
-    //                                           fontWeight: FontWeight.bold,
-    //                                           color: orderNameColor),
-    //                                     ),
-    //                                     Row(
-    //                                       children: [
-    //                                         Icon(
-    //                                           FontAwesomeIcons.dollarSign,
-    //                                           size: 21,
-    //                                           color: orderPriceIconColor,
-    //                                         ),
-    //                                         SizedBox(width: 3),
-    //                                         Column(
-    //                                           crossAxisAlignment:
-    //                                               CrossAxisAlignment.start,
-    //                                           children: [
-    //                                             Text(
-    //                                               priceHeadingText,
-    //                                               style: TextStyle(
-    //                                                   fontSize: 15,
-    //                                                   fontWeight:
-    //                                                       FontWeight.w600,
-    //                                                   color:
-    //                                                       orderPriceHeadingColor),
-    //                                             ),
-    //                                             Text(
-    //                                               ndata["cost"].toString(),
-    //                                               style: TextStyle(
-    //                                                   fontSize: 17,
-    //                                                   fontWeight:
-    //                                                       FontWeight.bold,
-    //                                                   color:
-    //                                                       orderPriceTextColor),
-    //                                             ),
-    //                                           ],
-    //                                         ),
-    //                                       ],
-    //                                     ),
-    //                                   ],
-    //                                 ),
-    //                               ),
-    //                             ],
-    //                           ),
-    //                           SizedBox(
-    //                             height: 6,
-    //                           ),
-    //                           Padding(
-    //                             padding:
-    //                                 const EdgeInsets.symmetric(horizontal: 10),
-    //                             child: Row(
-    //                               mainAxisAlignment:
-    //                                   MainAxisAlignment.spaceBetween,
-    //                               children: [
-    //                                 Row(
-    //                                   children: [
-    //                                     Icon(
-    //                                       FontAwesomeIcons.tag,
-    //                                       size: 23,
-    //                                       color: orderNoIconColor,
-    //                                     ),
-    //                                     SizedBox(width: 5),
-    //                                     Column(
-    //                                       crossAxisAlignment:
-    //                                           CrossAxisAlignment.start,
-    //                                       children: [
-    //                                         Text(
-    //                                           orderHeadingText,
-    //                                           style: TextStyle(
-    //                                               fontSize: 16,
-    //                                               fontWeight: FontWeight.w600,
-    //                                               color: orderNoHeadingColor),
-    //                                         ),
-    //                                         SizedBox(height: 3),
-    //                                         Text(
-    //                                           "CWT00$index",
-    //                                           style: TextStyle(
-    //                                               fontSize: 19,
-    //                                               fontWeight: FontWeight.w600,
-    //                                               color: orderNoTextColor),
-    //                                         ),
-    //                                       ],
-    //                                     )
-    //                                   ],
-    //                                 ),
-    //                                 Row(
-    //                                   children: [
-    //                                     Icon(
-    //                                       FontAwesomeIcons.truckFast,
-    //                                       size: 23,
-    //                                       color: orderProcessingIconColor,
-    //                                     ),
-    //                                     SizedBox(width: 15),
-    //                                     Column(
-    //                                       crossAxisAlignment:
-    //                                           CrossAxisAlignment.start,
-    //                                       children: [
-    //                                         Text(
-    //                                           deliveryHeadingText,
-    //                                           style: TextStyle(
-    //                                               fontSize: 16,
-    //                                               fontWeight: FontWeight.w600,
-    //                                               color:
-    //                                                   orderProcessingHeadingColor),
-    //                                         ),
-    //                                         SizedBox(height: 3),
-    //                                         Text(
-    //                                           //data[index]["date"],
-    //                                           data[index]["deliveryby"],
-    //                                           style: TextStyle(
-    //                                               fontSize: 19,
-    //                                               letterSpacing: -0.4,
-    //                                               fontWeight: FontWeight.w600,
-    //                                               color:
-    //                                                   orderProcessingTextColor),
-    //                                         ),
-    //                                       ],
-    //                                     )
-    //                                   ],
-    //                                 ),
-    //                               ],
-    //                             ),
-    //                           )
-    //                         ],
-    //                       ),
-    //                     ),
-    //                   ),
-    //                 );
