@@ -256,6 +256,11 @@ const Color paymentborderallgradient2 = Color.fromRGBO(240, 214, 191, 1);
 const Color confirmcolor = Color.fromARGB(255, 255, 106, 7);
 const Color paymentdivdercolor = Colors.black;
 const Color payOnDeliveryBtn = Color.fromRGBO(143, 93, 58, 1);
+const Color checkboxSideColor = Colors.red;
+const Color checkboxActiveColor = Colors.red;
+const Color checkboxCheckColor = Colors.white;
+const Color payOnDeliveryTextColor = Colors.black;
+
 //paymentcart
 const Color paymentcartdeccolor = Color.fromARGB(255, 247, 235, 231);
 const Color paymentcartboxshadow = Color.fromARGB(255, 87, 76, 76);

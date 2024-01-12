@@ -23,9 +23,7 @@ class MyOrders extends ConsumerWidget {
           fontWeight: FontWeight.bold, fontSize: 25, color: noOrderTextColor),
     ));
     return Scaffold(
-      appBar: AppbarWidget(
-        incart: false,
-      ),
+      appBar: AppbarWidget(incart: false),
       drawer: DrawerScreen(),
       body: BackgroundContainerWidget(
         opacity: 0.7,
