@@ -13,6 +13,9 @@ class FeedbackPageCargo extends StatefulWidget {
 }
 
 class _FeedbackPageCargoState extends State<FeedbackPageCargo> {
+  DateTime deliveryDate = DateTime.now();
+  late DateTime futureDate = deliveryDate.add(const Duration(days: 5));
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,7 +86,8 @@ class _FeedbackPageCargoState extends State<FeedbackPageCargo> {
                           SizedBox(
                             height: 6,
                           ),
-                          Text(deliveryDetails,
+                          Text(
+                              "${deliveryDetails}: ${(futureDate.day).toString()}/${(futureDate.month).toString()}/${(futureDate.year).toString()}",
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold)),
                         ],
