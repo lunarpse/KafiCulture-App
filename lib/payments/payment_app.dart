@@ -23,8 +23,9 @@ import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 // ignore: camel_case_types
 class PaymentApp extends ConsumerStatefulWidget {
-  PaymentApp({super.key, required this.coffee});
+  PaymentApp({super.key, required this.coffee, required this.checkout});
   final coffee;
+  final checkout;
 
   @override
   ConsumerState createState() => _PaymentAppState();
@@ -586,13 +587,26 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                         .read(OrderProvider.notifier)
                         .add(ref.read(CartProvider));
                     ref.read(CartProvider.notifier).empty();
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, "/home", (route) => true);
                     Navigator.pushNamed(context, "/feedback");
                   } else {
                     ref
                         .read(OrderProvider.notifier)
                         .add(ref.read(CargoProvider));
                     ref.read(CargoProvider.notifier).empty();
-                    Navigator.pushNamed(context, "/cargofeedback");
+
+                    widget.checkout == true
+                        ? (
+                            Navigator.pushNamedAndRemoveUntil(
+                                context, "/home", (route) => true),
+                            Navigator.pushNamed(context, "/feedback")
+                          )
+                        : (
+                            Navigator.pushNamedAndRemoveUntil(
+                                context, "/home", (route) => true),
+                            Navigator.pushNamed(context, "/cargofeedback")
+                          );
                   }
                 }
               },
