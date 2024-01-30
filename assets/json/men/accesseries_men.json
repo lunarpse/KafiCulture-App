@@ -1,0 +1,59 @@
+{
+    "accessories": [
+      {
+        "id": 1,
+        "name": "Classic Leather Belt",
+        "brand": "Gentleman's Choice",
+        "description": "A timeless leather belt to complement your stylish shoes.",
+        "rating": 4.7,
+        "price": 4.99,
+        "discount": 10,
+        "offer_price": 4.41,
+        "category": "Belts"
+      },
+      {
+        "id": 2,
+        "name": "Executive Leather Wallet",
+        "brand": "EleganceCraft",
+        "description": "Luxurious leather wallet with multiple compartments and sleek design.",
+        "rating": 4.5,
+        "price": 6.99,
+        "discount": 15,
+        "offer_price": 5.94,
+        "category": "Wallets"
+      },
+      {
+        "id": 3,
+        "name": "Sporty Sunglasses",
+        "brand": "ActiveStyle",
+        "description": "Polarized sunglasses for a trendy and sporty look.",
+        "rating": 4.8,
+        "price": 3.99,
+        "discount": 5,
+        "offer_price": 3.79,
+        "category": "Sunglasses"
+      },
+      {
+        "id": 4,
+        "name": "Casual Canvas Backpack",
+        "brand": "UrbanExplorer",
+        "description": "Stylish and spacious backpack for your everyday adventures.",
+        "rating": 4.6,
+        "price": 5.99,
+        "discount": 20,
+        "offer_price": 4.79,
+        "category": "Backpacks"
+      },
+      {
+        "id": 5,
+        "name": "Formal Tie Set",
+        "brand": "SophisticatedTies",
+        "description": "Elegant tie and pocket square set to complete your formal attire.",
+        "rating": 4.9,
+        "price": 3.99,
+        "discount": 8,
+        "offer_price": 3.67,
+        "category": "Ties"
+      }
+    ]
+  }
