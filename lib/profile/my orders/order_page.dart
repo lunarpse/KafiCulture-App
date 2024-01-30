@@ -11,7 +11,9 @@ import '../../constants/text_constants.dart';
 import '../../homepage/reusable_widgets/background_container_widget.dart';
 
 class MyOrders extends ConsumerWidget {
-  const MyOrders({super.key});
+  MyOrders({super.key});
+
+  DateTime todaysDate = DateTime.now();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -226,8 +228,7 @@ class MyOrders extends ConsumerWidget {
                                                           SizedBox(height: 3),
                                                           Text(
                                                             //data[index]["date"],
-                                                            data[index]
-                                                                ["deliveryby"],
+                                                            "${todaysDate.day.toString()}/${todaysDate.month.toString()}/${todaysDate.year.toString()}",
                                                             style: TextStyle(
                                                                 fontSize: 19,
                                                                 letterSpacing:

@@ -356,8 +356,8 @@ const Color bordorColor = Color.fromRGBO(0, 0, 0, 0.38);
 
 //Feedback
 const Color navTextColor = Colors.white;
-const Color feedbackBoxColor = Colors.brown;
+const Color feedbackBoxColor = Color.fromRGBO(143, 93, 58, 1);
 const Color manageOrderTextColor = Colors.white;
-const Color feedbackbttnColor = Colors.brown;
+const Color feedbackbttnColor = Color.fromRGBO(143, 93, 58, 1);
 const Color feedbackBackShadow = Colors.brown;
 const Color bttnBoxColor = Color.fromARGB(255, 235, 211, 197);

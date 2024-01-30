@@ -81,7 +81,7 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
-    // Do something when payment fails
+    Navigator.pushNamed(context, "/payment");
   }
 
   void _handleExternalWallet(ExternalWalletResponse response) {
@@ -136,11 +136,18 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
       isPaused = true;
       final_value = 0;
     } else {
-      itcEquivalent = itcvalue * 0.2;
-      h_mEquivalent = handm_value * 0.2;
-      airEquivalent = airvalue * 0.5;
       strPrice = "\$ ${final_price.toStringAsFixed(2)}";
-      loyality_value = itcvalue * 0.2 + handm_value * 0.2 + airvalue * 0.5;
+      if (swapChecked) {
+        itcEquivalent = itcvalue * 0.2;
+        h_mEquivalent = handm_value * 0.2;
+        airEquivalent = airvalue * 0.5;
+        loyality_value = itcvalue * 0.2 + handm_value * 0.2 + airvalue * 0.5;
+      } else {
+        loyality_value = 0;
+        itcEquivalent = 0;
+        h_mEquivalent = 0;
+        airEquivalent = 0;
+      }
       final_value = final_price1;
       if (isPaused == true) {
         isPaused = false;
@@ -201,7 +208,7 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                       paymentapplineargradient1,
                       paymentapplineargradient2,
                     ])),
-                height: 50,
+                height: 60,
                 width: MediaQuery.of(context).size.width,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 10.0),
@@ -240,8 +247,7 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                 ExpansionTile(
                   title: Amount(
                     text: loyalitypointequivalent,
-                    price:
-                        "\$ ${(airEquivalent + h_mEquivalent + itcEquivalent).toStringAsFixed(2)}",
+                    price: "\$ ${(loyality_value).toStringAsFixed(2)}",
                     fontSize: 20,
                     fontColor: loyalitypointcolor,
                     leftPadding: 5,
@@ -291,7 +297,7 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
 
             //-------------------------------------------------newSwap
             ExpansionTile(
-              initiallyExpanded: initiallyExpanded,
+              initiallyExpanded: swapChecked,
               controller: controller,
               title: Container(
                 alignment: Alignment.centerLeft,

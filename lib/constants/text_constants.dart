@@ -150,7 +150,7 @@ const String hotel3 = "Emirates";
 const String swapmessage = "Thank you for using SWAP \n Continue with UPI/Card";
 const String confirm = "Proceed to Pay";
 const String otherpaymentmethod = "Other Payment Method";
-const String incltaxes ="(inc.all taxes)";
+const String incltaxes = "(inc.all taxes)";
 //dialogbox
 const String addon = "Addons";
 const String currentitem = "CURRENT ITEM";
@@ -218,8 +218,8 @@ const String nextbttn = "Next";
 //Feedback
 const String username = "Hi Shyam ,";
 const String orderPlacedText = "Your Order Has Been Placed Successfully";
-const String orderId = "Your order id is :123u09u";
-const String deliveryDetails = "Delievery by 14/01/24  1:00pm";
+const String orderId = "Your order id: CWT000";
+const String deliveryDetails = "Expected Delivery by";
 const String manageOrder = "Manage Order";
 const String deliveryAdd = " Delivery Address";
 const String deliverydata =
