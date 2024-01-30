@@ -182,20 +182,29 @@ const Color detailsaddtocartbuttoncolor = Color.fromRGBO(143, 93, 58, 1);
 Color detailsselectedindexbordercolor = Colors.brown.shade900;
 const Color detailsbottomsheetboxcolor = Color.fromRGBO(143, 93, 58, 0.8);
 const Color detailsdoneiconcolor = Colors.green;
-const Color detailsratingstarcolor = Color.fromARGB(255, 248, 231, 77);
+const Color detailsratingstarcolor = Colors.orange;
+const Color detailsAddonsStarIconColor = Colors.orange;
+const Color detailsAddonsTextColor = Colors.black;
+const Color detailsAddonsAngleupIconColor = Colors.orange;
+const Color detailsAddonsAngledownIconColor = Colors.black;
 
 //dailogbox color
-Color dialogboxcheckboxtilecolor = Colors.grey.withOpacity(0.4);
-const Color dialogboxbordersidecolor = Color.fromRGBO(168, 93, 38, 1);
-const Color dialogboxaddonnamecolor = Color.fromRGBO(168, 93, 38, 1);
-const Color dialogboxactivecolor = Color.fromRGBO(168, 93, 38, 1);
-const Color dialogboxcheckcolor = Colors.white;
-const Color dialogboxdivcolor = Colors.black;
-Color dialogboxboxdecorationcolor = Colors.black.withOpacity(0.7);
-const Color dialogboxcurrentitemcolor = Colors.white60;
-const Color dialogboxproductnamecolor = Colors.white;
-const Color dialogboxpricetextcolor = Colors.white;
-const Color dialogboxelevatebuttonbgcolor = Color.fromRGBO(168, 93, 38, 1);
+// Color addonBoxcontainerBordercolor = Colors.black.withOpacity(0.6);
+const Color addonBoxcontainerBordercolor = Color.fromRGBO(143, 93, 58, 1);
+Color addonBoxcheckboxtilecolor = Colors.grey.withOpacity(0.8);
+const Color addonBoxbordersidecolor = Color.fromARGB(255, 197, 120, 4);
+// const Color addonBoxaddonnamecolor = Color.fromARGB(255, 212, 129, 5);
+const Color addonBoxaddonnamecolor = Color.fromRGBO(121, 74, 41, 1);
+const Color addonBoxactivecolor = Color.fromRGBO(168, 93, 38, 1);
+const Color addonBoxcheckcolor = Colors.white;
+// Color addonBoxdivcolor = Colors.black.withOpacity(0.7);
+const Color addonBoxdivcolor = Color.fromRGBO(143, 93, 58, 1);
+// Color addonBoxboxdecorationcolor = Colors.black.withOpacity(0.7);
+const Color addonBoxboxdecorationcolor = Color.fromRGBO(143, 93, 58, 1);
+const Color addonBoxcurrentitemcolor = Colors.white60;
+const Color addonBoxproductnamecolor = Colors.white;
+const Color addonBoxpricetextcolor = Colors.white;
+const Color addonBoxelevatebuttonbgcolor = Color.fromRGBO(168, 93, 38, 1);
 
 //background_container_widget
 const Color bgcontainercolor = Color.fromARGB(255, 248, 205, 189);

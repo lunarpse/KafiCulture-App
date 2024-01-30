@@ -151,9 +151,8 @@ const String swapmessage = "Thank you for using SWAP \n Continue with UPI/Card";
 const String confirm = "Proceed to Pay";
 const String otherpaymentmethod = "Other Payment Method";
 const String incltaxes = "(inc.all taxes)";
-//dialogbox
-const String addon = "Addons";
-const String currentitem = "CURRENT ITEM";
+
+//address page
 const String adrname = "Name";
 const String adrename = "Enter the Name";
 const String adremail = "Email";
@@ -179,6 +178,14 @@ const String detailscart = "Cart";
 const String continueshopping = "Continue Shopping";
 const String detaildescription = "Description";
 const String cart = "Cart";
+const String addonText = "Add-Ons";
+
+//add-ons
+const String addonSizeTall = "Tall";
+const String addonSizeGrande = "Grande";
+const String addonSizeVenti = "Venti";
+const String addonSizeText = "Size";
+const String addonFinalpriceText = "Final Price";
 
 //extras
 const String extraitem1 = "Hot Chocolate";
