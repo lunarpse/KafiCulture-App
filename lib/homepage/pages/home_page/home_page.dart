@@ -7,7 +7,7 @@ import 'package:project_2/homepage/constant_homepage/constant_categories.dart';
 import 'package:project_2/homepage/constant_homepage/constant_offers.dart';
 import 'package:project_2/homepage/constant_homepage/constant_populars.dart';
 import 'package:project_2/customdrawer/drawerScreen.dart';
-import 'package:project_2/homepage/widgets/checking.dart';
+
 import '../../../appbar/appbar_widget.dart';
 import '../../reusable_widgets/background_container_widget.dart';
 import 'latest_offerings/offerings_widget.dart';
@@ -37,12 +37,10 @@ class _HomePageState extends State<HomePage> {
       listener: (context, state) => {
         if (state is HomeNavigateToOfferPageActionState)
           {
-            
             Navigator.pushNamed(context, '/drinks'),
           }
       },
       builder: (context, state) {
-        
         return Scaffold(
           appBar: AppbarWidget(),
           body: BackgroundContainerWidget(
