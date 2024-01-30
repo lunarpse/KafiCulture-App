@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_2/constants/color_constants.dart';
 
-
 class CompanyName extends StatelessWidget {
   const CompanyName(
       {super.key,
@@ -50,9 +49,17 @@ class CompanyName extends StatelessWidget {
                   ),
                 ],
               ),
-              Text(
-                "$pointsUsed pts.",
-                style: TextStyle(fontSize: 18),
+              Column(
+                children: [
+                  Text(
+                    "Used: $pointsUsed pts.",
+                    style: TextStyle(fontSize: 15),
+                  ),
+                  Text(
+                    "Total: 100 pts.",
+                    style: TextStyle(fontSize: 15),
+                  ),
+                ],
               ),
               // Container(
               //   width: 70,
@@ -101,7 +108,7 @@ class CompanyName extends StatelessWidget {
           // ),
         ),
         Padding(
-          padding:  EdgeInsets.only(left: 16),
+          padding: EdgeInsets.only(left: 16),
           child: Row(
             children: [
               Container(

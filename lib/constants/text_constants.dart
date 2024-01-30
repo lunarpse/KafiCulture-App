@@ -126,6 +126,9 @@ const String handcrafted = "Handcrafted Curations";
 const String populars = "Populars";
 
 //paymentScreen
+const String priceText = "Price";
+const String gstText = "GST";
+const String deliveryText = "Delivery Charges";
 const String cardpayment = "Credit/Debit Cards";
 const String thankyou = "Thank You";
 const String selectpaymentmethod = "Select Payment Method";

@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:math';
 import 'dart:ui';
 
 import "package:flutter/material.dart";
@@ -102,6 +103,8 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
   double airEquivalent = 0;
   bool isPaused = false;
   double final_value = 0;
+  int deliveryCharges = Random().nextInt(10) + 25;
+  late String deliveryToString;
 
   @override
   Widget build(BuildContext context) {
@@ -113,10 +116,18 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
 
     final tc = data.isNotEmpty ? data.map((e) => e["cost"] * 1) : [];
 
-    double subt =
+    double cost =
         tc.length != 0 ? tc.reduce((value, element) => value + element) : 0;
+
+    double subt = cost;
     final double gst = double.parse((subt * 0.05).toStringAsFixed(2));
-    subt += gst;
+    if (widget.coffee) {
+      subt += (gst);
+      deliveryToString = "N/A";
+    } else {
+      subt += (gst + deliveryCharges);
+      deliveryToString = "\$ ${(deliveryCharges).toStringAsFixed(2)}";
+    }
     final_value = subt * 0.5;
 
     final amount = double.parse(subt.toStringAsFixed(2));
@@ -234,15 +245,49 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                 ),
               ),
               children: [
-                Amount(
-                  text: subtotal,
-                  price: "\$ ${amount.toString()}",
-                  fontSize: 20,
-                  fontColor: paymentapppricecolor,
-                  leftPadding: 20,
-                  rightPadding: 20,
-                  topPadding: 5,
-                  bottomPadding: 5,
+                ExpansionTile(
+                  title: Amount(
+                    text: subtotal,
+                    price: "\$ ${amount.toString()}",
+                    fontSize: 20,
+                    fontColor: loyalitypointcolor,
+                    leftPadding: 5,
+                    rightPadding: 0,
+                    topPadding: 5,
+                    bottomPadding: 5,
+                  ),
+                  children: [
+                    Amount(
+                      text: priceText,
+                      price: "\$ ${(cost).toStringAsFixed(2)}",
+                      fontSize: 18,
+                      fontColor: paymentapphotelcolor,
+                      leftPadding: 20,
+                      rightPadding: 20,
+                      topPadding: 5,
+                      bottomPadding: 5,
+                    ),
+                    Amount(
+                      text: deliveryText,
+                      price: deliveryToString,
+                      fontSize: 18,
+                      fontColor: paymentapphotelcolor,
+                      leftPadding: 20,
+                      rightPadding: 20,
+                      topPadding: 5,
+                      bottomPadding: 5,
+                    ),
+                    Amount(
+                      text: gstText,
+                      price: "\$ ${(gst).toStringAsFixed(2)}",
+                      fontSize: 18,
+                      fontColor: paymentapphotelcolor,
+                      leftPadding: 20,
+                      rightPadding: 20,
+                      topPadding: 5,
+                      bottomPadding: 5,
+                    ),
+                  ],
                 ),
                 ExpansionTile(
                   title: Amount(
@@ -364,9 +409,10 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                       factor: 0.2,
                       pointsUsed: (itcEquivalent * 5).toStringAsFixed(2),
                       child: Slider(
+                        inactiveColor: Colors.grey,
                         divisions: 100,
                         label: " ${itcvalue.toStringAsFixed(2)}/100",
-                        activeColor: companynamecolors,
+                        activeColor: Color.fromRGBO(143, 93, 58, 1),
                         value: itcvalue.toDouble(),
                         onChanged: (double newValue) {
                           final value = newValue - itcvalue;
@@ -408,9 +454,10 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                       factor: 0.2,
                       pointsUsed: (h_mEquivalent * 5).toStringAsFixed(2),
                       child: Slider(
+                        inactiveColor: Colors.grey,
                         divisions: 100,
                         label: " ${handm_value.toStringAsFixed(2)}/100",
-                        activeColor: companynamecolors,
+                        activeColor: Color.fromRGBO(143, 93, 58, 1),
                         value: handm_value.toDouble(),
                         onChanged: (double newValue) {
                           final value = newValue - handm_value;
@@ -438,17 +485,6 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                             });
                           }
                         },
-                        //  onChangeEnd: ( double value){
-                        //   if( loyality_value>subt){
-                        //   setState(() {
-                        //     print(final_value);
-                        //     handm_value=final_value*100;
-                        //   });
-                        //   }
-                        //   else if(loyality_value<subt){
-                        //        handm_value=value;
-                        //   }
-                        // },
                         min: 0,
                         max: 100,
                       ),
@@ -464,9 +500,10 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                       factor: 0.5,
                       pointsUsed: (airEquivalent * 2).toStringAsFixed(2),
                       child: Slider(
+                        inactiveColor: Colors.grey,
                         divisions: 100,
                         label: " ${airvalue.toStringAsFixed(2)}/100",
-                        activeColor: companynamecolors,
+                        activeColor: Color.fromRGBO(143, 93, 58, 1),
                         value: airvalue.toDouble(),
                         onChanged: (double newValue) {
                           final value = newValue - airvalue;
@@ -494,132 +531,15 @@ class _PaymentAppState extends ConsumerState<PaymentApp> {
                             });
                           }
                         },
-                        //  onChangeEnd: ( double value){
-                        //   if( loyality_value>subt){
-                        //   setState(() {
-                        //     print(final_value);
-                        //     airvalue=final_value*2;
-                        //   });
-                        //   }
-                        //   else if(loyality_value<subt){
-                        //        airvalue=value;
-                        //   }
-                        // },
                         min: 0,
                         max: 100,
                       ),
                     ),
-
-                    //                                                    Confirmation button
-
-                    // Padding(
-                    //   padding: const EdgeInsets.only(
-                    //     top: 25,
-                    //     bottom: 10,
-                    //   ),
-                    //   child: InkWell(
-                    //     onTap: () {
-                    //       if (final_price > 0) {
-                    //         double dollar = final_price * 84;
-                    //         var options = {
-                    //           'key': key,
-                    //           'amount': 100 * dollar,
-                    //           'name': apptitle,
-                    //           'description': appslogan,
-                    //         };
-
-                    //         _razorpay.open(options);
-                    //       } else {
-                    //         if (widget.coffee == true) {
-                    //           ref
-                    //               .read(OrderProvider.notifier)
-                    //               .add(ref.read(CartProvider));
-                    //           ref.read(CartProvider.notifier).empty();
-                    //           Navigator.pushNamed(context, "/feedback");
-                    //         } else {
-                    //           ref
-                    //               .read(OrderProvider.notifier)
-                    //               .add(ref.read(CargoProvider));
-                    //           ref.read(CargoProvider.notifier).empty();
-                    //           Navigator.pushNamed(context, "/cargofeedback");
-                    //         }
-                    //       }
-                    //     },
-                    //     child: Container(
-                    //       decoration: BoxDecoration(
-                    //         border: Border.all(color: paymentborderall),
-                    //         borderRadius: BorderRadius.circular(10),
-                    //         gradient: LinearGradient(
-                    //           colors: [
-                    //             paymentborderallgradient1,
-                    //             paymentborderallgradient2,
-                    //           ],
-                    //         ),
-                    //       ),
-                    //       width: mediaWidth * 0.9,
-                    //       height: 55,
-                    //       child: Center(
-                    //         child: Text(
-                    //           confirm,
-                    //           style: TextStyle(
-                    //               fontSize: 20,
-                    //               fontWeight: FontWeight.bold,
-                    //               color: confirmcolor),
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
                   ],
                 ),
               ],
             ),
-            // SizedBox(
-            //   height: 10,
-            // ),
-            // Padding(
-            //   padding: const EdgeInsets.symmetric(horizontal: 18),
-            //   child: Container(
-            //     height: 60,
-            //     width: MediaQuery.of(context).size.width,
-            //     decoration: BoxDecoration(
-            //         borderRadius: BorderRadius.all(Radius.circular(7)),
-            //         gradient: LinearGradient(colors: [
-            //           paymentappexpansiontilegradient1,
-            //           paymentappexpansiontilegradient2,
-            //         ])),
-            //     child: Row(
-            //       children: [
-            //         SizedBox(
-            //           width: 35,
-            //           child: Checkbox(
-            //             shape: RoundedRectangleBorder(
-            //                 borderRadius: BorderRadius.circular(4)),
-            //             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            //             side: BorderSide(color: checkboxSideColor, width: 2),
-            //             activeColor: checkboxActiveColor,
-            //             checkColor: checkboxCheckColor,
-            //             value: cashOnDeliveryChecked,
-            //             onChanged: (bool? value) {
-            //               setState(() {
-            //                 cashOnDeliveryChecked = value!;
-            //                 swapChecked = !value;
-            //               });
-            //             },
-            //           ),
-            //         ),
-            //         SizedBox(width: 10),
-            //         Text(
-            //           payOnDeliveryText,
-            //           style: TextStyle(
-            //               fontSize: 20,
-            //               fontWeight: FontWeight.bold,
-            //               color: payOnDeliveryTextColor),
-            //         )
-            //       ],
-            //     ),
-            //   ),
-            // ),
+
             SizedBox(
               height: 10,
             ),
