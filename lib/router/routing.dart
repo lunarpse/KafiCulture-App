@@ -48,6 +48,7 @@ class RouteGenerator {
         return MaterialPageRoute(
             builder: (_) => PaymentApp(
                   coffee: true,
+                  checkout: true,
                 ));
       case '/snacks':
         return MaterialPageRoute(builder: (_) => SnacksPage());
