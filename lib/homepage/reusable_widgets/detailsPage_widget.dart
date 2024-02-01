@@ -520,8 +520,10 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    PaymentApp(coffee: true)));
+                                builder: (context) => PaymentApp(
+                                      coffee: true,
+                                      checkout: true,
+                                    )));
                       },
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
