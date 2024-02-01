@@ -1,0 +1,57 @@
+[
+    {
+      "id": 1,
+      "name": "Velvet Red Lipstick",
+      "brand": "Glamour Beauty",
+      "description": "Intense and long-lasting red lipstick for a bold look.",
+      "rating": 4.7,
+      "price": 1.99,
+      "discount": 15,
+      "offer_price": 1.69,
+      "category": "Makeup"
+    },
+    {
+      "id": 2,
+      "name": "Silk Scarf",
+      "brand": "Elegance Couture",
+      "description": "Luxurious silk scarf with intricate floral patterns.",
+      "rating": 4.5,
+      "price": 2.99,
+      "discount": 10,
+      "offer_price": 2.69,
+      "category": "Accessories"
+    },
+    {
+      "id": 3,
+      "name": "Radiance Compact Powder",
+      "brand": "Chic Cosmetics",
+      "description": "Compact powder for a flawless finish and radiant complexion.",
+      "rating": 4.8,
+      "price": 4.99,
+      "discount": 20,
+      "offer_price": 3.99,
+      "category": "Makeup"
+    },
+    {
+      "id": 4,
+      "name": "Crystal Drop Earrings",
+      "brand": "Sparkle Jewelry",
+      "description": "Elegant crystal drop earrings for a touch of glamour.",
+      "rating": 4.6,
+      "price": 3.99,
+      "discount": 5,
+      "offer_price": 3.79,
+      "category": "Jewelry"
+    },
+    {
+      "id": 5,
+      "name": "Leather belts",
+      "brand": "Fashionista Trends",
+      "description": "Stylish leather belt with elegant buckle.",
+      "rating": 4.9,
+      "price": 5.99,
+      "discount": 15,
+      "offer_price": 5.09,
+      "category": "Belt"
+    }
+  ]
