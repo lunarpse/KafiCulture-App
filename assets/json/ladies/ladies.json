@@ -7,9 +7,9 @@
         "rating": "4.0",
         "totalRatings": "450",
         "image": "GEMMA FULLBEAD CHOCOLATE",
-        "price": 1295.0,
+        "price": 295.0,
         "discount":"20",
-        "offerPrice": 1036.0,
+        "offerPrice": 236.0,
         "category": "ladies"
     },
     {
@@ -20,9 +20,9 @@
         "rating": "4.5",
         "totalRatings": "380",
         "image": "PIPER BUCKET BLACK",
-        "price": 1250.0,
+        "price": 250.0,
         "discount":"15",
-        "offerPrice": 1062.5,
+        "offerPrice": 212.5,
         "category": "ladies"      
     },
     {
@@ -33,9 +33,9 @@
         "rating": "4.8",
         "totalRatings": "48",
         "image": "HERMES MINI KELLY II",
-        "price": 1000.0,
+        "price": 300.0,
         "discount":"20",
-        "offerPrice": 800.0,
+        "offerPrice": 240.0,
         "category": "ladies"
         
     },
@@ -47,9 +47,9 @@
         "rating": "4.3",
         "totalRatings": "340",
         "image": "UFO ORBITER",
-        "price": 1300.0,
+        "price": 300.0,
         "discount":"25",
-        "offerPrice": 975.0,
+        "offerPrice": 225.0,
         "category": "ladies"
     },
     {
@@ -73,9 +73,9 @@
         "rating": "4.0",
         "totalRatings": "240",
         "image": "PARADA ARQUE LEATHER SHOULDER BAG",
-        "price": 890.0,
+        "price": 290.0,
         "discount":"30",
-        "offerPrice": 623.0,
+        "offerPrice": 203.0,
         "category": "ladies"
     },
 
@@ -87,9 +87,9 @@
         "rating": "4.7",
         "totalRatings": "247",
         "image": "TRIANGULAR PATENT LEATHER MINI POUCH",
-        "price": 1500.0,
+        "price": 360.0,
         "discount":"40",
-        "offerPrice": 900.0,
+        "offerPrice": 216.0,
         "category": "ladies"
     }
 
