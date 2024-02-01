@@ -13,9 +13,9 @@ class HomeHeading extends StatelessWidget {
     return Text(
       headingText,
       style: TextStyle(
-        fontWeight: FontWeight.bold,
-        fontSize: headingText_fontSize,
-      ),
+          fontWeight: FontWeight.w500,
+          fontSize: headingText_fontSize,
+          color: Colors.white),
     );
   }
 }

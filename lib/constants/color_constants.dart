@@ -1,12 +1,12 @@
-//appbarcolorconstants
 // ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 
+//appbarcolorconstants
 const Color circleavatarbgcolor = Colors.white;
 const Color cartIconColor = Color.fromRGBO(107, 49, 20, 1);
 const Color nfcCircleAvatarAvailableColor = Color.fromARGB(255, 1, 255, 9);
-const Color nfcCircleAvatarNotAvailableColor = Colors.white;
+const Color nfcCircleAvatarNotAvailableColor = Colors.black;
 const Color nfcIconColor = Colors.black;
 const Color badgeTextColor = Colors.white;
 const Color delieveryItemColor = Colors.grey;
