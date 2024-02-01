@@ -1,26 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:project_2/Cargo/feedback_page/stepper.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
-import 'package:project_2/cart/riverpod/order_provider.dart';
 import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 
-class FeedbackPageCargo extends ConsumerStatefulWidget {
+class FeedbackPageCargo extends StatefulWidget {
   const FeedbackPageCargo({super.key});
 
   @override
-  ConsumerState<FeedbackPageCargo> createState() => _FeedbackPageCargoState();
+  State<FeedbackPageCargo> createState() => _FeedbackPageCargoState();
 }
 
-class _FeedbackPageCargoState extends ConsumerState<FeedbackPageCargo> {
+class _FeedbackPageCargoState extends State<FeedbackPageCargo> {
   DateTime deliveryDate = DateTime.now();
   late DateTime futureDate = deliveryDate.add(const Duration(days: 5));
 
   @override
   Widget build(BuildContext context) {
-    var indl = ref.read(OrderProvider).length;
     return Scaffold(
         appBar: AppbarWidget(incart: true),
         body: BackgroundContainerWidget(
@@ -81,7 +78,7 @@ class _FeedbackPageCargoState extends ConsumerState<FeedbackPageCargo> {
                       child: Column(
                         children: [
                           Text(
-                            "$orderId CWT00$indl",
+                            orderId,
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),

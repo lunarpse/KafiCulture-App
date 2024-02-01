@@ -146,8 +146,9 @@ class Bottom extends ConsumerWidget {
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              PaymentApp(coffee: coffee, checkout: true)));
+                          builder: (context) => PaymentApp(
+                                coffee: coffee,
+                              )));
                 },
                 child: Text(
                   checkout,

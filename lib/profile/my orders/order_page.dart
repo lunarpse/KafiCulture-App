@@ -39,7 +39,7 @@ class MyOrders extends ConsumerWidget {
                     itemCount: data.length,
                     itemBuilder: (context, index) {
                       return Column(
-                          children: data[index]
+                          children: data[index]["data"]
                               .map<Widget>((e) => Padding(
                                     padding: const EdgeInsets.all(13),
                                     child: Container(
@@ -227,7 +227,6 @@ class MyOrders extends ConsumerWidget {
                                                           ),
                                                           SizedBox(height: 3),
                                                           Text(
-                                                            // "ll",
                                                             //data[index]["date"],
                                                             "${todaysDate.day.toString()}/${todaysDate.month.toString()}/${todaysDate.year.toString()}",
                                                             style: TextStyle(

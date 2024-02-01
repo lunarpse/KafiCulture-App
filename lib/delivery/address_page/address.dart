@@ -341,9 +341,8 @@ class _AddressState extends State<Address> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => PaymentApp(
-                                        coffee: widget.coffee,
-                                        checkout: false)));
+                                    builder: (context) =>
+                                        PaymentApp(coffee: widget.coffee)));
                           },
                           child: const Text(
                             saveAddressBttn,

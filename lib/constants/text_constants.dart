@@ -225,9 +225,9 @@ const String nextbttn = "Next";
 //Feedback
 const String username = "Hi Shyam ,";
 const String orderPlacedText = "Your Order Has Been Placed Successfully";
-const String orderId = "Your order id :";
+const String orderId = "Your order id: CWT000";
 const String deliveryDetails = "Expected Delivery by";
-const String manageOrder = "Track Order";
+const String manageOrder = "Manage Order";
 const String deliveryAdd = " Delivery Address";
 const String deliverydata =
     "145 . Main Street ,New Town, Kolkata 828108 ,West Bengal ,India";
