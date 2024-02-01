@@ -190,7 +190,9 @@ class Bottom extends ConsumerWidget {
                 child: Text(
                   checkout,
                   style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 17),
                 ),
               ),
               coffee == false

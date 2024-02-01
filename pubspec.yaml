@@ -59,6 +59,7 @@ dependencies:
   timeline_tile: ^2.0.0
   linear_step_indicator: ^1.0.0+3
   im_stepper: ^1.0.1+1
+  iconify_flutter: ^0.0.5 
   dotted_border: ^2.1.0
   mobkit_dashed_border: ^0.0.5
 

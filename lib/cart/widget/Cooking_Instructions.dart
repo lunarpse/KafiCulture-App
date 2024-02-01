@@ -24,8 +24,13 @@ class _CookingInstructionsState extends ConsumerState<CookingInstructions> {
       width: double.infinity,
       margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
       decoration: BoxDecoration(
+        // gradient: LinearGradient(colors: [
+        //   Color.fromARGB(255, 0, 0, 0),
+        //   Color.fromARGB(255, 21, 21, 22),
+        //   Color(0xFF4D4F52)
+        // ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
         color: cookinginstructionboxdecorationcolor,
-        borderRadius: BorderRadius.circular(29),
+        borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
             color: cookinginstructionboxshadowcolor,
@@ -60,6 +65,7 @@ class _CookingInstructionsState extends ConsumerState<CookingInstructions> {
               style: const TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 20,
+                  color: Colors.white,
                   fontStyle: FontStyle.normal),
               decoration: InputDecoration(
                   enabledBorder: UnderlineInputBorder(

@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:iconify_flutter/iconify_flutter.dart';
+import 'package:iconify_flutter/icons/heroicons_solid.dart';
 import 'package:nfc_manager/nfc_manager.dart';
 import 'package:project_2/appbar/bloc/appbar_bloc.dart';
 import 'package:project_2/cart/riverpod/cargo_state_provider.dart';
@@ -52,12 +54,14 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
         final cartItemNo = cartItemNos.length;
 
         return AppBar(
-          automaticallyImplyLeading: false,
-          // flexibleSpace: Image.asset(
-          //   "assets/images/appbarbg4.jpg",
-          //   fit: BoxFit.cover,
-          // ),
-          backgroundColor: Colors.black,
+          // automaticallyImplyLeading: false,
+          // // flexibleSpace: Image.asset(
+          // //   "assets/images/appbarbg4.jpg",
+          // //   fit: BoxFit.cover,
+          // // ),
+          //    backgroundColor: Colors.black,
+          backgroundColor: Colors.grey.shade900,
+          elevation: 0,
           title: GestureDetector(
             onTap: () {
               Navigator.pushReplacementNamed(context, "/home");
@@ -70,78 +74,135 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
                   backgroundImage: AssetImage("assets/images/logo1.png"),
                   radius: 18,
                 ),
-                SizedBox(width: 8),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      apptitle,
-                      style: TextStyle(fontSize: 20, color: badgeTextColor),
-                    ),
-                    SizedBox(
-                      height: 3,
-                    ),
-                    Text(
-                      appslogan,
-                      style: TextStyle(
-                          color: badgeTextColor,
-                          fontFamily: 'Ephesis',
-                          fontSize: 17.5,
-                          letterSpacing: 1),
-                    ),
-                  ],
-                )
+                // SizedBox(width: 8),
+                // Column(
+                //   crossAxisAlignment: CrossAxisAlignment.start,
+                //   children: [
+                //     Text(
+                //       apptitle,
+                //       style: TextStyle(fontSize: 20, color: badgeTextColor),
+                //     ),
+                //     SizedBox(
+                //       height: 3,
+                //     ),
+                //     Text(
+                //       appslogan,
+                //       style: TextStyle(
+                //           color: badgeTextColor,
+                //           fontFamily: 'Ephesis',
+                //           fontSize: 17.5,
+                //           letterSpacing: 1),
+                //     ),
+                //   ],
+                // )
               ],
             ),
           ),
           leading: Builder(builder: (BuildContext context) {
-            return IconButton(
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                },
-                icon: Icon(
-                  Icons.menu,
-                  color: badgeTextColor,
-                ));
+            return SizedBox(
+                child: InkWell(
+              onTap: () {
+                Scaffold.of(context).openDrawer();
+              },
+              child: Container(
+                margin: EdgeInsets.all(7),
+                padding: EdgeInsets.all(7),
+                height: 35,
+                decoration: BoxDecoration(
+                  // color: Color(0xFF1F242C),
+                  color: Colors.black,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Iconify(
+                  HeroiconsSolid.view_grid,
+                  color: Color(0xFF4D4F52),
+                ),
+              ),
+            ));
           }),
           actions: [
             InkWell(
-                onTap: _checkNFCStatus,
-                child: CircleAvatar(
-                  backgroundColor: _isNFCavailable == true
+              onTap: _checkNFCStatus,
+              child:
+                  // CircleAvatar(
+                  // backgroundColor: _isNFCavailable == true
+                  //     ? nfcCircleAvatarAvailableColor
+                  //     : nfcCircleAvatarNotAvailableColor,
+                  //   radius: 14,
+                  //   child: Icon(
+                  //     Icons.nfc_rounded,
+                  //     size: 22,
+                  //     color: nfcIconColor,
+                  //   ),
+                  // ),
+                  Container(
+                margin: EdgeInsets.all(7),
+                padding: EdgeInsets.all(7),
+                height: 30,
+                width: 42,
+                decoration: BoxDecoration(
+                  // color: Color(0xFF1F242C),
+                  // color: Color.fromARGB(255, 20, 25, 33),
+                  color: _isNFCavailable == true
                       ? nfcCircleAvatarAvailableColor
                       : nfcCircleAvatarNotAvailableColor,
-                  radius: 14,
-                  child: Icon(
-                    Icons.nfc_rounded,
-                    size: 22,
-                    color: nfcIconColor,
-                  ),
-                )),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Iconify(
+                  HeroiconsSolid.shopping_cart,
+                  color: Color(0xFF4D4F52),
+                ),
+              ),
+            ),
             widget.incart == true
-                ? Padding(
-                    padding: const EdgeInsets.only(right: 5),
-                    child: IconButton(
-                      onPressed: () {
-                        widget.coffee == true
-                            ? Navigator.pushNamed(context, "/cart")
-                            : Navigator.pushNamed(context, "/cargocart");
-                      },
-                      icon: badges.Badge(
-                        badgeContent: Text(
-                          "$cartItemNo",
-                          style: TextStyle(color: badgeTextColor),
+                ?
+                // IconButton(
+                //     onPressed: () {
+                //       widget.coffee == true
+                //           ? Navigator.pushNamed(context, "/cart")
+                //           : Navigator.pushNamed(context, "/cargocart");
+                //     },
+                // icon: badges.Badge(
+                //   badgeContent: Text(
+                //     "$cartItemNo",
+                //     // style: TextStyle(color: badgeTextColor),
+                //   ),
+                //   badgeAnimation: badges.BadgeAnimation.scale(),
+                //   showBadge: cartItemNo == 0 ? false : true,
+                //   child: Icon(Icons.shopping_cart),
+                // ),
+                //     color: cartIconColor,
+                //     iconSize: 27,
+                //   )
+                InkWell(
+                    onTap: () {
+                      widget.coffee == true
+                          ? Navigator.pushNamed(context, "/cart")
+                          : Navigator.pushNamed(context, "/cargocart");
+                    },
+                    child: Container(
+                        margin: EdgeInsets.all(7),
+                        padding: EdgeInsets.all(9),
+                        height: 30,
+                        width: 42,
+                        decoration: BoxDecoration(
+                          // color: Color(0xFF1F242C),
+                          // color: Color.fromARGB(255, 20, 25, 33),
+                          color: Colors.black,
+                          borderRadius: BorderRadius.circular(12),
                         ),
-                        badgeAnimation: badges.BadgeAnimation.scale(),
-                        showBadge: cartItemNo == 0 ? false : true,
-                        child: Icon(
-                          Icons.shopping_cart,
-                          color: Colors.white,
-                        ),
-                      ),
-                      color: cartIconColor,
-                      iconSize: 27,
-                    ),
+                        child: badges.Badge(
+                          badgeContent: Text(
+                            "$cartItemNo",
+                            style: TextStyle(color: badgeTextColor),
+                          ),
+                          badgeAnimation: badges.BadgeAnimation.scale(),
+                          showBadge: cartItemNo == 0 ? false : true,
+                          child: Iconify(
+                            HeroiconsSolid.shopping_cart,
+                            color: Color(0xFF4D4F52),
+                          ),
+                        )),
                   )
                 : SizedBox(
                     width: 15,

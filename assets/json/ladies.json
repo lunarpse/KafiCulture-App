@@ -9,7 +9,7 @@
         "price": 1295.0,
         "discount":"20",
         "offerPrice": 8.0,
-        "category": "ladies",
+        "category": "ladies"
     },
     {
         "id": 2,
@@ -21,7 +21,7 @@
         "price": 1495,
         "discount":"15",
         "offerPrice": 6.29,
-        "category": "ladies",       
+        "category": "ladies"       
     },
     {
         "id": 3,
@@ -33,20 +33,20 @@
         "price": 4495.0,
         "discount":"20",
         "offerPrice": 20.0,
-        "category": "ladies",
+        "category": "ladies"
         
     },
     {
         "id": 4,
         "name": "UFO ORBITER",
-        "description": "This bag is ready for all of your evening voyages. Our UFO spaceship-inspired domed evening clutch stuns in jet and indigo smooth crystal with bold star-shaped, baguette and geometric crystal details. Destined to turn heads in any orbit.": "3.5",
+        "description": "This bag is ready for all of your evening voyages. Our UFO spaceship-inspired domed evening clutch stuns in jet and indigo smooth crystal with bold star-shaped, baguette and geometric crystal details. Destined to turn heads in any orbit.",
          "rating": "3.0",
 "totalRatings": "34",
         "image": "UFO ORBITER",
         "price": 6995.0,
         "discount":"25",
         "offerPrice": 26.25,
-        "category": "ladies",
+        "category": "ladies"
     },
     {
         "id": 5,
@@ -58,7 +58,7 @@
         "price":495.0,
         "discount":"18",
         "offerPrice": 36.0,
-        "category": "ladies",
+        "category": "ladies"
     },
     {
         "id": 6,
@@ -70,7 +70,7 @@
         "price": 18.0,
         "discount":"60",
         "offerPrice": 7.2,
-        "category": "ladies", 
+        "category": "ladies"
     },
   {
         "id": 7,
@@ -82,7 +82,7 @@
         "price": 18.0,
         "discount":"60",
         "offerPrice": 7.2,
-        "category": "ladies",  
+        "category": "ladies"  
     },
   {
         "id": 8,
@@ -94,7 +94,7 @@
         "price": 18.0,
         "discount":"60",
         "offerPrice": 7.2,
-        "category": "ladies",
+        "category": "ladies"
     }
 
 

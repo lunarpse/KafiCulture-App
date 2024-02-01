@@ -1,18 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CartItems extends StateNotifier<List> {
-  CartItems()
-      : super([
-          {
-            "name": "Abcd",
-            "icon": "assets/images/Latte.jpg",
-            "price": 12.0,
-            // "price":double.parse(double.parse(data["price"]).toStringAsFixed(2)),
-            // "cost":double.parse(double.parse(data["price"]).toStringAsFixed(2)),
-            "cost": 12.0,
-            "quantity": 12
-          }
-        ]);
+  CartItems() : super([]);
 
   void additem(Map data) {
     var present;

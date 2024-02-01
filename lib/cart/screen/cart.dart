@@ -20,7 +20,7 @@ import '../widget/cart_item.dart';
 import 'empty_cart.dart';
 
 class Cart extends ConsumerStatefulWidget {
-  const Cart({super.key});
+  Cart({super.key});
 
   @override
   ConsumerState<Cart> createState() => _CartState();

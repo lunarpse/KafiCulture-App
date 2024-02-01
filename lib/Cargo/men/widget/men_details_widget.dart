@@ -5,7 +5,7 @@ import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/homepage/model/json_model.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
-import 'package:project_2/homepage/reusable_widgets/addon.dart';
+import 'package:project_2/homepage/reusable_widgets/dialog_box.dart';
 import 'package:readmore/readmore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../cart/riverpod/cargo_state_provider.dart';

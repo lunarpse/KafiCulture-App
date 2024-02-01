@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 const Color circleavatarbgcolor = Colors.white;
 const Color cartIconColor = Color.fromRGBO(107, 49, 20, 1);
 const Color nfcCircleAvatarAvailableColor = Color.fromARGB(255, 1, 255, 9);
-const Color nfcCircleAvatarNotAvailableColor = Colors.white;
+const Color nfcCircleAvatarNotAvailableColor = Colors.black;
 const Color nfcIconColor = Colors.black;
 const Color badgeTextColor = Colors.white;
 const Color delieveryItemColor = Colors.grey;
@@ -16,7 +16,7 @@ const Color emptycartroundedrectanglebordercolor = Colors.black38;
 
 //bottomconstants
 
-const Color bottomboxdecorationcolor = Color.fromARGB(255, 14, 13, 12);
+const Color bottomboxdecorationcolor = Color.fromARGB(255, 31, 30, 29);
 const Color bottomboxshadowcolor = Colors.black;
 const Color bottomcontainercolor = Color.fromARGB(0, 250, 244, 244);
 const Color bottomcontainercolor1 = Colors.white;
@@ -35,19 +35,20 @@ const Color cartbuttoncolor = Colors.white;
 
 //cooking instructions
 
-const Color cookinginstructionboxdecorationcolor = Colors.black;
+const Color cookinginstructionboxdecorationcolor =
+    Color.fromARGB(255, 29, 28, 28);
 // Color.fromARGB(255, 240, 234, 234);
-Color cookinginstructionboxshadowcolor = Colors.grey.withOpacity(0.9);
+Color cookinginstructionboxshadowcolor = Color.fromARGB(255, 42, 45, 49);
 const Color cookinginstructiontextcolor = Colors.black;
 const Color cookinginstructioncursorcolor = Color.fromARGB(255, 247, 243, 238);
 const Color cookinginstructionbordercolor = Color.fromARGB(255, 252, 246, 246);
 
 //extraitems
-const Color extraitemcardcolor =
-    Colors.black; //Color.fromARGB(255, 236, 219, 219);
-const Color extraitemcardboxdecolor =
-    Colors.black; //Color.fromARGB(255, 236, 219, 219);
-const Color extraitemcardboxshadowcolor = Color.fromARGB(255, 211, 182, 182);
+Color extraitemcardcolor = Color.fromARGB(255, 27, 27, 27)
+    .withOpacity(1); //Color.fromARGB(255, 236, 219, 219);
+const Color extraitemcardboxdecolor = Color.fromARGB(255, 45, 46, 49);
+// Colors.black; //Color.fromARGB(255, 236, 219, 219);
+const Color extraitemcardboxshadowcolor = Color.fromARGB(255, 42, 45, 49);
 const Color extraitempricetextcolor = Color.fromARGB(255, 240, 240, 235);
 const Color extraitemshoppingcartoutlinecolor =
     Colors.white; //Color.fromARGB(255, 25, 29, 25);
@@ -185,29 +186,20 @@ const Color detailsaddtocartbuttoncolor = Color.fromRGBO(143, 93, 58, 1);
 Color detailsselectedindexbordercolor = Colors.brown.shade900;
 const Color detailsbottomsheetboxcolor = Color.fromRGBO(143, 93, 58, 0.8);
 const Color detailsdoneiconcolor = Colors.green;
-const Color detailsratingstarcolor = Colors.orange;
-const Color detailsAddonsStarIconColor = Colors.orange;
-const Color detailsAddonsTextColor = Colors.black;
-const Color detailsAddonsAngleupIconColor = Colors.orange;
-const Color detailsAddonsAngledownIconColor = Colors.black;
+const Color detailsratingstarcolor = Color.fromARGB(255, 248, 231, 77);
 
 //dailogbox color
-// Color addonBoxcontainerBordercolor = Colors.black.withOpacity(0.6);
-const Color addonBoxcontainerBordercolor = Color.fromRGBO(143, 93, 58, 1);
-Color addonBoxcheckboxtilecolor = Colors.grey.withOpacity(0.8);
-const Color addonBoxbordersidecolor = Color.fromARGB(255, 197, 120, 4);
-// const Color addonBoxaddonnamecolor = Color.fromARGB(255, 212, 129, 5);
-const Color addonBoxaddonnamecolor = Color.fromRGBO(121, 74, 41, 1);
-const Color addonBoxactivecolor = Color.fromRGBO(168, 93, 38, 1);
-const Color addonBoxcheckcolor = Colors.white;
-// Color addonBoxdivcolor = Colors.black.withOpacity(0.7);
-const Color addonBoxdivcolor = Color.fromRGBO(143, 93, 58, 1);
-// Color addonBoxboxdecorationcolor = Colors.black.withOpacity(0.7);
-const Color addonBoxboxdecorationcolor = Color.fromRGBO(143, 93, 58, 1);
-const Color addonBoxcurrentitemcolor = Colors.white60;
-const Color addonBoxproductnamecolor = Colors.white;
-const Color addonBoxpricetextcolor = Colors.white;
-const Color addonBoxelevatebuttonbgcolor = Color.fromRGBO(168, 93, 38, 1);
+Color dialogboxcheckboxtilecolor = Colors.grey.withOpacity(0.4);
+const Color dialogboxbordersidecolor = Color.fromRGBO(168, 93, 38, 1);
+const Color dialogboxaddonnamecolor = Color.fromRGBO(168, 93, 38, 1);
+const Color dialogboxactivecolor = Color.fromRGBO(168, 93, 38, 1);
+const Color dialogboxcheckcolor = Colors.white;
+const Color dialogboxdivcolor = Colors.black;
+Color dialogboxboxdecorationcolor = Colors.black.withOpacity(0.7);
+const Color dialogboxcurrentitemcolor = Colors.white60;
+const Color dialogboxproductnamecolor = Colors.white;
+const Color dialogboxpricetextcolor = Colors.white;
+const Color dialogboxelevatebuttonbgcolor = Color.fromRGBO(168, 93, 38, 1);
 
 //background_container_widget
 const Color bgcontainercolor = Color.fromARGB(255, 248, 205, 189);
@@ -368,8 +360,8 @@ const Color bordorColor = Color.fromRGBO(0, 0, 0, 0.38);
 
 //Feedback
 const Color navTextColor = Colors.white;
-const Color feedbackBoxColor = Color.fromRGBO(143, 93, 58, 1);
+const Color feedbackBoxColor = Colors.brown;
 const Color manageOrderTextColor = Colors.white;
-const Color feedbackbttnColor = Color.fromRGBO(143, 93, 58, 1);
+const Color feedbackbttnColor = Colors.brown;
 const Color feedbackBackShadow = Colors.brown;
 const Color bttnBoxColor = Color.fromARGB(255, 235, 211, 197);

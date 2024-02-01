@@ -53,13 +53,18 @@ class _MyWidgetState extends ConsumerState<CartItem> {
               height: 120,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Color.fromARGB(
-                      255, 17, 16, 16), // Color.fromARGB(255, 247, 235, 231),
+                  // color: Color.fromARGB(
+                  //     255, 17, 16, 16), // Color.fromARGB(255, 247, 235, 231),
+                  gradient: LinearGradient(colors: [
+                    Color.fromARGB(255, 17, 17, 17),
+                    Color.fromARGB(255, 39, 39, 41),
+                    Color(0xFF4D4F52)
+                  ], begin: Alignment.topLeft, end: Alignment.bottomRight),
                   boxShadow: [
                     BoxShadow(
-                      color: Color.fromARGB(255, 167, 157, 157),
-                      spreadRadius: 1,
-                      blurRadius: 2,
+                      color: Color.fromARGB(255, 42, 45, 49),
+                      spreadRadius: 0.5,
+                      blurRadius: 1,
                       offset: Offset(0, 3),
                     )
                   ]),
@@ -76,9 +81,9 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color.fromARGB(255, 184, 180, 180),
+                            color: Color.fromARGB(255, 78, 78, 83),
                             offset: Offset(0, 2),
-                            blurRadius: 4,
+                            blurRadius: 2,
                             spreadRadius: 2,
                           ),
                         ],
@@ -154,9 +159,9 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                                 children: [
                                   Container(
                                     height: 30,
-                                    width: 30,
+                                    width: 35,
                                     decoration: BoxDecoration(
-                                        color: Color.fromARGB(255, 19, 18, 18),
+                                        //   color: Color.fromARGB(255, 19, 18, 18),
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(50))),
                                     child: IconButton(
@@ -185,21 +190,24 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                                         },
                                         icon: Icon(
                                           Icons.remove,
-                                          size: 19,
+                                          size: 22,
                                         )),
                                   ),
                                   Container(
-                                    padding: EdgeInsets.all(8.0),
+                                    //  color: Colors.red,
+                                    height: 30,
+                                    padding: EdgeInsets.fromLTRB(8, 6.8, 8, 0),
                                     child: Text(
                                       widget.data["quantity"].toString(),
                                       style: TextStyle(
                                           color: Colors.white,
+                                          fontSize: 16,
                                           fontWeight: FontWeight.bold),
                                     ),
                                   ),
                                   Container(
                                     height: 30,
-                                    width: 30,
+                                    width: 35,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(50))),
@@ -219,7 +227,7 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                                         },
                                         icon: Icon(
                                           Icons.add,
-                                          size: 19,
+                                          size: 22,
                                         )),
                                   ),
                                 ],
@@ -236,7 +244,7 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                                             .remove_item(widget.data["name"]);
                                   },
                                   icon: Icon(
-                                    color: Colors.white,
+                                    color: Color.fromARGB(255, 210, 214, 231),
                                     Icons.delete,
                                     size: 28,
                                   ))

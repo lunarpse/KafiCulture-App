@@ -51,7 +51,7 @@ const String cancel = "Cancel";
 
 //cart-->widget-->bottomscreen
 const String billdetails = "Bill Details";
-const String checkout = "Check out";
+const String checkout = "Check Out";
 const String subTotal = "Check out";
 const String gstString = "Check out";
 const String totalString = "Check out";
@@ -151,8 +151,9 @@ const String swapmessage = "Thank you for using SWAP \n Continue with UPI/Card";
 const String confirm = "Proceed to Pay";
 const String otherpaymentmethod = "Other Payment Method";
 const String incltaxes = "(inc.all taxes)";
-
-//address page
+//dialogbox
+const String addon = "Addons";
+const String currentitem = "CURRENT ITEM";
 const String adrname = "Name";
 const String adrename = "Enter the Name";
 const String adremail = "Email";
@@ -178,14 +179,6 @@ const String detailscart = "Cart";
 const String continueshopping = "Continue Shopping";
 const String detaildescription = "Description";
 const String cart = "Cart";
-const String addonText = "Add-Ons";
-
-//add-ons
-const String addonSizeTall = "Tall";
-const String addonSizeGrande = "Grande";
-const String addonSizeVenti = "Venti";
-const String addonSizeText = "Size";
-const String addonFinalpriceText = "Final Price";
 
 //extras
 const String extraitem1 = "Hot Chocolate";
@@ -225,9 +218,9 @@ const String nextbttn = "Next";
 //Feedback
 const String username = "Hi Shyam ,";
 const String orderPlacedText = "Your Order Has Been Placed Successfully";
-const String orderId = "Your order id :";
-const String deliveryDetails = "Expected Delivery by";
-const String manageOrder = "Track Order";
+const String orderId = "Your order id is :123u09u";
+const String deliveryDetails = "Delievery by 14/01/24  1:00pm";
+const String manageOrder = "Manage Order";
 const String deliveryAdd = " Delivery Address";
 const String deliverydata =
     "145 . Main Street ,New Town, Kolkata 828108 ,West Bengal ,India";
