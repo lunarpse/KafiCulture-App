@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:project_2/constants/color_constants.dart';
@@ -20,13 +18,20 @@ class BackgroundContainerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('assets/images/bg7.jpg'),
-          fit: BoxFit.fill,
-          colorFilter: ColorFilter.mode(
-              bgcontainercolor.withOpacity(opacity), BlendMode.dstATop),
-        ),
-      ),
+          gradient: LinearGradient(colors: [
+        Colors.grey.shade900,
+        Colors.grey.shade900,
+        Colors.grey.shade600,
+        Colors.grey.shade900,
+        Colors.grey.shade900,
+      ], begin: Alignment.topLeft, end: Alignment.bottomRight)
+          // image: DecorationImage(
+          //   image: AssetImage('assets/images/bg7.jpg'),
+          //   fit: BoxFit.fill,
+          //   colorFilter: ColorFilter.mode(
+          //       bgcontainercolor.withOpacity(opacity), BlendMode.dstATop),
+          // ),
+          ),
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: x, sigmaY: y),
         child: child,

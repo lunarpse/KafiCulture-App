@@ -53,6 +53,7 @@ class _CartState extends ConsumerState<Cart> {
           appBar: AppbarWidget(
             incart: true,
           ),
+          backgroundColor: Color.fromARGB(255, 37, 34, 34),
           drawer: DrawerScreen(),
           resizeToAvoidBottomInset: false,
           body: (subt == 0 || data.length == 0)
@@ -100,6 +101,7 @@ class _CartState extends ConsumerState<Cart> {
                                             child: Text(
                                               cartPopular,
                                               style: TextStyle(
+                                                  color: Colors.white,
                                                   fontSize: 25,
                                                   fontWeight: FontWeight.bold),
                                             ),

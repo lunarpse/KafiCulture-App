@@ -34,7 +34,7 @@ class RouteGenerator {
 
     switch (settings.name) {
       case '/':
-        return MaterialPageRoute(builder: (_) => SplashScreen());
+        return MaterialPageRoute(builder: (_) => Cart());
       case '/cart':
         return MaterialPageRoute(builder: (_) => Cart());
 

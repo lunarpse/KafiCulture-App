@@ -26,7 +26,7 @@ class ExtraItems extends ConsumerWidget {
       // elevation: 0,
       color: extraitemcardcolor,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 5),
+        padding: const EdgeInsets.only(bottom: 5),
         child: Container(
           padding: const EdgeInsets.all(8.0),
           height: 110,
@@ -49,6 +49,10 @@ class ExtraItems extends ConsumerWidget {
                 width: 115,
                 height: 120,
                 decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.white, spreadRadius: 1, blurRadius: 2),
+                  ],
                   borderRadius: BorderRadius.circular(90),
                   image: DecorationImage(
                       fit: BoxFit.cover, image: AssetImage(image)),
@@ -64,12 +68,15 @@ class ExtraItems extends ConsumerWidget {
                   children: [
                     Text(
                       name,
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 19),
                     ),
                     Text(
                       extraslogan,
                       style: TextStyle(
+                        color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 15,
                       ),

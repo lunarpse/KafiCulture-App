@@ -41,7 +41,8 @@ class _CookingInstructionsState extends ConsumerState<CookingInstructions> {
         childrenPadding: const EdgeInsets.only(left: 10, right: 10, bottom: 20),
         title: const Text(
           cookinginstruction,
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
         ),
         children: [
           Container(

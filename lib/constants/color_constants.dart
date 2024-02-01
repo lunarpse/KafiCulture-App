@@ -16,11 +16,11 @@ const Color emptycartroundedrectanglebordercolor = Colors.black38;
 
 //bottomconstants
 
-const Color bottomboxdecorationcolor = Color.fromARGB(255, 218, 209, 207);
+const Color bottomboxdecorationcolor = Color.fromARGB(255, 14, 13, 12);
 const Color bottomboxshadowcolor = Colors.black;
-const Color bottomcontainercolor = Colors.transparent;
-const Color bottomcontainercolor1 = Colors.black;
-const Color bottomelevatebuttonbgcolor = Color.fromARGB(255, 110, 47, 24);
+const Color bottomcontainercolor = Color.fromARGB(0, 250, 244, 244);
+const Color bottomcontainercolor1 = Colors.white;
+const Color bottomelevatebuttonbgcolor = Color.fromARGB(255, 63, 60, 60);
 const Color bottomroundrectanglebordercolor = Colors.black38;
 const Color bottomcheckoutcolor = Colors.white;
 
@@ -35,19 +35,22 @@ const Color cartbuttoncolor = Colors.white;
 
 //cooking instructions
 
-const Color cookinginstructionboxdecorationcolor =
-    Color.fromARGB(255, 240, 234, 234);
+const Color cookinginstructionboxdecorationcolor = Colors.black;
+// Color.fromARGB(255, 240, 234, 234);
 Color cookinginstructionboxshadowcolor = Colors.grey.withOpacity(0.9);
 const Color cookinginstructiontextcolor = Colors.black;
-const Color cookinginstructioncursorcolor = Color.fromARGB(255, 105, 73, 14);
-const Color cookinginstructionbordercolor = Colors.black;
+const Color cookinginstructioncursorcolor = Color.fromARGB(255, 247, 243, 238);
+const Color cookinginstructionbordercolor = Color.fromARGB(255, 252, 246, 246);
 
 //extraitems
-const Color extraitemcardcolor = Color.fromARGB(255, 236, 219, 219);
-const Color extraitemcardboxdecolor = Color.fromARGB(255, 236, 219, 219);
-const Color extraitemcardboxshadowcolor = Color.fromARGB(255, 97, 82, 82);
-const Color extraitempricetextcolor = Color.fromARGB(255, 15, 15, 14);
-const Color extraitemshoppingcartoutlinecolor = Color.fromARGB(255, 25, 29, 25);
+const Color extraitemcardcolor =
+    Colors.black; //Color.fromARGB(255, 236, 219, 219);
+const Color extraitemcardboxdecolor =
+    Colors.black; //Color.fromARGB(255, 236, 219, 219);
+const Color extraitemcardboxshadowcolor = Color.fromARGB(255, 211, 182, 182);
+const Color extraitempricetextcolor = Color.fromARGB(255, 240, 240, 235);
+const Color extraitemshoppingcartoutlinecolor =
+    Colors.white; //Color.fromARGB(255, 25, 29, 25);
 
 //remove constants
 const Color removeiconbgcolor = Color.fromARGB(255, 19, 11, 8);

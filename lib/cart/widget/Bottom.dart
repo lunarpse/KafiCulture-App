@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mobkit_dashed_border/mobkit_dashed_border.dart';
 
 import 'package:project_2/cart/riverpod/tipstate_provider.dart';
 import 'package:project_2/cart/screen/delivery_dialog.dart';
@@ -63,40 +65,76 @@ class Bottom extends ConsumerWidget {
     return Container(
       padding: const EdgeInsets.only(
         left: 14.0,
-        right: 14,
+        right: 13,
         bottom: 8.0,
-        top: 4.0,
+        top: 0,
       ),
       decoration: BoxDecoration(
-          color: bottomboxdecorationcolor,
-          boxShadow: [
-            BoxShadow(
-                color: bottomboxshadowcolor,
-                offset: Offset(1, 1),
-                spreadRadius: 2,
-                blurRadius: 1)
-          ],
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20), topRight: Radius.circular(20))),
+        color: bottomboxdecorationcolor,
+
+        // boxShadow: [
+        //   BoxShadow(
+        //       color: bottomboxshadowcolor,
+        //       offset: Offset(1, 1),
+        //       spreadRadius: 2,
+        //       blurRadius: 1)
+        // ],
+        // border: DashedBorder(
+        //     dashLength: 12,
+        //     top: BorderSide(
+        //         color: Colors.black, width: 7, style: BorderStyle.solid))),
+        // border: Border(
+        //     top: BorderSide(
+        //         width: 4,
+        //         strokeAlign: BorderSide.strokeAlignInside,
+        //         color: Colors.black)),
+        // borderRadius: BorderRadius.only(
+        //     topLeft: Radius.circular(20), topRight: Radius.circular(20))),
+      ),
       child: Column(
         children: [
+          // Positioned(
+          //   width: double.infinity,
+          //   top: -10,
+          //   child: Row(
+          //     children: List.generate(
+          //         1800 ~/ 33,
+          //         (index) => Expanded(
+          //               child: Container(
+          //                 color: index % 2 == 0
+          //                     ? bottomcontainercolor1
+          //                     : bottomcontainercolor,
+          //                 height: 3.5,
+          //               ),
+          //             )),
+          //   ),
+          // ),
+          SizedBox(
+            height: 2,
+          ),
           Row(
             mainAxisAlignment: coffee == true
                 ? MainAxisAlignment.center
                 : MainAxisAlignment.spaceAround,
             children: const [
-              Icon(Icons.receipt),
+              Icon(
+                Icons.receipt,
+                color: bottomcontainercolor1,
+              ),
               SizedBox(
                 width: 10,
               ),
               Text(
                 billdetails,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 27),
+                style: TextStyle(
+                    color: bottomcontainercolor1,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 27),
               ),
             ],
           ),
           Charges(
-              name: "subTotal",
+              name: "SubTotal",
               cost: double.parse(subtotal.toStringAsFixed(2))),
           //Charges(name: "Shipping Cost", cost: 10),
           Charges(name: billGst, cost: double.parse(gst.toStringAsFixed(2))),
@@ -130,7 +168,7 @@ class Bottom extends ConsumerWidget {
                     horizontal: 32,
                     vertical: 16.0,
                   ),
-                  backgroundColor: bottomelevatebuttonbgcolor,
+                  backgroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0),
                     side: BorderSide(
@@ -151,7 +189,8 @@ class Bottom extends ConsumerWidget {
                 },
                 child: Text(
                   checkout,
-                  style: TextStyle(color: bottomcheckoutcolor),
+                  style: TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.bold),
                 ),
               ),
               coffee == false

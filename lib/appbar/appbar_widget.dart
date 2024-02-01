@@ -53,10 +53,11 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
 
         return AppBar(
           automaticallyImplyLeading: false,
-          flexibleSpace: Image.asset(
-            "assets/images/appbarbg4.jpg",
-            fit: BoxFit.cover,
-          ),
+          // flexibleSpace: Image.asset(
+          //   "assets/images/appbarbg4.jpg",
+          //   fit: BoxFit.cover,
+          // ),
+          backgroundColor: Colors.black,
           title: GestureDetector(
             onTap: () {
               Navigator.pushReplacementNamed(context, "/home");
@@ -133,7 +134,10 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
                         ),
                         badgeAnimation: badges.BadgeAnimation.scale(),
                         showBadge: cartItemNo == 0 ? false : true,
-                        child: Icon(Icons.shopping_cart),
+                        child: Icon(
+                          Icons.shopping_cart,
+                          color: Colors.white,
+                        ),
                       ),
                       color: cartIconColor,
                       iconSize: 27,

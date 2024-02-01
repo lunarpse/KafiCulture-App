@@ -53,12 +53,13 @@ class _MyWidgetState extends ConsumerState<CartItem> {
               height: 120,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Color.fromARGB(255, 247, 235, 231),
+                  color: Color.fromARGB(
+                      255, 17, 16, 16), // Color.fromARGB(255, 247, 235, 231),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color.fromARGB(255, 87, 76, 76),
-                      spreadRadius: 3,
-                      blurRadius: 3,
+                      color: Color.fromARGB(255, 167, 157, 157),
+                      spreadRadius: 1,
+                      blurRadius: 2,
                       offset: Offset(0, 3),
                     )
                   ]),
@@ -75,7 +76,7 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey,
+                            color: const Color.fromARGB(255, 184, 180, 180),
                             offset: Offset(0, 2),
                             blurRadius: 4,
                             spreadRadius: 2,
@@ -99,6 +100,7 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
+                                color: Colors.white,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18,
                               ),
@@ -108,6 +110,7 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                                   ? widget.data["price"].toString()
                                   : "\$ $amount2",
                               style: TextStyle(
+                                color: Colors.white,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,
                               ),
@@ -153,12 +156,13 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                                     height: 30,
                                     width: 30,
                                     decoration: BoxDecoration(
-                                        color: Color.fromARGB(255, 110, 47, 24),
+                                        color: Color.fromARGB(255, 19, 18, 18),
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(50))),
                                     child: IconButton(
                                         mouseCursor: SystemMouseCursors.click,
-                                        color: Colors.white,
+                                        color: const Color.fromARGB(
+                                            255, 247, 244, 244),
                                         onPressed: () {
                                           if (widget.data["quantity"] == 1) {
                                             setState(() {
@@ -181,7 +185,7 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                                         },
                                         icon: Icon(
                                           Icons.remove,
-                                          size: 15,
+                                          size: 19,
                                         )),
                                   ),
                                   Container(
@@ -189,6 +193,7 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                                     child: Text(
                                       widget.data["quantity"].toString(),
                                       style: TextStyle(
+                                          color: Colors.white,
                                           fontWeight: FontWeight.bold),
                                     ),
                                   ),
@@ -196,11 +201,11 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                                     height: 30,
                                     width: 30,
                                     decoration: BoxDecoration(
-                                        color: Color.fromARGB(255, 110, 47, 24),
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(50))),
                                     child: IconButton(
-                                        color: Colors.white,
+                                        color: const Color.fromARGB(
+                                            255, 245, 241, 241),
                                         onPressed: () {
                                           widget.coffee == true
                                               ? ref
@@ -214,7 +219,7 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                                         },
                                         icon: Icon(
                                           Icons.add,
-                                          size: 15,
+                                          size: 19,
                                         )),
                                   ),
                                 ],
@@ -231,6 +236,7 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                                             .remove_item(widget.data["name"]);
                                   },
                                   icon: Icon(
+                                    color: Colors.white,
                                     Icons.delete,
                                     size: 28,
                                   ))

@@ -28,7 +28,7 @@ class AddOnBox extends StatelessWidget {
         : selectedindex == 1
             ? addonSizeGrande
             : addonSizeVenti;
-
+    print(totalPrice);
     return StatefulBuilder(builder: (context, setState) {
       return Container(
         padding: EdgeInsets.all(10),
@@ -66,7 +66,7 @@ class AddOnBox extends StatelessWidget {
                               (finalPrice + price).toStringAsFixed(2));
                         } else {
                           checkedIndex = null;
-                          totalPrice = finalPrice;
+                          //     totalPrice = finalPrice;
                         }
                         call(totalPrice);
                       });

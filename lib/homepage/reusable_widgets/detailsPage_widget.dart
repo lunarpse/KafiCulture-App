@@ -36,7 +36,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
   int quantity = 1;
   bool _customIcon = false;
   late double finalCost;
-
+  var addonprice = 0;
   List<AddonModel> addons = [];
 
   @override
@@ -361,7 +361,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                 finalPrice: offerPrice,
                                 selectedindex: selectedIndex,
                                 call: (value) {
-                                  finalCost = value;
+                                  addonprice = value;
                                 },
                               ),
                             ],
