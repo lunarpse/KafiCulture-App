@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:project_2/homepage/bloc/home_bloc.dart';
 import 'package:project_2/homepage/model/json_model.dart';
 import 'package:project_2/homepage/constant_homepage/constant_offers.dart';
-import 'package:project_2/homepage/widgets/checking.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../data_fetching/api_service.dart';
 
@@ -74,17 +73,18 @@ class _OfferingsState extends State<OfferingsWidget> {
                       margin: EdgeInsets.all(margin_edge),
                       clipBehavior: Clip.antiAlias,
                       decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(margin_borderRadius),
-                          boxShadow: [
-                            BoxShadow(
-                              color: margin_boxShadow_color,
-                              offset: Offset(margin_boxShadow_offSet_startPoint,
-                                  margin_boxShadow_offSet_endPoint),
-                              blurRadius: margin_boxShadow_blurRadius,
-                              spreadRadius: margin_boxShadow_spreadRadius,
-                            ),
-                          ]),
+                        borderRadius:
+                            BorderRadius.circular(margin_borderRadius),
+                        // boxShadow: [
+                        //   BoxShadow(
+                        //     color: margin_boxShadow_color,
+                        //     offset: Offset(margin_boxShadow_offSet_startPoint,
+                        //         margin_boxShadow_offSet_endPoint),
+                        //     blurRadius: margin_boxShadow_blurRadius,
+                        //     spreadRadius: margin_boxShadow_spreadRadius,
+                        //   ),
+                        // ],
+                      ),
                       child: Hero(
                         tag: offer,
                         child: Image.asset(
@@ -96,17 +96,18 @@ class _OfferingsState extends State<OfferingsWidget> {
                       ),
                     ),
                     Container(
-                        margin: EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(15)),
-                          gradient: LinearGradient(
-                              colors: [Colors.transparent, Colors.black],
-                              begin: Alignment.center,
-                              end: Alignment.bottomCenter),
-                        )),
+                      margin: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        gradient: LinearGradient(
+                            colors: [Colors.transparent, Colors.black],
+                            begin: Alignment.center,
+                            end: Alignment.bottomCenter),
+                      ),
+                    ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 22, vertical: 20),
+                          horizontal: 22, vertical: 23),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -115,7 +116,7 @@ class _OfferingsState extends State<OfferingsWidget> {
                               style: TextStyle(
                                   color: name_color,
                                   fontSize: name_fontSize,
-                                  fontWeight: FontWeight.bold)),
+                                  fontWeight: FontWeight.w600)),
                           Row(
                             children: [
                               Row(
@@ -125,7 +126,7 @@ class _OfferingsState extends State<OfferingsWidget> {
                                         ? Icons.star
                                         : Icons.star_border,
                                     color: Colors.amber,
-                                    size: 17,
+                                    size: 16,
                                   );
                                 }),
                               ),
@@ -136,7 +137,7 @@ class _OfferingsState extends State<OfferingsWidget> {
                                   "($totalRating Ratings)",
                                   style: TextStyle(
                                       fontSize: totalRating_fontSize,
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.w500,
                                       color: totalRating_Color),
                                 ),
                               )
@@ -146,7 +147,7 @@ class _OfferingsState extends State<OfferingsWidget> {
                             "$rating",
                             style: TextStyle(
                               fontSize: rating_fontSize,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.w500,
                               color: rating_color,
                             ),
                           ),
