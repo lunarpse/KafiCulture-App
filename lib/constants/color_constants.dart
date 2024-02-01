@@ -1,8 +1,8 @@
+//appbarcolorconstants
 // ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 
-//appbarcolorconstants
 const Color circleavatarbgcolor = Colors.white;
 const Color cartIconColor = Color.fromRGBO(107, 49, 20, 1);
 const Color nfcCircleAvatarAvailableColor = Color.fromARGB(255, 1, 255, 9);
@@ -356,8 +356,8 @@ const Color bordorColor = Color.fromRGBO(0, 0, 0, 0.38);
 
 //Feedback
 const Color navTextColor = Colors.white;
-const Color feedbackBoxColor = Color.fromRGBO(143, 93, 58, 1);
+const Color feedbackBoxColor = Colors.brown;
 const Color manageOrderTextColor = Colors.white;
-const Color feedbackbttnColor = Color.fromRGBO(143, 93, 58, 1);
+const Color feedbackbttnColor = Colors.brown;
 const Color feedbackBackShadow = Colors.brown;
 const Color bttnBoxColor = Color.fromARGB(255, 235, 211, 197);

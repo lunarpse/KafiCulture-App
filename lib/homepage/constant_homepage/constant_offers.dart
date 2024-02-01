@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 const String heading1 = "Latest  Offerings";
 const double heading1_fontSize = 20.5;
-const double containerheight = 220;
+const double containerheight = 250;
 const double pageController_viewportFraction = 0.9;
 const int pageController_initialPage = 3;
 const double margin_edge = 8;
