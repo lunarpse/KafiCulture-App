@@ -26,7 +26,7 @@ class HandCraftedWidget extends StatelessWidget {
       },
       builder: (context, state) {
         return Padding(
-          padding: const EdgeInsets.all(padding_edge),
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
           child: GridView(
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
@@ -49,23 +49,25 @@ class HandCraftedWidget extends StatelessWidget {
                           image: AssetImage("assets/images/snacks.jpg"),
                           fit: BoxFit.fill,
                         ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: boxShadow_color,
-                            blurRadius: boxShadow_blurRadius,
-                            spreadRadius: boxShadow_spreadRadius,
-                            offset: Offset(boxShadow_offSet_startPoint,
-                                boxShadow_offSet_endPoint),
-                          )
-                        ],
+                        // boxShadow: [
+                        //   BoxShadow(
+                        //     color: boxShadow_color,
+                        //     blurRadius: boxShadow_blurRadius,
+                        //     spreadRadius: boxShadow_spreadRadius,
+                        //     offset: Offset(boxShadow_offSet_startPoint,
+                        //         boxShadow_offSet_endPoint),
+                        //   )
+                        // ],
                         shape: BoxShape.circle,
                       )),
                     ),
+                    SizedBox(height: 5),
                     Text(
                       categories1,
                       style: TextStyle(
                           fontSize: categories_fontSize,
-                          fontWeight: FontWeight.bold),
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500),
                     ),
                   ],
                 ),
@@ -84,24 +86,26 @@ class HandCraftedWidget extends StatelessWidget {
                           image: AssetImage("assets/images/drinks.jpg"),
                           fit: BoxFit.fill,
                         ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: boxShadow_color
-                                .withOpacity(boxShadow_color_opacity),
-                            blurRadius: boxShadow_blurRadius,
-                            spreadRadius: boxShadow_spreadRadius,
-                            offset: Offset(boxShadow_offSet_startPoint,
-                                boxShadow_offSet_endPoint),
-                          )
-                        ],
+                        // boxShadow: [
+                        //   BoxShadow(
+                        //     color: boxShadow_color
+                        //         .withOpacity(boxShadow_color_opacity),
+                        //     blurRadius: boxShadow_blurRadius,
+                        //     spreadRadius: boxShadow_spreadRadius,
+                        //     offset: Offset(boxShadow_offSet_startPoint,
+                        //         boxShadow_offSet_endPoint),
+                        //   )
+                        // ],
                         shape: BoxShape.circle,
                       )),
                     ),
+                    SizedBox(height: 5),
                     Text(
                       categories2,
                       style: TextStyle(
                           fontSize: categories_fontSize,
-                          fontWeight: FontWeight.bold),
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500),
                     ),
                   ],
                 ),
@@ -120,24 +124,26 @@ class HandCraftedWidget extends StatelessWidget {
                           image: AssetImage("assets/images/cookies.jpg"),
                           fit: BoxFit.fill,
                         ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: boxShadow_color
-                                .withOpacity(boxShadow_color_opacity),
-                            blurRadius: boxShadow_blurRadius,
-                            spreadRadius: boxShadow_spreadRadius,
-                            offset: Offset(boxShadow_offSet_startPoint,
-                                boxShadow_offSet_endPoint),
-                          )
-                        ],
+                        // boxShadow: [
+                        //   BoxShadow(
+                        //     color: boxShadow_color
+                        //         .withOpacity(boxShadow_color_opacity),
+                        //     blurRadius: boxShadow_blurRadius,
+                        //     spreadRadius: boxShadow_spreadRadius,
+                        //     offset: Offset(boxShadow_offSet_startPoint,
+                        //         boxShadow_offSet_endPoint),
+                        //   )
+                        // ],
                         shape: BoxShape.circle,
                       )),
                     ),
+                    SizedBox(height: 5),
                     Text(
                       categories3,
                       style: TextStyle(
                           fontSize: categories_fontSize,
-                          fontWeight: FontWeight.bold),
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500),
                     ),
                   ],
                 ),
