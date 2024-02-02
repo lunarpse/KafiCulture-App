@@ -33,7 +33,9 @@ class DetailsPageWidget extends ConsumerStatefulWidget {
 class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
   int selectedIndex = 0;
   int quantity = 1;
-
+  bool _customIcon = false;
+  late double finalCost;
+  var addonprice = 0;
   List<AddonModel> addons = [];
 
   @override

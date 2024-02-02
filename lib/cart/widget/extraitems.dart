@@ -10,7 +10,7 @@ import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
 
 class ExtraItems extends ConsumerWidget {
-  const ExtraItems(
+  ExtraItems(
       {required this.price,
       super.key,
       required this.image,
@@ -26,19 +26,23 @@ class ExtraItems extends ConsumerWidget {
       // elevation: 0,
       color: extraitemcardcolor,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 5),
+        padding: EdgeInsets.only(bottom: 3),
         child: Container(
-          padding: const EdgeInsets.all(8.0),
-          height: 110,
+          padding: EdgeInsets.all(8.0),
+          height: 117,
           width: 280,
           margin: EdgeInsets.symmetric(horizontal: 2),
           decoration: BoxDecoration(
-              color: extraitemcardboxdecolor,
+              //     color: extraitemcardboxdecolor,
+              gradient: LinearGradient(colors: [
+                Color.fromARGB(255, 36, 36, 39),
+                Color.fromARGB(255, 67, 69, 71)
+              ]),
               borderRadius: BorderRadius.circular(15),
               boxShadow: [
                 BoxShadow(
                   color: extraitemcardboxshadowcolor,
-                  spreadRadius: 3,
+                  spreadRadius: 2,
                   blurRadius: 3,
                   offset: Offset(0, 3),
                 )
@@ -46,9 +50,15 @@ class ExtraItems extends ConsumerWidget {
           child: Row(
             children: [
               Container(
-                width: 115,
-                height: 120,
+                width: 113,
+                height: 124,
                 decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                        color: Color.fromARGB(255, 78, 80, 83),
+                        spreadRadius: 1.5,
+                        blurRadius: 2),
+                  ],
                   borderRadius: BorderRadius.circular(90),
                   image: DecorationImage(
                       fit: BoxFit.cover, image: AssetImage(image)),
@@ -64,14 +74,18 @@ class ExtraItems extends ConsumerWidget {
                   children: [
                     Text(
                       name,
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
                     ),
                     Text(
                       extraslogan,
+                      maxLines: 2,
                       style: TextStyle(
+                        color: Colors.white,
                         fontWeight: FontWeight.bold,
-                        fontSize: 15,
+                        fontSize: 12.7,
                       ),
                     ),
                     Row(
