@@ -168,7 +168,7 @@ class Bottom extends ConsumerWidget {
                     horizontal: 32,
                     vertical: 16.0,
                   ),
-                  backgroundColor: Colors.white,
+                  backgroundColor: bottomcheckoutcolor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0),
                     side: BorderSide(
@@ -190,7 +190,7 @@ class Bottom extends ConsumerWidget {
                 child: Text(
                   checkout,
                   style: TextStyle(
-                      color: Colors.black,
+                      color: cookinginstructiontextcolor,
                       fontWeight: FontWeight.bold,
                       fontSize: 17),
                 ),

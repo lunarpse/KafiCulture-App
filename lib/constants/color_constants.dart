@@ -17,7 +17,7 @@ const Color emptycartroundedrectanglebordercolor = Colors.black38;
 //bottomconstants
 
 const Color bottomboxdecorationcolor = Color.fromARGB(255, 31, 30, 29);
-const Color bottomboxshadowcolor = Colors.black;
+const Color bottomboxshadowcolor = Color.fromARGB(255, 41, 32, 32);
 const Color bottomcontainercolor = Color.fromARGB(0, 250, 244, 244);
 const Color bottomcontainercolor1 = Colors.white;
 const Color bottomelevatebuttonbgcolor = Color.fromARGB(255, 63, 60, 60);
@@ -25,6 +25,7 @@ const Color bottomroundrectanglebordercolor = Colors.black38;
 const Color bottomcheckoutcolor = Colors.white;
 
 //cartitemconstants
+const Color rcbutton = Color.fromARGB(255, 187, 181, 181);
 const Color cartboxdecorationcolor = Color.fromARGB(255, 247, 235, 231);
 const Color cartboxshadowcolor = Color.fromARGB(255, 87, 76, 76);
 const Color cartboxshadow = Colors.grey;
@@ -32,9 +33,13 @@ const Color cartboxdecorationcolor1 = Color.fromARGB(255, 110, 47, 24);
 const Color cartmousecursorcolor = Colors.white;
 const Color cartboxdecorationcolor2 = Color.fromARGB(255, 110, 47, 24);
 const Color cartbuttoncolor = Colors.white;
+const Color extraitemcolor1 = Color.fromARGB(255, 36, 36, 39);
+const Color extraitemcolor2 = Color.fromARGB(255, 67, 69, 71);
+const Color extraitemcolor3 = Color.fromARGB(255, 78, 80, 83);
 
 //cooking instructions
-
+const Color carticonbutton = const Color.fromARGB(255, 247, 244, 244);
+const Color cartdeletebutton = Color.fromARGB(255, 210, 214, 231);
 const Color cookinginstructionboxdecorationcolor =
     Color.fromARGB(255, 29, 28, 28);
 // Color.fromARGB(255, 240, 234, 234);
@@ -42,7 +47,11 @@ Color cookinginstructionboxshadowcolor = Color.fromARGB(255, 42, 45, 49);
 const Color cookinginstructiontextcolor = Colors.black;
 const Color cookinginstructioncursorcolor = Color.fromARGB(255, 247, 243, 238);
 const Color cookinginstructionbordercolor = Color.fromARGB(255, 252, 246, 246);
-
+const Color cartLinearGrad1 = Color.fromARGB(255, 17, 17, 17);
+const Color cartLinearGrad2 = Color.fromARGB(255, 39, 39, 41);
+const Color cartLinearGrad3 = Color(0xFF4D4F52);
+const Color cartboxshadow2 = Color.fromARGB(255, 78, 78, 83);
+const Color cartboxshadow1 = Color.fromARGB(255, 42, 45, 49);
 //extraitems
 Color extraitemcardcolor = Color.fromARGB(255, 27, 27, 27)
     .withOpacity(1); //Color.fromARGB(255, 236, 219, 219);
