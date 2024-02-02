@@ -51,7 +51,7 @@ const String cancel = "Cancel";
 
 //cart-->widget-->bottomscreen
 const String billdetails = "Bill Details";
-const String checkout = "Check out";
+const String checkout = "Check Out";
 const String subTotal = "Check out";
 const String gstString = "Check out";
 const String totalString = "Check out";

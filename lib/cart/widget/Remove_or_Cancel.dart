@@ -26,7 +26,7 @@ class RemoveOrCancel extends ConsumerWidget {
           border: Border.all(width: 1, color: Colors.black),
           boxShadow: const [
             BoxShadow(
-              color: Color.fromARGB(255, 87, 76, 76),
+              color: Color.fromARGB(255, 185, 175, 175),
               spreadRadius: 1,
               blurRadius: 1,
               offset: Offset(0, 3),
@@ -54,8 +54,11 @@ class RemoveOrCancel extends ConsumerWidget {
                   style: ElevatedButton.styleFrom(
                       shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(20))),
-                      backgroundColor: Color.fromARGB(255, 19, 11, 8)),
-                  child: const Text(remove)),
+                      backgroundColor: Color.fromARGB(255, 163, 159, 157)),
+                  child: const Text(
+                    remove,
+                    style: TextStyle(color: Color.fromARGB(255, 190, 181, 181)),
+                  )),
               const SizedBox(
                 width: 20,
               ),
@@ -64,10 +67,13 @@ class RemoveOrCancel extends ConsumerWidget {
                     setremove();
                   },
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
+                      backgroundColor: const Color.fromARGB(255, 245, 237, 237),
                       shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(20)))),
-                  child: const Text(cancel))
+                  child: const Text(
+                    cancel,
+                    style: TextStyle(color: Color.fromARGB(255, 194, 189, 189)),
+                  ))
             ],
           ),
         ),
