@@ -3,6 +3,9 @@
 
 import 'package:flutter/material.dart';
 
+const Color headingcolor = Color.fromARGB(255, 67, 138, 138);
+
+const Color tagcolor = Color.fromARGB(255, 165, 163, 163);
 const Color circleavatarbgcolor = Colors.white;
 const Color cartIconColor = Color.fromRGBO(107, 49, 20, 1);
 const Color nfcCircleAvatarAvailableColor = Color.fromARGB(255, 1, 255, 9);
@@ -128,8 +131,8 @@ const Color comingsoonTexticonColor = Color.fromRGBO(107, 49, 20, 1);
 //---------------------------->Profile------->my orders
 const Color noOrderTextColor = Color.fromRGBO(107, 49, 20, 1);
 const Color everyOrderContainerColor = Color.fromARGB(255, 248, 248, 248);
-Color everyOrderContainerShadowColor = Colors.grey.shade500;
-Color everyOrderContainerBorderColor = Colors.grey.shade500;
+Color everyOrderContainerShadowColor = Color.fromARGB(255, 54, 49, 49);
+Color everyOrderContainerBorderColor = Color.fromARGB(255, 31, 29, 29);
 const Color orderNameColor = Color.fromRGBO(107, 49, 20, 1);
 const Color orderPriceIconColor = Color.fromRGBO(137, 71, 37, 1);
 Color orderPriceHeadingColor = Colors.grey.shade500;
