@@ -13,9 +13,9 @@ class HomeHeading extends StatelessWidget {
     return Text(
       headingText,
       style: TextStyle(
-          fontWeight: FontWeight.w500,
+          fontWeight: FontWeight.w700,
           fontSize: headingText_fontSize,
-          color: Colors.white),
+          color: Color.fromARGB(232, 255, 255, 255)),
     );
   }
 }

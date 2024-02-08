@@ -3,6 +3,9 @@
 
 import 'package:flutter/material.dart';
 
+const Color headingcolor = Color.fromARGB(255, 67, 138, 138);
+
+const Color tagcolor = Color.fromARGB(255, 165, 163, 163);
 const Color circleavatarbgcolor = Colors.white;
 const Color cartIconColor = Color.fromRGBO(107, 49, 20, 1);
 const Color nfcCircleAvatarAvailableColor = Color.fromARGB(255, 1, 255, 9);
@@ -17,7 +20,7 @@ const Color emptycartroundedrectanglebordercolor = Colors.black38;
 //bottomconstants
 
 const Color bottomboxdecorationcolor = Color.fromARGB(255, 31, 30, 29);
-const Color bottomboxshadowcolor = Colors.black;
+const Color bottomboxshadowcolor = Color.fromARGB(255, 41, 32, 32);
 const Color bottomcontainercolor = Color.fromARGB(0, 250, 244, 244);
 const Color bottomcontainercolor1 = Colors.white;
 const Color bottomelevatebuttonbgcolor = Color.fromARGB(255, 63, 60, 60);
@@ -25,6 +28,7 @@ const Color bottomroundrectanglebordercolor = Colors.black38;
 const Color bottomcheckoutcolor = Colors.white;
 
 //cartitemconstants
+const Color rcbutton = Color.fromARGB(255, 187, 181, 181);
 const Color cartboxdecorationcolor = Color.fromARGB(255, 247, 235, 231);
 const Color cartboxshadowcolor = Color.fromARGB(255, 87, 76, 76);
 const Color cartboxshadow = Colors.grey;
@@ -32,9 +36,13 @@ const Color cartboxdecorationcolor1 = Color.fromARGB(255, 110, 47, 24);
 const Color cartmousecursorcolor = Colors.white;
 const Color cartboxdecorationcolor2 = Color.fromARGB(255, 110, 47, 24);
 const Color cartbuttoncolor = Colors.white;
+const Color extraitemcolor1 = Color.fromARGB(255, 36, 36, 39);
+const Color extraitemcolor2 = Color.fromARGB(255, 67, 69, 71);
+const Color extraitemcolor3 = Color.fromARGB(255, 78, 80, 83);
 
 //cooking instructions
-
+const Color carticonbutton = const Color.fromARGB(255, 247, 244, 244);
+const Color cartdeletebutton = Color.fromARGB(255, 210, 214, 231);
 const Color cookinginstructionboxdecorationcolor =
     Color.fromARGB(255, 29, 28, 28);
 // Color.fromARGB(255, 240, 234, 234);
@@ -42,7 +50,11 @@ Color cookinginstructionboxshadowcolor = Color.fromARGB(255, 42, 45, 49);
 const Color cookinginstructiontextcolor = Colors.black;
 const Color cookinginstructioncursorcolor = Color.fromARGB(255, 247, 243, 238);
 const Color cookinginstructionbordercolor = Color.fromARGB(255, 252, 246, 246);
-
+const Color cartLinearGrad1 = Color.fromARGB(255, 17, 17, 17);
+const Color cartLinearGrad2 = Color.fromARGB(255, 39, 39, 41);
+const Color cartLinearGrad3 = Color(0xFF4D4F52);
+const Color cartboxshadow2 = Color.fromARGB(255, 78, 78, 83);
+const Color cartboxshadow1 = Color.fromARGB(255, 42, 45, 49);
 //extraitems
 Color extraitemcardcolor = Color.fromARGB(255, 27, 27, 27)
     .withOpacity(1); //Color.fromARGB(255, 236, 219, 219);
@@ -119,8 +131,8 @@ const Color comingsoonTexticonColor = Color.fromRGBO(107, 49, 20, 1);
 //---------------------------->Profile------->my orders
 const Color noOrderTextColor = Color.fromRGBO(107, 49, 20, 1);
 const Color everyOrderContainerColor = Color.fromARGB(255, 248, 248, 248);
-Color everyOrderContainerShadowColor = Colors.grey.shade500;
-Color everyOrderContainerBorderColor = Colors.grey.shade500;
+Color everyOrderContainerShadowColor = Color.fromARGB(255, 54, 49, 49);
+Color everyOrderContainerBorderColor = Color.fromARGB(255, 31, 29, 29);
 const Color orderNameColor = Color.fromRGBO(107, 49, 20, 1);
 const Color orderPriceIconColor = Color.fromRGBO(137, 71, 37, 1);
 Color orderPriceHeadingColor = Colors.grey.shade500;
@@ -155,10 +167,10 @@ const Color genielightthemebgcolor = Color.fromARGB(255, 235, 228, 215);
 const Color genieappbarthemecolor = Color.fromARGB(255, 134, 89, 22);
 
 //cookiespage color drinkspage and snacks color
-const Color cookieboxdeccolor = Colors.white;
-const Color cookieboxshadowcolor = Colors.grey;
-const Color cookieiconstarcolor = Colors.amber;
-const Color cookieratingtextcolor = Colors.red;
+// const Color cookieboxdeccolor = Colors.white;
+const Color cookieboxshadowcolor = Color.fromARGB(255, 28, 28, 29);
+Color cookieiconstarcolor = Colors.orange.shade700;
+const Color cookieratingtextcolor = Colors.white;
 
 //detailspage
 Color detailsglasscontainercolor = Colors.white.withOpacity(0.2);
@@ -168,38 +180,49 @@ const Color detailsratingcolor = Colors.black;
 const Color detailstotalratingscolor = Colors.black;
 Color detailsboxdecorationcolor = Colors.black.withOpacity(0.6);
 Color detailspriceboxdecorationcolor = Colors.grey.shade400;
-Color detailsdiscountboxcolor = Colors.orange.shade800;
+Color detailsdiscountboxcolor = Colors.orange.shade700;
 Color detailsboxdecoration1color = Colors.black.withOpacity(0.8);
 const Color detailsiconbuttoncolor = Colors.white;
 Color detailsboxdecoration2color = Colors.black.withOpacity(0.8);
-const Color detailstextcolor = Colors.black;
-const Color detailsreadmoreshowelesscolor = Colors.orange;
-const Color detailsstarcolor = Colors.orange;
+const Color detailstextcolor = Colors.white;
+const Color detailscolor = Color.fromARGB(255, 221, 221, 221);
+Color detailsreadmoreshowelesscolor = Colors.orange.shade700;
+Color detailsstarcolor = Colors.orange.shade700;
 const Color detailsshadowcolor = Colors.grey;
 Color detailspricefontcolor = Colors.grey.shade400;
 Color detailsboxshadowcolor = Colors.grey.withOpacity(0.5);
 const Color detailsboxcolor = Colors.white;
-const Color detailssizebuttonbgcolor = Color.fromRGBO(143, 93, 58, 1);
-const Color detailsshoppingbagcolor = Colors.orange;
-const Color detailsshoppingcartcolor = Colors.orange;
-const Color detailsaddtocartbuttoncolor = Color.fromRGBO(143, 93, 58, 1);
-Color detailsselectedindexbordercolor = Colors.brown.shade900;
-const Color detailsbottomsheetboxcolor = Color.fromRGBO(143, 93, 58, 0.8);
+const Color detailssizebuttonbgcolor = Colors.black;
+Color detailsshoppingbagcolor = Colors.white;
+const Color detailsshoppingcartcolor = Color.fromARGB(255, 255, 117, 31);
+const Color detailsaddtocartbuttoncolor = Colors.black;
+const Color detailsselectedindexbordercolor = Color.fromARGB(255, 17, 17, 19);
+// const Color detailsselectedindexbordercolor = Color.fromARGB(255, 173, 86, 31);
+const Color detailsbottomsheetboxcolor = Colors.black;
 const Color detailsdoneiconcolor = Colors.green;
-const Color detailsratingstarcolor = Color.fromARGB(255, 248, 231, 77);
+Color detailsratingstarcolor = Colors.orange.shade700;
+Color detailsUnselectedindexbordercolor = Colors.grey.shade800;
+const Color bottomsheetElevatedButtonBackgroundColor =
+    Color.fromARGB(255, 173, 86, 31);
+const Color bottomsheetOutlinedButtonBackgroundColor =
+    Color.fromARGB(255, 173, 86, 31);
+const Color bottomsheetOutlinedButtonTextColor =
+    Color.fromARGB(255, 255, 117, 31);
 
 //dailogbox color
-Color dialogboxcheckboxtilecolor = Colors.grey.withOpacity(0.4);
-const Color dialogboxbordersidecolor = Color.fromRGBO(168, 93, 38, 1);
-const Color dialogboxaddonnamecolor = Color.fromRGBO(168, 93, 38, 1);
-const Color dialogboxactivecolor = Color.fromRGBO(168, 93, 38, 1);
+Color dialogboxcheckboxtilecolor = Colors.grey.shade400;
+const Color dialogboxbordersidecolor = Color.fromARGB(255, 201, 93, 26);
+const Color dialogboxaddonnamecolor = Color.fromARGB(255, 190, 88, 25);
+const Color dialogboxactivecolor = Color.fromARGB(255, 201, 93, 26);
 const Color dialogboxcheckcolor = Colors.white;
 const Color dialogboxdivcolor = Colors.black;
 Color dialogboxboxdecorationcolor = Colors.black.withOpacity(0.7);
 const Color dialogboxcurrentitemcolor = Colors.white60;
 const Color dialogboxproductnamecolor = Colors.white;
 const Color dialogboxpricetextcolor = Colors.white;
-const Color dialogboxelevatebuttonbgcolor = Color.fromRGBO(168, 93, 38, 1);
+const Color dialogboxdollarsigncolor = Color.fromARGB(255, 201, 93, 26);
+// const Color dialogboxelevatebuttonbgcolor = Color.fromRGBO(168, 93, 38, 1);
+const Color dialogboxelevatebuttonbgcolor = Color.fromARGB(255, 173, 86, 31);
 
 //background_container_widget
 const Color bgcontainercolor = Color.fromARGB(255, 248, 205, 189);
@@ -243,21 +266,21 @@ const Color companynameboxdecorationlineargradcolor1 =
     Color.fromARGB(255, 229, 193, 159);
 const Color paymentapplineargradient1 = Color.fromRGBO(255, 136, 102, 0.67);
 const Color paymentapplineargradient2 = Color.fromRGBO(255, 221, 136, 0.28);
-const Color paymentapppricecolor = Colors.black;
-const Color loyalitypointcolor = Colors.green;
-const Color paymentapphotelcolor = Colors.blue;
+const Color paymentapppricecolor = Colors.white;
+const Color loyalitypointcolor = Colors.white;
+const Color paymentapphotelcolor = Colors.white;
 const Color paymentappexpansiontilegradient1 =
     Color.fromRGBO(255, 136, 102, 0.67);
 const Color paymentappexpansiontilegradient2 =
     Color.fromRGBO(255, 221, 136, 0.28);
-const Color recommendedtextcolor = Colors.black54;
+const Color recommendedtextcolor = Colors.white;
 const Color companynamecolors = Colors.black54;
 const Color showdialogbackgroundcolor1 = Color.fromRGBO(255, 136, 102, 0.67);
 const Color showdialogbackgroundcolor2 = Color.fromRGBO(255, 221, 136, 0.28);
 const Color paymentborderall = Color.fromARGB(255, 98, 2, 2);
-const Color paymentborderallgradient1 = Color.fromRGBO(226, 215, 212, 0.467);
+const Color paymentborderallgradient1 = Colors.black;
 const Color paymentborderallgradient2 = Color.fromRGBO(240, 214, 191, 1);
-const Color confirmcolor = Color.fromARGB(255, 255, 106, 7);
+const Color confirmcolor = Colors.white;
 const Color paymentdivdercolor = Colors.black;
 const Color payOnDeliveryBtn = Color.fromRGBO(143, 93, 58, 1);
 const Color checkboxSideColor = Colors.red;
@@ -267,7 +290,7 @@ const Color payOnDeliveryTextColor = Colors.black;
 
 //paymentcart
 const Color paymentcartdeccolor = Color.fromARGB(255, 247, 235, 231);
-const Color paymentcartboxshadow = Color.fromARGB(255, 87, 76, 76);
+const Color paymentcartboxshadow = Color.fromARGB(255, 42, 45, 49);
 const Color paymentcartboxshadoww = Colors.grey;
 const Color paymentcartdeccolor1 = Color.fromARGB(255, 110, 47, 24);
 const Color paymentcartcontainercolor = Color.fromARGB(255, 240, 232, 232);

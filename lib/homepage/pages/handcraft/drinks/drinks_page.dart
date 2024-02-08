@@ -8,6 +8,7 @@ import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/customdrawer/drawerScreen.dart';
 import 'package:project_2/homepage/pages/handcraft/drinks/bloc/drinks_bloc.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
+import '../../../../appbar/custom_appbar_widget.dart';
 import '../../../data_fetching/api_service.dart';
 
 class DrinksPage extends StatefulWidget {
@@ -19,6 +20,7 @@ class DrinksPage extends StatefulWidget {
 
 class _DrinksPageState extends State<DrinksPage> {
   List<JsonModel> drinks = [];
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -49,138 +51,199 @@ class _DrinksPageState extends State<DrinksPage> {
       },
       builder: (context, state) {
         return Scaffold(
-          appBar: AppbarWidget(),
+          key: _scaffoldKey,
+          // appBar: AppbarWidget(),
           drawer: DrawerScreen(),
           body: BackgroundContainerWidget(
             opacity: 1.0,
-            x: 3.0,
-            y: 3.0,
-            child: ListView.builder(
-              shrinkWrap: true,
-              physics: BouncingScrollPhysics(),
-              itemCount: drinks.length,
-              itemBuilder: (context, index) {
-                var drink = drinks[index];
-                final name = drink.name;
-                final image = drink.image;
-                final totalRating = drink.totalRatings;
-                final rating = double.parse(drink.rating);
-                // final price = drink.price;
-
-                return Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5),
-                        child: Container(
-                          width: 380,
-                          height: 170,
-                          decoration: BoxDecoration(
-                              color: cookieboxdeccolor,
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: cookieboxshadowcolor,
-                                  spreadRadius: 3,
-                                  blurRadius: 10,
-                                  offset: Offset(0, 3),
-                                )
-                              ]),
-                          child: InkWell(
-                            onTap: () => {
-                              // Navigator.pushNamed(
-                              //   context, '/drinksdetails',
-                              //   arguments: drink)
-                              drinksBloc.add(
-                                  DrinksContainerClickedEvent(drink: drink))
-                            },
-                            child: Row(
-                              children: [
-                                SizedBox(
-                                  height: 170,
-                                  width: 180,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.horizontal(
-                                        left: Radius.circular(10)),
-                                    child: Hero(
-                                      tag: drink,
-                                      child: Image.asset(
-                                        "assets/images/$image.jpg",
-                                        fit: BoxFit.cover,
-                                      ),
+            x: 1.0,
+            y: 1.0,
+            child: SafeArea(
+              child: Container(
+                height: MediaQuery.of(context).size.height,
+                child: Stack(
+                  children: [
+                    CustomAppbarWidget(
+                      scaffoldKey: _scaffoldKey,
+                    ),
+                    Positioned(
+                      top: 90,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Text(
+                          "Caffeine Concoction",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 23,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 125,
+                      child: Container(
+                        padding: EdgeInsets.symmetric(horizontal: 5),
+                        height: MediaQuery.of(context).size.height - 185,
+                        width: MediaQuery.of(context).size.width,
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          physics: BouncingScrollPhysics(),
+                          itemCount: drinks.length,
+                          itemBuilder: (context, index) {
+                            var drink = drinks[index];
+                            final name = drink.name;
+                            final image = drink.image;
+                            final offerPrice = drink.offerPrice;
+                            final rating = double.parse(drink.rating);
+                            // final price = cookie.price;
+                            return Padding(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 5, horizontal: 10),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.all(8),
+                                    width: 380,
+                                    height: 170,
+                                    decoration: BoxDecoration(
+                                      // color: cookieboxdeccolor,
+                                      gradient: LinearGradient(
+                                          colors: [
+                                            Colors.black,
+                                            Color.fromARGB(255, 17, 17, 19),
+                                            Color.fromARGB(255, 62, 64, 66),
+                                          ],
+                                          begin: Alignment.topLeft,
+                                          end: Alignment.bottomRight),
+                                      borderRadius: BorderRadius.circular(15),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: cookieboxshadowcolor,
+                                          blurRadius: 2,
+                                          spreadRadius: 1,
+                                          offset: Offset(0, 5),
+                                        )
+                                      ],
                                     ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 12,
-                                ),
-                                SizedBox(
-                                  width: 175,
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        name,
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      Text(
-                                        productdescription,
-                                        // addons,
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          // fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                    child: InkWell(
+                                      onTap: () => {
+                                        drinksBloc.add(
+                                            DrinksContainerClickedEvent(
+                                                drink: drink))
+                                      },
+                                      child: Row(
                                         children: [
-                                          Row(
-                                            children: List.generate(5, (index) {
-                                              return Icon(
-                                                index < rating
-                                                    ? Icons.star
-                                                    : Icons.star_border,
-                                                color: cookieiconstarcolor,
-                                                size: 18,
-                                              );
-                                            }),
+                                          Container(
+                                            height: 170,
+                                            width: 170,
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              child: Hero(
+                                                tag: drink,
+                                                child: Image.asset(
+                                                  "assets/images/$image.jpg",
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                            ),
                                           ),
-                                          Text(
-                                            "($totalRating Ratings)",
-                                            style: TextStyle(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w500),
+                                          SizedBox(
+                                            width: 12,
+                                          ),
+                                          Container(
+                                            width: 175,
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceAround,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  name,
+                                                  style: TextStyle(
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      color: Colors.white),
+                                                ),
+                                                Text(
+                                                  productdescription,
+                                                  style: TextStyle(
+                                                    fontSize: 14,
+                                                    color: Color.fromARGB(
+                                                        255, 221, 221, 221),
+                                                  ),
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Row(
+                                                      children: List.generate(5,
+                                                          (index) {
+                                                        return Icon(
+                                                          index < rating
+                                                              ? Icons.star
+                                                              : Icons
+                                                                  .star_border,
+                                                          color:
+                                                              cookieiconstarcolor,
+                                                          size: 18,
+                                                        );
+                                                      }),
+                                                    ),
+                                                    Text(
+                                                      "  ($rating)",
+                                                      style: TextStyle(
+                                                        fontSize: 17,
+                                                        color: Color.fromARGB(
+                                                            255, 221, 221, 221),
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Text(
+                                                      "\$ ",
+                                                      style: TextStyle(
+                                                        fontSize: 20,
+                                                        color: Colors
+                                                            .orange.shade700,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      "$offerPrice",
+                                                      style: TextStyle(
+                                                        fontSize: 18,
+                                                        color:
+                                                            cookieratingtextcolor,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ],
                                       ),
-                                      Text(
-                                        "$rating",
-                                        style: TextStyle(
-                                          fontSize: 17,
-                                          color: cookieratingtextcolor,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            );
+                          },
                         ),
-                      )
-                    ],
-                  ),
-                );
-              },
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
           ),
         );

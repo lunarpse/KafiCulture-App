@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:project_2/genieTheme/genie_theme.dart';
 import 'package:project_2/router/routing.dart';
 
 void main() {
@@ -32,7 +31,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: GenieTheme.lightTheme,
+      // theme: GenieTheme.lightTheme,
+      theme: ThemeData(fontFamily: 'Nunito'),
       initialRoute: '/',
       onGenerateRoute: RouteGenerator.generateRoute,
     );

@@ -25,8 +25,10 @@ class DialogBox extends StatelessWidget {
     int? checkedIndex;
     double totalPrice = finalPrice;
     return AlertDialog(
+      backgroundColor: Color.fromARGB(255, 57, 58, 59),
+      // backgroundColor: Colors.green,
       insetPadding: EdgeInsets.all(20),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(13)),
       content: StatefulBuilder(
         builder: (context, setState) {
           return Container(
@@ -37,7 +39,10 @@ class DialogBox extends StatelessWidget {
               children: [
                 Text(
                   addon,
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: const Color.fromARGB(202, 255, 255, 255)),
                 ),
                 SizedBox(
                   height: 10,
@@ -76,13 +81,15 @@ class DialogBox extends StatelessWidget {
                           addonsName,
                           style: TextStyle(
                               fontSize: 18,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.w800,
                               color: dialogboxaddonnamecolor),
                         ),
                         subtitle: Text(
                           "\$ $price",
                           style: TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.bold),
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey.shade800),
                         ),
                         activeColor: dialogboxactivecolor,
                         checkColor: dialogboxcheckcolor,
@@ -122,14 +129,27 @@ class DialogBox extends StatelessWidget {
                                 style: TextStyle(
                                     fontSize: 18,
                                     color: dialogboxproductnamecolor,
-                                    fontWeight: FontWeight.bold),
+                                    fontWeight: FontWeight.w500,
+                                    letterSpacing: 0.7),
                               ),
-                              Text(
-                                totalPrice.toString(),
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    color: dialogboxpricetextcolor),
-                              )
+                              SizedBox(height: 2),
+                              Row(
+                                children: [
+                                  Text(
+                                    "\$ ",
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w700,
+                                        color: dialogboxdollarsigncolor),
+                                  ),
+                                  Text(
+                                    totalPrice.toString(),
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        color: dialogboxpricetextcolor),
+                                  )
+                                ],
+                              ),
                             ],
                           ),
                         ),
@@ -145,7 +165,7 @@ class DialogBox extends StatelessWidget {
                                     dialogboxelevatebuttonbgcolor),
                                 shape: MaterialStateProperty.all(
                                     RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(12),
                                 )),
                               ),
                               onPressed: () {
@@ -156,7 +176,7 @@ class DialogBox extends StatelessWidget {
                                 buttonName,
                                 style: TextStyle(
                                     color: badgeTextColor,
-                                    fontSize: 16,
+                                    fontSize: 17,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),

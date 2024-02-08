@@ -35,15 +35,16 @@ class Amount extends StatelessWidget {
           Text(
             text,
             style: TextStyle(
+              fontFamily: 'Roboto',
               fontSize: fontSize,
-              fontWeight: FontWeight.w400,
+              // fontWeight: FontWeight.bold,
               color: fontColor,
             ),
           ),
           Text(price,
               style: TextStyle(
                 fontSize: fontSize,
-                fontWeight: FontWeight.w400,
+                // fontWeight: FontWeight.w400,
                 color: fontColor,
               )),
         ],

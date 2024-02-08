@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:project_2/cart/riverpod/cargo_state_provider.dart';
 
 import 'package:project_2/cart/widget/Remove_or_Cancel.dart';
+import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
 import '../riverpod/state_provider.dart';
 
@@ -56,13 +57,13 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                   // color: Color.fromARGB(
                   //     255, 17, 16, 16), // Color.fromARGB(255, 247, 235, 231),
                   gradient: LinearGradient(colors: [
-                    Color.fromARGB(255, 17, 17, 17),
-                    Color.fromARGB(255, 39, 39, 41),
-                    Color(0xFF4D4F52)
+                    cartLinearGrad1,
+                    cartLinearGrad2,
+                    cartLinearGrad3
                   ], begin: Alignment.topLeft, end: Alignment.bottomRight),
                   boxShadow: [
                     BoxShadow(
-                      color: Color.fromARGB(255, 42, 45, 49),
+                      color: cartboxshadow1,
                       spreadRadius: 0.5,
                       blurRadius: 1,
                       offset: Offset(0, 3),
@@ -81,7 +82,7 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: Color.fromARGB(255, 78, 78, 83),
+                            color: cartboxshadow2,
                             offset: Offset(0, 2),
                             blurRadius: 2,
                             spreadRadius: 2,
@@ -105,7 +106,7 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
-                                color: Colors.white,
+                                color: cartbuttoncolor,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18,
                               ),
@@ -115,7 +116,7 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                                   ? widget.data["price"].toString()
                                   : "\$ $amount2",
                               style: TextStyle(
-                                color: Colors.white,
+                                color: cartbuttoncolor,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,
                               ),
@@ -166,8 +167,7 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                                             Radius.circular(50))),
                                     child: IconButton(
                                         mouseCursor: SystemMouseCursors.click,
-                                        color: const Color.fromARGB(
-                                            255, 247, 244, 244),
+                                        color: carticonbutton,
                                         onPressed: () {
                                           if (widget.data["quantity"] == 1) {
                                             setState(() {
@@ -200,7 +200,7 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                                     child: Text(
                                       widget.data["quantity"].toString(),
                                       style: TextStyle(
-                                          color: Colors.white,
+                                          color: cartbuttoncolor,
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -212,8 +212,7 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(50))),
                                     child: IconButton(
-                                        color: const Color.fromARGB(
-                                            255, 245, 241, 241),
+                                        color: carticonbutton,
                                         onPressed: () {
                                           widget.coffee == true
                                               ? ref
@@ -244,7 +243,7 @@ class _MyWidgetState extends ConsumerState<CartItem> {
                                             .remove_item(widget.data["name"]);
                                   },
                                   icon: Icon(
-                                    color: Color.fromARGB(255, 210, 214, 231),
+                                    color: cartdeletebutton,
                                     Icons.delete,
                                     size: 28,
                                   ))

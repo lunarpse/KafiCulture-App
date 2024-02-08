@@ -34,10 +34,8 @@ class ExtraItems extends ConsumerWidget {
           margin: EdgeInsets.symmetric(horizontal: 2),
           decoration: BoxDecoration(
               //     color: extraitemcardboxdecolor,
-              gradient: LinearGradient(colors: [
-                Color.fromARGB(255, 36, 36, 39),
-                Color.fromARGB(255, 67, 69, 71)
-              ]),
+              gradient:
+                  LinearGradient(colors: [extraitemcolor1, extraitemcolor2]),
               borderRadius: BorderRadius.circular(15),
               boxShadow: [
                 BoxShadow(
@@ -55,7 +53,7 @@ class ExtraItems extends ConsumerWidget {
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                        color: Color.fromARGB(255, 78, 80, 83),
+                        color: extraitemcolor3,
                         spreadRadius: 1.5,
                         blurRadius: 2),
                   ],
@@ -75,7 +73,7 @@ class ExtraItems extends ConsumerWidget {
                     Text(
                       name,
                       style: TextStyle(
-                          color: Colors.white,
+                          color: cartbuttoncolor,
                           fontWeight: FontWeight.bold,
                           fontSize: 20),
                     ),
@@ -83,7 +81,7 @@ class ExtraItems extends ConsumerWidget {
                       extraslogan,
                       maxLines: 2,
                       style: TextStyle(
-                        color: Colors.white,
+                        color: cartbuttoncolor,
                         fontWeight: FontWeight.bold,
                         fontSize: 12.7,
                       ),

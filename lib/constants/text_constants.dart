@@ -126,6 +126,9 @@ const String handcrafted = "Handcrafted Curations";
 const String populars = "Populars";
 
 //paymentScreen
+const String priceText = "Price";
+const String gstText = "GST";
+const String deliveryText = "Delivery Charges";
 const String cardpayment = "Credit/Debit Cards";
 const String thankyou = "Thank You";
 const String selectpaymentmethod = "Select Payment Method";
@@ -152,7 +155,7 @@ const String confirm = "Proceed to Pay";
 const String otherpaymentmethod = "Other Payment Method";
 const String incltaxes = "(inc.all taxes)";
 //dialogbox
-const String addon = "Addons";
+const String addon = "Add-Ons";
 const String currentitem = "CURRENT ITEM";
 const String adrname = "Name";
 const String adrename = "Enter the Name";

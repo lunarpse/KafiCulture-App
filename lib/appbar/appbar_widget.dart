@@ -16,7 +16,7 @@ import 'package:badges/badges.dart' as badges;
 
 class AppbarWidget extends ConsumerStatefulWidget
     implements PreferredSizeWidget {
-  AppbarWidget({super.key, this.incart = true, this.coffee = true});
+  const AppbarWidget({super.key, this.incart = true, this.coffee = true});
 
   final incart;
   final coffee;
@@ -74,27 +74,6 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
                   backgroundImage: AssetImage("assets/images/logo1.png"),
                   radius: 18,
                 ),
-                // SizedBox(width: 8),
-                // Column(
-                //   crossAxisAlignment: CrossAxisAlignment.start,
-                //   children: [
-                //     Text(
-                //       apptitle,
-                //       style: TextStyle(fontSize: 20, color: badgeTextColor),
-                //     ),
-                //     SizedBox(
-                //       height: 3,
-                //     ),
-                //     Text(
-                //       appslogan,
-                //       style: TextStyle(
-                //           color: badgeTextColor,
-                //           fontFamily: 'Ephesis',
-                //           fontSize: 17.5,
-                //           letterSpacing: 1),
-                //     ),
-                //   ],
-                // )
               ],
             ),
           ),
@@ -102,7 +81,7 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
             return SizedBox(
                 child: InkWell(
               onTap: () {
-                Scaffold.of(context).openDrawer();
+                // Scaffold.of(context).openDrawer();
               },
               child: Container(
                 margin: EdgeInsets.all(7),

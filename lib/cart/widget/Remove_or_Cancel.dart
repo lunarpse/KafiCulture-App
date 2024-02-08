@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:project_2/cart/riverpod/state_provider.dart';
+import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
 // import 'package:project_2/hjc/cart_riverpod/state_provider.dart';
 // import 'package:project_2/cart/cart/riverpod/state_provider.dart';
@@ -24,14 +25,14 @@ class RemoveOrCancel extends ConsumerWidget {
       height: 120,
       decoration: BoxDecoration(
           border: Border.all(width: 1, color: Colors.black),
-          boxShadow: const [
-            BoxShadow(
-              color: Color.fromARGB(255, 185, 175, 175),
-              spreadRadius: 1,
-              blurRadius: 1,
-              offset: Offset(0, 3),
-            )
-          ],
+          // boxShadow: const [
+          //   BoxShadow(
+          //     color: cartboxshadowcolor, // Color.fromARGB(255, 185, 175, 175),
+          //     spreadRadius: 1,
+          //     blurRadius: 1,
+          //     offset: Offset(0, 3),
+          //   )
+          // ],
           borderRadius: const BorderRadius.all(Radius.circular(20)),
           image: DecorationImage(image: AssetImage(image), fit: BoxFit.fill)),
       child: ClipRRect(
@@ -54,10 +55,10 @@ class RemoveOrCancel extends ConsumerWidget {
                   style: ElevatedButton.styleFrom(
                       shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(20))),
-                      backgroundColor: Color.fromARGB(255, 163, 159, 157)),
+                      backgroundColor: rcbutton),
                   child: const Text(
                     remove,
-                    style: TextStyle(color: Color.fromARGB(255, 190, 181, 181)),
+                    style: TextStyle(color: bottomboxshadowcolor),
                   )),
               const SizedBox(
                 width: 20,
@@ -67,12 +68,12 @@ class RemoveOrCancel extends ConsumerWidget {
                     setremove();
                   },
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(255, 245, 237, 237),
+                      backgroundColor: rcbutton,
                       shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(20)))),
                   child: const Text(
                     cancel,
-                    style: TextStyle(color: Color.fromARGB(255, 194, 189, 189)),
+                    style: TextStyle(color: bottomboxshadowcolor),
                   ))
             ],
           ),
