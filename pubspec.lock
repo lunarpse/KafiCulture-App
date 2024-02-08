@@ -97,6 +97,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.6"
+  dotted_border:
+    dependency: "direct main"
+    description:
+      name: dotted_border
+      sha256: "108837e11848ca776c53b30bc870086f84b62ed6e01c503ed976e8f8c7df9c04"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
   eventify:
     dependency: transitive
     description:
@@ -336,6 +344,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.1"
+  mobkit_dashed_border:
+    dependency: "direct main"
+    description:
+      name: mobkit_dashed_border
+      sha256: "6ebfcf7ff3ea8aed883dc08fae03a3a8a5a33c21b4dc4dfac89081426394cc62"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.5"
   nested:
     dependency: transitive
     description:

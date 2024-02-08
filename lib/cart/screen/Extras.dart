@@ -8,7 +8,7 @@ import 'package:project_2/constants/text_constants.dart';
 // import 'package:project_2/hjc/cart_widget/extraitems.dart';
 
 class Extras extends ConsumerWidget {
-  const Extras({super.key, required this.coffee});
+  Extras({super.key, required this.coffee});
   final coffee;
   @override
   Widget build(BuildContext context, WidgetRef ref) {

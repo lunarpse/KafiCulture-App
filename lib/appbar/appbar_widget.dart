@@ -54,6 +54,12 @@ class _AppbarWidgetState extends ConsumerState<AppbarWidget> {
         final cartItemNo = cartItemNos.length;
 
         return AppBar(
+          // automaticallyImplyLeading: false,
+          // // flexibleSpace: Image.asset(
+          // //   "assets/images/appbarbg4.jpg",
+          // //   fit: BoxFit.cover,
+          // // ),
+          //    backgroundColor: Colors.black,
           backgroundColor: Colors.grey.shade900,
           elevation: 0,
           title: GestureDetector(
