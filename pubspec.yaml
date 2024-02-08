@@ -62,6 +62,8 @@ dependencies:
   iconify_flutter: ^0.0.5 
   dotted_border: ^2.1.0
   mobkit_dashed_border: ^0.0.5
+  google_fonts: ^6.1.0
+  google_maps_flutter: ^2.2.8
 
 
   

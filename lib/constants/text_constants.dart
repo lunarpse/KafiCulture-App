@@ -225,3 +225,7 @@ const String deliveryAdd = " Delivery Address";
 const String deliverydata =
     "145 . Main Street ,New Town, Kolkata 828108 ,West Bengal ,India";
 const String navText = "Back to Home";
+//Feedback-->new
+const String starquote="Rate your experience";
+const String commentquote ="Drop your comments below";
+const String hinttext ="Type your message here...";
