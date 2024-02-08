@@ -44,13 +44,18 @@ class _MyWidgetState extends ConsumerState<PaymentCart> {
                 width: double.infinity,
                 height: 80,
                 decoration: BoxDecoration(
+                    gradient: LinearGradient(colors: [
+                      Color.fromARGB(255, 17, 17, 17),
+                      Color.fromARGB(255, 39, 39, 41),
+                      Color(0xFF4D4F52)
+                    ], begin: Alignment.topLeft, end: Alignment.bottomRight),
                     borderRadius: BorderRadius.circular(20),
                     color: paymentcartdeccolor,
                     boxShadow: [
                       BoxShadow(
                         color: paymentcartboxshadow,
-                        spreadRadius: 3,
-                        blurRadius: 3,
+                        spreadRadius: 0.5,
+                        blurRadius: 1,
                         offset: Offset(0, 3),
                       )
                     ]),
@@ -92,6 +97,7 @@ class _MyWidgetState extends ConsumerState<PaymentCart> {
                                 // maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
+                                  color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
                                 ),
@@ -99,6 +105,7 @@ class _MyWidgetState extends ConsumerState<PaymentCart> {
                               Text(
                                 "\$ $amount2",
                                 style: TextStyle(
+                                  color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 16,
                                 ),
@@ -121,6 +128,7 @@ class _MyWidgetState extends ConsumerState<PaymentCart> {
                                     Text(
                                       cartquantity,
                                       style: TextStyle(
+                                          color: Colors.white,
                                           fontWeight: FontWeight.bold,
                                           fontSize: 16),
                                     ),
@@ -129,7 +137,10 @@ class _MyWidgetState extends ConsumerState<PaymentCart> {
                                     ),
                                     Text(
                                       "${widget.data["quantity"]}",
-                                      style: TextStyle(fontSize: 15),
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        color: Colors.white,
+                                      ),
                                     )
                                   ],
                                 ),
@@ -172,6 +183,7 @@ class _MyWidgetState extends ConsumerState<PaymentCart> {
                                       child: Text(
                                         widget.data["quantity"].toString(),
                                         style: TextStyle(
+                                            color: Colors.white,
                                             fontWeight: FontWeight.bold),
                                       ),
                                     ),
@@ -213,116 +225,5 @@ class _MyWidgetState extends ConsumerState<PaymentCart> {
                               ],
                             ))
                     ])));
-    // return Card(
-    //   // elevation: 0,
-    //   child: Container(
-    //     height: 120,
-    //     color: Colors.white,
-    //     padding: const EdgeInsets.all(8.0),
-    //     width: 100,
-    //     margin: EdgeInsets.all(4.0),
-    //     child: Row(
-    //       children: [
-    //         Container(
-    //           width: 100,
-    //           decoration: BoxDecoration(
-    //             borderRadius: BorderRadius.circular(50),
-    //             image: DecorationImage(
-    //                 fit: BoxFit.cover, image: AssetImage(widget.data["icon"])),
-    //             boxShadow: const [
-    //               BoxShadow(
-    //                 color: Colors.grey,
-    //                 offset: Offset(0, 2),
-    //                 blurRadius: 4,
-    //                 spreadRadius: 2,
-    //               ),
-    //             ],
-    //           ),
-    //         ),
-    //         SizedBox(width: 16),
-    //         Expanded(
-    //           child: Padding(
-    //             padding: const EdgeInsets.only(right: 16.0),
-    //             child: Column(
-    //               crossAxisAlignment: CrossAxisAlignment.start,
-    //               mainAxisAlignment: MainAxisAlignment.center,
-    //               children: [
-    //                 Text(
-    //                   widget.data["name"],
-    //                   maxLines: 1,
-    //                   overflow: TextOverflow.ellipsis,
-    //                   style: TextStyle(
-    //                     fontWeight: FontWeight.bold,
-    //                     fontSize: 18,
-    //                   ),
-    //                 ),
-    //                 Text(
-    //                   "\$ $amount2",
-    //                   style: TextStyle(
-    //                     fontWeight: FontWeight.bold,
-    //                     fontSize: 15,
-    //                   ),
-    //                 ),
-    //               ],
-    //             ),
-    //           ),
-    //         ),
-    //         showremove
-    //             ? remove
-    // : Row(
-    //     children: [
-    //       Container(
-    //         height: 30,
-    //         width: 30,
-    //         color: Colors.grey[300],
-    //         child: IconButton(
-    //             onPressed: () {
-    //               if (widget.data["quantity"] == 1) {
-    //                 setState(() {
-    //                   showremove = true;
-    //                 });
-    //               } else {
-    //                 ref
-    //                     .read(CartProvider.notifier)
-    //                     .decquant(widget.data["id"]);
-    //               }
-    //             },
-    //             icon: Icon(
-    //               Icons.remove,
-    //               size: 15,
-    //             )),
-    //       ),
-    //       Container(
-    //         padding: EdgeInsets.all(8.0),
-    //         child: Text(widget.data["quantity"].toString()),
-    //       ),
-    //       Container(
-    //         height: 30,
-    //         width: 30,
-    //         color: Colors.grey[300],
-    //         child: IconButton(
-    //             onPressed: () {
-    //               ref
-    //                   .read(CartProvider.notifier)
-    //                   .incquant(widget.data["id"]);
-    //             },
-    //             icon: Icon(
-    //               Icons.add,
-    //               size: 15,
-    //             )),
-    //       ),
-    // IconButton(
-    //     onPressed: () {
-    //       ref
-    //           .watch(CartProvider.notifier)
-    //           .removeitem(widget.data["id"]);
-    //     },
-    //     icon: Icon(Icons.delete))
-    //     ],
-    //               ),
-    //       ],
-    //     ),
-    //   ),
-    // );
   }
 }

@@ -254,21 +254,21 @@ const Color companynameboxdecorationlineargradcolor1 =
     Color.fromARGB(255, 229, 193, 159);
 const Color paymentapplineargradient1 = Color.fromRGBO(255, 136, 102, 0.67);
 const Color paymentapplineargradient2 = Color.fromRGBO(255, 221, 136, 0.28);
-const Color paymentapppricecolor = Colors.black;
-const Color loyalitypointcolor = Colors.green;
-const Color paymentapphotelcolor = Colors.blue;
+const Color paymentapppricecolor = Colors.white;
+const Color loyalitypointcolor = Colors.white;
+const Color paymentapphotelcolor = Colors.white;
 const Color paymentappexpansiontilegradient1 =
     Color.fromRGBO(255, 136, 102, 0.67);
 const Color paymentappexpansiontilegradient2 =
     Color.fromRGBO(255, 221, 136, 0.28);
-const Color recommendedtextcolor = Colors.black54;
+const Color recommendedtextcolor = Colors.white;
 const Color companynamecolors = Colors.black54;
 const Color showdialogbackgroundcolor1 = Color.fromRGBO(255, 136, 102, 0.67);
 const Color showdialogbackgroundcolor2 = Color.fromRGBO(255, 221, 136, 0.28);
 const Color paymentborderall = Color.fromARGB(255, 98, 2, 2);
-const Color paymentborderallgradient1 = Color.fromRGBO(226, 215, 212, 0.467);
+const Color paymentborderallgradient1 = Colors.black;
 const Color paymentborderallgradient2 = Color.fromRGBO(240, 214, 191, 1);
-const Color confirmcolor = Color.fromARGB(255, 255, 106, 7);
+const Color confirmcolor = Colors.white;
 const Color paymentdivdercolor = Colors.black;
 const Color payOnDeliveryBtn = Color.fromRGBO(143, 93, 58, 1);
 const Color checkboxSideColor = Colors.red;
@@ -278,7 +278,7 @@ const Color payOnDeliveryTextColor = Colors.black;
 
 //paymentcart
 const Color paymentcartdeccolor = Color.fromARGB(255, 247, 235, 231);
-const Color paymentcartboxshadow = Color.fromARGB(255, 87, 76, 76);
+const Color paymentcartboxshadow = Color.fromARGB(255, 42, 45, 49);
 const Color paymentcartboxshadoww = Colors.grey;
 const Color paymentcartdeccolor1 = Color.fromARGB(255, 110, 47, 24);
 const Color paymentcartcontainercolor = Color.fromARGB(255, 240, 232, 232);
@@ -376,3 +376,6 @@ const Color manageOrderTextColor = Colors.white;
 const Color feedbackbttnColor = Colors.brown;
 const Color feedbackBackShadow = Colors.brown;
 const Color bttnBoxColor = Color.fromARGB(255, 235, 211, 197);
+
+//Companyname
+const Color nameColor = Colors.white;
