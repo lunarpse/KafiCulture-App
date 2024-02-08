@@ -37,7 +37,7 @@ class Bottom extends ConsumerWidget {
           horizontal: 32,
           vertical: 16.0,
         ),
-        backgroundColor: bottomelevatebuttonbgcolor,
+        backgroundColor: bottomcheckoutcolor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8.0),
           side: BorderSide(
@@ -46,8 +46,9 @@ class Bottom extends ConsumerWidget {
         ),
       ),
       onPressed: () {
-        ref.read(TipProvider.notifier)
-          ..setgst(double.parse(gst.toStringAsFixed(2)));
+        ref
+            .read(TipProvider.notifier)
+            .setgst(double.parse(gst.toStringAsFixed(2)));
 
         showDialog(
           context: context,
@@ -58,9 +59,43 @@ class Bottom extends ConsumerWidget {
       },
       child: Text(
         delivery,
-        style: TextStyle(color: bottomcheckoutcolor),
+        style: TextStyle(
+            color: cookinginstructiontextcolor,
+            fontWeight: FontWeight.bold,
+            fontSize: 17),
       ),
     );
+
+    // ElevatedButton(
+    //   style: ElevatedButton.styleFrom(
+    //     padding: EdgeInsets.symmetric(
+    //       horizontal: 32,
+    //       vertical: 16.0,
+    //     ),
+    //     backgroundColor: bottomelevatebuttonbgcolor,
+    //     shape: RoundedRectangleBorder(
+    //       borderRadius: BorderRadius.circular(8.0),
+    //       side: BorderSide(
+    //         color: bottomroundrectanglebordercolor,
+    //       ),
+    //     ),
+    //   ),
+    //   onPressed: () {
+    //     ref.read(TipProvider.notifier)
+    //       ..setgst(double.parse(gst.toStringAsFixed(2)));
+
+    //     showDialog(
+    //       context: context,
+    //       builder: (context) {
+    //         return DeliveryDialog(coffee: coffee);
+    //       },
+    //     );
+    //   },
+    //   child: Text(
+    //     delivery,
+    //     style: TextStyle(color: bottomcheckoutcolor),
+    //   ),
+    // );
 
     return Container(
       padding: const EdgeInsets.only(
@@ -113,9 +148,8 @@ class Bottom extends ConsumerWidget {
             height: 2,
           ),
           Row(
-            mainAxisAlignment: coffee == true
-                ? MainAxisAlignment.center
-                : MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.center,
+            //: MainAxisAlignment.spaceAround,
             children: const [
               Icon(
                 Icons.receipt,
@@ -168,7 +202,7 @@ class Bottom extends ConsumerWidget {
                     horizontal: 32,
                     vertical: 16.0,
                   ),
-                  backgroundColor: Colors.white,
+                  backgroundColor: bottomcheckoutcolor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0),
                     side: BorderSide(
@@ -190,7 +224,7 @@ class Bottom extends ConsumerWidget {
                 child: Text(
                   checkout,
                   style: TextStyle(
-                      color: Colors.black,
+                      color: cookinginstructiontextcolor,
                       fontWeight: FontWeight.bold,
                       fontSize: 17),
                 ),
