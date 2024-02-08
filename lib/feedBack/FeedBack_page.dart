@@ -1,7 +1,9 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/constants/text_constants.dart';
@@ -14,244 +16,192 @@ import 'package:project_2/feedBack/yesrecieved.dart';
 import 'package:project_2/homepage/reusable_widgets/background_container_widget.dart';
 
 class FeedBackPage extends StatefulWidget {
-  const FeedBackPage({super.key});
+  const FeedBackPage({Key? key}) : super(key: key);
 
   @override
-  State<FeedBackPage> createState() => _FeedBackPageState();
+  State<FeedBackPage> createState() => _MapScreenState();
 }
 
-class _FeedBackPageState extends State<FeedBackPage> {
-  bool isYesSelected = false;
-  bool feedbackGiven = false;
-  bool isExpanded = false;
-  bool isNoSelected = false;
+class _MapScreenState extends State<FeedBackPage> {
+  late GoogleMapController mapController;
+  bool isButtonclicked5 = false;
+  List<bool> _starStates = [false, false, false, false, false];
+  List<String> _emojis = ['😡', '🙁', '😐', '🙂', '😀'];
+  static const _initialCameraPosition = CameraPosition(
+    target: LatLng(37.773972, -122.431297),
+    zoom: 12,
+  );
 
-  void showFeedBckConfirmation() {
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
+
+  List<bool> starRatings = [false, false, false, false, false];
+
+  void updateStarRating(int index) {
     setState(() {
-      feedbackGiven = true;
+      for (int i = 0; i < starRatings.length; i++) {
+        starRatings[i] = i <= index;
+      }
     });
   }
 
-  void toggleExpansion() {
+  _onStarPressed(int index) {
     setState(() {
-      isExpanded = !isExpanded;
+      for (int i = 0; i < _starStates.length; i++) {
+        _starStates[i] = i == index;
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final FeedbackBloc feedbackBloc = FeedbackBloc();
-    return BlocConsumer<FeedbackBloc, FeedbackState>(
-      bloc: feedbackBloc,
-      listenWhen: (previous, current) => current is FeedbackActionState,
-      buildWhen: (previous, current) => current is! FeedbackActionState,
-      listener: (context, state) {
-        if (state is FeedbackYesButtonClickedState) {
-          setState(() {
-            isYesSelected = !isYesSelected;
-            if (isYesSelected) {
-              isNoSelected = false;
-            }
-          });
-          showModalBottomSheet(
-            context: context,
-            builder: (context) {
-              return yesreceived();
-            },
-          );
-        } else if (state is FeedbackNoButtonClickedState) {
-          setState(() {
-            isNoSelected = !isNoSelected;
-            if (isNoSelected) {
-              isYesSelected = false;
-            }
-          });
-          showModalBottomSheet(
-            context: context,
-            builder: (context) {
-              return orderrecieved();
-            },
-          );
-        } else if (state is FeedbackSubmitButtonClickedState) {
-          showModalBottomSheet(
-            context: context,
-            builder: (context) {
-              return ThankYou();
-            },
-          ).whenComplete(
-              () => Navigator.pushReplacementNamed(context, "/home"));
-        }
-      },
-      builder: (context, state) {
-        return Scaffold(
-          appBar: AppbarWidget(
-            incart: false,
-          ),
-          drawer: DrawerScreen(),
-          body: BackgroundContainerWidget(
-            opacity: 0.5,
-            x: 7.0,
-            y: 7.0,
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Image(
-                      image: const AssetImage(
-                        'assets/images/map view.png',
+    return Scaffold(
+      appBar: AppbarWidget(
+        
+      ),
+      
+      backgroundColor:feedbackbgcolor,
+      body: Expanded(
+        flex: 1,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              height: 400, // Set a fixed height for the map container
+              child: GoogleMap(
+                onMapCreated: _onMapCreated,
+                myLocationButtonEnabled: false,
+                zoomControlsEnabled: false,
+                initialCameraPosition: _initialCameraPosition,
+                markers: {
+                  Marker(
+                    markerId: MarkerId('Marker'),
+                    position: LatLng(37.773972, -122.431297),
+                    infoWindow: InfoWindow(title: 'google marker'),
+                  ),
+                },
+              ),
+            ),
+            SizedBox(height: 10),
+            Expanded(
+              flex: 1,
+              child: SingleChildScrollView(
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  //color: Colors.black12,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        starquote,
+                        style: GoogleFonts.roboto(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: submitcolor),
                       ),
-                      height: 350,
-                      width: MediaQuery.of(context).size.width - 10,
-                      fit: BoxFit.fill,
-                    ),
-                    const SizedBox(height: 20),
-                    Container(
-                      child: const Text(
-                        orderconfirmation,
-                        style: TextStyle(fontSize: 30),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            feedbackBloc.add(FeedbackYesButtonClickedEvent());
-                          },
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(50.0),
-                            child: Container(
-                              width: 100,
-                              height: 50,
-                              color: isYesSelected ? selectedyes : notselected,
-                              child: Center(
-                                child: Text(
-                                  yes,
-                                  style: TextStyle(color: feedbacktextcolor),
+                      SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: List.generate(
+                          5,
+                          (index) {
+                            return GestureDetector(
+                              onTap: () {
+                                updateStarRating(index);
+                                _onStarPressed(index);
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 8),
+                                child: Icon(
+                                  starRatings[index]
+                                      ? Icons.star
+                                      : Icons.star_outline_sharp,
+                                  size: 38,
+                                  color: starcolor,
                                 ),
                               ),
-                            ),
-                          ),
+                            );
+                          },
                         ),
-                        InkWell(
-                          onTap: () {
-                            feedbackBloc.add(FeedbackNoButtonClickedEvent());
-                          },
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(25.0),
-                            child: Container(
-                              width: 100,
-                              height: 50,
-                              color: isNoSelected
-                                  ? feedbackselectedno
-                                  : notselected,
-                              child: Center(
-                                child: Text(
-                                  no,
-                                  style: TextStyle(color: feedbacktextcolor),
-                                ),
-                              ),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ExpansionTile(
-                        collapsedBackgroundColor: feedbackcollapsebgcolor,
-                        backgroundColor: feedbackcollapsebackgroundcolor,
-                        collapsedTextColor: feedbackcollapsetextcolor,
-                        textColor: feedbackcollapsetextcolor,
-                        title: Center(child: Text(feedbackbox)),
-                        initiallyExpanded: isExpanded,
+                      ),
+                      SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(
-                            height: 180,
-                            color: feedbackcollapsetextcolor,
-                            child: Column(
-                              children: [
-                                TextField(
-                                  cursorColor: feedbackcursorrcolor,
-                                  style: TextStyle(
-                                    color: feedbackblack,
-                                    fontSize: 20,
-                                  ),
-                                  maxLines: 3,
-                                  decoration: InputDecoration(
-                                      hintText: feedbackmessage),
-                                ),
-                                const SizedBox(
-                                  height: 15,
-                                ),
-                                ElevatedButton(
-                                    style: ButtonStyle(
-                                        backgroundColor:
-                                            MaterialStateProperty.all<Color>(
-                                                (feedbackcollapsebgcolor))),
-                                    onPressed: () {
-                                      setState(() {
-                                        isExpanded = false;
-                                      });
-                                    },
-                                    child: Text(submit,style:TextStyle(color: textcolour),))
-                              ],
-                            ),
-                          )
+                          Text(
+                            _starStates.indexWhere((element) => element) != -1
+                                ? _emojis[_starStates
+                                    .indexWhere((element) => element)]
+                                : '',
+                            style: TextStyle(fontSize: 40),
+                          ),
                         ],
                       ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Container(
-                      height: 200,
-                      width: MediaQuery.sizeOf(context).width - 20,
-                      decoration: BoxDecoration(
-                        color: textcolour,
-                        borderRadius: BorderRadius.circular(14),
+                      SizedBox(height: 10),
+                      Text(
+                        commentquote,
+                        style: GoogleFonts.roboto(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: commentbox),
                       ),
-                      child: Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            const Text(
-                              rating,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 20),
-                            ),
-                            RatingStar(),
-                            ElevatedButton(
-                                style: ButtonStyle(
-                                    backgroundColor:
-                                        MaterialStateProperty.all<Color>(
-                                            (feedbackcollapsebgcolor))),
-                                onPressed: () {
-                                  feedbackBloc
-                                      .add(FeedbackSubmitButtonClickedEvent());
-                                },
-                                child: Text(submit,style:TextStyle(color: textcolour),)),
-                          ],
+                      SizedBox(height: 10),
+                      Container(
+                        margin: EdgeInsets.all(10),
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(width: 1),
+                          color: commentboxcolor,
+                        ),
+                        height: 150,
+                        child: TextFormField(
+                          cursorColor: textcursorcolor,
+                          style: TextStyle(
+                            color:navTextColor,
+                            fontSize: 20,
+                          ),
+                          maxLines: 4,
+                          decoration: InputDecoration(
+                            hintText: hinttext,
+                            hintStyle: GoogleFonts.roboto(),
+                            border: InputBorder.none,
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    )
-                  ],
+                      Center(
+                        child: ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              isButtonclicked5 = !isButtonclicked5;
+                            });
+                            Navigator.pushNamedAndRemoveUntil(
+                                context, '/home', (route) => false);
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary:
+                                isButtonclicked5 ? isclickedcolor : notclickedcolor,
+                            minimumSize: Size(200, 50),
+                          ),
+                          child: 
+                            Text(submit,
+                            style: GoogleFonts.roboto(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: submitcolor,
+                            ),
+                            ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        );
-      },
+          ],
+        ),
+      ),
     );
   }
 }
