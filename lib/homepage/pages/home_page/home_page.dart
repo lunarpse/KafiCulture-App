@@ -9,6 +9,7 @@ import 'package:project_2/homepage/constant_homepage/constant_populars.dart';
 import 'package:project_2/customdrawer/drawerScreen.dart';
 
 import '../../../appbar/appbar_widget.dart';
+import '../../../appbar/custom_appbar_widget.dart';
 import '../../reusable_widgets/background_container_widget.dart';
 import 'latest_offerings/offerings_widget.dart';
 import 'populars/popular_widget.dart';
@@ -23,11 +24,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  @override
-  void initState() {
-    super.initState();
-  }
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
+  @override
   Widget build(BuildContext context) {
     final HomeBloc homeBloc = HomeBloc();
     return BlocConsumer<HomeBloc, HomeState>(
@@ -42,79 +41,99 @@ class _HomePageState extends State<HomePage> {
       },
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: Color.fromARGB(255, 12, 15, 20),
-          appBar: AppbarWidget(),
-          // extendBodyBehindAppBar: true,
+          key: _scaffoldKey,
+          // appBar: AppbarWidget(),
+          drawer: DrawerScreen(),
+          extendBodyBehindAppBar: true,
           body: BackgroundContainerWidget(
-            // opacity: 0.7,
-            // x: 2.0,
-            // y: 2.0,
             opacity: 1.0,
             x: 1.0,
             y: 1.0,
-            child: Padding(
-              padding: EdgeInsets.only(top: 12, left: 10, right: 5, bottom: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+            child: SafeArea(
+                child: Container(
+              height: MediaQuery.of(context).size.height,
+              child: Stack(
                 children: [
-                  Text(
-                    "KAFICULTURE",
-                    style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
+                  CustomAppbarWidget(
+                    scaffoldKey: _scaffoldKey,
                   ),
-                  Text(
-                    "Where every cup tells a story",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'Ephesis',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
-                        letterSpacing: 1),
-                  ),
-                  SizedBox(height: 10),
-                  Expanded(
-                    child: ListView(
-                      children: [
-                        //---------------->Latest Offerings
-                        Padding(
-                          padding: EdgeInsets.only(top: 10, left: 5),
-                          child: HomeHeading(
-                              headingText: heading1,
-                              headingText_fontSize: heading1_fontSize),
-                        ),
-
-                        //---------------->Latest Offerings widget
-                        OfferingsWidget(),
-
-                        //---------------->Categories
-                        Padding(
-                            padding: EdgeInsets.only(top: 10, left: 5),
-                            child: HomeHeading(
-                                headingText: heading2,
-                                headingText_fontSize: heading2_fontSize)),
-
-                        //---------------->Categories widget
-                        HandCraftedWidget(),
-
-                        // ---------------------------->Popular
-                        Padding(
-                            padding: EdgeInsets.only(top: 10, left: 5),
-                            child: HomeHeading(
-                                headingText: heading3,
-                                headingText_fontSize: heading3_fontSize)),
-
-                        //-------------------------->popular widget
-                        PopularWidget(),
-                      ],
+                  Positioned(
+                    top: 95,
+                    bottom: 0,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 15),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "KAFICULTURE",
+                            style: TextStyle(
+                                fontSize: 32,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
+                          ),
+                          Transform.translate(
+                            offset: Offset(0, -5),
+                            child: Text(
+                              "Where every cup tells a story",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'Ephesis',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 30,
+                                  letterSpacing: 1),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
+                  Positioned(
+                    top: 180,
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 5),
+                      height: MediaQuery.of(context).size.height - 235,
+                      width: MediaQuery.of(context).size.width,
+                      child: ListView(
+                        children: [
+                          //---------------->Latest Offerings
+                          Padding(
+                            padding: EdgeInsets.only(top: 10, left: 8),
+                            child: HomeHeading(
+                                headingText: heading1,
+                                headingText_fontSize: heading1_fontSize),
+                          ),
+
+                          // ---------------->Latest Offerings widget
+                          OfferingsWidget(),
+
+                          //---------------->Categories
+                          Padding(
+                              padding: EdgeInsets.only(top: 7, left: 8),
+                              child: HomeHeading(
+                                  headingText: heading2,
+                                  headingText_fontSize: heading2_fontSize)),
+
+                          //---------------->Categories widget
+                          HandCraftedWidget(),
+
+                          // ---------------------------->Popular
+                          Padding(
+                              padding: EdgeInsets.only(top: 3, left: 8),
+                              child: HomeHeading(
+                                  headingText: heading3,
+                                  headingText_fontSize: heading3_fontSize)),
+
+                          //-------------------------->popular widget
+                          PopularWidget(),
+                        ],
+                      ),
+                    ),
+                  )
                 ],
               ),
-            ),
+            )),
           ),
-          drawer: DrawerScreen(),
         );
       },
     );

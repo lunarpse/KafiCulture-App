@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, avoid_print
+// ignore_for_file: prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -61,33 +61,38 @@ class _PopularState extends State<PopularWidget> {
             var popular = populars[index];
             final image = popular.image;
             final name = popular.name;
-            final totalRating = popular.totalRatings;
             final rating = double.parse(popular.rating);
             final price = popular.price;
 
             return Card(
-              // elevation: 12,
-              // shadowColor: Colors.grey,
+              elevation: 20,
+              // shadowColor: Color.fromARGB(255, 6, 6, 39),
+              shadowColor: Color.fromARGB(255, 4, 4, 71),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15)),
               color: Colors.transparent,
-              // color: Color.fromRGBO(16, 16, 16, 1),
               child: Container(
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    // boxShadow: [BoxShadow()],
-                    gradient: LinearGradient(colors: [
-                      Color.fromARGB(255, 0, 0, 0),
-                      Color.fromARGB(255, 21, 21, 22),
-                      Color(0xFF4D4F52)
-                    ], begin: Alignment.topLeft, end: Alignment.bottomRight)),
+                  borderRadius: BorderRadius.circular(15),
+                  // boxShadow: [BoxShadow()],
+                  // gradient: LinearGradient(colors: [
+                  //   Color.fromARGB(255, 0, 0, 0),
+                  //   Color.fromARGB(255, 21, 21, 22),
+                  //   Color(0xFF4D4F52)
+                  // ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+                  gradient: LinearGradient(colors: [
+                    Colors.black,
+                    Color.fromARGB(255, 17, 17, 19),
+                    Color.fromARGB(255, 50, 51, 53)
+                  ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+                ),
                 child: InkWell(
                   onTap: () => {
                     // Navigator.pushNamed(context, '/popularspage', arguments: popular)
                     homeBloc.add(HomePopularsNavigateEvent(popular))
                   },
                   child: Padding(
-                    padding: const EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(8.5),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -104,7 +109,7 @@ class _PopularState extends State<PopularWidget> {
                           ),
                         )),
                         Padding(
-                          padding: const EdgeInsets.only(top: 8),
+                          padding: const EdgeInsets.only(top: 8, left: 5),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -113,46 +118,52 @@ class _PopularState extends State<PopularWidget> {
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: name_fontSize,
-                                  // fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 3),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
-                                      children: List.generate(5, (index) {
-                                        return Icon(
-                                          index < rating
-                                              ? Icons.star
-                                              : Icons.star_border_purple500,
-                                          color: Colors.amber,
-                                          size: 15,
-                                        );
-                                      }),
-                                    ),
-                                    Text(
-                                      "($totalRating Ratings)",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: totalRating_fontSize,
-                                        // fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(height: 3),
-                              Text(
-                                "\$ $price",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: rating_fontSize,
                                   fontWeight: FontWeight.w500,
                                 ),
+                              ),
+                              Row(
+                                children: [
+                                  Row(
+                                    children: List.generate(5, (index) {
+                                      return Icon(
+                                        index < rating
+                                            ? Icons.star
+                                            : Icons.star_border_purple500,
+                                        color: Colors.orange.shade700,
+                                        size: 15,
+                                      );
+                                    }),
+                                  ),
+                                  Text(
+                                    "  ($rating)",
+                                    style: TextStyle(
+                                      color: Color.fromARGB(255, 221, 221, 221),
+                                      fontSize: rating_fontSize,
+                                      // fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 3),
+                              Row(
+                                children: [
+                                  Text(
+                                    "\$ ",
+                                    style: TextStyle(
+                                      color: Colors.orange.shade700,
+                                      fontSize: price_fontSize,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  Text(
+                                    "$price",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: price_fontSize,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),

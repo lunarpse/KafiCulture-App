@@ -46,7 +46,6 @@ class _OfferingsState extends State<OfferingsWidget> {
       builder: (context, state) {
         return SizedBox(
           height: containerheight,
-          // width: MediaQuery.of(context).size.width,
           child: PageView.builder(
             itemCount: offers.length,
             // padEnds: false,
@@ -54,13 +53,12 @@ class _OfferingsState extends State<OfferingsWidget> {
             physics: BouncingScrollPhysics(),
             controller: PageController(
               viewportFraction: pageController_viewportFraction,
-              initialPage: pageController_initialPage,
             ),
             itemBuilder: (context, index) {
               var offer = offers[index];
               final name = offer.name;
               final image = offer.image;
-              final totalRating = offer.totalRatings;
+              final offerPrice = offer.offerPrice;
               final rating = double.parse(offer.rating);
 
               return InkWell(
@@ -75,15 +73,15 @@ class _OfferingsState extends State<OfferingsWidget> {
                       decoration: BoxDecoration(
                         borderRadius:
                             BorderRadius.circular(margin_borderRadius),
-                        // boxShadow: [
-                        //   BoxShadow(
-                        //     color: margin_boxShadow_color,
-                        //     offset: Offset(margin_boxShadow_offSet_startPoint,
-                        //         margin_boxShadow_offSet_endPoint),
-                        //     blurRadius: margin_boxShadow_blurRadius,
-                        //     spreadRadius: margin_boxShadow_spreadRadius,
-                        //   ),
-                        // ],
+                        boxShadow: [
+                          BoxShadow(
+                            color: margin_boxShadow_color,
+                            offset: Offset(margin_boxShadow_offSet_startPoint,
+                                margin_boxShadow_offSet_endPoint),
+                            blurRadius: margin_boxShadow_blurRadius,
+                            spreadRadius: margin_boxShadow_spreadRadius,
+                          ),
+                        ],
                       ),
                       child: Hero(
                         tag: offer,
@@ -96,18 +94,24 @@ class _OfferingsState extends State<OfferingsWidget> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                      margin:
+                          EdgeInsets.symmetric(horizontal: 8, vertical: 7.5),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                         gradient: LinearGradient(
-                            colors: [Colors.transparent, Colors.black],
+                            colors: [
+                              Colors.transparent,
+                              Colors.transparent.withOpacity(0.7),
+                              const Color.fromARGB(255, 10, 10, 10)
+                              // Colors.black
+                            ],
                             begin: Alignment.center,
                             end: Alignment.bottomCenter),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 22, vertical: 23),
+                          horizontal: 25, vertical: 18),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -116,7 +120,7 @@ class _OfferingsState extends State<OfferingsWidget> {
                               style: TextStyle(
                                   color: name_color,
                                   fontSize: name_fontSize,
-                                  fontWeight: FontWeight.w600)),
+                                  fontWeight: FontWeight.w700)),
                           Row(
                             children: [
                               Row(
@@ -125,7 +129,7 @@ class _OfferingsState extends State<OfferingsWidget> {
                                     index < rating
                                         ? Icons.star
                                         : Icons.star_border,
-                                    color: Colors.amber,
+                                    color: Colors.orange.shade700,
                                     size: 16,
                                   );
                                 }),
@@ -134,22 +138,34 @@ class _OfferingsState extends State<OfferingsWidget> {
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: totalRating_padding_horizondal),
                                 child: Text(
-                                  "($totalRating Ratings)",
+                                  "($rating)",
                                   style: TextStyle(
-                                      fontSize: totalRating_fontSize,
-                                      fontWeight: FontWeight.w500,
-                                      color: totalRating_Color),
+                                      fontSize: rating_fontSize,
+                                      fontWeight: FontWeight.w700,
+                                      color: rating_color),
                                 ),
                               )
                             ],
                           ),
-                          Text(
-                            "$rating",
-                            style: TextStyle(
-                              fontSize: rating_fontSize,
-                              fontWeight: FontWeight.w500,
-                              color: rating_color,
-                            ),
+                          Row(
+                            children: [
+                              Text(
+                                "\$ ",
+                                style: TextStyle(
+                                  fontSize: offerprice_fontSize,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.orange.shade700,
+                                ),
+                              ),
+                              Text(
+                                "$offerPrice",
+                                style: TextStyle(
+                                  fontSize: offerprice_fontSize,
+                                  fontWeight: FontWeight.w600,
+                                  color: offerprice_color,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
