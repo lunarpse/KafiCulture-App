@@ -152,7 +152,7 @@ const String confirm = "Proceed to Pay";
 const String otherpaymentmethod = "Other Payment Method";
 const String incltaxes = "(inc.all taxes)";
 //dialogbox
-const String addon = "Addons";
+const String addon = "Add-Ons";
 const String currentitem = "CURRENT ITEM";
 const String adrname = "Name";
 const String adrename = "Enter the Name";

@@ -151,10 +151,10 @@ const Color genielightthemebgcolor = Color.fromARGB(255, 235, 228, 215);
 const Color genieappbarthemecolor = Color.fromARGB(255, 134, 89, 22);
 
 //cookiespage color drinkspage and snacks color
-const Color cookieboxdeccolor = Colors.white;
-const Color cookieboxshadowcolor = Colors.grey;
-const Color cookieiconstarcolor = Colors.amber;
-const Color cookieratingtextcolor = Colors.red;
+// const Color cookieboxdeccolor = Colors.white;
+const Color cookieboxshadowcolor = Color.fromARGB(255, 28, 28, 29);
+Color cookieiconstarcolor = Colors.orange.shade700;
+const Color cookieratingtextcolor = Colors.white;
 
 //detailspage
 Color detailsglasscontainercolor = Colors.white.withOpacity(0.2);
@@ -164,38 +164,49 @@ const Color detailsratingcolor = Colors.black;
 const Color detailstotalratingscolor = Colors.black;
 Color detailsboxdecorationcolor = Colors.black.withOpacity(0.6);
 Color detailspriceboxdecorationcolor = Colors.grey.shade400;
-Color detailsdiscountboxcolor = Colors.orange.shade800;
+Color detailsdiscountboxcolor = Colors.orange.shade700;
 Color detailsboxdecoration1color = Colors.black.withOpacity(0.8);
 const Color detailsiconbuttoncolor = Colors.white;
 Color detailsboxdecoration2color = Colors.black.withOpacity(0.8);
-const Color detailstextcolor = Colors.black;
-const Color detailsreadmoreshowelesscolor = Colors.orange;
-const Color detailsstarcolor = Colors.orange;
+const Color detailstextcolor = Colors.white;
+const Color detailscolor = Color.fromARGB(255, 221, 221, 221);
+Color detailsreadmoreshowelesscolor = Colors.orange.shade700;
+Color detailsstarcolor = Colors.orange.shade700;
 const Color detailsshadowcolor = Colors.grey;
 Color detailspricefontcolor = Colors.grey.shade400;
 Color detailsboxshadowcolor = Colors.grey.withOpacity(0.5);
 const Color detailsboxcolor = Colors.white;
-const Color detailssizebuttonbgcolor = Color.fromRGBO(143, 93, 58, 1);
-const Color detailsshoppingbagcolor = Colors.orange;
-const Color detailsshoppingcartcolor = Colors.orange;
-const Color detailsaddtocartbuttoncolor = Color.fromRGBO(143, 93, 58, 1);
-Color detailsselectedindexbordercolor = Colors.brown.shade900;
-const Color detailsbottomsheetboxcolor = Color.fromRGBO(143, 93, 58, 0.8);
+const Color detailssizebuttonbgcolor = Colors.black;
+Color detailsshoppingbagcolor = Colors.white;
+const Color detailsshoppingcartcolor = Color.fromARGB(255, 255, 117, 31);
+const Color detailsaddtocartbuttoncolor = Colors.black;
+const Color detailsselectedindexbordercolor = Color.fromARGB(255, 17, 17, 19);
+// const Color detailsselectedindexbordercolor = Color.fromARGB(255, 173, 86, 31);
+const Color detailsbottomsheetboxcolor = Colors.black;
 const Color detailsdoneiconcolor = Colors.green;
-const Color detailsratingstarcolor = Color.fromARGB(255, 248, 231, 77);
+Color detailsratingstarcolor = Colors.orange.shade700;
+Color detailsUnselectedindexbordercolor = Colors.grey.shade800;
+const Color bottomsheetElevatedButtonBackgroundColor =
+    Color.fromARGB(255, 173, 86, 31);
+const Color bottomsheetOutlinedButtonBackgroundColor =
+    Color.fromARGB(255, 173, 86, 31);
+const Color bottomsheetOutlinedButtonTextColor =
+    Color.fromARGB(255, 255, 117, 31);
 
 //dailogbox color
-Color dialogboxcheckboxtilecolor = Colors.grey.withOpacity(0.4);
-const Color dialogboxbordersidecolor = Color.fromRGBO(168, 93, 38, 1);
-const Color dialogboxaddonnamecolor = Color.fromRGBO(168, 93, 38, 1);
-const Color dialogboxactivecolor = Color.fromRGBO(168, 93, 38, 1);
+Color dialogboxcheckboxtilecolor = Colors.grey.shade400;
+const Color dialogboxbordersidecolor = Color.fromARGB(255, 201, 93, 26);
+const Color dialogboxaddonnamecolor = Color.fromARGB(255, 190, 88, 25);
+const Color dialogboxactivecolor = Color.fromARGB(255, 201, 93, 26);
 const Color dialogboxcheckcolor = Colors.white;
 const Color dialogboxdivcolor = Colors.black;
 Color dialogboxboxdecorationcolor = Colors.black.withOpacity(0.7);
 const Color dialogboxcurrentitemcolor = Colors.white60;
 const Color dialogboxproductnamecolor = Colors.white;
 const Color dialogboxpricetextcolor = Colors.white;
-const Color dialogboxelevatebuttonbgcolor = Color.fromRGBO(168, 93, 38, 1);
+const Color dialogboxdollarsigncolor = Color.fromARGB(255, 201, 93, 26);
+// const Color dialogboxelevatebuttonbgcolor = Color.fromRGBO(168, 93, 38, 1);
+const Color dialogboxelevatebuttonbgcolor = Color.fromARGB(255, 173, 86, 31);
 
 //background_container_widget
 const Color bgcontainercolor = Color.fromARGB(255, 248, 205, 189);

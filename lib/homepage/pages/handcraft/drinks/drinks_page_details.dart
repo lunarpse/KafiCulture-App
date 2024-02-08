@@ -19,6 +19,7 @@ class DrinksPageDetails extends StatefulWidget {
 
 class _DrinksPageDetailsState extends State<DrinksPageDetails> {
   List<JsonModel> cookies = [];
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -36,12 +37,15 @@ class _DrinksPageDetailsState extends State<DrinksPageDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppbarWidget(),
+      key: _scaffoldKey,
+      // appBar: AppbarWidget(),
+      extendBodyBehindAppBar: true,
       drawer: DrawerScreen(),
       body: DetailsPageWidget(
         details: widget.detail,
         fetchProducts: cookies,
         nextPage: '/cookiesdetails',
+        scaffoldKey: _scaffoldKey,
       ),
     );
   }

@@ -19,6 +19,7 @@ class SnacksDetailsPage extends StatefulWidget {
 
 class _SnacksDetailsPageState extends State<SnacksDetailsPage> {
   List<JsonModel> drinks = [];
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -37,12 +38,15 @@ class _SnacksDetailsPageState extends State<SnacksDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppbarWidget(),
+      key: _scaffoldKey,
+      // appBar: AppbarWidget(),
+      extendBodyBehindAppBar: true,
       drawer: DrawerScreen(),
       body: DetailsPageWidget(
         details: widget.detail,
         fetchProducts: drinks,
         nextPage: '/drinksdetails',
+        scaffoldKey: _scaffoldKey,
       ),
     );
   }

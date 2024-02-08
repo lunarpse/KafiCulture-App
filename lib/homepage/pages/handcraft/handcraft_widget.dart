@@ -26,7 +26,7 @@ class HandCraftedWidget extends StatelessWidget {
       },
       builder: (context, state) {
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
           child: GridView(
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
@@ -49,19 +49,19 @@ class HandCraftedWidget extends StatelessWidget {
                           image: AssetImage("assets/images/snacks.jpg"),
                           fit: BoxFit.fill,
                         ),
-                        // boxShadow: [
-                        //   BoxShadow(
-                        //     color: boxShadow_color,
-                        //     blurRadius: boxShadow_blurRadius,
-                        //     spreadRadius: boxShadow_spreadRadius,
-                        //     offset: Offset(boxShadow_offSet_startPoint,
-                        //         boxShadow_offSet_endPoint),
-                        //   )
-                        // ],
+                        boxShadow: [
+                          BoxShadow(
+                            color: boxShadow_color1,
+                            blurRadius: boxShadow_blurRadius,
+                            spreadRadius: boxShadow_spreadRadius,
+                            offset: Offset(boxShadow_offSet_startPoint,
+                                boxShadow_offSet_endPoint),
+                          )
+                        ],
                         shape: BoxShape.circle,
                       )),
                     ),
-                    SizedBox(height: 5),
+                    SizedBox(height: 8),
                     Text(
                       categories1,
                       style: TextStyle(
@@ -86,20 +86,19 @@ class HandCraftedWidget extends StatelessWidget {
                           image: AssetImage("assets/images/drinks.jpg"),
                           fit: BoxFit.fill,
                         ),
-                        // boxShadow: [
-                        //   BoxShadow(
-                        //     color: boxShadow_color
-                        //         .withOpacity(boxShadow_color_opacity),
-                        //     blurRadius: boxShadow_blurRadius,
-                        //     spreadRadius: boxShadow_spreadRadius,
-                        //     offset: Offset(boxShadow_offSet_startPoint,
-                        //         boxShadow_offSet_endPoint),
-                        //   )
-                        // ],
+                        boxShadow: [
+                          BoxShadow(
+                            color: boxShadow_color2,
+                            blurRadius: boxShadow_blurRadius,
+                            spreadRadius: boxShadow_spreadRadius,
+                            offset: Offset(boxShadow_offSet_startPoint,
+                                boxShadow_offSet_endPoint),
+                          )
+                        ],
                         shape: BoxShape.circle,
                       )),
                     ),
-                    SizedBox(height: 5),
+                    SizedBox(height: 8),
                     Text(
                       categories2,
                       style: TextStyle(
@@ -124,20 +123,19 @@ class HandCraftedWidget extends StatelessWidget {
                           image: AssetImage("assets/images/cookies.jpg"),
                           fit: BoxFit.fill,
                         ),
-                        // boxShadow: [
-                        //   BoxShadow(
-                        //     color: boxShadow_color
-                        //         .withOpacity(boxShadow_color_opacity),
-                        //     blurRadius: boxShadow_blurRadius,
-                        //     spreadRadius: boxShadow_spreadRadius,
-                        //     offset: Offset(boxShadow_offSet_startPoint,
-                        //         boxShadow_offSet_endPoint),
-                        //   )
-                        // ],
+                        boxShadow: [
+                          BoxShadow(
+                            color: boxShadow_color3,
+                            blurRadius: boxShadow_blurRadius,
+                            spreadRadius: boxShadow_spreadRadius,
+                            offset: Offset(boxShadow_offSet_startPoint,
+                                boxShadow_offSet_endPoint),
+                          )
+                        ],
                         shape: BoxShape.circle,
                       )),
                     ),
-                    SizedBox(height: 5),
+                    SizedBox(height: 8),
                     Text(
                       categories3,
                       style: TextStyle(

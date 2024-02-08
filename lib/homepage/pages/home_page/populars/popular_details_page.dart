@@ -18,31 +18,56 @@ class PopularDetailsPage extends StatefulWidget {
 }
 
 class _PopularDetailsPageState extends State<PopularDetailsPage> {
-  List<JsonModel> offers = [];
+  List<JsonModel> drinks = [];
+  List<JsonModel> cookies = [];
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-
-    fetchOffers();
+    if (widget.popular.category == "Coffee") {
+      fetchCookies();
+    } else if (widget.popular.category == "Cookies") {
+      fetchDrinks();
+    } else {
+      fetchDrinks();
+    }
   }
 
-  Future<void> fetchOffers() async {
-    print("fetchOffers Called");
-    offers = await ApiService.fetchOffersData();
+  Future<void> fetchDrinks() async {
+    print("fetchDrinks Called");
+    drinks = await ApiService.fetchCoffeeData();
     setState(() {});
-    print("fetchOffers Completed");
+    print("fetchDrinks Completed");
+  }
+
+  Future<void> fetchCookies() async {
+    print("fetchCookies Called");
+    cookies = await ApiService.fetchCookiesData();
+    setState(() {});
+    print("fetchCookies Completed");
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppbarWidget(),
+      key: _scaffoldKey,
+      // appBar: AppbarWidget(),
+      extendBodyBehindAppBar: true,
       drawer: DrawerScreen(),
       body: DetailsPageWidget(
         details: widget.popular,
-        fetchProducts: offers,
-        nextPage: '/offerspage',
+        fetchProducts: widget.popular.category == "Coffee"
+            ? cookies
+            : widget.popular.category == "Cookies"
+                ? drinks
+                : drinks,
+        nextPage: widget.popular.category == "Coffee"
+            ? '/cookiesdetails'
+            : widget.popular.category == "Cookies"
+                ? '/drinksdetails'
+                : '/drinksdetails',
+        scaffoldKey: _scaffoldKey,
       ),
     );
   }
