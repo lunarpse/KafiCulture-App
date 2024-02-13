@@ -35,17 +35,28 @@ class DetailsPageWidget extends ConsumerStatefulWidget {
 class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
   int selectedIndex = 0;
   int quantity = 1;
-  var addonprice = 0;
+  var addonprice = 0.0;
+
   List<AddonModel> addons = [];
+  late var offerPrice;
+  //late var offerPrice2;
+
+  @override
+  void initState() {
+    super.initState();
+    //  offerPrice2 = widget.details.offerPrice;
+    offerPrice = widget.details.offerPrice;
+  }
 
   @override
   Widget build(BuildContext context) {
     final bodyHeight = MediaQuery.of(context).size.height;
     final bodyWidth = MediaQuery.of(context).size.width;
 
+    final name = widget.details.name;
     final func = ref.read(CartProvider.notifier);
     final image = widget.details.image;
-    final name = widget.details.name;
+
     final description = widget.details.description;
 
     final price1 = selectedIndex == 0
@@ -57,12 +68,13 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
     final price = double.parse((quantity * price1).toStringAsFixed(2));
 
     final offerPrice1 = selectedIndex == 0
-        ? widget.details.offerPrice
+        ? offerPrice
         : selectedIndex == 1
-            ? double.parse((widget.details.offerPrice * 2).toStringAsFixed(2))
-            : double.parse((widget.details.offerPrice * 3).toStringAsFixed(2));
+            ? double.parse((offerPrice * 2).toStringAsFixed(2))
+            : double.parse((offerPrice * 3).toStringAsFixed(2));
 
-    var offerPrice = double.parse((quantity * offerPrice1).toStringAsFixed(2));
+    var offerPrice2 = quantity * offerPrice1;
+    offerPrice2 = double.parse((offerPrice2 + addonprice).toStringAsFixed(2));
 
     final discount = widget.details.discount;
     final rating = widget.details.rating;
@@ -180,7 +192,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "\$ $offerPrice",
+                                        "\$ $offerPrice2",
                                         style: TextStyle(
                                             fontSize: 25,
                                             fontWeight: FontWeight.w600,
@@ -359,14 +371,13 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                               SizedBox(height: 5),
                               AddonBox(
                                   addons: addons,
-                                  offerPrice: offerPrice,
                                   onAddonSelectionChanged:
                                       (double priceChange) {
                                     setState(() {
-                                      offerPrice = priceChange;
-                                      print(offerPrice);
+                                      addonprice = priceChange;
+                                      //  print(offerPrice);
                                     });
-                                    print("121212121 $priceChange");
+                                    //  print("121212121 $priceChange");
                                   }),
                             ],
                           )
@@ -393,8 +404,8 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                             func.additem({
                               "name": name,
                               "image": "assets/images/$image.jpg",
-                              "cost": offerPrice,
-                              "price": offerPrice1,
+                              "cost": offerPrice2,
+                              "price": offerPrice2,
                               "quantity": quantity
                             });
                             Navigator.push(
@@ -435,8 +446,8 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                             func.additem({
                               "name": name,
                               "image": "assets/images/$image.jpg",
-                              "cost": offerPrice,
-                              "price": offerPrice1,
+                              "cost": offerPrice2,
+                              "price": offerPrice2,
                               "quantity": quantity
                             });
                             bottomSheet();

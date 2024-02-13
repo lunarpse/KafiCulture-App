@@ -5,13 +5,10 @@ import '../model/json_model.dart';
 
 class AddonBox extends StatefulWidget {
   const AddonBox(
-      {super.key,
-      required this.addons,
-      required this.offerPrice,
-      required this.onAddonSelectionChanged});
+      {super.key, required this.addons, required this.onAddonSelectionChanged});
 
   final List<AddonModel> addons;
-  final offerPrice;
+
   final Function onAddonSelectionChanged;
 
   @override
@@ -40,10 +37,10 @@ class _AddonBoxState extends State<AddonBox> {
                   setState(() {
                     if (addonSelectedIndex == index) {
                       addonSelectedIndex = -1;
-                      widget.onAddonSelectionChanged(widget.offerPrice);
+                      widget.onAddonSelectionChanged(0.0);
                     } else {
                       addonSelectedIndex = index;
-                      widget.onAddonSelectionChanged(widget.offerPrice + price);
+                      widget.onAddonSelectionChanged(price);
                     }
                   });
                 },
