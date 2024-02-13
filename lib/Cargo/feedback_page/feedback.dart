@@ -24,9 +24,6 @@ class _FeedbackPageCargoState extends ConsumerState<FeedbackPageCargo> {
     return Scaffold(
         appBar: AppbarWidget(incart: true),
         body: BackgroundContainerWidget(
-          opacity: 0.4,
-          x: 9.0,
-          y: 9.0,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [

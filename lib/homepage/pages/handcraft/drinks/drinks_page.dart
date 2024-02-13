@@ -55,9 +55,6 @@ class _DrinksPageState extends State<DrinksPage> {
           // appBar: AppbarWidget(),
           drawer: DrawerScreen(),
           body: BackgroundContainerWidget(
-            opacity: 1.0,
-            x: 1.0,
-            y: 1.0,
             child: SafeArea(
               child: Container(
                 height: MediaQuery.of(context).size.height,
@@ -164,7 +161,7 @@ class _DrinksPageState extends State<DrinksPage> {
                                                   style: TextStyle(
                                                       fontSize: 18,
                                                       fontWeight:
-                                                          FontWeight.w500,
+                                                          FontWeight.w600,
                                                       color: Colors.white),
                                                 ),
                                                 Text(

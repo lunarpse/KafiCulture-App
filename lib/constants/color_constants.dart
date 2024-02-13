@@ -189,6 +189,7 @@ const Color detailsselectedindexbordercolor = Color.fromARGB(255, 17, 17, 19);
 const Color detailsbottomsheetboxcolor = Colors.black;
 const Color detailsdoneiconcolor = Colors.green;
 Color detailsratingstarcolor = Colors.orange.shade700;
+Color detailsAddonsStarIconColor = Colors.orange.shade700;
 Color detailsUnselectedindexbordercolor = Colors.grey.shade800;
 const Color bottomsheetElevatedButtonBackgroundColor =
     Color.fromARGB(255, 173, 86, 31);
@@ -355,11 +356,11 @@ const Color elevatedButton_TextColor = Colors.white;
 
 //------------------------------------------>Cargo----->men/women
 const Color containerDecorationColor = Colors.white;
-const Color containerShadowColor = Colors.grey;
+const Color containerShadowColor = Color.fromARGB(255, 28, 28, 29);
 const Color brandTextColor = Colors.black54;
 const Color priceColor = Colors.black54;
 Color discountColor = Colors.green.shade500;
-const Color iconColor = Colors.amber;
+Color iconColor = Colors.orange.shade700;
 const Color ratingColor = Colors.red;
 
 //Delivery

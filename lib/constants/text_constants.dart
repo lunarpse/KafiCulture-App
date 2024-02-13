@@ -179,6 +179,7 @@ const String detailscart = "Cart";
 const String continueshopping = "Continue Shopping";
 const String detaildescription = "Description";
 const String cart = "Cart";
+const String addonText = "Add-Ons";
 
 //extras
 const String extraitem1 = "Hot Chocolate";

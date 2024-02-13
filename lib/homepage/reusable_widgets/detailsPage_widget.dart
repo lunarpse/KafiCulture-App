@@ -2,13 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
-import 'package:project_2/appbar/appbar_widget.dart';
 import 'package:project_2/constants/color_constants.dart';
 import 'package:project_2/homepage/model/json_model.dart';
 import 'package:project_2/payments/payment_app.dart';
 import 'package:readmore/readmore.dart';
 import '../../appbar/custom_appbar_widget.dart';
 import '../../constants/text_constants.dart';
+import 'addon_box.dart';
 import 'background_container_widget.dart';
 import 'package:project_2/cart/riverpod/state_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -35,16 +35,11 @@ class DetailsPageWidget extends ConsumerStatefulWidget {
 class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
   int selectedIndex = 0;
   int quantity = 1;
-  bool _customIcon = false;
-  late double finalCost;
   var addonprice = 0;
   List<AddonModel> addons = [];
 
   @override
   Widget build(BuildContext context) {
-    // double appBarHeight = AppbarWidget().preferredSize.height;
-    // final screenHeight = MediaQuery.of(context).size.height;
-    // final bodyHeight = screenHeight - appBarHeight;
     final bodyHeight = MediaQuery.of(context).size.height;
     final bodyWidth = MediaQuery.of(context).size.width;
 
@@ -67,8 +62,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
             ? double.parse((widget.details.offerPrice * 2).toStringAsFixed(2))
             : double.parse((widget.details.offerPrice * 3).toStringAsFixed(2));
 
-    final offerPrice =
-        double.parse((quantity * offerPrice1).toStringAsFixed(2));
+    var offerPrice = double.parse((quantity * offerPrice1).toStringAsFixed(2));
 
     final discount = widget.details.discount;
     final rating = widget.details.rating;
@@ -80,9 +74,6 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
     addons = widget.details.addons;
 
     return BackgroundContainerWidget(
-      opacity: 1.0,
-      x: 1.0,
-      y: 1.0,
       child: SafeArea(
         child: Container(
           height: bodyHeight,
@@ -294,7 +285,7 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                       // color: Colors.green,
                       child: ListView(
                         padding:
-                            EdgeInsets.only(left: 15, right: 15, bottom: 8),
+                            EdgeInsets.only(left: 15, right: 15, bottom: 0),
                         children: [
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -350,170 +341,33 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                                 ),
                               ),
                               SizedBox(height: 12),
-                              Text(
-                                recommendedproducts,
-                                style: TextStyle(
-                                    color: detailstextcolor,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold),
+                              Row(
+                                children: [
+                                  Icon(Icons.star,
+                                      color: detailsAddonsStarIconColor,
+                                      size: 25),
+                                  SizedBox(width: 5),
+                                  Text(
+                                    addonText,
+                                    style: TextStyle(
+                                        color: detailstextcolor,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
                               ),
                               SizedBox(height: 5),
-                              Container(
-                                height: 190,
-                                child: GridView.builder(
-                                  scrollDirection: Axis.horizontal,
-                                  physics: BouncingScrollPhysics(),
-                                  gridDelegate:
-                                      SliverGridDelegateWithFixedCrossAxisCount(
-                                          crossAxisCount: 1,
-                                          mainAxisSpacing: 5,
-                                          mainAxisExtent: 160),
-                                  itemCount: widget.fetchProducts.length,
-                                  itemBuilder: (context, index) {
-                                    var fetchProduct =
-                                        widget.fetchProducts[index];
-                                    final image = fetchProduct.image;
-                                    final name = fetchProduct.name;
-                                    final totalRating =
-                                        fetchProduct.totalRatings;
-                                    final rating = fetchProduct.rating;
-                                    final offerPrice = fetchProduct.offerPrice;
-                                    final discount = fetchProduct.discount;
-
-                                    return InkWell(
-                                      onTap: () => Navigator.pushNamed(
-                                          context, widget.nextPage,
-                                          arguments: fetchProduct),
-                                      child: Card(
-                                        // elevation: 12,
-                                        // shadowColor:
-                                        //     Color.fromARGB(255, 4, 4, 71),
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(15)),
-
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(15),
-                                              gradient: LinearGradient(
-                                                  colors: const [
-                                                    Colors.black,
-                                                    Color.fromARGB(
-                                                        255, 17, 17, 19),
-                                                    Color.fromARGB(
-                                                        255, 50, 51, 53)
-                                                  ],
-                                                  begin: Alignment.topLeft,
-                                                  end: Alignment.bottomRight)),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(7),
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Expanded(
-                                                    child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(15),
-                                                  child: Hero(
-                                                    tag: fetchProduct,
-                                                    child: Image.asset(
-                                                      'assets/images/$image.jpg',
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                )),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 5, left: 3),
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                        name,
-                                                        style: TextStyle(
-                                                          overflow: TextOverflow
-                                                              .ellipsis,
-                                                          color: Colors.white,
-                                                          fontSize: 15,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                                      ),
-                                                      Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                        children: [
-                                                          Row(
-                                                            children: [
-                                                              Icon(
-                                                                Icons.star,
-                                                                size: 17,
-                                                                color:
-                                                                    detailsstarcolor,
-                                                              ),
-                                                              SizedBox(
-                                                                  width: 3),
-                                                              Text(
-                                                                "$rating ($totalRating)",
-                                                                style:
-                                                                    TextStyle(
-                                                                  color: Color
-                                                                      .fromARGB(
-                                                                          255,
-                                                                          221,
-                                                                          221,
-                                                                          221),
-                                                                  fontSize: 13,
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      Row(
-                                                        children: [
-                                                          Text(
-                                                            "\$ $offerPrice ",
-                                                            style: TextStyle(
-                                                                color: Colors
-                                                                    .white,
-                                                                fontSize: 15,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500),
-                                                          ),
-                                                          Text(
-                                                            "($discount% Off)",
-                                                            style: TextStyle(
-                                                                fontSize: 14,
-                                                                color:
-                                                                    detailsstarcolor,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600),
-                                                          ),
-                                                        ],
-                                                      )
-                                                    ],
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                ),
-                              )
+                              AddonBox(
+                                  addons: addons,
+                                  offerPrice: offerPrice,
+                                  onAddonSelectionChanged:
+                                      (double priceChange) {
+                                    setState(() {
+                                      offerPrice = priceChange;
+                                      print(offerPrice);
+                                    });
+                                    print("121212121 $priceChange");
+                                  }),
                             ],
                           )
                         ],
@@ -528,49 +382,28 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                     padding: EdgeInsets.symmetric(horizontal: 15, vertical: 7),
                     width: bodyWidth - 10,
                     decoration: BoxDecoration(
-                      // color: detailsboxcolor,
-
                       borderRadius:
                           BorderRadius.vertical(top: Radius.circular(20)),
-                      // boxShadow: [
-                      //   BoxShadow(
-                      //       color: detailsboxshadowcolor,
-                      //       blurRadius: 3,
-                      //       spreadRadius: 2,
-                      //       offset: Offset(0, -2))
-                      // ],
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         ElevatedButton.icon(
                           onPressed: () {
-                            showDialog(
-                                context: context,
-                                builder: (context) => DialogBox(
-                                      productName: widget.details.name,
-                                      buttonName: "Pay Now",
-                                      call: (value) {
-                                        func.additem({
-                                          "name": name,
-                                          "image": "assets/images/$image.jpg",
-                                          "cost": value,
-                                          "price": offerPrice1,
-                                          "quantity": quantity
-                                        });
-                                        Navigator.of(context).pop();
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    PaymentApp(
-                                                      coffee: true,
-                                                      checkout: true,
-                                                    )));
-                                      },
-                                      addons: addons,
-                                      finalPrice: offerPrice,
-                                    ));
+                            func.additem({
+                              "name": name,
+                              "image": "assets/images/$image.jpg",
+                              "cost": offerPrice,
+                              "price": offerPrice1,
+                              "quantity": quantity
+                            });
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => PaymentApp(
+                                          coffee: true,
+                                          checkout: true,
+                                        )));
                           },
                           style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all(
@@ -599,29 +432,14 @@ class _DetailsPageState extends ConsumerState<DetailsPageWidget> {
                         ),
                         OutlinedButton.icon(
                           onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return DialogBox(
-                                  addons: addons,
-                                  productName: widget.details.name,
-                                  buttonName: "Proceed",
-                                  call: (value) {
-                                    print(value);
-                                    func.additem({
-                                      "name": name,
-                                      "image": "assets/images/$image.jpg",
-                                      "cost": value,
-                                      "price": offerPrice1,
-                                      "quantity": quantity
-                                    });
-                                    Navigator.of(context).pop();
-                                    bottomSheet();
-                                  },
-                                  finalPrice: offerPrice,
-                                );
-                              },
-                            );
+                            func.additem({
+                              "name": name,
+                              "image": "assets/images/$image.jpg",
+                              "cost": offerPrice,
+                              "price": offerPrice1,
+                              "quantity": quantity
+                            });
+                            bottomSheet();
                           },
                           icon: Icon(
                             Icons.shopping_cart,

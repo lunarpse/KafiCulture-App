@@ -29,9 +29,6 @@ class MyOrders extends ConsumerWidget {
         appBar: AppbarWidget(),
         drawer: DrawerScreen(),
         body: BackgroundContainerWidget(
-            opacity: 0.7,
-            x: 4.0,
-            y: 4.0,
             child: data.length == 0
                 ? no_order
                 : ListView.builder(

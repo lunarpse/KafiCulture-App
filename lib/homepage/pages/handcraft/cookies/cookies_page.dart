@@ -10,7 +10,6 @@ import 'package:project_2/homepage/reusable_widgets/background_container_widget.
 import '../../../../appbar/custom_appbar_widget.dart';
 import '../../../model/json_model.dart';
 import '../../../data_fetching/api_service.dart';
-import '../../../../appbar/appbar_widget.dart';
 
 class CookiesPage extends StatefulWidget {
   const CookiesPage({super.key});
@@ -53,12 +52,8 @@ class _CookiesPageState extends State<CookiesPage> {
       builder: (context, state) {
         return Scaffold(
           key: _scaffoldKey,
-          // appBar: AppbarWidget(),
           drawer: DrawerScreen(),
           body: BackgroundContainerWidget(
-            opacity: 1.0,
-            x: 1.0,
-            y: 1.0,
             child: SafeArea(
               child: Container(
                 height: MediaQuery.of(context).size.height,
@@ -96,7 +91,7 @@ class _CookiesPageState extends State<CookiesPage> {
                             final image = cookie.image;
                             final offerPrice = cookie.offerPrice;
                             final rating = double.parse(cookie.rating);
-                            // final price = cookie.price;
+
                             return Padding(
                               padding: EdgeInsets.symmetric(
                                   vertical: 5, horizontal: 10),
@@ -107,7 +102,6 @@ class _CookiesPageState extends State<CookiesPage> {
                                     width: 380,
                                     height: 170,
                                     decoration: BoxDecoration(
-                                      // color: cookieboxdeccolor,
                                       gradient: LinearGradient(
                                           colors: [
                                             Colors.black,
@@ -165,7 +159,7 @@ class _CookiesPageState extends State<CookiesPage> {
                                                   style: TextStyle(
                                                       fontSize: 18,
                                                       fontWeight:
-                                                          FontWeight.w500,
+                                                          FontWeight.w600,
                                                       color: Colors.white),
                                                 ),
                                                 Text(

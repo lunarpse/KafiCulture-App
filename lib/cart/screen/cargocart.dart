@@ -58,13 +58,9 @@ class _CartState extends ConsumerState<Cargocart> {
           resizeToAvoidBottomInset: false,
           body: (subt == 0 || data.length == 0)
               //empty cart page
-              ? BackgroundContainerWidget(
-                  opacity: 0.6, x: 8.0, y: 8.0, child: EmptyCart())
+              ? BackgroundContainerWidget(child: EmptyCart())
               //cart page
               : BackgroundContainerWidget(
-                  opacity: 0.5,
-                  x: 7.0,
-                  y: 7.0,
                   child: Column(
                     children: [
                       Expanded(

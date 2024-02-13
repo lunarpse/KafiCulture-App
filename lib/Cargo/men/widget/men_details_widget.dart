@@ -64,9 +64,6 @@ class _DetailsPageState extends ConsumerState<CargoDetailsPageWidget> {
     final totalRatings = widget.details.totalRatings;
 
     return BackgroundContainerWidget(
-      opacity: 0.3,
-      x: 8.0,
-      y: 8.0,
       child: Padding(
         padding: EdgeInsets.only(left: 10, top: 10, right: 10),
         child: Container(

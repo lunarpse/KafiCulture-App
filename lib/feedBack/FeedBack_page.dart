@@ -89,9 +89,6 @@ class _FeedBackPageState extends State<FeedBackPage> {
           ),
           drawer: DrawerScreen(),
           body: BackgroundContainerWidget(
-            opacity: 0.5,
-            x: 7.0,
-            y: 7.0,
             child: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -201,7 +198,10 @@ class _FeedBackPageState extends State<FeedBackPage> {
                                         isExpanded = false;
                                       });
                                     },
-                                    child: Text(submit,style:TextStyle(color: textcolour),))
+                                    child: Text(
+                                      submit,
+                                      style: TextStyle(color: textcolour),
+                                    ))
                               ],
                             ),
                           )
@@ -237,7 +237,10 @@ class _FeedBackPageState extends State<FeedBackPage> {
                                   feedbackBloc
                                       .add(FeedbackSubmitButtonClickedEvent());
                                 },
-                                child: Text(submit,style:TextStyle(color: textcolour),)),
+                                child: Text(
+                                  submit,
+                                  style: TextStyle(color: textcolour),
+                                )),
                           ],
                         ),
                       ),

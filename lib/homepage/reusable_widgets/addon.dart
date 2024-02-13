@@ -24,17 +24,19 @@
 //     int? checkedIndex;
 //     double totalPrice = finalPrice;
 //     final sizeindex = selectedindex == 0
-//         ? addonSizeTall
+//         ? "Tall"
 //         : selectedindex == 1
-//             ? addonSizeGrande
-//             : addonSizeVenti;
-//     print(totalPrice);
+//             ? "Grande"
+//             : "Venti";
+
 //     return StatefulBuilder(builder: (context, setState) {
 //       return Container(
 //         padding: EdgeInsets.all(10),
 //         decoration: BoxDecoration(
-//             borderRadius: BorderRadius.circular(10),
-//             border: Border.all(color: addonBoxcontainerBordercolor, width: 3)),
+//             color: Colors.blueGrey,
+//             borderRadius: BorderRadius.circular(15),
+//             border:
+//                 Border.all(color: Color.fromARGB(255, 17, 17, 19), width: 3.5)),
 //         child: Column(
 //           mainAxisSize: MainAxisSize.min,
 //           crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,10 +55,11 @@
 //                     dense: true,
 //                     shape: RoundedRectangleBorder(
 //                         borderRadius: BorderRadius.circular(10)),
-//                     tileColor: addonBoxcheckboxtilecolor,
+//                     tileColor: Colors.red,
 //                     checkboxShape: RoundedRectangleBorder(
 //                         borderRadius: BorderRadius.circular(4)),
-//                     side: BorderSide(color: addonBoxbordersidecolor, width: 2),
+//                     side: BorderSide(
+//                         color: Color.fromARGB(255, 197, 120, 4), width: 2),
 //                     value: checkedIndex == index,
 //                     onChanged: (bool? newValue) {
 //                       setState(() {
@@ -66,7 +69,7 @@
 //                               (finalPrice + price).toStringAsFixed(2));
 //                         } else {
 //                           checkedIndex = null;
-//                           //     totalPrice = finalPrice;
+//                           totalPrice = finalPrice;
 //                         }
 //                         call(totalPrice);
 //                       });
@@ -76,27 +79,29 @@
 //                       style: TextStyle(
 //                           fontSize: 17,
 //                           fontWeight: FontWeight.bold,
-//                           color: addonBoxaddonnamecolor),
+//                           color: Color.fromRGBO(121, 74, 41, 1)),
 //                     ),
 //                     subtitle: Text(
 //                       "\$ $price",
-//                       style:
-//                           TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+//                       style: TextStyle(
+//                           fontSize: 16,
+//                           fontWeight: FontWeight.bold,
+//                           color: Colors.white),
 //                     ),
-//                     activeColor: addonBoxactivecolor,
-//                     checkColor: addonBoxcheckcolor,
+//                     activeColor: Color.fromRGBO(168, 93, 38, 1),
+//                     checkColor: Colors.white,
 //                   ),
 //                 );
 //               },
 //             ),
 //             Divider(
-//               color: addonBoxdivcolor,
+//               color: Color.fromRGBO(143, 93, 58, 1),
 //               thickness: 3,
 //             ),
 //             Container(
 //               width: double.maxFinite,
 //               decoration: BoxDecoration(
-//                   color: addonBoxboxdecorationcolor,
+//                   color: Color.fromRGBO(143, 93, 58, 1),
 //                   borderRadius: BorderRadius.circular(10)),
 //               child: Padding(
 //                 padding: const EdgeInsets.symmetric(vertical: 12),
@@ -108,10 +113,10 @@
 //                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
 //                         children: [
 //                           Text(
-//                             addonSizeText,
+//                             "Size",
 //                             style: TextStyle(
 //                               fontSize: 16,
-//                               color: addonBoxproductnamecolor,
+//                               color: Colors.white,
 //                               letterSpacing: 0.8,
 //                               fontWeight: FontWeight.w500,
 //                             ),
@@ -122,7 +127,7 @@
 //                             style: TextStyle(
 //                                 letterSpacing: 0.9,
 //                                 fontSize: 18,
-//                                 color: addonBoxpricetextcolor),
+//                                 color: Colors.white),
 //                           )
 //                         ],
 //                       ),
@@ -134,10 +139,10 @@
 //                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
 //                         children: [
 //                           Text(
-//                             addonFinalpriceText,
+//                             "Final Price",
 //                             style: TextStyle(
 //                               fontSize: 16,
-//                               color: addonBoxproductnamecolor,
+//                               color: Colors.white,
 //                               letterSpacing: 0.8,
 //                               fontWeight: FontWeight.w500,
 //                             ),
@@ -145,8 +150,7 @@
 //                           SizedBox(height: 5),
 //                           Text(
 //                             "\$ $totalPrice",
-//                             style: TextStyle(
-//                                 fontSize: 18, color: addonBoxpricetextcolor),
+//                             style: TextStyle(fontSize: 18, color: Colors.white),
 //                           )
 //                         ],
 //                       ),

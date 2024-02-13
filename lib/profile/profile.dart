@@ -32,9 +32,6 @@ class _ProfileState extends State<Profile> {
       appBar: AppbarWidget(),
       drawer: DrawerScreen(),
       body: BackgroundContainerWidget(
-        opacity: 0.9,
-        x: 2.0,
-        y: 2.0,
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: Column(

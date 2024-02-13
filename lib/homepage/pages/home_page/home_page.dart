@@ -46,9 +46,6 @@ class _HomePageState extends State<HomePage> {
           drawer: DrawerScreen(),
           extendBodyBehindAppBar: true,
           body: BackgroundContainerWidget(
-            opacity: 1.0,
-            x: 1.0,
-            y: 1.0,
             child: SafeArea(
                 child: Container(
               height: MediaQuery.of(context).size.height,

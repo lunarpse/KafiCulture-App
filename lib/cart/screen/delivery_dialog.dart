@@ -43,9 +43,6 @@ class _DeliveryDialogState extends State<DeliveryDialog> {
                 var name1 = '${data['name']}';
                 // return address();
                 return BackgroundContainerWidget(
-                  opacity: 0.6,
-                  x: 2.0,
-                  y: 2.0,
                   child: Container(
                     width: double.maxFinite,
                     child: Column(

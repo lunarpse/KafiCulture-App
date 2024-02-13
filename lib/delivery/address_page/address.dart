@@ -57,48 +57,108 @@ class _AddressState extends State<Address> {
     return Scaffold(
       appBar: AppbarWidget(),
       body: BackgroundContainerWidget(
-          opacity: 0.4,
-          x: 9.0,
-          y: 9.0,
           child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Form(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Form(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  adrname,
+                  // "$data",
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                TextFormField(
+                  controller: nameController,
+                  enabled: false,
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                  decoration: InputDecoration(
+                      hintText: adrename,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text(
-                      adrname,
-                      // "$data",
+                      emailText,
                       style:
                           TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
-                    const SizedBox(height: 10),
-                    TextFormField(
-                      controller: nameController,
-                      enabled: false,
+                    TextButton(
+                        onPressed: () {
+                          setState(() {
+                            isEditableEmail = !isEditableEmail;
+                          });
+                        },
+                        // ignore: prefer_const_constructors
+                        child: Text(
+                          editableText,
+                          style: TextStyle(color: editBttnColor, fontSize: 18),
+                        )),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                TextFormField(
+                  controller: emailController,
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                  decoration: InputDecoration(
+                      hintText: adreemail,
+                      enabled: isEditableEmail,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15))),
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      adrmobile,
                       style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-                      decoration: InputDecoration(
-                          hintText: adrename,
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15))),
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                    TextButton(
+                        onPressed: () {
+                          setState(() {
+                            isEditableMobile = !isEditableMobile;
+                          });
+                        },
+                        // ignore: prefer_const_constructors
+                        child: Text(
+                          editableText,
+                          style: TextStyle(color: editBttnColor, fontSize: 18),
+                        )),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                TextFormField(
+                  controller: MobileController,
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                  enabled: isEditableMobile,
+                  decoration: InputDecoration(
+                      hintText: mobileHintText,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15))),
+                ),
+                Column(
+                  children: <Widget>[
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Text(
-                          emailText,
+                          deliveryAddressText,
                           style: TextStyle(
                               fontSize: 22, fontWeight: FontWeight.bold),
                         ),
                         TextButton(
                             onPressed: () {
                               setState(() {
-                                isEditableEmail = !isEditableEmail;
+                                isEditable = !isEditable;
                               });
                             },
                             // ignore: prefer_const_constructors
@@ -109,253 +169,178 @@ class _AddressState extends State<Address> {
                             )),
                       ],
                     ),
-                    const SizedBox(height: 10),
                     TextFormField(
-                      controller: emailController,
+                      controller: add1Controller,
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                       decoration: InputDecoration(
-                          hintText: adreemail,
-                          enabled: isEditableEmail,
+                          hintText: addressoneText,
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15))),
+                      enabled: isEditable,
                     ),
                     const SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          adrmobile,
-                          style: TextStyle(
-                              fontSize: 22, fontWeight: FontWeight.bold),
-                        ),
-                        TextButton(
-                            onPressed: () {
-                              setState(() {
-                                isEditableMobile = !isEditableMobile;
-                              });
-                            },
-                            // ignore: prefer_const_constructors
-                            child: Text(
-                              editableText,
-                              style:
-                                  TextStyle(color: editBttnColor, fontSize: 18),
-                            )),
-                      ],
-                    ),
-                    const SizedBox(height: 10),
-                    TextFormField(
-                      controller: MobileController,
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-                      enabled: isEditableMobile,
-                      decoration: InputDecoration(
-                          hintText: mobileHintText,
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15))),
-                    ),
                     Column(
-                      children: <Widget>[
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        TextFormField(
+                          controller: add2Controller,
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.w500),
+                          enabled: isEditable,
+                          decoration: InputDecoration(
+                              hintText: addresstwoText,
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15))),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            const Text(
-                              deliveryAddressText,
+                            Text(
+                              cityName,
                               style: TextStyle(
                                   fontSize: 22, fontWeight: FontWeight.bold),
                             ),
-                            TextButton(
-                                onPressed: () {
-                                  setState(() {
-                                    isEditable = !isEditable;
-                                  });
-                                },
-                                // ignore: prefer_const_constructors
-                                child: Text(
-                                  editableText,
-                                  style: TextStyle(
-                                      color: editBttnColor, fontSize: 18),
-                                )),
+                            SizedBox(
+                              width: 160,
+                            ),
+                            Text(
+                              pinNum,
+                              style: TextStyle(
+                                  fontSize: 22, fontWeight: FontWeight.bold),
+                            ),
                           ],
                         ),
-                        TextFormField(
-                          controller: add1Controller,
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.w500),
-                          decoration: InputDecoration(
-                              hintText: addressoneText,
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(15))),
-                          enabled: isEditable,
-                        ),
-                        const SizedBox(height: 10),
-                        Column(
+                        Row(
                           children: [
-                            TextFormField(
-                              controller: add2Controller,
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w500),
-                              enabled: isEditable,
-                              decoration: InputDecoration(
-                                  hintText: addresstwoText,
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(15))),
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: TextFormField(
+                                  controller: cityController,
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w500),
+                                  enabled: isEditable,
+                                  decoration: InputDecoration(
+                                      hintText: cityName1,
+                                      border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(15))),
+                                ),
+                              ),
                             ),
                             const SizedBox(
                               height: 10,
                             ),
-                            const Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  cityName,
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: TextFormField(
+                                  controller: pinController,
                                   style: TextStyle(
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.bold),
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w500),
+                                  decoration: InputDecoration(
+                                      hintText: pinNum1,
+                                      border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(15))),
+                                  enabled: isEditable,
                                 ),
-                                SizedBox(
-                                  width: 160,
-                                ),
-                                Text(
-                                  pinNum,
-                                  style: TextStyle(
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ],
+                              ),
                             ),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: TextFormField(
-                                      controller: cityController,
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w500),
-                                      enabled: isEditable,
-                                      decoration: InputDecoration(
-                                          hintText: cityName1,
-                                          border: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(15))),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: TextFormField(
-                                      controller: pinController,
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w500),
-                                      decoration: InputDecoration(
-                                          hintText: pinNum1,
-                                          border: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(15))),
-                                      enabled: isEditable,
-                                    ),
-                                  ),
-                                ),
-                              ],
+                          ],
+                        ),
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              state,
+                              style: TextStyle(
+                                  fontSize: 22, fontWeight: FontWeight.bold),
                             ),
-                            const Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  state,
-                                  style: TextStyle(
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                SizedBox(
-                                  width: 160,
-                                ),
-                                Text(
-                                  country,
-                                  style: TextStyle(
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ],
+                            SizedBox(
+                              width: 160,
                             ),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: TextFormField(
-                                      controller: stateController,
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w500),
-                                      enabled: isEditable,
-                                      decoration: InputDecoration(
-                                          hintText: state1,
-                                          border: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(15))),
-                                    ),
-                                  ),
+                            Text(
+                              country,
+                              style: TextStyle(
+                                  fontSize: 22, fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: TextFormField(
+                                  controller: stateController,
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w500),
+                                  enabled: isEditable,
+                                  decoration: InputDecoration(
+                                      hintText: state1,
+                                      border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(15))),
                                 ),
-                                const SizedBox(
-                                  height: 10,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: TextFormField(
+                                  controller: countryController,
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500),
+                                  enabled: isEditable,
+                                  decoration: InputDecoration(
+                                      hintText: adrepin,
+                                      border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(15))),
                                 ),
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: TextFormField(
-                                      controller: countryController,
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w500),
-                                      enabled: isEditable,
-                                      decoration: InputDecoration(
-                                          hintText: adrepin,
-                                          border: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(15))),
-                                    ),
-                                  ),
-                                ),
-                              ],
+                              ),
                             ),
                           ],
                         ),
                       ],
                     ),
-                    const SizedBox(height: 30),
-                    Center(
-                      child: ElevatedButton(
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                  (feedbackcollapsebgcolor))),
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => PaymentApp(
-                                        coffee: widget.coffee,
-                                        checkout: false)));
-                          },
-                          child: const Text(
-                            saveAddressBttn,
-                            style:
-                                TextStyle(fontSize: 20, color: saveBttnColor),
-                          )),
-                    )
                   ],
                 ),
-              ),
+                const SizedBox(height: 30),
+                Center(
+                  child: ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              (feedbackcollapsebgcolor))),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PaymentApp(
+                                    coffee: widget.coffee, checkout: false)));
+                      },
+                      child: const Text(
+                        saveAddressBttn,
+                        style: TextStyle(fontSize: 20, color: saveBttnColor),
+                      )),
+                )
+              ],
             ),
-          )),
+          ),
+        ),
+      )),
     );
   }
 }
