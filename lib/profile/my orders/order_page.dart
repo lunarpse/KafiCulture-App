@@ -36,7 +36,7 @@ class MyOrders extends ConsumerWidget {
                     itemCount: data.length,
                     itemBuilder: (context, index) {
                       return Column(
-                          children: data[index]
+                          children: data[index]["data"]
                               .map<Widget>((e) => Padding(
                                     padding: const EdgeInsets.all(13),
                                     child: Container(
@@ -44,13 +44,20 @@ class MyOrders extends ConsumerWidget {
                                       decoration: BoxDecoration(
                                         color: everyOrderContainerColor,
                                         borderRadius: BorderRadius.circular(20),
+                                        gradient: LinearGradient(
+                                            colors: [
+                                              cartLinearGrad1,
+                                              cartLinearGrad2,
+                                              cartLinearGrad3
+                                            ],
+                                            begin: Alignment.topLeft,
+                                            end: Alignment.bottomRight),
                                         boxShadow: [
                                           BoxShadow(
                                               color:
                                                   everyOrderContainerShadowColor,
-                                              blurRadius: 4,
-                                              spreadRadius: 2,
-                                              offset: Offset(0, 2))
+                                              blurRadius: 1,
+                                              spreadRadius: 1)
                                         ],
                                         border: Border.all(
                                           color: everyOrderContainerBorderColor,
@@ -98,7 +105,7 @@ class MyOrders extends ConsumerWidget {
                                                             fontWeight:
                                                                 FontWeight.bold,
                                                             color:
-                                                                orderNameColor),
+                                                                circleavatarbgcolor),
                                                       ),
                                                       Row(
                                                         children: [
@@ -106,8 +113,7 @@ class MyOrders extends ConsumerWidget {
                                                             FontAwesomeIcons
                                                                 .dollarSign,
                                                             size: 21,
-                                                            color:
-                                                                orderPriceIconColor,
+                                                            color: tagcolor,
                                                           ),
                                                           SizedBox(width: 3),
                                                           Column(
@@ -124,7 +130,7 @@ class MyOrders extends ConsumerWidget {
                                                                         FontWeight
                                                                             .w600,
                                                                     color:
-                                                                        orderPriceHeadingColor),
+                                                                        headingcolor),
                                                               ),
                                                               Text(
                                                                 e["cost"]
@@ -136,7 +142,7 @@ class MyOrders extends ConsumerWidget {
                                                                         FontWeight
                                                                             .bold,
                                                                     color:
-                                                                        orderPriceTextColor),
+                                                                        circleavatarbgcolor),
                                                               ),
                                                             ],
                                                           ),
@@ -164,7 +170,7 @@ class MyOrders extends ConsumerWidget {
                                                       Icon(
                                                         FontAwesomeIcons.tag,
                                                         size: 23,
-                                                        color: orderNoIconColor,
+                                                        color: tagcolor,
                                                       ),
                                                       SizedBox(width: 5),
                                                       Column(
@@ -180,7 +186,7 @@ class MyOrders extends ConsumerWidget {
                                                                     FontWeight
                                                                         .w600,
                                                                 color:
-                                                                    orderNoHeadingColor),
+                                                                    headingcolor),
                                                           ),
                                                           SizedBox(height: 3),
                                                           Text(
@@ -191,7 +197,7 @@ class MyOrders extends ConsumerWidget {
                                                                     FontWeight
                                                                         .w600,
                                                                 color:
-                                                                    orderNoTextColor),
+                                                                    circleavatarbgcolor),
                                                           ),
                                                         ],
                                                       )
@@ -203,8 +209,7 @@ class MyOrders extends ConsumerWidget {
                                                         FontAwesomeIcons
                                                             .truckFast,
                                                         size: 23,
-                                                        color:
-                                                            orderProcessingIconColor,
+                                                        color: tagcolor,
                                                       ),
                                                       SizedBox(width: 15),
                                                       Column(
@@ -220,7 +225,7 @@ class MyOrders extends ConsumerWidget {
                                                                     FontWeight
                                                                         .w600,
                                                                 color:
-                                                                    orderProcessingHeadingColor),
+                                                                    headingcolor),
                                                           ),
                                                           SizedBox(height: 3),
                                                           Text(
@@ -235,7 +240,7 @@ class MyOrders extends ConsumerWidget {
                                                                     FontWeight
                                                                         .w600,
                                                                 color:
-                                                                    orderProcessingTextColor),
+                                                                    circleavatarbgcolor),
                                                           ),
                                                         ],
                                                       )

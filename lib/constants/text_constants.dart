@@ -126,6 +126,9 @@ const String handcrafted = "Handcrafted Curations";
 const String populars = "Populars";
 
 //paymentScreen
+const String priceText = "Price";
+const String gstText = "GST";
+const String deliveryText = "Delivery Charges";
 const String cardpayment = "Credit/Debit Cards";
 const String thankyou = "Thank You";
 const String selectpaymentmethod = "Select Payment Method";
@@ -226,3 +229,7 @@ const String deliveryAdd = " Delivery Address";
 const String deliverydata =
     "145 . Main Street ,New Town, Kolkata 828108 ,West Bengal ,India";
 const String navText = "Back to Home";
+//Feedback-->new
+const String starquote="Rate your experience";
+const String commentquote ="Drop your comments below";
+const String hinttext ="Type your message here...";

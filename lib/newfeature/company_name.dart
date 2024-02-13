@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:project_2/constants/color_constants.dart';
 
-
 class CompanyName extends StatelessWidget {
-  const CompanyName(
-      {super.key,
-      required this.companyName,
-      required this.companyLogo,
-      required this.value,
-      required this.child,
-      required this.points,
-      required this.factor,
-      required this.pointsUsed});
+  const CompanyName({
+    super.key,
+    required this.companyName,
+    required this.companyLogo,
+    required this.value,
+    required this.child,
+    required this.points,
+    required this.factor,
+    required this.pointsUsed,
+  });
 
   final String companyName;
   final String companyLogo;
@@ -28,15 +28,15 @@ class CompanyName extends StatelessWidget {
       children: [
         Padding(
           padding:
-              const EdgeInsets.only(top: 8.0, bottom: 8, right: 16, left: 16),
+              const EdgeInsets.only(top: 4.0, bottom: 4, right: 16, left: 16),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
                 children: [
                   Container(
-                    height: 50,
-                    width: 50,
+                    height: 30,
+                    width: 40,
                     decoration: BoxDecoration(
                         image: DecorationImage(image: AssetImage(companyLogo))),
                   ),
@@ -44,78 +44,61 @@ class CompanyName extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 8.0),
                     child: Text(
                       companyName,
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontSize: 20,
+                          // fontWeight: FontWeight.bold,
+                          color: nameColor),
                     ),
                   ),
                 ],
               ),
               Text(
-                "$pointsUsed pts.",
-                style: TextStyle(fontSize: 18),
+                "Used: $pointsUsed/100 pts.",
+                style: TextStyle(fontSize: 15, color: nameColor),
               ),
-              // Container(
-              //   width: 70,
-              //   height: 30,
-              //   decoration: BoxDecoration(
-              //     gradient:
-              //         LinearGradient(colors: [Colors.white, Colors.white70]),
-              //     border: Border.all(),
-              //     boxShadow: [
-              //       BoxShadow(
-              //         color: Colors.grey,
-              //         blurRadius: 3.0, // soften the shadow
-              //         spreadRadius: 2.0, //extend the shadow
-              //       ),
-              //     ],
-              //   ),
-              //   // color: Colors.white,
-              //   child: Center(
-              //     child: Text(
-              //       "\$ ${(value * factor).toStringAsFixed(2)}",
-              //       style: TextStyle(
-              //           fontSize: 18,
-              //           fontWeight: FontWeight.w600,
-              //           color: Colors.brown),
+              // Column(
+              //   children: [
+              //     Text(
+              //       "Used: $pointsUsed pts.",
+              //       style: TextStyle(fontSize: 15),
               //     ),
-              //   ),
+              //     Text(
+              //       "Total: 100 pts.",
+              //       style: TextStyle(fontSize: 15),
+              //     ),
+              //   ],
               // ),
+
+              // Container(
+              //   decoration: BoxDecoration(
+              //       color: Colors.white,
+              //       borderRadius: BorderRadius.circular(4)),
+              //   width: 50,
+              //   height: 35,
+              //   child: formchild,
+              // )
             ],
           ),
         ),
         SizedBox(
           child: child,
-          // width: 250,
-          // child: Slider(
-          //   divisions: 100,
-          //   label: " ${widget.value.toString()}/100",
-          //   activeColor: Colors.white,
-          //   value: widget.value.toDouble(),
-          //   onChanged: (double newValue) {
-          //     setState(() {
-          //       value = newValue.round();
-          //     });
-          //   },
-          //   min: 0,
-          //   max: 100,
-          // ),
         ),
         Padding(
-          padding:  EdgeInsets.only(left: 16),
+          padding: EdgeInsets.only(left: 16, bottom: 15),
           child: Row(
             children: [
               Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      companynameboxdecorationlineargradcolor,
-                      companynameboxdecorationlineargradcolor1,
-                    ],
-                  ),
-                ),
+                decoration: const BoxDecoration(
+                    // gradient: LinearGradient(
+                    //   colors: [
+                    //     companynameboxdecorationlineargradcolor,
+                    //     companynameboxdecorationlineargradcolor1,
+                    //   ],
+                    // ),
+                    ),
                 child: Text(
                   "1USD=$points $companyName Points",
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 15, color: nameColor),
                 ),
               )
             ],

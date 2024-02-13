@@ -47,7 +47,9 @@ class _CookingInstructionsState extends ConsumerState<CookingInstructions> {
         title: const Text(
           cookinginstruction,
           style: TextStyle(
-              fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
+              fontSize: 18,
+              color: cartbuttoncolor,
+              fontWeight: FontWeight.bold),
         ),
         children: [
           Container(
@@ -65,7 +67,7 @@ class _CookingInstructionsState extends ConsumerState<CookingInstructions> {
               style: const TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 20,
-                  color: Colors.white,
+                  color: cartbuttoncolor,
                   fontStyle: FontStyle.normal),
               decoration: InputDecoration(
                   enabledBorder: UnderlineInputBorder(
